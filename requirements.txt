@@ -1,0 +1,23 @@
+# Stage A — offline data pipeline. The front end needs none of this.
+h3>=4.1
+geopandas>=1.0
+shapely>=2.0
+numpy>=2.0
+pandas>=2.2
+requests>=2.32
+
+# raster zonal stats (LST / NDVI / WorldPop)
+rasterio>=1.4
+rasterstats>=0.20
+
+# satellite access — no auth required, see pipeline/02_satellite.py
+pystac-client>=0.8
+planetary-computer>=1.0
+odc-stac>=0.3
+
+# optional: street-network walk times (haversine fallback if absent)
+osmnx>=2.0
+networkx>=3.3
+
+# optional: Google Earth Engine path instead of Planetary Computer
+# earthengine-api>=1.1

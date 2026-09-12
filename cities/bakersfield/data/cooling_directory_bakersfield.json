@@ -1,0 +1,104 @@
+{
+ "source": "Kern County Aging & Adult Services, Cooling Centers",
+ "source_url": "https://www.kerncounty.com/government/aging-adult-services/services/cooling-centers",
+ "list_url": "https://itsapps.kerncounty.com/Iframed/CMS/CoolingCenters/",
+ "criteria_url": "https://www.kerncounty.com/government/aging-adult-services/services/cooling-centers/cooling-center-criteria",
+ "source_revision": "County list as published for the 2026 season; checked September 8, 2026",
+ "checked": "2026-09-08",
+ "contact_phone": "800-510-2020",
+ "transport_phone": "211",
+ "activation": "Centers open on a National Weather Service forecast of 105°F+ (San Joaquin and Kern River valleys), 108°F+ (desert areas) or 93°F+ (Frazier Park); when open, 1:00–8:00 p.m. unless stated otherwise.",
+ "notes": "The county page shows an open/closed status per center for the current day; this directory does not reproduce that live status. Only the East Bakersfield Veterans Building is inside the city study area; the others serve the wider county.",
+ "sites": [
+  {
+   "city": "Arvin",
+   "name": "Arvin Community Center",
+   "address": "800 Walnut Drive",
+   "phone": null,
+   "opening_hours": null,
+   "coordinates": null,
+   "note": null
+  },
+  {
+   "city": "Bakersfield",
+   "name": "East Bakersfield Veterans Building",
+   "address": "2101 Ridge Road",
+   "phone": null,
+   "opening_hours": null,
+   "coordinates": null,
+   "note": null
+  },
+  {
+   "city": "California City",
+   "name": "Strata Center",
+   "address": "10350 Heather Avenue",
+   "phone": null,
+   "opening_hours": null,
+   "coordinates": null,
+   "note": null
+  },
+  {
+   "city": "Frazier Park",
+   "name": "Frazier Park Recreation Building",
+   "address": "3801 Park Drive",
+   "phone": null,
+   "opening_hours": null,
+   "coordinates": null,
+   "note": null
+  },
+  {
+   "city": "Lake Isabella",
+   "name": "Kern River Valley Senior Center",
+   "address": "6405 Lake Isabella Boulevard",
+   "phone": null,
+   "opening_hours": null,
+   "coordinates": null,
+   "note": null
+  },
+  {
+   "city": "Maricopa",
+   "name": "Gusher Hall",
+   "address": "271 California Street",
+   "phone": null,
+   "opening_hours": null,
+   "coordinates": null,
+   "note": null
+  },
+  {
+   "city": "McFarland",
+   "name": "McFarland Veterans Center",
+   "address": "103 W Sherwood Ave",
+   "phone": null,
+   "opening_hours": null,
+   "coordinates": null,
+   "note": "County list says open 4 PM – 8 PM"
+  },
+  {
+   "city": "Rosamond",
+   "name": "Hummel Community Building",
+   "address": "2500 20th Street",
+   "phone": null,
+   "opening_hours": null,
+   "coordinates": null,
+   "note": null
+  },
+  {
+   "city": "Shafter",
+   "name": "Shafter Senior Center",
+   "address": "505 Sunset Avenue",
+   "phone": null,
+   "opening_hours": null,
+   "coordinates": null,
+   "note": null
+  },
+  {
+   "city": "Taft",
+   "name": "Taft Community Center - Activity Building",
+   "address": "500 Cascade Place",
+   "phone": null,
+   "opening_hours": null,
+   "coordinates": null,
+   "note": null
+  }
+ ]
+}

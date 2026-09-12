@@ -1,0 +1,122 @@
+{
+  "residential_before": 3788,
+  "residential_after": 3788,
+  "population_before": 410400,
+  "population_after": 410400,
+  "top25_overlap": 25,
+  "median_abs_rank_change": 0.0,
+  "max_abs_rank_change": 0,
+  "canopy_sources_all": {
+    "usfs-2022": 2359,
+    "chm-legacy": 1695
+  },
+  "canopy_quality_all": {
+    "full": 1995,
+    "coverage-unknown": 1695,
+    "partial": 364
+  },
+  "residential_scenarios_enabled": 2586,
+  "positive_canopy_zero_area": 0,
+  "weight_sensitivity": [
+    {
+      "weights": [
+        0.35,
+        0.1625,
+        0.12187500000000001,
+        0.36562500000000003
+      ],
+      "top25_overlap": 11,
+      "median_abs_rank_change": 105.0,
+      "max_abs_rank_change": 1969
+    },
+    {
+      "weights": [
+        0.35,
+        0.1625,
+        0.24375000000000002,
+        0.24375000000000002
+      ],
+      "top25_overlap": 23,
+      "median_abs_rank_change": 66.0,
+      "max_abs_rank_change": 1188
+    },
+    {
+      "weights": [
+        0.35,
+        0.1625,
+        0.36562500000000003,
+        0.12187500000000001
+      ],
+      "top25_overlap": 23,
+      "median_abs_rank_change": 107.0,
+      "max_abs_rank_change": 1572
+    },
+    {
+      "weights": [
+        0.35,
+        0.25,
+        0.1,
+        0.30000000000000004
+      ],
+      "top25_overlap": 17,
+      "median_abs_rank_change": 105.0,
+      "max_abs_rank_change": 1600
+    },
+    {
+      "weights": [
+        0.35,
+        0.25,
+        0.2,
+        0.2
+      ],
+      "top25_overlap": 23,
+      "median_abs_rank_change": 30.0,
+      "max_abs_rank_change": 601
+    },
+    {
+      "weights": [
+        0.35,
+        0.25,
+        0.30000000000000004,
+        0.1
+      ],
+      "top25_overlap": 25,
+      "median_abs_rank_change": 28.0,
+      "max_abs_rank_change": 479
+    },
+    {
+      "weights": [
+        0.35,
+        0.3375,
+        0.078125,
+        0.234375
+      ],
+      "top25_overlap": 14,
+      "median_abs_rank_change": 161.0,
+      "max_abs_rank_change": 1948
+    },
+    {
+      "weights": [
+        0.35,
+        0.3375,
+        0.15625,
+        0.15625
+      ],
+      "top25_overlap": 21,
+      "median_abs_rank_change": 103.5,
+      "max_abs_rank_change": 1354
+    },
+    {
+      "weights": [
+        0.35,
+        0.3375,
+        0.234375,
+        0.078125
+      ],
+      "top25_overlap": 24,
+      "median_abs_rank_change": 63.0,
+      "max_abs_rank_change": 910
+    }
+  ],
+  "aerial_only_top25_overlap": 25
+}

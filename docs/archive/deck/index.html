@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CoolEquity — pitch deck</title>
+</head>
+<body>
+<style>
+  /* CoolEquity pitch deck — palette and tokens inherited from app/index.html
+     so the deck reads as an extension of the product, not a wrapper around it. */
+  :root{
+    --bg:#0b0f14; --panel:#121821; --panel2:#0f141b; --edge:#1e2733; --edge2:#2b3746;
+    --txt:#e6edf3; --muted:#8b98a5; --muted2:#5f6b78;
+    --accent:#ff7a45; --accent2:#ffb703; --good:#4cc9a4;
+    /* inferno, the colormap the map itself uses */
+    --i1:#1b0c41; --i2:#4a0c6b; --i3:#a52c60; --i4:#cf4446; --i5:#ed6925; --i6:#fb9b06; --i7:#f7d13d; --i8:#fcffa4;
+    /* HOLC grades — Mapping Inequality's own colours */
+    --holcA:#6ea966; --holcB:#6a9fb5; --holcC:#c9b458; --holcD:#c0603f;
+
+    --display:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+
+    --t-display:clamp(38px,6.2vw,88px);
+    --t-h:clamp(26px,3.5vw,50px);
+    --t-stat:clamp(32px,4.4vw,64px);
+    --t-lead:clamp(16px,1.5vw,23px);
+    --t-body:clamp(13px,1.1vw,17px);
+    --t-mono:clamp(10px,.82vw,13px);
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;overflow:hidden;background:var(--bg)}
+  body{
+    font-family:var(--display); color:var(--txt);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .deck{position:fixed;inset:0;overflow:hidden}
+
+  /* progress rail — the priority ramp, doing double duty */
+  .rail{position:absolute;top:0;left:0;right:0;height:3px;background:#131a23;z-index:20}
+  .rail-fill{
+    height:100%;width:0;
+    background:linear-gradient(90deg,var(--i2),var(--i3),var(--i4),var(--i5),var(--i6),var(--i8));
+    transition:width .45s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .slide{
+    position:absolute;inset:0;
+    display:grid;align-content:center;justify-items:start;
+    padding:clamp(38px,5.6vw,92px);
+    padding-bottom:clamp(70px,7vw,110px);
+    gap:clamp(14px,1.5vw,22px);
+    opacity:0;visibility:hidden;
+    transform:translateY(10px);
+    transition:opacity .38s ease,transform .38s cubic-bezier(.2,.8,.2,1),visibility .38s;
+  }
+  .slide.on{opacity:1;visibility:visible;transform:none}
+
+  .wrap{width:min(1180px,100%)}
+
+  .eyebrow{
+    font-family:var(--mono);font-size:var(--t-mono);
+    text-transform:uppercase;letter-spacing:.16em;
+    color:var(--accent);margin:0 0 clamp(12px,1.4vw,20px);
+    display:flex;align-items:center;gap:11px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--accent);opacity:.6;flex:none}
+  .eyebrow.plain::before{display:none}
+
+  h1{
+    font-size:var(--t-display);line-height:.95;letter-spacing:-.035em;
+    font-weight:800;margin:0;text-wrap:balance;
+  }
+  h2{
+    font-size:var(--t-h);line-height:1.06;letter-spacing:-.025em;
+    font-weight:750;margin:0;text-wrap:balance;max-width:20ch;
+  }
+  .lead{
+    font-size:var(--t-lead);line-height:1.5;color:var(--muted);
+    margin:0;max-width:58ch;font-weight:400;
+  }
+  .lead strong{color:var(--txt);font-weight:600}
+  .body{font-size:var(--t-body);line-height:1.6;color:var(--muted);margin:0;max-width:62ch}
+  .body strong{color:var(--txt);font-weight:600}
+  .accent{color:var(--accent)}
+  .amber{color:var(--accent2)}
+  .good{color:var(--good)}
+  .num{font-variant-numeric:tabular-nums}
+
+  /* ---- title slide ---- */
+  .title-mark{display:flex;align-items:center;gap:14px;margin-bottom:clamp(20px,2.4vw,34px)}
+  .dot{
+    width:15px;height:15px;border-radius:50%;flex:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    box-shadow:0 0 22px rgba(255,122,69,.55);
+  }
+  .title-mark span{font-family:var(--mono);font-size:var(--t-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--muted2)}
+  .ramp{
+    height:7px;border-radius:4px;width:min(560px,100%);
+    background:linear-gradient(90deg,#000004,var(--i1),var(--i2),var(--i3),var(--i4),var(--i5),var(--i6),var(--i7),var(--i8));
+    margin-top:clamp(22px,2.6vw,36px);
+  }
+  .ramp-key{
+    display:flex;justify-content:space-between;width:min(560px,100%);
+    font-family:var(--mono);font-size:var(--t-mono);color:var(--muted2);
+    letter-spacing:.1em;text-transform:uppercase;margin-top:8px;
+  }
+
+  /* ---- stat rows ---- */
+  .stats{display:flex;flex-wrap:wrap;gap:clamp(26px,4vw,64px);margin-top:clamp(10px,1.4vw,20px)}
+  .stat .v{font-size:var(--t-stat);font-weight:800;letter-spacing:-.035em;line-height:1;font-variant-numeric:tabular-nums}
+  .stat .k{
+    font-family:var(--mono);font-size:var(--t-mono);color:var(--muted2);
+    text-transform:uppercase;letter-spacing:.13em;margin-top:9px;max-width:22ch;line-height:1.45;
+  }
+
+  /* ---- cards ---- */
+  .grid{display:grid;gap:clamp(10px,1.1vw,16px);width:100%}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{
+    background:linear-gradient(180deg,var(--panel),var(--panel2));
+    border:1px solid var(--edge);border-radius:12px;
+    padding:clamp(14px,1.5vw,22px);
+    display:flex;flex-direction:column;gap:7px;
+  }
+  .card .ct{font-family:var(--mono);font-size:var(--t-mono);text-transform:uppercase;letter-spacing:.13em;color:var(--accent)}
+  .card .cv{font-size:var(--t-body);line-height:1.5;color:var(--txt);font-weight:600}
+  .card .cs{font-size:var(--t-body);line-height:1.5;color:var(--muted)}
+
+  /* ---- data table ---- */
+  .tbl-wrap{width:100%;overflow-x:auto}
+  table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+  th{
+    font-family:var(--mono);font-size:var(--t-mono);font-weight:500;
+    text-transform:uppercase;letter-spacing:.13em;color:var(--muted2);
+    text-align:right;padding:0 0 12px;border-bottom:1px solid var(--edge2);white-space:nowrap;
+  }
+  th:first-child,td:first-child{text-align:left}
+  td{
+    font-size:clamp(14px,1.45vw,22px);font-weight:600;
+    padding:clamp(9px,1vw,15px) 0;border-bottom:1px solid var(--edge);
+    text-align:right;white-space:nowrap;
+  }
+  td:first-child{font-weight:700}
+  tr:last-child td{border-bottom:none}
+  .swatch{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border-radius:6px;margin-right:12px;
+    font-size:13px;font-weight:800;color:#0b0f14;vertical-align:middle;
+  }
+  .cell{display:inline-flex;flex-direction:column;align-items:flex-end;gap:5px}
+  .bar{height:3px;border-radius:2px;width:64px}
+
+  /* ---- callout ---- */
+  .callout{
+    border-left:2px solid var(--accent);padding:2px 0 2px 18px;
+    font-size:var(--t-lead);line-height:1.5;color:var(--txt);max-width:56ch;font-weight:500;
+  }
+  .callout .q{color:var(--muted);font-weight:400}
+
+  /* ---- limits list ---- */
+  /* cap the measure — at full deck width these lines hit ~130 characters,
+     which is unreadable from a seat in the third row */
+  .limits{display:flex;flex-direction:column;gap:clamp(11px,1.2vw,18px);width:100%;max-width:900px}
+  .limit{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
+  .limit .tag{
+    font-family:var(--mono);font-size:var(--t-mono);text-transform:uppercase;letter-spacing:.11em;
+    color:var(--accent2);border:1px solid #47340f;background:#1c1509;
+    border-radius:20px;padding:3px 10px;white-space:nowrap;
+  }
+  .limit .tag.ok{color:var(--good);border-color:#1c4a3c;background:#0a1a15}
+  .limit p{margin:0;font-size:var(--t-body);line-height:1.55;color:var(--muted)}
+  .limit p strong{color:var(--txt);font-weight:600}
+
+  /* ---- pipeline ---- */
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:9px;width:100%}
+  .step{
+    flex:1 1 150px;background:var(--panel2);border:1px solid var(--edge);
+    border-top:2px solid var(--stepc,var(--accent));
+    border-radius:10px;padding:clamp(11px,1.2vw,17px);
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .step .sn{font-family:var(--mono);font-size:var(--t-mono);color:var(--muted2);letter-spacing:.13em}
+  .step .sh{font-size:var(--t-body);font-weight:700;color:var(--txt);line-height:1.3}
+  .step .sd{font-size:calc(var(--t-body) * .92);color:var(--muted);line-height:1.45}
+
+  /* ---- formula ---- */
+  .formula{
+    font-family:var(--mono);font-size:clamp(12px,1.15vw,18px);line-height:2;
+    background:var(--panel2);border:1px solid var(--edge);border-radius:12px;
+    padding:clamp(16px,1.8vw,26px);width:100%;overflow-x:auto;color:var(--muted);
+  }
+  .formula b{color:var(--txt);font-weight:700}
+  .formula .w{color:var(--accent);font-weight:700}
+
+  /* ---- hud ---- */
+  .hud{
+    position:absolute;left:0;right:0;bottom:0;z-index:20;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:clamp(16px,2vw,30px) clamp(38px,5.6vw,92px);
+    font-family:var(--mono);font-size:var(--t-mono);
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);
+    pointer-events:none;
+  }
+  .hud b{color:var(--txt);font-weight:600}
+  .nav{display:flex;gap:8px;pointer-events:auto}
+  .nav button{
+    width:32px;height:32px;border-radius:8px;cursor:pointer;
+    background:var(--panel);border:1px solid var(--edge);color:var(--muted);
+    font-size:14px;line-height:1;transition:.15s;
+  }
+  .nav button:hover{border-color:var(--accent);color:var(--txt)}
+  .nav button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  @media (prefers-reduced-motion:reduce){
+    .slide,.rail-fill{transition:none}
+  }
+  @media (max-width:720px){
+    .g2,.g3{grid-template-columns:1fr}
+    h2{max-width:none}
+  }
+</style>
+
+<div class="deck">
+  <div class="rail"><div class="rail-fill" id="railFill"></div></div>
+
+  <!-- 1 ............................................................. -->
+  <section class="slide on">
+    <div class="wrap">
+      <div class="title-mark"><span class="dot"></span><span>Heat &amp; cooling equity engine</span></div>
+      <h1>Where does<br/>the first tree go?</h1>
+      <p class="lead" style="margin-top:clamp(18px,2vw,28px)">
+        A city has a cooling budget and 3,000 blocks. CoolEquity scores every one of
+        them on satellite heat, tree canopy, who lives there and how far they'd walk
+        for relief — then prices the intervention in trees and dollars.
+      </p>
+      <div class="ramp"></div>
+      <div class="ramp-key"><span>Lower priority</span><span>Higher priority</span></div>
+    </div>
+  </section>
+
+  <!-- 2 ............................................................. -->
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">The problem</p>
+      <h2>Heat is the deadliest weather hazard, and the least evenly distributed.</h2>
+      <div class="stats">
+        <div class="stat">
+          <div class="v accent num">489,000</div>
+          <div class="k">heat deaths per year, globally</div>
+        </div>
+        <div class="stat">
+          <div class="v num">6.7 °C</div>
+          <div class="k">gap between LA's coolest and hottest graded neighbourhoods</div>
+        </div>
+        <div class="stat">
+          <div class="v num">3 %</div>
+          <div class="k">tree canopy in the city's highest-priority block</div>
+        </div>
+      </div>
+      <p class="body" style="margin-top:clamp(20px,2.2vw,32px)">
+        Cities already fund shade, cooling centres and canopy programmes. What they
+        lack is a defensible way to decide <strong>which block goes first</strong> —
+        and the ability to show a council why.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3 ............................................................. -->
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">What it is</p>
+      <h2>Every block in Los Angeles, scored and ranked.</h2>
+      <div class="stats">
+        <div class="stat"><div class="v num">3,008</div><div class="k">hexagons · H3 res-8 · 0.82 km² each</div></div>
+        <div class="stat"><div class="v num">6.5 M</div><div class="k">residents covered</div></div>
+        <div class="stat"><div class="v num">645</div><div class="k">cooling sites from OpenStreetMap</div></div>
+        <div class="stat"><div class="v num">0</div><div class="k">hand-drawn boundaries</div></div>
+      </div>
+      <p class="body" style="margin-top:clamp(20px,2.2vw,32px)">
+        Not a static map — an interactive tool. Six data layers, a redlining overlay,
+        a cooling-access layer, a ranked priority list, and a per-block intervention
+        calculator. It runs entirely on static files, so it works with no network at all.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4 ............................................................. -->
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">The pipeline</p>
+      <h2 style="margin-bottom:clamp(18px,2vw,28px)">Five steps, all reproducible.</h2>
+      <div class="flow">
+        <div class="step" style="--stepc:var(--i2)">
+          <div class="sn">01</div><div class="sh">Grid</div>
+          <div class="sd">H3 res-8 tessellation over the city bbox. Uber's hex index — equal-area, no census geography.</div>
+        </div>
+        <div class="step" style="--stepc:var(--i4)">
+          <div class="sn">02</div><div class="sh">Satellite</div>
+          <div class="sd">Landsat 8/9 ST_B10 thermal → °C, and Sentinel-2 NDVI. Summer 2023 medians via Planetary Computer.</div>
+        </div>
+        <div class="step" style="--stepc:var(--i5)">
+          <div class="sn">03</div><div class="sh">Census</div>
+          <div class="sd">ACS 2023 block groups — population, age 65+, income — area-weighted into hexes.</div>
+        </div>
+        <div class="step" style="--stepc:var(--i6)">
+          <div class="sn">04</div><div class="sh">Overlays</div>
+          <div class="sd">HOLC grades by majority overlap; cooling sites via Overpass; walk time to nearest relief.</div>
+        </div>
+        <div class="step" style="--stepc:var(--i8)">
+          <div class="sn">05</div><div class="sh">Score</div>
+          <div class="sd">Normalise, weight, rank. Writes the GeoJSON the front end reads.</div>
+        </div>
+      </div>
+      <p class="body" style="margin-top:clamp(18px,2vw,26px)">
+        Every source is open and every step is cached, so the whole thing rebuilds from
+        a bounding box and an API key.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5 ............................................................. -->
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">The score</p>
+      <h2 style="margin-bottom:clamp(16px,1.8vw,26px)">Weighted, transparent, and normalised inside the city.</h2>
+      <div class="formula">
+        <b>base_risk</b> = <span class="w">0.35</span>·heat + <span class="w">0.25</span>·(1−canopy) + <span class="w">0.25</span>·(1−ac_access) + <span class="w">0.15</span>·age65<br/>
+        <b>priority</b>&nbsp; = base_risk × (0.55 + 0.45 · population)<br/>
+        <b>score</b>&nbsp;&nbsp;&nbsp; = 100 × minmax(priority)
+      </div>
+      <p class="body" style="margin-top:clamp(16px,1.8vw,24px)">
+        Normalising <strong>within the city</strong> is what makes the engine portable.
+        44 °C is an ordinary afternoon in Phoenix and an emergency in Seattle — a globally
+        fixed threshold would be wrong in both. Weights live in one config file, so when a
+        judge or a city asks "why 35%?", the answer is editable in a line.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6 ............................................................. -->
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">The finding</p>
+      <h2 style="margin-bottom:clamp(14px,1.6vw,22px)">1930s redlining still reads on a thermal satellite.</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th>HOLC grade</th><th>Hexes</th><th>Mean surface temp</th><th>Mean canopy</th><th>Walk to relief</th><th>Mean score</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="swatch" style="background:var(--holcA)">A</span>"Best"</td>
+              <td class="num">136</td>
+              <td><span class="cell">38.7 °C<span class="bar" style="background:var(--i2);width:18px"></span></span></td>
+              <td><span class="cell">26.0 %<span class="bar" style="background:var(--good);width:56px"></span></span></td>
+              <td class="num">20.3 min</td><td class="num">24.4</td>
+            </tr>
+            <tr>
+              <td><span class="swatch" style="background:var(--holcB)">B</span>"Desirable"</td>
+              <td class="num">200</td>
+              <td><span class="cell">42.7 °C<span class="bar" style="background:var(--i3);width:43px"></span></span></td>
+              <td><span class="cell">18.5 %<span class="bar" style="background:var(--good);width:40px"></span></span></td>
+              <td class="num">14.3 min</td><td class="num">38.4</td>
+            </tr>
+            <tr>
+              <td><span class="swatch" style="background:var(--holcC)">C</span>"Declining"</td>
+              <td class="num">450</td>
+              <td><span class="cell">45.1 °C<span class="bar" style="background:var(--i5);width:58px"></span></span></td>
+              <td><span class="cell">12.2 %<span class="bar" style="background:var(--good);width:26px"></span></span></td>
+              <td class="num">13.2 min</td><td class="num">52.0</td>
+            </tr>
+            <tr>
+              <td><span class="swatch" style="background:var(--holcD)">D</span>"Hazardous"</td>
+              <td class="num">260</td>
+              <td><span class="cell">45.4 °C<span class="bar" style="background:var(--i6);width:60px"></span></span></td>
+              <td><span class="cell">9.4 %<span class="bar" style="background:var(--good);width:20px"></span></span></td>
+              <td class="num">12.2 min</td><td class="num">54.1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="body" style="margin-top:clamp(16px,1.8vw,24px)">
+        Monotonic across all four grades: <strong class="accent">+6.7 °C</strong> from A to D,
+        and roughly <strong>a third of the tree canopy</strong>. Ninety years after the
+        lending maps were drawn.
+      </p>
+    </div>
+  </section>
+
+  <!-- 7 ............................................................. -->
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">Where we corrected ourselves</p>
+      <h2>The obvious next claim was wrong, so we dropped it.</h2>
+      <div class="callout" style="margin-top:clamp(16px,1.8vw,26px)">
+        <span class="q">We expected:</span> redlined areas are also farther from relief.<br/>
+        <span class="q">The data says:</span> they are <strong class="accent">closer</strong> —
+        12.2 minutes versus 20.3.
+      </div>
+      <p class="body" style="margin-top:clamp(16px,1.8vw,26px)">
+        Dense inner-city neighbourhoods have libraries and community centres; leafy
+        low-density suburbs don't. So in Los Angeles the redlining signal is
+        <strong>heat and missing shade — not distance to relief</strong>.
+      </p>
+      <p class="body" style="margin-top:12px">
+        It would have been an easier story to leave in. It also would have been false,
+        and visible as false on our own access layer while we said it.
+      </p>
+    </div>
+  </section>
+
+  <!-- 8 ............................................................. -->
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">Validation</p>
+      <h2>Shade is doing the work — not the coastline.</h2>
+      <div class="stats">
+        <div class="stat"><div class="v accent num">−0.61</div><div class="k">heat vs canopy, across 3,008 populated hexes</div></div>
+        <div class="stat"><div class="v num">−0.58</div><div class="k">after partialling out a quadratic spatial trend</div></div>
+        <div class="stat"><div class="v num">−0.35→−0.69</div><div class="k">range within individual longitude bands</div></div>
+      </div>
+      <p class="body" style="margin-top:clamp(20px,2.2vw,30px)">
+        LA cools and greens toward the ocean, so a raw correlation could be pure geography.
+        Splitting by longitude and removing a quadratic lon/lat trend both leave the
+        relationship intact. We also <strong>dropped 478 uninhabited hexes</strong> — open
+        ocean reads 18 °C with zero vegetation and would have inverted the headline result.
+      </p>
+    </div>
+  </section>
+
+  <!-- 9 ............................................................. -->
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">The product</p>
+      <h2 style="margin-bottom:clamp(16px,1.8vw,24px)">Priority #1: Westlake — and what it costs to fix.</h2>
+      <div class="grid g3">
+        <div class="card"><div class="ct">Today</div><div class="cv num" style="font-size:var(--t-lead)">47.4 °C · 3% canopy</div><div class="cs">15,759 residents, 1,797 of them over 65</div></div>
+        <div class="card"><div class="ct">Intervention</div><div class="cv num" style="font-size:var(--t-lead)">canopy 3% → 15%</div><div class="cs">≈ 2,470 trees at ~40 m² of crown each</div></div>
+        <div class="card" style="border-color:#1c4a3c"><div class="ct" style="color:var(--good)">Return</div><div class="cv num good" style="font-size:var(--t-lead)">−0.36 °C · $78/resident</div><div class="cs">≈ $1.2M total, planted and maintained 3 years</div></div>
+      </div>
+      <p class="body" style="margin-top:clamp(18px,2vw,26px)">
+        Cooling coefficient from WRI — every +10 points of canopy buys roughly −0.3 °C.
+        The slider is live in the app: drag it and the trees, cost and cooling recompute
+        against that hexagon's real area. <strong>At that point it stops being a map and
+        becomes a line item.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- 10 ............................................................ -->
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">What's measured, what's modelled</p>
+      <h2 style="margin-bottom:clamp(16px,1.8vw,26px)">Stated up front, and labelled in the interface.</h2>
+      <div class="limits">
+        <div class="limit"><span class="tag">Modelled</span><p><strong>A/C access</strong> is derived from median income, not measured. It carries 25% of the score and is shown as <em>est.</em> in the UI — the weakest input we have.</p></div>
+        <div class="limit"><span class="tag">Estimated</span><p><strong>Walk time</strong> is straight-line distance × 1.273 — that's 4/π, the expected Manhattan-to-Euclidean ratio over uniform bearings — at 4.8 km/h. Correct for a grid city; not a routed street network.</p></div>
+        <div class="limit"><span class="tag">Proxy</span><p><strong>Canopy</strong> is NDVI 0.05–0.65 scaled to 0–45%. Vegetation cover, not strictly tree crown.</p></div>
+        <div class="limit"><span class="tag ok">Measured</span><p><strong>Surface temperature, population, age and cooling-site locations</strong> are observed data — Landsat thermal, ACS, OpenStreetMap.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 ............................................................ -->
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">Why it matters</p>
+      <h1 style="font-size:var(--t-h);max-width:22ch">Every input but one is global.</h1>
+      <p class="lead" style="margin-top:clamp(16px,1.8vw,26px)">
+        Landsat, Sentinel-2, OpenStreetMap and gridded population exist for every city on
+        Earth. Only the redlining overlay is US-specific — and it's an optional layer, not
+        an input to the score. Point the pipeline at a new bounding box and it answers the
+        same question.
+      </p>
+      <div class="grid g2" style="margin-top:clamp(20px,2.2vw,30px)">
+        <div class="card"><div class="ct">The ask</div><div class="cs">A city, a bounding box, and an afternoon of compute.</div></div>
+        <div class="card"><div class="ct">The output</div><div class="cs">A ranked list of blocks, and the price of cooling each one.</div></div>
+      </div>
+      <div class="ramp" style="margin-top:clamp(24px,2.8vw,38px)"></div>
+      <p class="body" style="margin-top:14px;color:var(--muted2)">
+        Landsat 8/9 · Sentinel-2 · Planetary Computer · US Census ACS · OpenStreetMap ·
+        Univ. of Richmond <em>Mapping Inequality</em> · WRI tree-cooling coefficients · H3
+      </p>
+    </div>
+  </section>
+
+  <footer class="hud">
+    <span>CoolEquity</span>
+    <div style="display:flex;align-items:center;gap:20px">
+      <span><b id="cur">1</b> / <span id="tot">11</span></span>
+      <span class="nav">
+        <button id="prev" aria-label="Previous slide">←</button>
+        <button id="next" aria-label="Next slide">→</button>
+      </span>
+    </div>
+  </footer>
+</div>
+
+<script>
+  (function(){
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var i = 0;
+    var railFill = document.getElementById('railFill');
+    var cur = document.getElementById('cur');
+    document.getElementById('tot').textContent = slides.length;
+
+    function show(n){
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach(function(s, k){ s.classList.toggle('on', k === i); });
+      railFill.style.width = ((i + 1) / slides.length * 100) + '%';
+      cur.textContent = i + 1;
+    }
+    function next(){ show(i + 1); }
+    function prev(){ show(i - 1); }
+
+    document.getElementById('next').addEventListener('click', next);
+    document.getElementById('prev').addEventListener('click', prev);
+
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+      else if (e.key === 'Home') { show(0); }
+      else if (e.key === 'End') { show(slides.length - 1); }
+    });
+
+    // tap/click anywhere on the slide area advances; useful on a trackpad mid-pitch
+    document.querySelector('.deck').addEventListener('click', function(e){
+      if (e.target.closest('.nav')) return;
+      next();
+    });
+
+    show(0);
+  })();
+</script>
+</body>
+</html>

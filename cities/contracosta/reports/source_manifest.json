@@ -1,0 +1,25 @@
+{
+  "build_date": "2026-09-08",
+  "city": "Contra Costa County",
+  "acs": "2020\u20132024 five-year, block groups",
+  "lace": "2023 tract estimates",
+  "acs_api": "https://api.census.gov/data/2024/acs/acs5",
+  "boundary": "https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_06_bg_500k.zip",
+  "weights": {
+    "heat": 0.0,
+    "green": 0.55,
+    "ac": 0.25,
+    "age65": 0.2
+  },
+  "canopy": "USFS/CAL FIRE 2022 aerial; legacy CHM 2009\u20132020; missing canopy retains NDVI for ranking",
+  "canopy_coverage_rule": "Scenarios require mapped street capacity; >=99% USFS coverage only enables whole-cell canopy baseline totals",
+  "sha256": {
+    "acs_contracosta.csv": "bc5dfd8e771c355ce0f9d0252aef36cf537b17b3a89ad9257b026908ded33f43",
+    "census_contracosta.csv": "d5981fb1d27e6862769f560c2e88eaea6445c8543efc2012955ea73fbb237370",
+    "canopy_contracosta.csv": "73d0e1b14b3a0029d6e41fc8c83bc486587e1a4c53f2098d6ee0e067532c6ed1",
+    "contracosta.geojson": "c830c8204359797919891a5cb65d2a47d1b32309eefd680f69100f3ef94395b7",
+    "centers_contracosta.geojson": "3e819503fd5c7ff04aee635447cf866928054e6d6da04564f24f07fd05ede268",
+    "overlays_contracosta.csv": "c8f36ff084350455effa72ead77e0f0c7d9dd0feb559c4f37d31ebbcd45aa815",
+    "cooling_directory_contracosta.json": "dd3462f0638b1c17221a9a6fece10ea227e36a87804997019fec612b2d65c632"
+  }
+}

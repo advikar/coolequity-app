@@ -1,0 +1,25 @@
+{
+  "build_date": "2026-09-08",
+  "city": "San Ramon",
+  "acs": "2020\u20132024 five-year, block groups",
+  "lace": "2023 tract estimates",
+  "acs_api": "https://api.census.gov/data/2024/acs/acs5",
+  "boundary": "https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_06_bg_500k.zip",
+  "weights": {
+    "heat": 0.45,
+    "green": 0.33,
+    "ac": 0.0,
+    "age65": 0.22
+  },
+  "canopy": "USFS/CAL FIRE 2022 aerial; legacy CHM 2009\u20132020; missing canopy retains NDVI for ranking",
+  "canopy_coverage_rule": "Scenarios require mapped street capacity; >=99% USFS coverage only enables whole-cell canopy baseline totals",
+  "sha256": {
+    "acs_sanramon.csv": "bc5dfd8e771c355ce0f9d0252aef36cf537b17b3a89ad9257b026908ded33f43",
+    "census_sanramon.csv": "fececc0776f1695f2d78bc0ff4fb516454cfe332449a64a4a3ac9be5859fcbf1",
+    "canopy_sanramon.csv": "c438dc80fc9e638a218cfdc4051103723e86904143fd30ea251b4dc2198ae1cf",
+    "sanramon.geojson": "1cfc8360dce1657318aaa06dbdea4011417bc0e0c3f526be9ffd170d3f128df5",
+    "centers_sanramon.geojson": "93cb2d672bfecf350a006edbd91c859a35600b9e46bbdff814717ae2c9c720ad",
+    "overlays_sanramon.csv": "05a2e1f54eeb54103193f7d80a191d2a1cfe5f12af95e77ccb1ecbb130dff806",
+    "cooling_directory_sanramon.json": "dd3462f0638b1c17221a9a6fece10ea227e36a87804997019fec612b2d65c632"
+  }
+}

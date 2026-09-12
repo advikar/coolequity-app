@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "coolequity-app",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["scripts/build_site.py", "--serve", "--port", "8000"],
+      "port": 8000
+    }
+  ]
+}

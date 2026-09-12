@@ -1,0 +1,25 @@
+{
+  "build_date": "2026-09-08",
+  "city": "Bakersfield",
+  "acs": "2020\u20132024 five-year, block groups",
+  "lace": "2023 tract estimates",
+  "acs_api": "https://api.census.gov/data/2024/acs/acs5",
+  "boundary": "https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_06_bg_500k.zip",
+  "weights": {
+    "heat": 0.35,
+    "green": 0.25,
+    "ac": 0.25,
+    "age65": 0.15
+  },
+  "canopy": "USFS/CAL FIRE 2022 aerial; legacy CHM 2009\u20132020; missing canopy retains NDVI for ranking",
+  "canopy_coverage_rule": "Scenarios require mapped street capacity; >=99% USFS coverage only enables whole-cell canopy baseline totals",
+  "sha256": {
+    "acs_bakersfield.csv": "3d83f96ace51d219ad370ae71ef4da5f7c4cc0e58ecf5f449d656aae6f2a745b",
+    "census_bakersfield.csv": "cb0e389bc979fed000d94bf79935d2a852e0ff0c816f07148183956df12f2f62",
+    "canopy_bakersfield.csv": "5c627a51d09efd8c4d2e2b9cda540c87b9fafc36ee837f332eb84bbee4f68f9f",
+    "bakersfield.geojson": "1393e6de056d3e1f2b64e78334616de7b6f9cd3395c4d88c6a5ed421902f7e39",
+    "centers_bakersfield.geojson": "4aac472dc1ed669fe3f92f028b5e53a7217c76de24f6cda7efa9b5a44edc19ff",
+    "overlays_bakersfield.csv": "b23825daf000fb6f790cf9232cf784adbdbdce011502aac23b3882b1899b1da6",
+    "cooling_directory_bakersfield.json": "e4669761a4a26418ecb9e6981110a43478abb0aea658ea6a1d910d62ce23f610"
+  }
+}

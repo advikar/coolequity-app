@@ -1,0 +1,33 @@
+# Local environment. Both may be symlinks to a shared checkout, so no trailing slash.
+.venv
+.env
+__pycache__/
+*.pyc
+.DS_Store
+
+# The assembled site: scripts/build_site.py writes it, CI rebuilds it on every push.
+dist/
+
+# Large intermediate rasters — the committed fallbacks are the small derived files.
+cities/*/data/_cache/
+
+# osmnx HTTP cache (Overpass response tiles) + the cached walk graph. Written by
+# 04b_routed_access.py; ~150 MB per city and re-downloadable. The committed
+# result is the routed access_min/access_km already baked into the geojson/CSV.
+cache/
+pipeline/cache/
+
+# County-scale derived caches are too big to carry in git (the buildings mask is
+# 84 MB and breaks `git push` over HTTPS; the rasters are 10-17 MB each) and none
+# is an input to the committed result -- the dasymetric guard refuses the county
+# mask anyway. Regenerate with:
+#   COOLEQUITY_CITY=contracosta python pipeline/02b_buildings.py --refresh
+#   COOLEQUITY_CITY=contracosta python pipeline/02_satellite.py
+cities/contracosta/data/buildings_contracosta.geojson
+cities/contracosta/data/lst_contracosta.tif
+cities/contracosta/data/ndvi_contracosta.tif
+
+# streets_*.geojson is NOT ignored on purpose. It is an input to 02c's
+# right-of-way calculation, and when it was ignored a missing file silently
+# produced 0.00 km2 of plantable public land, which looks like a finding rather
+# than an error.

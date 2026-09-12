@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoolEquity — Heat &amp; Canopy Mapping</title>
+<meta name="description" content="Where would new street trees help residents most? Satellite heat, aerial tree cover, census population and walking access to cooling, scored for every neighborhood area. Contra Costa County, Bakersfield and San Ramon.">
+<style>
+  @font-face{font-family:Inter;src:url(vendor/inter-latin.woff2) format('woff2');
+    font-weight:100 900;font-display:swap}
+  @font-face{font-family:'Instrument Serif';src:url(vendor/instrumentserif-latin.woff2) format('woff2');
+    font-weight:400;font-display:swap}
+  :root{--bg:#080b10;--panel:#0d1219;--edge:#1c2530;--txt:#e8edf4;--muted:#8a93a0;
+    --muted2:#7a8694;--accent:#ffb703;--accent2:#ff7a45;
+    --display:'Instrument Serif',Georgia,serif;
+    --sans:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:400 15px/1.6 var(--sans);
+    -webkit-font-smoothing:antialiased;min-height:100vh;
+    background-image:radial-gradient(120% 80% at 15% 0%,rgba(255,122,69,.09) 0%,transparent 55%),
+      radial-gradient(90% 70% at 90% 10%,rgba(255,183,3,.06) 0%,transparent 50%)}
+  .wrap{max-width:940px;margin:0 auto;padding:56px 26px 72px}
+  .wordmark{display:flex;align-items:center;gap:11px;margin-bottom:30px}
+  .wdot{width:9px;height:9px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 4px rgba(255,183,3,.16)}
+  .wm{font-family:var(--display);font-size:32px;line-height:1;letter-spacing:-.01em;color:#fff}
+  .wm i{font-style:normal;color:var(--accent)}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(32px,5.2vw,52px);
+    line-height:1.06;letter-spacing:-.015em;margin:0 0 18px;color:#fff}
+  .lede{color:var(--muted);max-width:60ch;margin:0 0 40px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+  a.card{display:block;text-decoration:none;color:inherit;background:var(--panel);
+    border:1px solid var(--edge);border-radius:15px;padding:24px;transition:.16s}
+  a.card:hover{border-color:var(--accent);transform:translateY(-2px);
+    box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .city{font-family:var(--display);font-size:27px;line-height:1.1;color:#fff;margin-bottom:3px}
+  .sub{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2);
+    margin-bottom:15px}
+  .card p{font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 16px}
+  .figs{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--edge);padding-top:14px}
+  .figs div b{display:block;font-size:18px;font-weight:600;color:var(--txt);
+    font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .figs div span{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted2)}
+  .go{margin-top:16px;font-size:13px;font-weight:600;color:var(--accent)}
+  .note{margin-top:42px;padding-top:22px;border-top:1px solid var(--edge);
+    font-size:12.5px;color:var(--muted);line-height:1.7;max-width:70ch}
+  .note b{color:var(--txt)}
+  .note a{color:var(--accent)}
+  .foot{margin-top:26px;font-size:10.5px;color:var(--muted2);line-height:1.6;max-width:80ch}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="wordmark"><span class="wdot"></span><span class="wm">Cool<i>Equity</i></span></div>
+  <h1>Where would new trees<br>help residents most?</h1>
+  <p class="lede">Satellite surface heat, aerial tree cover, census population and age, home air
+    conditioning and the walk to a cool place, scored for every neighborhood area of a city —
+    then a planting scenario with tree counts and indicative cost. Three cities.
+    Pick one.</p>
+  <div class="cards">
+    <a class="card" href="contracosta/app/">
+      <div class="city">Contra Costa County</div>
+      <div class="sub">California · reference build · 0.3 sq mi areas</div>
+      <p>The reference implementation: 2022 aerial tree cover, ACS 2024 population, Census A/C
+        estimates, routed walking time, a data &amp; methods guide, the county cooling directory
+        and scenario export. Half of residents live in areas under <b>15%</b> tree cover.</p>
+      <div class="figs">
+        <div><b>2,697</b><span>areas ranked</span></div>
+        <div><b>1.16M</b><span>residents</span></div>
+        <div><b>18%</b><span>avg. tree cover</span></div>
+      </div>
+      <div class="go">Open Contra Costa →</div>
+    </a>
+    <a class="card" href="bakersfield/app/">
+      <div class="city">Bakersfield</div>
+      <div class="sub">California · current build · 0.04 sq mi areas</div>
+      <p>The severity case. Half its areas have under <b>4%</b> tree cover and <b>93%</b> of
+        residents live below 15%, under some of the state's hottest summer ground. Heat is
+        scored here: one valley climate, so hotter really means hotter.</p>
+      <div class="figs">
+        <div><b>3,788</b><span>areas ranked</span></div>
+        <div><b>410k</b><span>residents</span></div>
+        <div><b>122&nbsp;°F</b><span>median summer surface</span></div>
+      </div>
+      <div class="go">Open Bakersfield →</div>
+    </a>
+    <a class="card" href="sanramon/app/">
+      <div class="city">San Ramon</div>
+      <div class="sub">California · current build · 0.04 sq mi areas</div>
+      <p>One city inside Contra Costa at seven times the resolution. Shade and surface heat
+        track each other closely here (<b>r = −0.60</b>), and nearly every home has A/C, so
+        A/C is not scored.</p>
+      <div class="figs">
+        <div><b>419</b><span>areas ranked</span></div>
+        <div><b>85k</b><span>residents</span></div>
+        <div><b>18%</b><span>avg. tree cover</span></div>
+      </div>
+      <div class="go">Open San Ramon →</div>
+    </a>
+  </div>
+  <div class="note">
+    <b>What is measured, and what is estimated.</b> Surface temperature (Landsat 8/9 thermal)
+    is measured per area. Tree cover in Contra Costa, Bakersfield and San Ramon comes from the
+    <b>USFS / CAL FIRE 2022 California Urban Tree Canopy</b>, a 0.6 m aerial classification of
+    ground actually under tree crowns; where that assessment is missing, a satellite greenness
+    index stands in and the app says so. Population and age are US Census ACS 2020–2024 five-year
+    estimates allocated into areas; <b>air-conditioning access</b> is the Census LACE 2023
+    tract estimate, weighted zero in San Ramon where it is near-universal. In Contra Costa County
+    <b>surface heat</b> is weighted zero: the county spans marine to Delta, so a hotter area there
+    is mostly a different climate, not a shade problem. <b>Walking time</b> in all three
+    builds is routed on the OpenStreetMap pedestrian network to mapped libraries, community
+    centers, pools and senior centers, whose hours and cooling status are not verified; the
+    official county cooling directories are listed separately. Tree counts and costs are
+    planning assumptions, not quotes. Every build carries a
+    <a href="contracosta/app/guide.html">data &amp; methods guide</a> with sources and limits.
+    <br><br>
+    An exploratory planning screen, not a field survey. Source, pipeline and write-up:
+    <a href="https://github.com/advikar/coolequity-app">github.com/advikar/coolequity-app</a> ·
+    questions and corrections: <a href="https://github.com/advikar/coolequity-app/issues">open an issue</a>.
+  </div>
+  <div class="foot">
+    Landsat 8/9 and Sentinel-2 via Microsoft Planetary Computer · US Census ACS 2020–2024 5-year
+    and LACE 2023 · USFS / CAL FIRE Urban Tree Canopy 2022 · OpenStreetMap contributors · HOLC
+    grades from the University of Richmond <i>Mapping Inequality</i> · tree-cooling coefficient
+    after Krayenhoff et al. (2021) · H3 grid (Uber) · basemap © CARTO. An independent student
+    project; not affiliated with, nor reviewed by, any city. Updated September 10, 2026.
+  </div>
+</div>
+</body>
+</html>

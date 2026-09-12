@@ -1,0 +1,9 @@
+{
+  "sites_before": 488,
+  "sites_after": 486,
+  "cells_walk_changed": 21,
+  "max_walk_change_min": 27.8,
+  "min_walk_change_min": 0.0,
+  "cell_connection_review_count": 1897,
+  "cell_connection_p95_m": 2210.4999999999986
+}
