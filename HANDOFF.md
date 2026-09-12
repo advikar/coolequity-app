@@ -1,5 +1,11 @@
 # HANDOFF
 
+## In progress — September 12, 2026 (Claude): city switching carries weights over
+
+- Task: scope the per-tab saved state (sessionStorage `ce-session`) by city so switching city
+  in one tab no longer applies the previous city's weights/layer. Files: app/index.html,
+  tests/ui-contract.cjs, HANDOFF.md. Checkpoint: scripts/test.sh, push, verify on the live site.
+
 ## Checkpoint — September 12, 2026 (Claude): repository created from the three city branches
 
 - **What this is.** A fresh repository (`advikar/coolequity-app`, branch `main`, one initial

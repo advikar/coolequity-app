@@ -1633,8 +1633,13 @@ function makeDraggable(card,handle){
  * Per browser tab (sessionStorage): the weights in force, the layer showing and
  * whether the map has been opened. A reload lands where you were; the home
  * button goes to the start screen without discarding your priorities; a fresh
- * tab starts clean at the start screen, so the first view is always the same. */
-const SESSION_KEY='ce-session';
+ * tab starts clean at the start screen, so the first view is always the same.
+ *
+ * Keyed by city: every city is served from the same origin, so one shared key
+ * made the city switcher open the next city with the previous city's weights
+ * (labelled "Your own mix"). Preferences that mean the same thing everywhere
+ * (theme, units, mode) stay shared in localStorage. */
+const SESSION_KEY='ce-session-'+CITY_SLUG;
 let ON_MAP=false;                      // set when the start screen is dismissed
 let SESSION=null;try{SESSION=JSON.parse(sessionStorage.getItem(SESSION_KEY)||'null');}catch(_){SESSION=null;}
 function saveSession(patch){

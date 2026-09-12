@@ -113,6 +113,10 @@ const directory=fs.readFileSync(`cities/${slug}/cooling.html`,'utf8');for(const 
   for(const k of ['lst','green','veg','pop','pct65','ac','access'])assert(tips.includes(k),'metric without popover '+k);
   for(const id of ['city-pick','city-nav','map-reset','map-zoom','legend-min','legend-show','rankwrap','sec-export','leave','legend','rank-change','coach-area','tg-access'])assert(html.includes(`id="${id}"`),'missing control '+id);
   assert(html.includes("let UNITS='imp'"));assert(!html.includes('sw-hint'));
+  // Weights and layer are saved per city: one shared key carried them into the next city.
+  const sessionKey=[...html.matchAll(/sessionStorage\.(?:getItem|setItem)\(([A-Z_]+)/g)].map(m=>m[1]);
+  assert(sessionKey.length>=2&&sessionKey.every(k=>k==='SESSION_KEY'),'sessionStorage must go through SESSION_KEY');
+  assert(html.includes("const SESSION_KEY='ce-session-'+CITY_SLUG;"),'SESSION_KEY must be scoped by city');
   console.log('PASS: popover coverage, guide links and wayfinding controls.');
 }
 }
