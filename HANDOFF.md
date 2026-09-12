@@ -1,10 +1,18 @@
 # HANDOFF
 
-## In progress — September 12, 2026 (Claude): city switching carries weights over
+## Checkpoint — September 12, 2026 (Claude): city switching no longer carries weights over
 
-- Task: scope the per-tab saved state (sessionStorage `ce-session`) by city so switching city
-  in one tab no longer applies the previous city's weights/layer. Files: app/index.html,
-  tests/ui-contract.cjs, HANDOFF.md. Checkpoint: scripts/test.sh, push, verify on the live site.
+- Fix (c28a40b): app/index.html saves the per-tab state under `ce-session-<slug>` instead of one
+  shared `ce-session`. Theme, units, mode, legend and folds stay shared (localStorage); the
+  shortlist was already per city. tests/ui-contract.cjs now fails if sessionStorage is used
+  through anything but a city-scoped SESSION_KEY.
+- Tests: `scripts/test.sh` passed locally and in CI. The first deploy job sat queued with no
+  runner for ~40 min (no approvals pending, GitHub status operational); cancelled and re-ran,
+  attempt 2 passed test + deploy.
+- Verified on the live site in one tab: Contra Costa with "Heat only" → city switcher to
+  Bakersfield opens Bakersfield's recommended mix (35/25/25/15, "Recommended mix" selected) →
+  switcher back to Contra Costa restores "Heat only". No console errors. Old `ce-session`
+  entries from the old site are ignored.
 
 ## Checkpoint — September 12, 2026 (Claude): repository created from the three city branches
 
@@ -55,7 +63,5 @@
   difference is the A/C grey-out rule above (equivalent on Contra Costa's data). Chooser,
   guide and cooling pages, data files, fonts, city.js and cities.js return 200; city
   switchers resolve to /coolequity-app/<slug>/app/.
-- **Open, pre-existing (also on the old site):** the tab's saved state uses the sessionStorage
-  key `ce-session` for every city, so switching city in the same tab carries the previous
-  city's weights and layer into the next one (shown as "Your own mix"). Scoping the key by
-  `CITY_SLUG` in app/index.html would fix it; not changed in the migration.
+- **Pre-existing bug found (also on the old site):** one shared sessionStorage key carried a
+  city's weights into the next city. Fixed in the checkpoint above.
