@@ -39,5 +39,17 @@
   PASS for contracosta, bakersfield and sanramon (all 5 groups each, including browser/export
   rank parity for every residential cell with that city's weights); Python data contracts
   8/8 OK per city; `scripts/build_site.py` builds 3 cities, 48 files.
-- **Not yet verified here:** the map pages running in a real browser (the local preview was not
-  available in the migration session). Do that on the deployed site and record it below.
+- **Deployed and verified (September 12, 2026).** First Actions run passed (test + deploy).
+  In a browser, each city on https://advikar.github.io/coolequity-app/ was loaded next to the
+  same city on the old site (https://advikar.github.io/coolequity/, built from the same three
+  commits) with session storage cleared: identical page text (apart from Los Angeles leaving
+  the city switchers), identical rank and score for every residential area at the default
+  weights, identical default weights, presets, input notes, layer titles/captions, data and
+  cooling-site URLs; every live rank equals the pipeline's `rank`. The only code-level
+  difference is the A/C grey-out rule above (equivalent on Contra Costa's data). Chooser,
+  guide and cooling pages, data files, fonts, city.js and cities.js return 200; city
+  switchers resolve to /coolequity-app/<slug>/app/.
+- **Open, pre-existing (also on the old site):** the tab's saved state uses the sessionStorage
+  key `ce-session` for every city, so switching city in the same tab carries the previous
+  city's weights and layer into the next one (shown as "Your own mix"). Scoping the key by
+  `CITY_SLUG` in app/index.html would fix it; not changed in the migration.
