@@ -294,7 +294,7 @@
   .bd td.p{text-align:right;font-variant-numeric:tabular-nums;color:var(--txt);font-weight:650;padding-left:10px;width:44px}
   .bd tr.sum td{border-top:1px solid var(--edge);padding-top:6px;color:var(--txt)}
   .bd .eq{font-size:11px;color:var(--muted2);margin-top:8px;line-height:1.5;font-family:var(--mono)}
-  /* The colour scale sits on the map it describes, bottom-left, always visible. */
+  /* The color scale sits on the map it describes, bottom-left, always visible. */
   #legend{position:absolute;left:14px;bottom:26px;z-index:5;width:232px;background:rgba(12,17,23,.88);backdrop-filter:blur(8px);border:1px solid var(--edge);border-radius:11px;padding:10px 12px 9px}
   #legend .lbl{font-size:12px;margin:0;flex:1}
   #legend .lhead{display:flex;align-items:center;gap:4px;margin-bottom:6px}
@@ -661,8 +661,8 @@
   }
   #theme button{padding:4px 8px}
   /* ===== light theme: projectors, handouts, daylight rooms =====
-     Applied by data-theme on <html>; saved per browser. Data colours (badges,
-     ramps, swatches) are unchanged; chrome colours are restated here. */
+     Applied by data-theme on <html>; saved per browser. Data colors (badges,
+     ramps, swatches) are unchanged; chrome colors are restated here. */
   :root{--c-hover:#0e1620;--c-field:#0c1219;--c-btn:#1b2733;--c-btnedge:#3e4d5e;--c-track:#1a2430;--c-card:#0a1017;--c-link:#ffd28c;--c-up:#6ee7a8;--c-dn:#ffb4a2;--c-glass:rgba(12,17,23,.88)}
   html[data-theme=light]{
     --bg:#eef1f5;--panel:#ffffff;--panel2:#f6f8fa;--edge:#dfe4ea;--edge2:#c6ced8;
@@ -854,7 +854,7 @@
         </div>
       </section>
       <!-- Map-only controls sit below the answer: they change what the map
-           shows and never the ranking, so they are grouped and labelled as such. -->
+           shows and never the ranking, so they are grouped and labeled as such. -->
       <div class="grouphead" id="maphead"><span>Map display</span><span class="ghint">changes the map, not the ranking</span></div>
       <section class="section fold" id="sec-layers" data-fold="sec-layers">
         <div class="fhead">
@@ -1083,7 +1083,7 @@ document.getElementById('intro-for').textContent=CE_CITY.possessive;
 document.getElementById('intro-go-label').textContent='Explore '+CE_CITY.name;
 document.getElementById('cooling-link').textContent=CE_CITY.coolingLinkLabel;
 
-/* ---------------------------------------------------------------- colour ramps
+/* ---------------------------------------------------------------- color ramps
  *
  * ONE RULE, and the legend states it out loud: **deeper and more saturated means
  * more need for cooling investment.** Pale means the place is fine.
@@ -1123,7 +1123,7 @@ function ramp(cols,t){t=Math.max(0,Math.min(1,t));const x=t*(cols.length-1),i=Ma
   return `rgb(${Math.round(a[0]+(b[0]-a[0])*f)},${Math.round(a[1]+(b[1]-a[1])*f)},${Math.round(a[2]+(b[2]-a[2])*f)})`;}
 
 const HOLC={A:'#6ea966',B:'#6a9fb5',C:'#c9b458',D:'#c0603f'};
-// Developed-but-unpopulated hexes on the priority layer: a flat neutral grey that
+// Developed-but-unpopulated hexes on the priority layer: a flat neutral gray that
 // reads as "not ranked", distinct from every ramp's business end.
 const ACTIVITY_FILL='#c2c8d0';
 // EMPTY (undeveloped) hexes: a lighter neutral, muted on every layer.
@@ -1189,7 +1189,7 @@ const LAYERS={
   // Categorical layer — no ramp. Present in LAYERS so setLayer() can read .title/.cap
   // uniformly; the legend swaps to the A–D swatch key instead of a gradient bar.
   holc:{title:'Redlining grade (HOLC)',ramp:null,fmt:v=>v,
-    cap:'1930s Home Owners’ Loan Corporation grades, drawn in the original map’s own colours. D-graded (“hazardous”) blocks are hotter and barer today. US-only historical layer.'}
+    cap:'1930s Home Owners’ Loan Corporation grades, drawn in the original map’s own colors. D-graded (“hazardous”) blocks are hotter and barer today. US-only historical layer.'}
 };
 
 /* Positron, not dark-matter. The ramps now run pale -> deep, so the basemap has
@@ -1202,12 +1202,12 @@ const FLAT_STYLE={version:8,sources:{},layers:[
 
 // ---- state populated once the data lands ----
 let HEX=null, CENTERS=null, BOUNDARY=null, map=null;
-const vals={};    // raw min/max per property — drives the colour ramps and legend
+const vals={};    // raw min/max per property — drives the color ramps and legend
 const svals={};   // SCORING bounds: p2/p98 from the geojson's `norm`, clamped [0,1]
 const AREA_M2_FALLBACK=5160000, TREE_M2=40, DEFAULT_COST_TREE=500; let COST_TREE=DEFAULT_COST_TREE;  // ~5.16 km2 res-7 hex
 // Share of planted trees assumed to reach maturity. Planted trees carry the cost;
 // surviving trees carry the canopy and cooling. 70% is a planning placeholder,
-// not a measurement: Sacramento's long-term monitoring found 42.4% of programme
+// not a measurement: Sacramento's long-term monitoring found 42.4% of program
 // trees alive after 22 years (Ko, Lee, McPherson & Roman 2015), so test lower.
 const DEFAULT_SURVIVAL=70; let SURVIVAL=DEFAULT_SURVIVAL;
 /* Street trees go on both sides of a road at roughly this spacing. The number
@@ -1227,7 +1227,7 @@ let DESIGNATED={type:'FeatureCollection',features:[]};
  *   priority  = base_risk * (pop_floor + pop_weight*pop_n)
  *   score     = 100 * minmax(priority)
  *
- * with every input min-max normalised WITHIN the city, which is the portability
+ * with every input min-max normalized WITHIN the city, which is the portability
  * argument: 44 °C is an ordinary afternoon in Phoenix and an emergency in
  * Seattle. Weights here MUST stay in sync with pipeline/config.py WEIGHTS —
  * that is a standing contract in STATUS.md, and now the legend copy is
@@ -1359,9 +1359,9 @@ function computeRanges(){
   // a slider moves, which would read as the scale rather than the map changing.
   vals.score=[0,100];
   vals.veg=[0,45];
-  // Scoring normalises against the pipeline's p2/p98 endpoints (geojson `norm`),
+  // Scoring normalizes against the pipeline's p2/p98 endpoints (geojson `norm`),
   // so one leafy or one crowded hex no longer sets the scale for the score; the
-  // colour ramps above stay on the raw range so the map still spans real values.
+  // color ramps above stay on the raw range so the map still spans real values.
   // Falls back to the raw range when `norm` is absent (older data files).
   ['score','lst','green','veg','pop','pct65','ac','access_min'].forEach(k=>{svals[k]=vals[k];});
   const nm=HEX&&HEX.norm;
@@ -1373,18 +1373,18 @@ function norm(k,v){const[lo,hi]=rng(k);return (v-lo)/(hi-lo);}
 function colorFor(k,v){return ramp(LAYERS[k].ramp,norm(k,v));}
 
 /* The ramps are built for a LIGHT basemap, so their business end is very dark —
- * and the panel around them is very dark too. Reusing a map colour verbatim for
+ * and the panel around them is very dark too. Reusing a map color verbatim for
  * a badge or a number on the panel is how the #1 hex ends up rendered in
- * near-black on near-black. Two helpers, used everywhere a map colour appears
+ * near-black on near-black. Two helpers, used everywhere a map color appears
  * off-map, so the panel and the map never disagree about which hex is worst:
  *   lift()     keeps the hue, raises luminance until it reads on the dark panel
- *   inkOn()    picks black or white text for a swatch filled with the true colour
+ *   inkOn()    picks black or white text for a swatch filled with the true color
  * Luminance coefficients are Rec. 709. */
 /* Must take BOTH forms that reach it: ramp() hands back "rgb(r,g,b)", but the
    ramp arrays themselves are "#rrggbb" and get used raw for swatches. Digit-
    scraping a hex string is silently wrong rather than loud — "#b30000" scrapes
    to [30000] and lands on rgb(NaN), "#5c3a17" scrapes to [5,3,17] and lands on
-   a grey that looks deliberate. Branch on the leading '#'. */
+   a gray that looks deliberate. Branch on the leading '#'. */
 function rgbOf(css){
   if(css[0]==='#')return hex(css);
   const m=css.match(/-?[\d.]+/g);
@@ -1434,12 +1434,12 @@ function rampStops(k,lo,hi){
 function fillExpr(k){
   // Ungraded hexes are legitimately outside whatever 1930s map exists (all of
   // them, in San Ramon, which has no map at all) —
-  // a neutral light grey on the light basemap, not a dark blob that reads as
+  // a neutral light gray on the light basemap, not a dark blob that reads as
   // a fifth grade.
   if(k==='holc') return ['match',['get','holc'],'A',HOLC.A,'B',HOLC.B,'C',HOLC.C,'D',HOLC.D,'#d6dbe1'];
   // Priority is recomputed from the live weights, in-expression. See liveScoreExpr().
   // Developed-but-unpopulated hexes (place='activity') carry no resident need, so
-  // they are painted a neutral grey on the PRIORITY layer only — on the canopy and
+  // they are painted a neutral gray on the PRIORITY layer only — on the canopy and
   // heat layers below they show their real measured values, which is the whole
   // point of keeping them (a landscaper still sees tree cover on a commercial block).
   if(k==='score') return ['case',['==',['get','place'],'activity'],ACTIVITY_FILL,
@@ -1484,7 +1484,7 @@ const EXPORT_NOTES=[
   'Canopy percentages are assessed cover per canopy_source; chm-legacy cells have unknown assessed extent (coverage_frac empty).',
   'Planting scenarios are theoretical: mapped street length at 10 m spacing, capped by cell area minus known canopy. Site feasibility, ownership, utilities and species are unverified.',
   'Cost is planted trees × $500 (planting only; an assumption, not a bid). Added tree cover and cooling count only the share of planted trees assumed to reach maturity (survival_share_pct, default 70%; Sacramento\'s long-term monitoring found 42.4% alive after 22 years). Cooling is an illustrative clear-sky summer air-temperature figure, 0.3 °C per 10 canopy points, not a local forecast.',
-  'Walking access is routed on the OpenStreetMap pedestrian network to mapped discovery sites, whose hours and cooling designation are unverified; approach-review flags a >100 m straight connection from the cell centre to the network.',
+  'Walking access is routed on the OpenStreetMap pedestrian network to mapped discovery sites, whose hours and cooling designation are unverified; approach-review flags a >100 m straight connection from the cell center to the network.',
 ];
 function currentPresetId(){const m=typeof matchPreset==='function'?matchPreset():null;return m?m.id:null;}
 function exportHeader(){
@@ -1499,7 +1499,7 @@ function exportHeader(){
     weights:W_INPUTS.reduce((o,{k})=>(o[k]=+W[k].toFixed(4),o),{}),
     population_weight:POPW, preset:currentPresetId(), default_weights:isDefaultW(),
     // The sliders as set (they need not sum to 100); `weights` above is the
-    // normalised model. Reloading restores the slider positions exactly.
+    // normalized model. Reloading restores the slider positions exactly.
     weights_raw:W_INPUTS.reduce((o,{k})=>(o[k]=+(W_RAW[k]||0).toFixed(4),o),{}),
     planting_assumptions:{tree_spacing_m:TREE_SPACING_M, crown_m2_per_tree:TREE_M2, cost_per_tree_usd:COST_TREE, survival_share_pct:SURVIVAL, cooling_c_per_10_canopy_points:0.3},
     notes:EXPORT_NOTES,
@@ -1530,7 +1530,7 @@ const FIELD_KEY={
   id:['cell_id','Stable number of the hexagon area'],
   name:['area_name','Nearest mapped place name'],
   place:['area_type','res = residents ranked; activity = developed, no residents; empty = undeveloped'],
-  city:['city_or_community','City or census-designated community containing the area\'s centre (Census TIGERweb places)'],
+  city:['city_or_community','City or census-designated community containing the area\'s center (Census TIGERweb places)'],
   rank:['rank','Rank under the priorities in this file (1 = most need)'],
   score:['priority_score_0_100','Priority score under these priorities, relative within the study area'],
   rank_default:['rank_recommended_mix','Rank under the recommended mix shipped with the data'],
@@ -1557,9 +1557,9 @@ const FIELD_KEY={
   access_min:['walk_to_cooling_min','Estimated walking minutes to the nearest mapped cool place'],
   access_km:['walk_to_cooling_km','Estimated walking distance, km'],
   access_quality:['walk_quality_flag','network-estimate, approach-review (>100 m off-network approach) or detour-review (route far longer than the straight line)'],
-  access_snap_m:['walk_network_connection_m','Straight-line metres from the area centre to the walking network'],
+  access_snap_m:['walk_network_connection_m','Straight-line meters from the area center to the walking network'],
   area_m2:['area_m2','Area of the hexagon, m²'],
-  street_m:['mapped_street_m','Mapped street centreline in the area, m: theoretical capacity from OpenStreetMap, not surveyed plantable space'],
+  street_m:['mapped_street_m','Mapped street centerline in the area, m: theoretical capacity from OpenStreetMap, not surveyed plantable space'],
   scenario_ok:['planting_scenario_available','true when mapped street capacity exists'],
   canopy_baseline_ok:['tree_cover_baseline_complete','true when the aerial assessment covers ≥99% of the area'],
   land:['land_cover','Dominant land cover (ESA WorldCover) for undeveloped areas'],
@@ -1703,7 +1703,7 @@ function makeDraggable(card,handle){
  *
  * Keyed by city: every city is served from the same origin, so one shared key
  * made the city switcher open the next city with the previous city's weights
- * (labelled "Your own mix"). Preferences that mean the same thing everywhere
+ * (labeled "Your own mix"). Preferences that mean the same thing everywhere
  * (theme, units, mode) stay shared in localStorage. */
 const SESSION_KEY='ce-session-'+CITY_SLUG;
 let ON_MAP=false;                      // set when the start screen is dismissed
@@ -1811,7 +1811,7 @@ function wireFolds(){
   document.querySelectorAll('.fold').forEach(sec=>{
     const btn=sec.querySelector('.fbtn'),key=sec.dataset.fold;if(!btn)return;
     const set=closed=>{sec.classList.toggle('closed',closed);btn.setAttribute('aria-expanded',!closed);};
-    // Priorities and the ranked list stay open; map colours, places to cool off
+    // Priorities and the ranked list stay open; map colors, places to cool off
     // and export start folded so the panel is short enough to read without
     // scrolling on a laptop. A viewer's own choice, once made, wins.
     set(key in saved?!!saved[key]:FOLD_CLOSED_DEFAULT.has(key));
@@ -1880,7 +1880,7 @@ const TIPS={
   ac:{t:'Homes with A/C',d:'The Census estimate of homes with air conditioning. Fewer homes with A/C means more reliance on shade and public cooling.'},
   holc:{t:'Redlining (1930s)',d:'Historical federal lending grades, shown where a map exists. Areas graded “hazardous” then are often the hottest and least shaded now.'},
   sort:{t:'Sort options',d:'Need: the priority score under the current mix (the rank badges). Residents: estimated people living in the area. Surface heat: summer late-morning ground temperature from satellite. Tree cover: share of assessed land under tree crowns. Walk to cooling: estimated minutes on foot to the nearest cool place. Age 65+: share of residents aged 65 or older. Sorting re-orders the list only; rank badges and the map never change.'},
-  geography:{t:'About these areas',d:'Each hexagon is a fixed analysis area, not a neighborhood boundary. Names are the nearest mapped place; grey areas have no residents to rank.'},
+  geography:{t:'About these areas',d:'Each hexagon is a fixed analysis area, not a neighborhood boundary. Names are the nearest mapped place; gray areas have no residents to rank.'},
 };
 function tipFor(a){const m=(a.getAttribute('href')||'').match(/#([a-z0-9-]+)/);return m&&TIPS[m[1]]?{...TIPS[m[1]],href:a.getAttribute('href')}:null;}
 let tipPinned=null,tipTimer=null;
@@ -1996,7 +1996,7 @@ ol,ul{padding-left:18px;font-size:10pt}li{margin-bottom:6px}
   <p class="lede">Every residential area is scored on surface heat, tree cover, residents, age, home air conditioning and the walk to a cool place, then ranked under the question <b>“${esc(q)}”</b>. This is a planning screen from public data, not a field survey; the limits are on the last page.</p>
   <div class="kpis"><div><b>${order.length.toLocaleString()}</b><span>areas ranked</span></div><div><b>${fInt(topRes)}</b><span>residents in the top 25</span></div><div><b>${sl.length}</b><span>shortlisted areas</span></div><div><b>${sl.length?money(slCost):'—'}</b><span>shortlist planting cost</span></div></div>
   ${mapPng?`<img class="mapimg" src="${mapPng}" alt="Priority map">`:'<p class="fine">Map snapshot unavailable in this browser.</p>'}
-  <div class="legend"><span>${esc(LAYERS[current].title)}</span><i></i><span>deeper colour = more need · relative within ${esc(CITY_NAME)}</span></div>
+  <div class="legend"><span>${esc(LAYERS[current].title)}</span><i></i><span>deeper color = more need · relative within ${esc(CITY_NAME)}</span></div>
   <div class="foot"><span>CoolEquity · data ${esc(hdr.dataset.version_tag||'')}</span><span>Independent student project · not a city or county product · not reviewed · confirm on the ground</span></div>
 </div>
 <div class="page">
@@ -2009,7 +2009,7 @@ ol,ul{padding-left:18px;font-size:10pt}li{margin-bottom:6px}
 ${sl.length?`<div class="page"><h2>Shortlist · ${sl.length} area${sl.length===1?'':'s'}</h2><p class="lede" style="margin-top:0">${fInt(slRes)} residents · ${fInt(slTrees)} trees · ${money(slCost)} at ${money(COST_TREE)} per tree, each area at its own planting share.</p>${slPages}<div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Shortlist</span></div></div>`:''}
 <div class="page">
   <h2>How the ranking is built</h2>
-  <ol><li>Each input is scaled 0–1 across the city between its 2nd and 98th percentile, so one extreme area cannot stretch the scale.</li><li>Inputs are combined with the weights above into a need score; “Count people more” multiplies it by how many residents live in the area.</li><li>The result is rescaled 0–100 across all ranked areas. Rank 1 is the greatest relative need under this question; it is not a health-risk probability.</li><li>Planting scenarios count mapped street centreline at ${TREE_SPACING_M} m spacing on both sides, capped by land not already under canopy, at ${money(COST_TREE)} per tree.</li></ol>
+  <ol><li>Each input is scaled 0–1 across the city between its 2nd and 98th percentile, so one extreme area cannot stretch the scale.</li><li>Inputs are combined with the weights above into a need score; “Count people more” multiplies it by how many residents live in the area.</li><li>The result is rescaled 0–100 across all ranked areas. Rank 1 is the greatest relative need under this question; it is not a health-risk probability.</li><li>Planting scenarios count mapped street centerline at ${TREE_SPACING_M} m spacing on both sides, capped by land not already under canopy, at ${money(COST_TREE)} per tree.</li></ol>
   <h2 style="margin-top:22px">Assumptions and limits</h2>
   <ul>${EXPORT_NOTES.map(n=>`<li>${esc(n.replace('$500',money(COST_TREE)))}</li>`).join('')}</ul>
   <h2 style="margin-top:22px">Sources</h2>
@@ -2145,7 +2145,7 @@ function initMap(style){
 
   /* Choropleth goes UNDER the basemap's own labels, not on top of them. Place
      names surviving the fill is what separates a map you can navigate from a
-     coloured blob — and doing it by splicing the style array keeps it on the
+     colored blob — and doing it by splicing the style array keeps it on the
      no-events path; map.addLayer(..., beforeId) would not.
      No symbol layers (flat fallback) => index is the end, i.e. plain append. */
   const firstSymbol=s.layers.findIndex(l=>l.type==='symbol');
@@ -2168,7 +2168,7 @@ function initMap(style){
       layout:{visibility:'none'},paint:{'raster-opacity':1}});
   }
 
-  // Selection ring and centre markers stay above everything, labels included:
+  // Selection ring and center markers stay above everything, labels included:
   // both are things the user is actively hunting for.
   s.layers.push(
     {id:'sel',type:'line',source:'hex',
@@ -2239,7 +2239,7 @@ let pendingOps=[];
  *  previous ramp. A legend that disagrees with the map is worse than a slow map.
  *
  *  Generalised from the old paintFill()-only version because the same hazard
- *  applies to the centre filter and the selection ring, and both were sitting
+ *  applies to the center filter and the selection ring, and both were sitting
  *  behind exactly the `if(map.getLayer(...))` guard the bug was about. Queued
  *  closures must read live state at call time, never capture it, so a burst of
  *  toggles replays as the final intent rather than the first.
@@ -2289,7 +2289,7 @@ function setLayer(k){
   // are protective, so for them the needy end is the left one.
   const hi=L.worse!=='lo';
   dir.className='dir'+(hi?' hi':'');
-  dir.textContent=k==='veg'?'deeper colour = less greenness ←':(hi?'':'← ')+'deeper colour = more need'+(hi?' →':'');
+  dir.textContent=k==='veg'?'deeper color = less greenness ←':(hi?'':'← ')+'deeper color = more need'+(hi?' →':'');
 }
 
 // ---------------------------------------------------------------- intro
@@ -2492,7 +2492,7 @@ function buildWeights(){
 
 /** Set every weight at once and push the values back into the sliders, so the
  *  advanced panel is never showing numbers the model isn't using. */
-/* The weights as one stacked bar. Same colours as the sliders and as the thin
+/* The weights as one stacked bar. Same colors as the sliders and as the thin
  * bar under every ranked row, so a reader can see the model and its effect
  * on each area without opening anything. */
 function buildMixBar(W){
@@ -2518,7 +2518,7 @@ function applyPreset(id){
 }
 
 /** Which preset, if any, describes the weights in force. Compares the
- *  normalised weights so "35/25/25/15" and "70/50/50/30" count as the same
+ *  normalized weights so "35/25/25/15" and "70/50/50/30" count as the same
  *  model — they are. */
 function matchPreset(){
   const W=normW();
@@ -2529,7 +2529,7 @@ function matchPreset(){
   })||null;
 }
 
-/* A ranking stretches whatever spread an input has across the whole colour
+/* A ranking stretches whatever spread an input has across the whole color
  * ramp. When the mix rests mostly on an input that barely varies here (A/C in
  * Bakersfield: 96.5–100% across ranked areas), the order separates tiny
  * differences and should be read as a weak signal. Spans are the scoring
@@ -2970,7 +2970,7 @@ function selectHex(id,fly){
 function renderBreakdown(p,score){
   const W=normW();
   // Use the SCORING bounds (svals = p2/p98 from the geojson `norm`), the same ones
-  // rescore() uses — not the raw colour-ramp ranges (vals) — so the term-by-term
+  // rescore() uses — not the raw color-ramp ranges (vals) — so the term-by-term
   // table actually reconstructs the score it is explaining.
   const nv=k=>snv(p,k);
   const parts=W_INPUTS.map(w=>{
@@ -2998,7 +2998,7 @@ function renderBreakdown(p,score){
     <div class="eq">priority ${(base*mult).toFixed(3)} → rescaled across ${LIVE.order.length} residential cells → <b>score ${score.toFixed(1)}</b></div>`;
 }
 
-// Single source of truth for a scoring-normalised input, [0,1] against the p2/p98
+// Single source of truth for a scoring-normalized input, [0,1] against the p2/p98
 // bounds in svals. rescore(), renderBreakdown() and explainHex() all read through
 // the same bounds, so "why this ranks here" can never disagree with the score.
 function snv(p,k){const[lo,hi]=svals[k];return Math.max(0,Math.min(1,(p[k]-lo)/(hi-lo)));}
@@ -3006,7 +3006,7 @@ function snv(p,k){const[lo,hi]=svals[k];return Math.max(0,Math.min(1,(p[k]-lo)/(
 /* ---- "Explain this block" -------------------------------------------------
  * A plain-English, DETERMINISTIC summary of why a hex sits where it does, built
  * from the same numbers the score uses — never a canned or rounded-away claim.
- * The named "reasons" are the top weighted contributions (weight × normalised
+ * The named "reasons" are the top weighted contributions (weight × normalized
  * input), i.e. exactly the terms that move this hex's score, so they always
  * agree with the breakdown table below. Recomputed on every selection, so it
  * tracks live weight changes. */
@@ -3123,7 +3123,7 @@ function wireHover(){
        <div class="tt-row"><span>Walk to cooling</span><span>${fMin(+p.access_min)}</span></div>`).addTo(map);});
   map.on('mouseleave','fill',()=>{map.getCanvas().style.cursor='';pop.remove();});
   map.on('click','fill',e=>{
-    // A centre sits on top of the hex it is in, and both layers get the click.
+    // A center sits on top of the hex it is in, and both layers get the click.
     // Let the marker win — you clicked the dot, not the 0.8 km² under it.
     if(map.queryRenderedFeatures(e.point,{layers:['centers','designated'].filter(l=>map.getLayer(l))}).length)return;
     selectHex(e.features[0].properties.id,false);document.getElementById('d-close').focus({preventScroll:true});
