@@ -344,6 +344,7 @@
   .track{height:6px;background:#0a0e13;border-radius:4px;overflow:hidden}
   .fill{height:100%;border-radius:4px}
   .est{font-size:11px;color:#c7a3e6;border:1px solid #402f57;border-radius:10px;padding:0 5px;margin-left:6px;vertical-align:middle}
+  .est.src{color:var(--muted);border-color:var(--edge);text-transform:none;letter-spacing:0}
   /* ROI */
   .roi{margin-top:8px;background:#0c141d;border:1px solid var(--edge);border-radius:12px;padding:14px 14px 16px}
   .roi h3{margin:0 0 3px;font-size:13px;display:flex;align-items:center;gap:7px}
@@ -550,10 +551,10 @@
   .row .mx{display:flex;align-items:baseline;gap:4px;font-variant-numeric:tabular-nums;white-space:nowrap}
   .row .mx b{font-size:11px;font-weight:600;color:var(--muted)}
   .row .mx i{font-style:normal;font-size:11px;color:var(--muted2);letter-spacing:.03em}
-  .row:focus-visible{outline:2px solid var(--accent2);outline-offset:-2px}
+  .row .nm:focus-visible{outline:2px solid var(--accent2);outline-offset:2px;border-radius:4px}
   /* 24px hit area for touch and keyboard; full opacity whenever the row has focus. */
   .pin{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:none;border:0;padding:0;color:var(--muted2);font:17px/1 var(--sans);cursor:pointer;opacity:.55;transition:.12s;margin:0 -2px}
-  .row:hover .pin,.row:focus-visible .pin,.row:focus-within .pin,.pin.on,.pin:focus-visible{opacity:1}
+  .row:hover .pin,.row:focus-within .pin,.pin.on,.pin:focus-visible{opacity:1}
   .pin:hover,.pin:focus-visible{background:var(--c-hover)}
   .pin:hover,.pin.on{color:var(--accent2)}
   .dpin{width:32px;height:32px;font-size:20px;opacity:.8;margin:0}
@@ -828,7 +829,7 @@
             <button type="button" class="pst" data-f="pop" title="At least 500 estimated residents">500+ residents</button>
             <button type="button" class="pst" data-f="green" title="Under 10% tree cover">Trees &lt; 10%</button>
             <button type="button" class="pst" data-f="age" title="At least 20% of residents aged 65 or older">Older 20%+</button>
-            <button type="button" class="pst" data-f="scen" title="Only areas with mapped street capacity for planting">Plantable</button>
+            <button type="button" class="pst" data-f="scen" title="Only areas with mapped street capacity, so a planting scenario can be sized. Not a site survey.">Has street capacity</button>
           </div>
           <p id="rank-count" role="status"></p>
             <p id="rank-change" hidden></p>
@@ -875,7 +876,7 @@
           <span class="cnt" id="ct-n">—</span>
         </div>
         <div class="fbody" id="sec-sites-body">
-        <p class="hint lead">Libraries, community centers, pools and senior centers on the map, and how far each area is from one on foot.</p>
+        <p class="hint lead">Libraries, community centers, pools and senior centers mapped in OpenStreetMap, and how far each area is from one on foot. These are places that could offer relief, not verified cooling centers; the county’s designated cooling locations are listed at the link below.</p>
         <button type="button" class="toggle" id="tg-access" data-layer="access">
           <div class="sw"></div>
           <div><div class="tt">Show walking time to the nearest place</div><div class="ts">estimated minutes on foot, colored on the map</div></div>
@@ -1368,7 +1369,17 @@ function lift(css,target=152){
 function inkOn(css){return lum(rgbOf(css))>150?'#0b0f14':'#ffffff';}
 function areaOf(p){return p.area_m2||AREA_M2_FALLBACK;}
 function escapeHtml(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function nameOf(p){return p.name||`Hex ${p.id}`;}
+function nameOf(p){return p.name||`Area ${p.id}`;}
+/** Where the tree-cover number comes from, and how much of the area it actually assessed.
+ *  Returns [short label, full title] or null. The four states are the pipeline's own. */
+function canopyTag(p){
+  if(p.green_src==='ndvi')return ['satellite stand-in','No aerial tree-cover assessment here; satellite greenness stands in and is scored on its own scale.'];
+  const yr=p.canopy_year?` ${p.canopy_year}`:'';
+  if(p.canopy_quality==='full')return [`aerial${yr}`,`Aerial classification${yr} covering essentially the whole area.`];
+  if(p.canopy_quality==='partial'){const f=Math.round((p.coverage_frac||0)*100),fs=f<1?'under 1%':f+'%';return [`aerial${yr} · ${fs} assessed`,`Aerial classification${yr} assessed only ${fs} of this area; the tree-cover figure describes that part only.`];}
+  if(p.canopy_source==='chm-legacy')return ['height model · coverage unknown','From an older canopy-height model; how much of the area it observed is not recorded.'];
+  return null;
+}
 
 // Frame whatever city the pipeline produced, rather than a hardcoded LA view —
 // the engine is meant to be repointable, so the camera must be too.
@@ -1509,7 +1520,7 @@ const FIELD_KEY={
   access_quality:['walk_quality_flag','network-estimate, approach-review (>100 m off-network approach) or detour-review (route far longer than the straight line)'],
   access_snap_m:['walk_network_connection_m','Straight-line metres from the area centre to the walking network'],
   area_m2:['area_m2','Area of the hexagon, m²'],
-  street_m:['plantable_street_m','Mapped street centreline available for planting, m'],
+  street_m:['mapped_street_m','Mapped street centreline in the area, m: theoretical capacity from OpenStreetMap, not surveyed plantable space'],
   scenario_ok:['planting_scenario_available','true when mapped street capacity exists'],
   canopy_baseline_ok:['tree_cover_baseline_complete','true when the aerial assessment covers ≥99% of the area'],
   land:['land_cover','Dominant land cover (ESA WorldCover) for undeveloped areas'],
@@ -1528,7 +1539,9 @@ const FIELD_KEY={
   w_access:['weight_far_from_cooling','Share given to distance from cooling'],
 };
 const csvName=k=>(FIELD_KEY[k]||[k])[0];
-function csvCell(v){if(v==null)return '';const t=typeof v==='boolean'?(v?'true':'false'):String(v);return /[",\n\r]/.test(t)?'"'+t.replace(/"/g,'""')+'"':t;}
+function csvCell(v){if(v==null)return '';let t=typeof v==='boolean'?(v?'true':'false'):String(v);
+  if(typeof v==='string'&&/^[=+\-@\t\r]/.test(t))t="'"+t;   // a text cell must never be read as a formula
+  return /[",\n\r]/.test(t)?'"'+t.replace(/"/g,'""')+'"':t;}
 /** CSV: one row per cell; the scenario header is repeated as trailing columns
  *  so a row can never be separated from the weights that produced its rank. */
 function toCsv(records,header){
@@ -1679,9 +1692,11 @@ function resetMap(){
 /** The color scale can be tucked away; the choice is remembered per browser. */
 function wireLegend(){
   const lg=document.getElementById('legend'),show=document.getElementById('legend-show');if(!lg||!show)return;
-  const set=min=>{lg.hidden=min;show.hidden=!min;try{localStorage.setItem('ce-legend',min?'min':'open');}catch(_){}};
-  let min=false;try{min=localStorage.getItem('ce-legend')==='min';}catch(_){}
-  set(min);
+  const apply=min=>{lg.hidden=min;show.hidden=!min;};
+  const set=min=>{apply(min);try{localStorage.setItem('ce-legend',min?'min':'open');}catch(_){}};   // persist only a viewer's own choice
+  let min=!!(window.matchMedia&&window.matchMedia('(max-width:700px)').matches);
+  try{const v=localStorage.getItem('ce-legend');if(v)min=v==='min';}catch(_){}
+  apply(min);
   document.getElementById('legend-min').onclick=()=>{set(true);show.focus();};
   show.onclick=()=>{set(false);document.getElementById('legend-min').focus();};
 }
@@ -2556,7 +2571,7 @@ function wireUI(){
     document.getElementById('detail').classList.remove('show');
     document.getElementById('detail').inert=true;
     syncDetailAccess();
-    document.querySelector('.row.sel')?.focus();
+    document.querySelector('.row.sel .nm')?.focus();
     selId=null;paintSel();
     document.querySelectorAll('.row').forEach(r=>r.classList.remove('sel'));
     const cs=document.getElementById('chip-sel');if(cs)cs.hidden=true;
@@ -2657,18 +2672,18 @@ function buildRank(){
 }
 function makeRow(p,def){
   const s=sc(p);
-  const row=document.createElement('div');row.className='row';row.dataset.id=p.id;row.tabIndex=0;row.setAttribute('role','button');
+  const row=document.createElement('div');row.className='row';row.dataset.id=p.id;
   if(p.id===selId)row.classList.add('sel');
   const c=colorFor('score',s),on=SHORTLIST.has(p.id);
   row.innerHTML=`<div class="badge" style="background:${c};color:${inkOn(c)}">${rk(p)}</div>
-    <div class="nm">${escapeHtml(nameOf(p))}${def?'':moveChip(p)}</div>
+    <div class="nm" role="button" tabindex="0" aria-label="Open ${escapeHtml(nameOf(p))}, rank ${rk(p)}">${escapeHtml(nameOf(p))}${def?'':moveChip(p)}</div>
     <button type="button" class="pin${on?' on':''}" aria-pressed="${on}" title="${on?'Remove from':'Add to'} shortlist">${on?'★':'☆'}</button>
     <div class="sc" style="color:${lift(c)}">${s.toFixed(0)}</div>
     <div class="cbar" aria-hidden="true">${contribBar(p)}</div>
     <div class="mxs"><span class="mx"><b>${fTemp(p.lst)}</b><i>heat</i></span><span class="mx"><b>${p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':p.green.toFixed(0)+'%'}</b><i>${p.green_src==='ndvi'?'greenness':'trees'}</i></span><span class="mx"><b>${fMin(p.access_min)}</b><i>walk</i></span></div>`;
   const open=()=>{selectHex(p.id,true);document.getElementById('d-close').focus({preventScroll:true});};
   row.onclick=e=>{if(e.target.closest('.pin')){togglePin(p.id);return;}open();};
-  row.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};
+  row.querySelector('.nm').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};
   return row;
 }
 
@@ -2747,7 +2762,8 @@ function selectHex(id,fly){
     ? `Undeveloped · ${p.land||'no development'} · not ranked`
     : activity
     ? 'Developed area · no residents · not ranked'
-    : `Rank ${r} of ${LIVE.order.length.toLocaleString()} · need index ${s.toFixed(0)}`+(isDefaultW()?'':' · your weights');
+    : `Rank ${r} of ${LIVE.order.length.toLocaleString()} · need index ${s.toFixed(0)}`+(isDefaultW()?'':' · your weights')+` · area #${p.id}`;
+  document.getElementById('d-name').title=p.name?'Name generated from nearby mapped places; not an official boundary. Area #'+p.id:'Area #'+p.id;
   explainHex(p);
   const dv=document.getElementById('d-drivers');
   if(dv){ if(unranked) dv.hidden=true; else { dv.hidden=false; const W=normW();
@@ -2764,15 +2780,15 @@ function selectHex(id,fly){
   else { if(bdLabel) bdLabel.hidden=false; renderBreakdown(p,s); }
   const m=[
     ['Surface heat','lst',p.lst,LAYERS.lst.fmt(p.lst),false],
-    [p.green_src==='ndvi'?'Greenness (satellite)':'Tree cover',p.green_src==='ndvi'?'veg':'green',p.green,p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':LAYERS.green.fmt(p.green),false],
+    [p.green_src==='ndvi'?'Greenness (satellite)':'Tree cover',p.green_src==='ndvi'?'veg':'green',p.green,p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':LAYERS.green.fmt(p.green),false,canopyTag(p)],
     ['Population','pop',p.pop,Math.round(p.pop).toLocaleString(),false],
     ['Age 65+','pct65',p.pct65,LAYERS.pct65.fmt(p.pct65),false],
     [p.ac_src==='income-model'?'A/C (income estimate)':'Homes with A/C','ac',p.ac,LAYERS.ac.fmt(p.ac),true],
     ['Walk to cooling','access',p.access_min,`${fMin(p.access_min)} · ${fDist(p.access_km)}`+(p.access_src==='straightline'?' · straight-line':''),true],
   ];
-  document.getElementById('d-metrics').innerHTML=m.map(([lab,k,v,disp,est])=>{
+  document.getElementById('d-metrics').innerHTML=m.map(([lab,k,v,disp,est,tag])=>{
     const t=norm(k,v);
-    return `<div class="metric"><div class="top"><span>${lab} <a class="info-link" href="guide.html#${k==='access'?'access':k}" target="ce-guide" aria-label="About ${lab}">i</a>${est?'<span class="est">est</span>':''}</span><span>${disp}</span></div>
+    return `<div class="metric"><div class="top"><span>${lab} <a class="info-link" href="guide.html#${k==='access'?'access':k}" target="ce-guide" aria-label="About ${lab}">i</a>${est?'<span class="est">est</span>':''}${tag?`<span class="est src" title="${tag[1]}">${tag[0]}</span>`:''}</span><span>${disp}</span></div>
       <div class="track"><div class="fill" style="width:${Math.max(2,t*100).toFixed(0)}%;background:${lift(colorFor(k,v),130)}"></div></div></div>`;
   }).join('');
   if(p.access_quality==='detour-review'){

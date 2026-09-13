@@ -3,27 +3,27 @@
 > **Status tracker (kept current as work lands).** The audit below was written by a second
 > reviewer on September 13, 2026 against the live site and the *old* `advikar/coolequity`
 > checkout. The tracker records what has since been fixed in this repository. Last update:
-> September 13, 2026.
+> September 13, 2026 (second pass).
 >
 > | Item | Status | Where |
 > |---|---|---|
 > | Scenario files do not restore custom costs | **Fixed** | `loadScenario` restores `planting_assumptions.cost_per_tree_usd` |
 > | Shared links are not an exact scenario | **Fixed (copy narrowed)** | Export hint now says a link carries priorities, layer and selection only; file is the exact-view mechanism |
 > | Greenness labelled/exported as trees | **Fixed** | List row reads "greenness"; export has `greenness_index_0_100`, `tree_cover_pct` empty for NDVI cells; "Trees < 10%" filter ignores NDVI cells |
-> | "Plantable" label exceeds evidence | Open | Filter still says "Plantable"; CSV column still `plantable_street_m` |
+> | "Plantable" label exceeds evidence | **Fixed** | Filter reads "Has street capacity"; CSV column is `mapped_street_m`, described as theoretical capacity |
 > | Guide duplication (two Export sections) | **Fixed** | Contra Costa and San Ramon guides |
 > | Reset is incomplete | **Fixed** | `resetMap` clears filters, sort, direction, cost per tree |
-> | Ranked-row button nesting (a11y) | Open | |
-> | CSV formula-prefix escaping | Open | Low priority: names come from the pipeline, not users |
+> | Ranked-row button nesting (a11y) | **Fixed** | Row is a plain container; the name is the open control (role=button, keyboard), the star is a sibling button |
+> | CSV formula-prefix escaping | **Fixed** | Text cells starting with = + - @ tab are prefixed with an apostrophe |
 > | Celsius default claim | **Not reproduced** | Default is imperial in code and on the live site |
 > | Afternoon vs late-morning wording | **Fixed** (was live, now late morning) | App copy and all three guides |
 > | Need is not marginal benefit (positioning) | Owner's call | Headline kept by decision; wording may be softened |
-> | Mixed canopy sources / reliability flag at point of use | Open | |
+> | Mixed canopy sources / reliability flag at point of use | **Partly fixed** | Detail panel tags tree cover with source, year and assessed share ("aerial 2022 · under 1% assessed", "height model · coverage unknown", "satellite stand-in"). Scoring still pools them; 121 Contra Costa cells score on under 10% assessed |
 > | Uncertainty / rank stability bands | Open | Larger modelling work |
-> | Cooling discovery vs verified relief | Open | Designated services vs OSM sites not yet separated on the map |
+> | Cooling discovery vs verified relief | **Partly fixed** | Panel now says the dots are OpenStreetMap places, not verified cooling centers, and points at the county list. Designated sites are still not on the map |
 > | Planting outputs: low/base/high cost, survival | Open | |
-> | Chooser + intro friction, three-column squeeze, mobile legend | Open | |
-> | Generated cell names look too precise | Open | |
+> | Chooser + intro friction, three-column squeeze, mobile legend | **Partly fixed** | Legend starts collapsed under 700px unless the viewer opened it. Chooser/intro and desktop layout unchanged |
+> | Generated cell names look too precise | **Fixed** | Detail subtitle shows the stable area id; name tooltip says it is generated from nearby places, not a boundary |
 > | Consolidate duplicated city apps | **Already done** before the audit (this repo) |
 > | Canopy recovery: four public CHM tiles reachable; Discovery Bay USFS package missing | Open, first data task | See addendum below |
 >
