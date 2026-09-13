@@ -25,6 +25,7 @@ window.CE_CITY={
   scope:'city',                         // "relative within this city"
   dataVersion:'20260909-walk',
   centersVersion:'20260908-ehsd',
+  layerNotes:{ac:"A/C prevalence is high and narrow across San Ramon, so this layer shows little contrast and carries no weight in the recommended mix."},
   coolingLinkLabel:"County-listed cooling centers & contacts ↗",
   scoreTitle:"Heat & canopy priority",
   weights:{heat:0.45,green:0.33,ac:0.00,age65:0.22,access:0},

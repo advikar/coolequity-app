@@ -2176,7 +2176,7 @@ function setLayer(k){
   const holcKey=document.getElementById('holc-key'),bar=document.getElementById('legend-bar');
   const dir=document.getElementById('legend-dir');
   const rel=document.getElementById('legend-rel');if(rel){rel.hidden=k!=='score';rel.textContent='Relative ranking within '+CITY_NAME+' · not a measurement';}
-  const lc=document.getElementById('legend-cap');if(lc)lc.textContent=L.cap;
+  const lc=document.getElementById('legend-cap');if(lc){const ln=(CE_CITY.layerNotes||{})[k];lc.textContent=L.cap+(ln?' '+ln:'');}
   document.getElementById('legend-info').href='guide.html#'+k;
   if(k==='holc'){holcKey.style.display='flex';bar.style.display='none';dir.style.display='none';
     document.getElementById('legend-lo').textContent='“best”';

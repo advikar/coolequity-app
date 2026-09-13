@@ -26,6 +26,7 @@ window.CE_CITY={
   scope:'city',                         // "relative within this city"
   dataVersion:'20260909-walk',
   centersVersion:'20260908-kern',
+  layerNotes:{ac:"Nearly every home here has A/C (96.5–100% of occupied homes across ranked areas), so this layer shows almost no contrast and carries no weight in the recommended mix."},
   coolingLinkLabel:"County-listed cooling centers & contacts ↗",
   scoreTitle:"Heat & canopy priority",
   weights:{heat:0.45,green:0.35,ac:0.00,age65:0.20,access:0},
