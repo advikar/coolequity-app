@@ -1021,7 +1021,7 @@
              subdivisions, so "plant here" is only actionable where the city
              owns the ground. Street frontage is that, measured from OSM. -->
         <div class="roi-feas" id="roi-feas"></div>
-        <div class="assume"><span>Assumptions:</span> $<input type="number" id="cost-tree" min="50" max="5000" step="50" value="500" aria-label="Cost per planted tree, US dollars"> per tree · 10 m spacing · <a class="method-link" href="guide.html#cost" target="ce-guide" style="margin:0">limits ↗</a></div>
+        <div class="assume"><span>Assumptions:</span> $<input type="number" id="cost-tree" min="50" max="5000" step="50" value="500" aria-label="Cost per planted tree, US dollars"> per tree · <input type="number" id="survival" min="5" max="100" step="5" value="70" aria-label="Share of planted trees assumed to reach maturity, percent">% reach maturity · 10 m spacing · <a class="method-link" href="guide.html#cost" target="ce-guide" style="margin:0">limits ↗</a></div>
         <div class="export" id="d-export" aria-label="Export this area">
           <p class="lbl">Export this area <a class="info-link" href="guide.html#export-area" target="ce-guide" aria-label="About exporting a selected area">i</a></p>
           <button type="button" id="exp-cell-json">Save this area (JSON)</button>
@@ -1186,6 +1186,11 @@ let HEX=null, CENTERS=null, BOUNDARY=null, map=null;
 const vals={};    // raw min/max per property — drives the colour ramps and legend
 const svals={};   // SCORING bounds: p2/p98 from the geojson's `norm`, clamped [0,1]
 const AREA_M2_FALLBACK=5160000, TREE_M2=40, DEFAULT_COST_TREE=500; let COST_TREE=DEFAULT_COST_TREE;  // ~5.16 km2 res-7 hex
+// Share of planted trees assumed to reach maturity. Planted trees carry the cost;
+// surviving trees carry the canopy and cooling. 70% is a planning placeholder,
+// not a measurement: Sacramento's long-term monitoring found 42.4% of programme
+// trees alive after 22 years (Ko, Lee, McPherson & Roman 2015), so test lower.
+const DEFAULT_SURVIVAL=70; let SURVIVAL=DEFAULT_SURVIVAL;
 /* Street trees go on both sides of a road at roughly this spacing. The number
  * is a planning convention, not a measurement — it is stated on screen next to
  * the figure it produces, because the whole point of the frontage panel is to
@@ -1459,7 +1464,7 @@ const EXPORT_NOTES=[
   'Population, age and A/C are allocated estimates from ACS block groups and Census LACE tracts, not household counts.',
   'Canopy percentages are assessed cover per canopy_source; chm-legacy cells have unknown assessed extent (coverage_frac empty).',
   'Planting scenarios are theoretical: mapped street length at 10 m spacing, capped by cell area minus known canopy. Site feasibility, ownership, utilities and species are unverified.',
-  'Cost is trees × $500 (an assumption, not a bid). Cooling is an illustrative clear-sky summer air-temperature figure, 0.3 °C per 10 canopy points, not a local forecast.',
+  'Cost is planted trees × $500 (planting only; an assumption, not a bid). Added tree cover and cooling count only the share of planted trees assumed to reach maturity (survival_share_pct, default 70%; Sacramento\'s long-term monitoring found 42.4% alive after 22 years). Cooling is an illustrative clear-sky summer air-temperature figure, 0.3 °C per 10 canopy points, not a local forecast.',
   'Walking access is routed on the OpenStreetMap pedestrian network to mapped discovery sites, whose hours and cooling designation are unverified; approach-review flags a >100 m straight connection from the cell centre to the network.',
 ];
 function currentPresetId(){const m=typeof matchPreset==='function'?matchPreset():null;return m?m.id:null;}
@@ -1477,14 +1482,14 @@ function exportHeader(){
     // The sliders as set (they need not sum to 100); `weights` above is the
     // normalised model. Reloading restores the slider positions exactly.
     weights_raw:W_INPUTS.reduce((o,{k})=>(o[k]=+(W_RAW[k]||0).toFixed(4),o),{}),
-    planting_assumptions:{tree_spacing_m:TREE_SPACING_M, crown_m2_per_tree:TREE_M2, cost_per_tree_usd:COST_TREE, cooling_c_per_10_canopy_points:0.3},
+    planting_assumptions:{tree_spacing_m:TREE_SPACING_M, crown_m2_per_tree:TREE_M2, cost_per_tree_usd:COST_TREE, survival_share_pct:SURVIVAL, cooling_c_per_10_canopy_points:0.3},
     notes:EXPORT_NOTES,
   };
 }
 const EXPORT_FIELDS=['id','name','place','rank','score','rank_default','score_default','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
   'coverage_frac','canopy_quality','canopy_m2','assessed_m2','pop','pct65','ac_pct','ac_src','ac_coverage','acs_year','access_min','access_km',
   'access_quality','access_snap_m','area_m2','street_m','scenario_ok','canopy_baseline_ok','land','holc',
-  'planting_share','trees','canopy_gain_points','cost_usd','cooling_c','future_canopy_pct'];
+  'planting_share','trees','trees_surviving','canopy_gain_points','cost_usd','cooling_c','future_canopy_pct'];
 function cellRecord(p){
   const s=sc(p), r=rk(p), share=plantingShares.get(p.id), scn=(share!=null)?scenarioFor(p,share):null;
   const num=v=>(v==null||v==='')?null:+v;
@@ -1495,7 +1500,7 @@ function cellRecord(p){
     ac_coverage:num(p.ac_coverage), acs_year:num(p.acs_year), access_min:num(p.access_min), access_km:num(p.access_km),
     access_quality:p.access_quality??null, access_snap_m:num(p.access_snap_m), area_m2:num(p.area_m2), street_m:num(p.street_m),
     scenario_ok:p.scenario_ok===true, canopy_baseline_ok:p.canopy_baseline_ok===true, land:p.land??null, holc:p.holc??null,
-    planting_share:scn?scn.share:null, trees:scn?scn.trees:null, canopy_gain_points:scn?scn.canopy_gain_points:null,
+    planting_share:scn?scn.share:null, trees:scn?scn.trees:null, trees_surviving:scn?scn.trees_surviving:null, canopy_gain_points:scn?scn.canopy_gain_points:null,
     cost_usd:scn?scn.cost_usd:null, cooling_c:scn?scn.cooling_c:null, future_canopy_pct:scn?scn.future_canopy_pct:null};
 }
 /** Plain column names for people, internal keys for the reload path. The JSON
@@ -1535,9 +1540,10 @@ const FIELD_KEY={
   land:['land_cover','Dominant land cover (ESA WorldCover) for undeveloped areas'],
   holc:['redlining_grade','1930s HOLC grade A–D where a map exists'],
   planting_share:['planting_share_pct','Share of street capacity planted in this scenario, %'],
-  trees:['scenario_trees','Trees in this scenario'],
-  canopy_gain_points:['scenario_tree_cover_gain_points','Added tree cover at maturity, percentage points'],
-  cost_usd:['scenario_cost_usd','Indicative cost at the per-tree figure in planting_assumptions'],
+  trees:['scenario_trees_planted','Trees planted in this scenario'],
+  trees_surviving:['scenario_trees_surviving','Trees assumed to reach maturity (survival_share_pct in planting_assumptions)'],
+  canopy_gain_points:['scenario_tree_cover_gain_points','Added tree cover at maturity from surviving trees, percentage points'],
+  cost_usd:['scenario_cost_usd','Indicative planting-only cost for all planted trees at the per-tree figure in planting_assumptions'],
   cooling_c:['scenario_air_cooling_c','Illustrative summer air cooling at maturity, °C'],
   future_canopy_pct:['scenario_future_tree_cover_pct','Tree cover at maturity, % (only when the baseline is complete)'],
   city:['city','City slug'],exported_at:['exported_at','Export time (ISO 8601)'],dataset_sha256:['dataset_sha256','Fingerprint of the data file'],
@@ -1608,6 +1614,8 @@ function loadScenario(doc){
   const pe=document.getElementById('ws-pop');if(pe)pe.value=Math.round(POPW*100);
   const pa=doc.planting_assumptions||{};
   if(typeof pa.cost_per_tree_usd==='number'&&pa.cost_per_tree_usd>0){COST_TREE=pa.cost_per_tree_usd;const ce=document.getElementById('cost-tree');if(ce)ce.value=COST_TREE;}
+  if(typeof pa.survival_share_pct==='number'&&pa.survival_share_pct>0&&pa.survival_share_pct<=100){SURVIVAL=pa.survival_share_pct;const se=document.getElementById('survival');if(se)se.value=SURVIVAL;}
+  else if(pa.survival_share_pct===undefined){SURVIVAL=100;const se=document.getElementById('survival');if(se)se.value=100;}   // files written before survival existed assumed every tree matured; reproduce them exactly
   plantingShares.clear();
   const cells=doc.kind==='area'?(doc.selected?[doc.selected]:[]):(Array.isArray(doc.cells)?doc.cells:[]);
   let shares=0;for(const c of cells){if(c&&typeof c.planting_share==='number'&&c.id!=null){plantingShares.set(+c.id,Math.max(0,Math.min(100,c.planting_share)));shares++;}}
@@ -1695,6 +1703,7 @@ function resetMap(){
   RANK_FILTERS.clear();document.querySelectorAll('.pst').forEach(b=>{b.classList.remove('on');b.setAttribute('aria-pressed','false');});
   RANK_SORT='need';RANK_DIR=defaultDir('need');const rsl=document.getElementById('rank-sort');if(rsl)rsl.value='need';syncSortUI();
   COST_TREE=DEFAULT_COST_TREE;const ce=document.getElementById('cost-tree');if(ce)ce.value=DEFAULT_COST_TREE;
+  SURVIVAL=DEFAULT_SURVIVAL;const se=document.getElementById('survival');if(se)se.value=DEFAULT_SURVIVAL;
   const rs=document.getElementById('rank-search');if(rs)rs.value='';rankPage=0;buildRank();buildShortlist();
   if(map)fitData(map);
 }
@@ -1744,6 +1753,8 @@ function wireDrawers(){
   document.getElementById('d-prev').onclick=()=>step(-1);document.getElementById('d-next').onclick=()=>step(1);
   // editable cost per tree: feeds the scenario, the shortlist totals and every export
   document.getElementById('cost-tree').addEventListener('input',e=>{const v=+e.target.value;if(!(v>0))return;COST_TREE=v;
+    const f=selId!=null&&HEX.features.find(x=>x.properties.id===selId);if(f)updateROI(f.properties);buildShortlist();});
+  document.getElementById('survival').addEventListener('input',e=>{const v=+e.target.value;if(!(v>0&&v<=100))return;SURVIVAL=v;
     const f=selId!=null&&HEX.features.find(x=>x.properties.id===selId);if(f)updateROI(f.properties);buildShortlist();});
   document.getElementById('sl-export').onclick=exportShortlist;
   const clearSL=()=>{SHORTLIST.clear();saveShortlist();buildRank();syncDetailPin();toast('Shortlist cleared');};
@@ -2959,9 +2970,10 @@ function scenarioFor(p,share){
   // a partial assessment over unknown land. Placement remains conditional.
   const knownCanopy=p.canopy_baseline_ok?Math.max(p.canopy_m2||0,p.green/100*area):p.canopy_source==='usfs-2022'?Math.max(0,p.canopy_m2||0):0;
   const trees=Math.min(Math.round(capacity*share/100),Math.floor(Math.max(0,area-knownCanopy)/TREE_M2));
-  const delta=trees*TREE_M2/area*100, cost=trees*COST_TREE;
-  return {share,capacity,trees,canopy_gain_points:+delta.toFixed(2),cost_usd:cost,cooling_c:+(delta/10*0.3).toFixed(3),
-    known_canopy_m2:Math.round(knownCanopy),new_crown_m2:trees*TREE_M2,
+  const surviving=Math.round(trees*SURVIVAL/100);   // canopy and cooling come from these; cost from all planted
+  const delta=surviving*TREE_M2/area*100, cost=trees*COST_TREE;
+  return {share,capacity,trees,trees_surviving:surviving,survival_share_pct:SURVIVAL,canopy_gain_points:+delta.toFixed(2),cost_usd:cost,cooling_c:+(delta/10*0.3).toFixed(3),
+    known_canopy_m2:Math.round(knownCanopy),new_crown_m2:surviving*TREE_M2,
     future_canopy_pct:p.canopy_baseline_ok?+(p.green+delta).toFixed(1):null};
 }
 function updateROI(p){
@@ -2975,20 +2987,20 @@ function updateROI(p){
     return;
   }
   const sc_=scenarioFor(p,share);
-  const capacity=sc_.capacity, trees=sc_.trees, delta=trees*TREE_M2/areaOf(p)*100, cost=sc_.cost_usd;
+  const capacity=sc_.capacity, trees=sc_.trees, delta=sc_.trees_surviving*TREE_M2/areaOf(p)*100, cost=sc_.cost_usd;
   document.getElementById('roi-target').textContent=share;
   slider.setAttribute('aria-valuetext',share+' percent of theoretical street capacity');
   document.getElementById('roi-trees').textContent=fInt(trees);
   document.getElementById('roi-canopy').textContent='+'+delta.toFixed(1);
   document.getElementById('roi-temp').textContent=fTempD(delta/10*0.3);
-  document.getElementById('roi-cost').textContent=cost.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
+  document.getElementById('roi-cost').textContent='≈'+cost.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
   const baseline=p.canopy_baseline_ok
     ? `Canopy baseline: ${p.green.toFixed(1)}% → ${(p.green+delta).toFixed(1)}% at maturity. `
     : p.canopy_source==='usfs-2022'
       ? `Partial aerial coverage (${p.coverage_frac>0&&p.coverage_frac<.01?'<1':Math.round((p.coverage_frac||0)*100)}%). Whole-cell canopy total is not estimated. `
       : 'Whole-cell canopy baseline is unverified; future total is not estimated. ';
   document.getElementById('roi-note').textContent=trees
-    ? baseline+`Scenario assumes ${fInt(trees*TREE_M2)} m² of new, non-overlapping crown at maturity and $${COST_TREE.toLocaleString()} per tree. Site feasibility is unverified.`
+    ? baseline+`Of ${fInt(trees)} planted, ${fInt(sc_.trees_surviving)} are assumed to reach maturity (${SURVIVAL}% survival) and add ${fInt(sc_.new_crown_m2)} m² of new, non-overlapping crown. Cost is planting only at $${COST_TREE.toLocaleString()} per tree; establishment watering and maintenance are not included. Site feasibility is unverified.`
     : 'No planting in this scenario; no added canopy or cost.';
   document.getElementById('roi-feas').textContent=capacity
     ? `Mapped streets imply an upper bound of ${fInt(capacity)} tree positions at 10 m spacing on both sides. Actual capacity depends on ownership, existing trees, utilities and space.`

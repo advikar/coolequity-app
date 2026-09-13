@@ -37,12 +37,12 @@ for(const id of ['lst','green','pop','pct65','ac','access','score','holc','plant
 const DATA_PATH=`cities/${slug}/data/${slug}.geojson`;
 const data=JSON.parse(fs.readFileSync(DATA_PATH,'utf8'));
 const nodes=new Map();const node=id=>{if(!nodes.has(id))nodes.set(id,{textContent:'',value:25,disabled:false,setAttribute(){}});return nodes.get(id);};
-const ctx={document:{getElementById:node},CE_CITY:CITY,TREE_SPACING_M:10,TREE_M2:40,COST_TREE:500,areaOf:p=>p.area_m2,fInt:n=>Math.round(n).toLocaleString('en-US'),fTempD:v=>v.toFixed(2)+' C'};
+const ctx={document:{getElementById:node},CE_CITY:CITY,TREE_SPACING_M:10,TREE_M2:40,COST_TREE:500,SURVIVAL:70,areaOf:p=>p.area_m2,fInt:n=>Math.round(n).toLocaleString('en-US'),fTempD:v=>v.toFixed(2)+' C'};
 vm.createContext(ctx);
 const start=html.indexOf('const plantingShares=new Map();'),end=html.indexOf('function wireHover()',start);
 vm.runInContext(html.slice(start,end),ctx);
 let cases=0;
-for(const f of data.features){const p=f.properties;let last=0;for(const share of [0,25,50,100]){node('roi-slider').value=share;node('roi-slider').disabled=!(p.street_m>0);ctx.p=p;vm.runInContext('updateROI(p)',ctx);if(!p.scenario_ok){assert.equal(node('roi-trees').textContent,'—');assert.equal(node('roi-cost').textContent,'—');assert.match(node('roi-note').textContent,/mapped street capacity/);cases++;continue;}const trees=Number(node('roi-trees').textContent.replaceAll(',',''));assert(trees>=last);assert(trees<=Math.floor((p.street_m||0)*2/10));const known=p.canopy_baseline_ok?Math.max(p.canopy_m2,p.green/100*p.area_m2):p.canopy_source==='usfs-2022'?p.canopy_m2:0;assert(trees*40<=Math.max(0,p.area_m2-known)+1);if(!p.canopy_baseline_ok&&trees>0)assert(!node('roi-note').textContent.includes('→'));assert(!/NaN|Infinity/.test([...nodes.values()].map(n=>n.textContent).join(' ')));if(share===0){assert.equal(trees,0);assert.equal(node('roi-cost').textContent,'$0');}last=trees;cases++;}}
+for(const f of data.features){const p=f.properties;let last=0;for(const share of [0,25,50,100]){node('roi-slider').value=share;node('roi-slider').disabled=!(p.street_m>0);ctx.p=p;vm.runInContext('updateROI(p)',ctx);if(!p.scenario_ok){assert.equal(node('roi-trees').textContent,'—');assert.equal(node('roi-cost').textContent,'—');assert.match(node('roi-note').textContent,/mapped street capacity/);cases++;continue;}const trees=Number(node('roi-trees').textContent.replaceAll(',',''));assert(trees>=last);assert(trees<=Math.floor((p.street_m||0)*2/10));const known=p.canopy_baseline_ok?Math.max(p.canopy_m2,p.green/100*p.area_m2):p.canopy_source==='usfs-2022'?p.canopy_m2:0;assert(trees*40<=Math.max(0,p.area_m2-known)+1);if(!p.canopy_baseline_ok&&trees>0)assert(!node('roi-note').textContent.includes('→'));assert(!/NaN|Infinity/.test([...nodes.values()].map(n=>n.textContent).join(' ')));if(share===0){assert.equal(trees,0);assert.equal(node('roi-cost').textContent,'≈$0');}last=trees;cases++;}}
 assert.equal(data.features.filter(f=>f.properties.place==='res').length,EXPECT[slug].res);
 assert.equal(data.features.filter(f=>f.properties.holc).length,0);
 assert.equal(data.features.filter(f=>f.properties.place==='res'&&f.properties.green_src==='ndvi').length,EXPECT[slug].ndvi);
@@ -76,7 +76,7 @@ const directory=fs.readFileSync(`cities/${slug}/cooling.html`,'utf8');for(const 
 // city or schema is refused.
 {
   const ex={HEX:data,CE_CITY:CITY,LIVE:{score:new Map(),rank:new Map(),order:[]},POPW:.45,W_RAW:{heat:.2,green:.5,ac:.2,age65:.1,access:0},W_INPUTS:[{k:'heat'},{k:'green'},{k:'ac'},{k:'age65'},{k:'access'}],
-    CITY_NAV:[{slug:'x',name:'X'}],THIS_CITY:'x',CITY_SLUG:'x',DATA_URL:'../data/x.geojson?v=t',TREE_SPACING_M:10,TREE_M2:40,COST_TREE:500,
+    CITY_NAV:[{slug:'x',name:'X'}],THIS_CITY:'x',CITY_SLUG:'x',DATA_URL:'../data/x.geojson?v=t',TREE_SPACING_M:10,TREE_M2:40,COST_TREE:500,SURVIVAL:70,
     nameOf:p=>p.name,areaOf:p=>p.area_m2,isDefaultW:()=>true,matchPreset:()=>({id:'default'}),selId:null,
     document:{getElementById:()=>null,createElement:()=>({click(){},remove(){},style:{}}),body:{appendChild(){}}},
     Blob:function(){},URL:{createObjectURL:()=>'blob:',revokeObjectURL(){}},crypto:{subtle:{digest:async()=>new ArrayBuffer(32)}},TextEncoder,

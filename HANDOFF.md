@@ -148,3 +148,16 @@
   caveat; 2 county-listed sites are in the area; no HOLC map; Overpass needed three mirrors
   for streets. `06_audit_rebuild.py` not run (no baseline); `reports/` empty; guide and
   cooling pages are rewritten West CC copies.
+
+## Checkpoint — September 13, 2026: chooser/panel friction; survival in planting scenarios
+
+- Chooser cards and the in-map city switch open the map directly (`?go=1`); the start screen
+  stays for direct links and the home button. `CE_CITY.introNote` also renders under the
+  panel lead (`#pnote`). "Color the map by", "Places to cool off", "Export & share" start
+  folded (`FOLD_CLOSED_DEFAULT`; a viewer's own toggle is remembered).
+- Planting scenarios: `SURVIVAL` (default 70%, `#survival` input). `scenarioFor` returns
+  `trees` (planted, carries cost) and `trees_surviving` (carries canopy gain, cooling,
+  `new_crown_m2`, `future_canopy_pct`). Scenario files carry
+  `planting_assumptions.survival_share_pct`; files without it load at 100% so they reproduce
+  what they showed. Test contexts seed `SURVIVAL:70`. Every guide's Planting and Cost topics
+  describe it, citing Ko, Lee, McPherson & Roman 2015 (42.4% alive at 22 years).
