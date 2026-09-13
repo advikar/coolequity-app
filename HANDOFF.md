@@ -202,3 +202,10 @@
 - User-facing copy converted to American spelling (color, center, program, meters, normalized,
   labeled, gray). OSM tag value `community_centre` and the CDP name "Contra Costa Centre"
   are untouched on purpose.
+
+## Checkpoint — September 13, 2026: study-area topics in the West CC and Pittsburg guides
+
+- New first topic `#area` ("About this study area") and rewritten `#findings` in both guides,
+  with numbers taken from the current data and `reports/stability_<slug>.json`. If a build
+  is re-scored, refresh those numbers by hand (they are prose, not generated). Method topics
+  intentionally match the county guide word for word.
