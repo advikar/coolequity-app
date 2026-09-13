@@ -16,8 +16,8 @@ BBOX = (-119.2653, 35.1940, -118.7727, 35.4480)
 H3_RES = 9
 
 # ---------------------------------------------------------------- scoring
-# Bakersfield scores all four inputs — the only build that does — and both of
-# the reasons the other cities dropped one are absent here.
+# Bakersfield scores heat, canopy and age. A/C is present, movable, and ships
+# at 0 for the same reason San Ramon zeroed it (see below).
 #
 # HEAT counts. Contra Costa had to zero it because that county runs from the
 # Richmond shoreline to the Delta and 38.8% of its surface-temperature variance
@@ -26,16 +26,16 @@ H3_RES = 9
 # ~30 km across with no marine gradient, so within-city normalisation compares
 # like with like. Measured range: 33.2-58.1 C, median 49.8 C.
 #
-# A/C ACCESS counts. San Ramon had to zero it because its block-group median
-# incomes ran $100,906-$250,001. Kern's run $14,159-$250,001, with 42% of block
-# groups under $60k. Note the Census LACE estimate is nearly uniform here
-# (96.5-100% of occupied homes across ranked cells), so it carries little
-# ranking signal; the "Canopy only" preset shows the answer without it.
+# A/C ACCESS ships at 0. The Census LACE 2023 estimate is nearly uniform here
+# (96.5-100% of occupied homes across ranked cells, median 99.8%). Min-max
+# scaling would stretch that 3.5-point modelled spread to a full 0-1 term, so a
+# non-zero weight would score model noise, not a housing difference. The input
+# stays measured, displayed and movable; the "Homes without A/C" preset shows it.
 WEIGHTS = {
-    "heat":     0.35,   # heat_n
-    "green":    0.25,   # (1 - canopy_n)
-    "ac":       0.25,   # (1 - ac_access_n)
-    "age65":    0.15,   # age65_n
+    "heat":     0.45,   # heat_n
+    "green":    0.35,   # (1 - canopy_n)
+    "ac":       0.00,   # (1 - ac_access_n) — nearly uniform, see above
+    "age65":    0.20,   # age65_n
 }
 
 # ---------------------------------------------------------------- census (US)

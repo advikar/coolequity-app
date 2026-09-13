@@ -44,6 +44,7 @@ window.CE_CITY={
   centersVersion:'20260907-ehsd',
   coolingLinkLabel:"County-listed locations & contacts ↗",
   scoreTitle:"Canopy priority",
+  introNote:"Surface heat is measured and shown here but not scored: across a county that runs from the Bay shoreline to the Delta it mostly tracks distance from the water, not a shade problem. The ranking uses tree cover, homes without A/C and older residents.",
   weights:{heat:0.00,green:0.55,ac:0.25,age65:0.20,access:0},
   inputNotes:{heat:"climate-confounded at county scale — starts at 0",ac:"Census LACE estimate — scored here"},
   /** Presets set all four weights at once. w:'default' / pop:'default' mean the

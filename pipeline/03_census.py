@@ -341,7 +341,13 @@ def load_lace():
     Download LACE_23_Tract.csv into data/_cache/ac_src/ (see DATA_QUALITY.md AC-1).
     """
     if not LACE_TRACT.exists():
-        return {}
+        if os.environ.get("COOLEQUITY_ALLOW_INCOME_MODEL") == "1":
+            print(f"  WARNING: {LACE_TRACT} missing; every cell falls back to the income model",
+                  file=sys.stderr)
+            return {}
+        sys.exit(f"03_census: {LACE_TRACT} is missing. Download LACE_23_Tract.csv (README, "
+                 "'downloaded by hand') or set COOLEQUITY_ALLOW_INCOME_MODEL=1 to knowingly "
+                 "score A/C from the income model instead.")
     df = pd.read_csv(LACE_TRACT, dtype={"STATE": str, "COUNTY": str, "TRACT": str})
     df["AC_PE"] = pd.to_numeric(df["AC_PE"], errors="coerce")
     df = df[df["AC_PE"].between(0, 100)]

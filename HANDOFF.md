@@ -1,5 +1,25 @@
 # HANDOFF
 
+## Checkpoint — September 13, 2026 (Claude): audit fixes before sharing with city staff
+
+- **Map page.** Opening an area no longer marks the session unsaved (only a moved planting
+  slider does; `userShares`). A/C driver copy now reads "homes without A/C (N% lack it)". The
+  legend caption element existed only in code; it is now in the DOM. Dead Simple/Explore mode
+  code removed. Hover and centers popups escape `land`/`kind` from the data files. Landsat
+  wording is "late morning", not "afternoon" (also in every guide's sort glossary). Share-link
+  hash rejects NaN/all-zero weights; `SITE_ROOT` tolerates an explicit `index.html`. Minimum
+  type size in the panel is 11px. Hackathon-era comments and the hard-coded LA map centre are gone.
+- **Start screens.** `CE_CITY.introNote` renders under the Explore button; Contra Costa uses
+  it to say heat is shown but not scored. The chooser page no longer says "reference build" /
+  "current build" / "severity case".
+- **Bakersfield A/C weight 0.25 → 0** (heat 0.45, canopy 0.35, age 0.20): LACE runs 96.5–100%
+  across ranked cells, so the old term scored model noise. `05_score.py` re-run; ranks moved
+  a lot (top-25 overlap with the previous build 4/25, median |rank move| 230). Guide, README
+  and city.js updated. Not yet audited with `06_audit_rebuild.py`.
+- **Pipeline.** `03_census.py` now stops when the LACE CSV is missing unless
+  `COOLEQUITY_ALLOW_INCOME_MODEL=1`; README lists the two hand-downloaded inputs.
+- `scripts/test.sh` passes for all three cities. Not pushed at the time of writing.
+
 ## Checkpoint — September 12, 2026 (Claude): city switching no longer carries weights over
 
 - Fix (c28a40b): app/index.html saves the per-tab state under `ce-session-<slug>` instead of one

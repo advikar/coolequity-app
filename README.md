@@ -10,7 +10,7 @@ survey; every number carries its source and limits in each city's in-app guide.
 | City | Map | Areas ranked | Residents | Tree cover | A/C | Heat weight |
 |---|---|---|---|---|---|---|
 | Contra Costa County | [contracosta/app/](https://advikar.github.io/coolequity-app/contracosta/app/) | 2,697 | 1.16M | USFS/CAL FIRE 2022 aerial; greenness stand-in on 431 areas | Census LACE 2023, scored | 0 |
-| Bakersfield | [bakersfield/app/](https://advikar.github.io/coolequity-app/bakersfield/app/) | 3,788 | 410k | USFS/CAL FIRE 2022 aerial | LACE 2023, scored | 0.35 |
+| Bakersfield | [bakersfield/app/](https://advikar.github.io/coolequity-app/bakersfield/app/) | 3,788 | 410k | USFS/CAL FIRE 2022 aerial | LACE 2023, not scored (96.5–100% everywhere) | 0.45 |
 | San Ramon | [sanramon/app/](https://advikar.github.io/coolequity-app/sanramon/app/) | 419 | 85k | USFS/CAL FIRE 2022 aerial | LACE 2023, not scored | 0.45 |
 
 All three share one app, one pipeline and one method: ACS 2020–2024 population and age
@@ -98,6 +98,14 @@ export COOLEQUITY_CITY=bakersfield
 .venv/bin/python pipeline/05_score.py
 .venv/bin/python pipeline/06_audit_rebuild.py --baseline <dir with the previous outputs>
 ```
+
+Two inputs are downloaded by hand and are not in the repository:
+
+- **Census LACE 2023** (A/C prevalence by tract): put `LACE_23_Tract.csv` at
+  `cities/<slug>/data/_cache/ac_src/LACE_23_Tract.csv`. `03_census.py` stops if it is missing;
+  set `COOLEQUITY_ALLOW_INCOME_MODEL=1` to knowingly fall back to the income model instead.
+- **USFS/CAL FIRE 2022 canopy** rasters: see the docstring of `02d_canopy_usfs.py` for the
+  download and where to place the zips.
 
 Each step's docstring states its inputs, outputs and fallbacks. `03_census.py` decides for
 itself whether the OSM building mask is complete and unbiased enough to place residents with,

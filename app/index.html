@@ -12,7 +12,7 @@
 <script src="vendor/maplibre-gl.js"></script>
 <style>
   /* Typefaces are VENDORED, not linked from fonts.googleapis.com — same reason
-     MapLibre is (fixed bug 11). A <link> to Google Fonts would put an off-host
+     MapLibre is. A <link> to Google Fonts would put an off-host
      request back on the critical path and cost `?flat=1` its "zero external
      requests" property; on dead venue Wi-Fi you'd also eat a swap flash on
      every heading. Latin subsets only, 63 KB for both. Inter and Instrument
@@ -58,7 +58,7 @@
   .intro-scrim{position:absolute;inset:0;
     background:radial-gradient(115% 85% at 22% 45%,rgba(8,11,16,.97) 20%,rgba(8,11,16,.72) 52%,rgba(8,11,16,.35) 100%)}
   .intro-card{position:relative;width:min(760px,calc(100% - 64px));padding:0 8px;margin:auto 0}
-  /* The product has to say its own name on the screen the judges see first. */
+  /* The product says its own name on the first screen. */
   .wordmark{display:flex;align-items:baseline;gap:11px;margin-bottom:22px}
   .wordmark .wm{font-family:var(--display);font-weight:400;font-size:34px;line-height:1;
     letter-spacing:-.01em;color:#fff}
@@ -99,7 +99,7 @@
   .city .cco{font-size:10.5px;color:var(--muted2);flex:none}
   .city:hover,.city.cur{background:#151d27;color:var(--txt)}
   .city.on{background:#1a1310;color:var(--txt);box-shadow:inset 0 0 0 1px var(--accent)}
-  .city .cs{font-size:9px;letter-spacing:.05em;text-transform:uppercase;font-weight:700;
+  .city .cs{font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-weight:700;
     padding:2px 6px;border-radius:20px;background:#12261e;color:#4fd1a0;flex:none}
   .city .cs.soon{background:#1a1f27;color:var(--muted2)}
   .cnone{padding:11px 12px;font-size:11.5px;color:var(--muted2);line-height:1.5}
@@ -113,7 +113,8 @@
     box-shadow:0 8px 26px rgba(255,122,69,.28);transition:transform .16s,box-shadow .16s}
   .cta:hover{transform:translateY(-1px);box-shadow:0 12px 32px rgba(255,122,69,.36)}
   .cta .ico{opacity:1;stroke-width:2}
-  .fine{margin:20px 0 0;font-size:10.5px;color:var(--muted2);line-height:1.6;max-width:62ch}
+  .inote{margin:18px 0 0;font-size:13px;color:#e6dccb;line-height:1.55;max-width:62ch;border-left:3px solid #ffb35a;padding-left:12px}
+  .fine{margin:20px 0 0;font-size:11.5px;color:var(--muted2);line-height:1.6;max-width:62ch}
   @media (prefers-reduced-motion:reduce){#intro{transition:opacity .01s}#intro.gone{transform:none}}
   /* Short-window ladder. The card is ~910px tall at its most generous, so on a
      720–860px laptop it would scroll; these tighten it to fit before the scroll
@@ -175,10 +176,11 @@
   /* Low-signal note: the mix rests on an input that barely varies here. */
   .signal{font-size:11px;line-height:1.5;margin:0 0 10px;padding:8px 10px;border-radius:8px;background:#221609;border:1px solid #4a3520;color:#ffd28c}
   .signal[hidden]{display:none}
-  #legend .lrel{font-size:10px;color:var(--muted);margin-top:5px}
+  #legend .lrel{font-size:11px;color:var(--muted);margin-top:5px}
+  #legend .lcap{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.4}
   #legend .lrel[hidden]{display:none}
   /* Ranked list: how far each area moved against the recommended mix. */
-  .row .mv{display:inline-block;font-size:9.5px;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:6px;vertical-align:1px;font-variant-numeric:tabular-nums}
+  .row .mv{display:inline-block;font-size:11px;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:6px;vertical-align:1px;font-variant-numeric:tabular-nums}
   .mv.up{color:#6ee7a8;background:#0f2019}.mv.dn{color:#ffb4a2;background:#2a1410}.mv.eq{color:var(--muted2);background:#151c25}
   #rank-change{font-size:11px;color:var(--muted);line-height:1.5;margin:8px 0 0;padding:8px 10px;border-radius:8px;background:#141a12;border:1px solid #2a4a3d}
   #rank-change b{color:#6ee7a8}
@@ -211,7 +213,7 @@
   .layer.active{border-color:var(--accent);background:#1a1410;color:var(--txt);box-shadow:inset 0 0 0 1px rgba(255,122,69,.35)}
   .layer b{font-size:12.5px;font-weight:600}
   .layer span{font-size:10.5px;color:var(--muted2)}
-  .tag{font-size:9px;letter-spacing:.04em;background:#2a2030;color:#d3a4e0;border:1px solid #47324f;padding:1px 5px;border-radius:20px;font-weight:600}
+  .tag{font-size:11px;letter-spacing:.04em;background:#2a2030;color:#d3a4e0;border:1px solid #47324f;padding:1px 5px;border-radius:20px;font-weight:600}
   .tag.us{background:#221c2e;color:#c7a3e6;border-color:#402f57}
   /* toggles */
   .toggle{display:flex;align-items:center;gap:10px;padding:8px 0;cursor:pointer}
@@ -259,11 +261,11 @@
   .disc .dchev{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.2;
     transition:transform .18s}
   .disc[aria-expanded=true] .dchev{transform:rotate(90deg)}
-  .disc .dnote{margin-left:auto;font-size:10px;color:var(--muted2)}
+  .disc .dnote{margin-left:auto;font-size:11px;color:var(--muted2)}
   #wadv[hidden],#kadv[hidden]{display:none}
   #wadv,#kadv{padding-top:11px}
   .wexp{font-size:10.5px;color:var(--muted2);line-height:1.55;margin:0 0 11px}
-  .wexp code{font-family:var(--mono);font-size:10px;color:var(--accent2)}
+  .wexp code{font-family:var(--mono);font-size:11px;color:var(--accent2)}
   .wrow{margin-bottom:11px}
   .wrow .wtop{display:flex;align-items:baseline;gap:7px;font-size:12px;margin-bottom:5px}
   .wrow .wsw{width:8px;height:8px;border-radius:2px;flex:none;align-self:center}
@@ -275,7 +277,7 @@
     font:inherit;font-size:10.5px;padding:4px 9px;border-radius:7px;cursor:pointer;transition:.15s}
   #w-reset:hover{color:var(--txt);border-color:#3a4a5c}
   #w-reset[disabled]{opacity:.4;cursor:default}
-  .wstate{font-size:9px;letter-spacing:.06em;font-weight:600;padding:2px 7px;border-radius:20px;
+  .wstate{font-size:11px;letter-spacing:.06em;font-weight:600;padding:2px 7px;border-radius:20px;
     text-transform:none;border:1px solid #2a4a3d;background:#0f2019;color:#4fd1a0}
   .wstate.custom{border-color:#4a3520;background:#211609;color:var(--accent2)}
   /* ---- score breakdown ---- */
@@ -289,7 +291,7 @@
   .bd td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:10px;font-size:10.5px}
   .bd td.p{text-align:right;font-variant-numeric:tabular-nums;color:var(--txt);font-weight:650;padding-left:10px;width:44px}
   .bd tr.sum td{border-top:1px solid var(--edge);padding-top:6px;color:var(--txt)}
-  .bd .eq{font-size:10px;color:var(--muted2);margin-top:8px;line-height:1.5;font-family:var(--mono)}
+  .bd .eq{font-size:11px;color:var(--muted2);margin-top:8px;line-height:1.5;font-family:var(--mono)}
   /* The colour scale sits on the map it describes, bottom-left, always visible. */
   #legend{position:absolute;left:14px;bottom:26px;z-index:5;width:232px;background:rgba(12,17,23,.88);backdrop-filter:blur(8px);border:1px solid var(--edge);border-radius:11px;padding:10px 12px 9px}
   #legend .lbl{font-size:12px;margin:0;flex:1}
@@ -305,11 +307,11 @@
   #legend .method-link{font-size:11px;margin-top:6px}
   /* The direction of the ramp is the single thing a reader gets wrong on a
      choropleth, so it is stated in words under the bar, on the correct side. */
-  .legend .dir{display:flex;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;
+  .legend .dir{display:flex;font-size:11px;letter-spacing:.07em;text-transform:uppercase;
     color:var(--accent2);font-weight:600;margin-top:5px}
   .legend .dir.hi{justify-content:flex-end}
   .holc-key{display:flex;gap:6px;margin-top:4px}
-  .holc-key div{flex:1;text-align:center;font-size:10px;color:#0b0f14;font-weight:700;border-radius:5px;padding:3px 0}
+  .holc-key div{flex:1;text-align:center;font-size:11px;color:#0b0f14;font-weight:700;border-radius:5px;padding:3px 0}
   #rankwrap{display:flex;flex-direction:column}
   #rank{padding:4px 12px 10px}
   .row{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:9px;cursor:pointer;transition:.12s}
@@ -340,7 +342,7 @@
   .metric .top span:last-child{font-weight:650;font-variant-numeric:tabular-nums}
   .track{height:6px;background:#0a0e13;border-radius:4px;overflow:hidden}
   .fill{height:100%;border-radius:4px}
-  .est{font-size:9px;color:#c7a3e6;border:1px solid #402f57;border-radius:10px;padding:0 5px;margin-left:6px;vertical-align:middle}
+  .est{font-size:11px;color:#c7a3e6;border:1px solid #402f57;border-radius:10px;padding:0 5px;margin-left:6px;vertical-align:middle}
   /* ROI */
   .roi{margin-top:8px;background:#0c141d;border:1px solid var(--edge);border-radius:12px;padding:14px 14px 16px}
   .roi h3{margin:0 0 3px;font-size:13px;display:flex;align-items:center;gap:7px}
@@ -358,15 +360,15 @@
   .roi-out{display:grid;grid-template-columns:1fr 1fr;gap:9px}
   .stat{background:#0a1017;border:1px solid var(--edge);border-radius:9px;padding:9px 11px}
   .stat .v{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
-  .stat .k{font-size:10px;color:var(--muted2);margin-top:3px;line-height:1.25}
+  .stat .k{font-size:11px;color:var(--muted2);margin-top:3px;line-height:1.25}
   .roi-out .stat.hero{grid-column:1/-1}
   .stat.hero .v{color:var(--good)}
-  .roi-note{font-size:9.5px;color:var(--muted2);margin-top:11px;line-height:1.4}
+  .roi-note{font-size:11px;color:var(--muted2);margin-top:11px;line-height:1.4}
   .roi-feas{font-size:10.5px;line-height:1.55;margin-top:11px;padding:9px 11px;
     border-radius:9px;background:#0c1219;border:1px solid var(--edge);color:var(--muted)}
   .roi-feas b{color:var(--txt)}
   .roi-feas .ok{color:#6ee7a8}.roi-feas .gap{color:var(--accent)}
-  .roi-src{font-size:9.5px;color:var(--muted2);margin-top:9px;line-height:1.5;
+  .roi-src{font-size:11px;color:var(--muted2);margin-top:9px;line-height:1.5;
     border-top:1px solid var(--edge);padding-top:9px}
   .roi-src b{color:var(--muted);font-weight:600}
   .roi-src div{margin-top:3px}
@@ -379,13 +381,12 @@
   .maplibregl-ctrl button .maplibregl-ctrl-icon{filter:invert(.9)}
   .scroll::-webkit-scrollbar,.dbody::-webkit-scrollbar{width:9px}
   .scroll::-webkit-scrollbar-thumb,.dbody::-webkit-scrollbar-thumb{background:#1c2530;border-radius:6px;border:2px solid transparent;background-clip:content-box}
-  .foot{padding:11px 20px;font-size:10px;color:var(--muted2);line-height:1.4}
-  .disclaim{margin-top:8px;padding-top:8px;border-top:1px solid var(--edge);font-size:9.5px;color:var(--muted2);line-height:1.45}
+  .foot{padding:11px 20px;font-size:11px;color:var(--muted2);line-height:1.4}
+  .disclaim{margin-top:8px;padding-top:8px;border-top:1px solid var(--edge);font-size:11px;color:var(--muted2);line-height:1.45}
   /* ---- two-speed panel (Simple / Explore) ---- */
   .modehead{position:sticky;top:0;z-index:6;display:flex;align-items:center;gap:10px;
     padding:11px 20px;background:var(--panel);border-bottom:1px solid var(--edge)}
   .modehint{font-size:11.5px;color:var(--muted);letter-spacing:.01em}
-  #app.simple .adv-only{display:none}
   #app.explore .simple-only{display:none}
   .takeaway{font-size:13px;line-height:1.6;color:var(--muted)}
   .takeaway b{color:var(--txt);font-weight:650}
@@ -434,6 +435,7 @@
   :focus-visible{outline:3px solid #ffb703;outline-offset:3px}
   .helpnav{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
   .helpnav a,.helpnav button{font:600 12px var(--sans);color:var(--txt);background:#1b2733;border:1px solid #3e4d5e;border-radius:7px;padding:9px 10px;text-decoration:none;cursor:pointer}
+  #ifine a{color:#ffd28c}
   .method-link{display:inline-block;color:#ffd28c;font-size:12px;line-height:1.5;margin-top:9px;text-underline-offset:3px}
   .info-link{position:relative;display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;flex:none;font:600 10px var(--sans);color:#c5ceda;text-decoration:none;vertical-align:middle;text-transform:none}
   .info-link::before{content:"";position:absolute;inset:4px;border:1px solid #718298;border-radius:50%;pointer-events:none}
@@ -471,7 +473,7 @@
   .export .hint{flex-basis:100%;margin:2px 0 0}
   .export .hint.warn{color:#ffd28c}
   .roi .sub{font-size:12px}
-  .cooling-secondary{font-size:12px;color:var(--muted);margin:12px 0}.cooling-secondary b{color:var(--text);margin-left:6px}
+  .cooling-secondary{font-size:12px;color:var(--muted);margin:12px 0}.cooling-secondary b{color:var(--txt);margin-left:6px}
   #roi-slider{width:100%;min-height:32px}
   .brand p{font-size:12px}
   #detail{width:370px}
@@ -485,7 +487,7 @@
     #intro-city{position:static;margin:14px 24px 0}
     #mapwrap{flex:1;min-height:0;width:100%}
     #detail{width:100%;height:100dvh;z-index:45}
-    #chip{max-width:calc(100% - 28px);font-size:10px;white-space:normal}
+    #chip{max-width:calc(100% - 28px);font-size:11px;white-space:normal}
     .mapctl{top:58px}
     .fhead{padding:10px 14px 10px 10px}.fbody{padding:0 14px 12px}
     .intro-card{padding:24px;width:100%;max-height:100dvh;overflow:auto}
@@ -546,7 +548,7 @@
   .row .mxs{grid-column:2/5;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:1px}
   .row .mx{display:flex;align-items:baseline;gap:4px;font-variant-numeric:tabular-nums;white-space:nowrap}
   .row .mx b{font-size:11px;font-weight:600;color:var(--muted)}
-  .row .mx i{font-style:normal;font-size:9.5px;color:var(--muted2);letter-spacing:.03em}
+  .row .mx i{font-style:normal;font-size:11px;color:var(--muted2);letter-spacing:.03em}
   .row:focus-visible{outline:2px solid var(--accent2);outline-offset:-2px}
   /* 24px hit area for touch and keyboard; full opacity whenever the row has focus. */
   .pin{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:none;border:0;padding:0;color:var(--muted2);font:17px/1 var(--sans);cursor:pointer;opacity:.55;transition:.12s;margin:0 -2px}
@@ -721,7 +723,7 @@
 <!-- Landing overlay. Sits ON TOP of a fully-booted app rather than gating it:
      the map, the data and the panel are all live behind this, so dismissing it
      is a fade, not a load. Nothing here waits on the intro, which is the same
-     rule as fixed bugs 4/5/9 — never put the data path behind an interaction. -->
+     rule as before — never put the data path behind an interaction. -->
 <div id="intro">
   <canvas id="intro-canvas" aria-hidden="true"></canvas>
   <div class="intro-scrim"></div>
@@ -734,6 +736,7 @@
     <div class="istats" id="istats"></div>
     <button class="cta" id="intro-go"><span id="intro-go-label">Explore</span>
       <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button>
+    <p class="inote" id="inote" hidden></p>
     <p class="fine" id="ifine"></p>
   </div>
 </div>
@@ -765,8 +768,6 @@
     </div>
 
     <div class="scroll">
-      <!-- Kept hidden: the script still wires the mode switch. One panel, no modes. -->
-      <div class="modehead" hidden><div class="seg modeseg" id="mode" role="group" aria-label="Detail level"><button data-m="explore" class="on" type="button">Explore</button></div><span id="mode-hint" hidden></span></div>
 
       <section class="section fold" id="weights" data-fold="weights">
         <div class="fhead">
@@ -933,6 +934,7 @@
         <div class="ends"><span id="legend-lo">low</span><span id="legend-hi">high</span></div>
         <div class="dir" id="legend-dir">↑ more need for cooling</div>
         <div class="lrel" id="legend-rel">Relative ranking within this area</div>
+        <div class="lcap" id="legend-cap"></div>
         <div class="lhint" id="legend-hint">Click any area to see why it ranks there</div>
         <div class="holc-key" id="holc-key" style="display:none">
           <div style="background:#6ea966">A</div><div style="background:#6a9fb5">B</div>
@@ -1040,8 +1042,9 @@ const CITY_SLUG    = CE_CITY.slug;
 const CITY_NAV=window.CE_CITIES;
 const THIS_CITY=CITY_SLUG;
 const _selfSub=(CITY_NAV.find(c=>c.slug===THIS_CITY)||{}).sub||'';
-const SITE_ROOT=(_selfSub && location.pathname.endsWith(_selfSub))
-  ? location.pathname.slice(0,-_selfSub.length) : '/';
+const _path=location.pathname.replace(/index\.html$/,'');
+const SITE_ROOT=(_selfSub && _path.endsWith(_selfSub))
+  ? _path.slice(0,-_selfSub.length) : '/';
 const DATA_URL     = `../data/${_q.get('data') || CITY_SLUG}.geojson?v=${CE_CITY.dataVersion}`;
 const CENTERS_URL  = `../data/centers_${CITY_SLUG}.geojson?v=${CE_CITY.centersVersion}`;
 const BOUNDARY_URL = `../data/boundary_${CITY_SLUG}.geojson`;  // flat fallback only
@@ -1101,8 +1104,8 @@ const emptyWrap=e=>current!=='score'?e:['case',['==',['get','place'],'empty'],EM
 /* ------------------------------------------------- what a "cooling center" is
  * Not a guess and not a category we invented: these are the four OpenStreetMap
  * tags 04_overlays.py actually queries, kept keyed by the exact `kind` string
- * the pipeline writes into centers.geojson. Counts are LA's, filled at boot from
- * the file rather than hardcoded, so this stays true if you repoint the city. */
+ * the pipeline writes into centers.geojson. Counts are filled at boot from the
+ * file rather than hardcoded, so this stays true for every city. */
 const KIND={
   library:           {c:'#1d4ed8',label:'Public library',
     what:'Mapped library. Verify opening hours, air conditioning and access before visiting.'},
@@ -1139,7 +1142,7 @@ const fInt   = v => Math.round(v).toLocaleString();
    annotate it instead of leaving the reader to infer the direction. */
 const LAYERS={
   score:{title:CE_CITY.scoreTitle,ramp:PRIORITY,worse:'hi',fmt:v=>v.toFixed(0),
-    cap:'Composite of surface heat, missing canopy, low A/C access and share aged 65+, scaled by the population exposed. Weights are live — drag them above. Deeper = greater need for cooling investment.'},
+    cap:'Weighted mix of the inputs in force, scaled by the population exposed. Weights are live — drag them above. Deeper = greater need for cooling investment.'},
   lst:{title:'Surface temperature',ramp:HEAT,worse:'hi',fmt:v=>fTemp(v),
     cap:'Mid-morning surface temperature, summer medians 2022–24. This is not air temperature.'},
   green:{title:'Tree cover',ramp:CANOPY,worse:'lo',fmt:v=>v.toFixed(0)+'%',
@@ -1657,7 +1660,7 @@ function saveSession(patch){
 function resetMap(){
   // Close the area first: re-rendering it would write its planting share back.
   if(!document.getElementById('detail').inert)document.getElementById('d-close').click();
-  plantingShares.clear();
+  plantingShares.clear();userShares.clear();
   applyPreset('default');
   holcOn=false;accessOn=false;syncToggles();setLayer('score');
   kindOn=new Set(KIND_KEYS.filter(k=>document.querySelector(`.kind[data-k="${k}"]`)));syncKinds();
@@ -1743,7 +1746,7 @@ function wireFolds(){
 /* ================================================================ leaving
  * Weights and planting shares live in this tab's session, so closing the tab
  * loses them. Offer the scenario file before the start screen or a tab close. */
-function isDirty(){return !isDefaultW()||[...plantingShares.values()].some(v=>v>0);}
+function isDirty(){return !isDefaultW()||userShares.size>0;}
 let leaving=false;
 function goHome(){
   // Keep ?flat=1 (it is a rehearsal mode, not a destination) and drop ?go /
@@ -1791,14 +1794,14 @@ const TIPS={
   planting:{t:'Planting scenario',d:'Explore how many street trees could fit along this area’s mapped streets, what they would cost, and the shade they would add at maturity. An estimate for scoping, not a plan.'},
   cost:{t:'Trees & cost',d:'Tree count comes from mapped street length at 10 m spacing; cost is trees × $500, a planning assumption rather than a quote.'},
   cooling:{t:'Illustrative cooling',d:'A rough, literature-based figure for how much new shade could cool summer air once the trees are mature. Not a forecast for this place.'},
-  lst:{t:'Surface heat',d:'How hot the ground gets on a summer afternoon, measured by satellite. It is not the air temperature people feel, but hot ground is where shade helps most.'},
+  lst:{t:'Surface heat',d:'How hot the ground gets in summer, measured by satellite in late morning (the Landsat overpass, about 10:30 am). It is not the air temperature people feel, but hot ground is where shade helps most.'},
   green:{t:'Tree cover',d:'The share of assessed land covered by tree crowns, from an aerial assessment. Low tree cover is the strongest sign an area would benefit from planting.'},
   veg:{t:'Greenness (satellite)',d:'A satellite index of plant cover on a 0–100 scale, used only where no tree-cover survey exists. It counts grass and crops as well as trees.'},
   pop:{t:'Population',d:'Estimated residents, allocated into each area from larger census blocks. More people means a change here helps more people.'},
   pct65:{t:'Residents aged 65+',d:'The estimated share of residents aged 65 or older, who are most at risk in extreme heat.'},
   ac:{t:'Homes with A/C',d:'The Census estimate of homes with air conditioning. Fewer homes with A/C means more reliance on shade and public cooling.'},
   holc:{t:'Redlining (1930s)',d:'Historical federal lending grades, shown where a map exists. Areas graded “hazardous” then are often the hottest and least shaded now.'},
-  sort:{t:'Sort options',d:'Need: the priority score under the current mix (the rank badges). Residents: estimated people living in the area. Surface heat: summer afternoon ground temperature from satellite. Tree cover: share of assessed land under tree crowns. Walk to cooling: estimated minutes on foot to the nearest cool place. Age 65+: share of residents aged 65 or older. Sorting re-orders the list only; rank badges and the map never change.'},
+  sort:{t:'Sort options',d:'Need: the priority score under the current mix (the rank badges). Residents: estimated people living in the area. Surface heat: summer late-morning ground temperature from satellite. Tree cover: share of assessed land under tree crowns. Walk to cooling: estimated minutes on foot to the nearest cool place. Age 65+: share of residents aged 65 or older. Sorting re-orders the list only; rank badges and the map never change.'},
   geography:{t:'About these areas',d:'Each hexagon is a fixed analysis area, not a neighborhood boundary. Names are the nearest mapped place; grey areas have no residents to rank.'},
 };
 function tipFor(a){const m=(a.getAttribute('href')||'').match(/#([a-z0-9-]+)/);return m&&TIPS[m[1]]?{...TIPS[m[1]],href:a.getAttribute('href')}:null;}
@@ -1944,8 +1947,8 @@ ${sl.length?`<div class="page"><h2>Shortlist · ${sl.length} area${sl.length===1
 /** Apply the view carried in the URL hash (from the Share button). */
 function applyHash(){
   try{const h=new URLSearchParams(location.hash.slice(1));
-    if(h.has('w')){const ws=h.get('w').split(',').map(Number);if(ws.length===W_INPUTS.length&&ws.every(v=>v>=0)){W_INPUTS.forEach((w,i)=>{W_RAW[w.k]=ws[i]/100;const el=document.getElementById('ws-'+w.k);if(el)el.value=ws[i];});
-      if(h.has('pop')){POPW=Math.max(0,Math.min(1,+h.get('pop')/100));const pe=document.getElementById('ws-pop');if(pe)pe.value=Math.round(POPW*100);}applyWeights();}}
+    if(h.has('w')){const ws=h.get('w').split(',').map(Number);if(ws.length===W_INPUTS.length&&ws.every(v=>Number.isFinite(v)&&v>=0)&&ws.some(v=>v>0)){W_INPUTS.forEach((w,i)=>{W_RAW[w.k]=ws[i]/100;const el=document.getElementById('ws-'+w.k);if(el)el.value=ws[i];});
+      if(h.has('pop')&&Number.isFinite(+h.get('pop'))){POPW=Math.max(0,Math.min(1,+h.get('pop')/100));const pe=document.getElementById('ws-pop');if(pe)pe.value=Math.round(POPW*100);}applyWeights();}}
     if(h.has('layer')&&LAYERS[h.get('layer')]&&!['holc','access'].includes(h.get('layer')))setLayer(h.get('layer'));
     if(h.get('sel'))setTimeout(()=>{const id=+h.get('sel');if(HEX.features.some(f=>f.properties.id===id))selectHex(id,true);},600);
   }catch(_){}
@@ -1964,23 +1967,21 @@ async function boot(){
   syncHolcAvailable();
 
   // Panel UI is data-only. Render it BEFORE the map so a slow or blocked basemap
-  // CDN can never leave the demo staring at an empty screen.
+  // CDN can never leave the user staring at an empty screen.
   // buildWeights() -> applyWeights() -> rescore() + buildRank() + setLayer('score'),
   // so the panel is fully populated from the live model before the map exists.
   // Weights chosen earlier in this browser tab survive a reload and a trip to
   // the start screen. Sliders are built from W_RAW, so restore first.
   if(SESSION&&SESSION.w){W_RAW={...DEFAULT_W,...SESSION.w};if(typeof SESSION.pop==='number')POPW=SESSION.pop;}
   buildWeights();buildKinds();wireUI();wireExport();setUnits(UNITS);buildIntro();
-  // Two-speed panel: default to Simple so a first-time reader gets the answer, not
-  // a control surface. Remembered per browser.
-  let savedMode='simple';try{if(localStorage.getItem('ce-mode')==='explore')savedMode='explore';}catch(_){}
-  setMode(savedMode);
+  // One panel, every control visible; the earlier two-speed (Simple/Explore) panel was removed.
+  document.getElementById('app').classList.add('explore');
   // Aerial basemap needs the network; show the toggle only when we are not on the
   // offline flat path.
   if(!_q.has('flat')){const bmc=document.getElementById('basemap');if(bmc)bmc.hidden=false;}
   // Restore the view this browser tab was in: layer and overlay (Explore only;
   // Simple always shows Priority), and whether the map was already open.
-  if(SESSION&&SESSION.layer&&LAYERS[SESSION.layer]&&savedMode==='explore'){
+  if(SESSION&&SESSION.layer&&LAYERS[SESSION.layer]){
     if(SESSION.layer==='access'){accessOn=true;holcOn=false;}
     else if(SESSION.layer==='holc'){holcOn=HEX.features.some(f=>f.properties.holc);accessOn=false;}
     if(SESSION.layer!=='holc'||holcOn){syncToggles();setLayer(SESSION.layer);}
@@ -2004,8 +2005,7 @@ async function boot(){
  *  a fallback keyed on it will tear down a perfectly good map. */
 async function basemapStyle(){
   // ?flat=1 forces the no-network look. The fallback is the one path you can't
-  // rehearse without actually killing the Wi-Fi, which is not a thing to discover
-  // for the first time on stage.
+  // rehearse without actually killing the Wi-Fi.
   if(_q.has('flat')){console.warn('Basemap skipped (?flat) — flat background');return FLAT_STYLE;}
   try{
     const ctl=new AbortController();
@@ -2029,7 +2029,7 @@ async function basemapStyle(){
  *  rAF suspended, so nothing renders and neither ever fires. Measured: with the
  *  layers added on 'load', a tab opened in the background reports
  *  document.hidden=true, map.loaded()=false forever, and presents a blank map
- *  when you switch to it. That is the demo failing on stage.
+ *  when you switch to it.
  *
  *  A style that already contains the data needs no event at all — MapLibre draws
  *  it whenever it first draws anything. Same lesson as the basemap fallback
@@ -2056,7 +2056,7 @@ function initMap(style){
   /* Choropleth goes UNDER the basemap's own labels, not on top of them. Place
      names surviving the fill is what separates a map you can navigate from a
      coloured blob — and doing it by splicing the style array keeps it on the
-     no-events path (fixed bug 9); map.addLayer(..., beforeId) would not.
+     no-events path; map.addLayer(..., beforeId) would not.
      No symbol layers (flat fallback) => index is the end, i.e. plain append. */
   const firstSymbol=s.layers.findIndex(l=>l.type==='symbol');
   const at=firstSymbol<0?s.layers.length:firstSymbol;
@@ -2097,7 +2097,7 @@ function initMap(style){
         'circle-stroke-color':'#ffffff','circle-opacity':0.95}});
 
   const m=new maplibregl.Map({container:'map',style:s,preserveDrawingBuffer:true,
-    center:[-118.35,34.02],zoom:9.7,attributionControl:true});
+    attributionControl:true});   // fitData() frames the city's own data right after
   map=m;
   document.getElementById('zoom-in').onclick=()=>m.zoomIn();document.getElementById('zoom-out').onclick=()=>m.zoomOut();
   wireHover();m.resize();fitData(m);
@@ -2123,8 +2123,7 @@ function fitData(m){
 boot().catch(err=>{
   console.error(err);
   // Distinguish the two failures. Blaming the data file when the data is
-  // already in memory and it was the map that threw wastes the one thing you
-  // don't have at a demo, which is time.
+  // already in memory and it was the map that threw sends you debugging the wrong layer.
   const gotData=HEX&&HEX.features&&HEX.features.length;
   const host=gotData?document.getElementById('map'):document.getElementById('intro');
   if(gotData)document.getElementById('intro')?.remove();
@@ -2140,8 +2139,7 @@ let pendingOps=[];
  *  until the style has parsed, even though initMap() declared the layer. So
  *  anything toggled during the basemap fetch (up to BASEMAP_TIMEOUT_MS) used to
  *  update the legend, the chip and the caption while the map kept showing the
- *  previous ramp — fixed bug 12. A legend that disagrees with the map is worse
- *  than a slow map: on stage you would narrate the wrong picture.
+ *  previous ramp. A legend that disagrees with the map is worse than a slow map.
  *
  *  Generalised from the old paintFill()-only version because the same hazard
  *  applies to the centre filter and the selection ring, and both were sitting
@@ -2199,11 +2197,9 @@ function setLayer(k){
 // ---------------------------------------------------------------- intro
 /* The city list is deliberately honest about what exists.
  *
- * Only San Ramon has been through the pipeline on this branch. A dropdown that
- * appeared to load Delhi and quietly showed San Ramon's numbers under a
- * different name would be the single worst thing in this repo, and "every input is global" is a claim
- * that has to survive someone clicking it. So the unbuilt cities say they are
- * unbuilt, and say exactly what building one takes — which argues portability
+ * A dropdown that appeared to load a city and quietly showed another city's
+ * numbers under a different name would be the single worst thing in this repo.
+ * So only built cities are listed, and each says exactly what it is — which argues portability
  * better than a fake selector does, because it is checkable.
  *
  * `have` is the data file each city would load, so wiring a second real city
@@ -2222,9 +2218,8 @@ function buildIntro(){
     // Plain words, not pipeline terms: a newcomer should be able to read every
     // one of these without the guide. Labels stay short so all five sit on one row.
     [res.length.toLocaleString(),'neighborhood areas'],
-    // Not always millions. LA's 6.5M formatted fine as "6.5M"; San Ramon's
-    // 85,569 came out "0.1M", which reads as a rounding error rather than a
-    // population. Switch units at a million.
+    // Not always millions: San Ramon's 85,569 would come out "0.1M", which reads
+    // as a rounding error rather than a population. Switch units at a million.
     [pop>=1e6?(pop/1e6).toFixed(1)+'M':Math.round(pop).toLocaleString(),'residents'],
     [fTemp(hot),'hottest surface'],
     [canopy==null?'—':canopy.toFixed(0)+'%','avg. tree cover'],
@@ -2232,18 +2227,17 @@ function buildIntro(){
   ].map(([v,k])=>`<div><b>${v}</b><span>${k}</span></div>`).join('');
 
   buildSwitch();
+  if(CE_CITY.introNote){const n=document.getElementById('inote');n.textContent=CE_CITY.introNote;n.hidden=false;}
 
   document.getElementById('ifine').innerHTML='Independent student project. Not a city or county product; not reviewed by any city or county. A planning screen, not a field survey. Tree cover is the population-weighted average where an aerial assessment exists; places to cool off are mapped, not verified. Census ACS 2024. <a href="guide.html#overview" target="ce-guide">Data &amp; methods ↗</a>';
 
-  // Entering from the start screen always begins in Simple; a reload of an open
-  // map keeps whichever mode was in use.
-  document.getElementById('intro-go').onclick=()=>{setMode('simple');dismissIntro();};
+  document.getElementById('intro-go').onclick=()=>dismissIntro();
   document.addEventListener('keydown',e=>{
     // Not while the user is typing a city name — Enter there picks from the
     // list, and Escape closes the list, neither of which should launch the map.
     if(e.target.closest&&e.target.closest('#picker'))return;
     if(e.key==='Escape'||e.key==='Enter'){const el=document.getElementById('intro');
-      if(el&&!el.classList.contains('gone')){setMode('simple');dismissIntro();}}
+      if(el&&!el.classList.contains('gone'))dismissIntro();}
   });
   drawIntroMap();
   addEventListener('resize',drawIntroMap);
@@ -2314,7 +2308,7 @@ function dismissIntro(){
 // ------------------------------------------------------- cooling relief sites
 /** Counts come from the file, never from a literal. The pipeline is meant to be
  *  repointable at any city, and a hardcoded "212 libraries" would keep reading
- *  as true in Lagos. Categories with no sites are dropped rather than shown as
+ *  as true in another city. Categories with no sites are dropped rather than shown as
  *  an empty row. */
 function buildKinds(){
   const n={};for(const f of CENTERS.features){const k=f.properties.kind;n[k]=(n[k]||0)+1;}
@@ -2503,7 +2497,7 @@ function applyWeights(){
  *  Convert on the way out or you end up with a $500 tree priced per square foot. */
 /** How big one hexagon actually is, in whichever units are showing. Read off the
  *  per-hex area_m2 rather than assumed from the H3 resolution — the whole point
- *  of carrying area_m2 is that hex area varies with latitude (fixed bug 11). */
+ *  of carrying area_m2 is that hex area varies with latitude. */
 function updateScaleNote(){
   const el=document.getElementById('foot-scale');
   if(!el||!HEX)return;
@@ -2532,9 +2526,6 @@ function wireUI(){
   wireTips();
   document.getElementById('units').addEventListener('click',e=>{
     const b=e.target.closest('button');if(b)setUnits(b.dataset.u);
-  });
-  document.getElementById('mode').addEventListener('click',e=>{
-    const b=e.target.closest('button');if(b)setMode(b.dataset.m);
   });
   const bm=document.getElementById('basemap');
   if(bm)bm.addEventListener('click',e=>{const x=e.target.closest('button');if(x)setBasemap(x.dataset.b);});
@@ -2572,31 +2563,6 @@ function syncToggles(){
   document.getElementById('tg-access').classList.toggle('on',accessOn);
 }
 
-/* Two-speed panel. Simple = the answer only (takeaway + Priority legend + ranked
- * list); Explore = every layer, weight and overlay. Simple is the default so a
- * first-time reader is not handed a control surface. Locking Simple to the
- * Priority layer keeps the legend honest about what the map is showing. */
-function setMode(m){
-  m='explore';
-  const app=document.getElementById('app');
-  app.classList.toggle('simple',m==='simple');
-  app.classList.toggle('explore',m!=='simple');
-  document.querySelectorAll('#mode button').forEach(b=>{b.classList.toggle('on',b.dataset.m===m);b.setAttribute('aria-pressed',b.dataset.m===m);});
-  const hint=document.getElementById('mode-hint');if(hint)hint.textContent=m==='simple'?'the essentials':'all settings';
-  if(m==='simple'){holcOn=false;accessOn=false;syncToggles();setLayer('score');buildTakeaway();}
-  try{localStorage.setItem('ce-mode',m);}catch(_){}
-}
-
-/* Plain-English lead for Simple mode. The headline facts are verified against the
- * built geojson (see the landing lede); the current #1 block is read live so it
- * can never contradict the ranked list beside it. */
-function buildTakeaway(){
-  const el=document.getElementById('takeaway');if(!el)return;
-  const top=LIVE.order[0];const name=top?nameOf(top.properties):'—';
-  el.innerHTML=`<b>Darker areas need shade and cooling most.</b> Pick an area from the list below or on the map to see why, and what planting trees there could do.`;
-
-}
-
 /* Aerial/street basemap toggle (needs a connection). The satellite raster is
  * baked in hidden by initMap; here we flip its visibility and firm up the hex
  * outline + fill a touch so the choropleth still reads over imagery. Routed
@@ -2629,7 +2595,7 @@ const RANK_FILTERS=new Set();let RANK_SORT='need';
 /* Direction per sort key: 'most' puts the largest value first. Every key's
    natural reading is "most need first", which for tree cover means least. */
 let RANK_DIR='most';
-const SORT_INFO={need:['need index','the priority score under the current mix'],pop:['residents','estimated people living in the area'],lst:['surface heat','summer afternoon ground temperature from satellite'],green:['tree cover','share of assessed land under tree crowns'],access_min:['walk to cooling','estimated minutes on foot to the nearest cool place'],pct65:['age 65+','share of residents aged 65 or older']};
+const SORT_INFO={need:['need index','the priority score under the current mix'],pop:['residents','estimated people living in the area'],lst:['surface heat','summer late-morning ground temperature from satellite'],green:['tree cover','share of assessed land under tree crowns'],access_min:['walk to cooling','estimated minutes on foot to the nearest cool place'],pct65:['age 65+','share of residents aged 65 or older']};
 function defaultDir(k){return k==='green'?'least':'most';}
 function syncSortUI(){
   const b=document.getElementById('rank-dir'),h=document.getElementById('sort-hint');if(!b||!h)return;
@@ -2816,7 +2782,7 @@ function selectHex(id,fly){
   slider.min=0;slider.max=100;
   slider.value=plantingShares.get(p.id)??25;
   slider.disabled=!(p.street_m>0)||p.scenario_ok!==true;
-  slider.oninput=()=>updateROI(p);
+  slider.oninput=()=>{userShares.add(p.id);updateROI(p);};
   updateROI(p);
   document.getElementById('detail').inert=false;
   document.getElementById('detail').classList.add('show');
@@ -2829,7 +2795,7 @@ function selectHex(id,fly){
  *
  *  For the selected hex: what each input measured, where that lands on the
  *  city's 0–1 scale, what the weight turns it into, and how the four add up to
- *  the risk that the population multiplier then scales. A judge asking "why is
+ *  the risk that the population multiplier then scales. A reader asking "why is
  *  this one first?" gets the sum, term by term, instead of an assurance. */
 function renderBreakdown(p,score){
   const W=normW();
@@ -2889,7 +2855,7 @@ function cityStats(){
 const DRIVER={
   green:p=>p.green_src==='ndvi'?`low satellite greenness (${LAYERS.veg.fmt(p.green)}/100, standing in for tree cover)`:`its low tree cover (${p.green.toFixed(0)}%)`,
   heat:p=>`its hot ground (${fTemp(p.lst)})`,
-  ac:p=>`few homes with A/C (${p.ac.toFixed(0)}% have it)`,
+  ac:p=>`homes without A/C (${(100-p.ac).toFixed(0)}% lack it)`,
   age65:p=>`many residents aged 65+ (${p.pct65.toFixed(0)}%)`,
   access:p=>`a long walk to cooling (${fMin(p.access_min)})`,
 };
@@ -2924,6 +2890,8 @@ function explainHex(p){
 
 // Preserve scenario choices when units or scoring weights change.
 const plantingShares=new Map();
+// Cells whose planting share the user actually moved; opening a cell is not a change.
+const userShares=new Set();
 /** One place for the scenario arithmetic, so the panel and the export can never
  *  disagree. Returns null when no scenario is possible for this cell. */
 function scenarioFor(p,share){
@@ -2978,7 +2946,7 @@ function wireHover(){
     const s=sc(p),r=rk(p);
     pop.setLngLat(e.lngLat).setHTML(
       `<b>${escapeHtml(nameOf(p))}</b>
-       <div class="tt-row"><span>Priority</span><span>${p.place==='empty'?((p.land||'undeveloped')+' · no residents'):p.place==='activity'?'developed · not ranked':s==null?'–':s.toFixed(0)+' · #'+r}</span></div>
+       <div class="tt-row"><span>Priority</span><span>${p.place==='empty'?(escapeHtml(p.land||'undeveloped')+' · no residents'):p.place==='activity'?'developed · not ranked':s==null?'–':s.toFixed(0)+' · #'+r}</span></div>
        <div class="tt-row"><span>Surface heat</span><span>${fTemp(+p.lst)}</span></div>
        <div class="tt-row"><span>${p.green_src==='ndvi'?'Greenness':'Tree cover'}</span><span>${p.green_src==='ndvi'?LAYERS.veg.fmt(+p.green)+'/100':(+p.green).toFixed(0)+'%'}</span></div>
        <div class="tt-row"><span>Walk to cooling</span><span>${fMin(+p.access_min)}</span></div>`).addTo(map);});
@@ -2994,10 +2962,10 @@ function wireHover(){
   // site's real OSM name, so it is visibly a place and not a generic dot.
   const cpop=new maplibregl.Popup({closeButton:true,closeOnClick:true,offset:10});
   map.on('click','centers',e=>{
-    const p=e.features[0].properties,k=KIND[p.kind]||{c:'#64748b',label:p.kind,what:''};
+    const p=e.features[0].properties,k=KIND[p.kind]||{c:'#64748b',label:p.kind||'place',what:''};
     cpop.setLngLat(e.features[0].geometry.coordinates).setHTML(
       `<b>${escapeHtml(p.name||k.label)}</b>
-       <div class="tt-kind"><i style="background:${k.c}"></i>${k.label}</div>
+       <div class="tt-kind"><i style="background:${k.c}"></i>${escapeHtml(k.label)}</div>
        <div class="tt-what">${k.what}</div>`).addTo(map);
   });
   map.on('mouseenter','centers',()=>{map.getCanvas().style.cursor='pointer';});
