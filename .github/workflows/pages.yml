@@ -50,3 +50,31 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  smoke:
+    # The audit asked that the deployed build be tested, not only the checkout.
+    # Pages can take a few minutes to serve a new deploy, so each URL is retried.
+    needs: deploy
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Every city's map, guide, cooling page and data answer 200 on the live site
+        run: |
+          base="https://advikar.github.io/coolequity-app"
+          sha=$(git rev-parse --short HEAD)
+          fail=0
+          for slug in $(grep -o "slug:'[a-z0-9-]*'" app/cities.js | cut -d"'" -f2); do
+            for path in "$slug/app/" "$slug/app/guide.html" "$slug/app/cooling.html" "$slug/data/$slug.geojson" "$slug/data/designated_$slug.geojson"; do
+              ok=0
+              for try in $(seq 1 16); do
+                code=$(curl -s -o /dev/null -w '%{http_code}' "$base/$path?smoke=$sha-$try")
+                if [ "$code" = "200" ]; then ok=1; break; fi
+                sleep 30
+              done
+              if [ $ok = 1 ]; then echo "ok   $path"; else echo "FAIL $path ($code)"; fail=1; fi
+            done
+          done
+          # The chooser must list every city, and each map must load its own city.js
+          curl -s "$base/?smoke=$sha" | grep -q "pittsburg/app/" || { echo "FAIL chooser lacks a city"; fail=1; }
+          exit $fail

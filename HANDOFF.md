@@ -184,3 +184,12 @@
   list and fades other cells via `applyCityMask()`; the detail rank line and hover show the
   city; export column `city_or_community`. Phone-only `#mview` List/Both/Map segment
   (`ce-mview` in localStorage) toggles `#app.mv-list` / `#app.mv-map`.
+
+## Checkpoint — September 13, 2026: field checks; post-deploy smoke test
+
+- Field checks: `NOTES` map, localStorage `ce-fieldcheck-<slug>`, `#d-field` box (status
+  select + note), `fieldTag()` in rows, `field_status/field_note/field_note_updated` in
+  `cellRecord`, briefing shortlist section, `fieldcheck` popover and guide anchor. Reset map
+  does not clear them (work product). Test contexts stub `noteOf` and `FC_LABEL`.
+- `.github/workflows/pages.yml` gained a `smoke` job after `deploy` (curls every city's five
+  URLs on the live site with retries; fails the run if any is not 200).

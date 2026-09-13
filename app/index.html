@@ -398,6 +398,7 @@
   .takeaway .tk-now b{color:var(--txt)}
   /* ---- explain this block ---- */
   .explain{font-size:12.5px;line-height:1.6;color:var(--muted);background:#0c1219;
+  .fieldcheck{margin:10px 18px 0;padding:10px 12px;border:1px solid var(--edge);border-radius:10px;background:rgba(255,255,255,.03)}.fieldcheck .lbl{margin:0 0 6px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:6px}.fieldcheck select,.fieldcheck textarea{width:100%;box-sizing:border-box;font:inherit;font-size:12.5px;color:var(--txt);background:var(--c-field,#0f151d);border:1px solid var(--edge);border-radius:8px;padding:7px 9px}.fieldcheck textarea{margin-top:6px;resize:vertical;min-height:40px}.fieldcheck .hint{margin:6px 0 0}.fc-tag{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:6px;font-size:10px;font-weight:600;letter-spacing:.02em;vertical-align:middle;background:rgba(255,255,255,.08);color:var(--muted)}.fc-tag.feasible,.fc-tag.planted{background:rgba(74,222,128,.16);color:#8ef0b0}.fc-tag.not{background:rgba(248,113,113,.16);color:#ffb3b3}.fc-tag.partly{background:rgba(255,179,90,.16);color:#ffd28c}
     border:1px solid var(--edge);border-radius:10px;padding:11px 12px;margin:0 0 14px}
   .explain b{color:var(--txt);font-weight:650}
   .explain .why{color:var(--accent2);font-weight:600}
@@ -1010,6 +1011,12 @@
     </div>
     <div class="dbody">
       <div class="explain" id="d-explain"></div>
+      <div class="fieldcheck" id="d-field" hidden>
+        <p class="lbl">Field check <a class="info-link" href="guide.html#fieldcheck" target="ce-guide" aria-label="About field checks">i</a></p>
+        <select id="fc-status" aria-label="Field-check status"><option value="">Not checked yet</option><option value="visit">To visit</option><option value="feasible">Checked · feasible</option><option value="partly">Checked · partly feasible</option><option value="not">Checked · not feasible</option><option value="planted">Planted</option></select>
+        <textarea id="fc-note" rows="2" placeholder="Who looked, when, what you saw. Kept in this browser; goes into exports and the briefing."></textarea>
+        <p class="hint" id="fc-meta" hidden></p>
+      </div>
       <div class="drivers" id="d-drivers"></div>
       <div id="d-metrics"></div>
       <details id="d-bd-label" class="score-details"><summary>Why this rank?</summary><a class="method-link" href="guide.html#score" target="ce-guide">Scoring method ↗</a><div class="bd" id="d-breakdown"></div></details>
@@ -1501,7 +1508,7 @@ function exportHeader(){
 const EXPORT_FIELDS=['id','name','city','place','rank','score','rank_default','score_default','rank_lo','rank_hi','rank_top_share','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
   'coverage_frac','canopy_quality','canopy_m2','assessed_m2','pop','pct65','ac_pct','ac_src','ac_coverage','acs_year','access_min','access_km',
   'access_quality','access_snap_m','area_m2','street_m','scenario_ok','canopy_baseline_ok','land','holc',
-  'planting_share','trees','trees_surviving','canopy_gain_points','cost_usd','cooling_c','future_canopy_pct'];
+  'planting_share','trees','trees_surviving','canopy_gain_points','cost_usd','cooling_c','future_canopy_pct','field_status','field_note','field_note_updated'];
 function cellRecord(p){
   const s=sc(p), r=rk(p), share=plantingShares.get(p.id), scn=(share!=null)?scenarioFor(p,share):null;
   const cityCol=p.city?(p.city+(p.city_kind==='cdp'?' (unincorporated community)':p.city_kind==='none'?' (county)':'')):null;
@@ -1514,7 +1521,8 @@ function cellRecord(p){
     access_quality:p.access_quality??null, access_snap_m:num(p.access_snap_m), area_m2:num(p.area_m2), street_m:num(p.street_m),
     scenario_ok:p.scenario_ok===true, canopy_baseline_ok:p.canopy_baseline_ok===true, land:p.land??null, holc:p.holc??null,
     planting_share:scn?scn.share:null, trees:scn?scn.trees:null, trees_surviving:scn?scn.trees_surviving:null, canopy_gain_points:scn?scn.canopy_gain_points:null,
-    cost_usd:scn?scn.cost_usd:null, cooling_c:scn?scn.cooling_c:null, future_canopy_pct:scn?scn.future_canopy_pct:null};
+    cost_usd:scn?scn.cost_usd:null, cooling_c:scn?scn.cooling_c:null, future_canopy_pct:scn?scn.future_canopy_pct:null,
+    field_status:noteOf(p.id).status?FC_LABEL[noteOf(p.id).status]:null, field_note:noteOf(p.id).note||null, field_note_updated:noteOf(p.id).updated||null};
 }
 /** Plain column names for people, internal keys for the reload path. The JSON
  *  keeps the internal keys (loadScenario reads them) and carries this key. */
@@ -1561,6 +1569,9 @@ const FIELD_KEY={
   trees_surviving:['scenario_trees_surviving','Trees assumed to reach maturity (survival_share_pct in planting_assumptions)'],
   canopy_gain_points:['scenario_tree_cover_gain_points','Added tree cover at maturity from surviving trees, percentage points'],
   cost_usd:['scenario_cost_usd','Indicative planting-only cost for all planted trees at the per-tree figure in planting_assumptions'],
+  field_status:['field_check_status','Field-check status entered in the app (To visit / Checked · feasible / partly / not feasible / Planted)'],
+  field_note:['field_check_note','Field-check note entered in the app'],
+  field_note_updated:['field_check_updated','When the field check was last edited (ISO time)'],
   cooling_c:['scenario_air_cooling_c','Illustrative summer air cooling at maturity, °C'],
   future_canopy_pct:['scenario_future_tree_cover_pct','Tree cover at maturity, % (only when the baseline is complete)'],
   city:['city','City slug'],exported_at:['exported_at','Export time (ISO 8601)'],dataset_sha256:['dataset_sha256','Fingerprint of the data file'],
@@ -1855,6 +1866,7 @@ const TIPS={
   access:{t:'Places to cool off & walking time',d:'Libraries, community centers, pools and senior centers from OpenStreetMap, and the estimated minutes on foot from each area to the nearest one along real streets and paths. Hours and air conditioning are not verified.'},
   score:{t:'Priority score & ranking',d:'0 to 100, relative within this study area: 100 is the area with the most need under the current mix. It is a screening score, not a health-risk figure. Click any area to see the arithmetic behind its rank.'},
   export:{t:'Export & share',d:'Save the ranked list as a spreadsheet, or as a file that reloads this exact view, including your mix of priorities. Nothing is uploaded; files stay on your computer.'},
+  fieldcheck:{t:'Field check',d:'Record what a site visit found: a status and a short note. Saved in this browser only (per city), never uploaded. Both go into every export and the printed briefing, so a colleague can see which areas were verified and what was seen.'},
   stability:{t:'Likely rank',d:'A rank is an estimate. Census population, age and A/C figures were re-drawn within their published margins of error and the recommended weights nudged by ±10 points, 300 times; this is the 5th–95th percentile of the ranks that came out. Rank differences smaller than the band are noise. The top-tier share says how often the area stayed in the best 10%.'},
   'export-area':{t:'Export this area',d:'Save this area’s numbers, sources, rank and planting scenario as one file for a meeting or a colleague. A JSON file reloads this view.'},
   planting:{t:'Planting scenario',d:'Explore how many street trees could fit along this area’s mapped streets, what they would cost, and the shade they would add at maturity. An estimate for scoping, not a plan.'},
@@ -1933,6 +1945,7 @@ function openReport(){
     const seniors=Math.round(p.pop*p.pct65/100);
     const m=[['Surface heat',fTemp(p.lst),norm('lst',p.lst),lift(colorFor('lst',p.lst),130)],['Tree cover',treesLbl(p),norm('green',p.green),lift(colorFor('green',p.green),130)],['Residents',fInt(p.pop),norm('pop',p.pop),lift(colorFor('pop',p.pop),130)],['Age 65+',LAYERS.pct65.fmt(p.pct65),norm('pct65',p.pct65),lift(colorFor('pct65',p.pct65),130)],['Homes with A/C (est.)',LAYERS.ac.fmt(p.ac),norm('ac',p.ac),lift(colorFor('ac',p.ac),130)],['Walk to cooling (est.)',`${fMin(p.access_min)} · ${fDist(p.access_km)}`,norm('access',p.access_min),lift(colorFor('access',p.access_min),130)]];
     return `<section class="area"><div class="ahead"><span class="rk big" style="background:${c};color:${inkOn(c)}">${rk(p)}</span><div><h3>${esc(nameOf(p))}</h3><div class="sub">Rank ${rk(p)} of ${order.length.toLocaleString()} · need index ${s.toFixed(0)}${def?'':' · under '+esc(q)}</div></div></div>
+      ${noteOf(p.id).status||noteOf(p.id).note?`<p class="fine" style="margin:0 0 8px"><b>Field check:</b> ${noteOf(p.id).status?esc(FC_LABEL[noteOf(p.id).status]):'no status'}${noteOf(p.id).note?' — '+esc(noteOf(p.id).note):''}${noteOf(p.id).updated?' ('+esc(new Date(noteOf(p.id).updated).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}))+')':''}</p>`:''}
       <p class="lede">About <b>${fInt(p.pop)}</b> people live here, <b>${fInt(seniors)}</b> aged 65 or older. Surface heat is <b>${fTemp(p.lst)}</b> and trees cover <b>${treesLbl(p)}</b> of the assessed ground, ${p.green<st.medGreen?'below':p.green>st.medGreen?'above':'at'} the city median of ${st.medGreen.toFixed(0)}%. The nearest mapped cool place is about <b>${fMin(p.access_min)}</b> on foot.</p>
       <div class="two"><div><div class="k">What puts it here</div><div class="cbar">${d.bar}</div><div class="leg">${d.leg}</div>
         <div class="metrics">${m.map(([l,v,t,col])=>`<div><div class="mt"><span>${l}</span><b>${v}</b></div><div class="tr"><div style="width:${Math.max(2,t*100).toFixed(0)}%;background:${col}"></div></div></div>`).join('')}</div></div>
@@ -2037,6 +2050,7 @@ async function boot(){
    if(!n)document.getElementById('tg-designated').disabled=true;}
   if(c.loadFailed){const status=document.getElementById('sites-status');status.hidden=false;status.textContent='Mapped locations could not load. County-listed contacts are still available.';}
   computeRanges();
+  loadNotes();
   buildCityPick();
   wireMobileView();
   document.getElementById('chip-n').textContent=`${HEX.features.filter(f=>f.properties.place==='res').length.toLocaleString()} areas`;
@@ -2685,6 +2699,26 @@ const RANK_FILTERS=new Set();let RANK_SORT='need';
 let RANK_CITY='';
 // Phone layout switch (List / Both / Map). Desktop never shows it. Remembered
 // per browser; Both is the default so a first visit shows the map and the list.
+// Field checks: a status and a note per area, kept in this browser per city.
+// They are the planner's work product, so Reset map leaves them alone; they go
+// into every export and the briefing so a colleague sees what was verified.
+const FC_KEY='ce-fieldcheck-'+CITY_SLUG;
+const FC_LABEL={visit:'To visit',feasible:'Checked · feasible',partly:'Checked · partly feasible',not:'Checked · not feasible',planted:'Planted'};
+let NOTES=new Map();
+function loadNotes(){try{const o=JSON.parse(localStorage.getItem(FC_KEY)||'{}')||{};NOTES=new Map(Object.entries(o).map(([k,v])=>[+k,v]));}catch(_){NOTES=new Map();}}
+function saveNotes(){try{localStorage.setItem(FC_KEY,JSON.stringify(Object.fromEntries(NOTES)));}catch(_){}}
+function noteOf(id){return NOTES.get(id)||{status:'',note:'',updated:null};}
+function setNote(id,patch){const cur=noteOf(id);const nxt={...cur,...patch,updated:new Date().toISOString()};
+  if(!nxt.status&&!nxt.note.trim())NOTES.delete(id);else NOTES.set(id,nxt);saveNotes();}
+function fieldTag(p){const n=noteOf(p.id);if(!n.status)return '';return `<span class="fc-tag ${n.status}" title="Field check: ${FC_LABEL[n.status]}">${FC_LABEL[n.status].replace('Checked · ','')}</span>`;}
+function renderFieldCheck(p,ranked){
+  const box=document.getElementById('d-field');if(!box)return;box.hidden=!ranked;if(!ranked)return;
+  const n=noteOf(p.id),s=document.getElementById('fc-status'),ta=document.getElementById('fc-note'),m=document.getElementById('fc-meta');
+  s.value=n.status||'';ta.value=n.note||'';
+  m.hidden=!n.updated;if(n.updated)m.textContent='Saved '+new Date(n.updated).toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'})+' in this browser only.';
+  s.onchange=()=>{setNote(p.id,{status:s.value});renderFieldCheck(p,true);buildRank();};
+  ta.oninput=()=>{setNote(p.id,{note:ta.value});const k=noteOf(p.id);m.hidden=!k.updated;if(k.updated)m.textContent='Saved just now, in this browser only.';};
+}
 function wireMobileView(){
   const seg=document.getElementById('mview');if(!seg)return;
   const app=document.getElementById('app');
@@ -2778,7 +2812,7 @@ function makeRow(p,def){
   if(p.id===selId)row.classList.add('sel');
   const c=colorFor('score',s),on=SHORTLIST.has(p.id);
   row.innerHTML=`<div class="badge" style="background:${c};color:${inkOn(c)}">${rk(p)}</div>
-    <div class="nm" role="button" tabindex="0" aria-label="Open ${escapeHtml(nameOf(p))}, rank ${rk(p)}">${escapeHtml(nameOf(p))}${def?'':moveChip(p)}</div>
+    <div class="nm" role="button" tabindex="0" aria-label="Open ${escapeHtml(nameOf(p))}, rank ${rk(p)}">${escapeHtml(nameOf(p))}${def?'':moveChip(p)}${fieldTag(p)}</div>
     <button type="button" class="pin${on?' on':''}" aria-pressed="${on}" title="${on?'Remove from':'Add to'} shortlist">${on?'★':'☆'}</button>
     <div class="sc" style="color:${lift(c)}">${s.toFixed(0)}</div>
     <div class="cbar" aria-hidden="true">${contribBar(p)}</div>
@@ -2873,6 +2907,7 @@ function selectHex(id,fly){
     else{b.hidden=false;const meta=(HEX.metadata||{}).stability||{};const top=Math.round((p.rank_top_share||0)*100);
       b.innerHTML=`<b>Likely rank ${p.rank_lo}–${p.rank_hi}</b>${isDefaultW()?'':' under the recommended mix'} · in the top ${meta.top_tier_n?meta.top_tier_n.toLocaleString():'tier'} in ${top}% of ${meta.draws||''} re-draws <a class="info-link" href="guide.html#stability" target="ce-guide" aria-label="About rank stability">i</a>`;
       b.title='Census inputs re-drawn within their published margins of error and the recommended weights jittered by ±10 points; 5th–95th percentile of the resulting ranks.';}}}
+  renderFieldCheck(p,!unranked);
   document.getElementById('d-name').title=p.name?'Name generated from nearby mapped places; not an official boundary. Area #'+p.id:'Area #'+p.id;
   explainHex(p);
   const dv=document.getElementById('d-drivers');
