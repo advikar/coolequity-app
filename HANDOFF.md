@@ -125,3 +125,26 @@
   city's BBOX and that drawn + outside + unlocated equals the directory's site count.
 - West Contra Costa guide said walking estimates use "486 discovery sites" (county number);
   corrected to 39.
+
+## Checkpoint — September 13, 2026: Pittsburg & Bay Point build; water/wetland rule in area weighting
+
+- **New city `pittsburg`.** Study area = union of TIGERweb Pittsburg city (0657456) and Bay
+  Point CDP (0604415), committed as `boundary_pittsburg.geojson`; res 9; 755 hexes, 570
+  ranked, 89,581 residents. 518 ranked cells on USFS 2022 aerial (Antioch + Concord packages
+  copied into its cache), 52 height model, 16 stand-in. A/C: all LACE, 69–96%.
+- **Heat is NOT scored (county weights 0/0.55/0.25/0.20).** Measured on this build: among
+  residential cells above 35 °C, lon/lat explain 28% of LST variance (county 39%, West CC
+  11%) and LST correlates +0.25 with aerial canopy (hillside subdivisions are hotter and
+  greener). Recorded in config.py, city.js and the guide's Surface heat topic. The first
+  draft of this build scored heat at 0.35; do not reintroduce that without new evidence.
+- **Area-weighting fallback now excludes water/wetland** (`UNINHABITABLE_LAND` in
+  03_census.py, from 02e WorldCover's dominant class). Triggered by 3,796 residents on
+  Pittsburg's shoreline marsh. Bakersfield re-run (needed LACE copied into its cache):
+  351 residents moved, ranked 3,788 → 3,767, top 25 unchanged; guide, README, chooser and
+  test counts updated.
+- **Pittsburg caveats:** OSM building mask covers 8% of housing so dasymetric placement was
+  refused (area weighting, said in the guide); only 8 OSM cool places exist (same as the
+  county build finds), so walking times are long (median 43 min) and read as a map-coverage
+  caveat; 2 county-listed sites are in the area; no HOLC map; Overpass needed three mirrors
+  for streets. `06_audit_rebuild.py` not run (no baseline); `reports/` empty; guide and
+  cooling pages are rewritten West CC copies.

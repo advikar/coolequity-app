@@ -111,7 +111,8 @@ class CoolingSources(unittest.TestCase):
         # Costa and San Ramon share the county EHSD bulletin; Kern lists one phone
         # line for all of its centers instead of a number per site.
         count,revision={'contracosta':(17,'June 2026'),'sanramon':(17,'June 2026'),
-                        'bakersfield':(10,'2026 season'),'westcc':(17,'June 2026')}[C.SLUG]
+                        'bakersfield':(10,'2026 season'),'westcc':(17,'June 2026'),
+                        'pittsburg':(17,'June 2026')}[C.SLUG]
         self.assertEqual(len(d['sites']),count)
         for s in d['sites']:
             self.assertIsNone(s['opening_hours']);self.assertIsNone(s['coordinates'])

@@ -26,6 +26,7 @@ BG_ZIP = (f"https://www2.census.gov/geo/tiger/GENZ{C.ACS_YEAR}/shp/"
           f"cb_{C.ACS_YEAR}_{C.STATE_FIPS}_bg_500k.zip")
 BG_CACHE = C.CACHE / f"bg_{C.ACS_YEAR}_{C.STATE_FIPS}.zip"
 ACS_CSV = C.ACS_FILE                  # committed fallback
+UNINHABITABLE_LAND = {"open water", "wetland"}   # ESA WorldCover classes that get no residents under area weighting
 OUT_CSV = C.CENSUS_CSV
 
 POP = "B01001_001E"
@@ -274,6 +275,27 @@ def area_weight(hexes, bgs, buildings=None, city_buildings=None):
             f"{before/1e6:,.0f} -> {inter.geometry.area.sum()/1e6:,.0f} km2")
 
     inter["frac"] = inter.geometry.area / inter["bg_area"]
+
+    if buildings is None and C.WORLDCOVER_CSV.exists():
+        # Area weighting with no building mask still knows one thing about where
+        # people cannot live: open water and wetland. Pieces of a hex whose
+        # dominant ESA WorldCover class is either get zero weight, and the block
+        # group's residents are spread over its remaining land instead (the
+        # excluded area leaves the denominator, so the total still reconciles).
+        # First seen on Pittsburg & Bay Point, where the shoreline marsh and
+        # Suisun Bay inside city limits took 3,796 residents across 153 hexes.
+        # A block group with nothing but water in the grid keeps plain area
+        # weighting so its residents are not lost.
+        wc = pd.read_csv(C.WORLDCOVER_CSV)[["h3", "land"]]
+        wet = set(wc.loc[wc["land"].isin(UNINHABITABLE_LAND), "h3"])
+        inter["excl"] = inter["h3"].isin(wet)
+        excl_area = inter.loc[inter["excl"]].groupby("GEOID").geometry.apply(lambda s: s.area.sum())
+        all_excl = inter.groupby("GEOID")["excl"].all()
+        denom = inter["bg_area"] - inter["GEOID"].map(excl_area).fillna(0.0)
+        keep = ~inter["excl"] | inter["GEOID"].map(all_excl)
+        inter["frac"] = np.where(keep, inter.geometry.area / np.where(keep & ~inter["GEOID"].map(all_excl), denom, inter["bg_area"]), 0.0)
+        log(f"    area weighting: {len(wet)} water/wetland hexes carry no residents "
+            f"({int(inter['excl'].sum())} pieces zeroed, {int(all_excl.sum())} all-water block groups kept as is)")
 
     if buildings is not None:
         inter = inter.reset_index(drop=True)

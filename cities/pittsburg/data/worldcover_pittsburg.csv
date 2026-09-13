@@ -1,0 +1,756 @@
+h3,land,land_frac,wc_code
+8928301b493ffff,open water,1.0,80
+8928301b49bffff,open water,1.0,80
+8928301b4d3ffff,open water,1.0,80
+892830c5027ffff,grassland,0.984,30
+892830c502fffff,grassland,1.0,30
+892830c5037ffff,grassland,1.0,30
+892830c50a7ffff,grassland,0.983,30
+892830c50afffff,grassland,0.996,30
+892830c5103ffff,grassland,0.999,30
+892830c5107ffff,grassland,1.0,30
+892830c510bffff,grassland,1.0,30
+892830c510fffff,grassland,1.0,30
+892830c5113ffff,grassland,1.0,30
+892830c5117ffff,grassland,1.0,30
+892830c511bffff,grassland,1.0,30
+892830c5123ffff,grassland,1.0,30
+892830c5127ffff,grassland,0.991,30
+892830c512bffff,grassland,0.941,30
+892830c512fffff,grassland,1.0,30
+892830c5133ffff,grassland,1.0,30
+892830c5137ffff,grassland,0.993,30
+892830c513bffff,grassland,1.0,30
+892830c5143ffff,grassland,1.0,30
+892830c5147ffff,grassland,1.0,30
+892830c514bffff,grassland,0.998,30
+892830c514fffff,grassland,0.97,30
+892830c5153ffff,grassland,1.0,30
+892830c5157ffff,grassland,1.0,30
+892830c515bffff,grassland,0.962,30
+892830c5163ffff,grassland,0.997,30
+892830c5167ffff,grassland,0.909,30
+892830c516bffff,developed,0.808,50
+892830c516fffff,developed,0.601,50
+892830c5173ffff,grassland,1.0,30
+892830c5177ffff,grassland,1.0,30
+892830c517bffff,grassland,0.955,30
+892830c518bffff,grassland,1.0,30
+892830c51abffff,grassland,1.0,30
+892830c51c3ffff,grassland,1.0,30
+892830c51c7ffff,grassland,0.996,30
+892830c51cbffff,grassland,1.0,30
+892830c51cfffff,grassland,1.0,30
+892830c51d3ffff,grassland,1.0,30
+892830c51d7ffff,grassland,1.0,30
+892830c51dbffff,grassland,0.999,30
+892830c5203ffff,grassland,0.954,30
+892830c5207ffff,grassland,0.983,30
+892830c520bffff,grassland,0.812,30
+892830c520fffff,grassland,0.984,30
+892830c5217ffff,grassland,0.99,30
+892830c5223ffff,grassland,0.953,30
+892830c5227ffff,grassland,0.997,30
+892830c522bffff,grassland,0.851,30
+892830c522fffff,grassland,0.436,30
+892830c5233ffff,grassland,0.976,30
+892830c5237ffff,grassland,0.944,30
+892830c523bffff,grassland,0.985,30
+892830c5243ffff,developed,0.812,50
+892830c5247ffff,grassland,0.703,30
+892830c524bffff,developed,0.903,50
+892830c524fffff,developed,0.752,50
+892830c5253ffff,developed,0.771,50
+892830c5257ffff,grassland,0.623,30
+892830c525bffff,developed,0.864,50
+892830c5263ffff,grassland,0.769,30
+892830c5267ffff,grassland,0.928,30
+892830c526bffff,grassland,0.524,30
+892830c526fffff,grassland,0.429,30
+892830c5273ffff,grassland,0.961,30
+892830c5277ffff,grassland,0.948,30
+892830c527bffff,grassland,0.634,30
+892830c52a3ffff,grassland,0.953,30
+892830c52abffff,grassland,0.985,30
+892830c52afffff,grassland,0.93,30
+892830c52bbffff,grassland,1.0,30
+892830c52c3ffff,grassland,0.836,30
+892830c52cbffff,developed,0.879,50
+892830c52cfffff,grassland,0.587,30
+892830c52d3ffff,grassland,0.992,30
+892830c52dbffff,grassland,0.678,30
+892830c5303ffff,grassland,0.733,30
+892830c5307ffff,developed,0.581,50
+892830c530bffff,grassland,0.539,30
+892830c530fffff,developed,0.783,50
+892830c5317ffff,grassland,0.681,30
+892830c5323ffff,developed,0.801,50
+892830c5327ffff,cropland,0.334,40
+892830c532bffff,developed,0.799,50
+892830c532fffff,developed,0.585,50
+892830c5333ffff,developed,0.916,50
+892830c5337ffff,developed,0.812,50
+892830c533bffff,developed,0.72,50
+892830c5343ffff,developed,0.705,50
+892830c5347ffff,developed,0.719,50
+892830c534bffff,developed,0.729,50
+892830c534fffff,developed,0.909,50
+892830c5353ffff,grassland,0.796,30
+892830c5357ffff,developed,0.664,50
+892830c535bffff,developed,0.562,50
+892830c5363ffff,developed,0.545,50
+892830c5367ffff,developed,0.722,50
+892830c536bffff,developed,0.796,50
+892830c536fffff,developed,0.85,50
+892830c5373ffff,developed,0.574,50
+892830c5377ffff,developed,0.365,50
+892830c537bffff,developed,0.59,50
+892830c5387ffff,grassland,0.877,30
+892830c538fffff,grassland,0.656,30
+892830c5397ffff,grassland,0.977,30
+892830c53a3ffff,developed,0.584,50
+892830c53a7ffff,developed,0.857,50
+892830c53abffff,developed,0.628,50
+892830c53afffff,grassland,0.48,30
+892830c53b3ffff,grassland,0.569,30
+892830c53b7ffff,developed,0.69,50
+892830c53bbffff,developed,0.9,50
+892830c53c3ffff,grassland,0.963,30
+892830c53c7ffff,grassland,1.0,30
+892830c53cbffff,grassland,0.994,30
+892830c53cfffff,grassland,0.724,30
+892830c53dbffff,grassland,1.0,30
+892830c564bffff,grassland,0.814,30
+892830c564fffff,grassland,1.0,30
+892830c566bffff,grassland,0.994,30
+892830c567bffff,grassland,1.0,30
+892830c5803ffff,grassland,0.989,30
+892830c5807ffff,grassland,0.953,30
+892830c580bffff,grassland,1.0,30
+892830c580fffff,grassland,0.998,30
+892830c5813ffff,grassland,0.989,30
+892830c5817ffff,grassland,0.936,30
+892830c581bffff,grassland,0.996,30
+892830c5833ffff,grassland,0.975,30
+892830c5843ffff,developed,0.568,50
+892830c5847ffff,grassland,0.574,30
+892830c584bffff,developed,0.523,50
+892830c584fffff,grassland,0.587,30
+892830c5853ffff,developed,0.669,50
+892830c5857ffff,grassland,0.508,30
+892830c585bffff,developed,0.582,50
+892830c5873ffff,grassland,0.87,30
+892830c5883ffff,grassland,0.811,30
+892830c5887ffff,grassland,0.685,30
+892830c588bffff,grassland,0.993,30
+892830c588fffff,grassland,1.0,30
+892830c5893ffff,grassland,0.806,30
+892830c5897ffff,grassland,0.956,30
+892830c589bffff,grassland,0.755,30
+892830c58a3ffff,grassland,0.976,30
+892830c58a7ffff,grassland,0.985,30
+892830c58abffff,grassland,1.0,30
+892830c58afffff,grassland,0.993,30
+892830c58b3ffff,grassland,0.868,30
+892830c58b7ffff,grassland,0.999,30
+892830c58bbffff,grassland,0.932,30
+892830c58c3ffff,developed,0.51,50
+892830c58c7ffff,grassland,0.812,30
+892830c58cbffff,grassland,0.92,30
+892830c58cfffff,developed,0.493,50
+892830c58d3ffff,grassland,0.731,30
+892830c58d7ffff,grassland,0.87,30
+892830c58dbffff,grassland,0.626,30
+892830c5a03ffff,wetland,0.86,90
+892830c5a07ffff,wetland,0.897,90
+892830c5a0bffff,wetland,0.62,90
+892830c5a0fffff,wetland,1.0,90
+892830c5a13ffff,grassland,0.422,30
+892830c5a17ffff,grassland,0.587,30
+892830c5a1bffff,developed,0.531,50
+892830c5a2bffff,open water,1.0,80
+892830c5a3bffff,wetland,0.735,90
+892830c5a43ffff,wetland,0.897,90
+892830c5a47ffff,wetland,0.857,90
+892830c5a4bffff,wetland,0.943,90
+892830c5a4fffff,wetland,0.578,90
+892830c5a53ffff,wetland,0.457,90
+892830c5a57ffff,wetland,0.739,90
+892830c5a5bffff,wetland,0.903,90
+892830c5a63ffff,open water,1.0,80
+892830c5a67ffff,open water,1.0,80
+892830c5a6bffff,open water,1.0,80
+892830c5a6fffff,open water,1.0,80
+892830c5a73ffff,wetland,0.528,90
+892830c5a77ffff,open water,0.9,80
+892830c5a7bffff,open water,0.942,80
+892830c5a83ffff,developed,0.891,50
+892830c5a87ffff,developed,0.712,50
+892830c5a8bffff,developed,0.91,50
+892830c5a8fffff,developed,0.92,50
+892830c5a93ffff,developed,0.344,50
+892830c5a97ffff,developed,0.766,50
+892830c5a9bffff,developed,0.64,50
+892830c5aa3ffff,developed,0.609,50
+892830c5aa7ffff,grassland,0.751,30
+892830c5aabffff,wetland,0.457,90
+892830c5ab3ffff,developed,0.846,50
+892830c5ab7ffff,grassland,0.675,30
+892830c5abbffff,developed,0.956,50
+892830c5ac3ffff,grassland,0.509,30
+892830c5ac7ffff,developed,0.735,50
+892830c5acbffff,grassland,0.918,30
+892830c5acfffff,open water,0.574,80
+892830c5ad3ffff,developed,0.528,50
+892830c5ad7ffff,developed,0.704,50
+892830c5adbffff,grassland,0.779,30
+892830c5c23ffff,grassland,0.474,30
+892830c5c27ffff,grassland,0.468,30
+892830c5c2bffff,grassland,0.632,30
+892830c5c2fffff,grassland,0.804,30
+892830c5c33ffff,grassland,0.97,30
+892830c5c37ffff,grassland,0.886,30
+892830c5c3bffff,grassland,1.0,30
+892830c5c43ffff,grassland,1.0,30
+892830c5c47ffff,grassland,1.0,30
+892830c5c4bffff,grassland,0.82,30
+892830c5c4fffff,grassland,0.935,30
+892830c5c53ffff,grassland,1.0,30
+892830c5c57ffff,grassland,1.0,30
+892830c5c5bffff,grassland,1.0,30
+892830c5c63ffff,grassland,0.708,30
+892830c5c67ffff,grassland,0.701,30
+892830c5c6bffff,grassland,0.806,30
+892830c5c6fffff,grassland,0.607,30
+892830c5c73ffff,grassland,0.997,30
+892830c5c77ffff,grassland,1.0,30
+892830c5c7bffff,grassland,1.0,30
+892830c5ccbffff,grassland,1.0,30
+892830c5d43ffff,grassland,0.991,30
+892830c5d47ffff,grassland,0.996,30
+892830c5d4bffff,grassland,0.823,30
+892830c5d4fffff,grassland,0.862,30
+892830c5d53ffff,grassland,0.418,30
+892830c5d57ffff,grassland,0.95,30
+892830c5d5bffff,grassland,0.943,30
+892830c5d7bffff,grassland,0.965,30
+892830c5dcbffff,grassland,0.574,30
+892830c5dcfffff,grassland,0.555,30
+892830c5e03ffff,developed,0.819,50
+892830c5e07ffff,developed,0.807,50
+892830c5e0bffff,developed,0.632,50
+892830c5e0fffff,developed,0.673,50
+892830c5e13ffff,grassland,0.545,30
+892830c5e17ffff,grassland,0.637,30
+892830c5e1bffff,developed,0.46,50
+892830c5e23ffff,developed,0.592,50
+892830c5e27ffff,grassland,0.452,30
+892830c5e2bffff,developed,0.69,50
+892830c5e2fffff,grassland,0.44,30
+892830c5e33ffff,grassland,0.511,30
+892830c5e37ffff,developed,0.485,50
+892830c5e3bffff,developed,0.614,50
+892830c5e43ffff,developed,0.821,50
+892830c5e47ffff,developed,0.735,50
+892830c5e4bffff,developed,0.645,50
+892830c5e4fffff,developed,0.857,50
+892830c5e53ffff,grassland,0.448,30
+892830c5e57ffff,grassland,0.442,30
+892830c5e5bffff,developed,0.666,50
+892830c5e63ffff,developed,0.831,50
+892830c5e67ffff,developed,0.481,50
+892830c5e6bffff,developed,0.854,50
+892830c5e6fffff,developed,0.975,50
+892830c5e73ffff,developed,0.735,50
+892830c5e77ffff,woodland,0.483,10
+892830c5e7bffff,developed,0.71,50
+892830c5e83ffff,developed,0.649,50
+892830c5e87ffff,developed,0.882,50
+892830c5e8bffff,developed,0.982,50
+892830c5e8fffff,developed,0.898,50
+892830c5e93ffff,grassland,0.833,30
+892830c5e97ffff,grassland,0.634,30
+892830c5e9bffff,developed,0.885,50
+892830c5ea3ffff,developed,0.917,50
+892830c5ea7ffff,grassland,0.885,30
+892830c5eabffff,grassland,0.538,30
+892830c5eafffff,grassland,0.951,30
+892830c5eb3ffff,developed,0.56,50
+892830c5eb7ffff,grassland,0.474,30
+892830c5ebbffff,developed,0.992,50
+892830c5ec3ffff,developed,0.742,50
+892830c5ec7ffff,grassland,0.695,30
+892830c5ecbffff,developed,0.786,50
+892830c5ecfffff,developed,0.435,50
+892830c5ed3ffff,developed,0.968,50
+892830c5ed7ffff,developed,0.739,50
+892830c5edbffff,developed,0.572,50
+892830cc437ffff,wetland,0.687,90
+892830cc487ffff,wetland,0.611,90
+892830cc493ffff,open water,0.519,80
+892830cc497ffff,open water,0.719,80
+892830cc4a3ffff,wetland,0.542,90
+892830cc4a7ffff,wetland,0.79,90
+892830cc4afffff,open water,0.496,80
+892830cc4b3ffff,wetland,0.502,90
+892830cc4b7ffff,wetland,0.606,90
+892830cc4bbffff,wetland,0.635,90
+892830cc503ffff,open water,1.0,80
+892830cc507ffff,open water,1.0,80
+892830cc50bffff,open water,1.0,80
+892830cc50fffff,open water,1.0,80
+892830cc513ffff,open water,0.804,80
+892830cc517ffff,open water,1.0,80
+892830cc51bffff,open water,1.0,80
+892830cc533ffff,open water,1.0,80
+892830cc53bffff,open water,1.0,80
+892830cc583ffff,wetland,0.991,90
+892830cc587ffff,wetland,0.573,90
+892830cc58bffff,wetland,0.996,90
+892830cc58fffff,open water,0.578,80
+892830cc593ffff,wetland,0.888,90
+892830cc597ffff,wetland,0.994,90
+892830cc59bffff,wetland,0.991,90
+892830cc5a3ffff,open water,1.0,80
+892830cc5a7ffff,open water,1.0,80
+892830cc5abffff,open water,1.0,80
+892830cc5afffff,open water,1.0,80
+892830cc5b3ffff,open water,1.0,80
+892830cc5b7ffff,open water,1.0,80
+892830cc5bbffff,open water,1.0,80
+892830cc5c3ffff,wetland,0.945,90
+892830cc5c7ffff,wetland,0.621,90
+892830cc5cbffff,open water,0.477,80
+892830cc5cfffff,open water,0.613,80
+892830cc5d3ffff,wetland,0.989,90
+892830cc5d7ffff,wetland,1.0,90
+892830cc5dbffff,wetland,0.711,90
+892830ce003ffff,woodland,0.432,10
+892830ce007ffff,developed,0.779,50
+892830ce00bffff,developed,0.819,50
+892830ce00fffff,developed,0.604,50
+892830ce013ffff,developed,0.85,50
+892830ce017ffff,developed,0.769,50
+892830ce01bffff,developed,0.636,50
+892830ce023ffff,developed,0.72,50
+892830ce027ffff,developed,0.637,50
+892830ce02bffff,developed,0.907,50
+892830ce02fffff,developed,0.801,50
+892830ce033ffff,developed,0.775,50
+892830ce037ffff,developed,0.704,50
+892830ce03bffff,developed,0.939,50
+892830ce043ffff,cropland,0.419,40
+892830ce047ffff,developed,0.812,50
+892830ce04bffff,cropland,0.605,40
+892830ce04fffff,cropland,0.478,40
+892830ce057ffff,developed,0.521,50
+892830ce05bffff,developed,0.818,50
+892830ce063ffff,developed,0.752,50
+892830ce067ffff,developed,0.615,50
+892830ce06bffff,developed,0.765,50
+892830ce06fffff,grassland,0.372,30
+892830ce073ffff,developed,0.844,50
+892830ce077ffff,developed,0.752,50
+892830ce07bffff,developed,0.795,50
+892830ce083ffff,developed,0.796,50
+892830ce087ffff,developed,0.94,50
+892830ce08bffff,developed,0.623,50
+892830ce08fffff,developed,0.835,50
+892830ce093ffff,developed,0.969,50
+892830ce097ffff,developed,0.868,50
+892830ce09bffff,developed,0.914,50
+892830ce0a3ffff,developed,0.812,50
+892830ce0a7ffff,developed,0.912,50
+892830ce0abffff,developed,0.717,50
+892830ce0afffff,developed,0.82,50
+892830ce0b3ffff,developed,0.829,50
+892830ce0b7ffff,developed,0.825,50
+892830ce0bbffff,developed,0.818,50
+892830ce0c3ffff,developed,0.795,50
+892830ce0c7ffff,developed,0.894,50
+892830ce0cfffff,developed,0.468,50
+892830ce0d3ffff,bare ground,0.66,60
+892830ce0d7ffff,developed,0.456,50
+892830ce0dbffff,developed,0.372,50
+892830ce103ffff,developed,0.879,50
+892830ce107ffff,developed,0.854,50
+892830ce10bffff,developed,0.86,50
+892830ce10fffff,developed,0.765,50
+892830ce113ffff,developed,0.783,50
+892830ce117ffff,developed,0.928,50
+892830ce11bffff,developed,0.903,50
+892830ce123ffff,developed,0.941,50
+892830ce127ffff,developed,0.854,50
+892830ce12bffff,developed,0.946,50
+892830ce12fffff,developed,0.989,50
+892830ce133ffff,developed,0.969,50
+892830ce137ffff,developed,0.718,50
+892830ce13bffff,developed,0.938,50
+892830ce143ffff,developed,0.857,50
+892830ce147ffff,developed,0.854,50
+892830ce14bffff,developed,0.783,50
+892830ce14fffff,developed,0.84,50
+892830ce153ffff,developed,0.915,50
+892830ce157ffff,developed,0.786,50
+892830ce15bffff,developed,0.8,50
+892830ce163ffff,developed,0.693,50
+892830ce167ffff,woodland,0.472,10
+892830ce16bffff,developed,0.836,50
+892830ce16fffff,developed,0.89,50
+892830ce173ffff,developed,0.858,50
+892830ce177ffff,developed,0.431,50
+892830ce17bffff,developed,0.954,50
+892830ce183ffff,developed,0.895,50
+892830ce187ffff,developed,0.801,50
+892830ce18bffff,developed,0.885,50
+892830ce18fffff,developed,0.813,50
+892830ce193ffff,developed,0.955,50
+892830ce197ffff,developed,0.95,50
+892830ce19bffff,developed,0.829,50
+892830ce1a3ffff,developed,0.854,50
+892830ce1a7ffff,developed,0.851,50
+892830ce1abffff,developed,0.862,50
+892830ce1afffff,developed,0.931,50
+892830ce1b3ffff,developed,0.744,50
+892830ce1b7ffff,developed,0.852,50
+892830ce1bbffff,developed,0.76,50
+892830ce1c3ffff,developed,0.626,50
+892830ce1c7ffff,developed,0.686,50
+892830ce1cbffff,developed,0.658,50
+892830ce1cfffff,developed,0.926,50
+892830ce1d3ffff,developed,0.83,50
+892830ce1d7ffff,developed,0.721,50
+892830ce1dbffff,developed,0.809,50
+892830ce203ffff,developed,0.318,50
+892830ce207ffff,developed,0.53,50
+892830ce20fffff,grassland,0.527,30
+892830ce213ffff,grassland,0.608,30
+892830ce217ffff,developed,0.727,50
+892830ce223ffff,developed,0.339,50
+892830ce227ffff,developed,0.956,50
+892830ce22bffff,open water,0.422,80
+892830ce22fffff,open water,0.483,80
+892830ce233ffff,grassland,0.346,30
+892830ce237ffff,developed,0.68,50
+892830ce23bffff,bare ground,0.33,60
+892830ce263ffff,open water,0.929,80
+892830ce267ffff,open water,0.982,80
+892830ce26fffff,open water,0.968,80
+892830ce273ffff,wetland,0.904,90
+892830ce277ffff,wetland,0.581,90
+892830ce283ffff,developed,0.724,50
+892830ce287ffff,cropland,0.473,40
+892830ce28fffff,grassland,0.377,30
+892830ce293ffff,developed,0.725,50
+892830ce297ffff,developed,0.764,50
+892830ce29bffff,developed,0.828,50
+892830ce2a3ffff,grassland,0.815,30
+892830ce2a7ffff,developed,0.456,50
+892830ce2abffff,grassland,0.503,30
+892830ce2afffff,grassland,0.614,30
+892830ce2b3ffff,grassland,0.349,30
+892830ce2b7ffff,developed,0.423,50
+892830ce2bbffff,cropland,0.795,40
+892830ce303ffff,developed,0.915,50
+892830ce307ffff,developed,0.592,50
+892830ce30bffff,developed,0.517,50
+892830ce30fffff,open water,0.502,80
+892830ce313ffff,developed,0.965,50
+892830ce317ffff,developed,0.936,50
+892830ce31bffff,developed,0.872,50
+892830ce323ffff,open water,0.75,80
+892830ce327ffff,open water,0.775,80
+892830ce32bffff,wetland,0.679,90
+892830ce32fffff,wetland,0.579,90
+892830ce333ffff,developed,0.753,50
+892830ce337ffff,developed,0.451,50
+892830ce33bffff,open water,0.752,80
+892830ce343ffff,open water,0.554,80
+892830ce347ffff,open water,0.854,80
+892830ce34bffff,open water,1.0,80
+892830ce34fffff,open water,0.452,80
+892830ce353ffff,developed,0.929,50
+892830ce357ffff,developed,0.552,50
+892830ce35bffff,developed,0.416,50
+892830ce363ffff,wetland,0.986,90
+892830ce367ffff,wetland,0.988,90
+892830ce36bffff,wetland,0.964,90
+892830ce36fffff,wetland,0.973,90
+892830ce373ffff,open water,0.527,80
+892830ce377ffff,wetland,0.656,90
+892830ce37bffff,wetland,0.672,90
+892830ce383ffff,grassland,0.583,30
+892830ce387ffff,developed,0.579,50
+892830ce38bffff,grassland,0.812,30
+892830ce38fffff,developed,0.741,50
+892830ce393ffff,developed,0.669,50
+892830ce397ffff,developed,0.575,50
+892830ce39bffff,grassland,0.694,30
+892830ce3a3ffff,developed,0.633,50
+892830ce3a7ffff,developed,0.856,50
+892830ce3abffff,developed,0.686,50
+892830ce3afffff,grassland,0.709,30
+892830ce3b3ffff,developed,0.624,50
+892830ce3b7ffff,developed,0.818,50
+892830ce3bbffff,developed,0.85,50
+892830ce3c3ffff,developed,0.676,50
+892830ce3c7ffff,developed,0.874,50
+892830ce3cbffff,developed,0.885,50
+892830ce3cfffff,developed,0.867,50
+892830ce3d3ffff,developed,0.467,50
+892830ce3d7ffff,grassland,0.877,30
+892830ce3dbffff,developed,0.812,50
+892830ce407ffff,grassland,0.955,30
+892830ce40bffff,grassland,0.609,30
+892830ce40fffff,grassland,0.982,30
+892830ce423ffff,grassland,0.927,30
+892830ce427ffff,grassland,0.672,30
+892830ce42bffff,grassland,0.674,30
+892830ce42fffff,developed,0.608,50
+892830ce433ffff,grassland,0.964,30
+892830ce43bffff,grassland,0.947,30
+892830ce463ffff,developed,0.34,50
+892830ce467ffff,developed,0.999,50
+892830ce46bffff,cropland,0.646,40
+892830ce46fffff,developed,0.361,50
+892830ce473ffff,grassland,0.662,30
+892830ce477ffff,grassland,0.956,30
+892830ce47bffff,developed,0.61,50
+892830ce503ffff,developed,0.722,50
+892830ce507ffff,developed,0.605,50
+892830ce50bffff,developed,0.916,50
+892830ce50fffff,developed,0.789,50
+892830ce517ffff,grassland,0.797,30
+892830ce51bffff,developed,0.448,50
+892830ce523ffff,developed,0.693,50
+892830ce527ffff,developed,0.87,50
+892830ce52bffff,developed,0.782,50
+892830ce52fffff,developed,0.915,50
+892830ce533ffff,woodland,0.498,10
+892830ce537ffff,developed,0.818,50
+892830ce53bffff,woodland,0.512,10
+892830ce543ffff,developed,0.867,50
+892830ce547ffff,developed,0.68,50
+892830ce54bffff,developed,0.872,50
+892830ce54fffff,developed,0.898,50
+892830ce553ffff,developed,0.668,50
+892830ce557ffff,developed,0.821,50
+892830ce55bffff,developed,0.903,50
+892830ce563ffff,developed,0.712,50
+892830ce567ffff,developed,0.687,50
+892830ce56bffff,developed,0.776,50
+892830ce56fffff,developed,0.502,50
+892830ce573ffff,developed,0.875,50
+892830ce577ffff,woodland,0.571,10
+892830ce57bffff,developed,0.814,50
+892830ce587ffff,grassland,0.991,30
+892830ce58fffff,grassland,0.985,30
+892830ce5a3ffff,grassland,0.993,30
+892830ce5a7ffff,grassland,0.993,30
+892830ce5abffff,developed,0.461,50
+892830ce5afffff,developed,0.596,50
+892830ce5b3ffff,grassland,0.857,30
+892830ce5b7ffff,grassland,0.986,30
+892830ce5bbffff,grassland,0.883,30
+892830ce5cfffff,grassland,0.793,30
+892830ce663ffff,developed,0.811,50
+892830ce667ffff,developed,0.878,50
+892830ce66fffff,developed,0.931,50
+892830ce6a3ffff,cropland,0.613,40
+892830ce6a7ffff,cropland,0.559,40
+892830ce6abffff,developed,0.732,50
+892830ce6afffff,cropland,0.347,40
+892830ce6b7ffff,cropland,0.757,40
+892830ce803ffff,open water,1.0,80
+892830ce813ffff,open water,0.856,80
+892830ce817ffff,open water,1.0,80
+892830ce81bffff,open water,1.0,80
+892830ce853ffff,open water,1.0,80
+892830ce883ffff,wetland,0.436,90
+892830ce887ffff,wetland,0.548,90
+892830ce88bffff,wetland,0.551,90
+892830ce88fffff,wetland,0.407,90
+892830ce893ffff,grassland,0.513,30
+892830ce897ffff,wetland,0.653,90
+892830ce89bffff,wetland,0.475,90
+892830ce8a3ffff,open water,0.713,80
+892830ce8a7ffff,open water,0.998,80
+892830ce8abffff,open water,1.0,80
+892830ce8afffff,open water,1.0,80
+892830ce8b3ffff,wetland,0.609,90
+892830ce8b7ffff,wetland,0.923,90
+892830ce8bbffff,wetland,0.497,90
+892830ce8c3ffff,open water,0.719,80
+892830ce8c7ffff,open water,0.693,80
+892830ce8cbffff,open water,1.0,80
+892830ce8cfffff,open water,1.0,80
+892830ce8d3ffff,grassland,0.482,30
+892830ce8d7ffff,grassland,0.378,30
+892830ce8dbffff,open water,0.414,80
+892830ce913ffff,open water,1.0,80
+892830ce917ffff,open water,1.0,80
+892830ce983ffff,wetland,0.829,90
+892830ce987ffff,wetland,0.763,90
+892830ce98bffff,open water,1.0,80
+892830ce98fffff,open water,1.0,80
+892830ce993ffff,wetland,0.998,90
+892830ce997ffff,wetland,0.989,90
+892830ce99bffff,wetland,0.574,90
+892830ce9a3ffff,open water,1.0,80
+892830ce9a7ffff,open water,1.0,80
+892830ce9abffff,open water,1.0,80
+892830ce9b3ffff,open water,0.84,80
+892830ce9b7ffff,open water,1.0,80
+892830ce9bbffff,open water,1.0,80
+892830ce9c3ffff,open water,1.0,80
+892830ce9c7ffff,open water,1.0,80
+892830ce9d3ffff,open water,0.983,80
+892830ce9d7ffff,open water,1.0,80
+892830ce9dbffff,open water,1.0,80
+892830cec03ffff,developed,0.926,50
+892830cec07ffff,developed,0.767,50
+892830cec0bffff,developed,0.919,50
+892830cec0fffff,developed,0.747,50
+892830cec13ffff,developed,0.965,50
+892830cec17ffff,developed,0.849,50
+892830cec1bffff,developed,0.969,50
+892830cec23ffff,developed,0.365,50
+892830cec27ffff,cropland,0.543,40
+892830cec2bffff,cropland,0.49,40
+892830cec2fffff,grassland,0.598,30
+892830cec33ffff,developed,0.792,50
+892830cec37ffff,developed,0.943,50
+892830cec3bffff,developed,0.583,50
+892830cec43ffff,developed,0.51,50
+892830cec47ffff,developed,0.4,50
+892830cec4bffff,developed,0.62,50
+892830cec4fffff,grassland,0.488,30
+892830cec53ffff,developed,0.879,50
+892830cec57ffff,grassland,0.647,30
+892830cec5bffff,developed,0.886,50
+892830cec63ffff,grassland,0.445,30
+892830cec67ffff,grassland,0.766,30
+892830cec6bffff,wetland,0.687,90
+892830cec6fffff,wetland,0.745,90
+892830cec73ffff,developed,0.537,50
+892830cec77ffff,cropland,0.477,40
+892830cec7bffff,cropland,0.473,40
+892830cec83ffff,developed,0.673,50
+892830cec87ffff,developed,0.748,50
+892830cec8bffff,developed,0.432,50
+892830cec8fffff,developed,0.857,50
+892830cec93ffff,grassland,0.608,30
+892830cec97ffff,developed,0.704,50
+892830cec9bffff,developed,0.634,50
+892830ceca3ffff,developed,0.943,50
+892830ceca7ffff,developed,0.829,50
+892830cecabffff,developed,0.879,50
+892830cecafffff,developed,0.776,50
+892830cecb3ffff,developed,0.623,50
+892830cecb7ffff,developed,0.783,50
+892830cecbbffff,developed,0.904,50
+892830cecc3ffff,grassland,0.723,30
+892830cecc7ffff,developed,0.83,50
+892830ceccbffff,developed,0.846,50
+892830ceccfffff,grassland,0.444,30
+892830cecd3ffff,grassland,0.591,30
+892830cecd7ffff,grassland,0.594,30
+892830cecdbffff,developed,0.925,50
+892830ced03ffff,grassland,0.605,30
+892830ced07ffff,grassland,0.614,30
+892830ced0bffff,wetland,0.943,90
+892830ced0fffff,wetland,0.909,90
+892830ced13ffff,developed,0.909,50
+892830ced17ffff,developed,0.778,50
+892830ced1bffff,grassland,0.53,30
+892830ced23ffff,wetland,0.502,90
+892830ced27ffff,wetland,0.593,90
+892830ced2bffff,wetland,0.994,90
+892830ced2fffff,open water,0.8,80
+892830ced33ffff,grassland,0.67,30
+892830ced37ffff,grassland,0.542,30
+892830ced3bffff,wetland,0.713,90
+892830ced43ffff,wetland,0.745,90
+892830ced47ffff,wetland,0.946,90
+892830ced4bffff,wetland,0.541,90
+892830ced4fffff,wetland,0.924,90
+892830ced53ffff,grassland,0.769,30
+892830ced57ffff,wetland,0.609,90
+892830ced5bffff,grassland,0.855,30
+892830ced63ffff,wetland,0.999,90
+892830ced67ffff,wetland,0.985,90
+892830ced6bffff,wetland,0.82,90
+892830ced6fffff,wetland,0.745,90
+892830ced73ffff,wetland,0.999,90
+892830ced77ffff,wetland,0.981,90
+892830ced7bffff,wetland,0.986,90
+892830ced83ffff,developed,0.884,50
+892830ced87ffff,developed,0.796,50
+892830ced8bffff,developed,0.79,50
+892830ced8fffff,developed,0.691,50
+892830ced93ffff,developed,0.555,50
+892830ced97ffff,developed,0.749,50
+892830ced9bffff,developed,0.841,50
+892830ceda3ffff,grassland,0.566,30
+892830ceda7ffff,developed,0.857,50
+892830cedabffff,developed,0.361,50
+892830cedafffff,grassland,0.466,30
+892830cedb3ffff,cropland,0.399,40
+892830cedb7ffff,developed,0.904,50
+892830cedbbffff,developed,0.423,50
+892830cedc3ffff,developed,0.894,50
+892830cedc7ffff,developed,0.789,50
+892830cedcbffff,developed,0.698,50
+892830cedcfffff,grassland,0.48,30
+892830cedd3ffff,developed,0.652,50
+892830cedd7ffff,developed,0.878,50
+892830ceddbffff,developed,0.813,50
+892830cee03ffff,developed,0.721,50
+892830cee07ffff,developed,0.725,50
+892830cee0bffff,developed,0.692,50
+892830cee0fffff,developed,0.42,50
+892830cee13ffff,developed,0.848,50
+892830cee17ffff,developed,0.579,50
+892830cee1bffff,developed,0.802,50
+892830cee23ffff,open water,1.0,80
+892830cee27ffff,open water,1.0,80
+892830cee2bffff,open water,1.0,80
+892830cee2fffff,open water,1.0,80
+892830cee33ffff,developed,0.442,50
+892830cee37ffff,open water,0.857,80
+892830cee3bffff,open water,0.678,80
+892830cee43ffff,open water,0.742,80
+892830cee47ffff,open water,0.944,80
+892830cee4bffff,wetland,0.592,90
+892830cee4fffff,open water,1.0,80
+892830cee53ffff,open water,0.807,80
+892830cee57ffff,developed,0.454,50
+892830cee5bffff,wetland,0.525,90
+892830cee63ffff,open water,1.0,80
+892830cee67ffff,open water,1.0,80
+892830cee6bffff,open water,1.0,80
+892830cee6fffff,open water,1.0,80
+892830cee73ffff,open water,0.89,80
+892830cee77ffff,open water,0.992,80
+892830cee7bffff,open water,1.0,80
+892830cee83ffff,developed,0.874,50
+892830cee87ffff,developed,0.768,50
+892830cee8bffff,developed,0.907,50
+892830cee8fffff,developed,0.43,50
+892830cee93ffff,developed,0.69,50
+892830cee97ffff,developed,0.831,50
+892830cee9bffff,developed,0.878,50
+892830ceea3ffff,cropland,0.302,40
+892830ceea7ffff,wetland,0.473,90
+892830ceeabffff,developed,0.439,50
+892830ceeafffff,grassland,0.512,30
+892830ceeb3ffff,bare ground,0.308,60
+892830ceeb7ffff,wetland,0.59,90
+892830ceebbffff,developed,0.52,50
+892830ceec3ffff,developed,0.929,50
+892830ceec7ffff,developed,0.872,50
+892830ceecbffff,developed,0.65,50
+892830ceecfffff,developed,0.73,50
+892830ceed3ffff,developed,0.832,50
+892830ceed7ffff,developed,0.965,50
+892830ceedbffff,grassland,0.496,30

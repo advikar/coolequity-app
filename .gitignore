@@ -34,3 +34,4 @@ cities/contracosta/data/ndvi_contracosta.tif
 
 # West Contra Costa: same reason as the county mask above (42 MB, input to 03 only).
 cities/westcc/data/buildings_westcc.geojson
+cities/pittsburg/data/buildings_pittsburg.geojson

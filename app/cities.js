@@ -6,4 +6,5 @@ window.CE_CITIES=[
   {slug:'bakersfield', name:'Bakersfield',         sub:'bakersfield/app/'},
   {slug:'sanramon',    name:'San Ramon',           sub:'sanramon/app/'},
   {slug:'westcc',      name:'West Contra Costa',   sub:'westcc/app/'},
+  {slug:'pittsburg',   name:'Pittsburg & Bay Point', sub:'pittsburg/app/'},
 ];
