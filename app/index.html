@@ -604,6 +604,8 @@
   #shortlist .fhead .info-link{margin-right:auto}
   #shortlist .dclose{margin-left:0}
   #shortlist .dclose.quiet{background:none;border-color:transparent;color:var(--muted)}
+  #shortlist .dclose[aria-pressed=true]{background:rgba(255,210,140,.14);border-color:#ffd28c;color:#ffd28c}
+  .sltable{overflow-x:auto;padding:4px 14px 12px}.sltable table{border-collapse:collapse;font-size:11.5px;min-width:100%}.sltable th,.sltable td{padding:5px 8px;text-align:right;border-bottom:1px solid var(--edge);white-space:nowrap;vertical-align:top}.sltable th{font-weight:600;color:var(--txt)}.sltable th.hd{text-align:left;max-width:150px;white-space:normal;line-height:1.25}.sltable td.lbl{text-align:left;color:var(--muted);font-weight:600;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;position:sticky;left:0;background:var(--panel,#0f151d)}.sltable td.most{color:#ffd28c;font-weight:700}.sltable td.note{white-space:normal;max-width:160px;text-align:left;font-size:11px;color:var(--muted)}.sltable .rkb{display:inline-flex;min-width:22px;height:20px;padding:0 5px;border-radius:6px;align-items:center;justify-content:center;font-weight:700;font-size:11px;margin-right:6px}
   .dclose{font:600 11.5px var(--sans);color:var(--txt);background:#1b2733;border:1px solid #3e4d5e;border-radius:7px;padding:5px 10px;cursor:pointer}
   .dclose:hover{border-color:var(--accent)}
   #sl-rows{padding:0 12px 6px}
@@ -814,6 +816,7 @@
         <div class="fhead">
           <button type="button" class="fbtn" aria-expanded="true" aria-controls="shortlist-body"><svg class="dchev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>★ Shortlist</button>
           <a class="info-link" href="guide.html#planting" target="ce-guide" aria-label="About shortlist totals">i</a>
+          <button type="button" class="dclose" id="sl-compare" aria-pressed="false" title="Show the starred areas side by side">Compare</button>
           <button type="button" class="dclose" id="sl-export" title="Export the shortlist as a spreadsheet">Export CSV</button>
           <button type="button" class="dclose quiet" id="sl-clear" title="Remove every area from the shortlist">Clear</button>
         </div>
@@ -1786,6 +1789,7 @@ function wireDrawers(){
   document.getElementById('survival').addEventListener('input',e=>{const v=+e.target.value;if(!(v>0&&v<=100))return;SURVIVAL=v;
     const f=selId!=null&&HEX.features.find(x=>x.properties.id===selId);if(f)updateROI(f.properties);buildShortlist();});
   document.getElementById('sl-export').onclick=exportShortlist;
+  {const cb=document.getElementById('sl-compare');if(cb){cb.setAttribute('aria-pressed',SL_COMPARE);cb.onclick=()=>{SL_COMPARE=!SL_COMPARE;cb.setAttribute('aria-pressed',SL_COMPARE);try{localStorage.setItem('ce-slview',SL_COMPARE?'compare':'rows');}catch(_){}buildShortlist();};}}
   const clearSL=()=>{SHORTLIST.clear();saveShortlist();buildRank();syncDetailPin();toast('Shortlist cleared');};
   const box=document.getElementById('slclear');
   const closeSL=()=>{box.hidden=true;document.getElementById('sl-clear').focus();};
@@ -1940,11 +1944,11 @@ function openReport(){
     return {bar:vis.map(([k,v])=>{const w=W_INPUTS.find(x=>x.k===k);return `<i style="width:${(100*v/tot).toFixed(1)}%;background:${w.swatch}"></i>`;}).join(''),
       leg:vis.map(([k,v])=>{const w=W_INPUTS.find(x=>x.k===k);return `<span><i style="background:${w.swatch}"></i>${esc(w.label.replace(' (65+)',''))} <b>${Math.round(100*v/tot)}%</b></span>`;}).join('')};};
   const rows=top.map(f=>{const p=f.properties,s=sc(p),c=colorFor('score',s);
-    return `<tr><td><span class="rk" style="background:${c};color:${inkOn(c)}">${rk(p)}</span></td><td class="nm">${esc(nameOf(p))}</td><td class="n">${s.toFixed(0)}</td><td class="n">${fTemp(p.lst)}</td><td class="n">${treesLbl(p)}</td><td class="n">${fInt(p.pop)}</td><td class="n">${LAYERS.pct65.fmt(p.pct65)}</td><td class="n">${fMin(p.access_min)}</td><td class="n muted">${def?'—':(p.rank||'—')}</td></tr>`;}).join('');
+    return `<tr><td><span class="rk" style="background:${c};color:${inkOn(c)}">${rk(p)}</span></td><td class="nm">${esc(nameOf(p))}</td><td class="n">${s.toFixed(0)}</td><td class="n">${fTemp(p.lst)}</td><td class="n">${treesLbl(p)}</td><td class="n">${fInt(p.pop)}</td><td class="n">${LAYERS.pct65.fmt(p.pct65)}</td><td class="n">${fMin(p.access_min)}</td><td>${esc(p.city||'—')}</td><td class="n muted">${p.rank_lo!=null?p.rank_lo+'–'+p.rank_hi:'—'}</td><td class="n muted">${def?'—':(p.rank||'—')}</td></tr>`;}).join('');
   const slPages=sl.map(f=>{const p=f.properties,s=sc(p),c=colorFor('score',s),share=plantingShares.get(p.id)??25,scn=scenarioFor(p,share),d=drivers(p),st=cityStats();
     const seniors=Math.round(p.pop*p.pct65/100);
     const m=[['Surface heat',fTemp(p.lst),norm('lst',p.lst),lift(colorFor('lst',p.lst),130)],['Tree cover',treesLbl(p),norm('green',p.green),lift(colorFor('green',p.green),130)],['Residents',fInt(p.pop),norm('pop',p.pop),lift(colorFor('pop',p.pop),130)],['Age 65+',LAYERS.pct65.fmt(p.pct65),norm('pct65',p.pct65),lift(colorFor('pct65',p.pct65),130)],['Homes with A/C (est.)',LAYERS.ac.fmt(p.ac),norm('ac',p.ac),lift(colorFor('ac',p.ac),130)],['Walk to cooling (est.)',`${fMin(p.access_min)} · ${fDist(p.access_km)}`,norm('access',p.access_min),lift(colorFor('access',p.access_min),130)]];
-    return `<section class="area"><div class="ahead"><span class="rk big" style="background:${c};color:${inkOn(c)}">${rk(p)}</span><div><h3>${esc(nameOf(p))}</h3><div class="sub">Rank ${rk(p)} of ${order.length.toLocaleString()} · need index ${s.toFixed(0)}${def?'':' · under '+esc(q)}</div></div></div>
+    return `<section class="area"><div class="ahead"><span class="rk big" style="background:${c};color:${inkOn(c)}">${rk(p)}</span><div><h3>${esc(nameOf(p))}</h3><div class="sub">Rank ${rk(p)} of ${order.length.toLocaleString()}${p.rank_lo!=null?` · likely ${p.rank_lo}–${p.rank_hi}`:''}${p.city?' · '+esc(p.city):''} · need index ${s.toFixed(0)}${def?'':' · under '+esc(q)} · area #${p.id}</div></div></div>
       ${noteOf(p.id).status||noteOf(p.id).note?`<p class="fine" style="margin:0 0 8px"><b>Field check:</b> ${noteOf(p.id).status?esc(FC_LABEL[noteOf(p.id).status]):'no status'}${noteOf(p.id).note?' — '+esc(noteOf(p.id).note):''}${noteOf(p.id).updated?' ('+esc(new Date(noteOf(p.id).updated).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}))+')':''}</p>`:''}
       <p class="lede">About <b>${fInt(p.pop)}</b> people live here, <b>${fInt(seniors)}</b> aged 65 or older. Surface heat is <b>${fTemp(p.lst)}</b> and trees cover <b>${treesLbl(p)}</b> of the assessed ground, ${p.green<st.medGreen?'below':p.green>st.medGreen?'above':'at'} the city median of ${st.medGreen.toFixed(0)}%. The nearest mapped cool place is about <b>${fMin(p.access_min)}</b> on foot.</p>
       <div class="two"><div><div class="k">What puts it here</div><div class="cbar">${d.bar}</div><div class="leg">${d.leg}</div>
@@ -2002,8 +2006,8 @@ ol,ul{padding-left:18px;font-size:10pt}li{margin-bottom:6px}
 <div class="page">
   <h2>Top 25 areas under “${esc(q)}”</h2>
   <div class="wbar">${wbar}</div><div class="leg">${swatchRow}<span><i style="background:#8b5cf6"></i>Count people more <b>${Math.round(POPW*100)}%</b></span></div>
-  <table style="margin-top:14px"><thead><tr><th>#</th><th>Area</th><th class="n">Need</th><th class="n">Heat</th><th class="n">Trees</th><th class="n">Residents</th><th class="n">65+</th><th class="n">Walk</th><th class="n">Rec. rank</th></tr></thead><tbody>${rows}</tbody></table>
-  <p class="fine" style="margin-top:10px">Need is a relative 0–100 index within ${esc(CITY_NAME)} under these weights. “Rec. rank” is the area's rank under the recommended mix; it reads — when the recommended mix is in force.</p>
+  <table style="margin-top:14px"><thead><tr><th>#</th><th>Area</th><th class="n">Need</th><th class="n">Heat</th><th class="n">Trees</th><th class="n">Residents</th><th class="n">65+</th><th class="n">Walk</th><th>City</th><th class="n">Likely rank</th><th class="n">Rec. rank</th></tr></thead><tbody>${rows}</tbody></table>
+  <p class="fine" style="margin-top:10px">Need is a relative 0–100 index within ${esc(CITY_NAME)} under these weights. “Likely rank” is the 5th–95th percentile of the area's rank when census inputs are re-drawn within their margins of error and the recommended weights are nudged; rank differences smaller than that band are noise. “Rec. rank” is the area's rank under the recommended mix; it reads — when the recommended mix is in force.</p>
   <div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Page 2</span></div>
 </div>
 ${sl.length?`<div class="page"><h2>Shortlist · ${sl.length} area${sl.length===1?'':'s'}</h2><p class="lede" style="margin-top:0">${fInt(slRes)} residents · ${fInt(slTrees)} trees · ${money(slCost)} at ${money(COST_TREE)} per tree, each area at its own planting share.</p>${slPages}<div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Shortlist</span></div></div>`:''}
@@ -2855,8 +2859,38 @@ function buildShortlist(){
   document.getElementById('sl-n').innerHTML=`${items.length} area${items.length===1?'':'s'} · <b>${fInt(res)}</b> residents · <b>${fInt(trees)}</b> trees · <b>$${k(cost)}</b>`;
   document.getElementById('sl-n').title='Residents, trees and cost add up each starred area at its own planting share (25% unless you changed it).';
   el.innerHTML='';const def=isDefaultW();
-  items.forEach(f=>el.appendChild(makeRow(f.properties,def)));
+  if(SL_COMPARE&&items.length>=2)el.appendChild(compareTable(items));
+  else items.forEach(f=>el.appendChild(makeRow(f.properties,def)));
+  const cb=document.getElementById('sl-compare');if(cb){cb.disabled=items.length<2;cb.title=items.length<2?'Star at least two areas to compare them':'Show the starred areas side by side';}
   if(window.syncExportButtons)syncExportButtons();
+}
+// Side-by-side view of the shortlist: one column per starred area, the rows a
+// planner compares before choosing where to look first. The 'most' mark is the
+// column with the greatest need on that row (hottest, fewest trees, most
+// residents, longest walk...), not a judgement.
+let SL_COMPARE=false;try{SL_COMPARE=localStorage.getItem('ce-slview')==='compare';}catch(_){}
+function compareTable(items){
+  const P=items.slice(0,6).map(f=>f.properties);
+  const rows=[
+    ['Likely rank',p=>p.rank_lo!=null?`${p.rank_lo}–${p.rank_hi}`:'—',null],
+    ['City',p=>p.city||'—',null],
+    ['Residents',p=>fInt(p.pop),p=>p.pop],
+    ['Aged 65+',p=>LAYERS.pct65.fmt(p.pct65),p=>p.pct65],
+    ['Surface heat',p=>fTemp(p.lst),p=>p.lst],
+    ['Tree cover',p=>p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100 greenness':p.green.toFixed(0)+'% '+rowSrcLabel(p).replace('trees','').replace(' · ','').trim(),p=>p.green_src==='ndvi'?null:-p.green],
+    ['Homes with A/C',p=>LAYERS.ac.fmt(p.ac),p=>-p.ac],
+    ['Walk to cooling',p=>fMin(p.access_min),p=>p.access_min],
+    ['Trees in scenario',p=>{const s=scenarioFor(p,plantingShares.get(p.id)??25);return s?`${fInt(s.trees)} · ${plantingShares.get(p.id)??25}%`:'no capacity';},null],
+    ['Indicative cost',p=>{const s=scenarioFor(p,plantingShares.get(p.id)??25);return s?'≈$'+fInt(s.cost_usd):'—';},null],
+    ['Field check',p=>{const n=noteOf(p.id);return n.status?FC_LABEL[n.status]+(n.note?' — '+n.note:''):'not checked';},null],
+  ];
+  const wrap=document.createElement('div');wrap.className='sltable';
+  const head=P.map(p=>{const c=colorFor('score',sc(p));return `<th class="hd"><span class="rkb" style="background:${c};color:${inkOn(c)}">${rk(p)}</span>${escapeHtml(nameOf(p))}</th>`;}).join('');
+  const body=rows.map(([lbl,fmt,key])=>{let best=null;if(key){const v=P.map(key);const ok=v.filter(x=>x!=null&&isFinite(x));if(ok.length>1){const m=Math.max(...ok);const idx=v.findIndex(x=>x===m);if(v.filter(x=>x===m).length===1)best=idx;}}
+    return `<tr><td class="lbl">${lbl}</td>${P.map((p,i)=>`<td class="${i===best?'most ':''}${lbl==='Field check'?'note':''}">${escapeHtml(String(fmt(p)))}</td>`).join('')}</tr>`;}).join('');
+  wrap.innerHTML=`<table><thead><tr><td class="lbl"></td>${head}</tr></thead><tbody>${body}</tbody></table><p class="hint" style="margin:6px 0 0">Gold = the greatest need on that row among these areas. ${items.length>6?`Showing the first 6 of ${items.length} starred areas.`:''} Open an area to change its planting share or field check.</p>`;
+  wrap.querySelectorAll('th.hd').forEach((th,i)=>{th.style.cursor='pointer';th.onclick=()=>selectHex(P[i].id,true);});
+  return wrap;
 }
 function exportShortlist(){
   const header=exportHeader();

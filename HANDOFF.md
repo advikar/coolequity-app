@@ -193,3 +193,12 @@
   does not clear them (work product). Test contexts stub `noteOf` and `FC_LABEL`.
 - `.github/workflows/pages.yml` gained a `smoke` job after `deploy` (curls every city's five
   URLs on the live site with retries; fails the run if any is not 200).
+
+## Checkpoint — September 13, 2026: shortlist compare; American spelling
+
+- `#sl-compare` toggles `SL_COMPARE` (localStorage `ce-slview`); `compareTable(items)` renders
+  up to six starred areas as columns; column headers open the area. Briefing top-25 table has
+  City and Likely rank columns; shortlist headings carry band, city, id.
+- User-facing copy converted to American spelling (color, center, program, meters, normalized,
+  labeled, gray). OSM tag value `community_centre` and the CDP name "Contra Costa Centre"
+  are untouched on purpose.
