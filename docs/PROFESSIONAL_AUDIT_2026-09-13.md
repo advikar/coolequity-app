@@ -3,7 +3,7 @@
 > **Status tracker (kept current as work lands).** The audit below was written by a second
 > reviewer on September 13, 2026 against the live site and the *old* `advikar/coolequity`
 > checkout. The tracker records what has since been fixed in this repository. Last update:
-> September 13, 2026 (second pass).
+> September 13, 2026 (third pass).
 >
 > | Item | Status | Where |
 > |---|---|---|
@@ -25,7 +25,7 @@
 > | Chooser + intro friction, three-column squeeze, mobile legend | **Partly fixed** | Legend starts collapsed under 700px unless the viewer opened it. Chooser/intro and desktop layout unchanged |
 > | Generated cell names look too precise | **Fixed** | Detail subtitle shows the stable area id; name tooltip says it is generated from nearby places, not a boundary |
 > | Consolidate duplicated city apps | **Already done** before the audit (this repo) |
-> | Canopy recovery: four public CHM tiles reachable; Discovery Bay USFS package missing | Open, first data task | See addendum below |
+> | Canopy recovery: four public CHM tiles reachable; Discovery Bay USFS package missing | **Done** | Discovery Bay package added (37 residential cells, 10,140 residents to aerial data). Legacy height-model step rebuilt: all 24 tiles read, per-cell tile coverage and flat fraction recorded, failures now stop the run; the 400 residential cells that had no canopy value at all now carry height-model values (2009–2020, tagged as such). County unassessed residents: 17,710 → 0. Top 100 unchanged in both steps |
 >
 > Fixed earlier the same day, from a separate audit: session weights leaking between cities,
 > opening an area marking the session unsaved, A/C driver copy, dead legend caption and

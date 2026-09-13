@@ -1381,9 +1381,10 @@ function nameOf(p){return p.name||`Area ${p.id}`;}
 function canopyTag(p){
   if(p.green_src==='ndvi'){const f=Math.round((p.coverage_frac||0)*100);return p.canopy_quality==='below-threshold'?['satellite stand-in',`The aerial assessment observed only ${f<1?'under 1%':f+'%'} of this area, too little to describe it, so satellite greenness stands in and is scored on its own scale.`]:['satellite stand-in','No aerial tree-cover assessment here; satellite greenness stands in and is scored on its own scale.'];}
   const yr=p.canopy_year?` ${p.canopy_year}`:'';
-  if(p.canopy_quality==='full')return [`aerial${yr}`,`Aerial classification${yr} covering essentially the whole area.`];
-  if(p.canopy_quality==='partial'){const f=Math.round((p.coverage_frac||0)*100),fs=f<1?'under 1%':f+'%';return [`aerial${yr} · ${fs} assessed`,`Aerial classification${yr} assessed only ${fs} of this area; the tree-cover figure describes that part only.`];}
-  if(p.canopy_source==='chm-legacy')return ['height model · coverage unknown','From an older canopy-height model; how much of the area it observed is not recorded.'];
+  const legacy=p.canopy_source==='chm-legacy',kind=legacy?'height model':'aerial',what=legacy?`Canopy-height model (imagery ${p.canopy_year||'2009–2020'}, trees = 2 m and taller)`:`Aerial classification${yr}`;
+  if(p.canopy_quality==='full')return [`${kind}${legacy?'':yr}`,`${what} covering essentially the whole area.`];
+  if(p.canopy_quality==='partial'){const f=Math.round((p.coverage_frac||0)*100),fs=f<1?'under 1%':f+'%';return [`${kind}${legacy?'':yr} · ${fs} assessed`,`${what} observed only ${fs} of this area; the tree-cover figure describes that part only.`];}
+  if(legacy)return ['height model · coverage unknown','From an older canopy-height model; how much of the area it observed is not recorded.'];
   return null;
 }
 

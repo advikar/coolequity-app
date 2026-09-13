@@ -150,7 +150,7 @@ def main():
     chm_path = C.CANOPY_CSV.with_name(C.CANOPY_CSV.stem + "_chm.csv")
     if chm_path.exists():
         out, filled = fill_legacy_canopy(out, pd.read_csv(chm_path))
-        log(f"  filled {filled} cells from legacy CHM; coverage remains unknown")
+        log(f"  filled {filled} cells from legacy CHM (coverage carried over where the CHM file records it)")
 
     ok = out["canopy_pct"].notna()
     log(f"  canopy_pct: {out.loc[ok,'canopy_pct'].min():.1f}–"
@@ -172,8 +172,17 @@ def fill_legacy_canopy(out, chm):
         out.loc[use, col] = chm.loc[use, col] if col in chm else np.nan
     out.loc[use, "canopy_source"] = "chm-legacy"
     out.loc[use, "canopy_year"] = "2009-2020"
-    out.loc[use, "canopy_quality"] = "coverage-unknown"
-    out.loc[use, ["assessed_m2", "coverage_frac"]] = np.nan
+    if "coverage_frac" in chm:
+        # A rebuilt legacy file records how much of the hex the height tiles
+        # covered, so the same full/partial rule applies (05 then applies the
+        # under-10% fallback to 'partial' whatever the source).
+        cov = chm.loc[use, "coverage_frac"].fillna(0)
+        out.loc[use, "coverage_frac"] = cov
+        out.loc[use, "assessed_m2"] = chm.loc[use, "assessed_m2"] if "assessed_m2" in chm else np.nan
+        out.loc[use, "canopy_quality"] = np.where(cov >= .99, "full", "partial")
+    else:
+        out.loc[use, "canopy_quality"] = "coverage-unknown"
+        out.loc[use, ["assessed_m2", "coverage_frac"]] = np.nan
     return out.reset_index(), int(use.sum())
 
 

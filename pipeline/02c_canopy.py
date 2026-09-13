@@ -147,13 +147,16 @@ def main():
     n = len(hx)
     px_tot = np.zeros(n); px_can = np.zeros(n)
     row_tot = np.zeros(n); row_can = np.zeros(n)
+    px_flat = np.zeros(n)   # pixels at or below 2 cm: bare ground OR unobserved fill (the product has no nodata flag)
+    failed = []
 
     for ti, t in enumerate(tiles, 1):
         url = f"/vsicurl/{CHM_BASE}/{t}.tif"
         try:
             src = rasterio.open(url)
         except Exception as e:
-            log(f"    tile {t}: unavailable ({type(e).__name__})")
+            log(f"    tile {t}: unavailable ({type(e).__name__}: {e})")
+            failed.append((t, f"{type(e).__name__}: {e}"))
             continue
         with src:
             b, tb = hx.total_bounds, src.bounds
@@ -174,6 +177,7 @@ def main():
         # would be 38 m of tree, which is right, or 3.8 km, which is not.
         h = arr / 100.0
         canopy = h >= CANOPY_MIN_HT_M
+        flat = h <= 0.02
         px_m2 = ((bb[2] - bb[0]) / ow) * ((bb[3] - bb[1]) / oh)
 
         row_mask = None
@@ -188,10 +192,12 @@ def main():
         idx = rasterize(
             ((g, i + 1) for i, g in enumerate(hx.geometry)),
             out_shape=canopy.shape, transform=tr, fill=0, dtype="int32")
+        flat_px = flat
         flat = idx.ravel()
         nb = len(hx) + 1
         px_tot += np.bincount(flat, minlength=nb)[1:]
         px_can += np.bincount(flat, weights=canopy.ravel(), minlength=nb)[1:]
+        px_flat += np.bincount(flat, weights=flat_px.ravel(), minlength=nb)[1:]
         if row_mask is not None:
             rm = row_mask.ravel()
             row_tot += np.bincount(flat, weights=rm, minlength=nb)[1:]
@@ -208,6 +214,12 @@ def main():
     areas = gpd.read_file(C.GRID_FILE)[["h3", "area_m2"]]
     out = out.merge(areas, on="h3", how="left")
     out["canopy_m2"] = (out["canopy_pct"] / 100 * out["area_m2"]).round(0)
+    # Provenance the legacy file never carried: how much of each hex the tiles
+    # actually covered, and how much of that read as <=2 cm (bare ground or fill).
+    out["assessed_m2"] = (px_tot * px_m2_out).round(2)
+    out["coverage_frac"] = (out["assessed_m2"] / out["area_m2"]).clip(0, 1).round(4)
+    with np.errstate(invalid="ignore", divide="ignore"):
+        out["flat_frac"] = np.where(px_tot > 0, px_flat / px_tot, np.nan).round(4)
     out = out.drop(columns=["area_m2"])
 
     ok = out["canopy_pct"].notna()
@@ -216,8 +228,18 @@ def main():
         f"{out.loc[ok,'canopy_pct'].median():.1f}%)")
     log(f"  canopy area: {out.canopy_m2.sum()/1e6:.2f} km2 measured")
     log(f"  unshaded public right-of-way: {out.row_m2.sum()/1e6:.2f} km2")
-    out.to_csv(C.CANOPY_CSV, index=False)
-    log(f"  wrote {C.CANOPY_CSV.relative_to(C.ROOT)}")
+    cov = out["coverage_frac"]
+    log(f"  coverage: {int((cov >= .99).sum())} hexes >=99% read, {int(((cov > 0) & (cov < .99)).sum())} partial, {int((cov == 0).sum())} unread; "
+        f"{int((out['flat_frac'] >= .999).sum())} hexes read entirely as <=2 cm")
+    if failed:
+        log(f"  {len(failed)} tile(s) FAILED and their hexes are under-read: " + ", ".join(t for t, _ in failed))
+    CHM_OUT = C.CANOPY_CSV.with_name(C.CANOPY_CSV.stem + "_chm.csv")   # 02d fills gaps from this; never overwrite the USFS file
+    (CHM_OUT.with_suffix('.tiles.json')).write_text(__import__('json').dumps(
+        {"tiles": tiles, "failed": failed, "read_m": px_m2_out ** .5, "height_threshold_m": CANOPY_MIN_HT_M}, indent=1))
+    out.to_csv(CHM_OUT, index=False)
+    log(f"  wrote {CHM_OUT.relative_to(C.ROOT)}")
+    if failed and os.environ.get("COOLEQUITY_ALLOW_TILE_FAILURES") != "1":
+        raise SystemExit("02c: tile failures above; rerun, or set COOLEQUITY_ALLOW_TILE_FAILURES=1 to accept an under-read canopy file")
 
 
 if __name__ == "__main__":

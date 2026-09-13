@@ -11,7 +11,7 @@
   "ac": 0.25,
   "age65": 0.2
  },
- "canopy": "USFS/CAL FIRE 2022 aerial (packages: Antioch, Concord-Walnut Creek, Discovery Bay, Livermore-Pleasanton-Dublin, San Francisco-Oakland); legacy CHM 2009-2020; aerial coverage under 10% of a cell or no assessment retains NDVI for ranking",
+ "canopy": "USFS/CAL FIRE 2022 aerial (packages: Antioch, Concord-Walnut Creek, Discovery Bay, Livermore-Pleasanton-Dublin, San Francisco-Oakland); legacy CHM 2009-2020 (rebuilt 2026-09-13 with per-cell tile coverage, 24 tiles, all read); aerial coverage under 10% of a cell or no assessment retains NDVI for ranking",
  "canopy_coverage_rule": "Scenarios require mapped street capacity; >=99% USFS coverage only enables whole-cell canopy baseline totals",
  "sha256": {
   "acs_contracosta.csv": "bc5dfd8e771c355ce0f9d0252aef36cf537b17b3a89ad9257b026908ded33f43",

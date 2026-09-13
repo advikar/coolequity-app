@@ -8,7 +8,7 @@ const load=(file,name)=>{const c={window:{}};vm.createContext(c);vm.runInContext
 const CITIES=load('app/cities.js','CE_CITIES');
 // Per-city facts of the committed data, carried over from each city's former branch.
 const EXPECT={
-  contracosta:{res:2697,ndvi:531},   // 400 unassessed + 131 below the 10% coverage threshold
+  contracosta:{res:2697,ndvi:131},   // all below the 10% aerial-coverage threshold; the rebuilt height model covers every other cell
   sanramon:{res:419,ndvi:8},
   bakersfield:{res:3788,ndvi:62},
 };
