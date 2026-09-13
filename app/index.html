@@ -833,6 +833,8 @@
             <button type="button" class="pst" data-f="green" title="Under 10% tree cover">Trees &lt; 10%</button>
             <button type="button" class="pst" data-f="age" title="At least 20% of residents aged 65 or older">Older 20%+</button>
             <button type="button" class="pst" data-f="scen" title="Only areas with mapped street capacity, so a planting scenario can be sized. Not a site survey.">Has street capacity</button>
+            <button type="button" class="pst" data-f="aerial" title="Only areas whose tree cover comes from the 2022 aerial assessment covering essentially the whole area; drops height-model, partly assessed and greenness stand-in areas">Full aerial tree data</button>
+            <button type="button" class="pst" data-f="stable" title="Only areas that stay in the top tier in at least 80% of re-draws of census margins and weights (recommended mix)">Stable top tier</button>
           </div>
           <p id="rank-count" role="status"></p>
             <p id="rank-change" hidden></p>
@@ -2697,6 +2699,8 @@ function buildRank(){
     if(F.has('green')&&!(p.green_src!=='ndvi'&&p.green<10))return false;   // greenness stand-ins are not low tree cover
     if(F.has('age')&&!(p.pct65>=20))return false;
     if(F.has('scen')&&p.scenario_ok!==true)return false;
+    if(F.has('aerial')&&!(p.canopy_source==='usfs-2022'&&p.canopy_quality==='full'))return false;
+    if(F.has('stable')&&!(p.rank_top_share>=0.8))return false;
     return true;});
   if(sortK!=='need'||RANK_DIR!=='most'){const dir=RANK_DIR==='most'?1:-1;const v=p=>sortK==='need'?(sc(p)??-1):(p.properties?p.properties[sortK]:p[sortK])??0;matches=matches.slice().sort((a,b)=>dir*((v(b.properties)-v(a.properties))));}
   rankPage=Math.max(0,Math.min(rankPage,Math.ceil(matches.length/RANK_PAGE_SIZE)-1));
@@ -2718,6 +2722,15 @@ function buildRank(){
   top.forEach(f=>el.appendChild(makeRow(f.properties,def)));
   buildShortlist();
 }
+// The list must not make a height-model or partly assessed figure look like a
+// full aerial one: the tree label says which it is, and the hover says why.
+function rowSrcLabel(p){
+  if(p.green_src==='ndvi')return 'greenness';
+  if(p.canopy_source==='chm-legacy')return 'trees · model';
+  if(p.canopy_quality==='partial')return 'trees · partial';
+  return 'trees';
+}
+function rowSrcTitle(p){const tg=canopyTag(p);return tg?tg[0]+'. '+tg[1]:'Aerial classification covering essentially the whole area.';}
 function makeRow(p,def){
   const s=sc(p);
   const row=document.createElement('div');row.className='row';row.dataset.id=p.id;
@@ -2728,7 +2741,7 @@ function makeRow(p,def){
     <button type="button" class="pin${on?' on':''}" aria-pressed="${on}" title="${on?'Remove from':'Add to'} shortlist">${on?'★':'☆'}</button>
     <div class="sc" style="color:${lift(c)}">${s.toFixed(0)}</div>
     <div class="cbar" aria-hidden="true">${contribBar(p)}</div>
-    <div class="mxs"><span class="mx"><b>${fTemp(p.lst)}</b><i>heat</i></span><span class="mx"><b>${p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':p.green.toFixed(0)+'%'}</b><i>${p.green_src==='ndvi'?'greenness':'trees'}</i></span><span class="mx"><b>${fMin(p.access_min)}</b><i>walk</i></span></div>`;
+    <div class="mxs"><span class="mx"><b>${fTemp(p.lst)}</b><i>heat</i></span><span class="mx" title="${escapeHtml(rowSrcTitle(p))}"><b>${p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':p.green.toFixed(0)+'%'}</b><i>${rowSrcLabel(p)}</i></span><span class="mx"><b>${fMin(p.access_min)}</b><i>walk</i></span></div>`;
   const open=()=>{selectHex(p.id,true);document.getElementById('d-close').focus({preventScroll:true});};
   row.onclick=e=>{if(e.target.closest('.pin')){togglePin(p.id);return;}open();};
   row.querySelector('.nm').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};
