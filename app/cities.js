@@ -5,4 +5,5 @@ window.CE_CITIES=[
   {slug:'contracosta', name:'Contra Costa County', sub:'contracosta/app/'},
   {slug:'bakersfield', name:'Bakersfield',         sub:'bakersfield/app/'},
   {slug:'sanramon',    name:'San Ramon',           sub:'sanramon/app/'},
+  {slug:'westcc',      name:'West Contra Costa',   sub:'westcc/app/'},
 ];

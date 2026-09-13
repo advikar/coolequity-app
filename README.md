@@ -12,8 +12,9 @@ survey; every number carries its source and limits in each city's in-app guide.
 | Contra Costa County | [contracosta/app/](https://advikar.github.io/coolequity-app/contracosta/app/) | 2,697 | 1.16M | USFS/CAL FIRE 2022 aerial; greenness stand-in on 131 areas (aerial assessment under 10%); 2009–2020 height model on 1330 | Census LACE 2023, scored | 0 |
 | Bakersfield | [bakersfield/app/](https://advikar.github.io/coolequity-app/bakersfield/app/) | 3,788 | 410k | USFS/CAL FIRE 2022 aerial | LACE 2023, not scored (96.5–100% everywhere) | 0.45 |
 | San Ramon | [sanramon/app/](https://advikar.github.io/coolequity-app/sanramon/app/) | 419 | 85k | USFS/CAL FIRE 2022 aerial | LACE 2023, not scored | 0.45 |
+| West Contra Costa | [westcc/app/](https://advikar.github.io/coolequity-app/westcc/app/) | 982 | 272k | USFS/CAL FIRE 2022 aerial | LACE 2023, scored | 0.35 |
 
-All three share one app, one pipeline and one method: ACS 2020–2024 population and age
+All four share one app, one pipeline and one method: ACS 2020–2024 population and age
 allocated into H3 areas, Landsat 8/9 surface temperature, walking time routed on the
 OpenStreetMap pedestrian network, planting scenarios conditional on mapped street capacity,
 a data & methods guide, the county cooling directory and reproducible scenario export.

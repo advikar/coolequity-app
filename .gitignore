@@ -31,3 +31,6 @@ cities/contracosta/data/ndvi_contracosta.tif
 # right-of-way calculation, and when it was ignored a missing file silently
 # produced 0.00 km2 of plantable public land, which looks like a finding rather
 # than an error.
+
+# West Contra Costa: same reason as the county mask above (42 MB, input to 03 only).
+cities/westcc/data/buildings_westcc.geojson

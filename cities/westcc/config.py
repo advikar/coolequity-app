@@ -27,22 +27,22 @@ BBOX = (-122.4415, 37.8837, -122.1789, 38.0733)
 H3_RES = 9
 
 # ---------------------------------------------------------------- scoring
-# Same mix as the county build this area was cut from, so a Richmond area's rank
-# here and its rank on the county map answer the same question at two scales.
+# HEAT IS SCORED here, unlike the county build this area was cut from, and the
+# reason is a measurement, not a preference. County-wide, position (lon, lat)
+# explains 38.8% of the variance in summer surface temperature: comparing the
+# Richmond shoreline to Antioch is comparing climates. Inside West County the
+# same regression explains 11.1% (1,494 land hexes, LST 27-49 C), and LST
+# correlates -0.64 with satellite greenness: a hotter hex here is mostly a
+# barer hex, which is the signal a shade-planting screen wants. Heat therefore
+# carries the weight it does in the other city-scale builds.
 #
-# HEAT ships at 0 for the county's reason: surface temperature across Contra
-# Costa mostly tracks distance from the Bay. West County is the cool, bay-side
-# end of that gradient, but it still runs from the Richmond shoreline to the
-# El Sobrante and Rodeo hills. Re-test after 02: if position explains little of
-# the LST variance here, heat can carry weight as it does in Bakersfield.
-#
-# A/C is scored: Census LACE 2023 runs roughly 68-93% of homes across Contra
-# Costa and West County sits at the low end, so the input carries real signal.
+# A/C is scored: Census LACE 2023 runs 46-82% of homes across this area, the
+# widest spread of any build, so the input carries real signal.
 WEIGHTS = {
-    "heat":     0.00,   # heat_n — measured and shown, not scored (see above)
-    "green":    0.55,   # (1 - canopy_n)
-    "ac":       0.25,   # (1 - ac_access_n)
-    "age65":    0.20,   # age65_n
+    "heat":     0.35,   # heat_n
+    "green":    0.35,   # (1 - canopy_n)
+    "ac":       0.15,   # (1 - ac_access_n)
+    "age65":    0.15,   # age65_n
 }
 
 # ---------------------------------------------------------------- census (US)

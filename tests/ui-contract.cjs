@@ -11,6 +11,7 @@ const EXPECT={
   contracosta:{res:2697,ndvi:131},   // all below the 10% aerial-coverage threshold; the rebuilt height model covers every other cell
   sanramon:{res:419,ndvi:8},
   bakersfield:{res:3788,ndvi:62},
+  westcc:{res:982,ndvi:8},
 };
 const want=process.argv.slice(2);
 const slugs=want.length?want:CITIES.map(c=>c.slug);

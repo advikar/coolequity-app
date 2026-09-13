@@ -71,12 +71,19 @@ class DataContracts(unittest.TestCase):
         self.assertFalse(((c.canopy_pct>0)&(c.canopy_m2<=0)).any())
         usfs=c[c.canopy_source=='usfs-2022']
         np.testing.assert_allclose(usfs.canopy_m2,usfs.canopy_pct/100*usfs.assessed_m2,atol=.51)
+        income_model=0
         for f in features:
             p=f['properties']
             self.assertEqual(p['canopy_baseline_ok'],p['canopy_source']=='usfs-2022' and p['coverage_frac']>=.99)
             self.assertEqual(p['scenario_ok'],p['street_m']>0 and p['area_m2']>0)
-            if p['place']=='res': self.assertIn(p['ac_src'],('lace','lace-pop'))
+            if p['place']=='res':
+                # A tract the Census suppresses in LACE keeps the income model, flagged
+                # (the app greys it out and says "income estimate"); it must stay rare.
+                if p['ac_src']=='income-model' and p.get('ac_coverage') is None: income_model+=1
+                else: self.assertIn(p['ac_src'],('lace','lace-pop'))
             self.assertEqual(p['acs_year'],2024)
+        nres=sum(1 for f in features if f['properties']['place']=='res')
+        self.assertLessEqual(income_model, max(1, nres//200), 'income-model A/C must stay under 0.5% of residential cells')
 if __name__=='__main__':unittest.main()
 
 class CoolingSources(unittest.TestCase):
@@ -104,7 +111,7 @@ class CoolingSources(unittest.TestCase):
         # Costa and San Ramon share the county EHSD bulletin; Kern lists one phone
         # line for all of its centers instead of a number per site.
         count,revision={'contracosta':(17,'June 2026'),'sanramon':(17,'June 2026'),
-                        'bakersfield':(10,'2026 season')}[C.SLUG]
+                        'bakersfield':(10,'2026 season'),'westcc':(17,'June 2026')}[C.SLUG]
         self.assertEqual(len(d['sites']),count)
         for s in d['sites']:
             self.assertIsNone(s['opening_hours']);self.assertIsNone(s['coordinates'])

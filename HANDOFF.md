@@ -1,5 +1,28 @@
 # HANDOFF
 
+## Checkpoint — September 13, 2026 (Claude): West Contra Costa build, county canopy recovery
+
+- **New city `westcc` (West Contra Costa).** Study area = union of 16 TIGERweb place polygons
+  (Richmond, San Pablo, El Cerrito, Pinole, Hercules + 11 CDPs), committed as
+  `boundary_westcc.geojson`; res 9; 2,651 hexes, 982 ranked, 271,620 residents. Chosen from the
+  county build (these places hold 60 of the county's top 100). Full pipeline run 01→05 plus 04c.
+  Dasymetric check passed (0.63 coverage). 975 ranked cells on USFS 2022 aerial, 7 height model,
+  8 stand-in. A/C: 981 LACE, 1 income-model (suppressed tract; the data contract now allows
+  ≤0.5% of such cells). No HOLC map exists for Richmond, CA (the 1937 Oakland map touches only
+  0.1 km² of Kensington).
+- **Heat is scored in westcc (0.35/0.35/0.15/0.15)** on evidence recorded in its config.py:
+  position explains 11.1% of LST variance here vs 38.8% county-wide, and LST vs greenness
+  r = −0.64.
+- **County canopy recovery.** Discovery Bay USFS package added (37 cells, 10,140 residents to
+  aerial). `02c_canopy.py` now records per-cell tile coverage and flat fraction, writes a tile
+  log and stops on tile failure; the rebuilt legacy file read all 24 tiles, so every county
+  cell has a canopy value (400 formerly unassessed cells now carry 2009–2020 height-model
+  values, tagged). `CANOPY_MIN_COVERAGE = 0.10`: aerial assessments covering under 10% of a
+  cell fall back to the stand-in (131 county cells).
+- **Not yet done for westcc:** `06_audit_rebuild.py` (no baseline), `reports/` folder is
+  empty, `cooling.html`/`guide.html` are the county pages with numbers and scope rewritten
+  rather than written fresh. Buildings file (42 MB) is gitignored like the county's.
+
 ## Checkpoint — September 13, 2026 (Claude): audit fixes before sharing with city staff
 
 - **Map page.** Opening an area no longer marks the session unsaved (only a moved planting
