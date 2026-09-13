@@ -24,7 +24,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 APP_FILES = ["index.html", "guide.css", "guide.js", "cities.js", "vendor"]
 CITY_PAGES = ["city.js", "guide.html", "cooling.html"]
-DATA_FILES = ["{slug}.geojson", "centers_{slug}.geojson", "boundary_{slug}.geojson"]
+DATA_FILES = ["{slug}.geojson", "centers_{slug}.geojson", "boundary_{slug}.geojson", "designated_{slug}.geojson"]
 
 
 def listed_cities():

@@ -18,9 +18,9 @@
 > | Celsius default claim | **Not reproduced** | Default is imperial in code and on the live site |
 > | Afternoon vs late-morning wording | **Fixed** (was live, now late morning) | App copy and all three guides |
 > | Need is not marginal benefit (positioning) | Owner's call | Headline kept by decision; wording may be softened |
-> | Mixed canopy sources / reliability flag at point of use | **Partly fixed** | Detail panel tags tree cover with source, year and assessed share ("aerial 2022 · under 1% assessed", "height model · coverage unknown", "satellite stand-in"). Scoring still pools them; 121 Contra Costa cells score on under 10% assessed |
+> | Mixed canopy sources / reliability flag at point of use | **Fixed for thin coverage; pooling remains** | Detail panel tags tree cover with source, year and assessed share. Cells whose aerial assessment covered under 10% (`CANOPY_MIN_COVERAGE`) now score on the satellite stand-in: 121 Contra Costa, 63 Bakersfield, 20 San Ramon cells; top-25 unchanged in every city. Legacy height-model cells and full/partial aerial cells are still pooled in one input |
 > | Uncertainty / rank stability bands | Open | Larger modelling work |
-> | Cooling discovery vs verified relief | **Partly fixed** | Panel now says the dots are OpenStreetMap places, not verified cooling centers, and points at the county list. Designated sites are still not on the map |
+> | Cooling discovery vs verified relief | **Fixed** | County-designated cooling locations are a separate amber layer with their own toggle and popup (address, phone, "call before visiting"), geocoded by `04c_designated_cooling.py`; the OpenStreetMap dots are labelled as discovery sites. One Kern site (Frazier Park) could not be geocoded and is listed as unlocated in the file |
 > | Planting outputs: low/base/high cost, survival | Open | |
 > | Chooser + intro friction, three-column squeeze, mobile legend | **Partly fixed** | Legend starts collapsed under 700px unless the viewer opened it. Chooser/intro and desktop layout unchanged |
 > | Generated cell names look too precise | **Fixed** | Detail subtitle shows the stable area id; name tooltip says it is generated from nearby places, not a boundary |

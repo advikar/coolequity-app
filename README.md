@@ -95,6 +95,7 @@ export COOLEQUITY_CITY=bakersfield
 .venv/bin/python pipeline/03_census.py
 .venv/bin/python pipeline/04_overlays.py               # --refresh: force a live Overpass pull
 .venv/bin/python pipeline/04b_routed_access.py
+.venv/bin/python pipeline/04c_designated_cooling.py    # county cooling list -> map points (Nominatim)
 .venv/bin/python pipeline/05_score.py
 .venv/bin/python pipeline/06_audit_rebuild.py --baseline <dir with the previous outputs>
 ```

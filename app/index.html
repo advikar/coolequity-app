@@ -881,6 +881,10 @@
           <div class="sw"></div>
           <div><div class="tt">Show walking time to the nearest place</div><div class="ts">estimated minutes on foot, colored on the map</div></div>
         </button>
+        <button type="button" class="toggle on" id="tg-designated" aria-pressed="true">
+          <div class="sw"></div>
+          <div><div class="tt">Show county-designated cooling locations</div><div class="ts" id="tg-designated-sub">from the county’s published list · call before visiting</div></div>
+        </button>
         <!-- Same disclosure pattern as the weights panel: the count is the
              headline, the four categories and their definitions are one click
              away. Collapsed by default so the panel reads as a summary. -->
@@ -1051,6 +1055,7 @@ const SITE_ROOT=(_selfSub && _path.endsWith(_selfSub))
 const DATA_URL     = `../data/${_q.get('data') || CITY_SLUG}.geojson?v=${CE_CITY.dataVersion}`;
 const CENTERS_URL  = `../data/centers_${CITY_SLUG}.geojson?v=${CE_CITY.centersVersion}`;
 const BOUNDARY_URL = `../data/boundary_${CITY_SLUG}.geojson`;  // flat fallback only
+const DESIGNATED_URL = `../data/designated_${CITY_SLUG}.geojson?v=${CE_CITY.centersVersion}`;  // county-listed cooling locations
 // The page's city-specific wording.
 for(const el of document.querySelectorAll('.city-name'))el.textContent=CE_CITY.name;
 document.getElementById('intro-for').textContent=CE_CITY.possessive;
@@ -1184,7 +1189,8 @@ const AREA_M2_FALLBACK=5160000, TREE_M2=40, DEFAULT_COST_TREE=500; let COST_TREE
  * the figure it produces, because the whole point of the frontage panel is to
  * be checkable against the city's own standard. */
 const TREE_SPACING_M=10;
-let current='score', selId=null, holcOn=false, accessOn=false, centersOn=true;
+let current='score', selId=null, holcOn=false, accessOn=false, centersOn=true, designatedOn=true;
+let DESIGNATED={type:'FeatureCollection',features:[]};
 
 /* ================================================================ live model
  *
@@ -1978,12 +1984,16 @@ function applyHash(){
 }
 async function boot(){
   // Only the hex file is load-bearing; the other two degrade to nothing.
-  const [h,c,b]=await Promise.all([
+  const [h,c,b,dg]=await Promise.all([
     fetch(DATA_URL,{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(`${DATA_URL} → ${r.status}`);return r.text();}).then(async t=>{DATA_SHA=await sha256Hex(t);return JSON.parse(t);}),
     optional(CENTERS_URL),
-    optional(BOUNDARY_URL)
+    optional(BOUNDARY_URL),
+    optional(DESIGNATED_URL)
   ]);
-  HEX=h;CENTERS=c;BOUNDARY=b;
+  HEX=h;CENTERS=c;BOUNDARY=b;DESIGNATED=dg;
+  {const n=DESIGNATED.features.length,ts=document.getElementById('tg-designated-sub');
+   if(ts)ts.textContent=n?`${n} listed by the county · call before visiting`:'county list unavailable';
+   if(!n)document.getElementById('tg-designated').disabled=true;}
   if(c.loadFailed){const status=document.getElementById('sites-status');status.hidden=false;status.textContent='Mapped locations could not load. County-listed contacts are still available.';}
   computeRanges();
   document.getElementById('chip-n').textContent=`${HEX.features.filter(f=>f.properties.place==='res').length.toLocaleString()} areas`;
@@ -2118,6 +2128,13 @@ function initMap(style){
           'community_centre',KIND.community_centre.c,'shelter/senior',KIND['shelter/senior'].c,'#334155'],
         'circle-stroke-width':['interpolate',['linear'],['zoom'],9,0.8,14,2],
         'circle-stroke-color':'#ffffff','circle-opacity':0.95}});
+  // County-designated cooling locations: the official list, drawn on top of the
+  // OpenStreetMap discovery dots and styled apart from them (amber, dark ring).
+  s.sources.designated={type:'geojson',data:DESIGNATED};
+  s.layers.push({id:'designated',type:'circle',source:'designated',
+    layout:{visibility:designatedOn?'visible':'none'},
+    paint:{'circle-radius':['interpolate',['linear'],['zoom'],9,4.5,11,6.5,14,10],
+      'circle-color':'#ffb35a','circle-stroke-width':2,'circle-stroke-color':'#0b0f14','circle-opacity':0.95}});
 
   const m=new maplibregl.Map({container:'map',style:s,preserveDrawingBuffer:true,
     attributionControl:true});   // fitData() frames the city's own data right after
@@ -2567,6 +2584,7 @@ function wireUI(){
   });
   document.getElementById('tg-holc').onclick=()=>{holcOn=!holcOn;if(holcOn){accessOn=false;setLayer('holc');}else setLayer('score');syncToggles();};
   document.getElementById('tg-access').onclick=()=>{accessOn=!accessOn;if(accessOn){holcOn=false;setLayer('access');}else setLayer('score');syncToggles();};
+  document.getElementById('tg-designated').onclick=()=>{designatedOn=!designatedOn;if(map&&map.getLayer('designated'))map.setLayoutProperty('designated','visibility',designatedOn?'visible':'none');syncToggles();};
   document.getElementById('d-close').onclick=()=>{
     document.getElementById('detail').classList.remove('show');
     document.getElementById('detail').inert=true;
@@ -2585,6 +2603,7 @@ function syncToggles(){
   document.getElementById('tg-holc').setAttribute('aria-pressed',holcOn);
   document.getElementById('tg-access').setAttribute('aria-pressed',accessOn);
   document.getElementById('tg-access').classList.toggle('on',accessOn);
+  const td=document.getElementById('tg-designated');if(td){td.setAttribute('aria-pressed',designatedOn);td.classList.toggle('on',designatedOn);}
 }
 
 /* Aerial/street basemap toggle (needs a connection). The satellite raster is
@@ -2979,7 +2998,7 @@ function wireHover(){
   map.on('click','fill',e=>{
     // A centre sits on top of the hex it is in, and both layers get the click.
     // Let the marker win — you clicked the dot, not the 0.8 km² under it.
-    if(map.queryRenderedFeatures(e.point,{layers:['centers']}).length)return;
+    if(map.queryRenderedFeatures(e.point,{layers:['centers','designated'].filter(l=>map.getLayer(l))}).length)return;
     selectHex(e.features[0].properties.id,false);document.getElementById('d-close').focus({preventScroll:true});
   });
 
@@ -2994,6 +3013,19 @@ function wireHover(){
        <div class="tt-what">${k.what}</div>`).addTo(map);
   });
   map.on('mouseenter','centers',()=>{map.getCanvas().style.cursor='pointer';});
+  const dpop=new maplibregl.Popup({closeButton:true,closeOnClick:true,offset:12});
+  map.on('click','designated',e=>{
+    const p=e.features[0].properties;
+    const where=[p.address,p.city].filter(Boolean).map(escapeHtml).join(', ');
+    const tel=p.phone?`<div><a href="tel:${escapeHtml(String(p.phone).replace(/[^0-9+]/g,''))}">${escapeHtml(p.phone)}</a></div>`:'';
+    const q=p.geocode_quality==='street'?'<div class="tt-what">Placed on the street, not the door: the address did not resolve exactly.</div>':'';
+    dpop.setLngLat(e.features[0].geometry.coordinates).setHTML(
+      `<b>${escapeHtml(p.name)}</b>
+       <div class="tt-kind"><i style="background:#ffb35a"></i>County-designated cooling location</div>
+       <div>${where}</div>${tel}
+       <div class="tt-what">${escapeHtml(p.designation||'On the county’s published list')}. Hours and eligibility are not verified here; call before visiting.</div>${q}`).addTo(map);
+  });
+  map.on('mouseenter','designated',()=>{map.getCanvas().style.cursor='pointer';});
 }
 </script>
 </body>
