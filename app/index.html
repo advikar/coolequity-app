@@ -114,6 +114,7 @@
   .cta:hover{transform:translateY(-1px);box-shadow:0 12px 32px rgba(255,122,69,.36)}
   .cta .ico{opacity:1;stroke-width:2}
   .inote{margin:18px 0 0;font-size:13px;color:#e6dccb;line-height:1.55;max-width:62ch;border-left:3px solid #ffb35a;padding-left:12px}
+  .pnote{font-size:11.5px;line-height:1.45;color:var(--muted);margin:-4px 0 8px}
   .fine{margin:20px 0 0;font-size:11.5px;color:var(--muted2);line-height:1.6;max-width:62ch}
   @media (prefers-reduced-motion:reduce){#intro{transition:opacity .01s}#intro.gone{transform:none}}
   /* Short-window ladder. The card is ~910px tall at its most generous, so on a
@@ -766,6 +767,7 @@
         </div>
       </div>
       <p>Where new trees would help residents most in <span class="city-name"></span>.</p>
+      <p class="pnote" id="pnote" hidden></p>
       <nav class="helpnav" aria-label="Help and evidence"><button id="help-open" type="button">How to use</button><a href="guide.html" target="ce-guide">Data &amp; methods ↗</a></nav>
     </div>
 
@@ -1764,11 +1766,15 @@ function wireDrawers(){
 }
 function wireFolds(){
   wireDrawers();
+  const FOLD_CLOSED_DEFAULT=new Set(['sec-layers','sec-sites','sec-export']);
   let saved={};try{saved=JSON.parse(localStorage.getItem('ce-folds')||'{}')||{};}catch(_){}
   document.querySelectorAll('.fold').forEach(sec=>{
     const btn=sec.querySelector('.fbtn'),key=sec.dataset.fold;if(!btn)return;
     const set=closed=>{sec.classList.toggle('closed',closed);btn.setAttribute('aria-expanded',!closed);};
-    set(!!saved[key]);
+    // Priorities and the ranked list stay open; map colours, places to cool off
+    // and export start folded so the panel is short enough to read without
+    // scrolling on a laptop. A viewer's own choice, once made, wins.
+    set(key in saved?!!saved[key]:FOLD_CLOSED_DEFAULT.has(key));
     btn.onclick=()=>{const closed=!sec.classList.contains('closed');set(closed);saved[key]=closed;try{localStorage.setItem('ce-folds',JSON.stringify(saved));}catch(_){}};
   });
 }
@@ -2273,7 +2279,7 @@ function buildIntro(){
   ].map(([v,k])=>`<div><b>${v}</b><span>${k}</span></div>`).join('');
 
   buildSwitch();
-  if(CE_CITY.introNote){const n=document.getElementById('inote');n.textContent=CE_CITY.introNote;n.hidden=false;}
+  if(CE_CITY.introNote){for(const id of ['inote','pnote']){const n=document.getElementById(id);n.textContent=CE_CITY.introNote;n.hidden=false;}}
 
   document.getElementById('ifine').innerHTML='Independent student project. Not a city or county product; not reviewed by any city or county. A planning screen, not a field survey. Tree cover is the population-weighted average where an aerial assessment exists; places to cool off are mapped, not verified. Census ACS 2024. <a href="guide.html#overview" target="ce-guide">Data &amp; methods ↗</a>';
 
@@ -2303,7 +2309,9 @@ function buildSwitch(){
   for(const id of ['city-pick','city-nav']){
     const el=document.getElementById(id);if(!el)continue;
     el.innerHTML=CITY_NAV.map(c=>`<option value="${c.slug}"${c.slug===THIS_CITY?' selected':''}>${c.name}</option>`).join('');
-    el.onchange=()=>{const c=CITY_NAV.find(x=>x.slug===el.value);if(c&&c.slug!==THIS_CITY)location.href=SITE_ROOT+c.sub;};
+    // From the map header, land on the other city's map; from the start
+    // screen, land on its start screen. Nobody should hit two landing pages.
+    el.onchange=()=>{const c=CITY_NAV.find(x=>x.slug===el.value);if(c&&c.slug!==THIS_CITY)location.href=SITE_ROOT+c.sub+(id==='city-nav'?'?go=1':'');};
   }
 }
 
