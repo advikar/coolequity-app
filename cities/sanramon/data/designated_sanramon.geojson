@@ -11,7 +11,378 @@
   "service_note": "Call to confirm hours before visiting; listing does not establish open-now status or unrestricted eligibility.",
   "geocoder": "OpenStreetMap Nominatim, address match",
   "geocoded": "2026-09-13",
-  "unlocated": []
+  "unlocated": [],
+  "study_area_pad_m": 1500,
+  "outside_study_area": [
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -121.94906,
+      38.0266894
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-02",
+     "name": "Ambrose Community Center",
+     "address": "3105 Willow Pass Road",
+     "city": "Bay Point",
+     "phone": "925-458-1601",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "3105, Willow Pass Road, Bay Point, Contra Costa County, California, 94565, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -121.7723257,
+      37.9637353
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-03",
+     "name": "Antioch Community Center",
+     "address": "4703 Lone Tree Way",
+     "city": "Antioch",
+     "phone": "925-776-3050",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "4703, Lone Tree Way, Antioch, Contra Costa County, California, 94531, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -121.6927574,
+      37.9343411
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-04",
+     "name": "Brentwood Community Center",
+     "address": "35 Oak Street (In City Park)",
+     "city": "Brentwood",
+     "phone": "925-516-5444",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "Brentwood Community Center, 35, Oak Street, Brentwood, Contra Costa County, California, 94513, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -121.70594,
+      37.9259996
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-05",
+     "name": "Brentwood Senior Center",
+     "address": "193 Griffith Lane",
+     "city": "Brentwood",
+     "phone": "925-516-5380",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "Brentwood Senior Activity Center, 193, Griffith Lane, Brentwood, Contra Costa County, California, 94513, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -122.0604761,
+      37.9028647
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-06",
+     "name": "Civic Park Community Center",
+     "address": "1375 Civic Drive",
+     "city": "Walnut Creek",
+     "phone": "925-295-1490",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "1375, Civic Drive, Walnut Creek, Contra Costa County, California, 94596, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -122.028406,
+      37.9839777
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-07",
+     "name": "Concord Senior Center",
+     "address": "2727 Parkside Circle",
+     "city": "Concord",
+     "phone": "925-671-3320",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "2727, Parkside Circle, Concord, Contra Costa County, California, 94519, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -121.995952,
+      37.8205765
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-08",
+     "name": "Danville Community Center",
+     "address": "420 Front Street",
+     "city": "Danville",
+     "phone": "925-314-3400",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "Danville Community Center, 420, Front Street, Danville, Contra Costa County, California, 94526, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -121.9995596,
+      37.8217601
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-09",
+     "name": "Danville Senior Center",
+     "address": "115 E. Prospect Avenue",
+     "city": "Danville",
+     "phone": "925-314-3430",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "115, East Prospect Avenue, Danville, Contra Costa County, California, 94526, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -122.265783,
+      38.00942
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-10",
+     "name": "Hercules Senior Center",
+     "address": "111 Civic Drive",
+     "city": "Hercules",
+     "phone": "510-799-8219",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "111, Civic Drive, Hercules, Contra Costa County, California, 94547, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -122.1345268,
+      38.0166205
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-11",
+     "name": "Martinez Senior Center",
+     "address": "818 Green Street",
+     "city": "Martinez",
+     "phone": "925-372-3557",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "818, Green Street, Martinez, Contra Costa County, California, 94553, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -121.7139341,
+      37.9873022
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-12",
+     "name": "Oakley Recreation Center",
+     "address": "1250 O\u2019Hara Ave",
+     "city": "Oakley",
+     "phone": "925-635-7041",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "1250, O'Hara Avenue, Oakley, Contra Costa County, California, 94561, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -122.289431,
+      38.007163
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-13",
+     "name": "Pinole Senior Center",
+     "address": "2500 Charles Ave.",
+     "city": "Pinole",
+     "phone": "510-724-9800",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "2500, Charles Avenue, Pinole, Contra Costa County, California, 94564, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -121.8879074,
+      38.0098701
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-14",
+     "name": "Pittsburg Senior Center",
+     "address": "300 Presidio Lane",
+     "city": "Pittsburg",
+     "phone": "925-252-4890",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "300, Presidio Lane, Stoneman Village, Pittsburg, Contra Costa County, California, 94565, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -122.0680553,
+      37.948041
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-15",
+     "name": "Pleasant Hill Senior Center",
+     "address": "233 Gregory Lane",
+     "city": "Pleasant Hill",
+     "phone": "925-798-8788",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "233, Gregory Lane, Pleasant Hill, Contra Costa County, California, 94523, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -122.3451351,
+      37.9354748
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-16",
+     "name": "Richmond Senior Center",
+     "address": "2525 MacDonald",
+     "city": "Richmond",
+     "phone": "510-307-8087",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "2525, Macdonald Avenue, Richmond, Contra Costa County, California, 94804, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -122.0709536,
+      37.8766663
+     ]
+    },
+    "properties": {
+     "id": "ehsd-2026-17",
+     "name": "Tice Valley Gymnasium",
+     "address": "2055 Tice Valley Blvd.",
+     "city": "Walnut Creek",
+     "phone": "925-256-3572",
+     "opening_hours": null,
+     "eligibility": "confirm with facility",
+     "designation": "listed by county EHSD",
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "2055, Tice Valley Boulevard, Rossmoor, Walnut Creek, Contra Costa County, California, 94595, United States"
+    }
+   }
+  ]
  },
  "features": [
   {
@@ -35,374 +406,6 @@
     "note": null,
     "geocode_quality": "address",
     "geocode_match": "Alcosta Senior & Community Center, 9300, Alcosta Boulevard, San Ramon, Contra Costa County, California, 94583, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -121.94906,
-     38.0266894
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-02",
-    "name": "Ambrose Community Center",
-    "address": "3105 Willow Pass Road",
-    "city": "Bay Point",
-    "phone": "925-458-1601",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "3105, Willow Pass Road, Bay Point, Contra Costa County, California, 94565, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -121.7723257,
-     37.9637353
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-03",
-    "name": "Antioch Community Center",
-    "address": "4703 Lone Tree Way",
-    "city": "Antioch",
-    "phone": "925-776-3050",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "4703, Lone Tree Way, Antioch, Contra Costa County, California, 94531, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -121.6927574,
-     37.9343411
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-04",
-    "name": "Brentwood Community Center",
-    "address": "35 Oak Street (In City Park)",
-    "city": "Brentwood",
-    "phone": "925-516-5444",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "Brentwood Community Center, 35, Oak Street, Brentwood, Contra Costa County, California, 94513, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -121.70594,
-     37.9259996
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-05",
-    "name": "Brentwood Senior Center",
-    "address": "193 Griffith Lane",
-    "city": "Brentwood",
-    "phone": "925-516-5380",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "Brentwood Senior Activity Center, 193, Griffith Lane, Brentwood, Contra Costa County, California, 94513, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -122.0604761,
-     37.9028647
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-06",
-    "name": "Civic Park Community Center",
-    "address": "1375 Civic Drive",
-    "city": "Walnut Creek",
-    "phone": "925-295-1490",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "1375, Civic Drive, Walnut Creek, Contra Costa County, California, 94596, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -122.028406,
-     37.9839777
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-07",
-    "name": "Concord Senior Center",
-    "address": "2727 Parkside Circle",
-    "city": "Concord",
-    "phone": "925-671-3320",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "2727, Parkside Circle, Concord, Contra Costa County, California, 94519, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -121.995952,
-     37.8205765
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-08",
-    "name": "Danville Community Center",
-    "address": "420 Front Street",
-    "city": "Danville",
-    "phone": "925-314-3400",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "Danville Community Center, 420, Front Street, Danville, Contra Costa County, California, 94526, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -121.9995596,
-     37.8217601
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-09",
-    "name": "Danville Senior Center",
-    "address": "115 E. Prospect Avenue",
-    "city": "Danville",
-    "phone": "925-314-3430",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "115, East Prospect Avenue, Danville, Contra Costa County, California, 94526, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -122.265783,
-     38.00942
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-10",
-    "name": "Hercules Senior Center",
-    "address": "111 Civic Drive",
-    "city": "Hercules",
-    "phone": "510-799-8219",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "111, Civic Drive, Hercules, Contra Costa County, California, 94547, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -122.1345268,
-     38.0166205
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-11",
-    "name": "Martinez Senior Center",
-    "address": "818 Green Street",
-    "city": "Martinez",
-    "phone": "925-372-3557",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "818, Green Street, Martinez, Contra Costa County, California, 94553, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -121.7139341,
-     37.9873022
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-12",
-    "name": "Oakley Recreation Center",
-    "address": "1250 O\u2019Hara Ave",
-    "city": "Oakley",
-    "phone": "925-635-7041",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "1250, O'Hara Avenue, Oakley, Contra Costa County, California, 94561, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -122.289431,
-     38.007163
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-13",
-    "name": "Pinole Senior Center",
-    "address": "2500 Charles Ave.",
-    "city": "Pinole",
-    "phone": "510-724-9800",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "2500, Charles Avenue, Pinole, Contra Costa County, California, 94564, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -121.8879074,
-     38.0098701
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-14",
-    "name": "Pittsburg Senior Center",
-    "address": "300 Presidio Lane",
-    "city": "Pittsburg",
-    "phone": "925-252-4890",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "300, Presidio Lane, Stoneman Village, Pittsburg, Contra Costa County, California, 94565, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -122.0680553,
-     37.948041
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-15",
-    "name": "Pleasant Hill Senior Center",
-    "address": "233 Gregory Lane",
-    "city": "Pleasant Hill",
-    "phone": "925-798-8788",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "233, Gregory Lane, Pleasant Hill, Contra Costa County, California, 94523, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -122.3451351,
-     37.9354748
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-16",
-    "name": "Richmond Senior Center",
-    "address": "2525 MacDonald",
-    "city": "Richmond",
-    "phone": "510-307-8087",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "2525, Macdonald Avenue, Richmond, Contra Costa County, California, 94804, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -122.0709536,
-     37.8766663
-    ]
-   },
-   "properties": {
-    "id": "ehsd-2026-17",
-    "name": "Tice Valley Gymnasium",
-    "address": "2055 Tice Valley Blvd.",
-    "city": "Walnut Creek",
-    "phone": "925-256-3572",
-    "opening_hours": null,
-    "eligibility": "confirm with facility",
-    "designation": "listed by county EHSD",
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "2055, Tice Valley Boulevard, Rossmoor, Walnut Creek, Contra Costa County, California, 94595, United States"
    }
   }
  ]

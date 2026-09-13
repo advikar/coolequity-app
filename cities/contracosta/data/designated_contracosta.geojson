@@ -11,7 +11,9 @@
   "service_note": "Call to confirm hours before visiting; listing does not establish open-now status or unrestricted eligibility.",
   "geocoder": "OpenStreetMap Nominatim, address match",
   "geocoded": "2026-09-13",
-  "unlocated": []
+  "unlocated": [],
+  "study_area_pad_m": 1500,
+  "outside_study_area": []
  },
  "features": [
   {

@@ -27,32 +27,196 @@
     "geocode_quality": "none",
     "geocode_match": ""
    }
+  ],
+  "study_area_pad_m": 1500,
+  "outside_study_area": [
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -118.83749,
+      35.199828
+     ]
+    },
+    "properties": {
+     "id": null,
+     "name": "Arvin Community Center",
+     "address": "800 Walnut Drive",
+     "city": "Arvin",
+     "phone": null,
+     "opening_hours": null,
+     "eligibility": null,
+     "designation": null,
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "800, Walnut Drive, Arvin, Kern County, California, 93203, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -117.9477403,
+      35.1302285
+     ]
+    },
+    "properties": {
+     "id": null,
+     "name": "Strata Center",
+     "address": "10350 Heather Avenue",
+     "city": "California City",
+     "phone": null,
+     "opening_hours": null,
+     "eligibility": null,
+     "designation": null,
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "10350, Heather Avenue, California City, Kern County, California, 93505, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -118.4737444,
+      35.628285
+     ]
+    },
+    "properties": {
+     "id": null,
+     "name": "Kern River Valley Senior Center",
+     "address": "6405 Lake Isabella Boulevard",
+     "city": "Lake Isabella",
+     "phone": null,
+     "opening_hours": null,
+     "eligibility": null,
+     "designation": null,
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "6405, Lake Isabella Boulevard, Lake Isabella, Kern County, California, 93240, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -119.4016931,
+      35.0612489
+     ]
+    },
+    "properties": {
+     "id": null,
+     "name": "Gusher Hall",
+     "address": "271 California Street",
+     "city": "Maricopa",
+     "phone": null,
+     "opening_hours": null,
+     "eligibility": null,
+     "designation": null,
+     "note": null,
+     "geocode_quality": "street",
+     "geocode_match": "California Street, Maricopa, Kern County, California, 93252, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -119.2287622,
+      35.674089
+     ]
+    },
+    "properties": {
+     "id": null,
+     "name": "McFarland Veterans Center",
+     "address": "103 W Sherwood Ave",
+     "city": "McFarland",
+     "phone": null,
+     "opening_hours": null,
+     "eligibility": null,
+     "designation": null,
+     "note": "County list says open 4 PM \u2013 8 PM",
+     "geocode_quality": "address",
+     "geocode_match": "McFarland Veterans Community Center, 103, West Sherwood Avenue, McFarland, Kern County, California, 93250, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -118.1667517,
+      34.8575117
+     ]
+    },
+    "properties": {
+     "id": null,
+     "name": "Hummel Community Building",
+     "address": "2500 20th Street",
+     "city": "Rosamond",
+     "phone": null,
+     "opening_hours": null,
+     "eligibility": null,
+     "designation": null,
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "Hummel Hall - Rosamond Senior Center, 2500, 20th Street West, Rosamond, Kern County, California, 93560, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -119.2752366,
+      35.5056677
+     ]
+    },
+    "properties": {
+     "id": null,
+     "name": "Shafter Senior Center",
+     "address": "505 Sunset Avenue",
+     "city": "Shafter",
+     "phone": null,
+     "opening_hours": null,
+     "eligibility": null,
+     "designation": null,
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "W.C. Walker Senior Center, 505, Sunset Avenue, Shafter, Kern County, California, 93263, United States"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -119.467758,
+      35.14411
+     ]
+    },
+    "properties": {
+     "id": null,
+     "name": "Taft Community Center - Activity Building",
+     "address": "500 Cascade Place",
+     "city": "Taft",
+     "phone": null,
+     "opening_hours": null,
+     "eligibility": null,
+     "designation": null,
+     "note": null,
+     "geocode_quality": "address",
+     "geocode_match": "500, Cascade Place, Taft Heights, Taft, Kern County, California, 93268, United States"
+    }
+   }
   ]
  },
  "features": [
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -118.83749,
-     35.199828
-    ]
-   },
-   "properties": {
-    "id": null,
-    "name": "Arvin Community Center",
-    "address": "800 Walnut Drive",
-    "city": "Arvin",
-    "phone": null,
-    "opening_hours": null,
-    "eligibility": null,
-    "designation": null,
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "800, Walnut Drive, Arvin, Kern County, California, 93203, United States"
-   }
-  },
   {
    "type": "Feature",
    "geometry": {
@@ -74,167 +238,6 @@
     "note": null,
     "geocode_quality": "address",
     "geocode_match": "2101, Ridge Road, Kern, Bakersfield, Kern County, California, 93305, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -117.9477403,
-     35.1302285
-    ]
-   },
-   "properties": {
-    "id": null,
-    "name": "Strata Center",
-    "address": "10350 Heather Avenue",
-    "city": "California City",
-    "phone": null,
-    "opening_hours": null,
-    "eligibility": null,
-    "designation": null,
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "10350, Heather Avenue, California City, Kern County, California, 93505, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -118.4737444,
-     35.628285
-    ]
-   },
-   "properties": {
-    "id": null,
-    "name": "Kern River Valley Senior Center",
-    "address": "6405 Lake Isabella Boulevard",
-    "city": "Lake Isabella",
-    "phone": null,
-    "opening_hours": null,
-    "eligibility": null,
-    "designation": null,
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "6405, Lake Isabella Boulevard, Lake Isabella, Kern County, California, 93240, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -119.4016931,
-     35.0612489
-    ]
-   },
-   "properties": {
-    "id": null,
-    "name": "Gusher Hall",
-    "address": "271 California Street",
-    "city": "Maricopa",
-    "phone": null,
-    "opening_hours": null,
-    "eligibility": null,
-    "designation": null,
-    "note": null,
-    "geocode_quality": "street",
-    "geocode_match": "California Street, Maricopa, Kern County, California, 93252, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -119.2287622,
-     35.674089
-    ]
-   },
-   "properties": {
-    "id": null,
-    "name": "McFarland Veterans Center",
-    "address": "103 W Sherwood Ave",
-    "city": "McFarland",
-    "phone": null,
-    "opening_hours": null,
-    "eligibility": null,
-    "designation": null,
-    "note": "County list says open 4 PM \u2013 8 PM",
-    "geocode_quality": "address",
-    "geocode_match": "McFarland Veterans Community Center, 103, West Sherwood Avenue, McFarland, Kern County, California, 93250, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -118.1667517,
-     34.8575117
-    ]
-   },
-   "properties": {
-    "id": null,
-    "name": "Hummel Community Building",
-    "address": "2500 20th Street",
-    "city": "Rosamond",
-    "phone": null,
-    "opening_hours": null,
-    "eligibility": null,
-    "designation": null,
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "Hummel Hall - Rosamond Senior Center, 2500, 20th Street West, Rosamond, Kern County, California, 93560, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -119.2752366,
-     35.5056677
-    ]
-   },
-   "properties": {
-    "id": null,
-    "name": "Shafter Senior Center",
-    "address": "505 Sunset Avenue",
-    "city": "Shafter",
-    "phone": null,
-    "opening_hours": null,
-    "eligibility": null,
-    "designation": null,
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "W.C. Walker Senior Center, 505, Sunset Avenue, Shafter, Kern County, California, 93263, United States"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -119.467758,
-     35.14411
-    ]
-   },
-   "properties": {
-    "id": null,
-    "name": "Taft Community Center - Activity Building",
-    "address": "500 Cascade Place",
-    "city": "Taft",
-    "phone": null,
-    "opening_hours": null,
-    "eligibility": null,
-    "designation": null,
-    "note": null,
-    "geocode_quality": "address",
-    "geocode_match": "500, Cascade Place, Taft Heights, Taft, Kern County, California, 93268, United States"
    }
   }
  ]

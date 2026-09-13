@@ -113,3 +113,15 @@
   switchers resolve to /coolequity-app/<slug>/app/.
 - **Pre-existing bug found (also on the old site):** one shared sessionStorage key carried a
   city's weights into the next city. Fixed in the checkpoint above.
+
+## Checkpoint — September 13, 2026: designated cooling layer clipped to study area
+
+- `04c_designated_cooling.py` keeps a located site only if it is inside the study-area
+  boundary padded by 1.5 km; the rest go under `outside_study_area` in the GeoJSON's
+  top-level properties (with coordinates, so nothing is dropped silently). Result: county 17
+  drawn; West Contra Costa 3 drawn / 14 listed; San Ramon 1 / 16; Bakersfield 1 / 8 (+1 not
+  located: Frazier Park). The map toggle text reports both counts.
+- `tests/test_data_pipeline.py` now checks that drawn designated points fall inside the
+  city's BBOX and that drawn + outside + unlocated equals the directory's site count.
+- West Contra Costa guide said walking estimates use "486 discovery sites" (county number);
+  corrected to 39.

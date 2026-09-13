@@ -117,3 +117,14 @@ class CoolingSources(unittest.TestCase):
             self.assertIsNone(s['opening_hours']);self.assertIsNone(s['coordinates'])
             self.assertTrue(s['address']);self.assertTrue(s['phone'] or d['contact_phone'])
         self.assertIn(revision,d['source_revision'])
+    def test_designated_points_are_in_study_area(self):
+        import json
+        f=C.DATA/f'designated_{C.SLUG}.geojson'
+        if not f.exists():self.skipTest('04c not run')
+        g=json.loads(f.read_text());w,s,e,n=C.BBOX;pad=0.02
+        for ft in g['features']:
+            x,y=ft['geometry']['coordinates']
+            self.assertTrue(w-pad<=x<=e+pad and s-pad<=y<=n+pad,ft['properties']['name'])
+        # nothing silently dropped: located + outside + unlocated == directory
+        d=json.loads((C.DATA/f'cooling_directory_{C.SLUG}.json').read_text())
+        self.assertEqual(len(g['features'])+len(g['properties']['outside_study_area'])+len(g['properties']['unlocated']),len(d['sites']))

@@ -1992,8 +1992,12 @@ async function boot(){
     optional(DESIGNATED_URL)
   ]);
   HEX=h;CENTERS=c;BOUNDARY=b;DESIGNATED=dg;
-  {const n=DESIGNATED.features.length,ts=document.getElementById('tg-designated-sub');
-   if(ts)ts.textContent=n?`${n} listed by the county · call before visiting`:'county list unavailable';
+  {const n=DESIGNATED.features.length,o=((DESIGNATED.properties||{}).outside_study_area||[]).length,
+   ts=document.getElementById('tg-designated-sub');
+   // Only sites in (or within ~1.5 km of) this study area are drawn; the county's
+   // other sites are counted here and listed in full on cooling.html.
+   if(ts)ts.textContent=n?`${n} county-listed site${n===1?'':'s'} in this area${o?` · ${o} more elsewhere in the county (see list)`:''} · call before visiting`
+     :(o?`none of the county’s ${o} listed sites is in this study area (see list)`:'county list unavailable');
    if(!n)document.getElementById('tg-designated').disabled=true;}
   if(c.loadFailed){const status=document.getElementById('sites-status');status.hidden=false;status.textContent='Mapped locations could not load. County-listed contacts are still available.';}
   computeRanges();

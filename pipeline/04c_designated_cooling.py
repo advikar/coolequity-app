@@ -12,6 +12,13 @@ directory's own service note and phone numbers travel with each point.
 
     COOLEQUITY_CITY=bakersfield python pipeline/04c_designated_cooling.py
 
+Study area: the county's list covers the whole county, but a city map should
+only draw the sites its residents can reach. A located site is kept as a map
+point when it falls inside the study-area boundary (01's clip polygon) padded by
+NEAR_M; the rest are written under `outside_study_area` in the file's top-level
+properties, with their coordinates, so nothing is dropped silently and the
+cooling.html directory can still list them.
+
 Geocoding: address first; if that fails, the parenthetical is dropped, then the
 facility name with the city is tried. `geocode_quality` records which matched
 ('address', 'name') or 'street' when Nominatim only resolved the road. Locations
@@ -32,6 +39,17 @@ DIRECTORY = C.DATA / f"cooling_directory_{C.SLUG}.json"
 OUT = C.DATA / f"designated_{C.SLUG}.geojson"
 CACHE = C.CACHE / f"geocode_{C.SLUG}.json"
 UA = "CoolEquity (student project; github.com/advikar/coolequity-app)"
+NEAR_M = 1500   # a site this far outside the boundary still serves residents on the edge
+
+
+def study_area():
+    """Boundary polygon padded by NEAR_M, in WGS84, or None when 01 has not run."""
+    if not C.BOUNDARY_FILE.exists():
+        return None
+    from shapely.geometry import shape
+    from shapely.ops import unary_union
+    geom = unary_union([shape(f["geometry"]) for f in json.loads(C.BOUNDARY_FILE.read_text())["features"]])
+    return geom.buffer(NEAR_M / 110_540.0)   # degrees: ~NEAR_M north-south, a little less east-west
 
 
 def nominatim(q):
@@ -75,7 +93,10 @@ def main():
     items = next(v for v in doc.values() if isinstance(v, list) and v and isinstance(v[0], dict) and "name" in v[0])
     meta = {k: v for k, v in doc.items() if not isinstance(v, list)}
     cache = json.loads(CACHE.read_text()) if CACHE.exists() else {}
-    feats, unlocated = [], []
+    area = study_area()
+    if area is None:
+        print("  WARNING: no boundary file; every located site is kept", file=sys.stderr)
+    feats, unlocated, outside = [], [], []
     for it in items:
         lat, lon, quality, matched = geocode(it, C.CITY, cache)
         rec = {k: it.get(k) for k in ("id", "name", "address", "city", "phone", "opening_hours", "eligibility", "designation", "note")}
@@ -85,16 +106,25 @@ def main():
             unlocated.append(rec)
             print(f"  NOT LOCATED: {it['name']} — {it['address']}, {it.get('city') or C.CITY}")
             continue
-        feats.append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [lon, lat]}, "properties": rec})
+        feat = {"type": "Feature", "geometry": {"type": "Point", "coordinates": [lon, lat]}, "properties": rec}
+        if area is not None:
+            from shapely.geometry import Point
+            if not area.contains(Point(lon, lat)):
+                outside.append(feat)
+                print(f"  outside  {it['name'][:40]:40s} {it.get('city') or ''}")
+                continue
+        feats.append(feat)
         print(f"  {quality:8s} {it['name'][:40]:40s} {matched[:70]}")
     CACHE.parent.mkdir(exist_ok=True)
     CACHE.write_text(json.dumps(cache, indent=1))
     out = {"type": "FeatureCollection",
            "properties": {**meta, "geocoder": "OpenStreetMap Nominatim, address match",
-                          "geocoded": time.strftime("%Y-%m-%d"), "unlocated": unlocated},
+                          "geocoded": time.strftime("%Y-%m-%d"), "unlocated": unlocated,
+                          "study_area_pad_m": NEAR_M, "outside_study_area": outside},
            "features": feats}
     OUT.write_text(json.dumps(out, indent=1))
-    print(f"  wrote {OUT.relative_to(C.ROOT)}: {len(feats)} located, {len(unlocated)} not")
+    print(f"  wrote {OUT.relative_to(C.ROOT)}: {len(feats)} in study area, "
+          f"{len(outside)} elsewhere in the county (listed, not drawn), {len(unlocated)} not located")
 
 
 if __name__ == "__main__":

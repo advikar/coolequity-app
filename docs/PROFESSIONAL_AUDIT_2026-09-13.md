@@ -3,7 +3,7 @@
 > **Status tracker (kept current as work lands).** The audit below was written by a second
 > reviewer on September 13, 2026 against the live site and the *old* `advikar/coolequity`
 > checkout. The tracker records what has since been fixed in this repository. Last update:
-> September 13, 2026 (third pass).
+> September 13, 2026 (fourth pass).
 >
 > | Item | Status | Where |
 > |---|---|---|
@@ -20,7 +20,7 @@
 > | Need is not marginal benefit (positioning) | Owner's call | Headline kept by decision; wording may be softened |
 > | Mixed canopy sources / reliability flag at point of use | **Fixed for thin coverage; pooling remains** | Detail panel tags tree cover with source, year and assessed share. Cells whose aerial assessment covered under 10% (`CANOPY_MIN_COVERAGE`) now score on the satellite stand-in: 121 Contra Costa, 63 Bakersfield, 20 San Ramon cells; top-25 unchanged in every city. Legacy height-model cells and full/partial aerial cells are still pooled in one input |
 > | Uncertainty / rank stability bands | Open | Larger modelling work |
-> | Cooling discovery vs verified relief | **Fixed** | County-designated cooling locations are a separate amber layer with their own toggle and popup (address, phone, "call before visiting"), geocoded by `04c_designated_cooling.py`; the OpenStreetMap dots are labelled as discovery sites. One Kern site (Frazier Park) could not be geocoded and is listed as unlocated in the file |
+> | Cooling discovery vs verified relief | **Fixed** | County-designated cooling locations are a separate amber layer with their own toggle and popup (address, phone, "call before visiting"), geocoded by `04c_designated_cooling.py`; the OpenStreetMap dots are labelled as discovery sites. One Kern site (Frazier Park) could not be geocoded and is listed as unlocated in the file Fourth pass: the designated layer is now clipped to each study area (boundary + 1.5 km); before, San Ramon, Bakersfield and West Contra Costa drew every site in their county. Sites outside are counted in the toggle text and listed in full on cooling.html. Overlap with the OSM discovery dots in the county build: 8 of 17 are the same building, 5 a different building within 400 m, 4 absent from OpenStreetMap; both layers are kept because they answer different questions |
 > | Planting outputs: low/base/high cost, survival | Open | |
 > | Chooser + intro friction, three-column squeeze, mobile legend | **Partly fixed** | Legend starts collapsed under 700px unless the viewer opened it. Chooser/intro and desktop layout unchanged |
 > | Generated cell names look too precise | **Fixed** | Detail subtitle shows the stable area id; name tooltip says it is generated from nearby places, not a boundary |
