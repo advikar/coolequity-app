@@ -916,7 +916,7 @@
           <button type="button" id="exp-load">Open a saved scenario…</button>
           <button type="button" id="exp-share" title="Copy a link that reopens this city with these priorities, this layer and this selection">Copy link to this view</button>
           <input type="file" id="exp-file" accept="application/json,.json" hidden>
-          <p class="hint" id="exp-status" role="status">A scenario file or a copied link reopens this exact view: your mix of priorities, planting shares and the selected area. Spreadsheets use plain column names. <a href="guide.html#export-fields" target="ce-guide">Column key ↗</a></p>
+          <p class="hint" id="exp-status" role="status">A scenario file reopens this exact view: your mix of priorities, planting shares, cost per tree and the selected area. A copied link carries the priorities, the map layer and the selected area only. Spreadsheets use plain column names. <a href="guide.html#export-fields" target="ce-guide">Column key ↗</a></p>
         </div>
         </div>
       </section>
@@ -1177,7 +1177,7 @@ const FLAT_STYLE={version:8,sources:{},layers:[
 let HEX=null, CENTERS=null, BOUNDARY=null, map=null;
 const vals={};    // raw min/max per property — drives the colour ramps and legend
 const svals={};   // SCORING bounds: p2/p98 from the geojson's `norm`, clamped [0,1]
-const AREA_M2_FALLBACK=5160000, TREE_M2=40; let COST_TREE=500;  // ~5.16 km2 res-7 hex
+const AREA_M2_FALLBACK=5160000, TREE_M2=40, DEFAULT_COST_TREE=500; let COST_TREE=DEFAULT_COST_TREE;  // ~5.16 km2 res-7 hex
 /* Street trees go on both sides of a road at roughly this spacing. The number
  * is a planning convention, not a measurement — it is stated on screen next to
  * the figure it produces, because the whole point of the frontage panel is to
@@ -1461,7 +1461,7 @@ function exportHeader(){
     notes:EXPORT_NOTES,
   };
 }
-const EXPORT_FIELDS=['id','name','place','rank','score','rank_default','score_default','lst_c','canopy_pct','green_src','canopy_source','canopy_year',
+const EXPORT_FIELDS=['id','name','place','rank','score','rank_default','score_default','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
   'coverage_frac','canopy_quality','canopy_m2','assessed_m2','pop','pct65','ac_pct','ac_src','ac_coverage','acs_year','access_min','access_km',
   'access_quality','access_snap_m','area_m2','street_m','scenario_ok','canopy_baseline_ok','land','holc',
   'planting_share','trees','canopy_gain_points','cost_usd','cooling_c','future_canopy_pct'];
@@ -1469,7 +1469,7 @@ function cellRecord(p){
   const s=sc(p), r=rk(p), share=plantingShares.get(p.id), scn=(share!=null)?scenarioFor(p,share):null;
   const num=v=>(v==null||v==='')?null:+v;
   return {id:p.id, name:nameOf(p), place:p.place, rank:r??null, score:s==null?null:+s.toFixed(1),
-    rank_default:num(p.rank), score_default:num(p.score), lst_c:num(p.lst), canopy_pct:num(p.green), green_src:p.green_src??null,
+    rank_default:num(p.rank), score_default:num(p.score), lst_c:num(p.lst), canopy_pct:p.green_src==='ndvi'?null:num(p.green), greenness_index:p.green_src==='ndvi'?num(p.green):null, green_src:p.green_src??null,
     canopy_source:p.canopy_source??null, canopy_year:p.canopy_year??null, coverage_frac:num(p.coverage_frac), canopy_quality:p.canopy_quality??null,
     canopy_m2:num(p.canopy_m2), assessed_m2:num(p.assessed_m2), pop:num(p.pop), pct65:num(p.pct65), ac_pct:num(p.ac), ac_src:p.ac_src??null,
     ac_coverage:num(p.ac_coverage), acs_year:num(p.acs_year), access_min:num(p.access_min), access_km:num(p.access_km),
@@ -1489,7 +1489,8 @@ const FIELD_KEY={
   rank_default:['rank_recommended_mix','Rank under the recommended mix shipped with the data'],
   score_default:['score_recommended_mix','Score under the recommended mix'],
   lst_c:['surface_heat_c','Summer land-surface temperature, °C (satellite)'],
-  canopy_pct:['tree_cover_pct','Tree cover, % of assessed land (or greenness index where tree_cover_source_type = ndvi)'],
+  canopy_pct:['tree_cover_pct','Tree cover, % of assessed land; empty where only satellite greenness is available'],
+  greenness_index:['greenness_index_0_100','Satellite greenness index, 0–100; filled only where tree_cover_source_type = ndvi'],
   green_src:['tree_cover_source_type','canopy = aerial assessment; ndvi = satellite greenness stand-in'],
   canopy_source:['tree_cover_dataset','usfs-2022 aerial classification or chm-legacy height model'],
   canopy_year:['tree_cover_year','Year of the tree-cover dataset'],
@@ -1583,6 +1584,8 @@ function loadScenario(doc){
   W_RAW=W_INPUTS.reduce((o,{k})=>(o[k]=raw[k],o),{});POPW=doc.population_weight;
   W_INPUTS.forEach(x=>{const el=document.getElementById('ws-'+x.k);if(el)el.value=Math.round(W_RAW[x.k]*100);});
   const pe=document.getElementById('ws-pop');if(pe)pe.value=Math.round(POPW*100);
+  const pa=doc.planting_assumptions||{};
+  if(typeof pa.cost_per_tree_usd==='number'&&pa.cost_per_tree_usd>0){COST_TREE=pa.cost_per_tree_usd;const ce=document.getElementById('cost-tree');if(ce)ce.value=COST_TREE;}
   plantingShares.clear();
   const cells=doc.kind==='area'?(doc.selected?[doc.selected]:[]):(Array.isArray(doc.cells)?doc.cells:[]);
   let shares=0;for(const c of cells){if(c&&typeof c.planting_share==='number'&&c.id!=null){plantingShares.set(+c.id,Math.max(0,Math.min(100,c.planting_share)));shares++;}}
@@ -1667,7 +1670,10 @@ function resetMap(){
   holcOn=false;accessOn=false;syncToggles();setLayer('score');
   kindOn=new Set(KIND_KEYS.filter(k=>document.querySelector(`.kind[data-k="${k}"]`)));syncKinds();
   if(document.querySelector('#basemap button.on')?.dataset.b==='sat')setBasemap('map');
-  const rs=document.getElementById('rank-search');if(rs&&rs.value){rs.value='';rankPage=0;buildRank();}
+  RANK_FILTERS.clear();document.querySelectorAll('.pst').forEach(b=>{b.classList.remove('on');b.setAttribute('aria-pressed','false');});
+  RANK_SORT='need';RANK_DIR=defaultDir('need');const rsl=document.getElementById('rank-sort');if(rsl)rsl.value='need';syncSortUI();
+  COST_TREE=DEFAULT_COST_TREE;const ce=document.getElementById('cost-tree');if(ce)ce.value=DEFAULT_COST_TREE;
+  const rs=document.getElementById('rank-search');if(rs)rs.value='';rankPage=0;buildRank();buildShortlist();
   if(map)fitData(map);
 }
 /** The color scale can be tucked away; the choice is remembered per browser. */
@@ -2625,7 +2631,7 @@ function buildRank(){
     if(query&&!(/^\d+$/.test(query)?String(p.id)===query:nameOf(p).toLowerCase().includes(query)))return false;
     if(F.has('walk')&&!(p.access_min>15))return false;
     if(F.has('pop')&&!(p.pop>=500))return false;
-    if(F.has('green')&&!(p.green<10))return false;
+    if(F.has('green')&&!(p.green_src!=='ndvi'&&p.green<10))return false;   // greenness stand-ins are not low tree cover
     if(F.has('age')&&!(p.pct65>=20))return false;
     if(F.has('scen')&&p.scenario_ok!==true)return false;
     return true;});
@@ -2659,7 +2665,7 @@ function makeRow(p,def){
     <button type="button" class="pin${on?' on':''}" aria-pressed="${on}" title="${on?'Remove from':'Add to'} shortlist">${on?'★':'☆'}</button>
     <div class="sc" style="color:${lift(c)}">${s.toFixed(0)}</div>
     <div class="cbar" aria-hidden="true">${contribBar(p)}</div>
-    <div class="mxs"><span class="mx"><b>${fTemp(p.lst)}</b><i>heat</i></span><span class="mx"><b>${p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':p.green.toFixed(0)+'%'}</b><i>trees</i></span><span class="mx"><b>${fMin(p.access_min)}</b><i>walk</i></span></div>`;
+    <div class="mxs"><span class="mx"><b>${fTemp(p.lst)}</b><i>heat</i></span><span class="mx"><b>${p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':p.green.toFixed(0)+'%'}</b><i>${p.green_src==='ndvi'?'greenness':'trees'}</i></span><span class="mx"><b>${fMin(p.access_min)}</b><i>walk</i></span></div>`;
   const open=()=>{selectHex(p.id,true);document.getElementById('d-close').focus({preventScroll:true});};
   row.onclick=e=>{if(e.target.closest('.pin')){togglePin(p.id);return;}open();};
   row.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};

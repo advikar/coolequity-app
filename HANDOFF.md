@@ -18,7 +18,12 @@
   and city.js updated. Not yet audited with `06_audit_rebuild.py`.
 - **Pipeline.** `03_census.py` now stops when the LACE CSV is missing unless
   `COOLEQUITY_ALLOW_INCOME_MODEL=1`; README lists the two hand-downloaded inputs.
-- `scripts/test.sh` passes for all three cities. Not pushed at the time of writing.
+- **Audit round 2 (same day).** Scenario files round-trip cost per tree; the export hint says
+  what a copied link actually carries; greenness stand-ins read "greenness" in the list, export
+  as `greenness_index_0_100` with `tree_cover_pct` empty, and are excluded from the "Trees < 10%"
+  filter; the duplicate "Export & reload" guide article in Contra Costa and San Ramon is removed;
+  Reset map also clears filters, sort direction and the cost per tree. Pushed.
+- `scripts/test.sh` passes for all three cities.
 
 ## Checkpoint — September 12, 2026 (Claude): city switching no longer carries weights over
 
