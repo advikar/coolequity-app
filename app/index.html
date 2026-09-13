@@ -245,6 +245,7 @@
   .tt-what{font-size:10.5px;color:var(--muted);line-height:1.45;margin-top:4px}
   /* ---- model weights ---- */
   .hint{font-size:11px;color:var(--muted);line-height:1.5;margin:-4px 0 12px}
+  .layer-note{margin:10px 0 0;padding:8px 10px;border-left:3px solid #ffb35a;color:var(--txt);font-size:12px}
   /* Presets are the front door; the four sliders live behind a disclosure so the
      panel reads as a choice, not a control surface. */
   .presets{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
@@ -856,6 +857,7 @@
           <button class="layer" data-k="pct65"><b>Age 65+</b><span>share of older residents</span></button>
           <button class="layer" data-k="ac"><b>A/C access</b><span>homes with air conditioning</span></button>
         </div>
+        <p class="hint layer-note" id="layer-note" role="status" hidden></p>
         <p class="lbl sub" id="story-heading" hidden style="margin:14px 0 0">Historical context</p>
         <!-- Hidden at boot when no hex carries a grade — see syncHolcAvailable().
              An empty toggle would imply the data failed to load; removing it says
@@ -2170,6 +2172,7 @@ function setLayer(k){
   // May run before the map is ready (panel renders first) — legend still updates.
   paintFill();
   document.querySelectorAll('.layer').forEach(b=>{b.classList.toggle('active',b.dataset.k===k);b.setAttribute('aria-pressed',b.dataset.k===k);});
+  const lnEl=document.getElementById('layer-note'),lnTxt=(CE_CITY.layerNotes||{})[k];if(lnEl){lnEl.hidden=!lnTxt;lnEl.textContent=lnTxt||'';}
   const L=LAYERS[k];
   document.getElementById('legend-title').textContent=L.title;
   document.getElementById('chip-layer').textContent=L.title;
