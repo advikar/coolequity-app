@@ -8,9 +8,9 @@ const load=(file,name)=>{const c={window:{}};vm.createContext(c);vm.runInContext
 const CITIES=load('app/cities.js','CE_CITIES');
 // Per-city facts of the committed data, carried over from each city's former branch.
 const EXPECT={
-  contracosta:{res:2697,ndvi:431},
-  sanramon:{res:419,ndvi:0},
-  bakersfield:{res:3788,ndvi:0},
+  contracosta:{res:2697,ndvi:552},   // 431 unassessed + 121 below the 10% coverage threshold
+  sanramon:{res:419,ndvi:8},
+  bakersfield:{res:3788,ndvi:62},
 };
 const want=process.argv.slice(2);
 const slugs=want.length?want:CITIES.map(c=>c.slug);

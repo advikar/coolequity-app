@@ -9,7 +9,7 @@ survey; every number carries its source and limits in each city's in-app guide.
 
 | City | Map | Areas ranked | Residents | Tree cover | A/C | Heat weight |
 |---|---|---|---|---|---|---|
-| Contra Costa County | [contracosta/app/](https://advikar.github.io/coolequity-app/contracosta/app/) | 2,697 | 1.16M | USFS/CAL FIRE 2022 aerial; greenness stand-in on 431 areas | Census LACE 2023, scored | 0 |
+| Contra Costa County | [contracosta/app/](https://advikar.github.io/coolequity-app/contracosta/app/) | 2,697 | 1.16M | USFS/CAL FIRE 2022 aerial; greenness stand-in on 552 areas (431 unassessed, 121 assessed under 10%) | Census LACE 2023, scored | 0 |
 | Bakersfield | [bakersfield/app/](https://advikar.github.io/coolequity-app/bakersfield/app/) | 3,788 | 410k | USFS/CAL FIRE 2022 aerial | LACE 2023, not scored (96.5–100% everywhere) | 0.45 |
 | San Ramon | [sanramon/app/](https://advikar.github.io/coolequity-app/sanramon/app/) | 419 | 85k | USFS/CAL FIRE 2022 aerial | LACE 2023, not scored | 0.45 |
 

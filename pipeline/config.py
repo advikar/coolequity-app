@@ -101,6 +101,12 @@ MAX_SCENES = 30             # cap per collection so a demo build stays bounded
 NDVI_CLAMP = (0.05, 0.65)
 CANOPY_MAX_PCT = 45.0
 
+# An aerial assessment that observed less than this share of a cell does not
+# describe the cell: a 0% reading from a 1% sliver is not "no trees". Below the
+# threshold the cell scores on the satellite greenness stand-in like an
+# unassessed cell, and canopy_quality records why ("below-threshold").
+CANOPY_MIN_COVERAGE = 0.10
+
 # ---------------------------------------------------------------- census (US)
 ACS_YEAR = 2024
 STATE_FIPS = "06"

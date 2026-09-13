@@ -143,6 +143,15 @@ def load():
     if C.CANOPY_CSV.exists():
         df = df.merge(pd.read_csv(C.CANOPY_CSV), on="h3", how="left")
         have = df["canopy_pct"].notna()
+        # Partial assessments that observed too little of the cell are not evidence
+        # of its tree cover; treat them as unassessed (config.CANOPY_MIN_COVERAGE).
+        if "coverage_frac" in df.columns and "canopy_quality" in df.columns:
+            thin = (have & (df["canopy_quality"] == "partial")
+                    & (df["coverage_frac"].fillna(0) < C.CANOPY_MIN_COVERAGE))
+            df.loc[thin, "canopy_quality"] = "below-threshold"
+            have = have & ~thin
+            log(f"  canopy: {int(thin.sum())} partial cells below {C.CANOPY_MIN_COVERAGE:.0%} "
+                f"assessed coverage fall back to the satellite stand-in")
         df.loc[have, "green_src"] = "canopy"
         log(f"  canopy-source values for {int(have.sum())}/{len(df)} cells; NDVI elsewhere")
         df["veg_pct"] = df["green_pct"]
