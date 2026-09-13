@@ -1,0 +1,213 @@
+{
+ "city": "Contra Costa County",
+ "draws": 300,
+ "ranked": 2697,
+ "top_tier_n": 270,
+ "median_band_width": 216.29999999999995,
+ "p90_band_width": 590.4000000000002,
+ "share_band_within_10pct_of_list": 0.6210604375231739,
+ "point_top_tier_always_top_tier": 0.5962962962962963,
+ "point_top_tier_usually_top_tier": 0.762962962962963,
+ "top25_point": [
+  {
+   "id": 641,
+   "name": "Easter Hill Village NE",
+   "rank": 1,
+   "rank_lo": 1,
+   "rank_hi": 21,
+   "top_share": 1.0
+  },
+  {
+   "id": 597,
+   "name": "Triangle Court E 2",
+   "rank": 2,
+   "rank_lo": 1,
+   "rank_hi": 8,
+   "top_share": 1.0
+  },
+  {
+   "id": 598,
+   "name": "Triangle Court NE",
+   "rank": 3,
+   "rank_lo": 1,
+   "rank_hi": 9,
+   "top_share": 1.0
+  },
+  {
+   "id": 601,
+   "name": "Richmond N",
+   "rank": 4,
+   "rank_lo": 1,
+   "rank_hi": 10,
+   "top_share": 1.0
+  },
+  {
+   "id": 840,
+   "name": "State Court Park",
+   "rank": 5,
+   "rank_lo": 2,
+   "rank_hi": 26,
+   "top_share": 1.0
+  },
+  {
+   "id": 637,
+   "name": "East Richmond SW",
+   "rank": 6,
+   "rank_lo": 2,
+   "rank_hi": 14,
+   "top_share": 1.0
+  },
+  {
+   "id": 595,
+   "name": "Triangle Court E",
+   "rank": 7,
+   "rank_lo": 3,
+   "rank_hi": 12,
+   "top_share": 1.0
+  },
+  {
+   "id": 624,
+   "name": "Nystrom Village",
+   "rank": 8,
+   "rank_lo": 2,
+   "rank_hi": 12,
+   "top_share": 1.0
+  },
+  {
+   "id": 626,
+   "name": "Richmond",
+   "rank": 9,
+   "rank_lo": 2,
+   "rank_hi": 11,
+   "top_share": 1.0
+  },
+  {
+   "id": 642,
+   "name": "Richmond E",
+   "rank": 10,
+   "rank_lo": 3,
+   "rank_hi": 15,
+   "top_share": 1.0
+  },
+  {
+   "id": 638,
+   "name": "Richmond NE",
+   "rank": 11,
+   "rank_lo": 4,
+   "rank_hi": 16,
+   "top_share": 1.0
+  },
+  {
+   "id": 625,
+   "name": "Easter Hill Village",
+   "rank": 12,
+   "rank_lo": 7,
+   "rank_hi": 17,
+   "top_share": 1.0
+  },
+  {
+   "id": 632,
+   "name": "Atchison Village",
+   "rank": 13,
+   "rank_lo": 6,
+   "rank_hi": 18,
+   "top_share": 1.0
+  },
+  {
+   "id": 614,
+   "name": "San Pablo SE",
+   "rank": 14,
+   "rank_lo": 5,
+   "rank_hi": 22,
+   "top_share": 1.0
+  },
+  {
+   "id": 640,
+   "name": "East Richmond NW",
+   "rank": 15,
+   "rank_lo": 6,
+   "rank_hi": 21,
+   "top_share": 1.0
+  },
+  {
+   "id": 830,
+   "name": "Idaho Apartments",
+   "rank": 16,
+   "rank_lo": 9,
+   "rank_hi": 20,
+   "top_share": 1.0
+  },
+  {
+   "id": 618,
+   "name": "San Pablo N",
+   "rank": 17,
+   "rank_lo": 12,
+   "rank_hi": 20,
+   "top_share": 1.0
+  },
+  {
+   "id": 613,
+   "name": "East Richmond NW 2",
+   "rank": 18,
+   "rank_lo": 12,
+   "rank_hi": 22,
+   "top_share": 1.0
+  },
+  {
+   "id": 839,
+   "name": "Crescent Park Apartments E",
+   "rank": 19,
+   "rank_lo": 16,
+   "rank_hi": 24,
+   "top_share": 1.0
+  },
+  {
+   "id": 599,
+   "name": "Barrett Terrace Plaza Apartments",
+   "rank": 20,
+   "rank_lo": 16,
+   "rank_hi": 24,
+   "top_share": 1.0
+  },
+  {
+   "id": 619,
+   "name": "San Marcos Apartments SW",
+   "rank": 21,
+   "rank_lo": 8,
+   "rank_hi": 30,
+   "top_share": 1.0
+  },
+  {
+   "id": 831,
+   "name": "Richmond Annex",
+   "rank": 22,
+   "rank_lo": 18,
+   "rank_hi": 26,
+   "top_share": 1.0
+  },
+  {
+   "id": 600,
+   "name": "Triangle Court SW",
+   "rank": 23,
+   "rank_lo": 6,
+   "rank_hi": 34,
+   "top_share": 1.0
+  },
+  {
+   "id": 855,
+   "name": "Rose Park",
+   "rank": 24,
+   "rank_lo": 19,
+   "rank_hi": 27,
+   "top_share": 1.0
+  },
+  {
+   "id": 622,
+   "name": "San Pablo",
+   "rank": 25,
+   "rank_lo": 20,
+   "rank_hi": 28,
+   "top_share": 1.0
+  }
+ ]
+}

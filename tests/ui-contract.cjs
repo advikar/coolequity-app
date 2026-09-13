@@ -57,6 +57,8 @@ assert.deepEqual(data.features.map(f=>[f.properties.id,f.geometry]),original.fea
 const ranked=data.features.filter(f=>f.properties.place==='res');
 assert.deepEqual(ranked.map(f=>f.properties.rank).sort((a,b)=>a-b),Array.from({length:ranked.length},(_,i)=>i+1));
 for(const f of data.features){assert(['canopy','ndvi'].includes(f.properties.green_src));assert.equal(typeof f.properties.scenario_ok,'boolean');}
+for(const f of data.features){const p=f.properties;if(p.place==='res'){assert(Number.isInteger(p.rank_lo)&&Number.isInteger(p.rank_hi)&&p.rank_lo>=1&&p.rank_lo<=p.rank_hi&&p.rank_hi<=ranked.length,'rank band '+p.id);assert(p.rank_top_share>=0&&p.rank_top_share<=1);}else{assert.equal(p.rank_lo,null);}}
+assert(data.metadata&&data.metadata.stability&&data.metadata.stability.draws>=100,'stability metadata');
 console.log('PASS: stable geography, source/coverage metadata and consecutive rebuilt ranks.');
 // Execute the actual browser scorer against the export, including its rounding and tie policy.
 const live={score:new Map(),rank:new Map(),order:[]};

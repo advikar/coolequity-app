@@ -1,0 +1,213 @@
+{
+ "city": "West Contra Costa",
+ "draws": 300,
+ "ranked": 982,
+ "top_tier_n": 99,
+ "median_band_width": 127.05000000000001,
+ "p90_band_width": 236.18499999999992,
+ "share_band_within_10pct_of_list": 0.3391038696537678,
+ "point_top_tier_always_top_tier": 0.47474747474747475,
+ "point_top_tier_usually_top_tier": 0.7272727272727273,
+ "top25_point": [
+  {
+   "id": 1007,
+   "name": "San Pablo SW",
+   "rank": 1,
+   "rank_lo": 1,
+   "rank_hi": 15,
+   "top_share": 1.0
+  },
+  {
+   "id": 980,
+   "name": "San Pablo N 3",
+   "rank": 2,
+   "rank_lo": 1,
+   "rank_hi": 14,
+   "top_share": 1.0
+  },
+  {
+   "id": 976,
+   "name": "San Pablo N 6",
+   "rank": 3,
+   "rank_lo": 2,
+   "rank_hi": 21,
+   "top_share": 1.0
+  },
+  {
+   "id": 838,
+   "name": "San Pablo SW 2",
+   "rank": 4,
+   "rank_lo": 2,
+   "rank_hi": 29,
+   "top_share": 1.0
+  },
+  {
+   "id": 1118,
+   "name": "Richmond NE 8",
+   "rank": 5,
+   "rank_lo": 2,
+   "rank_hi": 53,
+   "top_share": 0.997
+  },
+  {
+   "id": 1116,
+   "name": "Richmond NE 5",
+   "rank": 6,
+   "rank_lo": 2,
+   "rank_hi": 38,
+   "top_share": 1.0
+  },
+  {
+   "id": 289,
+   "name": "Rodeo N",
+   "rank": 7,
+   "rank_lo": 1,
+   "rank_hi": 67,
+   "top_share": 0.997
+  },
+  {
+   "id": 835,
+   "name": "Triangle Court NE 6",
+   "rank": 8,
+   "rank_lo": 3,
+   "rank_hi": 35,
+   "top_share": 1.0
+  },
+  {
+   "id": 984,
+   "name": "San Marcos Apartments SW 8",
+   "rank": 9,
+   "rank_lo": 5,
+   "rank_hi": 29,
+   "top_share": 1.0
+  },
+  {
+   "id": 986,
+   "name": "San Pablo NW 6",
+   "rank": 10,
+   "rank_lo": 3,
+   "rank_hi": 17,
+   "top_share": 1.0
+  },
+  {
+   "id": 2492,
+   "name": "Crescent Park Apartments NW",
+   "rank": 11,
+   "rank_lo": 1,
+   "rank_hi": 53,
+   "top_share": 0.997
+  },
+  {
+   "id": 861,
+   "name": "Richmond NW",
+   "rank": 12,
+   "rank_lo": 2,
+   "rank_hi": 45,
+   "top_share": 0.993
+  },
+  {
+   "id": 948,
+   "name": "San Pablo S",
+   "rank": 13,
+   "rank_lo": 3,
+   "rank_hi": 60,
+   "top_share": 0.987
+  },
+  {
+   "id": 857,
+   "name": "Richmond N 2",
+   "rank": 14,
+   "rank_lo": 6,
+   "rank_hi": 75,
+   "top_share": 0.973
+  },
+  {
+   "id": 837,
+   "name": "San Pablo S 2",
+   "rank": 15,
+   "rank_lo": 2,
+   "rank_hi": 54,
+   "top_share": 0.993
+  },
+  {
+   "id": 1967,
+   "name": "San Marcos Apartments E",
+   "rank": 16,
+   "rank_lo": 4,
+   "rank_hi": 72,
+   "top_share": 0.977
+  },
+  {
+   "id": 818,
+   "name": "Triangle Court SE 2",
+   "rank": 17,
+   "rank_lo": 8,
+   "rank_hi": 53,
+   "top_share": 0.997
+  },
+  {
+   "id": 1032,
+   "name": "Nystrom Village N 2",
+   "rank": 18,
+   "rank_lo": 7,
+   "rank_hi": 66,
+   "top_share": 0.983
+  },
+  {
+   "id": 995,
+   "name": "San Pablo W 5",
+   "rank": 19,
+   "rank_lo": 2,
+   "rank_hi": 52,
+   "top_share": 0.997
+  },
+  {
+   "id": 1079,
+   "name": "Barrett Terrace Plaza Apartments S",
+   "rank": 20,
+   "rank_lo": 7,
+   "rank_hi": 85,
+   "top_share": 0.97
+  },
+  {
+   "id": 1502,
+   "name": "El Sobrante NW 3",
+   "rank": 21,
+   "rank_lo": 13,
+   "rank_hi": 102,
+   "top_share": 0.947
+  },
+  {
+   "id": 2475,
+   "name": "Crescent Park Apartments NW 3",
+   "rank": 22,
+   "rank_lo": 4,
+   "rank_hi": 63,
+   "top_share": 0.993
+  },
+  {
+   "id": 820,
+   "name": "Triangle Court E 4",
+   "rank": 23,
+   "rank_lo": 9,
+   "rank_hi": 60,
+   "top_share": 1.0
+  },
+  {
+   "id": 853,
+   "name": "Iron Triangle",
+   "rank": 24,
+   "rank_lo": 7,
+   "rank_hi": 64,
+   "top_share": 0.99
+  },
+  {
+   "id": 859,
+   "name": "Richmond N 3",
+   "rank": 25,
+   "rank_lo": 10,
+   "rank_hi": 58,
+   "top_share": 0.993
+  }
+ ]
+}

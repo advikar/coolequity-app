@@ -1,0 +1,213 @@
+{
+ "city": "San Ramon",
+ "draws": 300,
+ "ranked": 419,
+ "top_tier_n": 42,
+ "median_band_width": 51.05,
+ "p90_band_width": 87.28,
+ "share_band_within_10pct_of_list": 0.3341288782816229,
+ "point_top_tier_always_top_tier": 0.38095238095238093,
+ "point_top_tier_usually_top_tier": 0.6428571428571429,
+ "top25_point": [
+  {
+   "id": 450,
+   "name": "Carmelita S",
+   "rank": 1,
+   "rank_lo": 1,
+   "rank_hi": 4,
+   "top_share": 1.0
+  },
+  {
+   "id": 147,
+   "name": "Valencia S",
+   "rank": 2,
+   "rank_lo": 1,
+   "rank_hi": 8,
+   "top_share": 1.0
+  },
+  {
+   "id": 446,
+   "name": "Carmelita",
+   "rank": 3,
+   "rank_lo": 2,
+   "rank_hi": 7,
+   "top_share": 1.0
+  },
+  {
+   "id": 492,
+   "name": "Serena & Cordova",
+   "rank": 4,
+   "rank_lo": 1,
+   "rank_hi": 10,
+   "top_share": 1.0
+  },
+  {
+   "id": 189,
+   "name": "Amador Lakes Apartments N",
+   "rank": 5,
+   "rank_lo": 1,
+   "rank_hi": 27,
+   "top_share": 0.983
+  },
+  {
+   "id": 322,
+   "name": "Capella",
+   "rank": 6,
+   "rank_lo": 3,
+   "rank_hi": 15,
+   "top_share": 1.0
+  },
+  {
+   "id": 493,
+   "name": "Serena & Cordova NW",
+   "rank": 7,
+   "rank_lo": 4,
+   "rank_hi": 19,
+   "top_share": 1.0
+  },
+  {
+   "id": 464,
+   "name": "Mosaic Park",
+   "rank": 8,
+   "rank_lo": 4,
+   "rank_hi": 21,
+   "top_share": 0.993
+  },
+  {
+   "id": 291,
+   "name": "The Preserve NE",
+   "rank": 9,
+   "rank_lo": 4,
+   "rank_hi": 28,
+   "top_share": 0.99
+  },
+  {
+   "id": 214,
+   "name": "The Preserve",
+   "rank": 10,
+   "rank_lo": 6,
+   "rank_hi": 22,
+   "top_share": 1.0
+  },
+  {
+   "id": 184,
+   "name": "Fairway Village Apartments SE",
+   "rank": 11,
+   "rank_lo": 5,
+   "rank_hi": 35,
+   "top_share": 0.973
+  },
+  {
+   "id": 530,
+   "name": "The Vintner W",
+   "rank": 12,
+   "rank_lo": 8,
+   "rank_hi": 28,
+   "top_share": 1.0
+  },
+  {
+   "id": 529,
+   "name": "The Vintner",
+   "rank": 13,
+   "rank_lo": 8,
+   "rank_hi": 27,
+   "top_share": 0.997
+  },
+  {
+   "id": 114,
+   "name": "Old Ranch Summit W 5",
+   "rank": 14,
+   "rank_lo": 4,
+   "rank_hi": 43,
+   "top_share": 0.947
+  },
+  {
+   "id": 490,
+   "name": "Valencia SW",
+   "rank": 15,
+   "rank_lo": 7,
+   "rank_hi": 40,
+   "top_share": 0.957
+  },
+  {
+   "id": 377,
+   "name": "Canyon Woods SW",
+   "rank": 16,
+   "rank_lo": 7,
+   "rank_hi": 43,
+   "top_share": 0.947
+  },
+  {
+   "id": 494,
+   "name": "Serena & Cordova NE",
+   "rank": 17,
+   "rank_lo": 11,
+   "rank_hi": 31,
+   "top_share": 0.98
+  },
+  {
+   "id": 143,
+   "name": "Valencia",
+   "rank": 18,
+   "rank_lo": 9,
+   "rank_hi": 46,
+   "top_share": 0.933
+  },
+  {
+   "id": 512,
+   "name": "The Gardens N 3",
+   "rank": 19,
+   "rank_lo": 6,
+   "rank_hi": 62,
+   "top_share": 0.867
+  },
+  {
+   "id": 466,
+   "name": "Seville",
+   "rank": 20,
+   "rank_lo": 12,
+   "rank_hi": 45,
+   "top_share": 0.943
+  },
+  {
+   "id": 402,
+   "name": "Foothill Gardens NW 2",
+   "rank": 21,
+   "rank_lo": 11,
+   "rank_hi": 39,
+   "top_share": 0.973
+  },
+  {
+   "id": 354,
+   "name": "Canyon Woods SW 2",
+   "rank": 22,
+   "rank_lo": 10,
+   "rank_hi": 51,
+   "top_share": 0.897
+  },
+  {
+   "id": 439,
+   "name": "Foothill Gardens",
+   "rank": 23,
+   "rank_lo": 9,
+   "rank_hi": 52,
+   "top_share": 0.877
+  },
+  {
+   "id": 98,
+   "name": "Serena & Cordova W",
+   "rank": 24,
+   "rank_lo": 9,
+   "rank_hi": 45,
+   "top_share": 0.923
+  },
+  {
+   "id": 397,
+   "name": "Old Ranch Summit W 8",
+   "rank": 25,
+   "rank_lo": 10,
+   "rank_hi": 46,
+   "top_share": 0.933
+  }
+ ]
+}

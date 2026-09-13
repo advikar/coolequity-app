@@ -161,3 +161,15 @@
   `planting_assumptions.survival_share_pct`; files without it load at 100% so they reproduce
   what they showed. Test contexts seed `SURVIVAL:70`. Every guide's Planting and Cost topics
   describe it, citing Ko, Lee, McPherson & Roman 2015 (42.4% alive at 22 years).
+
+## Checkpoint — September 13, 2026: rank-stability bands (05b)
+
+- `pipeline/05b_stability.py` runs after 05 and rewrites `<slug>.geojson` in place with
+  `rank_lo`, `rank_hi`, `rank_top_share` per residential cell and `metadata.stability`;
+  summary in `cities/<slug>/reports/stability_<slug>.json`. Inputs: acs_<slug>.csv MOEs,
+  `_cache/bg_2024_06.zip` (copied into every city cache), `_cache/ac_src/LACE_23_Tract.csv`
+  (AC_PM). Seeded (20260913), 300 draws, ~2 s per city. Re-run it after any 05 re-run or
+  the bands go stale (the ui-contract test only checks shape, not freshness).
+- App: `#d-band` under the rank line, `stability` popover, export columns
+  `rank_recommended_mix_p05/p95`, `top_tier_share`; guide anchor `#stability` inside the
+  Score topic of every city.

@@ -335,6 +335,7 @@
   .dhead .badge{width:32px;height:32px;border-radius:8px;font-size:13px}
   .dhead .nm{font-size:15px;font-weight:650}
   .dhead .rk{font-size:11px;color:var(--muted);margin-top:1px}
+  .rk.band{margin-top:2px}.rk.band b{color:var(--txt);font-weight:600}
   .dhead .x{margin-left:auto;color:var(--muted2);cursor:pointer;font-size:20px;line-height:1;padding:2px 5px}
   .dhead .x:hover{color:var(--txt)}
   .dbody{overflow-y:auto;padding:14px 16px 22px}
@@ -990,7 +991,7 @@
   <aside id="detail" inert aria-label="Selected area">
     <div class="dhead">
       <div class="badge" id="d-badge">1</div>
-      <div style="flex:1"><div class="nm" id="d-name">—</div><div class="rk" id="d-rank">—</div></div>
+      <div style="flex:1"><div class="nm" id="d-name">—</div><div class="rk" id="d-rank">—</div><div class="rk band" id="d-band" hidden></div></div>
       <button type="button" class="dnav" id="d-prev" title="Previous area in the shortlist, or in the ranking" aria-label="Previous area">‹</button>
       <button type="button" class="dnav" id="d-next" title="Next area in the shortlist, or in the ranking" aria-label="Next area">›</button>
       <button type="button" class="pin dpin" id="d-pin" aria-pressed="false" title="Add to shortlist">☆</button>
@@ -1460,7 +1461,7 @@ const CITY_NAME=(CITY_NAV.find(c=>c.slug===THIS_CITY)||{}).name||CITY_SLUG;
 const EXPORT_NOTES=[
   'Independent student project. Not a city or county product and not reviewed by any city or county. Exploratory analysis, not a field survey. Nothing is published at address or household resolution.',
   'Scores are relative 0–100 within this study area under the weights in this file; they are not health-risk probabilities or cross-city rankings.',
-  'rank/score are computed live from the exported weights; rank_default/score_default are the pipeline defaults shipped with the data.',
+  'rank/score are computed live from the exported weights; rank_default/score_default are the pipeline defaults shipped with the data. rank_recommended_mix_p05/p95 and top_tier_share come from re-drawing ACS and LACE inputs within their margins of error and jittering the recommended weights; ranks are estimates with a band, not exact positions.',
   'Population, age and A/C are allocated estimates from ACS block groups and Census LACE tracts, not household counts.',
   'Canopy percentages are assessed cover per canopy_source; chm-legacy cells have unknown assessed extent (coverage_frac empty).',
   'Planting scenarios are theoretical: mapped street length at 10 m spacing, capped by cell area minus known canopy. Site feasibility, ownership, utilities and species are unverified.',
@@ -1486,7 +1487,7 @@ function exportHeader(){
     notes:EXPORT_NOTES,
   };
 }
-const EXPORT_FIELDS=['id','name','place','rank','score','rank_default','score_default','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
+const EXPORT_FIELDS=['id','name','place','rank','score','rank_default','score_default','rank_lo','rank_hi','rank_top_share','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
   'coverage_frac','canopy_quality','canopy_m2','assessed_m2','pop','pct65','ac_pct','ac_src','ac_coverage','acs_year','access_min','access_km',
   'access_quality','access_snap_m','area_m2','street_m','scenario_ok','canopy_baseline_ok','land','holc',
   'planting_share','trees','trees_surviving','canopy_gain_points','cost_usd','cooling_c','future_canopy_pct'];
@@ -1494,7 +1495,7 @@ function cellRecord(p){
   const s=sc(p), r=rk(p), share=plantingShares.get(p.id), scn=(share!=null)?scenarioFor(p,share):null;
   const num=v=>(v==null||v==='')?null:+v;
   return {id:p.id, name:nameOf(p), place:p.place, rank:r??null, score:s==null?null:+s.toFixed(1),
-    rank_default:num(p.rank), score_default:num(p.score), lst_c:num(p.lst), canopy_pct:p.green_src==='ndvi'?null:num(p.green), greenness_index:p.green_src==='ndvi'?num(p.green):null, green_src:p.green_src??null,
+    rank_default:num(p.rank), score_default:num(p.score), rank_lo:num(p.rank_lo), rank_hi:num(p.rank_hi), rank_top_share:num(p.rank_top_share), lst_c:num(p.lst), canopy_pct:p.green_src==='ndvi'?null:num(p.green), greenness_index:p.green_src==='ndvi'?num(p.green):null, green_src:p.green_src??null,
     canopy_source:p.canopy_source??null, canopy_year:p.canopy_year??null, coverage_frac:num(p.coverage_frac), canopy_quality:p.canopy_quality??null,
     canopy_m2:num(p.canopy_m2), assessed_m2:num(p.assessed_m2), pop:num(p.pop), pct65:num(p.pct65), ac_pct:num(p.ac), ac_src:p.ac_src??null,
     ac_coverage:num(p.ac_coverage), acs_year:num(p.acs_year), access_min:num(p.access_min), access_km:num(p.access_km),
@@ -1513,6 +1514,9 @@ const FIELD_KEY={
   score:['priority_score_0_100','Priority score under these priorities, relative within the study area'],
   rank_default:['rank_recommended_mix','Rank under the recommended mix shipped with the data'],
   score_default:['score_recommended_mix','Score under the recommended mix'],
+  rank_lo:['rank_recommended_mix_p05','Recommended-mix rank, 5th percentile across re-draws of census margins and ±10-point weight jitter'],
+  rank_hi:['rank_recommended_mix_p95','Recommended-mix rank, 95th percentile across the same re-draws'],
+  rank_top_share:['top_tier_share','Share of re-draws in which the area ranks in the best 10% under the recommended mix'],
   lst_c:['surface_heat_c','Summer land-surface temperature, °C (satellite)'],
   canopy_pct:['tree_cover_pct','Tree cover, % of assessed land; empty where only satellite greenness is available'],
   greenness_index:['greenness_index_0_100','Satellite greenness index, 0–100; filled only where tree_cover_source_type = ndvi'],
@@ -1837,6 +1841,7 @@ const TIPS={
   access:{t:'Places to cool off & walking time',d:'Libraries, community centers, pools and senior centers from OpenStreetMap, and the estimated minutes on foot from each area to the nearest one along real streets and paths. Hours and air conditioning are not verified.'},
   score:{t:'Priority score & ranking',d:'0 to 100, relative within this study area: 100 is the area with the most need under the current mix. It is a screening score, not a health-risk figure. Click any area to see the arithmetic behind its rank.'},
   export:{t:'Export & share',d:'Save the ranked list as a spreadsheet, or as a file that reloads this exact view, including your mix of priorities. Nothing is uploaded; files stay on your computer.'},
+  stability:{t:'Likely rank',d:'A rank is an estimate. Census population, age and A/C figures were re-drawn within their published margins of error and the recommended weights nudged by ±10 points, 300 times; this is the 5th–95th percentile of the ranks that came out. Rank differences smaller than the band are noise. The top-tier share says how often the area stayed in the best 10%.'},
   'export-area':{t:'Export this area',d:'Save this area’s numbers, sources, rank and planting scenario as one file for a meeting or a colleague. A JSON file reloads this view.'},
   planting:{t:'Planting scenario',d:'Explore how many street trees could fit along this area’s mapped streets, what they would cost, and the shade they would add at maturity. An estimate for scoping, not a plan.'},
   cost:{t:'Trees & cost',d:'Tree count comes from mapped street length at 10 m spacing; cost is trees × $500, a planning assumption rather than a quote.'},
@@ -2806,6 +2811,14 @@ function selectHex(id,fly){
     : activity
     ? 'Developed area · no residents · not ranked'
     : `Rank ${r} of ${LIVE.order.length.toLocaleString()} · need index ${s.toFixed(0)}`+(isDefaultW()?'':' · your weights')+` · area #${p.id}`;
+  // Rank band from 05b_stability.py: 5th–95th percentile rank across re-draws of
+  // census margins and the recommended weights. It describes the recommended
+  // mix; under custom weights it is shown as context for that mix only.
+  {const b=document.getElementById('d-band');if(b){
+    if(unranked||p.rank_lo==null){b.hidden=true;}
+    else{b.hidden=false;const meta=(HEX.metadata||{}).stability||{};const top=Math.round((p.rank_top_share||0)*100);
+      b.innerHTML=`<b>Likely rank ${p.rank_lo}–${p.rank_hi}</b>${isDefaultW()?'':' under the recommended mix'} · in the top ${meta.top_tier_n?meta.top_tier_n.toLocaleString():'tier'} in ${top}% of ${meta.draws||''} re-draws <a class="info-link" href="guide.html#stability" target="ce-guide" aria-label="About rank stability">i</a>`;
+      b.title='Census inputs re-drawn within their published margins of error and the recommended weights jittered by ±10 points; 5th–95th percentile of the resulting ranks.';}}}
   document.getElementById('d-name').title=p.name?'Name generated from nearby mapped places; not an official boundary. Area #'+p.id:'Area #'+p.id;
   explainHex(p);
   const dv=document.getElementById('d-drivers');
