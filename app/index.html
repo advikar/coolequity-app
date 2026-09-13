@@ -481,9 +481,15 @@
   #roi-slider{width:100%;min-height:32px}
   .brand p{font-size:12px}
   #detail{width:370px}
+  .mview{display:none}
   @media(max-width:760px){
     #app{display:flex;flex-direction:column;height:100dvh}
     #panel{width:100%;height:48%;flex:none}
+    /* Phone: List, Both or Map fills the screen. In Map, the panel keeps only its
+       header so the switch stays reachable; in List, the map is hidden. */
+    .mview{display:inline-flex;margin-left:auto}
+    #app.mv-list #panel{height:100dvh}#app.mv-list #mapwrap{display:none}
+    #app.mv-map #panel{height:auto}#app.mv-map #panel .scroll{display:none}
     #panel .brand{padding:10px 14px}
     #panel .brand p,#takeaway-sec{display:none}
     #legend{width:190px;left:8px;bottom:24px;padding:8px 10px}
@@ -566,6 +572,7 @@
   .rank-tools{padding:0 20px 6px!important}
   #rank-search{margin-top:0}
   .findrow{display:flex;align-items:center;gap:8px;margin-top:12px}
+  .cityrow{display:flex;align-items:center;gap:8px;margin:6px 0 4px}.cityrow label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}.cityrow select{flex:1;min-width:0}
   .findrow .rank-label{margin:0;flex:1}
   .sortlbl{font-size:11px;color:var(--muted2)}
   .sortsel{appearance:none;-webkit-appearance:none;background:#0c1219;border:1px solid var(--edge);border-radius:7px;color:var(--txt);font:600 11.5px var(--sans);padding:5px 8px;cursor:pointer}
@@ -769,7 +776,8 @@
       </div>
       <p>Where new trees would help residents most in <span class="city-name"></span>.</p>
       <p class="pnote" id="pnote" hidden></p>
-      <nav class="helpnav" aria-label="Help and evidence"><button id="help-open" type="button">How to use</button><a href="guide.html" target="ce-guide">Data &amp; methods ↗</a></nav>
+      <nav class="helpnav" aria-label="Help and evidence"><button id="help-open" type="button">How to use</button><a href="guide.html" target="ce-guide">Data &amp; methods ↗</a>
+        <div class="seg mview" id="mview" role="group" aria-label="What fills the screen on a phone"><button data-v="list" type="button">List</button><button data-v="both" type="button" class="on" aria-pressed="true">Both</button><button data-v="map" type="button">Map</button></div></nav>
     </div>
 
     <div class="scroll">
@@ -826,6 +834,7 @@
               <option value="need">need</option><option value="pop">residents</option><option value="lst">surface heat</option><option value="green">tree cover</option><option value="access_min">walk to cooling</option><option value="pct65">age 65+</option>
             </select><button type="button" class="sortsel dirbtn" id="rank-dir" aria-label="Sort direction" title="Flip between most first and least first">most first</button><a class="info-link" href="guide.html#sort" target="ce-guide" aria-label="What each sort option means">i</a></div>
           <p class="hint sorthint" id="sort-hint" hidden></p>
+          <div class="cityrow"><label for="rank-city">Show</label><select id="rank-city" class="sortsel" aria-label="Limit the list and the map to one city or community"><option value="">every city and community</option></select></div>
           <input id="rank-search" type="search" placeholder="Search by place name or cell number…" autocomplete="off"/>
           <div class="filters" id="rank-filters" role="group" aria-label="Filters">
             <button type="button" class="pst" data-f="walk" title="Walk to nearest cool place over 15 minutes">Walk &gt; 15 min</button>
@@ -1489,14 +1498,15 @@ function exportHeader(){
     notes:EXPORT_NOTES,
   };
 }
-const EXPORT_FIELDS=['id','name','place','rank','score','rank_default','score_default','rank_lo','rank_hi','rank_top_share','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
+const EXPORT_FIELDS=['id','name','city','place','rank','score','rank_default','score_default','rank_lo','rank_hi','rank_top_share','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
   'coverage_frac','canopy_quality','canopy_m2','assessed_m2','pop','pct65','ac_pct','ac_src','ac_coverage','acs_year','access_min','access_km',
   'access_quality','access_snap_m','area_m2','street_m','scenario_ok','canopy_baseline_ok','land','holc',
   'planting_share','trees','trees_surviving','canopy_gain_points','cost_usd','cooling_c','future_canopy_pct'];
 function cellRecord(p){
   const s=sc(p), r=rk(p), share=plantingShares.get(p.id), scn=(share!=null)?scenarioFor(p,share):null;
+  const cityCol=p.city?(p.city+(p.city_kind==='cdp'?' (unincorporated community)':p.city_kind==='none'?' (county)':'')):null;
   const num=v=>(v==null||v==='')?null:+v;
-  return {id:p.id, name:nameOf(p), place:p.place, rank:r??null, score:s==null?null:+s.toFixed(1),
+  return {id:p.id, name:nameOf(p), city:cityCol, place:p.place, rank:r??null, score:s==null?null:+s.toFixed(1),
     rank_default:num(p.rank), score_default:num(p.score), rank_lo:num(p.rank_lo), rank_hi:num(p.rank_hi), rank_top_share:num(p.rank_top_share), lst_c:num(p.lst), canopy_pct:p.green_src==='ndvi'?null:num(p.green), greenness_index:p.green_src==='ndvi'?num(p.green):null, green_src:p.green_src??null,
     canopy_source:p.canopy_source??null, canopy_year:p.canopy_year??null, coverage_frac:num(p.coverage_frac), canopy_quality:p.canopy_quality??null,
     canopy_m2:num(p.canopy_m2), assessed_m2:num(p.assessed_m2), pop:num(p.pop), pct65:num(p.pct65), ac_pct:num(p.ac), ac_src:p.ac_src??null,
@@ -1512,6 +1522,7 @@ const FIELD_KEY={
   id:['cell_id','Stable number of the hexagon area'],
   name:['area_name','Nearest mapped place name'],
   place:['area_type','res = residents ranked; activity = developed, no residents; empty = undeveloped'],
+  city:['city_or_community','City or census-designated community containing the area\'s centre (Census TIGERweb places)'],
   rank:['rank','Rank under the priorities in this file (1 = most need)'],
   score:['priority_score_0_100','Priority score under these priorities, relative within the study area'],
   rank_default:['rank_recommended_mix','Rank under the recommended mix shipped with the data'],
@@ -1707,6 +1718,7 @@ function resetMap(){
   kindOn=new Set(KIND_KEYS.filter(k=>document.querySelector(`.kind[data-k="${k}"]`)));syncKinds();
   if(document.querySelector('#basemap button.on')?.dataset.b==='sat')setBasemap('map');
   RANK_FILTERS.clear();document.querySelectorAll('.pst').forEach(b=>{b.classList.remove('on');b.setAttribute('aria-pressed','false');});
+  RANK_CITY='';const rc=document.getElementById('rank-city');if(rc)rc.value='';applyCityMask();
   RANK_SORT='need';RANK_DIR=defaultDir('need');const rsl=document.getElementById('rank-sort');if(rsl)rsl.value='need';syncSortUI();
   COST_TREE=DEFAULT_COST_TREE;const ce=document.getElementById('cost-tree');if(ce)ce.value=DEFAULT_COST_TREE;
   SURVIVAL=DEFAULT_SURVIVAL;const se=document.getElementById('survival');if(se)se.value=DEFAULT_SURVIVAL;
@@ -2025,6 +2037,8 @@ async function boot(){
    if(!n)document.getElementById('tg-designated').disabled=true;}
   if(c.loadFailed){const status=document.getElementById('sites-status');status.hidden=false;status.textContent='Mapped locations could not load. County-listed contacts are still available.';}
   computeRanges();
+  buildCityPick();
+  wireMobileView();
   document.getElementById('chip-n').textContent=`${HEX.features.filter(f=>f.properties.place==='res').length.toLocaleString()} areas`;
   syncHolcAvailable();
 
@@ -2646,7 +2660,7 @@ function setBasemap(b){
   styleOp(()=>{
     if(!map.getLayer('satellite'))return;
     map.setLayoutProperty('satellite','visibility',b==='sat'?'visible':'none');
-    map.setPaintProperty('fill','fill-opacity',b==='sat'?0.88:0.82);
+    applyCityMask();   // keeps the chosen-city fade, if any, at the basemap's opacity
     map.setPaintProperty('line','line-opacity',b==='sat'?0.55:0.35);
     if(map.triggerRepaint)map.triggerRepaint();
   });
@@ -2666,6 +2680,32 @@ function dismissCoach(){
 
 let rankPage=0;const RANK_PAGE_SIZE=25;let rankFlash=false;
 const RANK_FILTERS=new Set();let RANK_SORT='need';
+// One city or community at a time (04d jurisdiction, cell centroid in the Census
+// place polygon). Empty = everywhere. Session-only; not part of share links.
+let RANK_CITY='';
+// Phone layout switch (List / Both / Map). Desktop never shows it. Remembered
+// per browser; Both is the default so a first visit shows the map and the list.
+function wireMobileView(){
+  const seg=document.getElementById('mview');if(!seg)return;
+  const app=document.getElementById('app');
+  const set=v=>{app.classList.remove('mv-list','mv-map');if(v==='list'||v==='map')app.classList.add('mv-'+v);
+    seg.querySelectorAll('button').forEach(b=>{const on=b.dataset.v===v;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});
+    if(map)setTimeout(()=>map.resize(),60);};
+  let saved='both';try{saved=localStorage.getItem('ce-mview')||'both';}catch(_){}
+  set(saved);
+  seg.querySelectorAll('button').forEach(b=>b.onclick=()=>{set(b.dataset.v);try{localStorage.setItem('ce-mview',b.dataset.v);}catch(_){}});
+}
+function buildCityPick(){
+  const el=document.getElementById('rank-city');if(!el||!HEX)return;
+  const n=new Map();for(const f of HEX.features){const p=f.properties;if(p.place!=='res'||!p.city)continue;n.set(p.city,(n.get(p.city)||0)+1);}
+  if(!n.size){el.closest('.cityrow').hidden=true;return;}
+  const rows=[...n.entries()].sort((a,b)=>a[0]==='Unincorporated'?1:b[0]==='Unincorporated'?-1:b[1]-a[1]);
+  el.innerHTML='<option value="">every city and community</option>'+rows.map(([c,k])=>`<option value="${escapeHtml(c)}">${escapeHtml(c)} · ${k.toLocaleString()} area${k===1?'':'s'}</option>`).join('');
+  el.onchange=()=>{RANK_CITY=el.value;rankPage=0;buildRank();applyCityMask();};
+}
+// Fade areas outside the chosen city on the map so the list and the map agree.
+function applyCityMask(){if(!map||!map.getLayer('fill'))return;const base=document.querySelector('#basemap button.on')?.dataset.b==='sat'?0.88:0.82;
+  map.setPaintProperty('fill','fill-opacity',RANK_CITY?['case',['==',['get','city'],RANK_CITY],base,0.12]:base);}
 /* Direction per sort key: 'most' puts the largest value first. Every key's
    natural reading is "most need first", which for tree cover means least. */
 let RANK_DIR='most';
@@ -2701,11 +2741,12 @@ function buildRank(){
     if(F.has('scen')&&p.scenario_ok!==true)return false;
     if(F.has('aerial')&&!(p.canopy_source==='usfs-2022'&&p.canopy_quality==='full'))return false;
     if(F.has('stable')&&!(p.rank_top_share>=0.8))return false;
+    if(RANK_CITY&&p.city!==RANK_CITY)return false;
     return true;});
   if(sortK!=='need'||RANK_DIR!=='most'){const dir=RANK_DIR==='most'?1:-1;const v=p=>sortK==='need'?(sc(p)??-1):(p.properties?p.properties[sortK]:p[sortK])??0;matches=matches.slice().sort((a,b)=>dir*((v(b.properties)-v(a.properties))));}
   rankPage=Math.max(0,Math.min(rankPage,Math.ceil(matches.length/RANK_PAGE_SIZE)-1));
   const start=rankPage*RANK_PAGE_SIZE,top=matches.slice(start,start+RANK_PAGE_SIZE);
-  const filt=(query?1:0)+F.size;
+  const filt=(query?1:0)+F.size+(RANK_CITY?1:0);
   document.getElementById('rank-count').textContent=matches.length?`${start+1}–${start+top.length} of ${matches.length.toLocaleString()} ${filt?'matching':'ranked'} areas`+(sortK!=='need'||RANK_DIR!=='most'?` · sorted by ${document.querySelector('#rank-sort option:checked').textContent}, ${RANK_DIR} first`:''):'No matching area. Clear a filter or try a nearby place name.';
   document.getElementById('rank-prev').disabled=rankPage===0;
   document.getElementById('rank-next').disabled=start+RANK_PAGE_SIZE>=matches.length;
@@ -2823,7 +2864,7 @@ function selectHex(id,fly){
     ? `Undeveloped · ${p.land||'no development'} · not ranked`
     : activity
     ? 'Developed area · no residents · not ranked'
-    : `Rank ${r} of ${LIVE.order.length.toLocaleString()} · need index ${s.toFixed(0)}`+(isDefaultW()?'':' · your weights')+` · area #${p.id}`;
+    : `Rank ${r} of ${LIVE.order.length.toLocaleString()} · need index ${s.toFixed(0)}`+(isDefaultW()?'':' · your weights')+(p.city?` · ${p.city}${p.city_kind==='cdp'?' (unincorporated)':''}`:'')+` · area #${p.id}`;
   // Rank band from 05b_stability.py: 5th–95th percentile rank across re-draws of
   // census margins and the recommended weights. It describes the recommended
   // mix; under custom weights it is shown as context for that mix only.
@@ -3040,7 +3081,7 @@ function wireHover(){
     // the tooltip would quietly disagree with the hex it is pointing at.
     const s=sc(p),r=rk(p);
     pop.setLngLat(e.lngLat).setHTML(
-      `<b>${escapeHtml(nameOf(p))}</b>
+      `<b>${escapeHtml(nameOf(p))}</b>${p.city?`<div class="tt-kind">${escapeHtml(p.city)}${p.city_kind==='cdp'?' · unincorporated':''}</div>`:''}
        <div class="tt-row"><span>Priority</span><span>${p.place==='empty'?(escapeHtml(p.land||'undeveloped')+' · no residents'):p.place==='activity'?'developed · not ranked':s==null?'–':s.toFixed(0)+' · #'+r}</span></div>
        <div class="tt-row"><span>Surface heat</span><span>${fTemp(+p.lst)}</span></div>
        <div class="tt-row"><span>${p.green_src==='ndvi'?'Greenness':'Tree cover'}</span><span>${p.green_src==='ndvi'?LAYERS.veg.fmt(+p.green)+'/100':(+p.green).toFixed(0)+'%'}</span></div>

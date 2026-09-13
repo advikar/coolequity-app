@@ -25,7 +25,8 @@ import config as C
 CONTRACT = ["id", "name", "lst", "green", "pop", "pct65", "ac", "holc",
             "access_min", "access_km", "score", "rank", "area_m2", "street_m",
             "canopy_m2", "row_m2", "row_canopy", "veg", "place", "land", "green_src", "canopy_source", "canopy_year", "assessed_m2",
-            "coverage_frac", "canopy_quality", "scenario_ok", "canopy_baseline_ok", "ac_src", "ac_coverage", "acs_year", "access_snap_m", "access_quality", "access_src"]
+            "coverage_frac", "canopy_quality", "scenario_ok", "canopy_baseline_ok", "ac_src", "ac_coverage", "acs_year", "access_snap_m", "access_quality", "access_src",
+            "city", "city_kind"]
 
 COORD_DP = 5      # ~1 m at this latitude; halves the file the browser downloads
 
@@ -173,6 +174,17 @@ def load():
         log("  land cover: no WorldCover CSV — empty hexes fall back to the "
             "lst/veg heuristic. Run 02e_worldcover.py for authoritative labels.")
 
+    # Jurisdiction per cell (04d): the city or CDP containing the centroid.
+    J = C.DATA / f"jurisdiction_{C.SLUG}.csv"
+    if J.exists():
+        df = df.merge(pd.read_csv(J)[["h3", "city", "city_kind"]], on="h3", how="left")
+        log(f"  jurisdiction: {df['city'].nunique()} places; "
+            f"{int((df['city'] == 'Unincorporated').sum())} cells unincorporated")
+    else:
+        df["city"] = None
+        df["city_kind"] = None
+        log("  jurisdiction: no CSV — run 04d_jurisdiction.py for city labels and filter")
+
     missing = df["lst_c"].isna().sum() + df["pop"].isna().sum()
     if missing:
         raise SystemExit(f"\n{missing} hexes missing inputs — rerun 02/03/04.")
@@ -304,6 +316,8 @@ def main():
         # "should it?", and mixing the two would let good access paper over
         # real need.
         "street_m":   df["street_m"].fillna(0).round(0).astype(int),
+        "city":       df["city"],
+        "city_kind":  df["city_kind"],
     })[CONTRACT]
 
     # Rank exactly the published values/endpoints used by the browser. This

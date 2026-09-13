@@ -173,3 +173,14 @@
 - App: `#d-band` under the rank line, `stability` popover, export columns
   `rank_recommended_mix_p05/p95`, `top_tier_share`; guide anchor `#stability` inside the
   Score topic of every city.
+
+## Checkpoint — September 13, 2026: jurisdiction per cell; phone view switch
+
+- `pipeline/04d_jurisdiction.py` (new, before 05): TIGERweb places layers 4/5 for the bbox,
+  cell centroid in polygon, cities before CDPs; writes `jurisdiction_<slug>.csv` and
+  `jurisdictions_<slug>.geojson` (outlines, not yet drawn by the app). 05 merges `city` and
+  `city_kind` into the contract. All five cities re-run through 05 and 05b (ranks unchanged).
+- App: `#rank-city` "Show" menu (`RANK_CITY`, session-only, cleared by Reset map) filters the
+  list and fades other cells via `applyCityMask()`; the detail rank line and hover show the
+  city; export column `city_or_community`. Phone-only `#mview` List/Both/Map segment
+  (`ce-mview` in localStorage) toggles `#app.mv-list` / `#app.mv-map`.
