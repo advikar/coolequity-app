@@ -102,7 +102,7 @@
   rank parity for every residential cell with that city's weights); Python data contracts
   8/8 OK per city; `scripts/build_site.py` builds 3 cities, 48 files.
 - **Deployed and verified (September 12, 2026).** First Actions run passed (test + deploy).
-  In a browser, each city on https://advikar.github.io/coolequity-app/ was loaded next to the
+  In a browser, each city on https://coolequity.org/ was loaded next to the
   same city on the old site (https://advikar.github.io/coolequity/, built from the same three
   commits) with session storage cleared: identical page text (apart from Los Angeles leaving
   the city switchers), identical rank and score for every residential area at the default

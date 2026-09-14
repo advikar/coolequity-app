@@ -61,7 +61,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Every city's map, guide, cooling page and data answer 200 on the live site
         run: |
-          base="https://advikar.github.io/coolequity-app"
+          # The site lives on its custom domain; the github.io address answers 301 to it,
+          # which is not a 200, so test where visitors actually land.
+          base="https://coolequity.org"
           sha=$(git rev-parse --short HEAD)
           fail=0
           for slug in $(grep -o "slug:'[a-z0-9-]*'" app/cities.js | cut -d"'" -f2); do
