@@ -1416,7 +1416,9 @@ function nameOf(p){return p.name||`Area ${p.id}`;}
 function canopyTag(p){
   if(p.green_src==='ndvi'){const f=Math.round((p.coverage_frac||0)*100);return p.canopy_quality==='below-threshold'?['satellite stand-in',`The aerial assessment observed only ${f<1?'under 1%':f+'%'} of this area, too little to describe it, so satellite greenness stands in and is scored on its own scale.`]:['satellite stand-in','No aerial tree-cover assessment here; satellite greenness stands in and is scored on its own scale.'];}
   const yr=p.canopy_year?` ${p.canopy_year}`:'';
+  if(p.canopy_source==='lidar-2020'){const f=Math.round((p.coverage_frac||0)*100);return ['lidar 2017–22',`No aerial assessment here; canopy from the county's lidar vegetation map (CDFW 2025; returns above 4.6 m), covering ${f}% of this area, rescaled onto the aerial line.`];}
   const legacy=p.canopy_source==='chm-legacy',kind=legacy?'height model':'aerial',what=legacy?`Canopy-height model (imagery ${p.canopy_year||'2009–2020'}, trees = 2 m and taller)`:`Aerial classification${yr}`;
+  if(p.canopy_quality==='calibrated')return [`${kind} · calibrated`,`${what}, rescaled onto the aerial product's line using the county lidar map, so it compares with aerial cells on one scale.`];
   if(p.canopy_quality==='full')return [`${kind}${legacy?'':yr}`,`${what} covering essentially the whole area.`];
   if(p.canopy_quality==='partial'){const f=Math.round((p.coverage_frac||0)*100),fs=f<1?'under 1%':f+'%';return [`${kind}${legacy?'':yr} · ${fs} assessed`,`${what} observed only ${fs} of this area; the tree-cover figure describes that part only.`];}
   if(legacy)return ['height model · coverage unknown','From an older canopy-height model; how much of the area it observed is not recorded.'];
@@ -1490,7 +1492,7 @@ const EXPORT_NOTES=[
   'Scores are relative 0–100 within this study area under the weights in this file; they are not health-risk probabilities or cross-city rankings.',
   'rank/score are computed live from the exported weights; rank_default/score_default are the pipeline defaults shipped with the data. rank_recommended_mix_p05/p95 and top_tier_share come from re-drawing ACS and LACE inputs within their margins of error and jittering the recommended weights; ranks are estimates with a band, not exact positions.',
   'Population, age and A/C are allocated estimates from ACS block groups and Census LACE tracts, not household counts.',
-  'Canopy percentages are assessed cover per canopy_source; chm-legacy cells have unknown assessed extent (coverage_frac empty).',
+  'Canopy percentages are assessed cover per canopy_source; chm-legacy cells have unknown assessed extent (coverage_frac empty). In Contra Costa builds, height-model cells are rescaled onto the aerial line and lidar-2020 cells come from the county lidar map, both fitted against that map (reports/canopy_validation_<slug>.json).',
   'Planting scenarios are theoretical: mapped street length at 10 m spacing, capped by cell area minus known canopy. Site feasibility, ownership, utilities and species are unverified.',
   'Cost is planted trees × $500 (planting only; an assumption, not a bid). Added tree cover and cooling count only the share of planted trees assumed to reach maturity (survival_share_pct, default 70%; Sacramento\'s long-term monitoring found 42.4% alive after 22 years). Cooling is an illustrative clear-sky summer air-temperature figure, 0.3 °C per 10 canopy points, not a local forecast.',
   'Walking access is routed on the OpenStreetMap pedestrian network to mapped discovery sites, whose hours and cooling designation are unverified; approach-review flags a >100 m straight connection from the cell center to the network.',
@@ -1551,10 +1553,10 @@ const FIELD_KEY={
   canopy_pct:['tree_cover_pct','Tree cover, % of assessed land; empty where only satellite greenness is available'],
   greenness_index:['greenness_index_0_100','Satellite greenness index, 0–100; filled only where tree_cover_source_type = ndvi'],
   green_src:['tree_cover_source_type','canopy = aerial assessment; ndvi = satellite greenness stand-in'],
-  canopy_source:['tree_cover_dataset','usfs-2022 aerial classification or chm-legacy height model'],
+  canopy_source:['tree_cover_dataset','usfs-2022 aerial classification, chm-legacy height model, or lidar-2020 county lidar map'],
   canopy_year:['tree_cover_year','Year of the tree-cover dataset'],
   coverage_frac:['tree_cover_assessed_fraction','Share of the area the aerial assessment covers (0–1)'],
-  canopy_quality:['tree_cover_quality','full, partial or coverage-unknown'],
+  canopy_quality:['tree_cover_quality','full, partial, calibrated (height model rescaled to the aerial line), lidar, or coverage-unknown'],
   canopy_m2:['tree_cover_m2','Assessed tree crown area, m²'],
   assessed_m2:['assessed_area_m2','Land the assessment covers, m²'],
   pop:['residents','Estimated residents (ACS, allocated into the area)'],
@@ -2814,6 +2816,7 @@ function buildRank(){
 // full aerial one: the tree label says which it is, and the hover says why.
 function rowSrcLabel(p){
   if(p.green_src==='ndvi')return 'greenness';
+  if(p.canopy_source==='lidar-2020')return 'trees · lidar';
   if(p.canopy_source==='chm-legacy')return 'trees · model';
   if(p.canopy_quality==='partial')return 'trees · partial';
   return 'trees';
@@ -3025,7 +3028,7 @@ function renderBreakdown(p,score){
   const mult=(1-POPW)+POPW*nv('pop');
   const tot=Math.max(1e-9,base);
   document.getElementById('d-breakdown').innerHTML=`
-    <p class="hint">${p.green_src==='ndvi'?'This score uses a vegetation proxy for the canopy input.':'Canopy source: '+(p.canopy_source==='usfs-2022'?'2022 aerial assessment · '+(p.coverage_frac>0&&p.coverage_frac<.01?'<1':Math.round((p.coverage_frac||0)*100))+'% cell coverage.':'legacy height model · coverage unverified.')}</p><div class="stack">${parts.map(x=>
+    <p class="hint">${p.green_src==='ndvi'?'This score uses a vegetation proxy for the canopy input.':'Canopy source: '+(p.canopy_source==='usfs-2022'?'2022 aerial assessment · '+(p.coverage_frac>0&&p.coverage_frac<.01?'<1':Math.round((p.coverage_frac||0)*100))+'% cell coverage.':p.canopy_source==='lidar-2020'?'county lidar map 2017–22 · '+Math.round((p.coverage_frac||0)*100)+'% cell coverage, on the aerial scale.':'legacy height model'+(p.canopy_quality==='calibrated'?' · rescaled to the aerial line via lidar.':' · coverage unverified.'))}</p><div class="stack">${parts.map(x=>
       `<i style="width:${(x.pts/tot*100).toFixed(2)}%;background:${x.swatch}" title="${x.label}"></i>`).join('')}</div>
     <table><tbody>
       ${parts.map(x=>`<tr>

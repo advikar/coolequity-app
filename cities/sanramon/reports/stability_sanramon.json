@@ -3,18 +3,18 @@
  "draws": 300,
  "ranked": 419,
  "top_tier_n": 42,
- "median_band_width": 51.05,
- "p90_band_width": 87.28,
- "share_band_within_10pct_of_list": 0.3341288782816229,
- "point_top_tier_always_top_tier": 0.38095238095238093,
- "point_top_tier_usually_top_tier": 0.6428571428571429,
+ "median_band_width": 51.099999999999994,
+ "p90_band_width": 88.21,
+ "share_band_within_10pct_of_list": 0.324582338902148,
+ "point_top_tier_always_top_tier": 0.42857142857142855,
+ "point_top_tier_usually_top_tier": 0.5952380952380952,
  "top25_point": [
   {
    "id": 450,
    "name": "Carmelita S",
    "rank": 1,
    "rank_lo": 1,
-   "rank_hi": 4,
+   "rank_hi": 5,
    "top_share": 1.0
   },
   {
@@ -30,7 +30,7 @@
    "name": "Carmelita",
    "rank": 3,
    "rank_lo": 2,
-   "rank_hi": 7,
+   "rank_hi": 8,
    "top_share": 1.0
   },
   {
@@ -38,7 +38,7 @@
    "name": "Serena & Cordova",
    "rank": 4,
    "rank_lo": 1,
-   "rank_hi": 10,
+   "rank_hi": 11,
    "top_share": 1.0
   },
   {
@@ -46,168 +46,168 @@
    "name": "Amador Lakes Apartments N",
    "rank": 5,
    "rank_lo": 1,
-   "rank_hi": 27,
-   "top_share": 0.983
+   "rank_hi": 28,
+   "top_share": 0.98
   },
   {
    "id": 322,
    "name": "Capella",
    "rank": 6,
    "rank_lo": 3,
-   "rank_hi": 15,
+   "rank_hi": 17,
    "top_share": 1.0
   },
   {
    "id": 493,
    "name": "Serena & Cordova NW",
    "rank": 7,
-   "rank_lo": 4,
-   "rank_hi": 19,
+   "rank_lo": 5,
+   "rank_hi": 21,
    "top_share": 1.0
   },
   {
    "id": 464,
    "name": "Mosaic Park",
    "rank": 8,
-   "rank_lo": 4,
-   "rank_hi": 21,
-   "top_share": 0.993
+   "rank_lo": 3,
+   "rank_hi": 20,
+   "top_share": 0.997
   },
   {
    "id": 291,
    "name": "The Preserve NE",
    "rank": 9,
    "rank_lo": 4,
-   "rank_hi": 28,
+   "rank_hi": 30,
    "top_share": 0.99
   },
   {
    "id": 214,
    "name": "The Preserve",
    "rank": 10,
-   "rank_lo": 6,
-   "rank_hi": 22,
+   "rank_lo": 7,
+   "rank_hi": 25,
    "top_share": 1.0
   },
   {
    "id": 184,
    "name": "Fairway Village Apartments SE",
    "rank": 11,
-   "rank_lo": 5,
-   "rank_hi": 35,
-   "top_share": 0.973
-  },
-  {
-   "id": 530,
-   "name": "The Vintner W",
-   "rank": 12,
-   "rank_lo": 8,
-   "rank_hi": 28,
-   "top_share": 1.0
+   "rank_lo": 4,
+   "rank_hi": 34,
+   "top_share": 0.977
   },
   {
    "id": 529,
    "name": "The Vintner",
-   "rank": 13,
-   "rank_lo": 8,
-   "rank_hi": 27,
-   "top_share": 0.997
-  },
-  {
-   "id": 114,
-   "name": "Old Ranch Summit W 5",
-   "rank": 14,
-   "rank_lo": 4,
-   "rank_hi": 43,
-   "top_share": 0.947
-  },
-  {
-   "id": 490,
-   "name": "Valencia SW",
-   "rank": 15,
+   "rank": 12,
    "rank_lo": 7,
-   "rank_hi": 40,
-   "top_share": 0.957
+   "rank_hi": 26,
+   "top_share": 0.997
   },
   {
    "id": 377,
    "name": "Canyon Woods SW",
-   "rank": 16,
-   "rank_lo": 7,
-   "rank_hi": 43,
-   "top_share": 0.947
+   "rank": 13,
+   "rank_lo": 6,
+   "rank_hi": 38,
+   "top_share": 0.973
   },
   {
-   "id": 494,
-   "name": "Serena & Cordova NE",
-   "rank": 17,
-   "rank_lo": 11,
-   "rank_hi": 31,
-   "top_share": 0.98
+   "id": 490,
+   "name": "Valencia SW",
+   "rank": 14,
+   "rank_lo": 6,
+   "rank_hi": 35,
+   "top_share": 0.97
+  },
+  {
+   "id": 114,
+   "name": "Old Ranch Summit W 5",
+   "rank": 15,
+   "rank_lo": 3,
+   "rank_hi": 44,
+   "top_share": 0.943
+  },
+  {
+   "id": 530,
+   "name": "The Vintner W",
+   "rank": 16,
+   "rank_lo": 8,
+   "rank_hi": 29,
+   "top_share": 0.997
   },
   {
    "id": 143,
    "name": "Valencia",
-   "rank": 18,
-   "rank_lo": 9,
-   "rank_hi": 46,
-   "top_share": 0.933
+   "rank": 17,
+   "rank_lo": 8,
+   "rank_hi": 43,
+   "top_share": 0.947
   },
   {
    "id": 512,
    "name": "The Gardens N 3",
+   "rank": 18,
+   "rank_lo": 4,
+   "rank_hi": 56,
+   "top_share": 0.9
+  },
+  {
+   "id": 494,
+   "name": "Serena & Cordova NE",
    "rank": 19,
-   "rank_lo": 6,
-   "rank_hi": 62,
-   "top_share": 0.867
+   "rank_lo": 12,
+   "rank_hi": 33,
+   "top_share": 0.98
   },
   {
    "id": 466,
    "name": "Seville",
    "rank": 20,
-   "rank_lo": 12,
-   "rank_hi": 45,
-   "top_share": 0.943
+   "rank_lo": 11,
+   "rank_hi": 41,
+   "top_share": 0.95
   },
   {
    "id": 402,
    "name": "Foothill Gardens NW 2",
    "rank": 21,
    "rank_lo": 11,
-   "rank_hi": 39,
-   "top_share": 0.973
+   "rank_hi": 37,
+   "top_share": 0.987
   },
   {
    "id": 354,
    "name": "Canyon Woods SW 2",
    "rank": 22,
    "rank_lo": 10,
-   "rank_hi": 51,
-   "top_share": 0.897
+   "rank_hi": 49,
+   "top_share": 0.907
   },
   {
    "id": 439,
    "name": "Foothill Gardens",
    "rank": 23,
-   "rank_lo": 9,
-   "rank_hi": 52,
-   "top_share": 0.877
-  },
-  {
-   "id": 98,
-   "name": "Serena & Cordova W",
-   "rank": 24,
-   "rank_lo": 9,
-   "rank_hi": 45,
-   "top_share": 0.923
+   "rank_lo": 10,
+   "rank_hi": 51,
+   "top_share": 0.867
   },
   {
    "id": 397,
    "name": "Old Ranch Summit W 8",
+   "rank": 24,
+   "rank_lo": 11,
+   "rank_hi": 46,
+   "top_share": 0.937
+  },
+  {
+   "id": 98,
+   "name": "Serena & Cordova W",
    "rank": 25,
    "rank_lo": 10,
-   "rank_hi": 46,
-   "top_share": 0.933
+   "rank_hi": 52,
+   "top_share": 0.857
   }
  ]
 }

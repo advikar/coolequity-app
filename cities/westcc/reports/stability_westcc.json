@@ -3,10 +3,10 @@
  "draws": 300,
  "ranked": 982,
  "top_tier_n": 99,
- "median_band_width": 127.05000000000001,
- "p90_band_width": 236.18499999999992,
- "share_band_within_10pct_of_list": 0.3391038696537678,
- "point_top_tier_always_top_tier": 0.47474747474747475,
+ "median_band_width": 127.22500000000002,
+ "p90_band_width": 237.92499999999998,
+ "share_band_within_10pct_of_list": 0.34012219959266804,
+ "point_top_tier_always_top_tier": 0.48484848484848486,
  "point_top_tier_usually_top_tier": 0.7272727272727273,
  "top25_point": [
   {
@@ -38,7 +38,7 @@
    "name": "San Pablo SW 2",
    "rank": 4,
    "rank_lo": 2,
-   "rank_hi": 29,
+   "rank_hi": 30,
    "top_share": 1.0
   },
   {
@@ -46,7 +46,7 @@
    "name": "Richmond NE 8",
    "rank": 5,
    "rank_lo": 2,
-   "rank_hi": 53,
+   "rank_hi": 52,
    "top_share": 0.997
   },
   {
@@ -94,7 +94,7 @@
    "name": "Crescent Park Apartments NW",
    "rank": 11,
    "rank_lo": 1,
-   "rank_hi": 53,
+   "rank_hi": 54,
    "top_share": 0.997
   },
   {
@@ -142,7 +142,7 @@
    "name": "Triangle Court SE 2",
    "rank": 17,
    "rank_lo": 8,
-   "rank_hi": 53,
+   "rank_hi": 52,
    "top_share": 0.997
   },
   {
@@ -150,7 +150,7 @@
    "name": "Nystrom Village N 2",
    "rank": 18,
    "rank_lo": 7,
-   "rank_hi": 66,
+   "rank_hi": 67,
    "top_share": 0.983
   },
   {
@@ -158,24 +158,24 @@
    "name": "San Pablo W 5",
    "rank": 19,
    "rank_lo": 2,
-   "rank_hi": 52,
+   "rank_hi": 53,
    "top_share": 0.997
-  },
-  {
-   "id": 1079,
-   "name": "Barrett Terrace Plaza Apartments S",
-   "rank": 20,
-   "rank_lo": 7,
-   "rank_hi": 85,
-   "top_share": 0.97
   },
   {
    "id": 1502,
    "name": "El Sobrante NW 3",
+   "rank": 20,
+   "rank_lo": 12,
+   "rank_hi": 99,
+   "top_share": 0.95
+  },
+  {
+   "id": 1079,
+   "name": "Barrett Terrace Plaza Apartments S",
    "rank": 21,
-   "rank_lo": 13,
-   "rank_hi": 102,
-   "top_share": 0.947
+   "rank_lo": 7,
+   "rank_hi": 86,
+   "top_share": 0.97
   },
   {
    "id": 2475,
@@ -190,7 +190,7 @@
    "name": "Triangle Court E 4",
    "rank": 23,
    "rank_lo": 9,
-   "rank_hi": 60,
+   "rank_hi": 61,
    "top_share": 1.0
   },
   {
@@ -202,12 +202,12 @@
    "top_share": 0.99
   },
   {
-   "id": 859,
-   "name": "Richmond N 3",
+   "id": 364,
+   "name": "Wildwood SW",
    "rank": 25,
-   "rank_lo": 10,
-   "rank_hi": 58,
-   "top_share": 0.993
+   "rank_lo": 14,
+   "rank_hi": 42,
+   "top_share": 1.0
   }
  ]
 }

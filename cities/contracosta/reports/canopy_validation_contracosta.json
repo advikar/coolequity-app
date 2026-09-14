@@ -1,0 +1,255 @@
+{
+ "city": "Contra Costa County",
+ "slug": "contracosta",
+ "run": "2026-09-13",
+ "reference": {
+  "dataset": "CDFW BIOS ds3206, Alameda & Contra Costa fine-scale vegetation map (2025)",
+  "field": "ABS_COVER: % lidar returns above 15 ft, 2017-2022 lidar, per polygon",
+  "aggregation": "area-weighted over the H3 cell; cells under 90% covered are dropped",
+  "note": "counts vegetation above 4.6 m only; the app counts any crown (USFS) or >2 m (height model), so the app should read higher"
+ },
+ "ranked_cells_compared": 2603,
+ "ranked_cells_total": 2697,
+ "all": {
+  "n": 2603,
+  "app_mean": 18.71,
+  "lidar_mean": 15.62,
+  "bias": 3.09,
+  "mae": 4.0,
+  "rmse": 6.43,
+  "pearson": 0.954,
+  "spearman": 0.952,
+  "fit_intercept": 2.07,
+  "fit_slope": 1.065
+ },
+ "by_source": {
+  "aerial \u00b7 full": {
+   "n": 794,
+   "app_mean": 20.58,
+   "lidar_mean": 16.28,
+   "bias": 4.29,
+   "mae": 4.64,
+   "rmse": 5.73,
+   "pearson": 0.981,
+   "spearman": 0.975,
+   "fit_intercept": 0.58,
+   "fit_slope": 1.228
+  },
+  "aerial \u00b7 partial": {
+   "n": 423,
+   "app_mean": 19.7,
+   "lidar_mean": 16.27,
+   "bias": 3.42,
+   "mae": 5.49,
+   "rmse": 7.71,
+   "pearson": 0.934,
+   "spearman": 0.915,
+   "fit_intercept": 3.0,
+   "fit_slope": 1.026
+  },
+  "greenness stand-in": {
+   "n": 126,
+   "app_mean": 21.6,
+   "lidar_mean": 14.39,
+   "bias": 7.22,
+   "mae": 11.12,
+   "rmse": 13.19,
+   "pearson": 0.823,
+   "spearman": 0.722,
+   "fit_intercept": 14.25,
+   "fit_slope": 0.511
+  },
+  "height model": {
+   "n": 1260,
+   "app_mean": 16.91,
+   "lidar_mean": 15.1,
+   "bias": 1.81,
+   "mae": 2.39,
+   "rmse": 5.23,
+   "pearson": 0.975,
+   "spearman": 0.973,
+   "fit_intercept": 0.44,
+   "fit_slope": 1.091
+  }
+ },
+ "by_source_and_context": {
+  "aerial \u00b7 full | agricultural": {
+   "n": 4
+  },
+  "aerial \u00b7 full | city or CDP": {
+   "n": 761,
+   "app_mean": 21.34,
+   "lidar_mean": 16.82,
+   "bias": 4.52,
+   "mae": 4.77,
+   "rmse": 5.84,
+   "pearson": 0.981,
+   "spearman": 0.973,
+   "fit_intercept": 0.84,
+   "fit_slope": 1.219
+  },
+  "aerial \u00b7 full | unincorporated": {
+   "n": 29,
+   "app_mean": 2.65,
+   "lidar_mean": 3.66,
+   "bias": -1.01,
+   "mae": 1.54,
+   "rmse": 2.25,
+   "pearson": 0.841,
+   "spearman": 0.823,
+   "fit_intercept": -0.67,
+   "fit_slope": 0.906
+  },
+  "aerial \u00b7 partial | agricultural": {
+   "n": 27,
+   "app_mean": 7.68,
+   "lidar_mean": 4.12,
+   "bias": 3.56,
+   "mae": 4.43,
+   "rmse": 5.9,
+   "pearson": 0.648,
+   "spearman": 0.604,
+   "fit_intercept": 0.26,
+   "fit_slope": 1.803
+  },
+  "aerial \u00b7 partial | city or CDP": {
+   "n": 300,
+   "app_mean": 20.12,
+   "lidar_mean": 16.74,
+   "bias": 3.38,
+   "mae": 5.0,
+   "rmse": 6.75,
+   "pearson": 0.947,
+   "spearman": 0.942,
+   "fit_intercept": 2.69,
+   "fit_slope": 1.041
+  },
+  "aerial \u00b7 partial | unincorporated": {
+   "n": 96,
+   "app_mean": 21.76,
+   "lidar_mean": 18.24,
+   "bias": 3.52,
+   "mae": 7.31,
+   "rmse": 10.48,
+   "pearson": 0.909,
+   "spearman": 0.867,
+   "fit_intercept": 3.54,
+   "fit_slope": 0.999
+  },
+  "greenness stand-in | agricultural": {
+   "n": 17,
+   "app_mean": 23.32,
+   "lidar_mean": 3.79,
+   "bias": 19.53,
+   "mae": 19.53,
+   "rmse": 20.47,
+   "pearson": 0.152,
+   "spearman": 0.216,
+   "fit_intercept": 22.32,
+   "fit_slope": 0.263
+  },
+  "greenness stand-in | city or CDP": {
+   "n": 35,
+   "app_mean": 19.5,
+   "lidar_mean": 11.99,
+   "bias": 7.51,
+   "mae": 10.17,
+   "rmse": 11.54,
+   "pearson": 0.902,
+   "spearman": 0.687,
+   "fit_intercept": 12.07,
+   "fit_slope": 0.619
+  },
+  "greenness stand-in | unincorporated": {
+   "n": 74,
+   "app_mean": 22.2,
+   "lidar_mean": 17.95,
+   "bias": 4.25,
+   "mae": 9.64,
+   "rmse": 11.7,
+   "pearson": 0.863,
+   "spearman": 0.802,
+   "fit_intercept": 12.81,
+   "fit_slope": 0.523
+  },
+  "height model | agricultural": {
+   "n": 213,
+   "app_mean": 2.62,
+   "lidar_mean": 1.99,
+   "bias": 0.63,
+   "mae": 1.14,
+   "rmse": 2.63,
+   "pearson": 0.925,
+   "spearman": 0.853,
+   "fit_intercept": -0.21,
+   "fit_slope": 1.421
+  },
+  "height model | city or CDP": {
+   "n": 82,
+   "app_mean": 10.92,
+   "lidar_mean": 9.99,
+   "bias": 0.93,
+   "mae": 1.25,
+   "rmse": 2.12,
+   "pearson": 0.996,
+   "spearman": 0.967,
+   "fit_intercept": -0.03,
+   "fit_slope": 1.096
+  },
+  "height model | unincorporated": {
+   "n": 965,
+   "app_mean": 20.57,
+   "lidar_mean": 18.43,
+   "bias": 2.15,
+   "mae": 2.77,
+   "rmse": 5.81,
+   "pearson": 0.972,
+   "spearman": 0.98,
+   "fit_intercept": 0.54,
+   "fit_slope": 1.087
+  }
+ },
+ "top25_by_source": {
+  "aerial \u00b7 full": 24,
+  "aerial \u00b7 partial": 1
+ },
+ "residual_by_source_vs_common_fit": {
+  "aerial \u00b7 full": {
+   "n": 794,
+   "mean_resid": 1.16,
+   "sd_resid": 3.33
+  },
+  "aerial \u00b7 partial": {
+   "n": 423,
+   "mean_resid": 0.29,
+   "sd_resid": 6.94
+  },
+  "greenness stand-in": {
+   "n": 126,
+   "mean_resid": 4.2,
+   "sd_resid": 12.08
+  },
+  "height model": {
+   "n": 1260,
+   "mean_resid": -1.25,
+   "sd_resid": 4.63
+  }
+ },
+ "calibration": {
+  "aerial_full": {
+   "n": 794,
+   "spearman": 0.975,
+   "fit_intercept": 0.58,
+   "fit_slope": 1.228
+  },
+  "height_model": {
+   "n": 1260,
+   "spearman": 0.973,
+   "fit_intercept": 0.44,
+   "fit_slope": 1.091
+  },
+  "min_n": 50,
+  "min_spearman": 0.8,
+  "use": "05_score.py: chm-legacy cells -> aerial scale via lidar; ndvi cells -> lidar canopy on the aerial scale"
+ }
+}

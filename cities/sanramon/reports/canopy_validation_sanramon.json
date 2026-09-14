@@ -1,0 +1,154 @@
+{
+ "city": "San Ramon",
+ "slug": "sanramon",
+ "run": "2026-09-13",
+ "reference": {
+  "dataset": "CDFW BIOS ds3206, Alameda & Contra Costa fine-scale vegetation map (2025)",
+  "field": "ABS_COVER: % lidar returns above 15 ft, 2017-2022 lidar, per polygon",
+  "aggregation": "area-weighted over the H3 cell; cells under 90% covered are dropped",
+  "note": "counts vegetation above 4.6 m only; the app counts any crown (USFS) or >2 m (height model), so the app should read higher"
+ },
+ "ranked_cells_compared": 419,
+ "ranked_cells_total": 419,
+ "all": {
+  "n": 419,
+  "app_mean": 17.3,
+  "lidar_mean": 14.58,
+  "bias": 2.71,
+  "mae": 3.98,
+  "rmse": 5.22,
+  "pearson": 0.867,
+  "spearman": 0.896,
+  "fit_intercept": 3.04,
+  "fit_slope": 0.978
+ },
+ "by_source": {
+  "aerial \u00b7 full": {
+   "n": 356,
+   "app_mean": 17.09,
+   "lidar_mean": 14.15,
+   "bias": 2.94,
+   "mae": 3.63,
+   "rmse": 4.44,
+   "pearson": 0.93,
+   "spearman": 0.914,
+   "fit_intercept": 0.3,
+   "fit_slope": 1.186
+  },
+  "aerial \u00b7 partial": {
+   "n": 53,
+   "app_mean": 18.05,
+   "lidar_mean": 15.36,
+   "bias": 2.69,
+   "mae": 5.58,
+   "rmse": 7.93,
+   "pearson": 0.716,
+   "spearman": 0.766,
+   "fit_intercept": 5.27,
+   "fit_slope": 0.832
+  },
+  "greenness stand-in": {
+   "n": 8,
+   "app_mean": 25.8,
+   "lidar_mean": 31.93,
+   "bias": -6.14,
+   "mae": 9.38,
+   "rmse": 11.58,
+   "pearson": 0.977,
+   "spearman": 0.952,
+   "fit_intercept": 8.12,
+   "fit_slope": 0.553
+  },
+  "height model": {
+   "n": 2
+  }
+ },
+ "by_source_and_context": {
+  "aerial \u00b7 full | agricultural": {
+   "n": 2
+  },
+  "aerial \u00b7 full | city or CDP": {
+   "n": 351,
+   "app_mean": 17.21,
+   "lidar_mean": 14.26,
+   "bias": 2.95,
+   "mae": 3.65,
+   "rmse": 4.46,
+   "pearson": 0.929,
+   "spearman": 0.912,
+   "fit_intercept": 0.27,
+   "fit_slope": 1.188
+  },
+  "aerial \u00b7 full | unincorporated": {
+   "n": 3
+  },
+  "aerial \u00b7 partial | city or CDP": {
+   "n": 48,
+   "app_mean": 17.28,
+   "lidar_mean": 13.68,
+   "bias": 3.61,
+   "mae": 5.22,
+   "rmse": 7.33,
+   "pearson": 0.79,
+   "spearman": 0.788,
+   "fit_intercept": 1.41,
+   "fit_slope": 1.16
+  },
+  "aerial \u00b7 partial | unincorporated": {
+   "n": 5
+  },
+  "greenness stand-in | city or CDP": {
+   "n": 4
+  },
+  "greenness stand-in | unincorporated": {
+   "n": 4
+  },
+  "height model | city or CDP": {
+   "n": 2
+  }
+ },
+ "top25_by_source": {
+  "aerial \u00b7 full": 23,
+  "greenness stand-in": 1,
+  "aerial \u00b7 partial": 1
+ },
+ "residual_by_source_vs_common_fit": {
+  "aerial \u00b7 full": {
+   "n": 356,
+   "mean_resid": 0.22,
+   "sd_resid": 3.39
+  },
+  "aerial \u00b7 partial": {
+   "n": 53,
+   "mean_resid": -0.01,
+   "sd_resid": 7.49
+  },
+  "greenness stand-in": {
+   "n": 8,
+   "mean_resid": -8.47,
+   "sd_resid": 10.01
+  },
+  "height model": {
+   "n": 2,
+   "mean_resid": -4.33,
+   "sd_resid": 0.47
+  }
+ },
+ "calibration": {
+  "aerial_full": {
+   "n": 356,
+   "spearman": 0.914,
+   "fit_intercept": 0.3,
+   "fit_slope": 1.186
+  },
+  "height_model": {
+   "n": 2,
+   "spearman": null,
+   "fit_intercept": null,
+   "fit_slope": null
+  },
+  "min_n": 50,
+  "min_spearman": 0.8,
+  "use": "05_score.py: chm-legacy cells -> aerial scale via lidar; ndvi cells -> lidar canopy on the aerial scale"
+ }
+}

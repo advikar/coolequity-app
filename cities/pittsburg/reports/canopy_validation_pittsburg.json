@@ -1,0 +1,203 @@
+{
+ "city": "Pittsburg & Bay Point",
+ "slug": "pittsburg",
+ "run": "2026-09-13",
+ "reference": {
+  "dataset": "CDFW BIOS ds3206, Alameda & Contra Costa fine-scale vegetation map (2025)",
+  "field": "ABS_COVER: % lidar returns above 15 ft, 2017-2022 lidar, per polygon",
+  "aggregation": "area-weighted over the H3 cell; cells under 90% covered are dropped",
+  "note": "counts vegetation above 4.6 m only; the app counts any crown (USFS) or >2 m (height model), so the app should read higher"
+ },
+ "ranked_cells_compared": 570,
+ "ranked_cells_total": 570,
+ "all": {
+  "n": 570,
+  "app_mean": 6.87,
+  "lidar_mean": 5.71,
+  "bias": 1.16,
+  "mae": 2.78,
+  "rmse": 4.08,
+  "pearson": 0.794,
+  "spearman": 0.792,
+  "fit_intercept": 0.4,
+  "fit_slope": 1.134
+ },
+ "by_source": {
+  "aerial \u00b7 full": {
+   "n": 398,
+   "app_mean": 8.15,
+   "lidar_mean": 7.2,
+   "bias": 0.95,
+   "mae": 2.75,
+   "rmse": 3.71,
+   "pearson": 0.832,
+   "spearman": 0.815,
+   "fit_intercept": -0.65,
+   "fit_slope": 1.223
+  },
+  "aerial \u00b7 partial": {
+   "n": 104,
+   "app_mean": 4.48,
+   "lidar_mean": 3.14,
+   "bias": 1.34,
+   "mae": 2.71,
+   "rmse": 4.12,
+   "pearson": 0.725,
+   "spearman": 0.732,
+   "fit_intercept": 0.18,
+   "fit_slope": 1.37
+  },
+  "greenness stand-in": {
+   "n": 16,
+   "app_mean": 12.57,
+   "lidar_mean": 1.68,
+   "bias": 10.89,
+   "mae": 10.89,
+   "rmse": 11.71,
+   "pearson": 0.184,
+   "spearman": -0.047,
+   "fit_intercept": 11.94,
+   "fit_slope": 0.373
+  },
+  "height model": {
+   "n": 52,
+   "app_mean": 0.1,
+   "lidar_mean": 0.68,
+   "bias": -0.58,
+   "mae": 0.61,
+   "rmse": 0.86,
+   "pearson": 0.285,
+   "spearman": 0.299,
+   "fit_intercept": 0.03,
+   "fit_slope": 0.102
+  }
+ },
+ "by_source_and_context": {
+  "aerial \u00b7 full | city or CDP": {
+   "n": 398,
+   "app_mean": 8.15,
+   "lidar_mean": 7.2,
+   "bias": 0.95,
+   "mae": 2.75,
+   "rmse": 3.71,
+   "pearson": 0.832,
+   "spearman": 0.815,
+   "fit_intercept": -0.65,
+   "fit_slope": 1.223
+  },
+  "aerial \u00b7 partial | city or CDP": {
+   "n": 92,
+   "app_mean": 4.2,
+   "lidar_mean": 3.07,
+   "bias": 1.12,
+   "mae": 2.44,
+   "rmse": 3.76,
+   "pearson": 0.759,
+   "spearman": 0.76,
+   "fit_intercept": 0.05,
+   "fit_slope": 1.348
+  },
+  "aerial \u00b7 partial | unincorporated": {
+   "n": 12,
+   "app_mean": 6.68,
+   "lidar_mean": 3.68,
+   "bias": 3.0,
+   "mae": 4.75,
+   "rmse": 6.21,
+   "pearson": 0.487,
+   "spearman": 0.203,
+   "fit_intercept": 1.09,
+   "fit_slope": 1.518
+  },
+  "greenness stand-in | city or CDP": {
+   "n": 8,
+   "app_mean": 12.86,
+   "lidar_mean": 0.81,
+   "bias": 12.04,
+   "mae": 12.04,
+   "rmse": 12.97,
+   "pearson": -0.338,
+   "spearman": -0.524,
+   "fit_intercept": 14.42,
+   "fit_slope": -1.922
+  },
+  "greenness stand-in | unincorporated": {
+   "n": 8,
+   "app_mean": 12.29,
+   "lidar_mean": 2.55,
+   "bias": 9.73,
+   "mae": 9.73,
+   "rmse": 10.29,
+   "pearson": 0.505,
+   "spearman": 0.738,
+   "fit_intercept": 10.34,
+   "fit_slope": 0.764
+  },
+  "height model | city or CDP": {
+   "n": 41,
+   "app_mean": 0.11,
+   "lidar_mean": 0.6,
+   "bias": -0.49,
+   "mae": 0.52,
+   "rmse": 0.84,
+   "pearson": 0.336,
+   "spearman": 0.372,
+   "fit_intercept": 0.04,
+   "fit_slope": 0.12
+  },
+  "height model | unincorporated": {
+   "n": 11,
+   "app_mean": 0.04,
+   "lidar_mean": 0.96,
+   "bias": -0.92,
+   "mae": 0.92,
+   "rmse": 0.93,
+   "pearson": -0.66,
+   "spearman": -0.266,
+   "fit_intercept": 0.95,
+   "fit_slope": -0.941
+  }
+ },
+ "top25_by_source": {
+  "aerial \u00b7 full": 25
+ },
+ "residual_by_source_vs_common_fit": {
+  "aerial \u00b7 full": {
+   "n": 398,
+   "mean_resid": -0.41,
+   "sd_resid": 3.48
+  },
+  "aerial \u00b7 partial": {
+   "n": 104,
+   "mean_resid": 0.52,
+   "sd_resid": 3.83
+  },
+  "greenness stand-in": {
+   "n": 16,
+   "mean_resid": 10.27,
+   "sd_resid": 4.53
+  },
+  "height model": {
+   "n": 52,
+   "mean_resid": -1.06,
+   "sd_resid": 0.73
+  }
+ },
+ "calibration": {
+  "aerial_full": {
+   "n": 398,
+   "spearman": 0.815,
+   "fit_intercept": -0.65,
+   "fit_slope": 1.223
+  },
+  "height_model": {
+   "n": 52,
+   "spearman": 0.299,
+   "fit_intercept": 0.03,
+   "fit_slope": 0.102
+  },
+  "min_n": 50,
+  "min_spearman": 0.8,
+  "use": "05_score.py: chm-legacy cells -> aerial scale via lidar; ndvi cells -> lidar canopy on the aerial scale"
+ }
+}

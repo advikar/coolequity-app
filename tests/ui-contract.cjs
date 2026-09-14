@@ -8,11 +8,11 @@ const load=(file,name)=>{const c={window:{}};vm.createContext(c);vm.runInContext
 const CITIES=load('app/cities.js','CE_CITIES');
 // Per-city facts of the committed data, carried over from each city's former branch.
 const EXPECT={
-  contracosta:{res:2697,ndvi:131},   // all below the 10% aerial-coverage threshold; the rebuilt height model covers every other cell
-  sanramon:{res:419,ndvi:8},
+  contracosta:{res:2697,ndvi:5},     // after 02f: lidar canopy replaces the stand-in wherever the CDFW map covers the cell
+  sanramon:{res:419,ndvi:0},
   bakersfield:{res:3767,ndvi:62},
-  westcc:{res:982,ndvi:8},
-  pittsburg:{res:570,ndvi:16},
+  westcc:{res:982,ndvi:1},
+  pittsburg:{res:570,ndvi:0},
 };
 const want=process.argv.slice(2);
 const slugs=want.length?want:CITIES.map(c=>c.slug);

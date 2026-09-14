@@ -157,6 +157,47 @@ def load():
         log(f"  canopy-source values for {int(have.sum())}/{len(df)} cells; NDVI elsewhere")
         df["veg_pct"] = df["green_pct"]
         df["green_pct"] = df["canopy_pct"].where(have, df["green_pct"])
+        # Harmonise sources against the lidar reference where 02f has run (Contra Costa
+        # builds). Two fitted lines, app = a + b * lidar, one for full aerial cells and
+        # one for height-model cells. A height-model reading is mapped to its lidar
+        # equivalent and then onto the aerial line, so every "canopy" cell is on one
+        # scale; a greenness stand-in cell whose ground the lidar map covers gets the
+        # lidar canopy on that same aerial line instead of a proxy with no rank skill
+        # (Pittsburg: Spearman -0.05 against lidar). reports/canopy_validation_<slug>.json
+        LID = C.DATA / f"canopy_lidar_{C.SLUG}.csv"
+        REP = C.ROOT / "cities" / C.SLUG / "reports" / f"canopy_validation_{C.SLUG}.json"
+        if LID.exists() and REP.exists():
+            import json as _json
+            cal = _json.loads(REP.read_text()).get("calibration", {})
+            aer, hm = cal.get("aerial_full", {}), cal.get("height_model", {})
+            df = df.merge(pd.read_csv(LID), on="h3", how="left")
+            ok_aer = (aer.get("n") or 0) >= cal.get("min_n", 50)
+            # A height-model fit is only trusted where it tracks the lidar (Pittsburg's 52
+            # marsh cells give slope 0.10 and Spearman 0.30: a line through noise, not a scale).
+            ok_hm = (hm.get("n") or 0) >= cal.get("min_n", 50) and (hm.get("spearman") or 0) >= cal.get("min_spearman", 0.8)
+            if ok_aer and ok_hm:
+                legacy = have & (df["canopy_source"] == "chm-legacy")
+                lidar_eq = (df["green_pct"] - hm["fit_intercept"]) / hm["fit_slope"]
+                df.loc[legacy, "green_pct"] = (aer["fit_intercept"] + aer["fit_slope"] * lidar_eq).clip(lower=0)[legacy].round(2)
+                df.loc[legacy, "canopy_quality"] = "calibrated"
+                log(f"  canopy: {int(legacy.sum())} height-model cells rescaled onto the aerial line via lidar "
+                    f"(model {hm['fit_intercept']:+.2f}+{hm['fit_slope']:.3f}·lidar -> aerial {aer['fit_intercept']:+.2f}+{aer['fit_slope']:.3f}·lidar)")
+            elif have.eq(True).any() and (df["canopy_source"] == "chm-legacy").any():
+                log(f"  canopy: height-model cells left as assessed (fit n={hm.get('n')}, Spearman {hm.get('spearman')}; not trusted for rescaling)")
+            if ok_aer:
+                swap = (~have) & df["lidar_pct"].notna() & (df["lidar_coverage"].fillna(0) >= 0.9)
+                df.loc[swap, "green_pct"] = (aer["fit_intercept"] + aer["fit_slope"] * df.loc[swap, "lidar_pct"]).clip(lower=0).round(2)
+                df.loc[swap, "green_src"] = "canopy"
+                df.loc[swap, "canopy_source"] = "lidar-2020"
+                df.loc[swap, "canopy_year"] = "2020"
+                df.loc[swap, "canopy_quality"] = "lidar"
+                df.loc[swap, "coverage_frac"] = df.loc[swap, "lidar_coverage"]
+                df.loc[swap, "assessed_m2"] = df.loc[swap, "lidar_coverage"] * df.loc[swap, "area_m2"] if "area_m2" in df.columns else np.nan
+                have = have | swap
+                log(f"  canopy: {int(swap.sum())} greenness stand-in cells replaced by lidar canopy (CDFW 2025 map, 2017-22 lidar); "
+                    f"{int((~have).sum())} stand-in cells remain")
+        else:
+            log("  canopy: no lidar validation (02f) for this build; sources stay pooled as assessed")
     else:
         log("  canopy: no canopy CSV — using the NDVI proxy, which overstates "
             "tree cover roughly 2x. Run 02c_canopy.py.")

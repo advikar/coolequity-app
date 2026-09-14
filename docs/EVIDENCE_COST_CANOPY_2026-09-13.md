@@ -80,21 +80,50 @@ That covers Contra Costa County, West Contra Costa, Pittsburg & Bay Point and Sa
 every cell of every source type in four of the five builds. It does not cover Bakersfield; the
 USGS 3DEP lidar the audit mentions is the equivalent there.
 
-### Proposed validation step (not run; needs the 160 MB download)
+### Validation run (September 13, 2026, evening)
 
-`pipeline/02f_canopy_validate.py`, per Contra Costa build:
+`pipeline/02f_canopy_validate.py` area-weights the map's `ABS_COVER` (share of lidar returns
+above 15 ft) onto every H3 cell that the map covers at least 90%, and compares it with the
+app's tree-cover input by source class. The lidar counts only vegetation above 4.6 m, so the
+app is expected to read higher; the question is whether every source sits on the same line.
 
-1. Intersect ds3206 polygons with the H3 grid; area-weight lidar canopy cover to a per-cell
-   `canopy_lidar_pct`.
-2. For each source class (aerial full, aerial partial, height model, greenness stand-in),
-   report bias, RMSE and Spearman rank correlation against the lidar figure, separately for
-   urban, fringe and orchard cells as the audit asks.
-3. Either calibrate the height-model cells onto the aerial scale by the fitted bias, or replace
-   `green` with the lidar figure where it exists and keep the aerial product for 2022 currency.
-4. Re-score, and report top-25 overlap before and after in `reports/canopy_validation_<slug>.json`.
+| Build | Cells | All sources: Spearman / bias | Aerial full: Spearman, fit | Height model: Spearman, fit | Greenness stand-in: Spearman |
+|---|---|---|---|---|---|
+| Contra Costa County | 2,603 | 0.95 / +3.1 pts | 0.975, 0.58 + 1.228·lidar (n 794) | 0.973, 0.44 + 1.091·lidar (n 1,260) | 0.72 (n 126) |
+| West Contra Costa | 980 | 0.89 / +2.2 | 0.896, −0.12 + 1.211·lidar (n 818) | n 7 | n 7 |
+| Pittsburg & Bay Point | 570 | 0.79 / +1.2 | 0.815, −0.65 + 1.223·lidar (n 398) | 0.30 (n 52, marsh edge) | **−0.05** (n 16) |
+| San Ramon | 419 | 0.90 / +2.7 | 0.914, 0.30 + 1.186·lidar (n 356) | n 2 | 0.95 (n 8) |
 
-That closes the "pooling" item with data rather than field visits for four builds. Field
-checks remain the only validation for Bakersfield until a lidar-based reference is added.
+Reading. The aerial product and the height model both track the lidar closely (rank
+correlation 0.97 in the county build, where both have large samples), but on different lines:
+against the same lidar canopy the height model reads about 2.4 points lower than the aerial
+product. Pooling them therefore gave height-model cells a small, systematic push up the
+"fewer trees" ranking. The greenness stand-in is a different matter: in Pittsburg it has no rank
+skill at all against the lidar and reads 11 points high on average, and in the county it has
+an MAE of 11 points. Full tables, per context (city, unincorporated, agricultural), are in each
+build's `reports/canopy_validation_<slug>.json`.
+
+### What 05 now does with it
+
+- **Height-model cells are rescaled onto the aerial line** through the lidar: reading →
+  lidar-equivalent (inverse of the model fit) → aerial-equivalent (aerial fit). Applied only
+  where the model fit has n ≥ 50 and Spearman ≥ 0.8, which is the county build (1,330 ranked
+  cells, labelled "calibrated"). Pittsburg's 52 marsh-edge model cells fail the guard and stay
+  as assessed.
+- **Greenness stand-in cells are replaced by lidar canopy** on the aerial line wherever the
+  map covers ≥ 90% of the cell: 126 county cells, 58 West County (7 ranked), 26 Pittsburg (16
+  ranked), 20 San Ramon (8 ranked). Source `lidar-2020`, label "trees · lidar". Stand-in cells
+  remaining: county 5, West County 1, Pittsburg 0, San Ramon 0.
+- **Rank effect** (before → after, ranked cells): top-25 overlap 25/25 in the county, Pittsburg
+  and San Ramon and 24/25 in West County; top-100 overlap 98, 100, 98, 97. Median absolute
+  rank change: county 50 of 2,697 (the calibration touches half its cells), West County 2,
+  Pittsburg 5, San Ramon 3. The single largest move is a Pittsburg stand-in cell that the proxy
+  had at 12.6% cover and the lidar has at 1.7%.
+- Stability (05b) re-run for all four; Pittsburg's median band 123 → 126 ranks, others unchanged
+  to the rank.
+
+Bakersfield is outside the map and keeps the pooled input, labelled as before; USGS 3DEP lidar
+or field checks remain its route.
 
 ## 3. Survival, for the 70% default
 

@@ -3,43 +3,43 @@
  "draws": 300,
  "ranked": 570,
  "top_tier_n": 57,
- "median_band_width": 123.17500000000004,
- "p90_band_width": 236.29500000000004,
- "share_band_within_10pct_of_list": 0.14385964912280702,
+ "median_band_width": 126.15000000000003,
+ "p90_band_width": 245.38500000000002,
+ "share_band_within_10pct_of_list": 0.12456140350877193,
  "point_top_tier_always_top_tier": 0.22807017543859648,
- "point_top_tier_usually_top_tier": 0.5614035087719298,
+ "point_top_tier_usually_top_tier": 0.5263157894736842,
  "top25_point": [
   {
    "id": 396,
    "name": "Pittsburg SE",
    "rank": 1,
    "rank_lo": 1,
-   "rank_hi": 63,
-   "top_share": 0.937
+   "rank_hi": 65,
+   "top_share": 0.933
   },
   {
    "id": 752,
    "name": "Pittsburg NE",
    "rank": 2,
    "rank_lo": 2,
-   "rank_hi": 88,
-   "top_share": 0.887
-  },
-  {
-   "id": 408,
-   "name": "Woodland Hills Apartment Homes N 6",
-   "rank": 3,
-   "rank_lo": 2,
-   "rank_hi": 39,
-   "top_share": 0.987
+   "rank_hi": 90,
+   "top_share": 0.877
   },
   {
    "id": 622,
    "name": "Beacon Villa W 4",
-   "rank": 4,
+   "rank": 3,
    "rank_lo": 1,
    "rank_hi": 19,
    "top_share": 1.0
+  },
+  {
+   "id": 408,
+   "name": "Woodland Hills Apartment Homes N 6",
+   "rank": 4,
+   "rank_lo": 2,
+   "rank_hi": 41,
+   "top_share": 0.987
   },
   {
    "id": 100,
@@ -47,15 +47,15 @@
    "rank": 5,
    "rank_lo": 1,
    "rank_hi": 39,
-   "top_share": 0.99
+   "top_share": 0.987
   },
   {
    "id": 420,
    "name": "Fox Creek Apartments",
    "rank": 6,
    "rank_lo": 4,
-   "rank_hi": 69,
-   "top_share": 0.9
+   "rank_hi": 73,
+   "top_share": 0.89
   },
   {
    "id": 653,
@@ -70,96 +70,96 @@
    "name": "Crestview Apartments NW 3",
    "rank": 8,
    "rank_lo": 1,
-   "rank_hi": 32,
+   "rank_hi": 33,
    "top_share": 0.997
   },
   {
    "id": 409,
    "name": "Woodland Hills Apartment Homes N 7",
    "rank": 9,
-   "rank_lo": 3,
-   "rank_hi": 39,
-   "top_share": 0.99
+   "rank_lo": 4,
+   "rank_hi": 40,
+   "top_share": 0.987
   },
   {
    "id": 628,
    "name": "Beacon Villa SW 2",
    "rank": 10,
    "rank_lo": 2,
-   "rank_hi": 35,
-   "top_share": 0.99
+   "rank_hi": 36,
+   "top_share": 0.987
   },
   {
    "id": 365,
    "name": "Delta Hawaii S 2",
    "rank": 11,
    "rank_lo": 2,
-   "rank_hi": 94,
-   "top_share": 0.803
+   "rank_hi": 98,
+   "top_share": 0.79
   },
   {
    "id": 421,
    "name": "Delta Hawaii NE",
    "rank": 12,
    "rank_lo": 3,
-   "rank_hi": 146,
-   "top_share": 0.68
+   "rank_hi": 154,
+   "top_share": 0.67
   },
   {
    "id": 385,
    "name": "Crestview Apartments NW 2",
    "rank": 13,
    "rank_lo": 4,
-   "rank_hi": 44,
+   "rank_hi": 45,
+   "top_share": 0.977
+  },
+  {
+   "id": 623,
+   "name": "River View Mobile Home Park E 4",
+   "rank": 14,
+   "rank_lo": 3,
+   "rank_hi": 46,
    "top_share": 0.98
   },
   {
    "id": 413,
    "name": "Woodland Hills Apartment Homes N 4",
-   "rank": 14,
-   "rank_lo": 5,
-   "rank_hi": 84,
-   "top_share": 0.857
-  },
-  {
-   "id": 623,
-   "name": "River View Mobile Home Park E 4",
    "rank": 15,
-   "rank_lo": 3,
-   "rank_hi": 45,
-   "top_share": 0.98
+   "rank_lo": 5,
+   "rank_hi": 86,
+   "top_share": 0.847
   },
   {
    "id": 360,
    "name": "Delta Hawaii SE 2",
    "rank": 16,
    "rank_lo": 1,
-   "rank_hi": 67,
-   "top_share": 0.937
+   "rank_hi": 68,
+   "top_share": 0.927
   },
   {
    "id": 257,
    "name": "Deanza Apartments",
    "rank": 17,
    "rank_lo": 6,
-   "rank_hi": 79,
-   "top_share": 0.85
+   "rank_hi": 82,
+   "top_share": 0.827
   },
   {
    "id": 624,
    "name": "Beacon Villa W 2",
    "rank": 18,
    "rank_lo": 4,
-   "rank_hi": 49,
-   "top_share": 0.97
+   "rank_hi": 48,
+   "top_share": 0.967
   },
   {
    "id": 66,
    "name": "Woodland Hills Apartment Homes NW 5",
    "rank": 19,
    "rank_lo": 13,
-   "rank_hi": 58,
-   "top_share": 0.947
+   "rank_hi": 59,
+   "top_share": 0.943
   },
   {
    "id": 627,
@@ -167,31 +167,31 @@
    "rank": 20,
    "rank_lo": 6,
    "rank_hi": 45,
-   "top_share": 0.987
+   "top_share": 0.983
   },
   {
    "id": 654,
    "name": "Woodland Hills Apartment Homes N 8",
    "rank": 21,
    "rank_lo": 13,
-   "rank_hi": 42,
+   "rank_hi": 43,
    "top_share": 0.993
-  },
-  {
-   "id": 386,
-   "name": "Crestview Apartments N",
-   "rank": 22,
-   "rank_lo": 9,
-   "rank_hi": 82,
-   "top_share": 0.843
   },
   {
    "id": 403,
    "name": "Cornerstone Apartments",
-   "rank": 23,
+   "rank": 22,
    "rank_lo": 4,
-   "rank_hi": 79,
-   "top_share": 0.817
+   "rank_hi": 81,
+   "top_share": 0.813
+  },
+  {
+   "id": 386,
+   "name": "Crestview Apartments N",
+   "rank": 23,
+   "rank_lo": 9,
+   "rank_hi": 85,
+   "top_share": 0.827
   },
   {
    "id": 400,
@@ -199,15 +199,15 @@
    "rank": 24,
    "rank_lo": 2,
    "rank_hi": 68,
-   "top_share": 0.92
+   "top_share": 0.913
   },
   {
    "id": 374,
    "name": "Crestview Apartments",
    "rank": 25,
    "rank_lo": 7,
-   "rank_hi": 114,
-   "top_share": 0.733
+   "rank_hi": 121,
+   "top_share": 0.707
   }
  ]
 }
