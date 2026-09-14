@@ -209,3 +209,10 @@
   with numbers taken from the current data and `reports/stability_<slug>.json`. If a build
   is re-scored, refresh those numbers by hand (they are prose, not generated). Method topics
   intentionally match the county guide word for word.
+
+
+## Checkpoint, September 13, 2026 (evening, eleventh pass)
+
+- Cost per tree now has Low/Base/High presets ($500 / $2,000 / $3,500) with sources on hover and in every guide's cost topic; `markCostPreset()` keeps the chips in step with the input, reset and scenario load. Default unchanged at $500 (low band).
+- `docs/EVIDENCE_COST_CANOPY_2026-09-13.md` records the cost sources, per-source canopy accuracy from the literature, and a specified but unrun `02f_canopy_validate.py` against CDFW ds3206 (lidar canopy cover, Contra Costa; 160 MB zip, needs owner approval to download).
+- Outreach plan §3.1 has 18 ready-to-send email drafts, one per contact, each naming a top area from that contact's map.

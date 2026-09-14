@@ -79,7 +79,7 @@ const directory=fs.readFileSync(`cities/${slug}/cooling.html`,'utf8');for(const 
 {
   const ex={HEX:data,CE_CITY:CITY,LIVE:{score:new Map(),rank:new Map(),order:[]},POPW:.45,W_RAW:{heat:.2,green:.5,ac:.2,age65:.1,access:0},W_INPUTS:[{k:'heat'},{k:'green'},{k:'ac'},{k:'age65'},{k:'access'}],
     CITY_NAV:[{slug:'x',name:'X'}],THIS_CITY:'x',CITY_SLUG:'x',DATA_URL:'../data/x.geojson?v=t',TREE_SPACING_M:10,TREE_M2:40,COST_TREE:500,SURVIVAL:70,
-    nameOf:p=>p.name,areaOf:p=>p.area_m2,isDefaultW:()=>true,matchPreset:()=>({id:'default'}),selId:null,noteOf:()=>({status:'',note:'',updated:null}),FC_LABEL:{},
+    nameOf:p=>p.name,areaOf:p=>p.area_m2,isDefaultW:()=>true,matchPreset:()=>({id:'default'}),selId:null,noteOf:()=>({status:'',note:'',updated:null}),FC_LABEL:{},markCostPreset:()=>{},
     document:{getElementById:()=>null,createElement:()=>({click(){},remove(){},style:{}}),body:{appendChild(){}}},
     Blob:function(){},URL:{createObjectURL:()=>'blob:',revokeObjectURL(){}},crypto:{subtle:{digest:async()=>new ArrayBuffer(32)}},TextEncoder,
     applyWeights(){},selectHex(){},setTimeout};

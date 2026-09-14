@@ -634,6 +634,11 @@
   .assume{margin-top:10px;font-size:11.5px;color:var(--muted);line-height:1.6}
   .assume input{width:64px;background:#0a1017;border:1px solid var(--edge2);border-radius:6px;color:var(--txt);font:600 12px var(--sans);padding:3px 6px;text-align:right}
   .assume input:focus-visible{border-color:var(--accent);outline:none}
+  .costpre{display:inline-flex;gap:4px;margin-left:4px;vertical-align:middle}
+  .costpre button{font:600 10.5px var(--sans);color:var(--muted);background:transparent;border:1px solid var(--edge2);border-radius:999px;padding:2px 8px;cursor:pointer;line-height:1.4}
+  .costpre button:hover{color:var(--txt);border-color:var(--accent)}
+  .costpre button[aria-pressed=true]{color:var(--txt);border-color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,transparent)}
+  .costpre button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
   /* --- map: status chip with Share, controls top-right, zoom stack bottom-right --- */
   #chip{display:flex;align-items:center;gap:4px;max-width:calc(100% - 320px);overflow:hidden;white-space:nowrap}
   #chip b{overflow:hidden;text-overflow:ellipsis}
@@ -1043,7 +1048,7 @@
              subdivisions, so "plant here" is only actionable where the city
              owns the ground. Street frontage is that, measured from OSM. -->
         <div class="roi-feas" id="roi-feas"></div>
-        <div class="assume"><span>Assumptions:</span> $<input type="number" id="cost-tree" min="50" max="5000" step="50" value="500" aria-label="Cost per planted tree, US dollars"> per tree · <input type="number" id="survival" min="5" max="100" step="5" value="70" aria-label="Share of planted trees assumed to reach maturity, percent">% reach maturity · 10 m spacing · <a class="method-link" href="guide.html#cost" target="ce-guide" style="margin:0">limits ↗</a></div>
+        <div class="assume"><span>Assumptions:</span> $<input type="number" id="cost-tree" min="50" max="5000" step="50" value="500" aria-label="Cost per planted tree, US dollars"> per tree <span class="costpre" role="group" aria-label="Cost per tree presets"><button type="button" data-cost="500" title="Planting only, city crews, no establishment budget. Bakersfield’s own 2026 estimate.">Low $500</button><button type="button" data-cost="2000" title="Planting plus about a year of establishment care, or a grant program’s all-in average (Concord: $1M for 500 trees).">Base $2,000</button><button type="button" data-cost="3500" title="Planting plus three years of watering and program overhead (San Francisco 3500 Trees: $12M for 3,500). Los Angeles reported $4,351 with five years of watering.">High $3,500</button></span> · <input type="number" id="survival" min="5" max="100" step="5" value="70" aria-label="Share of planted trees assumed to reach maturity, percent">% reach maturity · 10 m spacing · <a class="method-link" href="guide.html#cost" target="ce-guide" style="margin:0">limits ↗</a></div>
         <div class="export" id="d-export" aria-label="Export this area">
           <p class="lbl">Export this area <a class="info-link" href="guide.html#export-area" target="ce-guide" aria-label="About exporting a selected area">i</a></p>
           <button type="button" id="exp-cell-json">Save this area (JSON)</button>
@@ -1213,6 +1218,7 @@ const AREA_M2_FALLBACK=5160000, TREE_M2=40, DEFAULT_COST_TREE=500; let COST_TREE
 // not a measurement: Sacramento's long-term monitoring found 42.4% of program
 // trees alive after 22 years (Ko, Lee, McPherson & Roman 2015), so test lower.
 const DEFAULT_SURVIVAL=70; let SURVIVAL=DEFAULT_SURVIVAL;
+function markCostPreset(){document.querySelectorAll('.costpre button').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.cost===COST_TREE)));}  // Low/Base/High chips reflect the current $ per tree
 /* Street trees go on both sides of a road at roughly this spacing. The number
  * is a planning convention, not a measurement — it is stated on screen next to
  * the figure it produces, because the whole point of the frontage panel is to
@@ -1644,7 +1650,7 @@ function loadScenario(doc){
   W_INPUTS.forEach(x=>{const el=document.getElementById('ws-'+x.k);if(el)el.value=Math.round(W_RAW[x.k]*100);});
   const pe=document.getElementById('ws-pop');if(pe)pe.value=Math.round(POPW*100);
   const pa=doc.planting_assumptions||{};
-  if(typeof pa.cost_per_tree_usd==='number'&&pa.cost_per_tree_usd>0){COST_TREE=pa.cost_per_tree_usd;const ce=document.getElementById('cost-tree');if(ce)ce.value=COST_TREE;}
+  if(typeof pa.cost_per_tree_usd==='number'&&pa.cost_per_tree_usd>0){COST_TREE=pa.cost_per_tree_usd;const ce=document.getElementById('cost-tree');if(ce)ce.value=COST_TREE;}markCostPreset();
   if(typeof pa.survival_share_pct==='number'&&pa.survival_share_pct>0&&pa.survival_share_pct<=100){SURVIVAL=pa.survival_share_pct;const se=document.getElementById('survival');if(se)se.value=SURVIVAL;}
   else if(pa.survival_share_pct===undefined){SURVIVAL=100;const se=document.getElementById('survival');if(se)se.value=100;}   // files written before survival existed assumed every tree matured; reproduce them exactly
   plantingShares.clear();
@@ -1734,7 +1740,7 @@ function resetMap(){
   RANK_FILTERS.clear();document.querySelectorAll('.pst').forEach(b=>{b.classList.remove('on');b.setAttribute('aria-pressed','false');});
   RANK_CITY='';const rc=document.getElementById('rank-city');if(rc)rc.value='';applyCityMask();
   RANK_SORT='need';RANK_DIR=defaultDir('need');const rsl=document.getElementById('rank-sort');if(rsl)rsl.value='need';syncSortUI();
-  COST_TREE=DEFAULT_COST_TREE;const ce=document.getElementById('cost-tree');if(ce)ce.value=DEFAULT_COST_TREE;
+  COST_TREE=DEFAULT_COST_TREE;const ce=document.getElementById('cost-tree');if(ce)ce.value=DEFAULT_COST_TREE;markCostPreset();
   SURVIVAL=DEFAULT_SURVIVAL;const se=document.getElementById('survival');if(se)se.value=DEFAULT_SURVIVAL;
   const rs=document.getElementById('rank-search');if(rs)rs.value='';rankPage=0;buildRank();buildShortlist();
   if(map)fitData(map);
@@ -1784,7 +1790,10 @@ function wireDrawers(){
     const i=list.findIndex(f=>f.properties.id===selId);if(i<0)return;const n=list[(i+d+list.length)%list.length];if(n)selectHex(n.properties.id,true);};
   document.getElementById('d-prev').onclick=()=>step(-1);document.getElementById('d-next').onclick=()=>step(1);
   // editable cost per tree: feeds the scenario, the shortlist totals and every export
-  document.getElementById('cost-tree').addEventListener('input',e=>{const v=+e.target.value;if(!(v>0))return;COST_TREE=v;
+  // Low/Base/High presets: sourced bands (docs/EVIDENCE_COST_CANOPY_2026-09-13.md); they only set the same input
+  document.querySelectorAll('.costpre button').forEach(b=>b.addEventListener('click',()=>{const ce=document.getElementById('cost-tree');ce.value=b.dataset.cost;ce.dispatchEvent(new Event('input',{bubbles:true}));}));
+  markCostPreset();
+  document.getElementById('cost-tree').addEventListener('input',e=>{const v=+e.target.value;if(!(v>0))return;COST_TREE=v;markCostPreset();
     const f=selId!=null&&HEX.features.find(x=>x.properties.id===selId);if(f)updateROI(f.properties);buildShortlist();});
   document.getElementById('survival').addEventListener('input',e=>{const v=+e.target.value;if(!(v>0&&v<=100))return;SURVIVAL=v;
     const f=selId!=null&&HEX.features.find(x=>x.properties.id===selId);if(f)updateROI(f.properties);buildShortlist();});
@@ -1874,7 +1883,7 @@ const TIPS={
   stability:{t:'Likely rank',d:'A rank is an estimate. Census population, age and A/C figures were re-drawn within their published margins of error and the recommended weights nudged by ±10 points, 300 times; this is the 5th–95th percentile of the ranks that came out. Rank differences smaller than the band are noise. The top-tier share says how often the area stayed in the best 10%.'},
   'export-area':{t:'Export this area',d:'Save this area’s numbers, sources, rank and planting scenario as one file for a meeting or a colleague. A JSON file reloads this view.'},
   planting:{t:'Planting scenario',d:'Explore how many street trees could fit along this area’s mapped streets, what they would cost, and the shade they would add at maturity. An estimate for scoping, not a plan.'},
-  cost:{t:'Trees & cost',d:'Tree count comes from mapped street length at 10 m spacing; cost is trees × $500, a planning assumption rather than a quote.'},
+  cost:{t:'Trees & cost',d:'Tree count comes from mapped street length at 10 m spacing; cost is trees × the $ per tree you set. Low $500 is planting only (Bakersfield’s estimate); Base $2,000 adds establishment care; High $3,500 is a full three-year program (San Francisco). Not a quote.'},
   cooling:{t:'Illustrative cooling',d:'A rough, literature-based figure for how much new shade could cool summer air once the trees are mature. Not a forecast for this place.'},
   lst:{t:'Surface heat',d:'How hot the ground gets in summer, measured by satellite in late morning (the Landsat overpass, about 10:30 am). It is not the air temperature people feel, but hot ground is where shade helps most.'},
   green:{t:'Tree cover',d:'The share of assessed land covered by tree crowns, from an aerial assessment. Low tree cover is the strongest sign an area would benefit from planting.'},
