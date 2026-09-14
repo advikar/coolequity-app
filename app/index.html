@@ -72,8 +72,8 @@
   .lede{max-width:52ch;margin:20px 0 0;color:var(--muted);font-size:15px;line-height:1.62}
   .istats{display:flex;flex-wrap:wrap;gap:34px;margin:30px 0 34px}
   .istats div b{display:block;font-size:25px;font-weight:600;letter-spacing:-.02em;
-    font-variant-numeric:tabular-nums;color:var(--txt)}
-  .istats div span{font-size:11px;color:var(--muted2);letter-spacing:.05em;text-transform:uppercase}
+    font-variant-numeric:tabular-nums;color:#fff}
+  .istats div span{font-size:11px;color:#b9c3cd;letter-spacing:.05em;text-transform:uppercase}
   .ilbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.11em;color:var(--muted2);
     font-weight:600;margin:0 0 11px}
   /* Combobox: a text field you can type into, with a filtered list under it.
@@ -363,8 +363,8 @@
     cursor:pointer;border:2px solid #0d1219}
   .roi-out{display:grid;grid-template-columns:1fr 1fr;gap:9px}
   .stat{background:#0a1017;border:1px solid var(--edge);border-radius:9px;padding:9px 11px}
-  .stat .v{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
-  .stat .k{font-size:11px;color:var(--muted2);margin-top:3px;line-height:1.25}
+  .stat .v{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1;color:var(--txt)}
+  .stat .k{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.25}
   .roi-out .stat.hero{grid-column:1/-1}
   .stat.hero .v{color:var(--good)}
   .roi-note{font-size:11px;color:var(--muted2);margin-top:11px;line-height:1.4}
@@ -398,8 +398,25 @@
   .takeaway .tk-now b{color:var(--txt)}
   /* ---- explain this block ---- */
   .explain{font-size:12.5px;line-height:1.6;color:var(--muted);background:#0c1219;
-  .fieldcheck{margin:10px 18px 0;padding:10px 12px;border:1px solid var(--edge);border-radius:10px;background:rgba(255,255,255,.03)}.fieldcheck .lbl{margin:0 0 6px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:6px}.fieldcheck select,.fieldcheck textarea{width:100%;box-sizing:border-box;font:inherit;font-size:12.5px;color:var(--txt);background:var(--c-field,#0f151d);border:1px solid var(--edge);border-radius:8px;padding:7px 9px}.fieldcheck textarea{margin-top:6px;resize:vertical;min-height:40px}.fieldcheck .hint{margin:6px 0 0}.fc-tag{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:6px;font-size:10px;font-weight:600;letter-spacing:.02em;vertical-align:middle;background:rgba(255,255,255,.08);color:var(--muted)}.fc-tag.feasible,.fc-tag.planted{background:rgba(74,222,128,.16);color:#8ef0b0}.fc-tag.not{background:rgba(248,113,113,.16);color:#ffb3b3}.fc-tag.partly{background:rgba(255,179,90,.16);color:#ffd28c}
     border:1px solid var(--edge);border-radius:10px;padding:11px 12px;margin:0 0 14px}
+  .fieldcheck{margin:14px 0 0;border:1px solid var(--edge);border-radius:12px;background:#0c141d}
+  .fieldcheck summary{list-style:none;display:flex;align-items:center;gap:8px;padding:11px 12px;cursor:pointer;font-size:13px;font-weight:600;color:var(--txt)}
+  .fieldcheck summary::-webkit-details-marker{display:none}
+  .fieldcheck summary .dchev{width:13px;height:13px;flex:none;stroke:currentColor;fill:none;stroke-width:2.4;transition:transform .18s}
+  .fieldcheck[open] summary .dchev{transform:rotate(90deg)}
+  .fieldcheck summary .info-link{margin-left:auto}
+  .fc-pill{padding:2px 8px;border-radius:999px;font-size:10.5px;font-weight:600;letter-spacing:.02em;background:rgba(255,255,255,.08);color:var(--muted)}
+  .fc-pill.visit{background:rgba(120,170,255,.16);color:#b9d1ff}.fc-pill.feasible,.fc-pill.planted{background:rgba(74,222,128,.16);color:#8ef0b0}.fc-pill.not{background:rgba(248,113,113,.16);color:#ffb3b3}.fc-pill.partly{background:rgba(255,179,90,.16);color:#ffd28c}
+  .fc-body{padding:0 12px 12px}.fc-body .hint{margin:0 0 8px}
+  .fc-chips{display:flex;flex-wrap:wrap;gap:6px}
+  .fc-chips button{font:600 11.5px var(--sans);color:var(--muted);background:transparent;border:1px solid var(--edge2);border-radius:999px;padding:5px 10px;cursor:pointer;line-height:1.3}
+  .fc-chips button:hover{color:var(--txt);border-color:var(--accent)}
+  .fc-chips button[aria-pressed=true]{color:var(--txt);border-color:var(--accent);background:color-mix(in srgb,var(--accent) 16%,transparent)}
+  .fc-chips button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .fieldcheck textarea{width:100%;box-sizing:border-box;margin-top:8px;font:inherit;font-size:12.5px;color:var(--txt);background:var(--c-field,#0f151d);border:1px solid var(--edge);border-radius:8px;padding:7px 9px;resize:vertical;min-height:44px}
+  .fc-meta{color:var(--good)}
+  html[data-theme=light] .fieldcheck{background:var(--c-card)}
+  .fc-tag{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:6px;font-size:10px;font-weight:600;letter-spacing:.02em;vertical-align:middle;background:rgba(255,255,255,.08);color:var(--muted)}.fc-tag.feasible,.fc-tag.planted{background:rgba(74,222,128,.16);color:#8ef0b0}.fc-tag.not{background:rgba(248,113,113,.16);color:#ffb3b3}.fc-tag.partly{background:rgba(255,179,90,.16);color:#ffd28c}
   .explain b{color:var(--txt);font-weight:650}
   .explain .why{color:var(--accent2);font-weight:600}
   /* ---- first-run coach card ---- */
@@ -495,13 +512,15 @@
     #panel .brand p,#takeaway-sec{display:none}
     #legend{width:190px;left:8px;bottom:24px;padding:8px 10px}
     .brandtop #units{margin-left:auto}.helpnav{margin-top:8px}
-    #intro-city{position:static;margin:14px 24px 0}
+    #intro{flex-direction:column;padding:0}
+    #intro-city{position:relative;z-index:3;margin:14px 16px 0;flex:none}
     #mapwrap{flex:1;min-height:0;width:100%}
     #detail{width:100%;height:100dvh;z-index:45}
     #chip{max-width:calc(100% - 28px);font-size:11px;white-space:normal}
     .mapctl{top:58px}
     .fhead{padding:10px 14px 10px 10px}.fbody{padding:0 14px 12px}
-    .intro-card{padding:24px;width:100%;max-height:100dvh;overflow:auto}
+    .intro-card{padding:18px 20px 28px;width:100%;max-height:none;overflow:visible;margin:0}
+    .lede{font-size:14px}
     .intro-card h1{font-size:34px}.istats{flex-wrap:wrap}
     #coach{top:8px;max-height:calc(100% - 16px);overflow:auto}
   }
@@ -1019,12 +1038,6 @@
     </div>
     <div class="dbody">
       <div class="explain" id="d-explain"></div>
-      <div class="fieldcheck" id="d-field" hidden>
-        <p class="lbl">Field check <a class="info-link" href="guide.html#fieldcheck" target="ce-guide" aria-label="About field checks">i</a></p>
-        <select id="fc-status" aria-label="Field-check status"><option value="">Not checked yet</option><option value="visit">To visit</option><option value="feasible">Checked · feasible</option><option value="partly">Checked · partly feasible</option><option value="not">Checked · not feasible</option><option value="planted">Planted</option></select>
-        <textarea id="fc-note" rows="2" placeholder="Who looked, when, what you saw. Kept in this browser; goes into exports and the briefing."></textarea>
-        <p class="hint" id="fc-meta" hidden></p>
-      </div>
       <div class="drivers" id="d-drivers"></div>
       <div id="d-metrics"></div>
       <details id="d-bd-label" class="score-details"><summary>Why this rank?</summary><a class="method-link" href="guide.html#score" target="ce-guide">Scoring method ↗</a><div class="bd" id="d-breakdown"></div></details>
@@ -1049,6 +1062,17 @@
              owns the ground. Street frontage is that, measured from OSM. -->
         <div class="roi-feas" id="roi-feas"></div>
         <div class="assume"><span>Assumptions:</span> $<input type="number" id="cost-tree" min="50" max="5000" step="50" value="500" aria-label="Cost per planted tree, US dollars"> per tree <span class="costpre" role="group" aria-label="Cost per tree presets"><button type="button" data-cost="500" title="Planting only, city crews, no establishment budget. Bakersfield’s own 2026 estimate.">Low $500</button><button type="button" data-cost="2000" title="Planting plus about a year of establishment care, or a grant program’s all-in average (Concord: $1M for 500 trees).">Base $2,000</button><button type="button" data-cost="3500" title="Planting plus three years of watering and program overhead (San Francisco 3500 Trees: $12M for 3,500). Los Angeles reported $4,351 with five years of watering.">High $3,500</button></span> · <input type="number" id="survival" min="5" max="100" step="5" value="70" aria-label="Share of planted trees assumed to reach maturity, percent">% reach maturity · 10 m spacing · <a class="method-link" href="guide.html#cost" target="ce-guide" style="margin:0">limits ↗</a></div>
+        <details class="fieldcheck" id="d-field" hidden>
+          <summary><svg class="dchev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg><span>Field check</span><span class="fc-pill" id="fc-pill">Not checked yet</span><a class="info-link" href="guide.html#fieldcheck" target="ce-guide" aria-label="About field checks">i</a></summary>
+          <div class="fc-body">
+            <p class="hint">Record what a site visit found. Kept in this browser only; goes into exports and the briefing.</p>
+            <div class="fc-chips" id="fc-chips" role="group" aria-label="Field-check status">
+              <button type="button" data-fc="visit">To visit</button><button type="button" data-fc="feasible">Feasible</button><button type="button" data-fc="partly">Partly feasible</button><button type="button" data-fc="not">Not feasible</button><button type="button" data-fc="planted">Planted</button>
+            </div>
+            <textarea id="fc-note" rows="2" placeholder="Who looked, when, what you saw."></textarea>
+            <p class="hint fc-meta" id="fc-meta" hidden></p>
+          </div>
+        </details>
         <div class="export" id="d-export" aria-label="Export this area">
           <p class="lbl">Export this area <a class="info-link" href="guide.html#export-area" target="ce-guide" aria-label="About exporting a selected area">i</a></p>
           <button type="button" id="exp-cell-json">Save this area (JSON)</button>
@@ -2728,11 +2752,14 @@ function setNote(id,patch){const cur=noteOf(id);const nxt={...cur,...patch,updat
 function fieldTag(p){const n=noteOf(p.id);if(!n.status)return '';return `<span class="fc-tag ${n.status}" title="Field check: ${FC_LABEL[n.status]}">${FC_LABEL[n.status].replace('Checked · ','')}</span>`;}
 function renderFieldCheck(p,ranked){
   const box=document.getElementById('d-field');if(!box)return;box.hidden=!ranked;if(!ranked)return;
-  const n=noteOf(p.id),s=document.getElementById('fc-status'),ta=document.getElementById('fc-note'),m=document.getElementById('fc-meta');
-  s.value=n.status||'';ta.value=n.note||'';
-  m.hidden=!n.updated;if(n.updated)m.textContent='Saved '+new Date(n.updated).toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'})+' in this browser only.';
-  s.onchange=()=>{setNote(p.id,{status:s.value});renderFieldCheck(p,true);buildRank();};
-  ta.oninput=()=>{setNote(p.id,{note:ta.value});const k=noteOf(p.id);m.hidden=!k.updated;if(k.updated)m.textContent='Saved just now, in this browser only.';};
+  const n=noteOf(p.id),ta=document.getElementById('fc-note'),m=document.getElementById('fc-meta'),pill=document.getElementById('fc-pill');
+  document.querySelectorAll('#fc-chips button').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.fc===n.status));
+    b.onclick=()=>{setNote(p.id,{status:b.dataset.fc===n.status?'':b.dataset.fc});renderFieldCheck(p,true);buildRank();};});
+  pill.textContent=n.status?(t=>t[0].toUpperCase()+t.slice(1))(FC_LABEL[n.status].replace('Checked · ','')):'Not checked yet';pill.className='fc-pill'+(n.status?' '+n.status:'');
+  if(ta.value!==n.note)ta.value=n.note;
+  m.hidden=!n.updated;if(n.updated)m.textContent=`Saved ${new Date(n.updated).toLocaleDateString()} · this browser only`;
+  if(n.status||n.note)box.open=true;   // an area with a record opens ready to read; a blank one stays folded
+  ta.oninput=()=>{setNote(p.id,{note:ta.value});const k=noteOf(p.id);m.hidden=!k.updated;if(k.updated)m.textContent='Saved just now · this browser only';};
 }
 function wireMobileView(){
   const seg=document.getElementById('mview');if(!seg)return;
