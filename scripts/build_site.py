@@ -33,8 +33,37 @@ def listed_cities():
     return re.findall(r"slug:'([a-z0-9-]+)'", text)
 
 
+def goatcounter_site() -> str:
+    """GoatCounter site code from site/goatcounter.txt (e.g. `coolequity` for
+    coolequity.goatcounter.com). Empty or missing file: no analytics is injected,
+    so a build never ships a tag that 404s. GoatCounter sets no cookies and keeps
+    no personal data, which is what the chooser's privacy note promises."""
+    f = ROOT / "site" / "goatcounter.txt"
+    code = f.read_text().strip() if f.exists() else ""
+    if code and not re.fullmatch(r"[a-z0-9-]+", code):
+        sys.exit(f"site/goatcounter.txt must hold a site code (letters, digits, hyphens), not {code!r}")
+    return code
+
+
+def inject_analytics(html_path: Path, code: str, note: bool = False) -> None:
+    """Add the GoatCounter tag before the first </head> (page-view counts only;
+    never events with area IDs or notes). `note` adds the visible sentence the
+    chooser's privacy paragraph reserves a marker for."""
+    text = html_path.read_text()
+    tag = (f'<script data-goatcounter="https://{code}.goatcounter.com/count" '
+           f'async src="//gc.zgo.at/count.js"></script>\n')
+    assert "</head>" in text, html_path
+    text = text.replace("</head>", tag + "</head>", 1)
+    if note:
+        text = text.replace("<!-- analytics-note -->",
+            f' Visits are counted anonymously with <a href="https://{code}.goatcounter.com">GoatCounter</a>'
+            ' (no cookies, no personal data, no cross-site tracking).', 1)
+    html_path.write_text(text)
+
+
 def build(out: Path) -> list[str]:
     slugs = listed_cities()
+    gc = goatcounter_site()
     folders = sorted(p.name for p in (ROOT / "cities").iterdir() if (p / "city.js").exists())
     if sorted(slugs) != folders:
         sys.exit(f"app/cities.js lists {sorted(slugs)} but cities/ has {folders}")
@@ -42,6 +71,8 @@ def build(out: Path) -> list[str]:
         shutil.rmtree(out)
     out.mkdir(parents=True)
     shutil.copy2(ROOT / "site" / "index.html", out / "index.html")
+    if gc:
+        inject_analytics(out / "index.html", gc, note=True)
     shutil.copytree(ROOT / "app" / "vendor", out / "vendor")
     (out / ".nojekyll").touch()   # Pages would otherwise drop underscore-prefixed paths
     for slug in slugs:
@@ -54,6 +85,9 @@ def build(out: Path) -> list[str]:
             (shutil.copytree if src.is_dir() else shutil.copy2)(src, app / name)
         for name in CITY_PAGES:
             shutil.copy2(city / name, app / name)
+        if gc:
+            for page in ("index.html", "guide.html", "cooling.html"):
+                inject_analytics(app / page, gc)
         declared = re.search(r"slug:'([a-z0-9-]+)'", (city / "city.js").read_text())
         if not declared or declared.group(1) != slug:
             sys.exit(f"cities/{slug}/city.js declares slug {declared and declared.group(1)!r}")

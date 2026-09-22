@@ -29,6 +29,11 @@ Task: apply the release-integrity findings of `reports/OUTREACH_READINESS_AUDIT_
 - Pushed by the owner as `efacd64`; CI test/deploy/smoke passed; live site checked.
 - Follow-up sweep: guides no longer describe the removed Simple/Explore modes; Pittsburg guide
   links to its own data and config instead of West County's. `scripts/test.sh` re-run.
+- GoatCounter wired into `scripts/build_site.py`: reads `site/goatcounter.txt`, injects the
+  tag before the first `</head>` of the chooser and each city's app, guide and cooling page, and
+  a visible sentence into the chooser's privacy note. File is committed empty; the owner signs
+  up at goatcounter.com, writes the code, pushes. Verified: 16 pages tagged with a test code,
+  none without.
 
 ## Checkpoint — September 13, 2026 (Claude): West Contra Costa build, county canopy recovery
 
