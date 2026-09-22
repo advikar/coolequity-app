@@ -873,7 +873,7 @@
             <button type="button" class="pst" data-f="green" title="Under 10% tree cover">Trees &lt; 10%</button>
             <button type="button" class="pst" data-f="age" title="At least 20% of residents aged 65 or older">Older 20%+</button>
             <button type="button" class="pst" data-f="scen" title="Only areas with mapped street capacity, so a planting scenario can be sized. Not a site survey.">Has street capacity</button>
-            <button type="button" class="pst" data-f="aerial" title="Only areas whose tree cover comes from the 2022 aerial assessment covering essentially the whole area; drops height-model, partly assessed and greenness stand-in areas">Full aerial tree data</button>
+            <button type="button" class="pst" data-f="aerial" title="Only areas whose tree cover comes from the 2022 aerial assessment covering at least 99% of the area; drops height-model, partly assessed and greenness stand-in areas. Coverage is not accuracy.">Aerial coverage ≥99%</button>
             <button type="button" class="pst" data-f="stable" title="Only areas that stay in the top tier in at least 80% of re-draws of census margins and weights (recommended mix)">Stable top tier</button>
           </div>
           <p id="rank-count" role="status"></p>
@@ -957,8 +957,8 @@
         </div>
         <div class="fbody" id="sec-export-body">
         <div class="export" id="list-export" aria-label="Save, share or open a scenario">
-          <button type="button" class="primary" id="exp-report" title="Map, top 25, shortlist, method and limits, laid out for Letter paper">Briefing report (PDF)</button>
-          <button type="button" id="exp-list-csv" title="Every ranked area with plain column names">Ranking (CSV)</button>
+          <button type="button" class="primary" id="exp-report" title="Opens a page laid out for Letter paper: map, top 25, shortlist, method and limits. Use Print, then Save as PDF">Printable briefing</button>
+          <button type="button" id="exp-list-csv" title="Every ranked area in this study area, whatever the list filter shows, with plain column names">All ranked areas (CSV)</button>
           <button type="button" id="exp-sl-csv" title="Starred areas only" disabled>Shortlist (CSV)</button>
           <button type="button" id="exp-area-csv" title="The selected area as one row" disabled>This area (CSV)</button>
           <p class="exp-sub">Scenario</p>
@@ -1884,14 +1884,15 @@ function wireDrawers(){
 }
 function wireFolds(){
   wireDrawers();
-  const FOLD_CLOSED_DEFAULT=new Set(['sec-layers','sec-sites','sec-export']);
+  const FOLD_CLOSED_DEFAULT=new Set(['weights','sec-layers','sec-sites','sec-export']);
   let saved={};try{saved=JSON.parse(localStorage.getItem('ce-folds')||'{}')||{};}catch(_){}
   document.querySelectorAll('.fold').forEach(sec=>{
     const btn=sec.querySelector('.fbtn'),key=sec.dataset.fold;if(!btn)return;
     const set=closed=>{sec.classList.toggle('closed',closed);btn.setAttribute('aria-expanded',!closed);};
-    // Priorities and the ranked list stay open; map colors, places to cool off
-    // and export start folded so the panel is short enough to read without
-    // scrolling on a laptop. A viewer's own choice, once made, wins.
+    // The ranked list stays open; priorities (their head names the mix in
+    // force), map colors, places to cool off and export start folded so the
+    // first ranked areas are visible without scrolling on a laptop. A viewer's
+    // own choice, once made, wins.
     set(key in saved?!!saved[key]:FOLD_CLOSED_DEFAULT.has(key));
     btn.onclick=()=>{const closed=!sec.classList.contains('closed');set(closed);saved[key]=closed;try{localStorage.setItem('ce-folds',JSON.stringify(saved));}catch(_){}};
   });
@@ -2613,7 +2614,7 @@ function buildMixBar(W){
   const on=W_INPUTS.filter(w=>W[w.k]>0.005);
   tr.innerHTML=on.map(w=>`<i style="width:${(W[w.k]*100).toFixed(1)}%;background:${w.swatch}" title="${w.label} ${Math.round(W[w.k]*100)}%"></i>`).join('');
   lg.innerHTML=on.map(w=>`<span><i style="background:${w.swatch}"></i>${w.label.replace(' (65+)','')} <b>${Math.round(W[w.k]*100)}%</b></span>`).join('')
-    +`<span class="mixpop"><i style="background:${POPU[7]}"></i>People <b>${Math.round(POPW*100)}%</b></span>`;
+    +`<span class="mixpop"><i style="background:${POPU[7]}"></i>Population <b>${Math.round(POPW*100)}%</b></span>`;
 }
 function contribBar(p){
   const W=normW();
@@ -2848,7 +2849,9 @@ function wireMobileView(){
   const set=v=>{app.classList.remove('mv-list','mv-map');if(v==='list'||v==='map')app.classList.add('mv-'+v);
     seg.querySelectorAll('button').forEach(b=>{const on=b.dataset.v===v;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});
     if(map)setTimeout(()=>map.resize(),60);};
-  let saved='both';try{saved=localStorage.getItem('ce-mview')||'both';}catch(_){}
+  // A phone starts on the list: half a screen of map plus a status chip is too little to use.
+  // The Map button is one tap away, and a viewer's own choice, once made, wins.
+  let saved='list';try{saved=localStorage.getItem('ce-mview')||'list';}catch(_){}
   set(saved);
   seg.querySelectorAll('button').forEach(b=>b.onclick=()=>{set(b.dataset.v);try{localStorage.setItem('ce-mview',b.dataset.v);}catch(_){}});
 }

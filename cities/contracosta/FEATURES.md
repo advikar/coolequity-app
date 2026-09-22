@@ -256,3 +256,13 @@ From `../coolequity/reports/REVIEW_READINESS_REAUDIT_2026-09-21.md`; every findi
 - **Analytics** tag is added by a guard that skips `?flat=1`, so the offline rehearsal makes no off-host request; the chooser's privacy sentence now says what GoatCounter records and links its policy.
 
 Left for later: the layout rearrangement and renames in finding 8 and the wording table (they touch presets, tests and every guide), a physical-phone pass, and a printed-PDF pass with 0/1/6 shortlisted areas.
+
+### First-use layout and labels — September 22, 2026
+
+The minimal part of re-audit finding 8 and its wording table, kept to what is clearly better:
+
+- Phones open on **List** (a saved choice still wins); Map and Both stay one tap away.
+- **What matters most** starts folded, its head naming the mix in force, so on a 1280×720 laptop the first ranked areas are on screen (verified: first row at 612 px; before, below the fold). A saved fold state wins.
+- Labels that misdescribed what they do: "Trees only" → **Fewest trees** (it still weights population; the explanation says so), "Full aerial tree data" → **Aerial coverage ≥99%** (what the filter tests; its title says coverage is not accuracy), "Briefing report (PDF)" → **Printable briefing** (it opens a page, then Print), "Ranking (CSV)" → **All ranked areas (CSV)** (the export ignores the list filter), mix-bar "People" → **Population**. Guides updated to match.
+
+Kept on purpose: the headline question, "Recommended mix", the walk labels (their tip already says hours and A/C are unverified). No data or scoring changed.

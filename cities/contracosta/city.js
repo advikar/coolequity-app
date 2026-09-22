@@ -54,8 +54,8 @@ window.CE_CITY={
   presets:[
   {id:'default',name:'Recommended mix',w:'default',pop:'default',
    why:'Mostly missing tree cover (55%), then homes without A/C (25%) and older residents (20%), adjusted for how many people live in each area.'},
-  {id:'canopy',name:'Trees only',w:{heat:0,green:1,ac:0,age65:0,access:0},pop:.45,
-   why:'Only tree cover and population. Ignores A/C and age.'},
+  {id:'canopy',name:'Fewest trees',w:{heat:0,green:1,ac:0,age65:0,access:0},pop:.45,
+   why:'Tree cover alone, adjusted for population. Ignores heat, A/C and age.'},
   {id:'heat',name:'Heat only',w:{heat:1,green:0,ac:0,age65:0,access:0},pop:.45,
    why:'Only ground heat and population. In this county that mostly shows distance from the Bay, not a shade problem.'},
   {id:'seniors',name:'Older residents',w:{heat:0,green:.35,ac:.15,age65:.50,access:0},pop:.45,

@@ -269,3 +269,12 @@ under `?flat=1`, privacy sentence made precise. Left for later: UI rearrangement
 (finding 8 and the wording table), physical-phone and print-PDF passes.
 
 Done and tested (`scripts/test.sh`, all cities; browser: contrast, Tab loop, cost-only warning, `?flat=1` off-host check). See `cities/contracosta/FEATURES.md` for the itemised list. To re-run sensitivity after any re-score: `COOLEQUITY_CITY=<slug> .venv/bin/python pipeline/05b_stability.py`, then paste the median band / top-tier share from `reports/stability_<slug>.json` into that guide's `#stability` topic (prose, not generated). Column keys: `python3 scripts/sync_column_key.py` after any `FIELD_KEY` edit.
+
+## Checkpoint, September 22, 2026 (re-audit finding 8 + wording, minimal, done)
+
+Phones default to List (a saved choice still wins); "What matters most" starts folded so the ranked
+areas sit above the fold on a laptop (its head still says which mix is in force; a saved fold state
+wins); labels that misdescribed what they do renamed: "Trees only" → "Fewest trees", "Full aerial
+tree data" → "Aerial coverage ≥99%", "Briefing report (PDF)" → "Printable briefing", "Ranking (CSV)"
+→ "All ranked areas (CSV)", mix bar "People" → "Population". Guides follow. Headline, walk labels
+and "Recommended mix" kept on purpose.

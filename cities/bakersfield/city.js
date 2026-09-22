@@ -38,8 +38,8 @@ window.CE_CITY={
   presets:[
   {id:'default',name:'Recommended mix',w:'default',pop:'default',
    why:'Ground heat (45%), missing tree cover (35%) and older residents (20%), adjusted for how many people live in each area. A/C is not scored: nearly every home here has it.'},
-  {id:'canopy',name:'Trees only',w:{heat:0,green:1,ac:0,age65:0,access:0},pop:.45,
-   why:'Only tree cover and population. Ignores heat and age.'},
+  {id:'canopy',name:'Fewest trees',w:{heat:0,green:1,ac:0,age65:0,access:0},pop:.45,
+   why:'Tree cover alone, adjusted for population. Ignores heat and age.'},
   {id:'heat',name:'Heat first',w:{heat:.70,green:.15,ac:.10,age65:.05,access:0},pop:.45,
    why:'Mostly ground heat. Bakersfield is one valley climate, so a hotter area really is a hotter place to live.'},
   {id:'seniors',name:'Older residents',w:{heat:.25,green:.15,ac:.15,age65:.45,access:0},pop:.45,
