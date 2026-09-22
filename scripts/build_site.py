@@ -15,6 +15,7 @@ test locally is what deploys. Standard library only.
 """
 import argparse
 import http.server
+import os
 import re
 import shutil
 import sys
@@ -50,14 +51,19 @@ def inject_analytics(html_path: Path, code: str, note: bool = False) -> None:
     never events with area IDs or notes). `note` adds the visible sentence the
     chooser's privacy paragraph reserves a marker for."""
     text = html_path.read_text()
-    tag = (f'<script data-goatcounter="https://{code}.goatcounter.com/count" '
-           f'async src="//gc.zgo.at/count.js"></script>\n')
+    # ?flat=1 is the offline rehearsal: it must make no off-host request, so the
+    # tag is added by a guard that skips it there. Page views only, no events.
+    tag = ('<script>if(!/[?&]flat=1(&|$)/.test(location.search)){var s=document.createElement("script");'
+           f's.async=true;s.dataset.goatcounter="https://{code}.goatcounter.com/count";'
+           's.src="https://gc.zgo.at/count.js";document.head.appendChild(s);}</script>\n')
     assert "</head>" in text, html_path
     text = text.replace("</head>", tag + "</head>", 1)
     if note:
         text = text.replace("<!-- analytics-note -->",
-            f' Visits are counted anonymously with <a href="https://{code}.goatcounter.com">GoatCounter</a>'
-            ' (no cookies, no personal data, no cross-site tracking).', 1)
+            f' Page views are counted with <a href="https://{code}.goatcounter.com">GoatCounter</a>: no cookies and'
+            ' no cross-site tracking; it records the page, referrer, browser type, screen size and country in'
+            ' aggregate (<a href="https://www.goatcounter.com/help/privacy">its privacy policy</a>). Nothing you'
+            ' type or star on a map is sent anywhere.', 1)
     html_path.write_text(text)
 
 
@@ -73,6 +79,10 @@ def build(out: Path) -> list[str]:
     shutil.copy2(ROOT / "site" / "index.html", out / "index.html")
     if gc:
         inject_analytics(out / "index.html", gc, note=True)
+    rel = os.environ.get("CE_RELEASE", "").strip()
+    if rel:   # CI passes the commit; the smoke step looks for it so an old release cannot pass as new
+        idx = out / "index.html"
+        idx.write_text(idx.read_text().replace("</head>", f'<meta name="ce-release" content="{rel}">\n</head>', 1))
     shutil.copytree(ROOT / "app" / "vendor", out / "vendor")
     (out / ".nojekyll").touch()   # Pages would otherwise drop underscore-prefixed paths
     for slug in slugs:

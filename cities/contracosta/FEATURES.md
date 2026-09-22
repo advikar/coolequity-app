@@ -240,3 +240,19 @@ Two of this session's own edits shipped syntax errors that made the **SR and LA 
 ### Validation — September 8, 2026
 
 Contra Costa branch only: seven Python tests and 11,436 scenario checks passed, including partial-baseline behavior and capacity bounds. Browser checks confirmed the conditional scenario and searchable 17-location county directory; the final directory layout was visually inspected. Changes remain local and unpublished.
+
+
+### Re-audit fixes — September 21, 2026 (evening)
+
+From `../coolequity/reports/REVIEW_READINESS_REAUDIT_2026-09-21.md`; every finding re-verified before editing.
+
+- **Release.** `site/goatcounter.txt` is `coolequity` again (a literal `YOUR-CODE` had been committed and failed the build). The build stamps `<meta name="ce-release">` with `CE_RELEASE` (CI passes the commit) and the smoke job now fails unless the live chooser carries that commit, so an older release answering 200 no longer passes.
+- **Rank sensitivity.** `05b_stability.py` started from the published, already-smoothed age share and smoothed it again. It now reads the raw census share, re-draws it, and smooths once, exactly as 05 does; it aborts if the once-smoothed raw share does not reproduce the published `pct65`. All five builds re-run (bands, top-tier shares, `reports/stability_*.json`, guide numbers); `dataVersion` is `20260921-stability` everywhere. Point ranks unchanged.
+- **Save protection.** `isDirty()` compares a signature (weights, population weight, planting shares the user moved or a file supplied, cost, survival) against the state last saved to or loaded from a file, or the defaults. Cost-only and survival-only edits now warn; a saved or freshly loaded scenario does not; opening an area does not. Reset returns to a clean state. Contract test covers each case.
+- **Accessibility.** Light theme: `.explain .why` uses `--why` (#8a4b00, 6.4:1 on the card; was 1.6:1) and field-status pills get dark ink. Both modals keep Tab and Shift+Tab inside, Escape closes, and focus returns to the control that opened them (Reset map or Home).
+- **Export docs.** `scripts/sync_column_key.py` regenerates every guide's Column key from `FIELD_KEY`; `scripts/test.sh` fails if a guide is stale. `tree_cover_source_type` now says canopy covers aerial, calibrated height-model and lidar paths.
+- **Compare table** labels the band "Likely rank (rec. mix)" like the briefing table.
+- **Briefing** lede names the inputs that actually carry weight (and those at zero); the toolbar no longer promises a fixed page count.
+- **Analytics** tag is added by a guard that skips `?flat=1`, so the offline rehearsal makes no off-host request; the chooser's privacy sentence now says what GoatCounter records and links its policy.
+
+Left for later: the layout rearrangement and renames in finding 8 and the wording table (they touch presets, tests and every guide), a physical-phone pass, and a printed-PDF pass with 0/1/6 shortlisted areas.

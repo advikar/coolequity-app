@@ -3,26 +3,26 @@
  "draws": 300,
  "ranked": 3767,
  "top_tier_n": 377,
- "median_band_width": 444.45000000000056,
- "p90_band_width": 1123.9,
- "share_band_within_10pct_of_list": 0.41491903371383065,
- "point_top_tier_always_top_tier": 0.3687002652519894,
- "point_top_tier_usually_top_tier": 0.6339522546419099,
+ "median_band_width": 436.25,
+ "p90_band_width": 1110.1600000000003,
+ "share_band_within_10pct_of_list": 0.42686487921422883,
+ "point_top_tier_always_top_tier": 0.3660477453580902,
+ "point_top_tier_usually_top_tier": 0.6392572944297082,
  "top25_point": [
   {
    "id": 2223,
    "name": "Village at Lakeside E 7",
    "rank": 1,
    "rank_lo": 1,
-   "rank_hi": 29,
+   "rank_hi": 27,
    "top_share": 1.0
   },
   {
    "id": 2744,
    "name": "Coventry Place Apartments W 12",
    "rank": 2,
-   "rank_lo": 1,
-   "rank_hi": 56,
+   "rank_lo": 2,
+   "rank_hi": 53,
    "top_share": 1.0
   },
   {
@@ -30,7 +30,7 @@
    "name": "Bakersfield S 3",
    "rank": 3,
    "rank_lo": 1,
-   "rank_hi": 27,
+   "rank_hi": 29,
    "top_share": 1.0
   },
   {
@@ -38,7 +38,7 @@
    "name": "Coventry Place Apartments SW",
    "rank": 4,
    "rank_lo": 2,
-   "rank_hi": 90,
+   "rank_hi": 88,
    "top_share": 0.997
   },
   {
@@ -46,7 +46,7 @@
    "name": "Coventry Place Apartments SW 12",
    "rank": 5,
    "rank_lo": 2,
-   "rank_hi": 82,
+   "rank_hi": 84,
    "top_share": 1.0
   },
   {
@@ -54,15 +54,15 @@
    "name": "Village at Lakeside NE 44",
    "rank": 6,
    "rank_lo": 2,
-   "rank_hi": 171,
+   "rank_hi": 182,
    "top_share": 0.99
   },
   {
    "id": 2634,
    "name": "Bakersfield S 5",
    "rank": 7,
-   "rank_lo": 2,
-   "rank_hi": 23,
+   "rank_lo": 3,
+   "rank_hi": 22,
    "top_share": 1.0
   },
   {
@@ -70,15 +70,15 @@
    "name": "Village at Lakeside NE 54",
    "rank": 8,
    "rank_lo": 3,
-   "rank_hi": 162,
+   "rank_hi": 173,
    "top_share": 0.987
   },
   {
    "id": 2746,
    "name": "Coventry Place Apartments SW 17",
    "rank": 9,
-   "rank_lo": 3,
-   "rank_hi": 145,
+   "rank_lo": 4,
+   "rank_hi": 157,
    "top_share": 1.0
   },
   {
@@ -86,15 +86,15 @@
    "name": "Village at Lakeside W 35",
    "rank": 10,
    "rank_lo": 3,
-   "rank_hi": 458,
-   "top_share": 0.927
+   "rank_hi": 473,
+   "top_share": 0.933
   },
   {
    "id": 2554,
    "name": "Coventry Place Apartments NW 20",
    "rank": 11,
-   "rank_lo": 2,
-   "rank_hi": 32,
+   "rank_lo": 3,
+   "rank_hi": 23,
    "top_share": 1.0
   },
   {
@@ -102,7 +102,7 @@
    "name": "Crestview Meadows SW 45",
    "rank": 12,
    "rank_lo": 4,
-   "rank_hi": 149,
+   "rank_hi": 147,
    "top_share": 1.0
   },
   {
@@ -110,103 +110,103 @@
    "name": "Coventry Place Apartments W 17",
    "rank": 13,
    "rank_lo": 1,
-   "rank_hi": 89,
+   "rank_hi": 94,
    "top_share": 0.997
   },
   {
    "id": 1804,
    "name": "Crestview Meadows",
    "rank": 14,
-   "rank_lo": 7,
-   "rank_hi": 418,
-   "top_share": 0.94
+   "rank_lo": 8,
+   "rank_hi": 465,
+   "top_share": 0.917
   },
   {
    "id": 1405,
    "name": "Bakersfield E 38",
    "rank": 15,
-   "rank_lo": 3,
-   "rank_hi": 122,
+   "rank_lo": 5,
+   "rank_hi": 120,
    "top_share": 0.997
   },
   {
    "id": 1422,
    "name": "Bakersfield E 39",
    "rank": 16,
-   "rank_lo": 5,
-   "rank_hi": 87,
+   "rank_lo": 7,
+   "rank_hi": 84,
    "top_share": 1.0
   },
   {
    "id": 2285,
    "name": "Village at Lakeside N 15",
    "rank": 17,
-   "rank_lo": 8,
-   "rank_hi": 157,
-   "top_share": 0.997
+   "rank_lo": 9,
+   "rank_hi": 143,
+   "top_share": 0.993
   },
   {
    "id": 1605,
    "name": "Bakersfield SE 13",
    "rank": 18,
-   "rank_lo": 8,
-   "rank_hi": 211,
+   "rank_lo": 9,
+   "rank_hi": 205,
    "top_share": 0.987
   },
   {
    "id": 3612,
    "name": "Breakwater Apartments E 3",
    "rank": 19,
-   "rank_lo": 10,
-   "rank_hi": 133,
+   "rank_lo": 13,
+   "rank_hi": 134,
    "top_share": 1.0
   },
   {
    "id": 971,
    "name": "Village at Lakeside W 37",
    "rank": 20,
-   "rank_lo": 14,
-   "rank_hi": 382,
-   "top_share": 0.947
+   "rank_lo": 13,
+   "rank_hi": 362,
+   "top_share": 0.95
   },
   {
    "id": 369,
    "name": "Park Square Apartments S 23",
    "rank": 21,
-   "rank_lo": 3,
-   "rank_hi": 203,
+   "rank_lo": 4,
+   "rank_hi": 221,
    "top_share": 1.0
   },
   {
    "id": 2226,
    "name": "Village at Lakeside NE 9",
    "rank": 22,
-   "rank_lo": 6,
-   "rank_hi": 128,
+   "rank_lo": 7,
+   "rank_hi": 120,
    "top_share": 1.0
   },
   {
    "id": 2636,
    "name": "Bakersfield SE 4",
    "rank": 23,
-   "rank_lo": 3,
-   "rank_hi": 69,
+   "rank_lo": 5,
+   "rank_hi": 63,
    "top_share": 1.0
   },
   {
    "id": 2735,
    "name": "Coventry Place Apartments NW 12",
    "rank": 24,
-   "rank_lo": 16,
-   "rank_hi": 188,
-   "top_share": 1.0
+   "rank_lo": 17,
+   "rank_hi": 191,
+   "top_share": 0.997
   },
   {
    "id": 804,
    "name": "Village at Lakeside W 24",
    "rank": 25,
-   "rank_lo": 11,
-   "rank_hi": 217,
+   "rank_lo": 13,
+   "rank_hi": 216,
    "top_share": 0.993
   }
  ]

@@ -23,7 +23,7 @@ window.CE_CITY={
   name:"San Ramon",
   possessive:"San Ramon’s",   // "Built for …’s urban forestry, climate and public works teams"
   scope:'city',                         // "relative within this city"
-  dataVersion:'20260913-stability',
+  dataVersion:'20260921-stability',
   // How 03_census.py placed residents in this build (guide.html says why); the briefing's source table reads it.
   popAllocation:'dasymetric',
   centersVersion:'20260908-ehsd',

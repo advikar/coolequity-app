@@ -24,7 +24,7 @@ window.CE_CITY={
   name:"Bakersfield",
   possessive:"Bakersfield’s",   // "Built for …’s urban forestry, climate and public works teams"
   scope:'city',                         // "relative within this city"
-  dataVersion:'20260913-stability',
+  dataVersion:'20260921-stability',
   // How 03_census.py placed residents in this build (guide.html says why); the briefing's source table reads it.
   popAllocation:'area',
   centersVersion:'20260908-kern',

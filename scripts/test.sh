@@ -13,6 +13,7 @@ if [ ${#CITIES[@]} -eq 0 ]; then
 fi
 
 node tests/ui-contract.cjs "${CITIES[@]}"
+python3 scripts/sync_column_key.py --check
 for city in "${CITIES[@]}"; do
   echo; echo "== pipeline data contracts: $city"
   COOLEQUITY_CITY="$city" "$PY" -m unittest discover -s tests -p 'test_*.py'

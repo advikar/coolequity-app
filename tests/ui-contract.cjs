@@ -95,6 +95,16 @@ const directory=fs.readFileSync(`cities/${slug}/cooling.html`,'utf8');for(const 
   ex.LIVE.order=res;
   const cell=res.find(f=>f.properties.scenario_ok)||res[0];
   ex.cellId=cell.properties.id;vm.runInContext('plantingShares.set(cellId,50)',ex);
+  // save protection: nothing is dirty at the defaults; a cost-only edit, a survival-only edit and a share the user moved each are; saving or resetting clears it
+  vm.runInContext('markSaved()',ex);
+  assert.equal(vm.runInContext('isDirty()',ex),false,'defaults are not dirty');
+  assert.equal(vm.runInContext('plantingShares.set(cellId,80);isDirty()',ex),false,'opening a cell (share recorded, not moved) is not dirty');
+  assert.equal(vm.runInContext('COST_TREE=2000;isDirty()',ex),true,'cost-only edit is dirty');
+  assert.equal(vm.runInContext('markSaved();isDirty()',ex),false,'saved state is clean');
+  assert.equal(vm.runInContext('SURVIVAL=50;isDirty()',ex),true,'survival-only edit is dirty');
+  vm.runInContext('SURVIVAL=70;COST_TREE=500;plantingShares.clear();markSaved()',ex);
+  assert.equal(vm.runInContext('userShares.add(cellId);plantingShares.set(cellId,80);isDirty()',ex),true,'a share the user moved is dirty');
+  vm.runInContext('plantingShares.clear();userShares.clear();plantingShares.set(cellId,50);markSaved()',ex);
   const header=vm.runInContext('exportHeader()',ex);
   assert.equal(header.export_schema,1);assert.equal(header.dataset.cells,data.features.length);assert.equal(header.dataset.ranked_cells,res.length);
   assert.deepEqual(Object.keys(header.weights),['heat','green','ac','age65','access']);
@@ -115,6 +125,7 @@ const directory=fs.readFileSync(`cities/${slug}/cooling.html`,'utf8');for(const 
   for(const line of csv.slice(1))assert.equal(line.split(',').length,cols.length,'CSV column count');
   ex.doc={...header,kind:'ranked-list',cells:ex.recs};
   assert.equal(vm.runInContext('loadScenario(doc).ok',ex),true);
+  assert.equal(vm.runInContext('isDirty()',ex),false,'a freshly loaded file is the saved state');assert.equal(vm.runInContext('COST_TREE=COST_TREE+1;isDirty()',ex),true,'an edit after loading is dirty');vm.runInContext('COST_TREE=COST_TREE-1;markSaved()',ex);
   ex.bad={...header,city_slug:'elsewhere'};assert.equal(vm.runInContext('loadScenario(bad).ok',ex),false);
   ex.old={...header,export_schema:0};assert.equal(vm.runInContext('loadScenario(old).ok',ex),false);
   assert.equal(vm.runInContext('plantingShares.get(cellP.id)',ex),50);

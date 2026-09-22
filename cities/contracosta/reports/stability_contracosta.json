@@ -3,11 +3,11 @@
  "draws": 300,
  "ranked": 2697,
  "top_tier_n": 270,
- "median_band_width": 220.20000000000002,
- "p90_band_width": 595.8400000000001,
- "share_band_within_10pct_of_list": 0.599925843529848,
+ "median_band_width": 222.20000000000027,
+ "p90_band_width": 594.0500000000002,
+ "share_band_within_10pct_of_list": 0.5839822024471635,
  "point_top_tier_always_top_tier": 0.6111111111111112,
- "point_top_tier_usually_top_tier": 0.7666666666666667,
+ "point_top_tier_usually_top_tier": 0.7703703703703704,
  "top25_point": [
   {
    "id": 641,
@@ -38,7 +38,7 @@
    "name": "Richmond N",
    "rank": 4,
    "rank_lo": 1,
-   "rank_hi": 11,
+   "rank_hi": 10,
    "top_share": 1.0
   },
   {
@@ -93,7 +93,7 @@
    "id": 638,
    "name": "Richmond NE",
    "rank": 11,
-   "rank_lo": 3,
+   "rank_lo": 4,
    "rank_hi": 15,
    "top_share": 1.0
   },
@@ -109,7 +109,7 @@
    "id": 614,
    "name": "San Pablo SE",
    "rank": 13,
-   "rank_lo": 4,
+   "rank_lo": 5,
    "rank_hi": 22,
    "top_share": 1.0
   },
@@ -125,7 +125,7 @@
    "id": 640,
    "name": "East Richmond NW",
    "rank": 15,
-   "rank_lo": 5,
+   "rank_lo": 6,
    "rank_hi": 21,
    "top_share": 1.0
   },
@@ -133,8 +133,8 @@
    "id": 830,
    "name": "Idaho Apartments",
    "rank": 16,
-   "rank_lo": 8,
-   "rank_hi": 20,
+   "rank_lo": 9,
+   "rank_hi": 19,
    "top_share": 1.0
   },
   {
@@ -189,7 +189,7 @@
    "id": 855,
    "name": "Rose Park",
    "rank": 23,
-   "rank_lo": 18,
+   "rank_lo": 19,
    "rank_hi": 27,
    "top_share": 1.0
   },

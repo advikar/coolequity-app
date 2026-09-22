@@ -3,10 +3,10 @@
  "draws": 300,
  "ranked": 570,
  "top_tier_n": 57,
- "median_band_width": 126.15000000000003,
- "p90_band_width": 245.38500000000002,
- "share_band_within_10pct_of_list": 0.12456140350877193,
- "point_top_tier_always_top_tier": 0.22807017543859648,
+ "median_band_width": 124.12500000000003,
+ "p90_band_width": 248.20500000000004,
+ "share_band_within_10pct_of_list": 0.12280701754385964,
+ "point_top_tier_always_top_tier": 0.2631578947368421,
  "point_top_tier_usually_top_tier": 0.5263157894736842,
  "top25_point": [
   {
@@ -14,23 +14,23 @@
    "name": "Pittsburg SE",
    "rank": 1,
    "rank_lo": 1,
-   "rank_hi": 65,
-   "top_share": 0.933
+   "rank_hi": 56,
+   "top_share": 0.953
   },
   {
    "id": 752,
    "name": "Pittsburg NE",
    "rank": 2,
    "rank_lo": 2,
-   "rank_hi": 90,
-   "top_share": 0.877
+   "rank_hi": 81,
+   "top_share": 0.897
   },
   {
    "id": 622,
    "name": "Beacon Villa W 4",
    "rank": 3,
    "rank_lo": 1,
-   "rank_hi": 19,
+   "rank_hi": 20,
    "top_share": 1.0
   },
   {
@@ -38,15 +38,15 @@
    "name": "Woodland Hills Apartment Homes N 6",
    "rank": 4,
    "rank_lo": 2,
-   "rank_hi": 41,
-   "top_share": 0.987
+   "rank_hi": 40,
+   "top_share": 0.983
   },
   {
    "id": 100,
    "name": "Fair Hill Mobile Home Park",
    "rank": 5,
    "rank_lo": 1,
-   "rank_hi": 39,
+   "rank_hi": 41,
    "top_share": 0.987
   },
   {
@@ -54,39 +54,39 @@
    "name": "Fox Creek Apartments",
    "rank": 6,
    "rank_lo": 4,
-   "rank_hi": 73,
-   "top_share": 0.89
+   "rank_hi": 69,
+   "top_share": 0.917
   },
   {
    "id": 653,
    "name": "River View Mobile Home Park SE 7",
    "rank": 7,
    "rank_lo": 2,
-   "rank_hi": 20,
-   "top_share": 0.997
+   "rank_hi": 22,
+   "top_share": 1.0
   },
   {
    "id": 381,
    "name": "Crestview Apartments NW 3",
    "rank": 8,
    "rank_lo": 1,
-   "rank_hi": 33,
+   "rank_hi": 35,
    "top_share": 0.997
   },
   {
    "id": 409,
    "name": "Woodland Hills Apartment Homes N 7",
    "rank": 9,
-   "rank_lo": 4,
-   "rank_hi": 40,
-   "top_share": 0.987
+   "rank_lo": 3,
+   "rank_hi": 37,
+   "top_share": 0.99
   },
   {
    "id": 628,
    "name": "Beacon Villa SW 2",
    "rank": 10,
    "rank_lo": 2,
-   "rank_hi": 36,
+   "rank_hi": 35,
    "top_share": 0.987
   },
   {
@@ -94,56 +94,56 @@
    "name": "Delta Hawaii S 2",
    "rank": 11,
    "rank_lo": 2,
-   "rank_hi": 98,
-   "top_share": 0.79
+   "rank_hi": 91,
+   "top_share": 0.83
   },
   {
    "id": 421,
    "name": "Delta Hawaii NE",
    "rank": 12,
-   "rank_lo": 3,
-   "rank_hi": 154,
-   "top_share": 0.67
+   "rank_lo": 2,
+   "rank_hi": 145,
+   "top_share": 0.707
   },
   {
    "id": 385,
    "name": "Crestview Apartments NW 2",
    "rank": 13,
    "rank_lo": 4,
-   "rank_hi": 45,
-   "top_share": 0.977
+   "rank_hi": 46,
+   "top_share": 0.98
   },
   {
    "id": 623,
    "name": "River View Mobile Home Park E 4",
    "rank": 14,
    "rank_lo": 3,
-   "rank_hi": 46,
-   "top_share": 0.98
+   "rank_hi": 44,
+   "top_share": 0.983
   },
   {
    "id": 413,
    "name": "Woodland Hills Apartment Homes N 4",
    "rank": 15,
-   "rank_lo": 5,
-   "rank_hi": 86,
-   "top_share": 0.847
+   "rank_lo": 6,
+   "rank_hi": 79,
+   "top_share": 0.87
   },
   {
    "id": 360,
    "name": "Delta Hawaii SE 2",
    "rank": 16,
    "rank_lo": 1,
-   "rank_hi": 68,
-   "top_share": 0.927
+   "rank_hi": 61,
+   "top_share": 0.94
   },
   {
    "id": 257,
    "name": "Deanza Apartments",
    "rank": 17,
    "rank_lo": 6,
-   "rank_hi": 82,
-   "top_share": 0.827
+   "rank_hi": 78,
+   "top_share": 0.84
   },
   {
    "id": 624,
@@ -157,57 +157,57 @@
    "id": 66,
    "name": "Woodland Hills Apartment Homes NW 5",
    "rank": 19,
-   "rank_lo": 13,
-   "rank_hi": 59,
-   "top_share": 0.943
+   "rank_lo": 12,
+   "rank_hi": 54,
+   "top_share": 0.957
   },
   {
    "id": 627,
    "name": "River View Mobile Home Park E 6",
    "rank": 20,
-   "rank_lo": 6,
+   "rank_lo": 5,
    "rank_hi": 45,
-   "top_share": 0.983
+   "top_share": 0.98
   },
   {
    "id": 654,
    "name": "Woodland Hills Apartment Homes N 8",
    "rank": 21,
-   "rank_lo": 13,
-   "rank_hi": 43,
-   "top_share": 0.993
+   "rank_lo": 12,
+   "rank_hi": 41,
+   "top_share": 0.997
   },
   {
    "id": 403,
    "name": "Cornerstone Apartments",
    "rank": 22,
    "rank_lo": 4,
-   "rank_hi": 81,
-   "top_share": 0.813
+   "rank_hi": 77,
+   "top_share": 0.823
   },
   {
    "id": 386,
    "name": "Crestview Apartments N",
    "rank": 23,
    "rank_lo": 9,
-   "rank_hi": 85,
-   "top_share": 0.827
+   "rank_hi": 83,
+   "top_share": 0.823
   },
   {
    "id": 400,
    "name": "Pittsburg S 2",
    "rank": 24,
    "rank_lo": 2,
-   "rank_hi": 68,
-   "top_share": 0.913
+   "rank_hi": 74,
+   "top_share": 0.893
   },
   {
    "id": 374,
    "name": "Crestview Apartments",
    "rank": 25,
    "rank_lo": 7,
-   "rank_hi": 121,
-   "top_share": 0.707
+   "rank_hi": 118,
+   "top_share": 0.727
   }
  ]
 }

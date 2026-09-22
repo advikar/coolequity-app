@@ -136,7 +136,8 @@ older global scene cap) and `DASY_MAX_INCOME_BIAS = 3.0` (evidence in its `confi
 
 **Analytics.** Optional, off by default. Put a GoatCounter site code in `site/goatcounter.txt`
 (the `coolequity` in `coolequity.goatcounter.com`) and the build tags every page with its
-cookieless page-view counter and adds one sentence to the chooser's privacy note. Page views only:
+cookieless page-view counter and adds one sentence to the chooser's privacy note. The tag is
+skipped under `?flat=1`, so the offline rehearsal still makes no off-host request. Page views only:
 never send events carrying area IDs, notes or shortlists, which would break that note.
 
 An independent student project, not a city or county product, and not reviewed by any city or

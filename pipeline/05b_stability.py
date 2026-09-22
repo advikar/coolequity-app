@@ -35,7 +35,7 @@ from that module so the two cannot drift apart.
 
     COOLEQUITY_CITY=westcc python pipeline/05b_stability.py [--draws 300]
 
-Reads:  data/<slug>.geojson, data/grid_<slug>.geojson, data/census_<slug>.csv,
+Reads:  data/<slug>.geojson, data/grid_<slug>.geojson, data/census_<slug>.csv (raw pct65),
         data/acs_<slug>.csv, _cache/bg_<year>_06.zip, _cache/ac_src/LACE_23_Tract.csv
 Writes: data/<slug>.geojson (in place, three properties added, metadata.stability)
         reports/stability_<slug>.json
@@ -141,7 +141,20 @@ def main():
         f"A/C {np.nanmedian(ac_m[ac_ok]/ac_e[ac_ok])*100:.0f}% of the estimate")
 
     base_pop = props["pop"].to_numpy(float)
-    base_p65 = props["pct65"].to_numpy(float)   # published (shrunk) share, %
+    # The published pct65 is already smoothed by 05 (shrink_age65). Start each
+    # draw from the RAW census share so the draw is smoothed exactly once, as
+    # the point model is; smoothing the smoothed value again pulled small-
+    # population cells further toward the citywide rate than 05 ever does.
+    grid_props = pd.DataFrame([f["properties"] for f in json.loads(C.GRID_FILE.read_text())["features"]])[["id", "h3"]]
+    raw = grid_props.merge(pd.read_csv(C.CENSUS_CSV)[["h3", "pct65"]], on="h3", how="left").set_index("id")["pct65"]
+    base_p65 = raw.reindex(props["id"].astype(int)).fillna(0.0).to_numpy(float)   # raw share, %
+    chk = S.shrink_age65(pd.Series(base_pop), pd.Series(base_p65)).round(1).to_numpy()
+    pub = props["pct65"].to_numpy(float)
+    bad = np.abs(chk - pub) > 0.15
+    if bad.any():
+        raise SystemExit(f"raw pct65 smoothed once does not reproduce the published share for {int(bad.sum())} cells "
+                         f"(max gap {np.nanmax(np.abs(chk - pub)):.2f}); rebuild 05 first")
+    log(f"  age share: raw census share smoothed once reproduces the published pct65 (max gap {np.nanmax(np.abs(chk-pub)):.2f})")
     base_ac = props["ac"].to_numpy(float)
     lst = props["lst"].to_numpy(float)
     green = props["green"].to_numpy(float)
@@ -195,6 +208,7 @@ def main():
         "varied": "ACS block-group population and residents 65+ within 90% MOE (overlap-weighted, correlated across cells); "
                   "LACE tract A/C within 90% MOE; non-zero weights ±0.10 renormalised; population slope ±0.10",
         "held_fixed": "surface temperature, tree cover, walking time, within-block-group allocation",
+        "age_share": "raw census share re-drawn, then shrink_age65 once (as 05)",
         "computed": time.strftime("%Y-%m-%d"),
     }
     C.OUT_FILE.write_text(json.dumps(doc))

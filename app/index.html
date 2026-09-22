@@ -416,9 +416,11 @@
   .fieldcheck textarea{width:100%;box-sizing:border-box;margin-top:8px;font:inherit;font-size:12.5px;color:var(--txt);background:var(--c-field,#0f151d);border:1px solid var(--edge);border-radius:8px;padding:7px 9px;resize:vertical;min-height:44px}
   .fc-meta{color:var(--good)}
   html[data-theme=light] .fieldcheck{background:var(--c-card)}
+  /* field-status pills: dark ink on tinted chips in light mode (the dark-mode pastels are ~1.3:1 on a light card) */
+  html[data-theme=light] .fc-pill.visit,html[data-theme=light] .fc-tag.visit{color:#1d4ed8}html[data-theme=light] .fc-pill.feasible,html[data-theme=light] .fc-pill.planted,html[data-theme=light] .fc-tag.feasible,html[data-theme=light] .fc-tag.planted{color:#166534}html[data-theme=light] .fc-pill.not,html[data-theme=light] .fc-tag.not{color:#b91c1c}html[data-theme=light] .fc-pill.partly,html[data-theme=light] .fc-tag.partly{color:#9a3412}
   .fc-tag{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:6px;font-size:10px;font-weight:600;letter-spacing:.02em;vertical-align:middle;background:rgba(255,255,255,.08);color:var(--muted)}.fc-tag.feasible,.fc-tag.planted{background:rgba(74,222,128,.16);color:#8ef0b0}.fc-tag.not{background:rgba(248,113,113,.16);color:#ffb3b3}.fc-tag.partly{background:rgba(255,179,90,.16);color:#ffd28c}
   .explain b{color:var(--txt);font-weight:650}
-  .explain .why{color:var(--accent2);font-weight:600}
+  .explain .why{color:var(--why,var(--accent2));font-weight:600}
   /* ---- first-run coach card ---- */
   #coach{position:absolute;left:50%;top:16px;transform:translateX(-50%);z-index:40;
     max-width:430px;width:calc(100% - 36px);background:var(--panel);border:1px solid var(--edge2);
@@ -693,6 +695,7 @@
   html[data-theme=light]{
     --bg:#eef1f5;--panel:#ffffff;--panel2:#f6f8fa;--edge:#dfe4ea;--edge2:#c6ced8;
     --txt:#141a21;--muted:#4a5663;--muted2:#5b6774;--shadow:0 18px 50px rgba(20,30,40,.18);
+    --why:#8a4b00;   /* 6.4:1 on the light card; the yellow accent is 1.6:1 there */
     --c-hover:#f1f4f8;--c-field:#f6f8fa;--c-btn:#eef1f5;--c-btnedge:#b9c3ce;--c-track:#e3e8ee;--c-card:#f6f8fa;--c-link:#8a4b00;--c-up:#177a45;--c-dn:#a83a1e;--c-glass:rgba(255,255,255,.92)}
   html[data-theme=light] #panel{background:var(--panel)}
   html[data-theme=light] .seg,html[data-theme=light] .home,html[data-theme=light] .cityselect,html[data-theme=light] .pst,html[data-theme=light] .pwhy,html[data-theme=light] .layer,html[data-theme=light] .mixbar,html[data-theme=light] .explain,html[data-theme=light] .drivers,html[data-theme=light] .roi-feas,html[data-theme=light] .sortsel,html[data-theme=light] .cityinfo,html[data-theme=light] .tip{background:var(--c-field)}
@@ -1585,7 +1588,7 @@ const FIELD_KEY={
   lst_c:['surface_heat_c','Summer land-surface temperature, °C (satellite)'],
   canopy_pct:['tree_cover_pct','Tree cover, % of assessed land; empty where only satellite greenness is available'],
   greenness_index:['greenness_index_0_100','Satellite greenness index, 0–100; filled only where tree_cover_source_type = ndvi'],
-  green_src:['tree_cover_source_type','canopy = aerial assessment; ndvi = satellite greenness stand-in'],
+  green_src:['tree_cover_source_type','canopy = tree-cover map (aerial classification, calibrated height model or lidar; see tree_cover_dataset); ndvi = satellite greenness stand-in'],
   canopy_source:['tree_cover_dataset','usfs-2022 aerial classification, chm-legacy height model, or lidar-2020 county lidar map'],
   canopy_year:['tree_cover_year','Year of the tree-cover dataset'],
   coverage_frac:['tree_cover_assessed_fraction','Share of the area the aerial assessment covers (0–1)'],
@@ -1665,7 +1668,7 @@ function exportCell(kind){
   const base=`coolequity-${CITY_SLUG}-area-${rec.id}-${stamp()}`;
   try{
     if(kind==='csv'){download(base+'.csv',toCsv([rec],header),'text/csv');exportStatus(`Saved ${base}.csv to your downloads: one spreadsheet row for ${rec.name}.`,false,'exp-cell-status');}
-    else{download(base+'.json',JSON.stringify({...header,field_key:FIELD_KEY,kind:'area',selected:rec},null,1),'application/json');exportStatus(`Saved ${base}.json to your downloads. Open it later with “Open a saved scenario…” to return to this area with these priorities.`,false,'exp-cell-status');}
+    else{download(base+'.json',JSON.stringify({...header,field_key:FIELD_KEY,kind:'area',selected:rec},null,1),'application/json');markSaved();exportStatus(`Saved ${base}.json to your downloads. Open it later with “Open a saved scenario…” to return to this area with these priorities.`,false,'exp-cell-status');}
   }catch(e){exportStatus('Your browser blocked the download. Allow downloads for this site and try again.',true,'exp-cell-status');}
 }
 function exportList(kind){
@@ -1674,7 +1677,7 @@ function exportList(kind){
   const base=`coolequity-${CITY_SLUG}-ranked-${stamp()}`;
   try{
     if(kind==='csv'){download(base+'.csv',toCsv(recs,header),'text/csv');exportStatus(`Saved ${base}.csv to your downloads: ${recs.length.toLocaleString()} ranked areas, one row each, with the weights that produced the ranking. Column key in the guide.`);}
-    else{download(base+'.json',JSON.stringify({...header,field_key:FIELD_KEY,kind:'ranked-list',selected_id:selId,shortlist:[...SHORTLIST],cells:recs},null,1),'application/json');exportStatus(`Saved ${base}.json to your downloads. Open it later with “Open a saved scenario…” to restore these priorities, shares, shortlist and field checks, or send it to a colleague.`);}
+    else{download(base+'.json',JSON.stringify({...header,field_key:FIELD_KEY,kind:'ranked-list',selected_id:selId,shortlist:[...SHORTLIST],cells:recs},null,1),'application/json');markSaved();exportStatus(`Saved ${base}.json to your downloads. Open it later with “Open a saved scenario…” to restore these priorities, shares, shortlist and field checks, or send it to a colleague.`);}
     return true;
   }catch(e){exportStatus('Your browser blocked the download. Allow downloads for this site and try again.',true);return false;}
 }
@@ -1698,7 +1701,7 @@ function loadScenario(doc){
   else if(pa.survival_share_pct===undefined){SURVIVAL=100;const se=document.getElementById('survival');if(se)se.value=100;}   // files written before survival existed assumed every tree matured; reproduce them exactly
   plantingShares.clear();
   const cells=doc.kind==='area'?(doc.selected?[doc.selected]:[]):(Array.isArray(doc.cells)?doc.cells:[]);
-  let shares=0;for(const c of cells){if(c&&typeof c.planting_share==='number'&&c.id!=null){plantingShares.set(+c.id,Math.max(0,Math.min(100,c.planting_share)));shares++;}}
+  let shares=0;for(const c of cells){if(c&&typeof c.planting_share==='number'&&c.id!=null){plantingShares.set(+c.id,Math.max(0,Math.min(100,c.planting_share)));userShares.add(+c.id);shares++;}}
   // Field checks travel in the file as the status label, the note and its time.
   // Conflict policy, stated in the status message: a record from the file
   // replaces a local one only when this browser has none for the area or the
@@ -1720,6 +1723,7 @@ function loadScenario(doc){
   if(sel!=null&&HEX.features.some(f=>f.properties.id===+sel))selectHex(+sel,true);
   const same=doc.dataset&&doc.dataset.sha256&&DATA_SHA!=='unavailable'&&doc.dataset.sha256===DATA_SHA;
   const base=`Loaded ${doc.preset?('preset “'+doc.preset+'”'):'custom weights'}${shares?`, ${shares} planting share${shares===1?'':'s'}`:''}${fcIn?`, ${fcIn} field check${fcIn===1?'':'s'}`:''}${Array.isArray(doc.shortlist)?`, a shortlist of ${SHORTLIST.size}`:''}.${fcKept?` ${fcKept} field check${fcKept===1?'':'s'} in this browser ${fcKept===1?'is':'are'} newer than the file's and ${fcKept===1?'was':'were'} kept.`:''}`;
+  markSaved();   // what was just read from the file is, by definition, saved
   if(same)return {ok:true,msg:base+' Same data version as this page.'};
   return {ok:true,warn:true,msg:base+` Different data version (file ${String(doc.dataset&&doc.dataset.sha256||'unknown').slice(0,8)}, page ${DATA_SHA.slice(0,8)}): ranks and figures may not reproduce.`};
 }
@@ -1802,6 +1806,7 @@ function resetMap(){
   COST_TREE=DEFAULT_COST_TREE;const ce=document.getElementById('cost-tree');if(ce)ce.value=DEFAULT_COST_TREE;markCostPreset();
   SURVIVAL=DEFAULT_SURVIVAL;const se=document.getElementById('survival');if(se)se.value=DEFAULT_SURVIVAL;
   const rs=document.getElementById('rank-search');if(rs)rs.value='';rankPage=0;buildRank();buildShortlist();
+  markSaved();
   if(map)fitData(map);
 }
 /** The color scale can be tucked away; the choice is remembered per browser. */
@@ -1895,7 +1900,14 @@ function wireFolds(){
 /* ================================================================ leaving
  * Weights and planting shares live in this tab's session, so closing the tab
  * loses them. Offer the scenario file before the start screen or a tab close. */
-function isDirty(){return !isDefaultW()||userShares.size>0;}
+/* What a scenario file records, as one string: weights, population weight,
+ * every planting share (set here or loaded from a file), cost and survival.
+ * SAVED_SIG is the state last written to or read from a file (or the defaults),
+ * so unchanged saved work does not warn and a cost-only edit does. */
+function scenarioSig(){const W=normW();return JSON.stringify([W_INPUTS.map(({k})=>+W[k].toFixed(4)),+POPW.toFixed(4),[...plantingShares].filter(([id])=>userShares.has(id)).sort((a,b)=>a[0]-b[0]),COST_TREE,SURVIVAL]);}
+let SAVED_SIG=null;
+function markSaved(){SAVED_SIG=scenarioSig();}
+function isDirty(){return SAVED_SIG!==null&&scenarioSig()!==SAVED_SIG;}
 let leaving=false;
 function goHome(){
   // Keep ?flat=1 (it is a rehearsal mode, not a destination) and drop ?go /
@@ -1913,17 +1925,27 @@ function askBeforeLeaving(go,why){
   document.getElementById('leave-h').textContent=reset?'Reset the map?':'Save your scenario before leaving?';
   document.getElementById('leave-p').textContent=reset
     ?'This clears your mix of priorities and planting shares and returns every setting to its original state. Save a scenario file first if you want to come back to this view.'
-    :'You changed the priorities or set planting shares. A scenario file lets you or a colleague reopen these priorities and planting shares later.';
+    :'You changed the priorities, planting shares, cost or survival since this scenario was last saved. A scenario file lets you or a colleague reopen these settings later.';
   document.getElementById('leave-go').textContent=reset?'Reset without saving':'Leave without saving';
   document.getElementById('leave-save').textContent=reset?'Save scenario & reset':'Save scenario & leave';
   box.hidden=false;document.getElementById('leave-save').focus();
-  const close=()=>{box.hidden=true;document.getElementById('go-home').focus();};
+  const close=()=>{box.hidden=true;document.getElementById(reset?'map-reset':'go-home').focus();};   // back to the control that opened the dialog
   document.getElementById('leave-stay').onclick=close;
   document.getElementById('leave-go').onclick=()=>{box.hidden=true;go();};
   document.getElementById('leave-save').onclick=()=>{if(exportList('json')){box.hidden=true;setTimeout(go,600);}};
 }
+function trapTab(box,e){
+  // Keep Tab inside an open dialog (aria-modal alone does not do this).
+  if(e.key!=='Tab')return;const f=[...box.querySelectorAll('button:not([disabled]),[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')].filter(el=>el.offsetParent!==null);
+  if(!f.length)return;const first=f[0],last=f[f.length-1];
+  if(e.shiftKey&&(document.activeElement===first||!box.contains(document.activeElement))){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&(document.activeElement===last||!box.contains(document.activeElement))){e.preventDefault();first.focus();}
+}
 function wireLeave(){
-  document.getElementById('leave').addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();document.getElementById('leave-stay').click();}});
+  if(SAVED_SIG===null)markSaved();   // the defaults are the saved state until a file is written or read
+  const leave=document.getElementById('leave');
+  leave.addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();document.getElementById('leave-stay').click();}else trapTab(leave,e);});
+  const slc=document.getElementById('slclear');if(slc)slc.addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();document.getElementById('slclear-stay').click();}else trapTab(slc,e);});
   addEventListener('beforeunload',e=>{if(leaving||!ON_MAP||!isDirty())return;e.preventDefault();e.returnValue='';});
 }
 
@@ -2071,11 +2093,11 @@ ol,ul{padding-left:18px;font-size:10pt}li{margin-bottom:6px}
 .foot{position:absolute;left:56px;right:56px;bottom:26px;display:flex;justify-content:space-between;font-size:8pt;color:#8b95a1;border-top:1px solid #eceff3;padding-top:6px}
 @media print{html{background:#fff}.tool{display:none}.page{margin:0;box-shadow:none;width:auto;min-height:0;padding:0}}
 </style></head><body>
-<div class="tool"><button onclick="window.print()">Print / Save as PDF</button><span>Choose “Save as PDF” in the print dialog. Letter size, ${3+(sl.length?1:0)} pages.</span></div>
+<div class="tool"><button onclick="window.print()">Print / Save as PDF</button><span>Choose “Save as PDF” in the print dialog. Letter size; the map, the top 25${sl.length?', the shortlist':''}, then method and limits.</span></div>
 <div class="page">
   <div class="eyebrow">CoolEquity briefing · ${esc(CITY_NAME)} · ${new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}</div>
   <h1>Where new street trees would help ${esc(CITY_NAME)} residents most</h1>
-  <p class="lede">Every residential area is scored on surface heat, tree cover, residents, age, home air conditioning and the walk to a cool place, then ranked under the question <b>“${esc(q)}”</b>. This is a planning screen from public data, not a field survey; the limits are on the last page.</p>
+  <p class="lede">Every residential area is scored on ${esc(activeInputsText())}, adjusted for population, then ranked under the question <b>“${esc(q)}”</b>. This is a planning screen from public data, not a field survey; the limits are on the last page.</p>
   <div class="kpis"><div><b>${order.length.toLocaleString()}</b><span>areas ranked</span></div><div><b>${fInt(topRes)}</b><span>residents in the top 25</span></div><div><b>${sl.length}</b><span>shortlisted areas</span></div><div><b>${sl.length?money(slCost):'—'}</b><span>shortlist planting cost</span></div></div>
   ${mapPng?`<img class="mapimg" src="${mapPng}" alt="Priority map">`:'<p class="fine">Map snapshot unavailable in this browser.</p>'}
   <div class="legend"><span>${esc(LAYERS[current].title)}</span><i></i><span>deeper color = more need · relative within ${esc(CITY_NAME)}</span></div>
@@ -2627,6 +2649,13 @@ function matchPreset(){
  * bounds (p2–p98) the ranking actually uses. */
 const SIGNAL_MIN={lst:3,green:8,ac:8,pct65:5,access_min:10};
 const SIGNAL_NAME={heat:'Hotter ground',green:'Fewer trees',ac:'Homes without A/C',age65:'Older residents',access:'Far from cooling'};
+/** The inputs with a non-zero weight, as prose for the briefing: an input at 0% is not scored. */
+function activeInputsText(){
+  const W=normW();const N={heat:'surface heat',green:'tree cover',ac:'home air conditioning',age65:'residents aged 65+',access:'the walk to a cool place'};
+  const on=['heat','green','ac','age65','access'].filter(k=>W[k]>0.005).map(k=>`${N[k]} (${Math.round(W[k]*100)}%)`);
+  const off=['heat','green','ac','age65','access'].filter(k=>!(W[k]>0.005)).map(k=>N[k]);
+  return (on.length>1?on.slice(0,-1).join(', ')+' and '+on[on.length-1]:on[0]||'no inputs')+(off.length?`; ${off.length>1?off.slice(0,-1).join(', ')+' and '+off[off.length-1]:off[0]} carr${off.length===1?'ies':'y'} no weight here`:'');
+}
 function lowSignal(W){
   for(const w of W_INPUTS){
     if(!(W[w.k]>=0.5)||!svals[w.prop])continue;
@@ -2963,7 +2992,7 @@ let SL_COMPARE=false;try{SL_COMPARE=localStorage.getItem('ce-slview')==='compare
 function compareTable(items){
   const P=items.slice(0,6).map(f=>f.properties);
   const rows=[
-    ['Likely rank',p=>p.rank_lo!=null?`${p.rank_lo}–${p.rank_hi}`:'—',null],
+    ['Likely rank (rec. mix)',p=>p.rank_lo!=null?`${p.rank_lo}–${p.rank_hi}`:'—',null],
     ['City',p=>p.city||'—',null],
     ['Residents',p=>fInt(p.pop),p=>p.pop],
     ['Aged 65+',p=>LAYERS.pct65.fmt(p.pct65),p=>p.pct65],

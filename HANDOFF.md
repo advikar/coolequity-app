@@ -252,3 +252,20 @@ Task: apply the release-integrity findings of `reports/OUTREACH_READINESS_AUDIT_
 - `docs/EVIDENCE_COST_CANOPY_2026-09-13.md` records the cost sources, per-source canopy accuracy from the literature, and a specified but unrun `02f_canopy_validate.py` against CDFW ds3206 (lidar canopy cover, Contra Costa; 160 MB zip, needs owner approval to download).
 - Outreach plan §3.1 has 18 ready-to-send email drafts, one per contact, each naming a top area from that contact's map.
 - Later the same evening: 02f run against CDFW ds3206 for the four Contra Costa builds; 05 harmonises sources (height model → aerial line; stand-in → lidar canopy) when `data/canopy_lidar_<slug>.csv` and the validation report exist. Re-scored and 05b re-run for contracosta, westcc, pittsburg, sanramon. ui-contract EXPECT ndvi counts now 5/1/0/0. The 160 MB gdb lives outside the repo (scratchpad); re-download from CDFW to re-run 02f. Keep 02f before 05 in any rebuild, else 05 falls back to pooled sources and the EXPECT counts fail.
+
+
+## Checkpoint, September 21, 2026 (re-audit fixes, done)
+
+Task: apply `../coolequity/reports/REVIEW_READINESS_REAUDIT_2026-09-21.md`. All ten findings were
+re-verified against source and live before editing. Order: (1) `site/goatcounter.txt` back to
+`coolequity` (the account now exists; `YOUR-CODE` was committed literally and failed CI);
+(2) 05b started from the already-smoothed `pct65` and smoothed again — now starts from the raw
+census share and smooths once; all five builds re-run; (3) save protection compares a signature
+(weights, shares, cost, survival) against the last saved/loaded state; (4) light-theme contrast
+for `.why` and field-check pills; (5) Tab loop in both modals; (6) guide column keys generated
+from `FIELD_KEY` by `scripts/sync_column_key.py` + contract test; (7) compare-table band label;
+(9) briefing lede lists active inputs, page count no longer promised; (10) analytics tag skipped
+under `?flat=1`, privacy sentence made precise. Left for later: UI rearrangement and renames
+(finding 8 and the wording table), physical-phone and print-PDF passes.
+
+Done and tested (`scripts/test.sh`, all cities; browser: contrast, Tab loop, cost-only warning, `?flat=1` off-host check). See `cities/contracosta/FEATURES.md` for the itemised list. To re-run sensitivity after any re-score: `COOLEQUITY_CITY=<slug> .venv/bin/python pipeline/05b_stability.py`, then paste the median band / top-tier share from `reports/stability_<slug>.json` into that guide's `#stability` topic (prose, not generated). Column keys: `python3 scripts/sync_column_key.py` after any `FIELD_KEY` edit.
