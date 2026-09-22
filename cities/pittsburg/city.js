@@ -26,6 +26,8 @@ window.CE_CITY={
   possessive:"Pittsburg’s",   // "Built for …’s urban forestry, climate and public works teams"
   scope:'study area',                 // "relative within this study area"
   dataVersion:'20260913-build1',
+  // How 03_census.py placed residents in this build (guide.html says why); the briefing's source table reads it.
+  popAllocation:'area',
   centersVersion:'20260913-ehsd',
   coolingLinkLabel:"County-listed locations & contacts ↗",
   scoreTitle:"Canopy priority",

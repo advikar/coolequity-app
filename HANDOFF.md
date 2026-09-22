@@ -1,5 +1,33 @@
 # HANDOFF
 
+## Checkpoint — September 21, 2026 (Claude): outreach-readiness audit fixes
+
+Task: apply the release-integrity findings of `reports/OUTREACH_READINESS_AUDIT_2026-09-21.md`
+(kept in the old `coolequity` checkout) to the deployed app. Owner: advikar. Files: `app/index.html`,
+`site/index.html`, `cities/*/city.js`, `cities/*/guide.html`, `tests/ui-contract.cjs`,
+`cities/contracosta/FEATURES.md`. Next checkpoint: `scripts/test.sh` green, then push.
+
+- **Done (see the September 21 entry in `cities/contracosta/FEATURES.md` for the full list):**
+  unique CSV headers with `study_area_slug` and the planting assumptions on every row;
+  greenness stand-ins export on the displayed 0–100 index; scenario files restore field checks
+  (file wins only when local is empty or older; kept records are counted in the message) and
+  the shortlist; cost scope (`COST_SCOPES`/`costScope()`) travels through detail, exports and
+  briefing; briefing sources counted from the data and `CE_CITY.popAllocation`; model text
+  states the real clipping bounds and the bounded population factor; share links keep slider
+  precision, honor `access`/`holc` and carry a data fingerprint with a stale-link toast;
+  `fitData()` reserves panel width only while the panel is open; guide/chooser copy drift fixed;
+  `dataVersion` `20260909-walk` → `20260913-stability`; chooser About / feedback / privacy section.
+- **Tests run:** `scripts/test.sh` (all five cities) passed, including new contract assertions
+  for unique CSV headers, the greenness scale and the field-check/shortlist round trip. Verified
+  in the local build (`scripts/build_site.py --serve`) on Bakersfield: `toCsv()` headers unique,
+  proxy cell "Southland R.V. Park SW 2" exports 13 as displayed, `#layer=access&d=deadbeef`
+  opened the access layer and showed the stale-data toast, Base $2,000 changed the detail
+  sentence to establishment-care scope, `loadScenario()` restored a field note and a shortlist.
+  Not verified: printed briefing pagination, a real phone session, screen-reader pass.
+- **Left for later:** free-text custom cost scope; serializing layer/filter/sort; a non-GitHub
+  contact address (none exists in the repo to publish); mobile and accessibility passes.
+- Not pushed: a push to `main` deploys, so the owner pushes after reviewing the diff.
+
 ## Checkpoint — September 13, 2026 (Claude): West Contra Costa build, county canopy recovery
 
 - **New city `westcc` (West Contra Costa).** Study area = union of 16 TIGERweb place polygons

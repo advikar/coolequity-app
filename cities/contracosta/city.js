@@ -40,7 +40,9 @@ window.CE_CITY={
   name:"Contra Costa County",
   possessive:"Contra Costa’s",   // "Built for …’s urban forestry, climate and public works teams"
   scope:'county',                         // "relative within this county"
-  dataVersion:'20260909-walk',
+  dataVersion:'20260913-stability',
+  // How 03_census.py placed residents in this build (guide.html says why); the briefing's source table reads it.
+  popAllocation:'area',
   centersVersion:'20260907-ehsd',
   coolingLinkLabel:"County-listed locations & contacts ↗",
   scoreTitle:"Canopy priority",

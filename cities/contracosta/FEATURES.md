@@ -2,6 +2,49 @@
 
 # CoolEquity — every feature, its data source, and its limitations
 
+## Update — September 21, 2026: outreach-readiness audit fixes (shared app, all builds)
+
+Findings 1–6 and the sharing/layout items of `OUTREACH_READINESS_AUDIT_2026-09-21.md`
+(kept in the old `coolequity` checkout under `reports/`).
+
+- **CSV exports** now have unique headers: the build slug is `study_area_slug` and the cell's
+  city stays `city_or_community` (both were `city` before, and the slug was lost). Every row
+  also carries `cost_per_tree_usd`, `cost_scope`, `survival_share_pct`, `tree_spacing_m`,
+  `crown_m2_per_tree` and `cooling_c_per_10_canopy_points`, so a colleague can reproduce the
+  scenario without inferring settings from rounded results. The contract test checks all of it.
+- **Greenness stand-ins** export `greenness_index_0_100` on the 0–100 index the app displays
+  (the stored value is on a 0–45 scale; Bakersfield's 62 proxy cells exported the raw value).
+- **Scenario files restore field checks** (status, note, time) and, for ranked-list files, the
+  shortlist. Conflict policy, stated in the load message: a file record replaces a local one only
+  when this browser has none for the area or the file's is newer; otherwise the local record is
+  kept and counted. "Exact view" wording is gone; copy names what a file and a link carry.
+- **Cost scope travels with the price.** `COST_SCOPES` records what each preset covers
+  (Low $500 planting only; Base $2,000 with establishment care; High $3,500 three-year program;
+  a typed figure is labelled as the user's own). The detail note, export notes, JSON
+  `planting_assumptions.cost_scope`, CSV and briefing all read it; the hard-coded "planting only
+  at $500" sentence is gone.
+- **Briefing** source table now counts tree-cover sources from the data (`canopySourcesLabel`)
+  and reads the population method from `CE_CITY.popAllocation` (area in the county, Bakersfield
+  and Pittsburg; dasymetric in San Ramon and West County). The model description states the
+  per-input clipping bounds from the data file and the bounded population factor. Proxy cells are
+  labelled greenness, not tree cover. Likely-rank bands are labelled as recommended-mix
+  sensitivity ranges, not confidence intervals; the "noise" sentence is replaced in the
+  popover, briefing and all five guides.
+- **Share links** carry raw slider positions to two decimals (rounded normalized weights could
+  change ranks), honor the `access` and `holc` overlays, and carry an 8-character data
+  fingerprint; a link made on an earlier data release shows a warning toast.
+- **Map fit** reserves room for the detail panel only while it is open and on the side it
+  opens on, instead of 360 px on the right always.
+- **Copy:** county guide cell counts corrected to 2,697 / 7 / 155; the "margins not yet
+  propagated" and "survival is not modeled" sentences replaced in every guide; chooser
+  describes the height-model and lidar sources, gives San Ramon's heat/greenness correlation as
+  −0.67 (Pearson over all 419 ranked cells, previously −0.60), carries a release date of
+  September 21, 2026 and an About / feedback / privacy section. `dataVersion` for the three
+  builds still tagged `20260909-walk` is now `20260913-stability`, matching the data's
+  stability computation date.
+- **Not done here:** a free-text custom cost scope, serializing layer/filter/sort state,
+  a mobile or accessibility pass, a non-GitHub contact address.
+
 ## Current update — conditional scenarios and official cooling sources
 
 September 7, 2026; Contra Costa branch only. This supersedes the earlier 99%-coverage

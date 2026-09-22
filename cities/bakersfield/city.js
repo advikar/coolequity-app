@@ -24,7 +24,9 @@ window.CE_CITY={
   name:"Bakersfield",
   possessive:"Bakersfield’s",   // "Built for …’s urban forestry, climate and public works teams"
   scope:'city',                         // "relative within this city"
-  dataVersion:'20260909-walk',
+  dataVersion:'20260913-stability',
+  // How 03_census.py placed residents in this build (guide.html says why); the briefing's source table reads it.
+  popAllocation:'area',
   centersVersion:'20260908-kern',
   layerNotes:{ac:"Nearly every home here has A/C (96.5–100% of occupied homes across ranked areas), so this layer shows almost no contrast and carries no weight in the recommended mix."},
   coolingLinkLabel:"County-listed cooling centers & contacts ↗",

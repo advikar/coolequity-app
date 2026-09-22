@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CoolEquity — Heat &amp; Canopy Mapping</title>
-<meta name="description" content="Where would new street trees help residents most? Satellite heat, aerial tree cover, census population and walking access to cooling, scored for every neighborhood area. Contra Costa County, Bakersfield and San Ramon.">
+<meta name="description" content="Where would new street trees help residents most? Satellite heat, aerial tree cover, census population and walking access to cooling, scored for every neighborhood area. Contra Costa County, Bakersfield, San Ramon, West Contra Costa and Pittsburg &amp; Bay Point.">
 <style>
   @font-face{font-family:Inter;src:url(vendor/inter-latin.woff2) format('woff2');
     font-weight:100 900;font-display:swap}
@@ -75,7 +75,7 @@
     <a class="card" href="bakersfield/app/?go=1">
       <div class="city">Bakersfield</div>
       <div class="sub">California · city-wide · 0.04 sq mi areas</div>
-      <p>The hottest of the three. Half its areas have under <b>4%</b> tree cover and <b>93%</b> of
+      <p>The hottest of the five. Half its areas have under <b>4%</b> tree cover and <b>93%</b> of
         residents live below 15%, under some of the state's hottest summer ground. Heat is
         scored here: one valley climate, so hotter really means hotter.</p>
       <div class="figs">
@@ -89,7 +89,7 @@
       <div class="city">San Ramon</div>
       <div class="sub">California · city-wide · 0.04 sq mi areas</div>
       <p>One city inside Contra Costa at seven times the resolution. Shade and surface heat
-        track each other closely here (<b>r = −0.60</b>), and nearly every home has A/C, so
+        track each other closely here (<b>r = −0.67</b>), and nearly every home has A/C, so
         A/C is not scored.</p>
       <div class="figs">
         <div><b>419</b><span>areas ranked</span></div>
@@ -130,10 +130,13 @@
   </div>
   <div class="note">
     <b>What is measured, and what is estimated.</b> Surface temperature (Landsat 8/9 thermal)
-    is measured per area. Tree cover in every build comes from the
+    is measured per area. Tree cover starts from the
     <b>USFS / CAL FIRE 2022 California Urban Tree Canopy</b>, a 0.6 m aerial classification of
-    ground actually under tree crowns; where that assessment is missing, a satellite greenness
-    index stands in and the app says so. Population and age are US Census ACS 2020–2024 five-year
+    ground actually under tree crowns. Where that assessment is missing or too partial, a
+    2009–2020 height model fills in (in the Contra Costa builds rescaled onto the aerial line
+    and checked against the county lidar map, which itself supplies some areas); a satellite
+    greenness index stands in for the last 68 of 8,435 ranked areas. Every area shows its
+    source in the app. Population and age are US Census ACS 2020–2024 five-year
     estimates allocated into areas; <b>air-conditioning access</b> is the Census LACE 2023
     tract estimate, weighted zero in San Ramon and Bakersfield where it is near-universal. In Contra Costa County
     and in Pittsburg &amp; Bay Point <b>surface heat</b> is weighted zero: the county spans marine to Delta, so a hotter area there
@@ -143,17 +146,32 @@
     official county cooling directories are listed separately. Tree counts and costs are
     planning assumptions, not quotes. Every build carries a
     <a href="contracosta/app/guide.html">data &amp; methods guide</a> with sources and limits.
+  </div>
+  <div class="note">
+    <b>About this site.</b> CoolEquity is an independent student project, built and maintained by
+    one student (GitHub: <a href="https://github.com/advikar">advikar</a>). It is an exploratory
+    tool for finding areas worth investigating for shade investment, not a validated
+    recommendation, a project budget or an emergency cooling locator, and it is not affiliated
+    with, endorsed by or reviewed by any city, county, school or program. Current release:
+    September 21, 2026 (each map's briefing and exports carry the data fingerprint).
     <br><br>
-    An exploratory planning screen, not a field survey. Source, pipeline and write-up:
-    <a href="https://github.com/advikar/coolequity-app">github.com/advikar/coolequity-app</a> ·
-    questions and corrections: <a href="https://github.com/advikar/coolequity-app/issues">open an issue</a>.
+    <b>Feedback and corrections.</b> Reply to whoever sent you this link, or
+    <a href="https://github.com/advikar/coolequity-app/issues">open an issue</a> on the source
+    repository (<a href="https://github.com/advikar/coolequity-app">github.com/advikar/coolequity-app</a>,
+    which holds the pipeline and write-up). Corrections to place names, facilities and costs
+    are especially welcome.
+    <br><br>
+    <b>Privacy.</b> The maps need no account. Field-check notes, shortlists and priorities stay
+    in your own browser and are never uploaded; they leave your computer only inside a file you
+    choose to export. Ordinary use still fetches basemap tiles from a third-party map service,
+    so it is not offline.
   </div>
   <div class="foot">
     Landsat 8/9 and Sentinel-2 via Microsoft Planetary Computer · US Census ACS 2020–2024 5-year
     and LACE 2023 · USFS / CAL FIRE Urban Tree Canopy 2022 · OpenStreetMap contributors · HOLC
     grades from the University of Richmond <i>Mapping Inequality</i> · tree-cooling coefficient
     after Krayenhoff et al. (2021) · H3 grid (Uber) · basemap © CARTO. An independent student
-    project; not affiliated with, nor reviewed by, any city. Updated September 10, 2026.
+    project; not affiliated with, nor reviewed by, any city. Updated September 21, 2026.
   </div>
 </div>
 </body>

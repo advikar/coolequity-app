@@ -23,7 +23,9 @@ window.CE_CITY={
   name:"San Ramon",
   possessive:"San Ramon’s",   // "Built for …’s urban forestry, climate and public works teams"
   scope:'city',                         // "relative within this city"
-  dataVersion:'20260909-walk',
+  dataVersion:'20260913-stability',
+  // How 03_census.py placed residents in this build (guide.html says why); the briefing's source table reads it.
+  popAllocation:'dasymetric',
   centersVersion:'20260908-ehsd',
   layerNotes:{ac:"A/C prevalence is high and narrow across San Ramon, so this layer shows little contrast and carries no weight in the recommended mix."},
   coolingLinkLabel:"County-listed cooling centers & contacts ↗",

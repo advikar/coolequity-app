@@ -37,7 +37,7 @@ for(const id of ['lst','green','pop','pct65','ac','access','score','holc','plant
 const DATA_PATH=`cities/${slug}/data/${slug}.geojson`;
 const data=JSON.parse(fs.readFileSync(DATA_PATH,'utf8'));
 const nodes=new Map();const node=id=>{if(!nodes.has(id))nodes.set(id,{textContent:'',value:25,disabled:false,setAttribute(){}});return nodes.get(id);};
-const ctx={document:{getElementById:node},CE_CITY:CITY,TREE_SPACING_M:10,TREE_M2:40,COST_TREE:500,SURVIVAL:70,areaOf:p=>p.area_m2,fInt:n=>Math.round(n).toLocaleString('en-US'),fTempD:v=>v.toFixed(2)+' C'};
+const ctx={document:{getElementById:node},CE_CITY:CITY,TREE_SPACING_M:10,TREE_M2:40,COST_TREE:500,SURVIVAL:70,costScope:()=>'planting only',areaOf:p=>p.area_m2,fInt:n=>Math.round(n).toLocaleString('en-US'),fTempD:v=>v.toFixed(2)+' C'};
 vm.createContext(ctx);
 const start=html.indexOf('const plantingShares=new Map();'),end=html.indexOf('function wireHover()',start);
 vm.runInContext(html.slice(start,end),ctx);
@@ -79,11 +79,13 @@ const directory=fs.readFileSync(`cities/${slug}/cooling.html`,'utf8');for(const 
 {
   const ex={HEX:data,CE_CITY:CITY,LIVE:{score:new Map(),rank:new Map(),order:[]},POPW:.45,W_RAW:{heat:.2,green:.5,ac:.2,age65:.1,access:0},W_INPUTS:[{k:'heat'},{k:'green'},{k:'ac'},{k:'age65'},{k:'access'}],
     CITY_NAV:[{slug:'x',name:'X'}],THIS_CITY:'x',CITY_SLUG:'x',DATA_URL:'../data/x.geojson?v=t',TREE_SPACING_M:10,TREE_M2:40,COST_TREE:500,SURVIVAL:70,
-    nameOf:p=>p.name,areaOf:p=>p.area_m2,isDefaultW:()=>true,matchPreset:()=>({id:'default'}),selId:null,noteOf:()=>({status:'',note:'',updated:null}),FC_LABEL:{},markCostPreset:()=>{},
+    nameOf:p=>p.name,areaOf:p=>p.area_m2,isDefaultW:()=>true,matchPreset:()=>({id:'default'}),selId:null,
+    NOTES:new Map(),saveNotes(){},SHORTLIST:new Set(),saveShortlist(){},buildShortlist(){},FC_LABEL:{visit:'To visit',feasible:'Checked · feasible'},toast(){},markCostPreset:()=>{},
     document:{getElementById:()=>null,createElement:()=>({click(){},remove(){},style:{}}),body:{appendChild(){}}},
     Blob:function(){},URL:{createObjectURL:()=>'blob:',revokeObjectURL(){}},crypto:{subtle:{digest:async()=>new ArrayBuffer(32)}},TextEncoder,
     applyWeights(){},selectHex(){},setTimeout};
   ex.normW=()=>({heat:.2,green:.5,ac:.2,age65:.1,access:0});
+  ex.noteOf=id=>ex.NOTES.get(id)||{status:'',note:'',updated:null};
   ex.sc=p=>ex.LIVE.score.get(p.id);ex.rk=p=>ex.LIVE.rank.get(p.id);
   vm.createContext(ex);
   vm.runInContext(html.slice(html.indexOf('const plantingShares=new Map();'),html.indexOf('function updateROI(p){')),ex);
@@ -103,12 +105,27 @@ const directory=fs.readFileSync(`cities/${slug}/cooling.html`,'utf8');for(const 
   ex.recs=res.slice(0,5).map(f=>vm.runInContext('cellRecord',ex)(f.properties));ex.header=header;
   const csv=vm.runInContext('toCsv(recs,header)',ex).split('\r\n').filter(Boolean);
   assert.equal(csv.length,6);const cols=csv[0].split(',');assert(cols.includes('weight_fewer_trees')&&cols.includes('dataset_sha256'));
+  // Audit 2026-09-21: unique headers, the build slug separate from the cell's city, and the planting assumptions on every row.
+  assert.equal(new Set(cols).size,cols.length,'duplicate CSV header: '+cols.filter((c,i)=>cols.indexOf(c)!==i));
+  for(const c of ['city_or_community','study_area_slug','cost_per_tree_usd','cost_scope','survival_share_pct','tree_spacing_m','crown_m2_per_tree'])assert(cols.includes(c),'CSV column '+c);
+  {const i=cols.indexOf('study_area_slug'),j=cols.indexOf('survival_share_pct');for(const line of csv.slice(1)){const v=line.split(',');assert.equal(v[i],'x');assert.equal(v[j],'70');}}
+  // Greenness stand-ins export on the 0–100 index the app displays, never the stored 0–45 value; tree cover stays empty for them.
+  {const nd=res.find(f=>f.properties.green_src==='ndvi');if(nd){ex.ndP=nd.properties;const r=vm.runInContext('cellRecord(ndP)',ex);
+    assert.equal(r.canopy_pct,null);assert(Math.abs(r.greenness_index-nd.properties.green/45*100)<0.06,'greenness scale');}}
   for(const line of csv.slice(1))assert.equal(line.split(',').length,cols.length,'CSV column count');
   ex.doc={...header,kind:'ranked-list',cells:ex.recs};
   assert.equal(vm.runInContext('loadScenario(doc).ok',ex),true);
   ex.bad={...header,city_slug:'elsewhere'};assert.equal(vm.runInContext('loadScenario(bad).ok',ex),false);
   ex.old={...header,export_schema:0};assert.equal(vm.runInContext('loadScenario(old).ok',ex),false);
   assert.equal(vm.runInContext('plantingShares.get(cellP.id)',ex),50);
+  // Field checks and the shortlist round-trip through a ranked-list file; a newer local note is kept.
+  {const a=ex.recs[0].id,b=ex.recs[1].id;ex.NOTES.clear();ex.SHORTLIST.clear();
+    ex.NOTES.set(b,{status:'feasible',note:'seen locally',updated:'2026-09-20T00:00:00.000Z'});
+    ex.fdoc={...header,kind:'ranked-list',shortlist:[a,b,999999999],cells:ex.recs.map((r,i)=>i===0?{...r,field_status:'To visit',field_note:'check the strip',field_note_updated:'2026-09-19T00:00:00.000Z'}:i===1?{...r,field_status:'To visit',field_note:'older file note',field_note_updated:'2026-09-18T00:00:00.000Z'}:r)};
+    const r=vm.runInContext('loadScenario(fdoc)',ex);assert.equal(r.ok,true);
+    assert.deepEqual(JSON.parse(JSON.stringify(ex.NOTES.get(a))),{status:'visit',note:'check the strip',updated:'2026-09-19T00:00:00.000Z'});   // via JSON: the record was made inside the vm realm
+    assert.equal(ex.NOTES.get(b).note,'seen locally','newer local note must be kept');
+    assert.deepEqual([...ex.SHORTLIST],[a,b]);assert.match(r.msg,/1 field check, a shortlist of 2/);assert.match(r.msg,/1 field check in this browser is newer/);}
   console.log('PASS: scenario export builder, CSV shape, and reload acceptance/refusal.');
   // UX round 2: every info button has a popover card and every card points at a real guide topic.
   const tips=vm.runInContext('Object.keys(TIPS)',ex);
