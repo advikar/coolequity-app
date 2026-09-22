@@ -42,6 +42,11 @@ Findings 1–6 and the sharing/layout items of `OUTREACH_READINESS_AUDIT_2026-09
   September 21, 2026 and an About / feedback / privacy section. `dataVersion` for the three
   builds still tagged `20260909-walk` is now `20260913-stability`, matching the data's
   stability computation date.
+- **Own sweep after the audit (same day):** all five guides still described the removed
+  Simple/Explore modes in the "Layers, units, basemaps & session state" topic; rewritten for the
+  single panel. The Pittsburg guide's data download and "Default weights" links pointed at West
+  County's files; now Pittsburg's. Live builds load with no console errors; a 375 px viewport
+  shows no horizontal overflow.
 - **Not done here:** a free-text custom cost scope, serializing layer/filter/sort state,
   a mobile or accessibility pass, a non-GitHub contact address.
 

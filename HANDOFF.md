@@ -26,7 +26,9 @@ Task: apply the release-integrity findings of `reports/OUTREACH_READINESS_AUDIT_
   Not verified: printed briefing pagination, a real phone session, screen-reader pass.
 - **Left for later:** free-text custom cost scope; serializing layer/filter/sort; a non-GitHub
   contact address (none exists in the repo to publish); mobile and accessibility passes.
-- Not pushed: a push to `main` deploys, so the owner pushes after reviewing the diff.
+- Pushed by the owner as `efacd64`; CI test/deploy/smoke passed; live site checked.
+- Follow-up sweep: guides no longer describe the removed Simple/Explore modes; Pittsburg guide
+  links to its own data and config instead of West County's. `scripts/test.sh` re-run.
 
 ## Checkpoint — September 13, 2026 (Claude): West Contra Costa build, county canopy recovery
 
