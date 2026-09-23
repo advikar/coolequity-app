@@ -60,10 +60,8 @@ def inject_analytics(html_path: Path, code: str, note: bool = False) -> None:
     text = text.replace("</head>", tag + "</head>", 1)
     if note:
         text = text.replace("<!-- analytics-note -->",
-            f' Page views are counted with <a href="https://{code}.goatcounter.com">GoatCounter</a>: no cookies and'
-            ' no cross-site tracking; it records the page, referrer, browser type, screen size and country in'
-            ' aggregate (<a href="https://www.goatcounter.com/help/privacy">its privacy policy</a>). Nothing you'
-            ' type or star on a map is sent anywhere.', 1)
+            ' Page views are counted anonymously (no cookies, no personal data, no cross-site tracking);'
+            ' nothing you type or star on a map is sent anywhere.', 1)
     html_path.write_text(text)
 
 
