@@ -48,8 +48,9 @@
   #grip::after{content:"";position:absolute;top:50%;left:3px;width:4px;height:44px;margin-top:-22px;border-radius:2px;background:var(--edge2);opacity:.7;transition:opacity .15s,background .15s}
   #grip:hover::after,#grip.on::after{background:var(--accent);opacity:1}
   #app.pcol{--panelw:0px}#app.pcol #panel,#app.pcol #grip{display:none}#app.pcol #mapwrap{grid-column:1/-1}
-  #panel-show{position:absolute;top:10px;left:10px;z-index:31;display:none;align-items:center;gap:6px;font:600 12px var(--sans);color:var(--txt);background:var(--panel);border:1px solid var(--edge2);border-radius:9px;padding:7px 11px;cursor:pointer;box-shadow:var(--shadow)}
+  #panel-show{position:absolute;top:14px;left:14px;z-index:31;display:none;align-items:center;gap:6px;font:600 12px var(--sans);color:var(--txt);background:var(--panel);border:1px solid var(--edge2);border-radius:9px;padding:7px 11px;cursor:pointer;box-shadow:var(--shadow)}
   #app.pcol #panel-show{display:inline-flex}
+  #app.pcol #chip{left:132px;max-width:calc(100% - 440px)}
   #panel-hide{margin-left:4px}
   @media(max-width:760px){#grip,#panel-show{display:none!important}#app.pcol #panel{display:flex}}
   #panel{background:linear-gradient(180deg,var(--panel),var(--panel2));border-right:1px solid var(--edge);display:flex;flex-direction:column;min-height:0}
