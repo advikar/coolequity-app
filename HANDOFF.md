@@ -278,3 +278,10 @@ wins); labels that misdescribed what they do renamed: "Trees only" → "Fewest t
 tree data" → "Aerial coverage ≥99%", "Briefing report (PDF)" → "Printable briefing", "Ranking (CSV)"
 → "All ranked areas (CSV)", mix bar "People" → "Population". Guides follow. Headline, walk labels
 and "Recommended mix" kept on purpose.
+
+## Checkpoint, September 24, 2026 (chooser as a blended start screen; badge width, done)
+
+Chooser: hero in the style of the city start screens (hex canvas backdrop, wordmark, eyebrow,
+the chooser's headline, a Study-area select top right that fills the stat row and the Explore
+button), then the five cards, note, about, contact, privacy, footer as before. List/shortlist
+rank badge fits three digits.

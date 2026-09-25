@@ -266,3 +266,11 @@ The minimal part of re-audit finding 8 and its wording table, kept to what is cl
 - Labels that misdescribed what they do: "Trees only" → **Fewest trees** (it still weights population; the explanation says so), "Full aerial tree data" → **Aerial coverage ≥99%** (what the filter tests; its title says coverage is not accuracy), "Briefing report (PDF)" → **Printable briefing** (it opens a page, then Print), "Ranking (CSV)" → **All ranked areas (CSV)** (the export ignores the list filter), mix-bar "People" → **Population**. Guides updated to match.
 
 Kept on purpose: the headline question, "Recommended mix", the walk labels (their tip already says hours and A/C are unverified). No data or scoring changed.
+
+
+### Chooser as a start screen; briefing print; badge — September 24, 2026
+
+- **coolequity.org** now opens like a city start screen: hex backdrop drawn from noise in the map's palette, wordmark, eyebrow, the chooser's headline and lede, a **Study area** select top right that fills the stat row, a one-line blurb and the **Explore** button (opens that build's start screen; last pick remembered per browser). The five cards, the measured-vs-estimated note, About, contact and privacy follow below. Figures are the cards' figures, kept in one JS object at the foot of `site/index.html`.
+- City cards open each build's start screen (`<slug>/app/`), not the map.
+- **Briefing**: the footer flows after the content when printed; it used to be pinned to the page bottom and overlapped the last Sources rows.
+- Rank badges in the list and shortlist grow to fit three digits.

@@ -19,15 +19,48 @@
     -webkit-font-smoothing:antialiased;min-height:100vh;
     background-image:radial-gradient(120% 80% at 15% 0%,rgba(255,122,69,.09) 0%,transparent 55%),
       radial-gradient(90% 70% at 90% 10%,rgba(255,183,3,.06) 0%,transparent 50%)}
-  .wrap{max-width:940px;margin:0 auto;padding:56px 26px 72px}
-  .wordmark{display:flex;align-items:center;gap:11px;margin-bottom:30px}
+  .wrap{max-width:940px;margin:0 auto;padding:0 26px 72px}
+  /* Hero: the same first screen every city map opens with, made generic. */
+  .hero{position:relative;min-height:calc(100vh - 0px);display:flex;align-items:center;overflow:hidden;
+    margin:0 -26px;padding:28px 26px}
+  .hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.42}
+  .hero .scrim{position:absolute;inset:0;
+    background:radial-gradient(115% 85% at 22% 45%,rgba(8,11,16,.97) 20%,rgba(8,11,16,.72) 52%,rgba(8,11,16,.35) 100%)}
+  .hero-in{position:relative;width:100%;max-width:940px;margin:0 auto}
+  .pick{position:absolute;top:0;right:0;display:flex;align-items:center;gap:10px;font-size:11px;
+    letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .pick select{font:600 14px var(--sans);color:#0b0f14;background:#fff;border:0;border-radius:9px;
+    padding:9px 34px 9px 12px;appearance:none;-webkit-appearance:none;cursor:pointer;min-width:230px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0f14' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 10px center;background-size:14px}
+  .wordmark{display:flex;align-items:center;gap:11px;margin:60px 0 22px}
+  .eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:20px}
+  .istats{display:flex;flex-wrap:wrap;gap:34px;margin:30px 0 34px}
+  .istats div b{display:block;font-size:25px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#fff}
+  .istats div span{font-size:11px;color:#b9c3cd;letter-spacing:.05em;text-transform:uppercase}
+  .cta{display:inline-flex;align-items:center;gap:9px;font:600 14px var(--sans);color:#0b0f14;
+    background:linear-gradient(135deg,#ffb703,#ff7a45);border:0;border-radius:11px;padding:13px 22px;
+    text-decoration:none;box-shadow:0 8px 26px rgba(255,122,69,.28);transition:transform .16s,box-shadow .16s}
+  .cta:hover{transform:translateY(-1px);box-shadow:0 12px 32px rgba(255,122,69,.36)}
+  .cta[aria-disabled=true]{opacity:.55;pointer-events:none}
+  .cta svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+  .ctarow{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .ctarow a.alt{font-size:13px;color:var(--muted);text-decoration:underline}
+  .blurb{margin:-14px 0 26px;max-width:58ch;font-size:13.5px;line-height:1.6;color:#c4ccd6;min-height:1.6em}
+  .fine{margin:24px 0 0;font-size:11.5px;color:var(--muted2);line-height:1.6;max-width:62ch}
+  .fine a{color:var(--accent)}
+  .all{margin-top:40px}
+  .all h2{font-family:var(--display);font-weight:400;font-size:26px;margin:0 0 6px;color:#fff}
+  .all p.sub2{color:var(--muted);font-size:13.5px;margin:0 0 20px}
+  @media (max-width:720px){.pick{position:static;margin-bottom:8px}.pick select{min-width:0;width:100%}
+    .wordmark{margin-top:8px}.hero{min-height:0}.istats{gap:22px}}
   .wdot{width:9px;height:9px;border-radius:50%;background:var(--accent);
     box-shadow:0 0 0 4px rgba(255,183,3,.16)}
   .wm{font-family:var(--display);font-size:32px;line-height:1;letter-spacing:-.01em;color:#fff}
   .wm i{font-style:normal;color:var(--accent)}
   h1{font-family:var(--display);font-weight:400;font-size:clamp(32px,5.2vw,52px);
     line-height:1.06;letter-spacing:-.015em;margin:0 0 18px;color:#fff}
-  .lede{color:var(--muted);max-width:60ch;margin:0 0 40px}
+  .lede{color:var(--muted);max-width:56ch;margin:20px 0 0;font-size:15px;line-height:1.62}
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
   a.card{display:block;text-decoration:none;color:inherit;background:var(--panel);
     border:1px solid var(--edge);border-radius:15px;padding:24px;transition:.16s}
@@ -53,12 +86,46 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="wordmark"><span class="wdot"></span><span class="wm">Cool<i>Equity</i></span></div>
-  <h1>Where would new trees<br>help residents most?</h1>
-  <p class="lede">Satellite surface heat, aerial tree cover, census population and age, home air
-    conditioning and the walk to a cool place, scored for every neighborhood area of a city —
-    then a planting scenario with tree counts and indicative cost. Five builds.
-    Pick one.</p>
+  <section class="hero">
+    <canvas id="hexes" aria-hidden="true"></canvas>
+    <div class="scrim"></div>
+    <div class="hero-in">
+      <label class="pick">Study area
+        <select id="pick" aria-label="Choose a study area">
+          <option value="">Choose one…</option>
+          <option value="contracosta">Contra Costa County</option>
+          <option value="bakersfield">Bakersfield</option>
+          <option value="sanramon">San Ramon</option>
+          <option value="westcc">West Contra Costa</option>
+          <option value="pittsburg">Pittsburg &amp; Bay Point</option>
+        </select>
+      </label>
+      <div class="wordmark"><span class="wdot"></span><span class="wm">Cool<i>Equity</i></span></div>
+      <div class="eyebrow">Tree canopy equity</div>
+      <h1>Where would new trees<br>help residents most?</h1>
+      <p class="lede">Satellite surface heat, aerial tree cover, census population and age, home air
+        conditioning and the walk to a cool place, scored for every neighborhood area, then a
+        planting scenario with tree counts and indicative cost. Choose a study area to begin.</p>
+      <div class="istats" id="istats">
+        <div><b>5</b><span>study areas</span></div>
+        <div><b>8,435</b><span>areas ranked</span></div>
+        <div><b>2.0M</b><span>residents</span></div>
+        <div><b>2022</b><span>aerial tree cover</span></div>
+      </div>
+      <p class="blurb" id="blurb"></p>
+      <div class="ctarow">
+        <a class="cta" id="go" href="#areas" aria-disabled="false"><span id="go-label">Pick a study area</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        <a class="alt" id="guide" href="contracosta/app/guide.html">Data &amp; methods guide</a>
+      </div>
+      <p class="fine">Independent student project. A planning screen from public data, not a field survey
+        or a validated recommendation. Questions or corrections:
+        <a href="mailto:coolequity.contact@gmail.com">coolequity.contact@gmail.com</a></p>
+    </div>
+  </section>
+  <div class="all" id="areas">
+    <h2>All five study areas</h2>
+    <p class="sub2">Each opens its own start screen with the map, a data &amp; methods guide and the cooling directory.</p>
   <div class="cards">
     <a class="card" href="contracosta/app/">
       <div class="city">Contra Costa County</div>
@@ -130,6 +197,7 @@
       <div class="go">Open Pittsburg &amp; Bay Point →</div>
     </a>
   </div>
+  </div>
   <div class="note">
     <b>What is measured, and what is estimated.</b> Surface temperature (Landsat 8/9 thermal)
     is measured per area. Tree cover starts from the
@@ -174,5 +242,54 @@
     <a href="https://github.com/advikar/coolequity-app" style="color:inherit">Source code</a>.
   </div>
 </div>
+<script>
+/* Study-area select: fills the stat row, the one-line blurb and the Explore button
+ * from the same figures the cards below show. Explore opens that build's start screen. */
+const CE={
+  contracosta:{n:'Contra Costa County',go:'Explore Contra Costa County',s:[['2,697','areas ranked'],['1.16M','residents'],['18%','avg. tree cover'],['0.3 sq mi','per area']],b:'The whole county at 0.3 sq mi per area. Half of residents live in areas under 15% tree cover; surface heat is shown but not scored at county scale.'},
+  bakersfield:{n:'Bakersfield',go:'Explore Bakersfield',s:[['3,767','areas ranked'],['410k','residents'],['122 °F','median summer surface'],['4%','median tree cover']],b:'The hottest of the five: 93% of residents live in areas under 15% tree cover, and heat is scored because one valley climate makes hotter mean hotter.'},
+  sanramon:{n:'San Ramon',go:'Explore San Ramon',s:[['419','areas ranked'],['85k','residents'],['18%','avg. tree cover'],['0.04 sq mi','per area']],b:'One city inside Contra Costa at seven times the resolution. Shade and surface heat track each other closely; nearly every home has A/C, so A/C is not scored.'},
+  westcc:{n:'West Contra Costa',go:'Explore West Contra Costa',s:[['982','areas ranked'],['272k','residents'],['13%','avg. tree cover'],['0.04 sq mi','per area']],b:'Richmond to Hercules at seven times the county map’s resolution. Half of residents live in areas under 10% tree cover; heat is scored here.'},
+  pittsburg:{n:'Pittsburg & Bay Point',go:'Explore Pittsburg & Bay Point',s:[['570','areas ranked'],['90k','residents'],['10%','avg. tree cover'],['0.04 sq mi','per area']],b:'Pittsburg and Bay Point hold 15 of the county map’s 100 highest-need areas. Half of residents live in areas under 10% tree cover.'}
+};
+const ALL=[['5','study areas'],['8,435','areas ranked'],['2.0M','residents'],['2022','aerial tree cover']];
+const pick=document.getElementById('pick'),go=document.getElementById('go'),lbl=document.getElementById('go-label'),st=document.getElementById('istats'),bl=document.getElementById('blurb'),gd=document.getElementById('guide');
+function show(slug){
+  const c=CE[slug];
+  st.innerHTML=(c?c.s:ALL).map(([v,k])=>`<div><b>${v}</b><span>${k}</span></div>`).join('');
+  bl.textContent=c?c.b:'';
+  lbl.textContent=c?c.go:'Pick a study area';
+  go.href=c?slug+'/app/':'#areas';
+  gd.href=(c?slug:'contracosta')+'/app/guide.html';
+  try{if(c)localStorage.setItem('ce-home-pick',slug);}catch(_){}
+}
+pick.addEventListener('change',()=>show(pick.value));
+try{const last=localStorage.getItem('ce-home-pick');if(last&&CE[last]){pick.value=last;show(last);}}catch(_){}
+
+/* Backdrop: a hex field in the map's own palette (deep red = hotter, dark = cooler),
+ * drawn from smooth noise so it reads as a city without being any one city. */
+(function(){
+  const cv=document.getElementById('hexes');if(!cv)return;
+  const R=[[14,16,22],[38,22,20],[74,34,22],[120,48,26],[150,66,28],[176,96,36]];
+  let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
+  const G=64,grid=[];for(let i=0;i<G*G;i++)grid.push(rnd());
+  const noise=(x,y)=>{const xi=Math.floor(x)%G,yi=Math.floor(y)%G,fx=x-Math.floor(x),fy=y-Math.floor(y);
+    const g=(a,b)=>grid[((b%G)+G)%G*G+((a%G)+G)%G];const l=(a,b,t)=>a+(b-a)*(t*t*(3-2*t));
+    return l(l(g(xi,yi),g(xi+1,yi),fx),l(g(xi,yi+1),g(xi+1,yi+1),fx),fy);};
+  function draw(){
+    const dpr=Math.min(2,devicePixelRatio||1),w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;
+    cv.width=w*dpr;cv.height=h*dpr;const g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,w,h);
+    const r=Math.max(9,Math.min(16,w/90)),dx=r*Math.sqrt(3),dy=r*1.5;
+    for(let row=-1,y=0;y<h+r;row++,y+=dy){for(let x=(row%2?dx/2:0)-dx;x<w+dx;x+=dx){
+      const cx=x+w*0.18,n=noise(x/(r*9)+3,y/(r*9)+1),m=noise(x/(r*3),y/(r*3));
+      if(n*0.8+m*0.2<0.42)continue;                       // water, parks, gaps
+      const v=Math.min(0.999,Math.max(0,(noise(x/(r*14)+11,y/(r*14)+5)*0.85+m*0.15-0.25)/0.55));
+      const c=R[Math.floor(v*R.length)];g.fillStyle=`rgb(${c[0]},${c[1]},${c[2]})`;
+      g.beginPath();for(let k=0;k<6;k++){const a=Math.PI/6+k*Math.PI/3;g.lineTo(cx+Math.cos(a)*(r-1),y+Math.sin(a)*(r-1));}g.closePath();g.fill();
+    }}
+  }
+  draw();let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(draw,120);});
+})();
+</script>
 </body>
 </html>
