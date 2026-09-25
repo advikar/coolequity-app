@@ -285,3 +285,13 @@ Chooser: hero in the style of the city start screens (hex canvas backdrop, wordm
 the chooser's headline, a Study-area select top right that fills the stat row and the Explore
 button), then the five cards, note, about, contact, privacy, footer as before. List/shortlist
 rank badge fits three digits.
+
+## Checkpoint, September 24, 2026 (evening): panel resize, guide city switch, chooser hero (done)
+
+Map panel: drag grip on its edge (min 366px, the width the controls were designed for; max
+720px or what leaves 420px of map), a collapse button that hides it and a floating "Show panel"
+button that brings it back; both remembered per browser (`ce-panelw`, `ce-pcol`). Guide: a
+city select in the header (from cities.js), goes to the same page in the other build. Chooser:
+hero full-bleed like the city start screens, bigger hexes in the map palette, select in the
+viewport corner; the five cards are gone, the Explore button opens a study-area menu until one
+is chosen.

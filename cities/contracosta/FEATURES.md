@@ -274,3 +274,10 @@ Kept on purpose: the headline question, "Recommended mix", the walk labels (thei
 - City cards open each build's start screen (`<slug>/app/`), not the map.
 - **Briefing**: the footer flows after the content when printed; it used to be pinned to the page bottom and overlapped the last Sources rows.
 - Rank badges in the list and shortlist grow to fit three digits.
+
+
+### Panel resize and collapse, guide study-area switch, chooser hero — September 24, 2026 (evening)
+
+- **Map panel** (wide screens): a grip on the panel's edge drags it wider, from 366 px (the floor; the controls were laid out for it and get cut off below) to 720 px or whatever leaves 420 px of map. Double-click or Home resets; arrow keys resize from the keyboard. The new button beside Home collapses the panel entirely and a floating **Show panel** button brings it back. Width and collapsed state are remembered per browser. Phones are unaffected.
+- **Guide**: a Study area select in the header (built from `cities.js`) opens the same topic in another build.
+- **Chooser**: the hero is full-bleed like the city start screens, with larger hexes in the map palette and the select in the viewport corner. The five cards are gone; until a study area is chosen, **Choose a study area** opens a menu of the five (each a link to that build's start screen).

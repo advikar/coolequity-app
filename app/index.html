@@ -40,7 +40,18 @@
      score — so they get tabular figures globally rather than per-rule. */
   .num,.sc,.stat .v,.metric .top span:last-child,.badge,.tt-row span:last-child{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
   svg.ico{width:13px;height:13px;flex:none;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.8}
-  #app{display:grid;grid-template-columns:366px minmax(0,1fr);height:100vh;position:relative;overflow:hidden}
+  #app{--panelw:366px;display:grid;grid-template-columns:var(--panelw) minmax(0,1fr);height:100vh;position:relative;overflow:hidden}
+  /* Panel width is adjustable on wide screens: a grip on its edge, and a collapse
+     that gives the whole window to the map. 366px is the floor: the controls were
+     laid out for it and get cut off below it. */
+  #grip{position:absolute;top:0;bottom:0;left:calc(var(--panelw) - 5px);width:10px;cursor:col-resize;z-index:30;background:transparent}
+  #grip::after{content:"";position:absolute;top:50%;left:3px;width:4px;height:44px;margin-top:-22px;border-radius:2px;background:var(--edge2);opacity:.7;transition:opacity .15s,background .15s}
+  #grip:hover::after,#grip.on::after{background:var(--accent);opacity:1}
+  #app.pcol{--panelw:0px}#app.pcol #panel,#app.pcol #grip{display:none}#app.pcol #mapwrap{grid-column:1/-1}
+  #panel-show{position:absolute;top:10px;left:10px;z-index:31;display:none;align-items:center;gap:6px;font:600 12px var(--sans);color:var(--txt);background:var(--panel);border:1px solid var(--edge2);border-radius:9px;padding:7px 11px;cursor:pointer;box-shadow:var(--shadow)}
+  #app.pcol #panel-show{display:inline-flex}
+  #panel-hide{margin-left:4px}
+  @media(max-width:760px){#grip,#panel-show{display:none!important}#app.pcol #panel{display:flex}}
   #panel{background:linear-gradient(180deg,var(--panel),var(--panel2));border-right:1px solid var(--edge);display:flex;flex-direction:column;min-height:0}
   /* ------------------------------------------------------------ intro */
   /* `align-items:center` + `overflow:hidden` clips a too-tall card at BOTH ends,
@@ -797,6 +808,9 @@
             stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
         </button>
         <select class="cityselect" id="city-nav" aria-label="Switch city" title="Switch city"></select>
+        <button class="home" id="panel-hide" type="button" title="Hide this panel and give the map the whole window" aria-label="Hide the panel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/><path d="M4 4v16"/></svg>
+        </button>
         <div class="seg" id="units" role="group" aria-label="Units">
           <button data-u="met" type="button">°C · km</button><button data-u="imp" type="button">°F · mi</button>
         </div>
@@ -1030,6 +1044,8 @@
       <div class="acts"><button type="button" class="quiet" id="slclear-stay">Keep it</button><button type="button" id="slclear-go">Clear</button><button type="button" class="primary" id="slclear-save">Save CSV &amp; clear</button></div>
     </div>
   </div>
+  <div id="grip" role="separator" aria-orientation="vertical" aria-label="Resize the panel (drag; double-click resets)" tabindex="0" title="Drag to resize the panel · double-click to reset"></div>
+  <button id="panel-show" type="button" aria-label="Show the panel"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/><path d="M4 4v16"/></svg>Show panel</button>
   <aside id="detail" inert aria-label="Selected area">
     <div class="dhead">
       <div class="badge" id="d-badge">1</div>
@@ -2161,7 +2177,7 @@ async function boot(){
   computeRanges();
   loadNotes();
   buildCityPick();
-  wireMobileView();
+  wireMobileView();wirePanelSize();
   document.getElementById('chip-n').textContent=`${HEX.features.filter(f=>f.properties.place==='res').length.toLocaleString()} areas`;
   syncHolcAvailable();
 
@@ -2842,6 +2858,25 @@ function renderFieldCheck(p,ranked){
   m.hidden=!n.updated;if(n.updated)m.textContent=`Saved ${new Date(n.updated).toLocaleDateString()} · this browser only`;
   if(n.status||n.note)box.open=true;   // an area with a record opens ready to read; a blank one stays folded
   ta.oninput=()=>{setNote(p.id,{note:ta.value});const k=noteOf(p.id);m.hidden=!k.updated;if(k.updated)m.textContent='Saved just now · this browser only';};
+}
+/* Wide screens: drag the panel edge, or collapse the panel. The map's own
+ * ResizeObserver repaints it; fitData is not re-run so the view does not jump. */
+function wirePanelSize(){
+  const app=document.getElementById('app'),grip=document.getElementById('grip'),hide=document.getElementById('panel-hide'),show=document.getElementById('panel-show');
+  if(!grip||!hide||!show)return;
+  const MIN=366,maxW=()=>Math.max(MIN,Math.min(720,innerWidth-420));
+  const set=w=>{w=Math.round(Math.max(MIN,Math.min(maxW(),w)));app.style.setProperty('--panelw',w+'px');try{localStorage.setItem('ce-panelw',String(w));}catch(_){}};
+  const col=on=>{app.classList.toggle('pcol',on);try{localStorage.setItem('ce-pcol',on?'1':'0');}catch(_){}(on?show:hide).focus();};
+  try{const w=+localStorage.getItem('ce-panelw');if(w)set(w);if(localStorage.getItem('ce-pcol')==='1')app.classList.add('pcol');}catch(_){}
+  let drag=null;
+  grip.addEventListener('pointerdown',e=>{drag={x:e.clientX,w:parseFloat(getComputedStyle(app).getPropertyValue('--panelw'))||MIN};grip.classList.add('on');grip.setPointerCapture(e.pointerId);document.body.style.cursor='col-resize';document.body.style.userSelect='none';e.preventDefault();});
+  grip.addEventListener('pointermove',e=>{if(drag)set(drag.w+e.clientX-drag.x);});
+  const end=()=>{if(!drag)return;drag=null;grip.classList.remove('on');document.body.style.cursor='';document.body.style.userSelect='';};
+  grip.addEventListener('pointerup',end);grip.addEventListener('pointercancel',end);
+  grip.addEventListener('dblclick',()=>set(MIN));
+  grip.addEventListener('keydown',e=>{const w=parseFloat(getComputedStyle(app).getPropertyValue('--panelw'))||MIN;if(e.key==='ArrowRight'){set(w+24);e.preventDefault();}else if(e.key==='ArrowLeft'){set(w-24);e.preventDefault();}else if(e.key==='Home'){set(MIN);e.preventDefault();}});
+  hide.onclick=()=>col(true);show.onclick=()=>col(false);
+  addEventListener('resize',()=>{const w=parseFloat(getComputedStyle(app).getPropertyValue('--panelw'));if(w>maxW())set(w);});
 }
 function wireMobileView(){
   const seg=document.getElementById('mview');if(!seg)return;

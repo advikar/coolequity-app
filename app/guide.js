@@ -9,3 +9,13 @@ addEventListener('hashchange',openHash);filter();openHash();
 
 function syncExpand(){const visible=articles.filter(a=>!a.hidden);const b=document.getElementById('expand');b.disabled=!visible.length;b.textContent=visible.some(a=>!a.querySelector('details').open)?'Expand visible topics':'Collapse visible topics';}
 articles.forEach(a=>a.querySelector('details').addEventListener('toggle',syncExpand));
+
+/* City switch: cities.js lists every build; the current one is read from the URL
+ * (<slug>/app/guide.html). Choosing another opens that build's guide, same topic. */
+(function(){
+  const sel=document.getElementById('guide-city'),list=window.CE_CITIES;if(!sel||!list)return;
+  const here=(location.pathname.match(/\/([a-z0-9-]+)\/app\/guide\.html$/)||[])[1];
+  for(const c of list){const o=document.createElement('option');o.value=c.slug;o.textContent=c.name;if(c.slug===here)o.selected=true;sel.appendChild(o);}
+  if(!here)sel.closest('.gcity').hidden=true;
+  sel.addEventListener('change',()=>{if(sel.value&&sel.value!==here)location.href='../../'+sel.value+'/app/guide.html'+location.hash;});
+})();

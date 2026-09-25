@@ -14,3 +14,9 @@
 table.fields{border-collapse:collapse;font-size:13px;width:100%}
 table.fields th,table.fields td{text-align:left;vertical-align:top;padding:6px 10px;border-bottom:1px solid rgba(128,140,160,.25)}
 table.fields code{font-size:12px}
+
+/* City switch in the header: the same page in another build. */
+header .gcity{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+header .gcity select{appearance:none;-webkit-appearance:none;font:600 13px inherit;font-family:inherit;color:var(--text);background:var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23afbbc9' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 9px center/13px;border:1px solid var(--edge);border-radius:9px;padding:7px 30px 7px 11px;cursor:pointer;max-width:230px}
+header .gcity select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:640px){header .gcity{margin-left:0;flex-basis:100%}}
