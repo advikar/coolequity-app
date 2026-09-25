@@ -632,7 +632,8 @@
   #shortlist .fbody{padding:0}
   /* --- shortlist block: starred areas, above the ranking --- */
   #shortlist{padding:0 0 4px;background:#0f1a16;border-bottom:1px solid #1e3a2e}
-  #shortlist .fhead{gap:8px;padding-bottom:4px}
+  #shortlist .fhead{gap:8px;padding-bottom:4px;flex-wrap:wrap}
+  #shortlist .fhead .fbtn{flex:0 1 auto;white-space:nowrap}
   #shortlist .fbtn{color:#ffd28c}
   #shortlist .fhead .info-link{margin-right:auto}
   #shortlist .dclose{margin-left:0}
@@ -2444,31 +2445,37 @@ function setLayer(k){
  * `have` is the data file each city would load, so wiring a second real city
  * up later is one build and one line here. */
 function buildIntro(){
-  const pop=HEX.features.reduce((a,f)=>a+f.properties.pop,0);
-  const hot=Math.max(...HEX.features.map(f=>f.properties.lst));
-  // Population-weighted, not a plain hex mean: the question is how much shade the
-  // average resident lives under, and hexes hold very different numbers of people.
-  // Only cells with an aerial tree-cover assessment count toward the average;
-  // the satellite greenness stand-in is on a different scale.
+  // The start screen's five figures are the ones an official needs first: how many
+  // people, how many areas, how many live with little shade, how hot the ground is
+  // for a typical resident, and how many are far from a mapped cool place. Each is
+  // computed here from the loaded data, so the homepage cannot quote a different
+  // number: the homepage shows only site-wide totals and sends people here.
   const res=HEX.features.filter(f=>f.properties.place==='res');
+  const pop=res.reduce((a,f)=>a+f.properties.pop,0);
+  // Shade share counts residents of areas with a tree-cover source (aerial, height
+  // model or lidar); the satellite greenness stand-in is on a different scale.
   const cb=res.filter(f=>f.properties.green_src==='canopy'),cpop=cb.reduce((a,f)=>a+f.properties.pop,0);
-  const canopy=cpop?cb.reduce((a,f)=>a+f.properties.green*f.properties.pop,0)/cpop:null;
+  const lowShade=cpop?cb.filter(f=>f.properties.green<15).reduce((a,f)=>a+f.properties.pop,0)/cpop:null;
+  // Population-weighted median surface temperature: what the ground under a typical
+  // resident reads, not the single hottest cell.
+  const byLst=res.slice().sort((a,b)=>a.properties.lst-b.properties.lst);let acc=0,medLst=null;
+  for(const f of byLst){acc+=f.properties.pop;if(acc>=pop/2){medLst=f.properties.lst;break;}}
+  const far=pop?res.filter(f=>f.properties.access_min>15).reduce((a,f)=>a+f.properties.pop,0)/pop:null;
+  const pct=v=>v==null?'—':Math.round(v*100)+'%';
   document.getElementById('istats').innerHTML=[
-    // Plain words, not pipeline terms: a newcomer should be able to read every
-    // one of these without the guide. Labels stay short so all five sit on one row.
-    [res.length.toLocaleString(),'neighborhood areas'],
     // Not always millions: San Ramon's 85,569 would come out "0.1M", which reads
     // as a rounding error rather than a population. Switch units at a million.
     [pop>=1e6?(pop/1e6).toFixed(1)+'M':Math.round(pop).toLocaleString(),'residents'],
-    [fTemp(hot),'hottest surface'],
-    [canopy==null?'—':canopy.toFixed(0)+'%','avg. tree cover'],
-    [CENTERS.features.length.toLocaleString(),'places to cool off'],
+    [res.length.toLocaleString(),'neighborhood areas'],
+    [pct(lowShade),'live under 15% tree cover'],
+    [medLst==null?'—':(isImp()?Math.round(medLst*9/5+32)+'°F':Math.round(medLst)+'°C'),'typical summer ground temp.'],
+    [pct(far),'over 15 min from a cool place'],
   ].map(([v,k])=>`<div><b>${v}</b><span>${k}</span></div>`).join('');
 
   buildSwitch();
   if(CE_CITY.introNote){for(const id of ['inote','pnote']){const n=document.getElementById(id);n.textContent=CE_CITY.introNote;n.hidden=false;}}
 
-  document.getElementById('ifine').innerHTML='Independent student project. Not a city or county product; not reviewed by any city or county. A planning screen, not a field survey. Tree cover is the population-weighted average over areas with a tree-cover source (2022 aerial, height model or lidar; not the greenness stand-in); places to cool off are mapped, not verified. Census ACS 2024. <a href="guide.html#overview" target="ce-guide">Data &amp; methods ↗</a>';
+  document.getElementById('ifine').innerHTML='Independent student project. Not a city or county product; not reviewed by any city or county. A planning screen, not a field survey. Tree-cover share counts residents of areas with a tree-cover source (2022 aerial, height model or lidar); ground temperature is a satellite surface reading, not air temperature; walks are to mapped facilities whose cooling status is not verified. Census ACS 2024. <a href="guide.html#overview" target="ce-guide">Data &amp; methods ↗</a>';
 
   document.getElementById('intro-go').onclick=()=>dismissIntro();
   document.addEventListener('keydown',e=>{

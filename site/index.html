@@ -191,19 +191,21 @@
 </div>
 <script>
 /* Study-area select: fills the stat row, the one-line blurb and the Explore button
- * from the same figures the cards below show. Explore opens that build's start screen. */
+ * Explore opens that build's start screen, which carries the study area's own figures. */
 const CE={
-  contracosta:{n:'Contra Costa County',go:'Explore Contra Costa County',s:[['2,697','areas ranked'],['1.16M','residents'],['18%','avg. tree cover'],['0.3 sq mi','per area']],b:'The whole county at 0.3 sq mi per area. Half of residents live in areas under 15% tree cover; surface heat is shown but not scored at county scale.'},
-  bakersfield:{n:'Bakersfield',go:'Explore Bakersfield',s:[['3,767','areas ranked'],['410k','residents'],['122 °F','median summer surface'],['4%','median tree cover']],b:'The hottest of the five: 93% of residents live in areas under 15% tree cover, and heat is scored because one valley climate makes hotter mean hotter.'},
-  sanramon:{n:'San Ramon',go:'Explore San Ramon',s:[['419','areas ranked'],['85k','residents'],['18%','avg. tree cover'],['0.04 sq mi','per area']],b:'One city inside Contra Costa at seven times the resolution. Shade and surface heat track each other closely; nearly every home has A/C, so A/C is not scored.'},
-  westcc:{n:'West Contra Costa',go:'Explore West Contra Costa',s:[['982','areas ranked'],['272k','residents'],['13%','avg. tree cover'],['0.04 sq mi','per area']],b:'Richmond to Hercules at seven times the county map’s resolution. Half of residents live in areas under 10% tree cover; heat is scored here.'},
-  pittsburg:{n:'Pittsburg & Bay Point',go:'Explore Pittsburg & Bay Point',s:[['570','areas ranked'],['90k','residents'],['10%','avg. tree cover'],['0.04 sq mi','per area']],b:'Pittsburg and Bay Point hold 15 of the county map’s 100 highest-need areas. Half of residents live in areas under 10% tree cover.'}
+  contracosta:{n:'Contra Costa County',go:'Explore Contra Costa County',b:'The whole county at 0.3 sq mi per area. Half of residents live in areas under 15% tree cover; surface heat is shown but not scored at county scale.'},
+  bakersfield:{n:'Bakersfield',go:'Explore Bakersfield',b:'The hottest of the five: 93% of residents live in areas under 15% tree cover, and heat is scored because one valley climate makes hotter mean hotter.'},
+  sanramon:{n:'San Ramon',go:'Explore San Ramon',b:'One city inside Contra Costa at seven times the resolution. Shade and surface heat track each other closely; nearly every home has A/C, so A/C is not scored.'},
+  westcc:{n:'West Contra Costa',go:'Explore West Contra Costa',b:'Richmond to Hercules at seven times the county map’s resolution. Half of residents live in areas under 10% tree cover; heat is scored here.'},
+  pittsburg:{n:'Pittsburg & Bay Point',go:'Explore Pittsburg & Bay Point',b:'Pittsburg and Bay Point hold 15 of the county map’s 100 highest-need areas. Half of residents live in areas under 10% tree cover.'}
 };
 const ALL=[['5','study areas'],['8,435','areas ranked'],['1.6M','residents'],['2022','aerial tree cover']];
 const pick=document.getElementById('pick'),go=document.getElementById('go'),lbl=document.getElementById('go-label'),st=document.getElementById('istats'),bl=document.getElementById('blurb'),gd=document.getElementById('guide'),menu=document.getElementById('menu');
 function show(slug){
   const c=CE[slug];
-  st.innerHTML=(c?c.s:ALL).map(([v,k])=>`<div><b>${v}</b><span>${k}</span></div>`).join('');
+  // Site-wide totals only: each study area's own figures live on its start screen,
+  // computed there from the loaded data, so the two can never disagree.
+  st.innerHTML=ALL.map(([v,k])=>`<div><b>${v}</b><span>${k}</span></div>`).join('');
   bl.textContent=c?c.b:'';
   lbl.textContent=c?c.go:'Choose a study area';
   go.href=c?slug+'/app/':'#';go.setAttribute('aria-haspopup',c?'false':'true');
