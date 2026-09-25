@@ -4,16 +4,20 @@ A planner reads the map by jurisdiction before anything else: "show me my
 city". Generated cell names (nearest mapped place plus a compass suffix) do not
 answer that, and the audit asked for a stable municipality per cell alongside
 the cell id. This step fetches Census TIGERweb place polygons for the study
-bbox and assigns every cell the place that contains its centroid:
+bbox and assigns every cell the place that covers most of the part of the cell
+inside the study boundary (01 keeps whole hexes that merely touch it; 03 counts
+only the residents inside it, so the label follows those residents):
 
     incorporated city (layer 4)  ->  city = "Richmond",   city_kind = "city"
     census-designated place (5)  ->  city = "Bay Point",  city_kind = "cdp"
     neither                      ->  city = "Unincorporated", city_kind = "none"
 
-Cities win over CDPs where both contain the point (they should not overlap,
-but TIGERweb edges are not perfectly clean). Centroid assignment means a cell
-on a city line is attributed to one side; the cell is 0.04–0.3 sq mi, so that
-is the precision of the label and the guide says so.
+Cities win over CDPs where both cover the same ground (they should not
+overlap, but TIGERweb edges are not perfectly clean). A cell on a city line is
+attributed to the side holding more of its in-boundary land; the cell is
+0.04–0.3 sq mi, so that is the precision of the label and the guide says so.
+Before September 2026 the label came from the whole cell's centroid, which for
+an edge cell could sit outside the study area (a county cell labelled Oakland).
 
     COOLEQUITY_CITY=contracosta python pipeline/04d_jurisdiction.py
 
@@ -83,15 +87,30 @@ def main():
     print(f"  {sum(p['kind']=='city' for p in places)} cities and {sum(p['kind']=='cdp' for p in places)} CDPs touch the bbox")
 
     grid = json.loads(C.GRID_FILE.read_text())
+    boundary = (shape(json.loads(C.BOUNDARY_FILE.read_text())["features"][0]["geometry"])
+                if C.BOUNDARY_FILE.exists() else None)
+    if boundary is None:
+        print("  boundary: none cached — using whole cells", file=sys.stderr)
     geoms = [p["geom"] for p in places]
     tree = STRtree(geoms)
     rows, used = [], set()
     for f in grid["features"]:
-        pt = shape(f["geometry"]).centroid
-        hits = [places[i] for i in tree.query(pt) if geoms[i].contains(pt)]
-        hits.sort(key=lambda p: 0 if p["kind"] == "city" else 1)
-        if hits:
-            p = hits[0]
+        cell = shape(f["geometry"])
+        inside = cell.intersection(boundary) if boundary is not None else cell
+        if inside.is_empty or inside.area <= 0:
+            inside = cell   # touches the boundary only along an edge: fall back to the whole hex
+        # Whichever covers most of that land wins, and land in no place competes
+        # on the same terms, so a city holding 30% of a cell does not claim it
+        # from 70% unincorporated ground. A city beats a CDP on the same ground.
+        hits, covered = [], 0.0
+        for i in tree.query(inside):
+            a = geoms[i].intersection(inside).area
+            if a > 0:
+                covered += a
+                hits.append((a * (1.0 if places[i]["kind"] == "city" else 0.999), places[i]))
+        hits.sort(key=lambda h: -h[0])
+        if hits and hits[0][0] >= inside.area - covered:
+            p = hits[0][1]
             used.add(id(p))
             rows.append({"h3": f["properties"]["h3"], "city": p["name"], "city_kind": p["kind"], "city_geoid": p["geoid"]})
         else:
@@ -111,7 +130,7 @@ def main():
     OUT_GJ.write_text(json.dumps({"type": "FeatureCollection",
                                   "properties": {"source": "Census TIGERweb Places_CouSub_ConCity_SubMCD layers 4 and 5",
                                                  "fetched": time.strftime("%Y-%m-%d"),
-                                                 "assignment": "cell centroid within polygon; cities before CDPs"},
+                                                 "assignment": "place covering most of the cell's land inside the study boundary; cities before CDPs"},
                                   "features": feats}))
     print(f"  wrote {OUT_CSV.relative_to(C.ROOT)} and {OUT_GJ.relative_to(C.ROOT)} "
           f"({len(feats)} outlines, {OUT_GJ.stat().st_size/1e6:.1f} MB)")

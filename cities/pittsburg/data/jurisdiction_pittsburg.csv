@@ -1,12 +1,12 @@
 h3,city,city_kind,city_geoid
 8928301b493ffff,Bay Point,cdp,0604415
 8928301b49bffff,Bay Point,cdp,0604415
-8928301b4d3ffff,Unincorporated,none,
+8928301b4d3ffff,Bay Point,cdp,0604415
 892830c5027ffff,Pittsburg,city,0657456
-892830c502fffff,Unincorporated,none,
-892830c5037ffff,Unincorporated,none,
+892830c502fffff,Pittsburg,city,0657456
+892830c5037ffff,Pittsburg,city,0657456
 892830c50a7ffff,Pittsburg,city,0657456
-892830c50afffff,Unincorporated,none,
+892830c50afffff,Pittsburg,city,0657456
 892830c5103ffff,Pittsburg,city,0657456
 892830c5107ffff,Pittsburg,city,0657456
 892830c510bffff,Pittsburg,city,0657456
@@ -19,7 +19,7 @@ h3,city,city_kind,city_geoid
 892830c512bffff,Pittsburg,city,0657456
 892830c512fffff,Pittsburg,city,0657456
 892830c5133ffff,Pittsburg,city,0657456
-892830c5137ffff,Concord,city,0616000
+892830c5137ffff,Pittsburg,city,0657456
 892830c513bffff,Pittsburg,city,0657456
 892830c5143ffff,Pittsburg,city,0657456
 892830c5147ffff,Pittsburg,city,0657456
@@ -35,29 +35,29 @@ h3,city,city_kind,city_geoid
 892830c5173ffff,Pittsburg,city,0657456
 892830c5177ffff,Pittsburg,city,0657456
 892830c517bffff,Pittsburg,city,0657456
-892830c518bffff,Concord,city,0616000
-892830c51abffff,Concord,city,0616000
+892830c518bffff,Pittsburg,city,0657456
+892830c51abffff,Pittsburg,city,0657456
 892830c51c3ffff,Pittsburg,city,0657456
 892830c51c7ffff,Pittsburg,city,0657456
 892830c51cbffff,Pittsburg,city,0657456
 892830c51cfffff,Pittsburg,city,0657456
-892830c51d3ffff,Concord,city,0616000
-892830c51d7ffff,Concord,city,0616000
+892830c51d3ffff,Pittsburg,city,0657456
+892830c51d7ffff,Pittsburg,city,0657456
 892830c51dbffff,Pittsburg,city,0657456
-892830c5203ffff,Unincorporated,none,
+892830c5203ffff,Pittsburg,city,0657456
 892830c5207ffff,Pittsburg,city,0657456
-892830c520bffff,Unincorporated,none,
+892830c520bffff,Pittsburg,city,0657456
 892830c520fffff,Pittsburg,city,0657456
-892830c5217ffff,Unincorporated,none,
+892830c5217ffff,Pittsburg,city,0657456
 892830c5223ffff,Pittsburg,city,0657456
-892830c5227ffff,Unincorporated,none,
+892830c5227ffff,Pittsburg,city,0657456
 892830c522bffff,Pittsburg,city,0657456
 892830c522fffff,Pittsburg,city,0657456
 892830c5233ffff,Pittsburg,city,0657456
-892830c5237ffff,Unincorporated,none,
+892830c5237ffff,Pittsburg,city,0657456
 892830c523bffff,Pittsburg,city,0657456
 892830c5243ffff,Pittsburg,city,0657456
-892830c5247ffff,Unincorporated,none,
+892830c5247ffff,Pittsburg,city,0657456
 892830c524bffff,Pittsburg,city,0657456
 892830c524fffff,Pittsburg,city,0657456
 892830c5253ffff,Pittsburg,city,0657456
@@ -70,20 +70,20 @@ h3,city,city_kind,city_geoid
 892830c5273ffff,Pittsburg,city,0657456
 892830c5277ffff,Pittsburg,city,0657456
 892830c527bffff,Pittsburg,city,0657456
-892830c52a3ffff,Unincorporated,none,
+892830c52a3ffff,Pittsburg,city,0657456
 892830c52abffff,Pittsburg,city,0657456
-892830c52afffff,Unincorporated,none,
-892830c52bbffff,Unincorporated,none,
+892830c52afffff,Pittsburg,city,0657456
+892830c52bbffff,Pittsburg,city,0657456
 892830c52c3ffff,Pittsburg,city,0657456
 892830c52cbffff,Pittsburg,city,0657456
 892830c52cfffff,Pittsburg,city,0657456
 892830c52d3ffff,Pittsburg,city,0657456
 892830c52dbffff,Pittsburg,city,0657456
-892830c5303ffff,Unincorporated,none,
+892830c5303ffff,Pittsburg,city,0657456
 892830c5307ffff,Pittsburg,city,0657456
 892830c530bffff,Pittsburg,city,0657456
 892830c530fffff,Pittsburg,city,0657456
-892830c5317ffff,Unincorporated,none,
+892830c5317ffff,Pittsburg,city,0657456
 892830c5323ffff,Pittsburg,city,0657456
 892830c5327ffff,Pittsburg,city,0657456
 892830c532bffff,Bay Point,cdp,0604415
@@ -105,9 +105,9 @@ h3,city,city_kind,city_geoid
 892830c5373ffff,Pittsburg,city,0657456
 892830c5377ffff,Pittsburg,city,0657456
 892830c537bffff,Pittsburg,city,0657456
-892830c5387ffff,Unincorporated,none,
-892830c538fffff,Unincorporated,none,
-892830c5397ffff,Unincorporated,none,
+892830c5387ffff,Pittsburg,city,0657456
+892830c538fffff,Pittsburg,city,0657456
+892830c5397ffff,Pittsburg,city,0657456
 892830c53a3ffff,Pittsburg,city,0657456
 892830c53a7ffff,Pittsburg,city,0657456
 892830c53abffff,Pittsburg,city,0657456
@@ -115,12 +115,12 @@ h3,city,city_kind,city_geoid
 892830c53b3ffff,Pittsburg,city,0657456
 892830c53b7ffff,Pittsburg,city,0657456
 892830c53bbffff,Pittsburg,city,0657456
-892830c53c3ffff,Unincorporated,none,
-892830c53c7ffff,Unincorporated,none,
+892830c53c3ffff,Pittsburg,city,0657456
+892830c53c7ffff,Pittsburg,city,0657456
 892830c53cbffff,Pittsburg,city,0657456
 892830c53cfffff,Pittsburg,city,0657456
-892830c53dbffff,Unincorporated,none,
-892830c564bffff,Unincorporated,none,
+892830c53dbffff,Pittsburg,city,0657456
+892830c564bffff,Pittsburg,city,0657456
 892830c564fffff,Pittsburg,city,0657456
 892830c566bffff,Pittsburg,city,0657456
 892830c567bffff,Pittsburg,city,0657456
@@ -131,15 +131,15 @@ h3,city,city_kind,city_geoid
 892830c5813ffff,Bay Point,cdp,0604415
 892830c5817ffff,Bay Point,cdp,0604415
 892830c581bffff,Bay Point,cdp,0604415
-892830c5833ffff,Unincorporated,none,
+892830c5833ffff,Bay Point,cdp,0604415
 892830c5843ffff,Bay Point,cdp,0604415
 892830c5847ffff,Bay Point,cdp,0604415
 892830c584bffff,Bay Point,cdp,0604415
-892830c584fffff,Unincorporated,none,
+892830c584fffff,Bay Point,cdp,0604415
 892830c5853ffff,Bay Point,cdp,0604415
 892830c5857ffff,Bay Point,cdp,0604415
 892830c585bffff,Bay Point,cdp,0604415
-892830c5873ffff,Unincorporated,none,
+892830c5873ffff,Bay Point,cdp,0604415
 892830c5883ffff,Bay Point,cdp,0604415
 892830c5887ffff,Bay Point,cdp,0604415
 892830c588bffff,Bay Point,cdp,0604415
@@ -192,10 +192,10 @@ h3,city,city_kind,city_geoid
 892830c5a97ffff,Bay Point,cdp,0604415
 892830c5a9bffff,Bay Point,cdp,0604415
 892830c5aa3ffff,Bay Point,cdp,0604415
-892830c5aa7ffff,Unincorporated,none,
-892830c5aabffff,Unincorporated,none,
+892830c5aa7ffff,Bay Point,cdp,0604415
+892830c5aabffff,Bay Point,cdp,0604415
 892830c5ab3ffff,Bay Point,cdp,0604415
-892830c5ab7ffff,Unincorporated,none,
+892830c5ab7ffff,Bay Point,cdp,0604415
 892830c5abbffff,Bay Point,cdp,0604415
 892830c5ac3ffff,Bay Point,cdp,0604415
 892830c5ac7ffff,Bay Point,cdp,0604415
@@ -208,34 +208,34 @@ h3,city,city_kind,city_geoid
 892830c5c27ffff,Bay Point,cdp,0604415
 892830c5c2bffff,Bay Point,cdp,0604415
 892830c5c2fffff,Bay Point,cdp,0604415
-892830c5c33ffff,Concord,city,0616000
-892830c5c37ffff,Concord,city,0616000
-892830c5c3bffff,Concord,city,0616000
+892830c5c33ffff,Bay Point,cdp,0604415
+892830c5c37ffff,Bay Point,cdp,0604415
+892830c5c3bffff,Bay Point,cdp,0604415
 892830c5c43ffff,Pittsburg,city,0657456
 892830c5c47ffff,Pittsburg,city,0657456
 892830c5c4bffff,Pittsburg,city,0657456
 892830c5c4fffff,Pittsburg,city,0657456
 892830c5c53ffff,Pittsburg,city,0657456
-892830c5c57ffff,Concord,city,0616000
+892830c5c57ffff,Pittsburg,city,0657456
 892830c5c5bffff,Pittsburg,city,0657456
 892830c5c63ffff,Pittsburg,city,0657456
 892830c5c67ffff,Bay Point,cdp,0604415
 892830c5c6bffff,Pittsburg,city,0657456
 892830c5c6fffff,Bay Point,cdp,0604415
-892830c5c73ffff,Concord,city,0616000
-892830c5c77ffff,Concord,city,0616000
+892830c5c73ffff,Pittsburg,city,0657456
+892830c5c77ffff,Bay Point,cdp,0604415
 892830c5c7bffff,Pittsburg,city,0657456
-892830c5ccbffff,Concord,city,0616000
+892830c5ccbffff,Pittsburg,city,0657456
 892830c5d43ffff,Bay Point,cdp,0604415
-892830c5d47ffff,Unincorporated,none,
+892830c5d47ffff,Bay Point,cdp,0604415
 892830c5d4bffff,Bay Point,cdp,0604415
 892830c5d4fffff,Bay Point,cdp,0604415
 892830c5d53ffff,Bay Point,cdp,0604415
 892830c5d57ffff,Bay Point,cdp,0604415
 892830c5d5bffff,Bay Point,cdp,0604415
-892830c5d7bffff,Unincorporated,none,
+892830c5d7bffff,Bay Point,cdp,0604415
 892830c5dcbffff,Bay Point,cdp,0604415
-892830c5dcfffff,Concord,city,0616000
+892830c5dcfffff,Bay Point,cdp,0604415
 892830c5e03ffff,Pittsburg,city,0657456
 892830c5e07ffff,Pittsburg,city,0657456
 892830c5e0bffff,Bay Point,cdp,0604415
@@ -285,25 +285,25 @@ h3,city,city_kind,city_geoid
 892830c5ed3ffff,Pittsburg,city,0657456
 892830c5ed7ffff,Pittsburg,city,0657456
 892830c5edbffff,Pittsburg,city,0657456
-892830cc437ffff,Unincorporated,none,
-892830cc487ffff,Unincorporated,none,
-892830cc493ffff,Unincorporated,none,
-892830cc497ffff,Unincorporated,none,
+892830cc437ffff,Pittsburg,city,0657456
+892830cc487ffff,Pittsburg,city,0657456
+892830cc493ffff,Pittsburg,city,0657456
+892830cc497ffff,Pittsburg,city,0657456
 892830cc4a3ffff,Pittsburg,city,0657456
 892830cc4a7ffff,Pittsburg,city,0657456
 892830cc4afffff,Pittsburg,city,0657456
 892830cc4b3ffff,Pittsburg,city,0657456
 892830cc4b7ffff,Pittsburg,city,0657456
-892830cc4bbffff,Unincorporated,none,
+892830cc4bbffff,Pittsburg,city,0657456
 892830cc503ffff,Pittsburg,city,0657456
 892830cc507ffff,Pittsburg,city,0657456
-892830cc50bffff,Unincorporated,none,
-892830cc50fffff,Unincorporated,none,
+892830cc50bffff,Pittsburg,city,0657456
+892830cc50fffff,Pittsburg,city,0657456
 892830cc513ffff,Pittsburg,city,0657456
 892830cc517ffff,Pittsburg,city,0657456
 892830cc51bffff,Pittsburg,city,0657456
-892830cc533ffff,Unincorporated,none,
-892830cc53bffff,Unincorporated,none,
+892830cc533ffff,Pittsburg,city,0657456
+892830cc53bffff,Pittsburg,city,0657456
 892830cc583ffff,Pittsburg,city,0657456
 892830cc587ffff,Pittsburg,city,0657456
 892830cc58bffff,Pittsburg,city,0657456
@@ -312,15 +312,15 @@ h3,city,city_kind,city_geoid
 892830cc597ffff,Pittsburg,city,0657456
 892830cc59bffff,Pittsburg,city,0657456
 892830cc5a3ffff,Pittsburg,city,0657456
-892830cc5a7ffff,Unincorporated,none,
+892830cc5a7ffff,Pittsburg,city,0657456
 892830cc5abffff,Pittsburg,city,0657456
-892830cc5afffff,Unincorporated,none,
+892830cc5afffff,Pittsburg,city,0657456
 892830cc5b3ffff,Pittsburg,city,0657456
 892830cc5b7ffff,Pittsburg,city,0657456
 892830cc5bbffff,Pittsburg,city,0657456
 892830cc5c3ffff,Pittsburg,city,0657456
 892830cc5c7ffff,Pittsburg,city,0657456
-892830cc5cbffff,Unincorporated,none,
+892830cc5cbffff,Pittsburg,city,0657456
 892830cc5cfffff,Pittsburg,city,0657456
 892830cc5d3ffff,Pittsburg,city,0657456
 892830cc5d7ffff,Pittsburg,city,0657456
@@ -339,12 +339,12 @@ h3,city,city_kind,city_geoid
 892830ce033ffff,Pittsburg,city,0657456
 892830ce037ffff,Pittsburg,city,0657456
 892830ce03bffff,Pittsburg,city,0657456
-892830ce043ffff,Antioch,city,0602252
+892830ce043ffff,Pittsburg,city,0657456
 892830ce047ffff,Pittsburg,city,0657456
 892830ce04bffff,Pittsburg,city,0657456
 892830ce04fffff,Pittsburg,city,0657456
 892830ce057ffff,Pittsburg,city,0657456
-892830ce05bffff,Antioch,city,0602252
+892830ce05bffff,Pittsburg,city,0657456
 892830ce063ffff,Pittsburg,city,0657456
 892830ce067ffff,Pittsburg,city,0657456
 892830ce06bffff,Pittsburg,city,0657456
@@ -421,10 +421,10 @@ h3,city,city_kind,city_geoid
 892830ce1d3ffff,Pittsburg,city,0657456
 892830ce1d7ffff,Pittsburg,city,0657456
 892830ce1dbffff,Pittsburg,city,0657456
-892830ce203ffff,Antioch,city,0602252
+892830ce203ffff,Pittsburg,city,0657456
 892830ce207ffff,Pittsburg,city,0657456
-892830ce20fffff,Antioch,city,0602252
-892830ce213ffff,Antioch,city,0602252
+892830ce20fffff,Pittsburg,city,0657456
+892830ce213ffff,Pittsburg,city,0657456
 892830ce217ffff,Pittsburg,city,0657456
 892830ce223ffff,Pittsburg,city,0657456
 892830ce227ffff,Pittsburg,city,0657456
@@ -433,12 +433,12 @@ h3,city,city_kind,city_geoid
 892830ce233ffff,Pittsburg,city,0657456
 892830ce237ffff,Pittsburg,city,0657456
 892830ce23bffff,Pittsburg,city,0657456
-892830ce263ffff,Antioch,city,0602252
+892830ce263ffff,Pittsburg,city,0657456
 892830ce267ffff,Pittsburg,city,0657456
-892830ce26fffff,Unincorporated,none,
-892830ce273ffff,Antioch,city,0602252
+892830ce26fffff,Pittsburg,city,0657456
+892830ce273ffff,Pittsburg,city,0657456
 892830ce277ffff,Pittsburg,city,0657456
-892830ce283ffff,Antioch,city,0602252
+892830ce283ffff,Pittsburg,city,0657456
 892830ce287ffff,Pittsburg,city,0657456
 892830ce28fffff,Pittsburg,city,0657456
 892830ce293ffff,Pittsburg,city,0657456
@@ -501,21 +501,21 @@ h3,city,city_kind,city_geoid
 892830ce3d7ffff,Pittsburg,city,0657456
 892830ce3dbffff,Pittsburg,city,0657456
 892830ce407ffff,Pittsburg,city,0657456
-892830ce40bffff,Antioch,city,0602252
+892830ce40bffff,Pittsburg,city,0657456
 892830ce40fffff,Pittsburg,city,0657456
-892830ce423ffff,Unincorporated,none,
-892830ce427ffff,Unincorporated,none,
+892830ce423ffff,Pittsburg,city,0657456
+892830ce427ffff,Pittsburg,city,0657456
 892830ce42bffff,Pittsburg,city,0657456
 892830ce42fffff,Pittsburg,city,0657456
-892830ce433ffff,Unincorporated,none,
+892830ce433ffff,Pittsburg,city,0657456
 892830ce43bffff,Pittsburg,city,0657456
 892830ce463ffff,Pittsburg,city,0657456
 892830ce467ffff,Pittsburg,city,0657456
 892830ce46bffff,Pittsburg,city,0657456
 892830ce46fffff,Pittsburg,city,0657456
-892830ce473ffff,Antioch,city,0602252
+892830ce473ffff,Pittsburg,city,0657456
 892830ce477ffff,Pittsburg,city,0657456
-892830ce47bffff,Antioch,city,0602252
+892830ce47bffff,Pittsburg,city,0657456
 892830ce503ffff,Pittsburg,city,0657456
 892830ce507ffff,Pittsburg,city,0657456
 892830ce50bffff,Pittsburg,city,0657456
@@ -543,29 +543,29 @@ h3,city,city_kind,city_geoid
 892830ce573ffff,Pittsburg,city,0657456
 892830ce577ffff,Pittsburg,city,0657456
 892830ce57bffff,Pittsburg,city,0657456
-892830ce587ffff,Unincorporated,none,
-892830ce58fffff,Unincorporated,none,
+892830ce587ffff,Pittsburg,city,0657456
+892830ce58fffff,Pittsburg,city,0657456
 892830ce5a3ffff,Pittsburg,city,0657456
 892830ce5a7ffff,Pittsburg,city,0657456
 892830ce5abffff,Pittsburg,city,0657456
 892830ce5afffff,Pittsburg,city,0657456
 892830ce5b3ffff,Pittsburg,city,0657456
 892830ce5b7ffff,Pittsburg,city,0657456
-892830ce5bbffff,Unincorporated,none,
-892830ce5cfffff,Unincorporated,none,
-892830ce663ffff,Antioch,city,0602252
+892830ce5bbffff,Pittsburg,city,0657456
+892830ce5cfffff,Pittsburg,city,0657456
+892830ce663ffff,Pittsburg,city,0657456
 892830ce667ffff,Pittsburg,city,0657456
 892830ce66fffff,Pittsburg,city,0657456
-892830ce6a3ffff,Antioch,city,0602252
+892830ce6a3ffff,Pittsburg,city,0657456
 892830ce6a7ffff,Pittsburg,city,0657456
-892830ce6abffff,Antioch,city,0602252
+892830ce6abffff,Pittsburg,city,0657456
 892830ce6afffff,Pittsburg,city,0657456
 892830ce6b7ffff,Pittsburg,city,0657456
-892830ce803ffff,Unincorporated,none,
+892830ce803ffff,Pittsburg,city,0657456
 892830ce813ffff,Pittsburg,city,0657456
 892830ce817ffff,Pittsburg,city,0657456
 892830ce81bffff,Pittsburg,city,0657456
-892830ce853ffff,Unincorporated,none,
+892830ce853ffff,Pittsburg,city,0657456
 892830ce883ffff,Pittsburg,city,0657456
 892830ce887ffff,Pittsburg,city,0657456
 892830ce88bffff,Pittsburg,city,0657456
@@ -576,7 +576,7 @@ h3,city,city_kind,city_geoid
 892830ce8a3ffff,Pittsburg,city,0657456
 892830ce8a7ffff,Bay Point,cdp,0604415
 892830ce8abffff,Pittsburg,city,0657456
-892830ce8afffff,Unincorporated,none,
+892830ce8afffff,Pittsburg,city,0657456
 892830ce8b3ffff,Pittsburg,city,0657456
 892830ce8b7ffff,Bay Point,cdp,0604415
 892830ce8bbffff,Pittsburg,city,0657456
@@ -587,8 +587,8 @@ h3,city,city_kind,city_geoid
 892830ce8d3ffff,Pittsburg,city,0657456
 892830ce8d7ffff,Pittsburg,city,0657456
 892830ce8dbffff,Pittsburg,city,0657456
-892830ce913ffff,Unincorporated,none,
-892830ce917ffff,Unincorporated,none,
+892830ce913ffff,Bay Point,cdp,0604415
+892830ce917ffff,Bay Point,cdp,0604415
 892830ce983ffff,Bay Point,cdp,0604415
 892830ce987ffff,Bay Point,cdp,0604415
 892830ce98bffff,Bay Point,cdp,0604415
@@ -598,15 +598,15 @@ h3,city,city_kind,city_geoid
 892830ce99bffff,Bay Point,cdp,0604415
 892830ce9a3ffff,Bay Point,cdp,0604415
 892830ce9a7ffff,Bay Point,cdp,0604415
-892830ce9abffff,Unincorporated,none,
+892830ce9abffff,Bay Point,cdp,0604415
 892830ce9b3ffff,Bay Point,cdp,0604415
 892830ce9b7ffff,Bay Point,cdp,0604415
 892830ce9bbffff,Bay Point,cdp,0604415
-892830ce9c3ffff,Unincorporated,none,
-892830ce9c7ffff,Unincorporated,none,
+892830ce9c3ffff,Bay Point,cdp,0604415
+892830ce9c7ffff,Bay Point,cdp,0604415
 892830ce9d3ffff,Bay Point,cdp,0604415
 892830ce9d7ffff,Bay Point,cdp,0604415
-892830ce9dbffff,Unincorporated,none,
+892830ce9dbffff,Bay Point,cdp,0604415
 892830cec03ffff,Pittsburg,city,0657456
 892830cec07ffff,Pittsburg,city,0657456
 892830cec0bffff,Pittsburg,city,0657456
@@ -698,7 +698,7 @@ h3,city,city_kind,city_geoid
 892830cedb3ffff,Bay Point,cdp,0604415
 892830cedb7ffff,Bay Point,cdp,0604415
 892830cedbbffff,Bay Point,cdp,0604415
-892830cedc3ffff,Pittsburg,city,0657456
+892830cedc3ffff,Bay Point,cdp,0604415
 892830cedc7ffff,Bay Point,cdp,0604415
 892830cedcbffff,Pittsburg,city,0657456
 892830cedcfffff,Bay Point,cdp,0604415
@@ -715,7 +715,7 @@ h3,city,city_kind,city_geoid
 892830cee23ffff,Pittsburg,city,0657456
 892830cee27ffff,Pittsburg,city,0657456
 892830cee2bffff,Pittsburg,city,0657456
-892830cee2fffff,Unincorporated,none,
+892830cee2fffff,Pittsburg,city,0657456
 892830cee33ffff,Pittsburg,city,0657456
 892830cee37ffff,Pittsburg,city,0657456
 892830cee3bffff,Pittsburg,city,0657456
@@ -729,7 +729,7 @@ h3,city,city_kind,city_geoid
 892830cee63ffff,Pittsburg,city,0657456
 892830cee67ffff,Pittsburg,city,0657456
 892830cee6bffff,Pittsburg,city,0657456
-892830cee6fffff,Unincorporated,none,
+892830cee6fffff,Pittsburg,city,0657456
 892830cee73ffff,Pittsburg,city,0657456
 892830cee77ffff,Pittsburg,city,0657456
 892830cee7bffff,Pittsburg,city,0657456

@@ -1,10 +1,10 @@
 h3,city,city_kind,city_geoid
-892830d0883ffff,Camino Tassajara,cdp,0610301
+892830d0883ffff,San Ramon,city,0668378
 892830d0893ffff,San Ramon,city,0668378
 892830d0897ffff,San Ramon,city,0668378
-892830d0993ffff,Danville,city,0617988
+892830d0993ffff,San Ramon,city,0668378
 892830d0c07ffff,San Ramon,city,0668378
-892830d0c17ffff,Unincorporated,none,
+892830d0c17ffff,San Ramon,city,0668378
 892830d0c23ffff,San Ramon,city,0668378
 892830d0c27ffff,San Ramon,city,0668378
 892830d0c2bffff,San Ramon,city,0668378
@@ -12,10 +12,10 @@ h3,city,city_kind,city_geoid
 892830d0c33ffff,San Ramon,city,0668378
 892830d0c37ffff,San Ramon,city,0668378
 892830d0c3bffff,San Ramon,city,0668378
-892830d0c83ffff,Unincorporated,none,
+892830d0c83ffff,San Ramon,city,0668378
 892830d0c87ffff,San Ramon,city,0668378
-892830d0c8fffff,Unincorporated,none,
-892830d0c93ffff,Unincorporated,none,
+892830d0c8fffff,San Ramon,city,0668378
+892830d0c93ffff,San Ramon,city,0668378
 892830d0c97ffff,San Ramon,city,0668378
 892830d0ca3ffff,San Ramon,city,0668378
 892830d0ca7ffff,San Ramon,city,0668378
@@ -39,12 +39,12 @@ h3,city,city_kind,city_geoid
 892830d0d37ffff,San Ramon,city,0668378
 892830d0d3bffff,San Ramon,city,0668378
 892830d0d43ffff,San Ramon,city,0668378
-892830d0d47ffff,Danville,city,0617988
-892830d0d4bffff,Camino Tassajara,cdp,0610301
+892830d0d47ffff,San Ramon,city,0668378
+892830d0d4bffff,San Ramon,city,0668378
 892830d0d53ffff,San Ramon,city,0668378
 892830d0d57ffff,San Ramon,city,0668378
 892830d0d5bffff,San Ramon,city,0668378
-892830d0d63ffff,Danville,city,0617988
+892830d0d63ffff,San Ramon,city,0668378
 892830d0d67ffff,San Ramon,city,0668378
 892830d0d77ffff,San Ramon,city,0668378
 892830d0d83ffff,San Ramon,city,0668378
@@ -68,12 +68,12 @@ h3,city,city_kind,city_geoid
 892830d0dd3ffff,San Ramon,city,0668378
 892830d0dd7ffff,San Ramon,city,0668378
 892830d0ddbffff,San Ramon,city,0668378
-892830d286bffff,Unincorporated,none,
-892830d286fffff,Unincorporated,none,
-892830d28a3ffff,Unincorporated,none,
+892830d286bffff,San Ramon,city,0668378
+892830d286fffff,San Ramon,city,0668378
+892830d28a3ffff,San Ramon,city,0668378
 892830d28a7ffff,San Ramon,city,0668378
-892830d28afffff,Unincorporated,none,
-892830d28b7ffff,Dublin,city,0620018
+892830d28afffff,San Ramon,city,0668378
+892830d28b7ffff,San Ramon,city,0668378
 892830d2903ffff,San Ramon,city,0668378
 892830d2907ffff,San Ramon,city,0668378
 892830d290bffff,San Ramon,city,0668378
@@ -88,11 +88,11 @@ h3,city,city_kind,city_geoid
 892830d2933ffff,San Ramon,city,0668378
 892830d2937ffff,San Ramon,city,0668378
 892830d293bffff,San Ramon,city,0668378
-892830d2943ffff,Unincorporated,none,
+892830d2943ffff,San Ramon,city,0668378
 892830d2947ffff,San Ramon,city,0668378
-892830d294bffff,Unincorporated,none,
+892830d294bffff,San Ramon,city,0668378
 892830d294fffff,San Ramon,city,0668378
-892830d2953ffff,Unincorporated,none,
+892830d2953ffff,San Ramon,city,0668378
 892830d2957ffff,San Ramon,city,0668378
 892830d2963ffff,San Ramon,city,0668378
 892830d2967ffff,San Ramon,city,0668378
@@ -122,18 +122,18 @@ h3,city,city_kind,city_geoid
 892830d29d3ffff,San Ramon,city,0668378
 892830d29d7ffff,San Ramon,city,0668378
 892830d29dbffff,San Ramon,city,0668378
-892830d2a23ffff,Unincorporated,none,
+892830d2a23ffff,San Ramon,city,0668378
 892830d2a27ffff,San Ramon,city,0668378
 892830d2a2fffff,San Ramon,city,0668378
-892830d2a33ffff,Unincorporated,none,
+892830d2a33ffff,San Ramon,city,0668378
 892830d2a37ffff,San Ramon,city,0668378
 892830d2aa3ffff,San Ramon,city,0668378
 892830d2aa7ffff,San Ramon,city,0668378
-892830d2aabffff,Unincorporated,none,
+892830d2aabffff,San Ramon,city,0668378
 892830d2aafffff,San Ramon,city,0668378
-892830d2ab3ffff,Unincorporated,none,
+892830d2ab3ffff,San Ramon,city,0668378
 892830d2ab7ffff,San Ramon,city,0668378
-892830d2abbffff,Unincorporated,none,
+892830d2abbffff,San Ramon,city,0668378
 892830d2b03ffff,San Ramon,city,0668378
 892830d2b07ffff,San Ramon,city,0668378
 892830d2b0bffff,San Ramon,city,0668378
@@ -166,7 +166,7 @@ h3,city,city_kind,city_geoid
 892830d2b87ffff,San Ramon,city,0668378
 892830d2b8bffff,San Ramon,city,0668378
 892830d2b8fffff,San Ramon,city,0668378
-892830d2b9bffff,Unincorporated,none,
+892830d2b9bffff,San Ramon,city,0668378
 892830d2ba3ffff,San Ramon,city,0668378
 892830d2ba7ffff,San Ramon,city,0668378
 892830d2babffff,San Ramon,city,0668378
@@ -185,22 +185,22 @@ h3,city,city_kind,city_geoid
 892830d2d27ffff,San Ramon,city,0668378
 892830d2d2bffff,San Ramon,city,0668378
 892830d2d2fffff,San Ramon,city,0668378
-892830d2d37ffff,Dublin,city,0620018
-892830d2d3bffff,Dublin,city,0620018
+892830d2d37ffff,San Ramon,city,0668378
+892830d2d3bffff,San Ramon,city,0668378
 892830d2d63ffff,San Ramon,city,0668378
 892830d2d67ffff,San Ramon,city,0668378
 892830d2d6bffff,San Ramon,city,0668378
 892830d2d6fffff,San Ramon,city,0668378
-892830d2d77ffff,Dublin,city,0620018
-892830d2d7bffff,Dublin,city,0620018
-892830d44c3ffff,Unincorporated,none,
+892830d2d77ffff,San Ramon,city,0668378
+892830d2d7bffff,San Ramon,city,0668378
+892830d44c3ffff,San Ramon,city,0668378
 892830d44d3ffff,San Ramon,city,0668378
-892830d44d7ffff,Unincorporated,none,
+892830d44d7ffff,San Ramon,city,0668378
 892830d44dbffff,San Ramon,city,0668378
 892830d6203ffff,San Ramon,city,0668378
-892830d6207ffff,Unincorporated,none,
+892830d6207ffff,San Ramon,city,0668378
 892830d620bffff,San Ramon,city,0668378
-892830d620fffff,Unincorporated,none,
+892830d620fffff,San Ramon,city,0668378
 892830d6213ffff,San Ramon,city,0668378
 892830d6217ffff,San Ramon,city,0668378
 892830d621bffff,San Ramon,city,0668378
@@ -212,18 +212,18 @@ h3,city,city_kind,city_geoid
 892830d6257ffff,San Ramon,city,0668378
 892830d625bffff,San Ramon,city,0668378
 892830d6263ffff,San Ramon,city,0668378
-892830d6267ffff,Unincorporated,none,
+892830d6267ffff,San Ramon,city,0668378
 892830d626bffff,San Ramon,city,0668378
-892830d626fffff,Unincorporated,none,
+892830d626fffff,San Ramon,city,0668378
 892830d6273ffff,San Ramon,city,0668378
-892830d6277ffff,Unincorporated,none,
+892830d6277ffff,San Ramon,city,0668378
 892830d627bffff,San Ramon,city,0668378
-892830d628bffff,Unincorporated,none,
-892830d62c3ffff,Norris Canyon,cdp,0651622
+892830d628bffff,San Ramon,city,0668378
+892830d62c3ffff,San Ramon,city,0668378
 892830d62c7ffff,San Ramon,city,0668378
 892830d62cbffff,San Ramon,city,0668378
-892830d62cfffff,Norris Canyon,cdp,0651622
-892830d62d3ffff,Norris Canyon,cdp,0651622
+892830d62cfffff,San Ramon,city,0668378
+892830d62d3ffff,San Ramon,city,0668378
 892830d62dbffff,San Ramon,city,0668378
 892830d7003ffff,San Ramon,city,0668378
 892830d7007ffff,San Ramon,city,0668378
@@ -274,14 +274,14 @@ h3,city,city_kind,city_geoid
 892830d70d3ffff,San Ramon,city,0668378
 892830d70d7ffff,San Ramon,city,0668378
 892830d70dbffff,San Ramon,city,0668378
-892830d7107ffff,Danville,city,0617988
-892830d7113ffff,Danville,city,0617988
+892830d7107ffff,San Ramon,city,0668378
+892830d7113ffff,San Ramon,city,0668378
 892830d7117ffff,San Ramon,city,0668378
-892830d711bffff,Danville,city,0617988
-892830d7133ffff,Danville,city,0617988
-892830d7137ffff,Danville,city,0617988
-892830d7153ffff,Danville,city,0617988
-892830d7157ffff,Danville,city,0617988
+892830d711bffff,San Ramon,city,0668378
+892830d7133ffff,San Ramon,city,0668378
+892830d7137ffff,San Ramon,city,0668378
+892830d7153ffff,San Ramon,city,0668378
+892830d7157ffff,San Ramon,city,0668378
 892830d7183ffff,San Ramon,city,0668378
 892830d7187ffff,San Ramon,city,0668378
 892830d718bffff,San Ramon,city,0668378
@@ -305,20 +305,20 @@ h3,city,city_kind,city_geoid
 892830d71dbffff,San Ramon,city,0668378
 892830d7203ffff,San Ramon,city,0668378
 892830d7207ffff,San Ramon,city,0668378
-892830d720bffff,Danville,city,0617988
+892830d720bffff,San Ramon,city,0668378
 892830d720fffff,San Ramon,city,0668378
 892830d7213ffff,San Ramon,city,0668378
 892830d7217ffff,San Ramon,city,0668378
 892830d721bffff,San Ramon,city,0668378
-892830d7223ffff,Danville,city,0617988
-892830d7233ffff,Danville,city,0617988
+892830d7223ffff,San Ramon,city,0668378
+892830d7233ffff,San Ramon,city,0668378
 892830d723bffff,San Ramon,city,0668378
-892830d7243ffff,Danville,city,0617988
+892830d7243ffff,San Ramon,city,0668378
 892830d7253ffff,San Ramon,city,0668378
 892830d7257ffff,San Ramon,city,0668378
 892830d725bffff,San Ramon,city,0668378
-892830d7273ffff,Danville,city,0617988
-892830d7277ffff,Danville,city,0617988
+892830d7273ffff,San Ramon,city,0668378
+892830d7277ffff,San Ramon,city,0668378
 892830d7283ffff,San Ramon,city,0668378
 892830d7287ffff,San Ramon,city,0668378
 892830d728bffff,San Ramon,city,0668378
@@ -340,16 +340,16 @@ h3,city,city_kind,city_geoid
 892830d72d3ffff,San Ramon,city,0668378
 892830d72d7ffff,San Ramon,city,0668378
 892830d72dbffff,San Ramon,city,0668378
-892830d7313ffff,Danville,city,0617988
-892830d738bffff,Danville,city,0617988
+892830d7313ffff,San Ramon,city,0668378
+892830d738bffff,San Ramon,city,0668378
 892830d7393ffff,San Ramon,city,0668378
-892830d739bffff,Danville,city,0617988
+892830d739bffff,San Ramon,city,0668378
 892830d73c3ffff,San Ramon,city,0668378
 892830d73c7ffff,San Ramon,city,0668378
-892830d73cfffff,Danville,city,0617988
+892830d73cfffff,San Ramon,city,0668378
 892830d73d3ffff,San Ramon,city,0668378
 892830d73d7ffff,San Ramon,city,0668378
-892830d73dbffff,Danville,city,0617988
+892830d73dbffff,San Ramon,city,0668378
 892830d7403ffff,San Ramon,city,0668378
 892830d7407ffff,San Ramon,city,0668378
 892830d740bffff,San Ramon,city,0668378
@@ -390,7 +390,7 @@ h3,city,city_kind,city_geoid
 892830d74abffff,San Ramon,city,0668378
 892830d74afffff,San Ramon,city,0668378
 892830d74b3ffff,San Ramon,city,0668378
-892830d74b7ffff,Unincorporated,none,
+892830d74b7ffff,San Ramon,city,0668378
 892830d74bbffff,San Ramon,city,0668378
 892830d74c3ffff,San Ramon,city,0668378
 892830d74c7ffff,San Ramon,city,0668378
@@ -427,16 +427,16 @@ h3,city,city_kind,city_geoid
 892830d7573ffff,San Ramon,city,0668378
 892830d7577ffff,San Ramon,city,0668378
 892830d757bffff,San Ramon,city,0668378
-892830d7583ffff,Unincorporated,none,
-892830d7587ffff,Unincorporated,none,
+892830d7583ffff,San Ramon,city,0668378
+892830d7587ffff,San Ramon,city,0668378
 892830d758bffff,San Ramon,city,0668378
 892830d758fffff,San Ramon,city,0668378
-892830d759bffff,Unincorporated,none,
+892830d759bffff,San Ramon,city,0668378
 892830d75a3ffff,San Ramon,city,0668378
 892830d75a7ffff,San Ramon,city,0668378
 892830d75abffff,San Ramon,city,0668378
 892830d75afffff,San Ramon,city,0668378
-892830d75b3ffff,Unincorporated,none,
+892830d75b3ffff,San Ramon,city,0668378
 892830d75bbffff,San Ramon,city,0668378
 892830d75c3ffff,San Ramon,city,0668378
 892830d75c7ffff,San Ramon,city,0668378
@@ -506,7 +506,7 @@ h3,city,city_kind,city_geoid
 8928346da2bffff,San Ramon,city,0668378
 8928346da2fffff,San Ramon,city,0668378
 8928346da33ffff,San Ramon,city,0668378
-8928346da37ffff,Unincorporated,none,
+8928346da37ffff,San Ramon,city,0668378
 8928346da3bffff,San Ramon,city,0668378
 8928346da43ffff,San Ramon,city,0668378
 8928346da47ffff,San Ramon,city,0668378
@@ -522,21 +522,21 @@ h3,city,city_kind,city_geoid
 8928346da73ffff,San Ramon,city,0668378
 8928346da77ffff,San Ramon,city,0668378
 8928346da7bffff,San Ramon,city,0668378
-8928346da83ffff,Unincorporated,none,
+8928346da83ffff,San Ramon,city,0668378
 8928346da8bffff,San Ramon,city,0668378
 8928346da8fffff,San Ramon,city,0668378
-8928346daabffff,Unincorporated,none,
+8928346daabffff,San Ramon,city,0668378
 8928346dac3ffff,San Ramon,city,0668378
 8928346dac7ffff,San Ramon,city,0668378
 8928346dacbffff,San Ramon,city,0668378
 8928346dacfffff,San Ramon,city,0668378
-8928346dad7ffff,Dublin,city,0620018
-8928346dadbffff,Dublin,city,0620018
-8928346db43ffff,Unincorporated,none,
+8928346dad7ffff,San Ramon,city,0668378
+8928346dadbffff,San Ramon,city,0668378
+8928346db43ffff,San Ramon,city,0668378
 8928346db4bffff,San Ramon,city,0668378
-8928346db4fffff,Unincorporated,none,
+8928346db4fffff,San Ramon,city,0668378
 8928346db53ffff,San Ramon,city,0668378
 8928346db5bffff,San Ramon,city,0668378
-8928346db6bffff,Unincorporated,none,
-8928346db7bffff,Unincorporated,none,
-8928346dbcbffff,Norris Canyon,cdp,0651622
+8928346db6bffff,San Ramon,city,0668378
+8928346db7bffff,San Ramon,city,0668378
+8928346dbcbffff,San Ramon,city,0668378

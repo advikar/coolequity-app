@@ -42,7 +42,7 @@ vm.createContext(ctx);
 const start=html.indexOf('const plantingShares=new Map();'),end=html.indexOf('function wireHover()',start);
 vm.runInContext(html.slice(start,end),ctx);
 let cases=0;
-for(const f of data.features){const p=f.properties;let last=0;for(const share of [0,25,50,100]){node('roi-slider').value=share;node('roi-slider').disabled=!(p.street_m>0);ctx.p=p;vm.runInContext('updateROI(p)',ctx);if(!p.scenario_ok){assert.equal(node('roi-trees').textContent,'—');assert.equal(node('roi-cost').textContent,'—');assert.match(node('roi-note').textContent,/mapped street capacity/);cases++;continue;}const trees=Number(node('roi-trees').textContent.replaceAll(',',''));assert(trees>=last);assert(trees<=Math.floor((p.street_m||0)*2/10));const known=p.canopy_baseline_ok?Math.max(p.canopy_m2,p.green/100*p.area_m2):p.canopy_source==='usfs-2022'?p.canopy_m2:0;assert(trees*40<=Math.max(0,p.area_m2-known)+1);if(!p.canopy_baseline_ok&&trees>0)assert(!node('roi-note').textContent.includes('→'));assert(!/NaN|Infinity/.test([...nodes.values()].map(n=>n.textContent).join(' ')));if(share===0){assert.equal(trees,0);assert.equal(node('roi-cost').textContent,'≈$0');}last=trees;cases++;}}
+for(const f of data.features){const p=f.properties;let last=0;for(const share of [0,25,50,100]){node('roi-slider').value=share;node('roi-slider').disabled=!(p.street_m>0);ctx.p=p;vm.runInContext('updateROI(p)',ctx);if(!p.scenario_ok){assert.equal(node('roi-trees').textContent,'—');assert.equal(node('roi-cost').textContent,'—');assert.match(node("roi-note").textContent,/No (mapped|eligible) street/);cases++;continue;}const trees=Number(node('roi-trees').textContent.replaceAll(',',''));assert(trees>=last);assert(trees<=Math.floor((p.street_m||0)*2/10));const known=p.canopy_baseline_ok?Math.max(p.canopy_m2,p.green/100*p.area_m2):p.canopy_source==='usfs-2022'?p.canopy_m2:0;assert(trees*40<=Math.max(0,p.area_m2-known)+1);if(!p.canopy_baseline_ok&&trees>0)assert(!node('roi-note').textContent.includes('→'));assert(!/NaN|Infinity/.test([...nodes.values()].map(n=>n.textContent).join(' ')));if(share===0){assert.equal(trees,0);assert.equal(node('roi-cost').textContent,'≈$0');}last=trees;cases++;}}
 assert.equal(data.features.filter(f=>f.properties.place==='res').length,EXPECT[slug].res);
 assert.equal(data.features.filter(f=>f.properties.holc).length,0);
 assert.equal(data.features.filter(f=>f.properties.place==='res'&&f.properties.green_src==='ndvi').length,EXPECT[slug].ndvi);
@@ -151,4 +151,40 @@ const directory=fs.readFileSync(`cities/${slug}/cooling.html`,'utf8');for(const 
   assert(html.includes("const SESSION_KEY='ce-session-'+CITY_SLUG;"),'SESSION_KEY must be scoped by city');
   console.log('PASS: popover coverage, guide links and wayfinding controls.');
 }
+}
+
+// Export contracts (runs once, on the last city's data): a starred area exports the
+// same scenario the shortlist displays even when its detail was never opened, the
+// walking method survives export, and saving one area does not mark another
+// area's edited share as saved.
+{
+  const slug=slugs[slugs.length-1],CITY=load(`cities/${slug}/city.js`,'CE_CITY'),data=JSON.parse(fs.readFileSync(`cities/${slug}/data/${slug}.geojson`,'utf8'));
+  const src=(name)=>{const i=html.indexOf('function '+name+'(');assert(i>=0,name);let d=0,j=html.indexOf('{',i);for(;;j++){const c=html[j];if(c==='{')d++;else if(c==='}'&&--d===0)break;}return html.slice(i,j+1);};
+  const ex={document:{getElementById:()=>null},console,JSON,Math,Set,Map,TREE_SPACING_M:10,TREE_M2:40,COST_TREE:500,SURVIVAL:70,
+    areaOf:p=>p.area_m2,sc:p=>p.score,rk:p=>p.rank,nameOf:p=>p.name||'area',ndviIndex:v=>v,noteOf:()=>({}),FC_LABEL:{},
+    W_INPUTS:[{k:'heat'},{k:'green'},{k:'ac'},{k:'age65'},{k:'access'}],normW:()=>({heat:.25,green:.25,ac:.25,age65:.25,access:0}),POPW:.5,
+    HEX:data,CITY_SLUG:CITY.slug,selId:null,exportHeader:()=>({dataset:{}}),FIELD_KEY:{},download:()=>{},toCsv:()=>'',stamp:()=>'t',exportStatus:()=>{}};
+  vm.createContext(ex);
+  vm.runInContext('const plantingShares=new Map();const userShares=new Set();const SHORTLIST=new Set();let SAVED_SIG=null;',ex);
+  for(const n of ['effectiveShare','scenarioFor','cellRecord','scenarioSig','markSaved','isDirty','singleAreaCapturesState','exportCell'])vm.runInContext(src(n),ex);
+  const ok=data.features.filter(f=>f.properties.place==='res'&&f.properties.scenario_ok&&f.properties.street_m>200);
+  assert(ok.length>=2);
+  const A=ok[0].properties,B=ok[1].properties;
+  // 1) star without opening detail: export must carry the 25% default the shortlist shows
+  vm.runInContext(`SHORTLIST.add(${A.id})`,ex);
+  ex.p=A;const rec=vm.runInContext('cellRecord(p)',ex),want=vm.runInContext('scenarioFor(p,25)',ex);
+  assert.equal(rec.planting_share,25);assert.equal(rec.trees,want.trees);assert.equal(rec.cost_usd,want.cost_usd);
+  assert(want.trees>0,'pick a cell with capacity');
+  assert.equal(rec.access_src,A.access_src??null);
+  ex.p=B;assert.equal(vm.runInContext('cellRecord(p)',ex).planting_share,null,'unstarred, unvisited area has no scenario');
+  // 2) edit A and B, save A only: B's edit must stay unsaved
+  vm.runInContext(`markSaved();plantingShares.set(${A.id},40);userShares.add(${A.id});plantingShares.set(${B.id},80);userShares.add(${B.id});`,ex);
+  assert.equal(vm.runInContext('isDirty()',ex),true);
+  ex.selId=A.id;vm.runInContext("exportCell('json')",ex);
+  assert.equal(vm.runInContext('isDirty()',ex),true,'one-area save must not clear another area\'s unsaved share');
+  // saving the only edited area does capture the state
+  vm.runInContext(`plantingShares.delete(${B.id});userShares.delete(${B.id});`,ex);
+  vm.runInContext("exportCell('json')",ex);
+  assert.equal(vm.runInContext('isDirty()',ex),false);
+  console.log('PASS: export contracts (shortlist default share, walk method, one-area save state).');
 }

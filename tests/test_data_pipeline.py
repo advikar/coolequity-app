@@ -84,6 +84,48 @@ class DataContracts(unittest.TestCase):
             self.assertEqual(p['acs_year'],2024)
         nres=sum(1 for f in features if f['properties']['place']=='res')
         self.assertLessEqual(income_model, max(1, nres//200), 'income-model A/C must stay under 0.5% of residential cells')
+    def test_edge_cells_use_the_study_boundary(self):
+        """Residents are counted inside the study boundary (03); street capacity and
+        the city label must use the same footprint, so an edge cell cannot offer
+        streets outside the study area or carry a city that lies outside it."""
+        import json
+        from shapely.geometry import shape
+        from shapely.ops import unary_union
+        if not C.BOUNDARY_FILE.exists(): self.skipTest('no boundary cached')
+        boundary=unary_union([shape(f['geometry']) for f in json.loads(C.BOUNDARY_FILE.read_text())['features']])
+        jur=json.loads((C.DATA/f'jurisdictions_{C.SLUG}.geojson').read_text())
+        self.assertIn('inside the study boundary',jur['properties']['assignment'])
+        # the published outlines are rounded to 5 dp (about 1 m), so give slivers that margin
+        places={}
+        for f in jur['features']: places.setdefault(f['properties']['name'],[]).append(shape(f['geometry']))
+        places={k:unary_union(v) for k,v in places.items()}
+        SLACK=3e-5
+        features=json.loads(C.OUT_FILE.read_text())['features']
+        # measure on the grid's own geometry, as 04/04d do; 05 rounds coordinates for the app
+        grid={f['properties']['id']:f['geometry'] for f in json.loads(C.GRID_FILE.read_text())['features']}
+        import geopandas as gpd
+        streets=gpd.read_file(C.STREETS_FILE).to_crs(C.RASTER_CRS); tree=streets.sindex
+        bnd=gpd.GeoSeries([boundary],crs='EPSG:4326').to_crs(C.RASTER_CRS)[0]
+        thin=0
+        for f in features:
+            p=f['properties']; cell=shape(grid[p['id']]); inside=cell.intersection(boundary)
+            if 0<inside.area<=0.05*cell.area:
+                # a cell that only clips the boundary: its capacity must be the street
+                # inside that sliver, remeasured here, not the whole hexagon's
+                m=gpd.GeoSeries([cell],crs='EPSG:4326').to_crs(C.RASTER_CRS)[0]
+                near=streets.iloc[list(tree.query(m))]
+                whole=near.intersection(m).length.sum(); part=near.intersection(m.intersection(bnd)).length.sum()
+                self.assertLessEqual(abs(p['street_m']-part),10+0.05*part,f"cell {p['id']}: street_m {p['street_m']} vs {part:.0f} m inside the study area ({whole:.0f} m in the whole cell)")
+                thin+=1
+            if p['city']!='Unincorporated':
+                # the labelling place must actually cover land inside the boundary
+                self.assertGreater(places[p['city']].intersection((inside if inside.area>0 else cell).buffer(SLACK)).area,0,f"cell {p['id']} labelled {p['city']} from outside the study area")
+        if C.SLUG=='contracosta':
+            by={f['properties']['id']:f['properties'] for f in features}
+            for i in (517,2174):   # audit examples: Oakland/Dublin streets offered as county capacity
+                self.assertEqual(by[i]['street_m'],0); self.assertEqual(by[i]['city'],'Unincorporated')
+            self.assertFalse({'Oakland','Berkeley','Albany','Dublin','Vallejo'}&{f['properties']['city'] for f in features})
+        self.assertGreater(thin,0,'expected some edge cells to exercise the clip')
 if __name__=='__main__':unittest.main()
 
 class CoolingSources(unittest.TestCase):

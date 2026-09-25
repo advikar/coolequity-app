@@ -431,8 +431,45 @@ out geom;
 """
 
 
+def study_boundary():
+    """The clip polygon 01 used, in the raster CRS, or None if it was never cached."""
+    import geopandas as gpd
+    if not C.BOUNDARY_FILE.exists():
+        log("  streets: no boundary file — measuring whole hexes", file=sys.stderr)
+        return None
+    return gpd.read_file(C.BOUNDARY_FILE).to_crs(C.RASTER_CRS).geometry.union_all()
+
+
+def refresh_streets_only():
+    """Recompute street_m in the existing overlays CSV and leave every other
+    column (routed walking times from 04b in particular) exactly as it is."""
+    import geopandas as gpd
+    log(f"Phase 4 — overlays | {C.CITY} | --streets-only")
+    if not OUT_CSV.exists():
+        raise SystemExit(f"\nNo {OUT_CSV.name}; run 04 in full first.")
+    hexes = gpd.read_file(C.GRID_FILE).to_crs(C.RASTER_CRS)
+    out = pd.read_csv(OUT_CSV)
+    if list(out["h3"]) != list(hexes["h3"]):
+        raise SystemExit("overlays CSV and grid disagree on cells; run 04 in full")
+    fr = street_frontage(hexes, False)
+    old = out["street_m"].fillna(0)
+    out["street_m"] = np.round(fr, 0).values
+    # Share of each hex inside the study boundary, so the app can say that a
+    # cell's streets lie on the far side of the line rather than that it has none.
+    boundary = study_boundary()
+    out["inside_frac"] = (np.round(hexes.geometry.intersection(boundary).area / hexes.geometry.area, 3).values
+                          if boundary is not None else 1.0)
+    log(f"  boundary: {int((out['inside_frac'] < 0.999).sum())} edge hexes partly outside the study area")
+    changed = int((old.values != out["street_m"].values).sum())
+    log(f"  streets: {fr.sum()/1000:,.0f} km of plantable frontage, {changed} hexes changed, "
+        f"{int((fr == 0).sum())} hexes with none")
+    out.to_csv(OUT_CSV, index=False)
+    log(f"  wrote {OUT_CSV.relative_to(C.ROOT)}")
+
+
 def street_frontage(hexes, refresh):
-    """Metres of plantable street centreline inside each hex.
+    """Metres of plantable street centreline inside each hex and inside the
+    study boundary.
 
     Returns a Series indexed like `hexes`. Both sides of a street are plantable,
     so capacity is 2 x length / spacing -- that doubling happens in the app,
@@ -461,6 +498,15 @@ def street_frontage(hexes, refresh):
 
     st = gpd.GeoDataFrame.from_features(gj["features"], crs="EPSG:4326").to_crs(C.RASTER_CRS)
     hx = hexes.to_crs(C.RASTER_CRS)[["h3", "geometry"]]
+    # Edge hexes hang partly outside the study area (01 keeps any hex that
+    # intersects the boundary), and 03 counts only the residents inside it.
+    # Measure streets on the same footprint, or a county cell on the Oakland
+    # line offers Oakland streets as county planting capacity.
+    boundary = study_boundary()
+    if boundary is not None:
+        before = st.geometry.length.sum()
+        st = gpd.clip(st, boundary)
+        log(f"  streets: clipped to the study boundary, {before/1000:,.0f} -> {st.geometry.length.sum()/1000:,.0f} km")
     inter = gpd.overlay(
         gpd.GeoDataFrame(geometry=st.geometry, crs=C.RASTER_CRS).assign(k=1),
         hx, how="intersection", keep_geom_type=False)
@@ -471,6 +517,9 @@ def street_frontage(hexes, refresh):
 
 def main():
     import geopandas as gpd
+    if "--streets-only" in sys.argv:
+        refresh_streets_only()
+        return
     refresh = "--refresh" in sys.argv
     log(f"Phase 4 — overlays | {C.CITY}{' | --refresh' if refresh else ''}")
     hexes = gpd.read_file(C.GRID_FILE).to_crs(C.RASTER_CRS)

@@ -1,21 +1,21 @@
 h3,city,city_kind,city_geoid
-8928301000fffff,Unincorporated,none,
-8928301002bffff,Unincorporated,none,
+8928301000fffff,Port Costa,cdp,0658226
+8928301002bffff,Port Costa,cdp,0658226
 8928301003bffff,Port Costa,cdp,0658226
-89283010047ffff,Unincorporated,none,
+89283010047ffff,Port Costa,cdp,0658226
 89283010063ffff,Port Costa,cdp,0658226
-89283010067ffff,Unincorporated,none,
-8928301006bffff,Unincorporated,none,
-8928301006fffff,Unincorporated,none,
-89283010073ffff,Unincorporated,none,
-89283010077ffff,Unincorporated,none,
+89283010067ffff,Port Costa,cdp,0658226
+8928301006bffff,Port Costa,cdp,0658226
+8928301006fffff,Port Costa,cdp,0658226
+89283010073ffff,Port Costa,cdp,0658226
+89283010077ffff,Port Costa,cdp,0658226
 8928301007bffff,Port Costa,cdp,0658226
 89283010103ffff,Crockett,cdp,0617274
 89283010107ffff,Crockett,cdp,0617274
 8928301010bffff,Crockett,cdp,0617274
 8928301010fffff,Crockett,cdp,0617274
-89283010117ffff,Unincorporated,none,
-8928301011bffff,Unincorporated,none,
+89283010117ffff,Crockett,cdp,0617274
+8928301011bffff,Crockett,cdp,0617274
 89283010123ffff,Crockett,cdp,0617274
 89283010127ffff,Crockett,cdp,0617274
 8928301012bffff,Crockett,cdp,0617274
@@ -23,64 +23,64 @@ h3,city,city_kind,city_geoid
 89283010133ffff,Crockett,cdp,0617274
 89283010137ffff,Crockett,cdp,0617274
 8928301013bffff,Crockett,cdp,0617274
-89283010147ffff,Unincorporated,none,
-89283010157ffff,Unincorporated,none,
+89283010147ffff,Crockett,cdp,0617274
+89283010157ffff,Crockett,cdp,0617274
 89283010163ffff,Crockett,cdp,0617274
 89283010167ffff,Crockett,cdp,0617274
 89283010173ffff,Crockett,cdp,0617274
 89283010177ffff,Crockett,cdp,0617274
-8928301017bffff,Unincorporated,none,
-892830101abffff,Unincorporated,none,
+8928301017bffff,Crockett,cdp,0617274
+892830101abffff,Crockett,cdp,0617274
 892830101afffff,Crockett,cdp,0617274
-89283010c03ffff,Unincorporated,none,
-89283010c0bffff,Unincorporated,none,
+89283010c03ffff,Crockett,cdp,0617274
+89283010c0bffff,Crockett,cdp,0617274
 89283010c13ffff,Crockett,cdp,0617274
-89283010c17ffff,Unincorporated,none,
+89283010c17ffff,Crockett,cdp,0617274
 89283010c1bffff,Crockett,cdp,0617274
-89283010c37ffff,Unincorporated,none,
-89283010c43ffff,Unincorporated,none,
+89283010c37ffff,Rodeo,cdp,0662490
+89283010c43ffff,Crockett,cdp,0617274
 89283010c53ffff,Crockett,cdp,0617274
 89283010c57ffff,Crockett,cdp,0617274
 89283010c5bffff,Crockett,cdp,0617274
-89283010c83ffff,Unincorporated,none,
+89283010c83ffff,Rodeo,cdp,0662490
 89283010c87ffff,Rodeo,cdp,0662490
-89283010c8fffff,Unincorporated,none,
+89283010c8fffff,Rodeo,cdp,0662490
 89283010c93ffff,Rodeo,cdp,0662490
 89283010c97ffff,Rodeo,cdp,0662490
-89283010c9bffff,Unincorporated,none,
-89283010ca3ffff,Unincorporated,none,
+89283010c9bffff,Rodeo,cdp,0662490
+89283010ca3ffff,Rodeo,cdp,0662490
 89283010ca7ffff,Rodeo,cdp,0662490
-89283010cabffff,Unincorporated,none,
+89283010cabffff,Rodeo,cdp,0662490
 89283010cafffff,Rodeo,cdp,0662490
-89283010cb3ffff,Unincorporated,none,
+89283010cb3ffff,Rodeo,cdp,0662490
 89283010cb7ffff,Rodeo,cdp,0662490
-89283010cbbffff,Unincorporated,none,
+89283010cbbffff,Rodeo,cdp,0662490
 89283010cc3ffff,Crockett,cdp,0617274
 89283010cc7ffff,Crockett,cdp,0617274
 89283010ccbffff,Crockett,cdp,0617274
 89283010ccfffff,Crockett,cdp,0617274
-89283010cd3ffff,Unincorporated,none,
+89283010cd3ffff,Crockett,cdp,0617274
 89283010cdbffff,Crockett,cdp,0617274
 89283010d83ffff,Rodeo,cdp,0662490
-89283010d87ffff,Unincorporated,none,
-89283010d8bffff,Unincorporated,none,
+89283010d87ffff,Rodeo,cdp,0662490
+89283010d8bffff,Rodeo,cdp,0662490
 89283010d93ffff,Rodeo,cdp,0662490
 89283010d97ffff,Rodeo,cdp,0662490
 89283010d9bffff,Rodeo,cdp,0662490
-89283010db7ffff,Unincorporated,none,
-89283010dc3ffff,Unincorporated,none,
+89283010db7ffff,Hercules,city,0633308
+89283010dc3ffff,Rodeo,cdp,0662490
 89283010dd3ffff,Rodeo,cdp,0662490
 89283010dd7ffff,Rodeo,cdp,0662490
 89283010ddbffff,Rodeo,cdp,0662490
-89283010e93ffff,Unincorporated,none,
-89283010e97ffff,Unincorporated,none,
+89283010e93ffff,Crockett,cdp,0617274
+89283010e97ffff,Crockett,cdp,0617274
 89283012103ffff,Hercules,city,0633308
 89283012107ffff,Hercules,city,0633308
 8928301210bffff,Hercules,city,0633308
 8928301210fffff,Hercules,city,0633308
-89283012113ffff,Unincorporated,none,
+89283012113ffff,Hercules,city,0633308
 89283012117ffff,Hercules,city,0633308
-8928301211bffff,Unincorporated,none,
+8928301211bffff,Hercules,city,0633308
 89283012123ffff,Hercules,city,0633308
 89283012127ffff,Hercules,city,0633308
 8928301212bffff,Hercules,city,0633308
@@ -88,17 +88,17 @@ h3,city,city_kind,city_geoid
 89283012133ffff,Hercules,city,0633308
 89283012137ffff,Hercules,city,0633308
 8928301213bffff,Hercules,city,0633308
-89283012147ffff,Unincorporated,none,
-8928301214fffff,Unincorporated,none,
+89283012147ffff,Hercules,city,0633308
+8928301214fffff,Hercules,city,0633308
 89283012163ffff,Hercules,city,0633308
 89283012167ffff,Hercules,city,0633308
 8928301216bffff,Hercules,city,0633308
 8928301216fffff,Hercules,city,0633308
-89283012173ffff,Unincorporated,none,
+89283012173ffff,Hercules,city,0633308
 89283012177ffff,Hercules,city,0633308
-8928301217bffff,Unincorporated,none,
-89283012187ffff,Unincorporated,none,
-8928301218fffff,Pinole,city,0657288
+8928301217bffff,Hercules,city,0633308
+89283012187ffff,Pinole,city,0657288
+8928301218fffff,Hercules,city,0633308
 892830121a3ffff,Pinole,city,0657288
 892830121a7ffff,Pinole,city,0657288
 892830121abffff,Hercules,city,0633308
@@ -111,14 +111,14 @@ h3,city,city_kind,city_geoid
 8928301230fffff,Hercules,city,0633308
 89283012313ffff,Hercules,city,0633308
 89283012317ffff,Hercules,city,0633308
-89283012323ffff,Unincorporated,none,
-89283012327ffff,Unincorporated,none,
+89283012323ffff,Hercules,city,0633308
+89283012327ffff,Hercules,city,0633308
 89283012333ffff,Hercules,city,0633308
 89283012337ffff,Hercules,city,0633308
 8928301233bffff,Hercules,city,0633308
-89283012377ffff,Unincorporated,none,
-89283012387ffff,Unincorporated,none,
-8928301238bffff,Unincorporated,none,
+89283012377ffff,Hercules,city,0633308
+89283012387ffff,Hercules,city,0633308
+8928301238bffff,Hercules,city,0633308
 8928301238fffff,Hercules,city,0633308
 892830123a3ffff,Hercules,city,0633308
 892830123a7ffff,Hercules,city,0633308
@@ -173,7 +173,7 @@ h3,city,city_kind,city_geoid
 892830128bbffff,Hercules,city,0633308
 892830128c3ffff,Rodeo,cdp,0662490
 892830128c7ffff,Hercules,city,0633308
-892830128cbffff,Unincorporated,none,
+892830128cbffff,Rodeo,cdp,0662490
 892830128cfffff,Rodeo,cdp,0662490
 892830128d3ffff,Hercules,city,0633308
 892830128d7ffff,Hercules,city,0633308
@@ -194,7 +194,7 @@ h3,city,city_kind,city_geoid
 89283012943ffff,Hercules,city,0633308
 89283012947ffff,Hercules,city,0633308
 8928301294bffff,Rodeo,cdp,0662490
-8928301294fffff,Rodeo,cdp,0662490
+8928301294fffff,Hercules,city,0633308
 89283012953ffff,Hercules,city,0633308
 89283012957ffff,Hercules,city,0633308
 8928301295bffff,Hercules,city,0633308
@@ -228,11 +228,11 @@ h3,city,city_kind,city_geoid
 892830129dbffff,Hercules,city,0633308
 89283012a03ffff,Rodeo,cdp,0662490
 89283012a07ffff,Rodeo,cdp,0662490
-89283012a0bffff,Unincorporated,none,
+89283012a0bffff,Rodeo,cdp,0662490
 89283012a0fffff,Rodeo,cdp,0662490
 89283012a13ffff,Rodeo,cdp,0662490
 89283012a17ffff,Rodeo,cdp,0662490
-89283012a1bffff,Unincorporated,none,
+89283012a1bffff,Rodeo,cdp,0662490
 89283012a23ffff,Rodeo,cdp,0662490
 89283012a27ffff,Rodeo,cdp,0662490
 89283012a2bffff,Rodeo,cdp,0662490
@@ -240,16 +240,16 @@ h3,city,city_kind,city_geoid
 89283012a33ffff,Rodeo,cdp,0662490
 89283012a37ffff,Rodeo,cdp,0662490
 89283012a3bffff,Rodeo,cdp,0662490
-89283012a63ffff,Unincorporated,none,
+89283012a63ffff,Rodeo,cdp,0662490
 89283012a67ffff,Rodeo,cdp,0662490
-89283012a6fffff,Unincorporated,none,
-89283012a73ffff,Unincorporated,none,
+89283012a6fffff,Rodeo,cdp,0662490
+89283012a73ffff,Rodeo,cdp,0662490
 89283012a77ffff,Rodeo,cdp,0662490
 89283012a83ffff,Rodeo,cdp,0662490
 89283012a87ffff,Rodeo,cdp,0662490
 89283012a8bffff,Rodeo,cdp,0662490
 89283012a8fffff,Rodeo,cdp,0662490
-89283012a93ffff,Unincorporated,none,
+89283012a93ffff,Rodeo,cdp,0662490
 89283012a97ffff,Rodeo,cdp,0662490
 89283012a9bffff,Rodeo,cdp,0662490
 89283012aa3ffff,Rodeo,cdp,0662490
@@ -259,8 +259,8 @@ h3,city,city_kind,city_geoid
 89283012ab3ffff,Rodeo,cdp,0662490
 89283012ab7ffff,Rodeo,cdp,0662490
 89283012abbffff,Rodeo,cdp,0662490
-89283012ac7ffff,Unincorporated,none,
-89283012ad7ffff,Unincorporated,none,
+89283012ac7ffff,Rodeo,cdp,0662490
+89283012ad7ffff,Rodeo,cdp,0662490
 89283012b03ffff,Rodeo,cdp,0662490
 89283012b07ffff,Rodeo,cdp,0662490
 89283012b0bffff,Rodeo,cdp,0662490
@@ -268,9 +268,9 @@ h3,city,city_kind,city_geoid
 89283012b13ffff,Rodeo,cdp,0662490
 89283012b17ffff,Rodeo,cdp,0662490
 89283012b1bffff,Rodeo,cdp,0662490
-89283012b23ffff,Unincorporated,none,
+89283012b23ffff,Rodeo,cdp,0662490
 89283012b2bffff,Rodeo,cdp,0662490
-89283012b2fffff,Unincorporated,none,
+89283012b2fffff,Rodeo,cdp,0662490
 89283012b33ffff,Rodeo,cdp,0662490
 89283012b3bffff,Rodeo,cdp,0662490
 89283012b43ffff,Rodeo,cdp,0662490
@@ -338,7 +338,7 @@ h3,city,city_kind,city_geoid
 89283012c7bffff,Hercules,city,0633308
 89283012c83ffff,Pinole,city,0657288
 89283012c87ffff,Pinole,city,0657288
-89283012c8bffff,Hercules,city,0633308
+89283012c8bffff,Pinole,city,0657288
 89283012c8fffff,Hercules,city,0633308
 89283012c93ffff,Pinole,city,0657288
 89283012c97ffff,Pinole,city,0657288
@@ -406,39 +406,39 @@ h3,city,city_kind,city_geoid
 89283012dd3ffff,Hercules,city,0633308
 89283012dd7ffff,Pinole,city,0657288
 89283012ddbffff,Hercules,city,0633308
-89283012e1bffff,Unincorporated,none,
-89283012e2fffff,Unincorporated,none,
-89283012e67ffff,Unincorporated,none,
-89283012e6fffff,Unincorporated,none,
+89283012e1bffff,Hercules,city,0633308
+89283012e2fffff,Rodeo,cdp,0662490
+89283012e67ffff,Rodeo,cdp,0662490
+89283012e6fffff,Rodeo,cdp,0662490
 89283012e83ffff,Hercules,city,0633308
 89283012e87ffff,Hercules,city,0633308
-89283012e8bffff,Unincorporated,none,
-89283012e8fffff,Unincorporated,none,
+89283012e8bffff,Hercules,city,0633308
+89283012e8fffff,Hercules,city,0633308
 89283012e93ffff,Hercules,city,0633308
 89283012e97ffff,Hercules,city,0633308
 89283012e9bffff,Hercules,city,0633308
-89283012ea3ffff,Unincorporated,none,
-89283012ea7ffff,Unincorporated,none,
+89283012ea3ffff,Hercules,city,0633308
+89283012ea7ffff,Hercules,city,0633308
 89283012eb3ffff,Hercules,city,0633308
 89283012eb7ffff,Hercules,city,0633308
 89283012ebbffff,Hercules,city,0633308
 89283012ec3ffff,Hercules,city,0633308
-89283012ec7ffff,Unincorporated,none,
+89283012ec7ffff,Hercules,city,0633308
 89283012ecbffff,Hercules,city,0633308
 89283012ecfffff,Hercules,city,0633308
 89283012ed3ffff,Hercules,city,0633308
-89283012ed7ffff,Unincorporated,none,
+89283012ed7ffff,Hercules,city,0633308
 89283012edbffff,Hercules,city,0633308
-8928301601bffff,Unincorporated,none,
+8928301601bffff,Pinole,city,0657288
 89283016043ffff,Hercules,city,0633308
-89283016047ffff,Unincorporated,none,
+89283016047ffff,Pinole,city,0657288
 8928301604bffff,Hercules,city,0633308
-8928301604fffff,Unincorporated,none,
+8928301604fffff,Hercules,city,0633308
 89283016053ffff,Pinole,city,0657288
 89283016057ffff,Pinole,city,0657288
 8928301605bffff,Hercules,city,0633308
-8928301608bffff,Unincorporated,none,
-89283016093ffff,Unincorporated,none,
+8928301608bffff,Pinole,city,0657288
+89283016093ffff,Pinole,city,0657288
 8928301609bffff,Pinole,city,0657288
 892830160c3ffff,Pinole,city,0657288
 892830160c7ffff,Pinole,city,0657288
@@ -448,7 +448,7 @@ h3,city,city_kind,city_geoid
 892830160d7ffff,Pinole,city,0657288
 892830160dbffff,Pinole,city,0657288
 89283016203ffff,Hercules,city,0633308
-89283016207ffff,Unincorporated,none,
+89283016207ffff,Hercules,city,0633308
 8928301620bffff,Hercules,city,0633308
 8928301620fffff,Hercules,city,0633308
 89283016213ffff,Hercules,city,0633308
@@ -461,8 +461,8 @@ h3,city,city_kind,city_geoid
 89283016253ffff,Hercules,city,0633308
 89283016257ffff,Hercules,city,0633308
 8928301625bffff,Hercules,city,0633308
-89283016263ffff,Unincorporated,none,
-8928301626bffff,Unincorporated,none,
+89283016263ffff,Hercules,city,0633308
+8928301626bffff,Hercules,city,0633308
 89283016273ffff,Hercules,city,0633308
 8928301627bffff,Hercules,city,0633308
 89283016283ffff,Hercules,city,0633308
@@ -472,7 +472,7 @@ h3,city,city_kind,city_geoid
 89283016293ffff,Hercules,city,0633308
 89283016297ffff,Hercules,city,0633308
 8928301629bffff,Hercules,city,0633308
-892830162abffff,Unincorporated,none,
+892830162abffff,Hercules,city,0633308
 892830162b3ffff,Hercules,city,0633308
 892830162bbffff,Hercules,city,0633308
 892830162c3ffff,Hercules,city,0633308
@@ -489,9 +489,9 @@ h3,city,city_kind,city_geoid
 89283016413ffff,Richmond,city,0660620
 89283016417ffff,Richmond,city,0660620
 8928301641bffff,Richmond,city,0660620
-89283016423ffff,Unincorporated,none,
+89283016423ffff,Pinole,city,0657288
 8928301642bffff,Pinole,city,0657288
-8928301642fffff,Unincorporated,none,
+8928301642fffff,Pinole,city,0657288
 89283016433ffff,Richmond,city,0660620
 8928301643bffff,Richmond,city,0660620
 89283016443ffff,Pinole,city,0657288
@@ -516,9 +516,9 @@ h3,city,city_kind,city_geoid
 89283016497ffff,Richmond,city,0660620
 8928301649bffff,Richmond,city,0660620
 892830164a3ffff,Richmond,city,0660620
-892830164a7ffff,Unincorporated,none,
+892830164a7ffff,Richmond,city,0660620
 892830164abffff,Richmond,city,0660620
-892830164afffff,Unincorporated,none,
+892830164afffff,Richmond,city,0660620
 892830164b3ffff,Richmond,city,0660620
 892830164b7ffff,Richmond,city,0660620
 892830164bbffff,Richmond,city,0660620
@@ -587,19 +587,19 @@ h3,city,city_kind,city_geoid
 8928301701bffff,Hercules,city,0633308
 89283017023ffff,Hercules,city,0633308
 89283017027ffff,Hercules,city,0633308
-8928301702bffff,Vallejo,city,0681666
+8928301702bffff,Hercules,city,0633308
 89283017033ffff,Hercules,city,0633308
 89283017037ffff,Hercules,city,0633308
 8928301703bffff,Hercules,city,0633308
 89283017043ffff,Hercules,city,0633308
 89283017047ffff,Hercules,city,0633308
-8928301704bffff,Vallejo,city,0681666
-8928301704fffff,Vallejo,city,0681666
+8928301704bffff,Hercules,city,0633308
+8928301704fffff,Hercules,city,0633308
 89283017053ffff,Hercules,city,0633308
 89283017057ffff,Hercules,city,0633308
 8928301705bffff,Hercules,city,0633308
 89283017073ffff,Hercules,city,0633308
-89283017077ffff,Vallejo,city,0681666
+89283017077ffff,Hercules,city,0633308
 89283017083ffff,Hercules,city,0633308
 89283017087ffff,Hercules,city,0633308
 8928301708bffff,Hercules,city,0633308
@@ -623,12 +623,12 @@ h3,city,city_kind,city_geoid
 892830170dbffff,Hercules,city,0633308
 89283017103ffff,Hercules,city,0633308
 89283017107ffff,Hercules,city,0633308
-8928301710bffff,Vallejo,city,0681666
+8928301710bffff,Hercules,city,0633308
 89283017113ffff,Hercules,city,0633308
 89283017117ffff,Hercules,city,0633308
 8928301711bffff,Hercules,city,0633308
-89283017153ffff,Vallejo,city,0681666
-89283017157ffff,Vallejo,city,0681666
+89283017153ffff,Hercules,city,0633308
+89283017157ffff,Hercules,city,0633308
 89283017183ffff,Hercules,city,0633308
 89283017187ffff,Hercules,city,0633308
 8928301718bffff,Hercules,city,0633308
@@ -651,7 +651,7 @@ h3,city,city_kind,city_geoid
 892830171d7ffff,Hercules,city,0633308
 892830171dbffff,Hercules,city,0633308
 89283017293ffff,Hercules,city,0633308
-89283017297ffff,Vallejo,city,0681666
+89283017297ffff,Hercules,city,0633308
 89283017403ffff,Hercules,city,0633308
 89283017407ffff,Hercules,city,0633308
 8928301740bffff,Hercules,city,0633308
@@ -764,15 +764,15 @@ h3,city,city_kind,city_geoid
 89283017633ffff,Hercules,city,0633308
 89283017637ffff,Hercules,city,0633308
 8928301763bffff,Hercules,city,0633308
-89283017643ffff,Unincorporated,none,
+89283017643ffff,Hercules,city,0633308
 89283017647ffff,Hercules,city,0633308
-8928301764fffff,Unincorporated,none,
-89283017653ffff,Unincorporated,none,
+8928301764fffff,Hercules,city,0633308
+89283017653ffff,Hercules,city,0633308
 89283017657ffff,Hercules,city,0633308
 89283017663ffff,Hercules,city,0633308
 89283017667ffff,Hercules,city,0633308
-8928301766bffff,Vallejo,city,0681666
-8928301766fffff,Vallejo,city,0681666
+8928301766bffff,Hercules,city,0633308
+8928301766fffff,Hercules,city,0633308
 89283017673ffff,Hercules,city,0633308
 89283017677ffff,Hercules,city,0633308
 8928301767bffff,Hercules,city,0633308
@@ -792,27 +792,27 @@ h3,city,city_kind,city_geoid
 892830176bbffff,Hercules,city,0633308
 892830176c3ffff,Hercules,city,0633308
 892830176c7ffff,Hercules,city,0633308
-892830176cbffff,Unincorporated,none,
+892830176cbffff,Hercules,city,0633308
 892830176cfffff,Hercules,city,0633308
 892830176d3ffff,Hercules,city,0633308
 892830176d7ffff,Hercules,city,0633308
-892830176dbffff,Unincorporated,none,
-89283088937ffff,Unincorporated,none,
+892830176dbffff,Hercules,city,0633308
+89283088937ffff,Richmond,city,0660620
 89283088983ffff,Richmond,city,0660620
 89283088987ffff,Richmond,city,0660620
-8928308898fffff,Unincorporated,none,
-89283088993ffff,Unincorporated,none,
+8928308898fffff,Richmond,city,0660620
+89283088993ffff,Richmond,city,0660620
 89283088997ffff,Richmond,city,0660620
-8928308899bffff,Unincorporated,none,
+8928308899bffff,Richmond,city,0660620
 892830889a3ffff,Richmond,city,0660620
 892830889a7ffff,Richmond,city,0660620
-892830889abffff,Unincorporated,none,
+892830889abffff,Richmond,city,0660620
 892830889afffff,Richmond,city,0660620
 892830889b3ffff,Richmond,city,0660620
 892830889b7ffff,Richmond,city,0660620
 892830889bbffff,Richmond,city,0660620
 89283088da7ffff,Kensington,cdp,0638086
-89283088db7ffff,Unincorporated,none,
+89283088db7ffff,Kensington,cdp,0638086
 8928308c003ffff,Richmond,city,0660620
 8928308c007ffff,Richmond,city,0660620
 8928308c00bffff,Richmond,city,0660620
@@ -826,7 +826,7 @@ h3,city,city_kind,city_geoid
 8928308c02fffff,North Richmond,cdp,0652162
 8928308c033ffff,Richmond,city,0660620
 8928308c037ffff,Richmond,city,0660620
-8928308c03bffff,San Pablo,city,0668294
+8928308c03bffff,Richmond,city,0660620
 8928308c043ffff,Richmond,city,0660620
 8928308c047ffff,Richmond,city,0660620
 8928308c04bffff,Richmond,city,0660620
@@ -864,7 +864,7 @@ h3,city,city_kind,city_geoid
 8928308c0dbffff,Richmond,city,0660620
 8928308c103ffff,Richmond,city,0660620
 8928308c107ffff,Richmond,city,0660620
-8928308c10bffff,Richmond,city,0660620
+8928308c10bffff,North Richmond,cdp,0652162
 8928308c10fffff,Richmond,city,0660620
 8928308c113ffff,Richmond,city,0660620
 8928308c117ffff,Richmond,city,0660620
@@ -906,7 +906,7 @@ h3,city,city_kind,city_geoid
 8928308c1bbffff,Richmond,city,0660620
 8928308c1c3ffff,Richmond,city,0660620
 8928308c1c7ffff,Richmond,city,0660620
-8928308c1cbffff,North Richmond,cdp,0652162
+8928308c1cbffff,Richmond,city,0660620
 8928308c1cfffff,Richmond,city,0660620
 8928308c1d3ffff,Richmond,city,0660620
 8928308c1d7ffff,Richmond,city,0660620
@@ -928,10 +928,10 @@ h3,city,city_kind,city_geoid
 8928308c243ffff,San Pablo,city,0668294
 8928308c247ffff,San Pablo,city,0668294
 8928308c24bffff,El Sobrante,cdp,0622454
-8928308c24fffff,El Sobrante,cdp,0622454
+8928308c24fffff,Richmond,city,0660620
 8928308c253ffff,El Sobrante,cdp,0622454
 8928308c257ffff,San Pablo,city,0668294
-8928308c25bffff,El Sobrante,cdp,0622454
+8928308c25bffff,Richmond,city,0660620
 8928308c263ffff,Richmond,city,0660620
 8928308c267ffff,Richmond,city,0660620
 8928308c26bffff,Richmond,city,0660620
@@ -976,7 +976,7 @@ h3,city,city_kind,city_geoid
 8928308c33bffff,North Richmond,cdp,0652162
 8928308c343ffff,San Pablo,city,0668294
 8928308c347ffff,San Pablo,city,0668294
-8928308c34bffff,Richmond,city,0660620
+8928308c34bffff,San Pablo,city,0668294
 8928308c34fffff,San Pablo,city,0668294
 8928308c353ffff,San Pablo,city,0668294
 8928308c357ffff,San Pablo,city,0668294
@@ -988,7 +988,7 @@ h3,city,city_kind,city_geoid
 8928308c373ffff,San Pablo,city,0668294
 8928308c377ffff,Richmond,city,0660620
 8928308c37bffff,San Pablo,city,0668294
-8928308c383ffff,Richmond,city,0660620
+8928308c383ffff,North Richmond,cdp,0652162
 8928308c387ffff,North Richmond,cdp,0652162
 8928308c38bffff,San Pablo,city,0668294
 8928308c38fffff,North Richmond,cdp,0652162
@@ -1205,13 +1205,13 @@ h3,city,city_kind,city_geoid
 8928308c8d3ffff,Richmond,city,0660620
 8928308c8d7ffff,Richmond,city,0660620
 8928308c8dbffff,Richmond,city,0660620
-8928308c94bffff,Unincorporated,none,
-8928308c953ffff,Unincorporated,none,
+8928308c94bffff,Richmond,city,0660620
+8928308c953ffff,Richmond,city,0660620
 8928308c95bffff,Richmond,city,0660620
 8928308c9c3ffff,Richmond,city,0660620
 8928308c9cbffff,Richmond,city,0660620
 8928308c9d3ffff,Richmond,city,0660620
-8928308c9d7ffff,Unincorporated,none,
+8928308c9d7ffff,Richmond,city,0660620
 8928308c9dbffff,Richmond,city,0660620
 8928308ca03ffff,Richmond,city,0660620
 8928308ca07ffff,Richmond,city,0660620
@@ -1262,10 +1262,10 @@ h3,city,city_kind,city_geoid
 8928308cad3ffff,Richmond,city,0660620
 8928308cad7ffff,Richmond,city,0660620
 8928308cadbffff,Richmond,city,0660620
-8928308cb03ffff,Unincorporated,none,
+8928308cb03ffff,Richmond,city,0660620
 8928308cb0bffff,Richmond,city,0660620
 8928308cb13ffff,Richmond,city,0660620
-8928308cb17ffff,Unincorporated,none,
+8928308cb17ffff,Richmond,city,0660620
 8928308cb1bffff,Richmond,city,0660620
 8928308cb43ffff,Richmond,city,0660620
 8928308cb47ffff,Richmond,city,0660620
@@ -1274,10 +1274,10 @@ h3,city,city_kind,city_geoid
 8928308cb53ffff,Richmond,city,0660620
 8928308cb57ffff,Richmond,city,0660620
 8928308cb5bffff,Richmond,city,0660620
-8928308cb73ffff,Unincorporated,none,
-8928308cb7bffff,Unincorporated,none,
+8928308cb73ffff,Richmond,city,0660620
+8928308cb7bffff,Richmond,city,0660620
 8928308cb83ffff,Richmond,city,0660620
-8928308cb87ffff,Unincorporated,none,
+8928308cb87ffff,Richmond,city,0660620
 8928308cb8bffff,Richmond,city,0660620
 8928308cb8fffff,Richmond,city,0660620
 8928308cb93ffff,Richmond,city,0660620
@@ -1293,17 +1293,17 @@ h3,city,city_kind,city_geoid
 8928308cc03ffff,Richmond,city,0660620
 8928308cc07ffff,Richmond,city,0660620
 8928308cc0bffff,Richmond,city,0660620
-8928308cc0fffff,Unincorporated,none,
+8928308cc0fffff,Richmond,city,0660620
 8928308cc13ffff,Richmond,city,0660620
 8928308cc17ffff,Richmond,city,0660620
 8928308cc1bffff,Richmond,city,0660620
-8928308cc23ffff,Unincorporated,none,
+8928308cc23ffff,Richmond,city,0660620
 8928308cc27ffff,Richmond,city,0660620
 8928308cc2bffff,Richmond,city,0660620
 8928308cc2fffff,Richmond,city,0660620
 8928308cc33ffff,Richmond,city,0660620
-8928308cc37ffff,Unincorporated,none,
-8928308cc3bffff,Unincorporated,none,
+8928308cc37ffff,Richmond,city,0660620
+8928308cc3bffff,Richmond,city,0660620
 8928308cc43ffff,Richmond,city,0660620
 8928308cc47ffff,North Richmond,cdp,0652162
 8928308cc4bffff,North Richmond,cdp,0652162
@@ -1346,8 +1346,8 @@ h3,city,city_kind,city_geoid
 8928308cd13ffff,Richmond,city,0660620
 8928308cd17ffff,Richmond,city,0660620
 8928308cd1bffff,Richmond,city,0660620
-8928308cd2bffff,Unincorporated,none,
-8928308cd33ffff,Unincorporated,none,
+8928308cd2bffff,Richmond,city,0660620
+8928308cd33ffff,Richmond,city,0660620
 8928308cd3bffff,Richmond,city,0660620
 8928308cd43ffff,Richmond,city,0660620
 8928308cd47ffff,Richmond,city,0660620
@@ -1366,18 +1366,18 @@ h3,city,city_kind,city_geoid
 8928308cd83ffff,Richmond,city,0660620
 8928308cd87ffff,Richmond,city,0660620
 8928308cd8bffff,Richmond,city,0660620
-8928308cd8fffff,Unincorporated,none,
+8928308cd8fffff,Richmond,city,0660620
 8928308cd93ffff,Richmond,city,0660620
 8928308cd97ffff,Richmond,city,0660620
 8928308cd9bffff,Richmond,city,0660620
-8928308cda3ffff,Unincorporated,none,
+8928308cda3ffff,Richmond,city,0660620
 8928308cdabffff,Richmond,city,0660620
-8928308cdafffff,Unincorporated,none,
-8928308cdb3ffff,Unincorporated,none,
-8928308cdbbffff,Unincorporated,none,
-8928308cdc3ffff,Unincorporated,none,
-8928308cdc7ffff,Unincorporated,none,
-8928308cdcbffff,Unincorporated,none,
+8928308cdafffff,Richmond,city,0660620
+8928308cdb3ffff,Richmond,city,0660620
+8928308cdbbffff,Richmond,city,0660620
+8928308cdc3ffff,Richmond,city,0660620
+8928308cdc7ffff,Richmond,city,0660620
+8928308cdcbffff,Richmond,city,0660620
 8928308cdcfffff,Richmond,city,0660620
 8928308cdd3ffff,Richmond,city,0660620
 8928308cdd7ffff,Richmond,city,0660620
@@ -1437,7 +1437,7 @@ h3,city,city_kind,city_geoid
 8928308d00fffff,El Sobrante,cdp,0622454
 8928308d013ffff,El Sobrante,cdp,0622454
 8928308d017ffff,El Sobrante,cdp,0622454
-8928308d01bffff,El Sobrante,cdp,0622454
+8928308d01bffff,Richmond,city,0660620
 8928308d023ffff,Richmond,city,0660620
 8928308d027ffff,Richmond,city,0660620
 8928308d02bffff,Richmond,city,0660620
@@ -1467,7 +1467,7 @@ h3,city,city_kind,city_geoid
 8928308d097ffff,Richmond,city,0660620
 8928308d09bffff,Richmond,city,0660620
 8928308d0a3ffff,Richmond,city,0660620
-8928308d0a7ffff,El Sobrante,cdp,0622454
+8928308d0a7ffff,Richmond,city,0660620
 8928308d0abffff,El Sobrante,cdp,0622454
 8928308d0afffff,El Sobrante,cdp,0622454
 8928308d0b3ffff,Richmond,city,0660620
@@ -1478,7 +1478,7 @@ h3,city,city_kind,city_geoid
 8928308d0cbffff,Richmond,city,0660620
 8928308d0cfffff,Richmond,city,0660620
 8928308d0d3ffff,El Sobrante,cdp,0622454
-8928308d0d7ffff,Richmond,city,0660620
+8928308d0d7ffff,El Sobrante,cdp,0622454
 8928308d0dbffff,El Sobrante,cdp,0622454
 8928308d103ffff,El Sobrante,cdp,0622454
 8928308d107ffff,El Sobrante,cdp,0622454
@@ -1521,8 +1521,8 @@ h3,city,city_kind,city_geoid
 8928308d1afffff,Richmond,city,0660620
 8928308d1b3ffff,Richmond,city,0660620
 8928308d1b7ffff,Richmond,city,0660620
-8928308d1bbffff,El Sobrante,cdp,0622454
-8928308d1c3ffff,Richmond,city,0660620
+8928308d1bbffff,Richmond,city,0660620
+8928308d1c3ffff,El Sobrante,cdp,0622454
 8928308d1c7ffff,El Sobrante,cdp,0622454
 8928308d1cbffff,Richmond,city,0660620
 8928308d1cfffff,Richmond,city,0660620
@@ -1531,11 +1531,11 @@ h3,city,city_kind,city_geoid
 8928308d1dbffff,El Sobrante,cdp,0622454
 8928308d203ffff,Pinole,city,0657288
 8928308d207ffff,Pinole,city,0657288
-8928308d20bffff,Unincorporated,none,
+8928308d20bffff,Pinole,city,0657288
 8928308d20fffff,Pinole,city,0657288
-8928308d213ffff,Unincorporated,none,
+8928308d213ffff,Pinole,city,0657288
 8928308d217ffff,Pinole,city,0657288
-8928308d21bffff,Unincorporated,none,
+8928308d21bffff,Pinole,city,0657288
 8928308d223ffff,Pinole,city,0657288
 8928308d227ffff,Pinole,city,0657288
 8928308d22bffff,Pinole,city,0657288
@@ -1543,13 +1543,13 @@ h3,city,city_kind,city_geoid
 8928308d233ffff,Pinole,city,0657288
 8928308d237ffff,Pinole,city,0657288
 8928308d23bffff,Pinole,city,0657288
-8928308d24bffff,Unincorporated,none,
-8928308d24fffff,Unincorporated,none,
+8928308d24bffff,Pinole,city,0657288
+8928308d24fffff,Pinole,city,0657288
 8928308d263ffff,Pinole,city,0657288
 8928308d267ffff,Pinole,city,0657288
 8928308d26bffff,Pinole,city,0657288
 8928308d26fffff,Pinole,city,0657288
-8928308d273ffff,Unincorporated,none,
+8928308d273ffff,Pinole,city,0657288
 8928308d277ffff,Pinole,city,0657288
 8928308d27bffff,Pinole,city,0657288
 8928308d283ffff,Richmond,city,0660620
@@ -1569,10 +1569,10 @@ h3,city,city_kind,city_geoid
 8928308d2d3ffff,Richmond,city,0660620
 8928308d2d7ffff,Richmond,city,0660620
 8928308d303ffff,Pinole,city,0657288
-8928308d307ffff,El Sobrante,cdp,0622454
+8928308d307ffff,Pinole,city,0657288
 8928308d30bffff,Pinole,city,0657288
 8928308d30fffff,Pinole,city,0657288
-8928308d313ffff,Pinole,city,0657288
+8928308d313ffff,El Sobrante,cdp,0622454
 8928308d317ffff,Pinole,city,0657288
 8928308d31bffff,Pinole,city,0657288
 8928308d323ffff,Pinole,city,0657288
@@ -1635,13 +1635,13 @@ h3,city,city_kind,city_geoid
 8928308d447ffff,Richmond,city,0660620
 8928308d44bffff,Richmond,city,0660620
 8928308d44fffff,Richmond,city,0660620
-8928308d453ffff,Unincorporated,none,
+8928308d453ffff,Richmond,city,0660620
 8928308d457ffff,Richmond,city,0660620
-8928308d45bffff,Unincorporated,none,
+8928308d45bffff,Richmond,city,0660620
 8928308d463ffff,Richmond,city,0660620
 8928308d467ffff,Richmond,city,0660620
 8928308d46bffff,Richmond,city,0660620
-8928308d46fffff,El Sobrante,cdp,0622454
+8928308d46fffff,Richmond,city,0660620
 8928308d473ffff,Richmond,city,0660620
 8928308d477ffff,Richmond,city,0660620
 8928308d47bffff,Richmond,city,0660620
@@ -1667,7 +1667,7 @@ h3,city,city_kind,city_geoid
 8928308d4d7ffff,Richmond,city,0660620
 8928308d4dbffff,Richmond,city,0660620
 8928308d503ffff,Richmond,city,0660620
-8928308d507ffff,Richmond,city,0660620
+8928308d507ffff,East Richmond Heights,cdp,0621061
 8928308d50bffff,Richmond,city,0660620
 8928308d50fffff,Richmond,city,0660620
 8928308d513ffff,Richmond,city,0660620
@@ -1722,28 +1722,28 @@ h3,city,city_kind,city_geoid
 8928308d62fffff,Richmond,city,0660620
 8928308d633ffff,Richmond,city,0660620
 8928308d637ffff,Richmond,city,0660620
-8928308d63bffff,Unincorporated,none,
+8928308d63bffff,Richmond,city,0660620
 8928308d643ffff,Richmond,city,0660620
 8928308d647ffff,Richmond,city,0660620
-8928308d64bffff,Unincorporated,none,
+8928308d64bffff,Richmond,city,0660620
 8928308d64fffff,Richmond,city,0660620
-8928308d657ffff,Unincorporated,none,
+8928308d657ffff,Richmond,city,0660620
 8928308d663ffff,Richmond,city,0660620
 8928308d667ffff,Richmond,city,0660620
 8928308d66bffff,Richmond,city,0660620
 8928308d66fffff,Richmond,city,0660620
-8928308d673ffff,Unincorporated,none,
+8928308d673ffff,Richmond,city,0660620
 8928308d67bffff,Richmond,city,0660620
-8928308d683ffff,Unincorporated,none,
-8928308d687ffff,Unincorporated,none,
-8928308d697ffff,Unincorporated,none,
+8928308d683ffff,Richmond,city,0660620
+8928308d687ffff,Richmond,city,0660620
+8928308d697ffff,Richmond,city,0660620
 8928308d6a3ffff,El Sobrante,cdp,0622454
 8928308d6a7ffff,El Sobrante,cdp,0622454
-8928308d6abffff,Unincorporated,none,
-8928308d6afffff,Unincorporated,none,
-8928308d6b3ffff,Unincorporated,none,
-8928308d6b7ffff,El Sobrante,cdp,0622454
-8928308d6bbffff,Unincorporated,none,
+8928308d6abffff,El Sobrante,cdp,0622454
+8928308d6afffff,El Sobrante,cdp,0622454
+8928308d6b3ffff,El Sobrante,cdp,0622454
+8928308d6b7ffff,Richmond,city,0660620
+8928308d6bbffff,El Sobrante,cdp,0622454
 8928308d803ffff,Richmond,city,0660620
 8928308d807ffff,Richmond,city,0660620
 8928308d80bffff,Pinole,city,0657288
@@ -1775,7 +1775,7 @@ h3,city,city_kind,city_geoid
 8928308d883ffff,Montalvin Manor,cdp,0648718
 8928308d887ffff,Richmond,city,0660620
 8928308d88bffff,Montalvin Manor,cdp,0648718
-8928308d88fffff,Montalvin Manor,cdp,0648718
+8928308d88fffff,Richmond,city,0660620
 8928308d893ffff,Richmond,city,0660620
 8928308d897ffff,Richmond,city,0660620
 8928308d89bffff,Montalvin Manor,cdp,0648718
@@ -1789,7 +1789,7 @@ h3,city,city_kind,city_geoid
 8928308d8c3ffff,Montalvin Manor,cdp,0648718
 8928308d8c7ffff,Montalvin Manor,cdp,0648718
 8928308d8cbffff,Montalvin Manor,cdp,0648718
-8928308d8cfffff,Bayview,cdp,0604470
+8928308d8cfffff,Montalvin Manor,cdp,0648718
 8928308d8d3ffff,Tara Hills,cdp,0677924
 8928308d8d7ffff,Montalvin Manor,cdp,0648718
 8928308d8dbffff,Tara Hills,cdp,0677924
@@ -1977,7 +1977,7 @@ h3,city,city_kind,city_geoid
 8928308dc9bffff,Richmond,city,0660620
 8928308dca3ffff,San Pablo,city,0668294
 8928308dca7ffff,San Pablo,city,0668294
-8928308dcabffff,San Pablo,city,0668294
+8928308dcabffff,Richmond,city,0660620
 8928308dcafffff,Richmond,city,0660620
 8928308dcb3ffff,San Pablo,city,0668294
 8928308dcb7ffff,San Pablo,city,0668294
@@ -2049,7 +2049,7 @@ h3,city,city_kind,city_geoid
 8928308de27ffff,Bayview,cdp,0604470
 8928308de2bffff,Pinole,city,0657288
 8928308de2fffff,Pinole,city,0657288
-8928308de33ffff,Pinole,city,0657288
+8928308de33ffff,Tara Hills,cdp,0677924
 8928308de37ffff,Tara Hills,cdp,0677924
 8928308de3bffff,Pinole,city,0657288
 8928308de43ffff,Pinole,city,0657288
@@ -2080,7 +2080,7 @@ h3,city,city_kind,city_geoid
 8928308deb3ffff,Tara Hills,cdp,0677924
 8928308deb7ffff,Tara Hills,cdp,0677924
 8928308debbffff,Tara Hills,cdp,0677924
-8928308dec3ffff,El Sobrante,cdp,0622454
+8928308dec3ffff,Pinole,city,0657288
 8928308dec7ffff,Pinole,city,0657288
 8928308decbffff,Pinole,city,0657288
 8928308decfffff,Pinole,city,0657288
@@ -2092,14 +2092,14 @@ h3,city,city_kind,city_geoid
 8928308e00bffff,Richmond,city,0660620
 8928308e00fffff,Richmond,city,0660620
 8928308e013ffff,Richmond,city,0660620
-8928308e017ffff,San Francisco,city,0667000
+8928308e017ffff,Richmond,city,0660620
 8928308e01bffff,Richmond,city,0660620
 8928308e023ffff,Richmond,city,0660620
 8928308e027ffff,Richmond,city,0660620
 8928308e02bffff,Richmond,city,0660620
 8928308e02fffff,Richmond,city,0660620
 8928308e033ffff,Richmond,city,0660620
-8928308e037ffff,San Francisco,city,0667000
+8928308e037ffff,Richmond,city,0660620
 8928308e03bffff,Richmond,city,0660620
 8928308e043ffff,Richmond,city,0660620
 8928308e047ffff,Richmond,city,0660620
@@ -2116,23 +2116,23 @@ h3,city,city_kind,city_geoid
 8928308e077ffff,Richmond,city,0660620
 8928308e07bffff,Richmond,city,0660620
 8928308e0c7ffff,Richmond,city,0660620
-8928308e0cbffff,Albany,city,0600674
+8928308e0cbffff,Richmond,city,0660620
 8928308e0cfffff,Richmond,city,0660620
-8928308e10bffff,San Francisco,city,0667000
-8928308e12bffff,San Francisco,city,0667000
+8928308e10bffff,Richmond,city,0660620
+8928308e12bffff,Richmond,city,0660620
 8928308e143ffff,Richmond,city,0660620
 8928308e147ffff,Richmond,city,0660620
 8928308e14bffff,Richmond,city,0660620
 8928308e14fffff,Richmond,city,0660620
 8928308e153ffff,Richmond,city,0660620
-8928308e157ffff,San Francisco,city,0667000
+8928308e157ffff,Richmond,city,0660620
 8928308e15bffff,Richmond,city,0660620
 8928308e163ffff,Richmond,city,0660620
 8928308e167ffff,Richmond,city,0660620
 8928308e16bffff,Richmond,city,0660620
 8928308e16fffff,Richmond,city,0660620
 8928308e173ffff,Richmond,city,0660620
-8928308e177ffff,San Francisco,city,0667000
+8928308e177ffff,Richmond,city,0660620
 8928308e17bffff,Richmond,city,0660620
 8928308e203ffff,Richmond,city,0660620
 8928308e207ffff,Richmond,city,0660620
@@ -2233,22 +2233,22 @@ h3,city,city_kind,city_geoid
 8928308e3d7ffff,Richmond,city,0660620
 8928308e3dbffff,Richmond,city,0660620
 8928308e627ffff,Richmond,city,0660620
-8928308e62bffff,Albany,city,0600674
+8928308e62bffff,Richmond,city,0660620
 8928308e62fffff,Richmond,city,0660620
 8928308e667ffff,Richmond,city,0660620
-8928308e66bffff,Albany,city,0600674
+8928308e66bffff,Richmond,city,0660620
 8928308e66fffff,Richmond,city,0660620
 8928308e803ffff,Richmond,city,0660620
 8928308e807ffff,Richmond,city,0660620
 8928308e80bffff,Richmond,city,0660620
 8928308e80fffff,Richmond,city,0660620
 8928308e813ffff,Richmond,city,0660620
-8928308e817ffff,San Francisco,city,0667000
+8928308e817ffff,Richmond,city,0660620
 8928308e81bffff,Richmond,city,0660620
-8928308e823ffff,Unincorporated,none,
+8928308e823ffff,Richmond,city,0660620
 8928308e82bffff,Richmond,city,0660620
 8928308e82fffff,Richmond,city,0660620
-8928308e833ffff,Unincorporated,none,
+8928308e833ffff,Richmond,city,0660620
 8928308e83bffff,Richmond,city,0660620
 8928308e843ffff,Richmond,city,0660620
 8928308e847ffff,Richmond,city,0660620
@@ -2264,15 +2264,15 @@ h3,city,city_kind,city_geoid
 8928308e873ffff,Richmond,city,0660620
 8928308e877ffff,Richmond,city,0660620
 8928308e87bffff,Richmond,city,0660620
-8928308e88bffff,San Francisco,city,0667000
+8928308e88bffff,Richmond,city,0660620
 8928308e8c3ffff,Richmond,city,0660620
 8928308e8c7ffff,Richmond,city,0660620
 8928308e8cbffff,Richmond,city,0660620
 8928308e8cfffff,Richmond,city,0660620
 8928308e8d3ffff,Richmond,city,0660620
-8928308e8d7ffff,San Francisco,city,0667000
+8928308e8d7ffff,Richmond,city,0660620
 8928308e8dbffff,Richmond,city,0660620
-8928308e94bffff,San Rafael,city,0668364
+8928308e94bffff,Richmond,city,0660620
 8928308ea03ffff,Richmond,city,0660620
 8928308ea07ffff,Richmond,city,0660620
 8928308ea0bffff,Richmond,city,0660620
@@ -2357,10 +2357,10 @@ h3,city,city_kind,city_geoid
 8928308eb93ffff,Richmond,city,0660620
 8928308eb97ffff,Richmond,city,0660620
 8928308eb9bffff,Richmond,city,0660620
-8928308eba3ffff,San Rafael,city,0668364
+8928308eba3ffff,Richmond,city,0660620
 8928308ebabffff,Richmond,city,0660620
 8928308ebafffff,Richmond,city,0660620
-8928308ebb3ffff,San Rafael,city,0668364
+8928308ebb3ffff,Richmond,city,0660620
 8928308ebbbffff,Richmond,city,0660620
 8928308ebc3ffff,Richmond,city,0660620
 8928308ebc7ffff,Richmond,city,0660620
@@ -2369,8 +2369,8 @@ h3,city,city_kind,city_geoid
 8928308ebd3ffff,Richmond,city,0660620
 8928308ebd7ffff,Richmond,city,0660620
 8928308ebdbffff,Richmond,city,0660620
-8928308ec4bffff,San Francisco,city,0667000
-8928308ec6bffff,San Francisco,city,0667000
+8928308ec4bffff,Richmond,city,0660620
+8928308ec6bffff,Richmond,city,0660620
 8928308ee03ffff,Richmond,city,0660620
 8928308ee07ffff,Richmond,city,0660620
 8928308ee0bffff,Richmond,city,0660620
@@ -2404,14 +2404,14 @@ h3,city,city_kind,city_geoid
 8928308ee8bffff,Richmond,city,0660620
 8928308ee8fffff,Richmond,city,0660620
 8928308ee93ffff,Richmond,city,0660620
-8928308ee97ffff,San Francisco,city,0667000
+8928308ee97ffff,Richmond,city,0660620
 8928308ee9bffff,Richmond,city,0660620
 8928308eea3ffff,Richmond,city,0660620
 8928308eea7ffff,Richmond,city,0660620
 8928308eeabffff,Richmond,city,0660620
 8928308eeafffff,Richmond,city,0660620
 8928308eeb3ffff,Richmond,city,0660620
-8928308eeb7ffff,San Francisco,city,0667000
+8928308eeb7ffff,Richmond,city,0660620
 8928308eebbffff,Richmond,city,0660620
 8928308eec3ffff,Richmond,city,0660620
 8928308eec7ffff,Richmond,city,0660620
@@ -2448,7 +2448,7 @@ h3,city,city_kind,city_geoid
 8928308f073ffff,El Cerrito,city,0621796
 8928308f077ffff,El Cerrito,city,0621796
 8928308f07bffff,El Cerrito,city,0621796
-8928308f083ffff,Albany,city,0600674
+8928308f083ffff,Richmond,city,0660620
 8928308f087ffff,Richmond,city,0660620
 8928308f08bffff,El Cerrito,city,0621796
 8928308f08fffff,El Cerrito,city,0621796
@@ -2463,7 +2463,7 @@ h3,city,city_kind,city_geoid
 8928308f0c7ffff,El Cerrito,city,0621796
 8928308f0cbffff,El Cerrito,city,0621796
 8928308f0cfffff,El Cerrito,city,0621796
-8928308f0d7ffff,Albany,city,0600674
+8928308f0d7ffff,El Cerrito,city,0621796
 8928308f0dbffff,El Cerrito,city,0621796
 8928308f103ffff,Richmond,city,0660620
 8928308f107ffff,Richmond,city,0660620
@@ -2516,11 +2516,11 @@ h3,city,city_kind,city_geoid
 8928308f1dbffff,Richmond,city,0660620
 8928308f203ffff,Richmond,city,0660620
 8928308f207ffff,El Cerrito,city,0621796
-8928308f20bffff,Unincorporated,none,
+8928308f20bffff,Richmond,city,0660620
 8928308f20fffff,Richmond,city,0660620
 8928308f213ffff,Kensington,cdp,0638086
 8928308f217ffff,Kensington,cdp,0638086
-8928308f21bffff,Unincorporated,none,
+8928308f21bffff,Richmond,city,0660620
 8928308f223ffff,Richmond,city,0660620
 8928308f227ffff,El Cerrito,city,0621796
 8928308f22bffff,Richmond,city,0660620
@@ -2528,11 +2528,11 @@ h3,city,city_kind,city_geoid
 8928308f233ffff,El Cerrito,city,0621796
 8928308f237ffff,El Cerrito,city,0621796
 8928308f23bffff,Richmond,city,0660620
-8928308f243ffff,Unincorporated,none,
-8928308f247ffff,Unincorporated,none,
+8928308f243ffff,Richmond,city,0660620
+8928308f247ffff,Richmond,city,0660620
 8928308f24bffff,Richmond,city,0660620
 8928308f24fffff,Richmond,city,0660620
-8928308f25bffff,Unincorporated,none,
+8928308f25bffff,Richmond,city,0660620
 8928308f263ffff,Richmond,city,0660620
 8928308f267ffff,Richmond,city,0660620
 8928308f26bffff,Richmond,city,0660620
@@ -2554,9 +2554,9 @@ h3,city,city_kind,city_geoid
 8928308f2b3ffff,El Cerrito,city,0621796
 8928308f2b7ffff,El Cerrito,city,0621796
 8928308f2bbffff,Kensington,cdp,0638086
-8928308f2c3ffff,Unincorporated,none,
+8928308f2c3ffff,Richmond,city,0660620
 8928308f2c7ffff,Richmond,city,0660620
-8928308f2cfffff,Unincorporated,none,
+8928308f2cfffff,Richmond,city,0660620
 8928308f2d3ffff,Kensington,cdp,0638086
 8928308f2d7ffff,Kensington,cdp,0638086
 8928308f303ffff,El Cerrito,city,0621796
@@ -2608,9 +2608,9 @@ h3,city,city_kind,city_geoid
 8928308f3d3ffff,El Cerrito,city,0621796
 8928308f3d7ffff,El Cerrito,city,0621796
 8928308f3dbffff,El Cerrito,city,0621796
-8928308f503ffff,Albany,city,0600674
+8928308f503ffff,Richmond,city,0660620
 8928308f507ffff,Richmond,city,0660620
-8928308f50bffff,Albany,city,0600674
+8928308f50bffff,Richmond,city,0660620
 8928308f50fffff,Richmond,city,0660620
 8928308f523ffff,Richmond,city,0660620
 8928308f527ffff,Richmond,city,0660620
@@ -2619,9 +2619,9 @@ h3,city,city_kind,city_geoid
 8928308f533ffff,Richmond,city,0660620
 8928308f537ffff,Richmond,city,0660620
 8928308f53bffff,Richmond,city,0660620
-8928308f543ffff,Albany,city,0600674
+8928308f543ffff,Richmond,city,0660620
 8928308f547ffff,Richmond,city,0660620
-8928308f54bffff,Albany,city,0600674
+8928308f54bffff,Richmond,city,0660620
 8928308f54fffff,Richmond,city,0660620
 8928308f563ffff,Richmond,city,0660620
 8928308f567ffff,Richmond,city,0660620
@@ -2631,14 +2631,14 @@ h3,city,city_kind,city_geoid
 8928308f577ffff,Richmond,city,0660620
 8928308f57bffff,Richmond,city,0660620
 8928308f5a7ffff,Richmond,city,0660620
-8928308f5abffff,Albany,city,0600674
+8928308f5abffff,Richmond,city,0660620
 8928308f5afffff,Richmond,city,0660620
-8928308f60fffff,Berkeley,city,0606000
+8928308f60fffff,Kensington,cdp,0638086
 8928308f623ffff,Kensington,cdp,0638086
-8928308f627ffff,El Cerrito,city,0621796
+8928308f627ffff,Kensington,cdp,0638086
 8928308f62bffff,Kensington,cdp,0638086
 8928308f62fffff,Kensington,cdp,0638086
-8928308f633ffff,Berkeley,city,0606000
+8928308f633ffff,Kensington,cdp,0638086
 8928308f637ffff,El Cerrito,city,0621796
 8928308f63bffff,Kensington,cdp,0638086
 8928308f663ffff,Kensington,cdp,0638086
@@ -2646,7 +2646,7 @@ h3,city,city_kind,city_geoid
 8928308f66bffff,Kensington,cdp,0638086
 8928308f66fffff,Kensington,cdp,0638086
 8928308f677ffff,Kensington,cdp,0638086
-8928308f67bffff,Berkeley,city,0606000
-8928308f6afffff,Albany,city,0600674
+8928308f67bffff,Kensington,cdp,0638086
+8928308f6afffff,El Cerrito,city,0621796
 892830bb64bffff,Richmond,city,0660620
 892830bb65bffff,Richmond,city,0660620

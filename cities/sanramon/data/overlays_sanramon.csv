@@ -1,542 +1,542 @@
-h3,name,holc,access_min,access_km,street_m,access_src,access_snap_m,access_quality
-892830d0883ffff,Wendt Ranch,,14.3,1.14,0.0,routed,703.0,approach-review
-892830d0893ffff,Monterosso SE 2,,18.6,1.49,0.0,routed,996.0,approach-review
-892830d0897ffff,Monterosso SE,,46.9,3.75,0.0,routed,668.0,approach-review
-892830d0993ffff,Monterosso SW 2,,46.2,3.7,0.0,routed,242.0,approach-review
-892830d0c07ffff,Carlyle NE 2,,45.3,3.63,0.0,routed,983.0,approach-review
-892830d0c17ffff,Waterford NE 3,,43.6,3.49,0.0,routed,838.0,approach-review
-892830d0c23ffff,Aventura NE 5,,47.3,3.78,0.0,routed,698.0,approach-review
-892830d0c27ffff,Aventura N 4,,41.9,3.35,0.0,routed,622.0,approach-review
-892830d0c2bffff,Aventura NE 7,,49.9,4.0,0.0,routed,914.0,approach-review
-892830d0c2fffff,Aventura N 5,,45.8,3.67,0.0,routed,584.0,approach-review
-892830d0c33ffff,Aventura NE 4,,43.6,3.49,0.0,routed,850.0,approach-review
-892830d0c37ffff,Aventura N 3,,43.1,3.45,0.0,routed,749.0,approach-review
-892830d0c3bffff,Aventura NE 6,,48.4,3.87,0.0,routed,1169.0,approach-review
-892830d0c83ffff,Waterford E 2,,42.5,3.4,0.0,routed,585.0,approach-review
-892830d0c87ffff,Waterford NE,,38.2,3.06,124.0,routed,396.0,approach-review
-892830d0c8fffff,Waterford NE 2,,43.9,3.51,0.0,routed,697.0,approach-review
-892830d0c93ffff,Waterford E 3,,41.6,3.33,0.0,routed,442.0,approach-review
-892830d0c97ffff,Waterford E,,38.0,3.04,638.0,routed,285.0,approach-review
-892830d0ca3ffff,Aventura NE,,36.2,2.9,0.0,routed,254.0,approach-review
-892830d0ca7ffff,Aventura N,,35.3,2.83,0.0,routed,275.0,approach-review
-892830d0cabffff,Aventura NE 3,,40.8,3.26,0.0,routed,618.0,approach-review
-892830d0cafffff,Aventura NE 2,,39.1,3.13,0.0,routed,516.0,approach-review
-892830d0cb3ffff,Carlyle,,35.1,2.8,861.0,routed,193.0,approach-review
-892830d0cb7ffff,Aventura,,32.2,2.57,1378.0,routed,96.0,network-estimate
-892830d0cbbffff,Carlyle NE,,39.5,3.16,0.0,routed,510.0,approach-review
-892830d0d03ffff,Solaire & Belvedere NE 2,,25.8,2.06,345.0,routed,178.0,approach-review
-892830d0d07ffff,Avanti E,,23.7,1.9,38.0,routed,292.0,approach-review
-892830d0d0bffff,Solaire & Belvedere NE 3,,31.9,2.56,573.0,routed,120.0,approach-review
-892830d0d0fffff,Avanti NE 2,,33.0,2.64,44.0,routed,168.0,approach-review
-892830d0d13ffff,Solaire & Belvedere E 2,,24.3,1.95,1284.0,routed,36.0,network-estimate
-892830d0d17ffff,Solaire & Belvedere NE,,20.4,1.64,1157.0,routed,59.0,network-estimate
-892830d0d1bffff,Piccadilly Square Park,,30.3,2.42,1677.0,routed,26.0,network-estimate
-892830d0d23ffff,Avanti N 2,,29.4,2.35,0.0,routed,645.0,approach-review
-892830d0d27ffff,Alta Mira E,,31.9,2.55,0.0,routed,576.0,approach-review
-892830d0d2bffff,Avanti NE 3,,45.5,3.64,0.0,routed,518.0,approach-review
-892830d0d2fffff,Avanti N 3,,51.4,4.11,0.0,routed,433.0,approach-review
-892830d0d33ffff,Avanti N,,24.9,2.0,128.0,routed,338.0,approach-review
-892830d0d37ffff,Avanti NW 2,,27.8,2.22,0.0,routed,426.0,approach-review
-892830d0d3bffff,Avanti NE,,28.4,2.28,0.0,routed,532.0,approach-review
-892830d0d43ffff,Monterosso S 3,,39.2,3.14,0.0,routed,309.0,approach-review
-892830d0d47ffff,Monterosso S,,38.4,3.07,403.0,routed,204.0,approach-review
-892830d0d4bffff,Monterosso S 2,,22.8,1.82,0.0,routed,550.0,approach-review
-892830d0d53ffff,Solaire & Belvedere E 5,,37.9,3.03,0.0,routed,296.0,approach-review
-892830d0d57ffff,Solaire & Belvedere NE 4,,35.9,2.87,1019.0,routed,131.0,approach-review
-892830d0d5bffff,Monterosso S 4,,42.3,3.39,0.0,routed,305.0,approach-review
-892830d0d63ffff,Monterosso,,38.2,3.06,876.0,routed,106.0,approach-review
-892830d0d67ffff,Monterosso SW,,43.5,3.48,46.0,routed,294.0,approach-review
-892830d0d77ffff,Monterosso SW 3,,35.6,2.85,0.0,routed,304.0,approach-review
-892830d0d83ffff,Solaire & Belvedere SE,,20.7,1.66,0.0,routed,141.0,approach-review
-892830d0d87ffff,Veranda,,12.9,1.03,1194.0,routed,46.0,network-estimate
-892830d0d8bffff,Solaire & Belvedere SE 2,,24.8,1.99,1149.0,routed,39.0,network-estimate
-892830d0d8fffff,Solaire & Belvedere E,,19.1,1.53,435.0,routed,148.0,approach-review
-892830d0d93ffff,Taramea W,,17.0,1.36,1569.0,routed,60.0,network-estimate
-892830d0d97ffff,Shelbourne,,13.1,1.05,967.0,routed,50.0,network-estimate
-892830d0d9bffff,Taramea N,,22.3,1.78,673.0,routed,15.0,network-estimate
-892830d0da3ffff,Terravista N,,16.4,1.31,1106.0,routed,167.0,approach-review
-892830d0da7ffff,Monarch SE,,22.2,1.78,1236.0,routed,141.0,approach-review
-892830d0dabffff,Avanti,,19.4,1.55,1216.0,routed,141.0,approach-review
-892830d0dafffff,Avanti NW,,23.4,1.87,975.0,routed,251.0,approach-review
-892830d0db3ffff,Terravista,,11.7,0.93,2057.0,routed,76.0,network-estimate
-892830d0db7ffff,Coronado,,15.7,1.25,1653.0,routed,28.0,network-estimate
-892830d0dbbffff,Solaire & Belvedere,,14.8,1.18,1669.0,routed,70.0,network-estimate
-892830d0dc3ffff,Fiore NE 2,,33.3,2.66,0.0,routed,429.0,approach-review
-892830d0dc7ffff,Solaire & Belvedere E 3,,28.7,2.29,0.0,routed,232.0,approach-review
-892830d0dcbffff,Fiore NE 3,,38.9,3.11,0.0,routed,436.0,approach-review
-892830d0dcfffff,Solaire & Belvedere E 4,,35.0,2.8,193.0,routed,125.0,approach-review
-892830d0dd3ffff,Fiore NE,,29.5,2.36,0.0,routed,396.0,approach-review
-892830d0dd7ffff,Fiore N,,28.8,2.3,364.0,routed,69.0,network-estimate
-892830d0ddbffff,Aventura N 2,,39.9,3.19,0.0,routed,491.0,approach-review
-892830d286bffff,Chantera S,,30.0,2.4,0.0,routed,246.0,approach-review
-892830d286fffff,Chantera SW,,26.9,2.15,0.0,routed,261.0,approach-review
-892830d28a3ffff,eaves Dublin Apartments NE,,32.5,2.6,917.0,routed,170.0,approach-review
-892830d28a7ffff,The Hills at Bent Creek E,,28.7,2.29,1011.0,routed,127.0,approach-review
-892830d28afffff,Bent Creek Estates E 2,,30.1,2.41,468.0,routed,178.0,approach-review
-892830d28b7ffff,eaves Dublin Apartments,,34.8,2.78,944.0,routed,140.0,approach-review
-892830d2903ffff,Old Ranch Summit NE,,18.3,1.47,0.0,routed,391.0,approach-review
-892830d2907ffff,Old Ranch Summit NW,,21.0,1.68,232.0,routed,270.0,approach-review
-892830d290bffff,Old Ranch Estates N,,23.1,1.85,707.0,routed,184.0,approach-review
-892830d290fffff,Old Ranch Estates NW,,23.8,1.91,0.0,routed,62.0,network-estimate
-892830d2913ffff,Old Ranch Summit SE,,10.7,0.86,546.0,routed,192.0,approach-review
-892830d2917ffff,Old Ranch Summit,,14.2,1.14,1646.0,routed,62.0,network-estimate
-892830d291bffff,Old Ranch Estates,,18.7,1.5,705.0,routed,182.0,approach-review
-892830d2923ffff,Old Ranch Summit NW 3,,25.6,2.05,1021.0,routed,157.0,approach-review
-892830d2927ffff,Old Ranch Summit NW 5,,27.4,2.19,1834.0,routed,74.0,network-estimate
-892830d292bffff,Old Ranch Summit N 2,,18.9,1.52,0.0,routed,297.0,approach-review
-892830d292fffff,Old Ranch Summit NW 6,,31.1,2.48,252.0,routed,353.0,approach-review
-892830d2933ffff,Old Ranch Summit NW 2,,20.0,1.6,872.0,routed,29.0,network-estimate
-892830d2937ffff,Old Ranch Summit NW 4,,24.9,1.99,836.0,routed,133.0,approach-review
-892830d293bffff,Old Ranch Summit N,,23.4,1.87,0.0,routed,367.0,approach-review
-892830d2943ffff,Old Ranch Estates NE 2,,14.4,1.16,681.0,routed,189.0,approach-review
-892830d2947ffff,Old Ranch Estates N 2,,3.4,0.27,311.0,routed,177.0,approach-review
-892830d294bffff,Cambridge SW 2,,13.6,1.09,0.0,routed,385.0,approach-review
-892830d294fffff,Serena & Cordova SE,,8.3,0.66,1087.0,routed,117.0,approach-review
-892830d2953ffff,Old Ranch Estates E,,15.2,1.22,903.0,routed,252.0,approach-review
-892830d2957ffff,Old Ranch Estates NE,,14.5,1.16,1411.0,routed,91.0,network-estimate
-892830d2963ffff,Serena & Cordova SW,,4.8,0.38,454.0,routed,85.0,network-estimate
-892830d2967ffff,Serena & Cordova SW 2,,8.6,0.68,0.0,routed,387.0,approach-review
-892830d296bffff,Serena & Cordova S,,9.5,0.76,729.0,routed,82.0,network-estimate
-892830d296fffff,Serena & Cordova W,,13.3,1.07,823.0,routed,138.0,approach-review
-892830d2973ffff,Old Ranch Estates N 3,,0.9,0.07,0.0,routed,56.0,network-estimate
-892830d2977ffff,Old Ranch Estates NW 2,,5.9,0.47,0.0,routed,302.0,approach-review
-892830d297bffff,Serena & Cordova S 2,,4.5,0.36,928.0,routed,111.0,approach-review
-892830d2983ffff,Fairway Village Apartments N,,1.5,0.12,710.0,routed,87.0,network-estimate
-892830d2987ffff,Fairway Village Apartments N 2,,5.4,0.43,748.0,routed,160.0,approach-review
-892830d298bffff,Old Ranch Summit S 2,,7.2,0.58,1426.0,routed,91.0,network-estimate
-892830d298fffff,Old Ranch Summit S,,8.2,0.66,1374.0,routed,104.0,approach-review
-892830d2993ffff,Fairway Village Apartments,,4.1,0.33,1560.0,routed,48.0,network-estimate
-892830d2997ffff,Fairway Village Apartments NW,,4.2,0.34,64.0,routed,105.0,approach-review
-892830d299bffff,Senior Center Park Gardens,,0.8,0.07,1169.0,routed,29.0,network-estimate
-892830d29a3ffff,Old Ranch Summit W 2,,16.5,1.32,906.0,routed,161.0,approach-review
-892830d29a7ffff,Old Ranch Summit W 4,,19.5,1.56,732.0,routed,118.0,approach-review
-892830d29abffff,Old Ranch Summit W,,14.7,1.17,1425.0,routed,140.0,approach-review
-892830d29afffff,Old Ranch Summit W 3,,16.7,1.34,82.0,routed,185.0,approach-review
-892830d29b3ffff,Old Ranch Summit SW 2,,11.5,0.92,1068.0,routed,141.0,approach-review
-892830d29b7ffff,Old Ranch Summit W 5,,19.3,1.55,936.0,routed,151.0,approach-review
-892830d29bbffff,Old Ranch Summit SW,,9.3,0.74,1112.0,routed,131.0,approach-review
-892830d29c3ffff,Bent Creek Estates,,20.1,1.61,1733.0,routed,147.0,approach-review
-892830d29c7ffff,Old Ranch Estates S,,13.2,1.06,1379.0,routed,116.0,approach-review
-892830d29cbffff,Bent Creek Estates NE,,19.5,1.56,1448.0,routed,109.0,approach-review
-892830d29cfffff,Old Ranch Estates SE,,18.2,1.45,1862.0,routed,116.0,approach-review
-892830d29d3ffff,The Hills at Bent Creek,,19.6,1.57,664.0,routed,199.0,approach-review
-892830d29d7ffff,Old Ranch Park,,19.6,1.57,842.0,routed,98.0,network-estimate
-892830d29dbffff,Bent Creek Estates E,,24.7,1.98,1689.0,routed,131.0,approach-review
-892830d2a23ffff,Waterford S,,36.3,2.9,0.0,routed,437.0,approach-review
-892830d2a27ffff,La Sera E,,31.8,2.55,0.0,routed,278.0,approach-review
-892830d2a2fffff,Waterford SE,,38.9,3.11,0.0,routed,358.0,approach-review
-892830d2a33ffff,Montecito E 2,,35.1,2.8,0.0,routed,351.0,approach-review
-892830d2a37ffff,Montecito E,,31.5,2.52,518.0,routed,154.0,approach-review
-892830d2aa3ffff,Chantera SE 3,,35.9,2.88,1491.0,routed,171.0,approach-review
-892830d2aa7ffff,Chantera SE,,31.6,2.53,1831.0,routed,31.0,network-estimate
-892830d2aabffff,Chantera E 2,,37.7,3.01,139.0,routed,290.0,approach-review
-892830d2aafffff,Chantera E,,34.6,2.77,896.0,routed,58.0,network-estimate
-892830d2ab3ffff,Wallis Ranch NW,,39.2,3.14,0.0,routed,242.0,approach-review
-892830d2ab7ffff,Chantera SE 2,,35.4,2.83,576.0,routed,146.0,approach-review
-892830d2abbffff,Wallis Ranch,,40.3,3.23,668.0,routed,353.0,approach-review
-892830d2b03ffff,Torello,,13.2,1.06,704.0,routed,139.0,approach-review
-892830d2b07ffff,Torello NW,,12.4,0.99,0.0,routed,252.0,approach-review
-892830d2b0bffff,Coventry N,,22.7,1.81,103.0,routed,281.0,approach-review
-892830d2b0fffff,Canadoro SE,,17.3,1.38,328.0,routed,101.0,approach-review
-892830d2b13ffff,Wedgewood,,13.3,1.06,1953.0,routed,107.0,approach-review
-892830d2b17ffff,Cambridge,,8.1,0.65,1776.0,routed,87.0,network-estimate
-892830d2b1bffff,Coventry,,20.7,1.66,1874.0,routed,92.0,network-estimate
-892830d2b23ffff,Ambridge,,12.7,1.01,721.0,routed,103.0,approach-review
-892830d2b27ffff,Valencia,,8.6,0.69,1896.0,routed,73.0,network-estimate
-892830d2b2bffff,Canyon Oaks,,15.8,1.27,2016.0,routed,53.0,network-estimate
-892830d2b2fffff,Ambridge N,,14.8,1.19,949.0,routed,27.0,network-estimate
-892830d2b33ffff,Mill Creek,,9.5,0.76,1464.0,routed,140.0,approach-review
-892830d2b37ffff,Valencia S,,3.0,0.24,1279.0,routed,88.0,network-estimate
-892830d2b3bffff,Canadoro,,15.6,1.24,2418.0,routed,100.0,network-estimate
-892830d2b43ffff,Lunaria S,,29.8,2.39,382.0,routed,138.0,approach-review
-892830d2b47ffff,Lunaria SW,,23.9,1.91,232.0,routed,211.0,approach-review
-892830d2b4bffff,Waterford,,34.1,2.73,1981.0,routed,168.0,approach-review
-892830d2b4fffff,Lunaria,,29.7,2.38,2323.0,routed,68.0,network-estimate
-892830d2b53ffff,La Sera NE,,27.5,2.2,1299.0,routed,178.0,approach-review
-892830d2b57ffff,Coventry E,,24.1,1.92,588.0,routed,140.0,approach-review
-892830d2b5bffff,Waterford SW,,34.1,2.73,1064.0,routed,96.0,network-estimate
-892830d2b63ffff,Wyngate,,24.3,1.95,2231.0,routed,84.0,network-estimate
-892830d2b67ffff,Taramea,,21.6,1.72,1953.0,routed,56.0,network-estimate
-892830d2b6bffff,Belrose,,29.0,2.32,802.0,routed,54.0,network-estimate
-892830d2b6fffff,Fiore,,25.3,2.02,1154.0,routed,85.0,network-estimate
-892830d2b73ffff,Windemere,,20.2,1.62,1234.0,routed,84.0,network-estimate
-892830d2b77ffff,Amberley,,17.9,1.43,2386.0,routed,77.0,network-estimate
-892830d2b7bffff,Wyngate SE,,25.6,2.05,1751.0,routed,80.0,network-estimate
-892830d2b83ffff,Barcella S,,20.1,1.61,443.0,routed,290.0,approach-review
-892830d2b87ffff,Cambridge SW,,8.8,0.71,245.0,routed,232.0,approach-review
-892830d2b8bffff,Chambray,,19.3,1.54,1503.0,routed,90.0,network-estimate
-892830d2b8fffff,Barcella,,10.2,0.82,1409.0,routed,167.0,approach-review
-892830d2b9bffff,Chambray S,,23.0,1.84,0.0,routed,234.0,approach-review
-892830d2ba3ffff,Deer Creek,,0.6,0.05,641.0,routed,14.0,network-estimate
-892830d2ba7ffff,Deer Creek NW,,4.0,0.32,0.0,routed,163.0,approach-review
-892830d2babffff,Mill Creek S,,3.8,0.3,1022.0,routed,198.0,approach-review
-892830d2bafffff,Dougherty Valley,,3.4,0.27,544.0,routed,140.0,approach-review
-892830d2bb3ffff,Deer Creek S,,7.5,0.6,604.0,routed,160.0,approach-review
-892830d2bb7ffff,Deer Creek SW,,4.4,0.35,49.0,routed,60.0,network-estimate
-892830d2bbbffff,Cambridge W,,4.8,0.38,589.0,routed,68.0,network-estimate
-892830d2bc3ffff,Montecito,,23.3,1.87,2289.0,routed,109.0,approach-review
-892830d2bc7ffff,San Ramon Sports Park,,18.5,1.48,1434.0,routed,60.0,network-estimate
-892830d2bcbffff,La Sera SE,,27.6,2.21,1874.0,routed,192.0,approach-review
-892830d2bcfffff,La Sera,,24.6,1.97,1524.0,routed,96.0,network-estimate
-892830d2bd3ffff,Chantera,,25.9,2.07,1173.0,routed,125.0,approach-review
-892830d2bd7ffff,Emory,,21.4,1.71,1277.0,routed,159.0,approach-review
-892830d2bdbffff,Chantera NE,,27.0,2.16,2346.0,routed,87.0,network-estimate
-892830d2d23ffff,Easthampton,,6.6,0.53,2294.0,routed,82.0,network-estimate
-892830d2d27ffff,Easthampton W,,1.2,0.09,2050.0,routed,32.0,network-estimate
-892830d2d2bffff,Fairway Village Apartments SE,,3.6,0.29,1121.0,routed,116.0,approach-review
-892830d2d2fffff,Easthampton NE,,5.6,0.44,1365.0,routed,49.0,network-estimate
-892830d2d37ffff,Village Parkway NW,,6.3,0.51,1879.0,routed,77.0,network-estimate
-892830d2d3bffff,Village Parkway,,14.0,1.12,1491.0,routed,116.0,approach-review
-892830d2d63ffff,Amador Lakes Apartments NE,,5.0,0.4,0.0,routed,316.0,approach-review
-892830d2d67ffff,Amador Lakes Apartments N,,3.9,0.31,1301.0,routed,163.0,approach-review
-892830d2d6bffff,The Hills at Bent Creek S,,23.5,1.88,381.0,routed,345.0,approach-review
-892830d2d6fffff,The Hills at Bent Creek W,,4.4,0.35,0.0,routed,250.0,approach-review
-892830d2d77ffff,Amador Lakes Apartments,,10.7,0.86,840.0,routed,58.0,network-estimate
-892830d2d7bffff,The Hills at Bent Creek S 2,,17.6,1.4,133.0,routed,350.0,approach-review
-892830d44c3ffff,California Chateau at Danville Ranch SW,,20.0,1.6,0.0,routed,302.0,approach-review
-892830d44d3ffff,The Preserve NW,,8.8,0.7,0.0,routed,271.0,approach-review
-892830d44d7ffff,The Preserve NW 2,,15.7,1.26,0.0,routed,432.0,approach-review
-892830d44dbffff,California Chateau at Danville Ranch S,,22.2,1.78,149.0,routed,222.0,approach-review
-892830d6203ffff,The Preserve SW 6,,10.6,0.85,831.0,routed,212.0,approach-review
-892830d6207ffff,The Preserve SW 7,,13.8,1.1,163.0,routed,465.0,approach-review
-892830d620bffff,The Preserve SW 4,,5.8,0.46,1696.0,routed,32.0,network-estimate
-892830d620fffff,The Preserve SW 5,,4.4,0.35,0.0,routed,227.0,approach-review
-892830d6213ffff,The Preserve SW 8,,15.7,1.26,102.0,routed,232.0,approach-review
-892830d6217ffff,The Preserve SW 9,,15.8,1.26,246.0,routed,313.0,approach-review
-892830d621bffff,The Preserve S 7,,11.0,0.88,1681.0,routed,86.0,network-estimate
-892830d6243ffff,The Preserve S 4,,12.2,0.97,2033.0,routed,59.0,network-estimate
-892830d6247ffff,The Preserve S 3,,6.8,0.54,1986.0,routed,4.0,network-estimate
-892830d624bffff,The Preserve SE 3,,15.6,1.25,1324.0,routed,69.0,network-estimate
-892830d624fffff,The Preserve S 2,,14.1,1.13,1027.0,routed,94.0,network-estimate
-892830d6253ffff,The Preserve S 6,,16.2,1.3,701.0,routed,69.0,network-estimate
-892830d6257ffff,The Preserve S 5,,11.4,0.91,1797.0,routed,71.0,network-estimate
-892830d625bffff,The Preserve SE 5,,19.0,1.52,797.0,routed,165.0,approach-review
-892830d6263ffff,The Preserve SW,,6.1,0.49,493.0,routed,63.0,network-estimate
-892830d6267ffff,The Preserve W 2,,7.3,0.58,354.0,routed,193.0,approach-review
-892830d626bffff,The Preserve,,8.1,0.65,1109.0,routed,80.0,network-estimate
-892830d626fffff,The Preserve W,,12.9,1.04,0.0,routed,103.0,approach-review
-892830d6273ffff,The Preserve SW 2,,1.2,0.1,1383.0,routed,63.0,network-estimate
-892830d6277ffff,The Preserve SW 3,,3.8,0.31,190.0,routed,218.0,approach-review
-892830d627bffff,The Preserve S,,6.8,0.54,1428.0,routed,19.0,network-estimate
-892830d628bffff,The Preserve S 15,,19.3,1.54,0.0,routed,503.0,approach-review
-892830d62c3ffff,The Preserve S 12,,24.2,1.94,209.0,routed,301.0,approach-review
-892830d62c7ffff,The Preserve S 11,,16.6,1.33,4.0,routed,290.0,approach-review
-892830d62cbffff,The Preserve S 10,,17.4,1.39,1861.0,routed,82.0,network-estimate
-892830d62cfffff,The Preserve S 8,,12.9,1.03,1031.0,routed,97.0,network-estimate
-892830d62d3ffff,Norris Canyon N 2,,29.3,2.34,141.0,routed,284.0,approach-review
-892830d62dbffff,The Preserve S 14,,23.2,1.85,935.0,routed,215.0,approach-review
-892830d7003ffff,Vista San Ramon NE 2,,19.8,1.58,748.0,routed,177.0,approach-review
-892830d7007ffff,Vista San Ramon N 2,,18.6,1.49,682.0,routed,143.0,approach-review
-892830d700bffff,Siena Hills NW,,22.5,1.8,267.0,routed,283.0,approach-review
-892830d700fffff,Country View SE 2,,18.2,1.45,356.0,routed,146.0,approach-review
-892830d7013ffff,Vista San Ramon NE,,15.9,1.27,655.0,routed,91.0,network-estimate
-892830d7017ffff,Vista San Ramon N,,11.1,0.89,591.0,routed,185.0,approach-review
-892830d701bffff,Siena Hills W,,15.9,1.27,824.0,routed,161.0,approach-review
-892830d7023ffff,Country View S,,18.5,1.48,563.0,routed,189.0,approach-review
-892830d7027ffff,Country View W,,14.6,1.17,1819.0,routed,75.0,network-estimate
-892830d702bffff,Country View E,,17.3,1.39,682.0,routed,141.0,approach-review
-892830d702fffff,Country View,,17.8,1.42,1522.0,routed,115.0,approach-review
-892830d7033ffff,Country View S 2,,14.1,1.12,100.0,routed,76.0,network-estimate
-892830d7037ffff,Country View SW,,13.4,1.07,1191.0,routed,77.0,network-estimate
-892830d703bffff,Country View SE,,17.6,1.4,370.0,routed,178.0,approach-review
-892830d7043ffff,Siena Hills NE,,19.0,1.52,621.0,routed,152.0,approach-review
-892830d7047ffff,Bel Air SW 2,,21.6,1.73,1080.0,routed,190.0,approach-review
-892830d704bffff,Bel Air SE,,22.2,1.78,251.0,routed,54.0,network-estimate
-892830d704fffff,Bel Air SW,,19.7,1.58,841.0,routed,211.0,approach-review
-892830d7053ffff,Siena Hills E,,13.8,1.1,1634.0,routed,94.0,network-estimate
-892830d7057ffff,Siena Hills N,,19.3,1.54,455.0,routed,139.0,approach-review
-892830d705bffff,Cedar Bridge W,,15.8,1.26,51.0,routed,236.0,approach-review
-892830d7063ffff,Country View E 3,,8.9,0.71,797.0,routed,238.0,approach-review
-892830d7067ffff,Cobblestone,,6.8,0.54,596.0,routed,129.0,approach-review
-892830d706bffff,Canyon Crest S,,6.2,0.49,2011.0,routed,11.0,network-estimate
-892830d706fffff,Canyon Crest SW,,1.1,0.09,1300.0,routed,66.0,network-estimate
-892830d7073ffff,Bel Air SW 3,,15.2,1.22,293.0,routed,230.0,approach-review
-892830d7077ffff,Country View E 2,,13.0,1.04,1448.0,routed,104.0,approach-review
-892830d707bffff,Bel Air W,,12.6,1.01,1157.0,routed,110.0,approach-review
-892830d7083ffff,San Ramon Central Park,,0.3,0.02,1386.0,routed,17.0,network-estimate
-892830d7087ffff,Vista San Ramon SW,,7.9,0.63,0.0,routed,119.0,approach-review
-892830d708bffff,Vista San Ramon SE,,6.3,0.5,1334.0,routed,162.0,approach-review
-892830d708fffff,Vista San Ramon,,6.8,0.54,1841.0,routed,106.0,approach-review
-892830d7093ffff,San Ramon,,0.8,0.06,1243.0,routed,33.0,network-estimate
-892830d7097ffff,San Ramon W,,5.6,0.45,510.0,routed,53.0,network-estimate
-892830d709bffff,Canyon Woods Apartments,,4.0,0.32,1965.0,routed,95.0,network-estimate
-892830d70a3ffff,Bishop Ranch 6/City Village E,,11.7,0.93,64.0,routed,23.0,network-estimate
-892830d70a7ffff,Bishop Ranch 6/City Village N,,6.1,0.49,1466.0,routed,33.0,network-estimate
-892830d70abffff,Vista San Ramon NW,,13.1,1.05,533.0,routed,91.0,network-estimate
-892830d70afffff,Park Central SE,,10.1,0.81,946.0,routed,73.0,network-estimate
-892830d70b3ffff,Bishop Ranch 6/City Village SE,,13.3,1.06,779.0,routed,43.0,network-estimate
-892830d70b7ffff,Bishop Ranch 6/City Village,,10.0,0.8,2852.0,routed,39.0,network-estimate
-892830d70bbffff,Vista San Ramon W,,8.0,0.64,1187.0,routed,101.0,approach-review
-892830d70c3ffff,Canyon Lakes N 2,,18.2,1.45,1221.0,routed,20.0,network-estimate
-892830d70c7ffff,Vista San Ramon E,,15.0,1.2,1829.0,routed,90.0,network-estimate
-892830d70cbffff,Siena Hills SE,,13.5,1.08,1549.0,routed,72.0,network-estimate
-892830d70cfffff,Siena Hills,,16.3,1.3,1832.0,routed,148.0,approach-review
-892830d70d3ffff,Canyon Lakes NW,,20.4,1.63,1314.0,routed,81.0,network-estimate
-892830d70d7ffff,Canyon Lakes NW 2,,18.1,1.45,683.0,routed,151.0,approach-review
-892830d70dbffff,Canyon Lakes N,,19.9,1.59,1084.0,routed,138.0,approach-review
-892830d7107ffff,California Chateau at Danville Ranch SE 3,,9.8,0.78,733.0,routed,75.0,network-estimate
-892830d7113ffff,California Chateau at Danville Ranch SE 5,,15.1,1.21,1009.0,routed,35.0,network-estimate
-892830d7117ffff,California Chateau at Danville Ranch SE 4,,10.8,0.86,920.0,routed,40.0,network-estimate
-892830d711bffff,Crow Canyon Heights W,,11.9,0.95,1463.0,routed,24.0,network-estimate
-892830d7133ffff,California Chateau at Danville Ranch SE,,7.4,0.59,940.0,routed,90.0,network-estimate
-892830d7137ffff,California Chateau at Danville Ranch,,7.7,0.62,539.0,routed,110.0,approach-review
-892830d7153ffff,Crow Canyon Heights,,17.4,1.4,1581.0,routed,101.0,approach-review
-892830d7157ffff,Crow Canyon Heights NW,,14.9,1.19,1379.0,routed,93.0,network-estimate
-892830d7183ffff,The Preserve SE 7,,17.4,1.39,1521.0,routed,38.0,network-estimate
-892830d7187ffff,The Preserve SE 4,,18.3,1.47,904.0,routed,58.0,network-estimate
-892830d718bffff,Bishop Ranch 6/City Village NW 3,,15.4,1.24,858.0,routed,165.0,approach-review
-892830d718fffff,The Preserve E 3,,13.9,1.11,1466.0,routed,72.0,network-estimate
-892830d7193ffff,Bishop Ranch 6/City Village W 6,,21.0,1.68,739.0,routed,35.0,network-estimate
-892830d7197ffff,The Preserve SE 6,,20.3,1.63,1395.0,routed,86.0,network-estimate
-892830d719bffff,Bishop Ranch 6/City Village W 5,,17.9,1.43,660.0,routed,34.0,network-estimate
-892830d71a3ffff,The Preserve E,,3.3,0.27,1124.0,routed,159.0,approach-review
-892830d71a7ffff,The Preserve NE,,5.0,0.4,1241.0,routed,128.0,approach-review
-892830d71abffff,California Chateau at Danville Ranch SE 2,,12.4,0.99,344.0,routed,67.0,network-estimate
-892830d71afffff,California Chateau at Danville Ranch S 2,,8.3,0.67,0.0,routed,299.0,approach-review
-892830d71b3ffff,The Preserve SE 2,,16.8,1.34,1911.0,routed,43.0,network-estimate
-892830d71b7ffff,The Preserve SE,,2.6,0.21,925.0,routed,121.0,approach-review
-892830d71bbffff,The Preserve E 2,,11.4,0.92,1093.0,routed,59.0,network-estimate
-892830d71c3ffff,Park Central NW,,3.6,0.29,995.0,routed,4.0,network-estimate
-892830d71c7ffff,Crow Canyon Heights SW 2,,9.4,0.76,1062.0,routed,65.0,network-estimate
-892830d71cbffff,Crow Canyon Heights S,,10.7,0.85,1137.0,routed,88.0,network-estimate
-892830d71cfffff,Crow Canyon Heights SW,,9.2,0.74,916.0,routed,50.0,network-estimate
-892830d71d3ffff,Bishop Ranch 6/City Village NW,,2.4,0.19,347.0,routed,76.0,network-estimate
-892830d71d7ffff,Bishop Ranch 6/City Village NW 2,,7.9,0.63,353.0,routed,62.0,network-estimate
-892830d71dbffff,Park Central,,3.4,0.27,209.0,routed,66.0,network-estimate
-892830d7203ffff,Trevari,,28.1,2.25,2564.0,routed,114.0,approach-review
-892830d7207ffff,Portola SW,,27.9,2.23,1027.0,routed,169.0,approach-review
-892830d720bffff,Diablo Vista Park,,31.3,2.5,824.0,routed,103.0,approach-review
-892830d720fffff,Portola,,33.3,2.66,1666.0,routed,139.0,approach-review
-892830d7213ffff,Miravilla,,24.3,1.95,1694.0,routed,87.0,network-estimate
-892830d7217ffff,Trevari SW,,27.9,2.24,410.0,routed,160.0,approach-review
-892830d721bffff,Alta Mira NW,,26.2,2.09,1726.0,routed,103.0,approach-review
-892830d7223ffff,Portola NW 2,,31.6,2.52,0.0,routed,75.0,network-estimate
-892830d7233ffff,Portola W,,27.0,2.16,0.0,routed,314.0,approach-review
-892830d723bffff,Portola NW,,34.3,2.75,7.0,routed,328.0,approach-review
-892830d7243ffff,Tassajara Ranch,,43.9,3.51,0.0,routed,418.0,approach-review
-892830d7253ffff,Alta Mira NE 2,,30.0,2.4,0.0,routed,466.0,approach-review
-892830d7257ffff,Alta Mira NE,,30.4,2.43,0.0,routed,219.0,approach-review
-892830d725bffff,Alta Mira NE 3,,51.6,4.12,0.0,routed,439.0,approach-review
-892830d7273ffff,Heritage Park,,36.1,2.89,1717.0,routed,120.0,approach-review
-892830d7277ffff,Portola N,,41.1,3.29,1184.0,routed,115.0,approach-review
-892830d7283ffff,Capella W,,10.0,0.8,1181.0,routed,108.0,approach-review
-892830d7287ffff,Bel Air E 3,,17.9,1.43,827.0,routed,64.0,network-estimate
-892830d728bffff,Capella,,15.0,1.2,559.0,routed,179.0,approach-review
-892830d728fffff,Miravilla SW,,14.6,1.17,207.0,routed,209.0,approach-review
-892830d7293ffff,Cedar Bridge,,7.1,0.57,1860.0,routed,114.0,approach-review
-892830d7297ffff,Cedar Bridge NW,,6.5,0.52,464.0,routed,285.0,approach-review
-892830d729bffff,Capella S,,11.7,0.94,801.0,routed,139.0,approach-review
-892830d72a3ffff,Bel Air NE,,16.8,1.35,612.0,routed,211.0,approach-review
-892830d72a7ffff,Canyon Crest SE,,12.0,0.96,902.0,routed,134.0,approach-review
-892830d72abffff,Portola SW 2,,23.4,1.87,779.0,routed,54.0,network-estimate
-892830d72afffff,Canyon Crest E,,16.7,1.34,0.0,routed,283.0,approach-review
-892830d72b3ffff,Bel Air E,,17.7,1.42,1878.0,routed,128.0,approach-review
-892830d72b7ffff,Bel Air,,19.2,1.54,2166.0,routed,37.0,network-estimate
-892830d72bbffff,Bel Air E 2,,22.6,1.81,0.0,routed,217.0,approach-review
-892830d72c3ffff,Monarch N,,22.9,1.83,889.0,routed,28.0,network-estimate
-892830d72c7ffff,Alta Mira SW,,21.0,1.68,1131.0,routed,102.0,approach-review
-892830d72cbffff,Monarch NE,,27.3,2.18,0.0,routed,331.0,approach-review
-892830d72cfffff,Alta Mira,,25.5,2.04,868.0,routed,155.0,approach-review
-892830d72d3ffff,Monarch,,18.5,1.48,1353.0,routed,145.0,approach-review
-892830d72d7ffff,Monarch W,,16.1,1.29,1055.0,routed,218.0,approach-review
-892830d72dbffff,Monarch E,,24.1,1.93,198.0,routed,208.0,approach-review
-892830d7313ffff,Crow Canyon Country Club NE,,16.9,1.35,112.0,routed,401.0,approach-review
-892830d738bffff,Canyon Crest NW 2,,11.5,0.92,726.0,routed,310.0,approach-review
-892830d7393ffff,Country View NE,,13.1,1.05,1072.0,routed,83.0,network-estimate
-892830d739bffff,Crow Canyon Country Club,,7.2,0.58,1546.0,routed,146.0,approach-review
-892830d73c3ffff,Canyon Crest N,,8.2,0.66,472.0,routed,266.0,approach-review
-892830d73c7ffff,Canyon Crest NW,,9.9,0.79,0.0,routed,331.0,approach-review
-892830d73cfffff,Canyon Crest N 2,,12.6,1.01,0.0,routed,469.0,approach-review
-892830d73d3ffff,Golden View Park,,8.0,0.64,1408.0,routed,31.0,network-estimate
-892830d73d7ffff,Canyon Crest,,6.8,0.54,1851.0,routed,148.0,approach-review
-892830d73dbffff,Canyon Crest NE,,12.1,0.97,34.0,routed,271.0,approach-review
-892830d7403ffff,Canyon Lakes SW,,8.5,0.68,1930.0,routed,71.0,network-estimate
-892830d7407ffff,Foothill Gardens E 5,,12.8,1.02,1452.0,routed,121.0,approach-review
-892830d740bffff,Canyon Lakes S 5,,13.6,1.09,1332.0,routed,70.0,network-estimate
-892830d740fffff,Canyon Woods SW 2,,12.2,0.97,1028.0,routed,133.0,approach-review
-892830d7413ffff,Canyon Lakes S 10,,3.5,0.28,1467.0,routed,120.0,approach-review
-892830d7417ffff,Foothill Gardens SE 7,,12.2,0.97,1439.0,routed,147.0,approach-review
-892830d741bffff,Canyon Lakes S 8,,8.6,0.69,986.0,routed,63.0,network-estimate
-892830d7423ffff,Foothill Gardens E 3,,12.8,1.02,80.0,routed,38.0,network-estimate
-892830d7427ffff,Foothill Gardens NE 2,,11.2,0.9,50.0,routed,63.0,network-estimate
-892830d742bffff,San Ramon S,,8.5,0.68,694.0,routed,37.0,network-estimate
-892830d742fffff,San Ramon SW,,7.4,0.59,566.0,routed,46.0,network-estimate
-892830d7433ffff,Foothill Gardens E 4,,19.0,1.52,1389.0,routed,98.0,network-estimate
-892830d7437ffff,Foothill Gardens E 2,,18.8,1.5,158.0,routed,44.0,network-estimate
-892830d743bffff,Canyon Woods SW 3,,15.4,1.23,1452.0,routed,130.0,approach-review
-892830d7443ffff,Canyon Lakes S 4,,23.5,1.88,1968.0,routed,40.0,network-estimate
-892830d7447ffff,Canyon Lakes S 3,,19.2,1.54,1535.0,routed,141.0,approach-review
-892830d744bffff,Canyon Lakes SE 3,,25.5,2.04,688.0,routed,221.0,approach-review
-892830d744fffff,Canyon Lakes S 2,,20.4,1.63,1718.0,routed,152.0,approach-review
-892830d7453ffff,Canyon Lakes S 7,,23.1,1.85,2218.0,routed,131.0,approach-review
-892830d7457ffff,Canyon Lakes S 6,,18.4,1.47,1389.0,routed,35.0,network-estimate
-892830d745bffff,Canyon Lakes SE 4,,28.3,2.26,1172.0,routed,165.0,approach-review
-892830d7463ffff,Canyon Woods,,12.4,1.0,2126.0,routed,88.0,network-estimate
-892830d7467ffff,Canyon Woods Apartments S,,6.4,0.51,1690.0,routed,91.0,network-estimate
-892830d746bffff,Canyon Lakes,,14.5,1.16,1096.0,routed,137.0,approach-review
-892830d746fffff,Canyon Woods NW,,9.2,0.74,1058.0,routed,175.0,approach-review
-892830d7473ffff,Canyon Woods S,,14.3,1.14,1504.0,routed,112.0,approach-review
-892830d7477ffff,Canyon Woods SW,,9.4,0.75,1985.0,routed,93.0,network-estimate
-892830d747bffff,Canyon Lakes S,,15.9,1.28,1620.0,routed,29.0,network-estimate
-892830d7483ffff,Foothill Gardens SE 12,,9.6,0.76,1399.0,routed,123.0,approach-review
-892830d7487ffff,Foothill Gardens SE 8,,13.4,1.07,1761.0,routed,32.0,network-estimate
-892830d748bffff,Canyon Lakes S 12,,3.9,0.31,1527.0,routed,148.0,approach-review
-892830d748fffff,Foothill Gardens SE 10,,8.1,0.65,1460.0,routed,99.0,network-estimate
-892830d7493ffff,The Gardens NW 11,,13.4,1.07,1984.0,routed,114.0,approach-review
-892830d7497ffff,Foothill Gardens SE 11,,15.6,1.25,1624.0,routed,103.0,approach-review
-892830d749bffff,Old Ranch Summit W 12,,9.6,0.76,1221.0,routed,119.0,approach-review
-892830d74a3ffff,Foothill Gardens SE 4,,20.9,1.68,1022.0,routed,40.0,network-estimate
-892830d74a7ffff,Foothill Gardens SE 2,,26.9,2.15,1238.0,routed,97.0,network-estimate
-892830d74abffff,Foothill Gardens SE 5,,16.1,1.29,981.0,routed,118.0,approach-review
-892830d74afffff,Foothill Gardens SE 3,,22.3,1.78,1426.0,routed,134.0,approach-review
-892830d74b3ffff,Foothill Gardens SE 6,,17.8,1.43,1705.0,routed,142.0,approach-review
-892830d74b7ffff,Foothill Gardens S 3,,23.6,1.89,333.0,routed,191.0,approach-review
-892830d74bbffff,Athan Downs,,13.5,1.08,825.0,routed,109.0,approach-review
-892830d74c3ffff,Old Ranch Summit W 9,,6.0,0.48,893.0,routed,111.0,approach-review
-892830d74c7ffff,Canyon Lakes S 11,,1.1,0.09,80.0,routed,24.0,network-estimate
-892830d74cbffff,Old Ranch Summit NW 7,,26.5,2.12,1608.0,routed,117.0,approach-review
-892830d74cfffff,Canyon Lakes S 9,,22.8,1.83,1557.0,routed,49.0,network-estimate
-892830d74d3ffff,Old Ranch Summit W 8,,12.4,0.99,1361.0,routed,95.0,network-estimate
-892830d74d7ffff,Old Ranch Summit W 11,,5.9,0.47,1376.0,routed,151.0,approach-review
-892830d74dbffff,Old Ranch Summit W 6,,26.6,2.12,1028.0,routed,151.0,approach-review
-892830d7503ffff,Foothill Gardens NW 3,,30.3,2.42,869.0,routed,168.0,approach-review
-892830d7507ffff,Foothill Gardens NW 5,,30.2,2.42,1425.0,routed,64.0,network-estimate
-892830d750bffff,Foothill Gardens NW 2,,26.4,2.11,1430.0,routed,140.0,approach-review
-892830d750fffff,Foothill Gardens NW 4,,24.5,1.96,1321.0,routed,112.0,approach-review
-892830d7513ffff,Foothill Gardens W 3,,38.6,3.09,1347.0,routed,195.0,approach-review
-892830d7517ffff,Foothill Gardens W 5,,33.0,2.64,1838.0,routed,102.0,approach-review
-892830d751bffff,Foothill Gardens NW,,31.2,2.5,1259.0,routed,70.0,network-estimate
-892830d7523ffff,Bishop Ranch 6/City Village W 8,,24.4,1.95,1357.0,routed,116.0,approach-review
-892830d7527ffff,The Preserve S 9,,21.0,1.68,948.0,routed,133.0,approach-review
-892830d752bffff,Bishop Ranch 6/City Village W 7,,20.5,1.64,1321.0,routed,111.0,approach-review
-892830d752fffff,The Preserve SE 8,,24.2,1.94,1375.0,routed,109.0,approach-review
-892830d7533ffff,Foothill Gardens NW 6,,26.5,2.12,1733.0,routed,100.0,network-estimate
-892830d7537ffff,The Preserve S 13,,21.5,1.72,1669.0,routed,10.0,network-estimate
-892830d753bffff,Bishop Ranch 6/City Village SW 4,,24.0,1.92,1177.0,routed,61.0,network-estimate
-892830d7543ffff,Bishop Ranch 6/City Village S 3,,15.8,1.27,383.0,routed,107.0,approach-review
-892830d7547ffff,Bishop Ranch 6/City Village S 2,,20.5,1.64,927.0,routed,50.0,network-estimate
-892830d754bffff,Bishop Ranch 6/City Village SE 2,,12.7,1.01,286.0,routed,56.0,network-estimate
-892830d754fffff,Bishop Ranch 6/City Village S,,17.1,1.37,97.0,routed,41.0,network-estimate
-892830d7553ffff,Foothill Gardens NE,,13.8,1.1,744.0,routed,67.0,network-estimate
-892830d7557ffff,Foothill Gardens N 2,,27.4,2.19,1004.0,routed,42.0,network-estimate
-892830d755bffff,San Ramon SW 2,,9.9,0.79,1379.0,routed,27.0,network-estimate
-892830d7563ffff,Bishop Ranch 6/City Village W 2,,12.9,1.03,1216.0,routed,104.0,approach-review
-892830d7567ffff,Bishop Ranch 6/City Village W 4,,15.4,1.24,1507.0,routed,49.0,network-estimate
-892830d756bffff,Bishop Ranch 6/City Village W,,8.3,0.66,284.0,routed,161.0,approach-review
-892830d756fffff,Bishop Ranch 6/City Village W 3,,11.0,0.88,556.0,routed,36.0,network-estimate
-892830d7573ffff,Bishop Ranch 6/City Village SW 2,,24.7,1.98,1522.0,routed,133.0,approach-review
-892830d7577ffff,Bishop Ranch 6/City Village SW 3,,19.1,1.53,1251.0,routed,70.0,network-estimate
-892830d757bffff,Bishop Ranch 6/City Village SW,,16.7,1.34,752.0,routed,86.0,network-estimate
-892830d7583ffff,Foothill Gardens SW 3,,45.1,3.61,13.0,routed,389.0,approach-review
-892830d7587ffff,Foothill Gardens W 7,,45.7,3.65,0.0,routed,397.0,approach-review
-892830d758bffff,Foothill Gardens W 2,,41.2,3.3,1297.0,routed,120.0,approach-review
-892830d758fffff,Foothill Gardens W 4,,38.0,3.04,896.0,routed,212.0,approach-review
-892830d759bffff,Foothill Gardens SW 2,,40.5,3.24,0.0,routed,351.0,approach-review
-892830d75a3ffff,Foothill Gardens W 9,,35.3,2.82,642.0,routed,203.0,approach-review
-892830d75a7ffff,Norris Canyon N,,29.7,2.37,521.0,routed,317.0,approach-review
-892830d75abffff,Foothill Gardens W 8,,30.2,2.42,1830.0,routed,94.0,network-estimate
-892830d75afffff,Foothill Gardens W 10,,26.9,2.15,960.0,routed,194.0,approach-review
-892830d75b3ffff,Norris Canyon,,41.4,3.31,132.0,routed,223.0,approach-review
-892830d75bbffff,Foothill Gardens W 6,,36.2,2.9,658.0,routed,271.0,approach-review
-892830d75c3ffff,Foothill Gardens,,34.3,2.75,804.0,routed,119.0,approach-review
-892830d75c7ffff,Foothill Gardens W,,35.7,2.85,192.0,routed,163.0,approach-review
-892830d75cbffff,Foothill Gardens E,,16.3,1.3,689.0,routed,87.0,network-estimate
-892830d75cfffff,Foothill Gardens N,,32.5,2.6,1719.0,routed,27.0,network-estimate
-892830d75d3ffff,Foothill Gardens S,,31.2,2.5,651.0,routed,148.0,approach-review
-892830d75d7ffff,Foothill Gardens SW,,36.2,2.89,1074.0,routed,87.0,network-estimate
-892830d75dbffff,Foothill Gardens SE,,29.2,2.34,1605.0,routed,82.0,network-estimate
-892830d7603ffff,Carmelita,,15.0,1.2,1365.0,routed,193.0,approach-review
-892830d7607ffff,Carmelita NW,,13.6,1.09,174.0,routed,93.0,network-estimate
-892830d760bffff,Rose Garden Encore,,9.2,0.74,818.0,routed,107.0,approach-review
-892830d760fffff,Carmelita N,,12.9,1.03,1356.0,routed,177.0,approach-review
-892830d7613ffff,Carmelita S,,17.5,1.4,493.0,routed,381.0,approach-review
-892830d7617ffff,Carmelita SW,,18.0,1.44,0.0,routed,443.0,approach-review
-892830d761bffff,Carmelita E,,8.4,0.67,567.0,routed,216.0,approach-review
-892830d7623ffff,Cedar Bridge SW 2,,5.8,0.47,1077.0,routed,104.0,approach-review
-892830d7627ffff,Cedar Bridge SW 3,,11.1,0.89,927.0,routed,223.0,approach-review
-892830d762bffff,Cedar Bridge S,,2.2,0.17,747.0,routed,79.0,network-estimate
-892830d762fffff,Cedar Bridge SW,,2.6,0.21,1262.0,routed,89.0,network-estimate
-892830d7633ffff,Carmelita NW 3,,10.4,0.83,1080.0,routed,199.0,approach-review
-892830d7637ffff,Canyon Lakes NE 3,,12.0,0.96,60.0,routed,236.0,approach-review
-892830d763bffff,Carmelita NW 2,,7.8,0.63,478.0,routed,113.0,approach-review
-892830d7643ffff,Rose Garden S,,1.6,0.13,1604.0,routed,106.0,approach-review
-892830d7647ffff,Rose Garden SW,,4.7,0.38,1622.0,routed,80.0,network-estimate
-892830d764bffff,Seville N,,6.7,0.53,1253.0,routed,101.0,approach-review
-892830d764fffff,Rose Garden,,9.2,0.73,1884.0,routed,37.0,network-estimate
-892830d7653ffff,Mosaic Park,,3.7,0.3,1447.0,routed,61.0,network-estimate
-892830d7657ffff,Rose Garden Encore SE,,3.8,0.3,2014.0,routed,70.0,network-estimate
-892830d765bffff,Seville,,7.2,0.58,1619.0,routed,27.0,network-estimate
-892830d7663ffff,Cornerstone,,10.7,0.85,1624.0,routed,70.0,network-estimate
-892830d7667ffff,Gale Ranch,,7.3,0.58,1072.0,routed,120.0,approach-review
-892830d766bffff,Villapaseo,,15.9,1.27,1294.0,routed,10.0,network-estimate
-892830d766fffff,Renaissance,,16.5,1.32,1883.0,routed,42.0,network-estimate
-892830d7673ffff,Wisteria,,9.6,0.77,1423.0,routed,43.0,network-estimate
-892830d7677ffff,Cornerstone W,,10.5,0.84,886.0,routed,132.0,approach-review
-892830d767bffff,Bark and Ride,,10.1,0.81,1767.0,routed,28.0,network-estimate
-892830d7683ffff,Carmelita S 3,,24.2,1.93,0.0,routed,491.0,approach-review
-892830d7687ffff,Carmelita SW 4,,26.7,2.13,0.0,routed,331.0,approach-review
-892830d768bffff,Carmelita S 2,,20.1,1.61,0.0,routed,324.0,approach-review
-892830d768fffff,Carmelita SW 2,,23.2,1.85,0.0,routed,52.0,network-estimate
-892830d7693ffff,Serena & Cordova W 3,,19.4,1.55,0.0,routed,333.0,approach-review
-892830d7697ffff,Canyon Lakes SE 5,,30.8,2.46,69.0,routed,363.0,approach-review
-892830d769bffff,Serena & Cordova W 2,,20.2,1.62,0.0,routed,387.0,approach-review
-892830d76a3ffff,Canyon Lakes E,,19.4,1.55,0.0,routed,228.0,approach-review
-892830d76a7ffff,Canyon Lakes NE,,20.6,1.65,361.0,routed,205.0,approach-review
-892830d76abffff,Carmelita W,,14.6,1.16,79.0,routed,365.0,approach-review
-892830d76afffff,Canyon Lakes NE 2,,15.2,1.22,501.0,routed,349.0,approach-review
-892830d76b3ffff,Canyon Lakes SE 2,,25.3,2.03,199.0,routed,241.0,approach-review
-892830d76b7ffff,Canyon Lakes SE,,20.8,1.66,859.0,routed,95.0,network-estimate
-892830d76bbffff,Carmelita SW 3,,19.6,1.57,0.0,routed,494.0,approach-review
-892830d76c3ffff,Serena & Cordova N,,9.2,0.74,574.0,routed,61.0,network-estimate
-892830d76c7ffff,Carmelita SE,,13.7,1.1,808.0,routed,176.0,approach-review
-892830d76cbffff,Valencia SW,,4.7,0.38,1588.0,routed,103.0,approach-review
-892830d76cfffff,Carmelita SE 2,,8.5,0.68,1322.0,routed,80.0,network-estimate
-892830d76d3ffff,Serena & Cordova,,14.6,1.17,1280.0,routed,97.0,network-estimate
-892830d76d7ffff,Serena & Cordova NW,,15.5,1.24,1310.0,routed,119.0,approach-review
-892830d76dbffff,Serena & Cordova NE,,3.2,0.26,416.0,routed,109.0,approach-review
-8928346da03ffff,West Dublin N 6,,5.0,0.4,1118.0,routed,187.0,approach-review
-8928346da07ffff,West Dublin N 7,,5.0,0.4,655.0,routed,195.0,approach-review
-8928346da0bffff,The Gardens NW 4,,15.3,1.23,1389.0,routed,92.0,network-estimate
-8928346da0fffff,West Dublin N 8,,2.0,0.16,1279.0,routed,124.0,approach-review
-8928346da13ffff,West Dublin N 3,,15.5,1.24,558.0,routed,90.0,network-estimate
-8928346da17ffff,West Dublin N 5,,9.7,0.77,0.0,routed,384.0,approach-review
-8928346da1bffff,West Dublin N 4,,12.1,0.97,1716.0,routed,96.0,network-estimate
-8928346da23ffff,West Dublin N 10,,11.4,0.91,660.0,routed,188.0,approach-review
-8928346da27ffff,West Dublin NW 7,,15.8,1.27,792.0,routed,166.0,approach-review
-8928346da2bffff,The Gardens NW 10,,7.8,0.63,2583.0,routed,128.0,approach-review
-8928346da2fffff,West Dublin N 11,,13.1,1.05,770.0,routed,125.0,approach-review
-8928346da33ffff,West Dublin NW 4,,14.9,1.19,164.0,routed,345.0,approach-review
-8928346da37ffff,West Dublin NW 5,,17.8,1.42,0.0,routed,320.0,approach-review
-8928346da3bffff,West Dublin N 9,,4.5,0.36,336.0,routed,133.0,approach-review
-8928346da43ffff,The Gardens NW,,8.4,0.67,1247.0,routed,132.0,approach-review
-8928346da47ffff,The Gardens NW 3,,13.5,1.08,1218.0,routed,87.0,network-estimate
-8928346da4bffff,The Gardens N 2,,8.3,0.66,349.0,routed,200.0,approach-review
-8928346da4fffff,The Gardens N 3,,13.0,1.04,1373.0,routed,152.0,approach-review
-8928346da53ffff,The Gardens,,5.7,0.45,1724.0,routed,171.0,approach-review
-8928346da57ffff,The Gardens NW 2,,11.0,0.88,1071.0,routed,98.0,network-estimate
-8928346da5bffff,The Gardens N,,4.1,0.33,1382.0,routed,162.0,approach-review
-8928346da63ffff,The Gardens NW 7,,14.0,1.12,769.0,routed,103.0,approach-review
-8928346da67ffff,The Gardens NW 9,,12.9,1.03,1225.0,routed,72.0,network-estimate
-8928346da6bffff,Old Ranch Summit W 7,,13.4,1.07,1190.0,routed,19.0,network-estimate
-8928346da6fffff,Old Ranch Summit W 10,,10.6,0.85,1367.0,routed,64.0,network-estimate
-8928346da73ffff,The Gardens NW 6,,15.4,1.23,1476.0,routed,98.0,network-estimate
-8928346da77ffff,The Gardens NW 8,,10.1,0.81,1850.0,routed,81.0,network-estimate
-8928346da7bffff,The Gardens NW 5,,17.9,1.43,1220.0,routed,111.0,approach-review
-8928346da83ffff,West Dublin NW,,23.9,1.91,0.0,routed,161.0,approach-review
-8928346da8bffff,West Dublin N,,22.2,1.78,0.0,routed,168.0,approach-review
-8928346da8fffff,West Dublin NW 2,,24.8,1.98,0.0,routed,141.0,approach-review
-8928346daabffff,West Dublin NW 3,,22.2,1.78,0.0,routed,441.0,approach-review
-8928346dac3ffff,Village Parkway NW 3,,14.1,1.13,1347.0,routed,125.0,approach-review
-8928346dac7ffff,West Dublin N 2,,15.8,1.27,1435.0,routed,57.0,network-estimate
-8928346dacbffff,The Vintner,,6.2,0.49,1487.0,routed,113.0,approach-review
-8928346dacfffff,The Vintner W,,8.8,0.71,1088.0,routed,83.0,network-estimate
-8928346dad7ffff,West Dublin,,15.8,1.26,1446.0,routed,59.0,network-estimate
-8928346dadbffff,Village Parkway NW 2,,9.7,0.78,1622.0,routed,66.0,network-estimate
-8928346db43ffff,Foothill Gardens S 6,,23.5,1.88,84.0,routed,198.0,approach-review
-8928346db4bffff,Foothill Gardens SE 9,,21.3,1.7,1634.0,routed,156.0,approach-review
-8928346db4fffff,Foothill Gardens S 5,,26.4,2.12,482.0,routed,173.0,approach-review
-8928346db53ffff,Foothill Gardens S 8,,21.5,1.72,0.0,routed,409.0,approach-review
-8928346db5bffff,Foothill Gardens S 7,,18.3,1.47,594.0,routed,116.0,approach-review
-8928346db6bffff,Foothill Gardens S 2,,31.8,2.54,86.0,routed,154.0,approach-review
-8928346db7bffff,Foothill Gardens S 4,,31.8,2.55,0.0,routed,371.0,approach-review
-8928346dbcbffff,West Dublin NW 6,,19.7,1.58,0.0,routed,429.0,approach-review
+h3,name,holc,access_min,access_km,street_m,access_src,access_snap_m,access_quality,inside_frac
+892830d0883ffff,Wendt Ranch,,14.3,1.14,0.0,routed,703.0,approach-review,0.003
+892830d0893ffff,Monterosso SE 2,,18.6,1.49,0.0,routed,996.0,approach-review,0.987
+892830d0897ffff,Monterosso SE,,46.9,3.75,0.0,routed,668.0,approach-review,0.601
+892830d0993ffff,Monterosso SW 2,,46.2,3.7,0.0,routed,242.0,approach-review,0.324
+892830d0c07ffff,Carlyle NE 2,,45.3,3.63,0.0,routed,983.0,approach-review,0.607
+892830d0c17ffff,Waterford NE 3,,43.6,3.49,0.0,routed,838.0,approach-review,0.446
+892830d0c23ffff,Aventura NE 5,,47.3,3.78,0.0,routed,698.0,approach-review,1.0
+892830d0c27ffff,Aventura N 4,,41.9,3.35,0.0,routed,622.0,approach-review,1.0
+892830d0c2bffff,Aventura NE 7,,49.9,4.0,0.0,routed,914.0,approach-review,1.0
+892830d0c2fffff,Aventura N 5,,45.8,3.67,0.0,routed,584.0,approach-review,1.0
+892830d0c33ffff,Aventura NE 4,,43.6,3.49,0.0,routed,850.0,approach-review,1.0
+892830d0c37ffff,Aventura N 3,,43.1,3.45,0.0,routed,749.0,approach-review,1.0
+892830d0c3bffff,Aventura NE 6,,48.4,3.87,0.0,routed,1169.0,approach-review,0.997
+892830d0c83ffff,Waterford E 2,,42.5,3.4,0.0,routed,585.0,approach-review,0.033
+892830d0c87ffff,Waterford NE,,38.2,3.06,124.0,routed,396.0,approach-review,0.958
+892830d0c8fffff,Waterford NE 2,,43.9,3.51,0.0,routed,697.0,approach-review,0.063
+892830d0c93ffff,Waterford E 3,,41.6,3.33,0.0,routed,442.0,approach-review,0.21
+892830d0c97ffff,Waterford E,,38.0,3.04,638.0,routed,285.0,approach-review,0.953
+892830d0ca3ffff,Aventura NE,,36.2,2.9,0.0,routed,254.0,approach-review,1.0
+892830d0ca7ffff,Aventura N,,35.3,2.83,0.0,routed,275.0,approach-review,1.0
+892830d0cabffff,Aventura NE 3,,40.8,3.26,0.0,routed,618.0,approach-review,1.0
+892830d0cafffff,Aventura NE 2,,39.1,3.13,0.0,routed,516.0,approach-review,1.0
+892830d0cb3ffff,Carlyle,,35.1,2.8,861.0,routed,193.0,approach-review,1.0
+892830d0cb7ffff,Aventura,,32.2,2.57,1378.0,routed,96.0,network-estimate,1.0
+892830d0cbbffff,Carlyle NE,,39.5,3.16,0.0,routed,510.0,approach-review,0.995
+892830d0d03ffff,Solaire & Belvedere NE 2,,25.8,2.06,345.0,routed,178.0,approach-review,1.0
+892830d0d07ffff,Avanti E,,23.7,1.9,38.0,routed,292.0,approach-review,1.0
+892830d0d0bffff,Solaire & Belvedere NE 3,,31.9,2.56,573.0,routed,120.0,approach-review,0.945
+892830d0d0fffff,Avanti NE 2,,33.0,2.64,0.0,routed,168.0,approach-review,0.882
+892830d0d13ffff,Solaire & Belvedere E 2,,24.3,1.95,1284.0,routed,36.0,network-estimate,1.0
+892830d0d17ffff,Solaire & Belvedere NE,,20.4,1.64,1157.0,routed,59.0,network-estimate,1.0
+892830d0d1bffff,Piccadilly Square Park,,30.3,2.42,1677.0,routed,26.0,network-estimate,1.0
+892830d0d23ffff,Avanti N 2,,29.4,2.35,0.0,routed,645.0,approach-review,1.0
+892830d0d27ffff,Alta Mira E,,31.9,2.55,0.0,routed,576.0,approach-review,1.0
+892830d0d2bffff,Avanti NE 3,,45.5,3.64,0.0,routed,518.0,approach-review,1.0
+892830d0d2fffff,Avanti N 3,,51.4,4.11,0.0,routed,433.0,approach-review,0.962
+892830d0d33ffff,Avanti N,,24.9,2.0,128.0,routed,338.0,approach-review,1.0
+892830d0d37ffff,Avanti NW 2,,27.8,2.22,0.0,routed,426.0,approach-review,1.0
+892830d0d3bffff,Avanti NE,,28.4,2.28,0.0,routed,532.0,approach-review,1.0
+892830d0d43ffff,Monterosso S 3,,39.2,3.14,0.0,routed,309.0,approach-review,0.788
+892830d0d47ffff,Monterosso S,,38.4,3.07,0.0,routed,204.0,approach-review,0.304
+892830d0d4bffff,Monterosso S 2,,22.8,1.82,0.0,routed,550.0,approach-review,0.125
+892830d0d53ffff,Solaire & Belvedere E 5,,37.9,3.03,0.0,routed,296.0,approach-review,1.0
+892830d0d57ffff,Solaire & Belvedere NE 4,,35.9,2.87,1019.0,routed,131.0,approach-review,1.0
+892830d0d5bffff,Monterosso S 4,,42.3,3.39,0.0,routed,305.0,approach-review,1.0
+892830d0d63ffff,Monterosso,,38.2,3.06,0.0,routed,106.0,approach-review,0.001
+892830d0d67ffff,Monterosso SW,,43.5,3.48,0.0,routed,294.0,approach-review,0.703
+892830d0d77ffff,Monterosso SW 3,,35.6,2.85,0.0,routed,304.0,approach-review,0.829
+892830d0d83ffff,Solaire & Belvedere SE,,20.7,1.66,0.0,routed,141.0,approach-review,1.0
+892830d0d87ffff,Veranda,,12.9,1.03,1194.0,routed,46.0,network-estimate,1.0
+892830d0d8bffff,Solaire & Belvedere SE 2,,24.8,1.99,1149.0,routed,39.0,network-estimate,1.0
+892830d0d8fffff,Solaire & Belvedere E,,19.1,1.53,435.0,routed,148.0,approach-review,1.0
+892830d0d93ffff,Taramea W,,17.0,1.36,1569.0,routed,60.0,network-estimate,1.0
+892830d0d97ffff,Shelbourne,,13.1,1.05,967.0,routed,50.0,network-estimate,1.0
+892830d0d9bffff,Taramea N,,22.3,1.78,673.0,routed,15.0,network-estimate,1.0
+892830d0da3ffff,Terravista N,,16.4,1.31,1106.0,routed,167.0,approach-review,1.0
+892830d0da7ffff,Monarch SE,,22.2,1.78,1236.0,routed,141.0,approach-review,1.0
+892830d0dabffff,Avanti,,19.4,1.55,1216.0,routed,141.0,approach-review,1.0
+892830d0dafffff,Avanti NW,,23.4,1.87,975.0,routed,251.0,approach-review,1.0
+892830d0db3ffff,Terravista,,11.7,0.93,2057.0,routed,76.0,network-estimate,1.0
+892830d0db7ffff,Coronado,,15.7,1.25,1653.0,routed,28.0,network-estimate,1.0
+892830d0dbbffff,Solaire & Belvedere,,14.8,1.18,1669.0,routed,70.0,network-estimate,1.0
+892830d0dc3ffff,Fiore NE 2,,33.3,2.66,0.0,routed,429.0,approach-review,1.0
+892830d0dc7ffff,Solaire & Belvedere E 3,,28.7,2.29,0.0,routed,232.0,approach-review,1.0
+892830d0dcbffff,Fiore NE 3,,38.9,3.11,0.0,routed,436.0,approach-review,1.0
+892830d0dcfffff,Solaire & Belvedere E 4,,35.0,2.8,193.0,routed,125.0,approach-review,1.0
+892830d0dd3ffff,Fiore NE,,29.5,2.36,0.0,routed,396.0,approach-review,1.0
+892830d0dd7ffff,Fiore N,,28.8,2.3,364.0,routed,69.0,network-estimate,1.0
+892830d0ddbffff,Aventura N 2,,39.9,3.19,0.0,routed,491.0,approach-review,1.0
+892830d286bffff,Chantera S,,30.0,2.4,0.0,routed,246.0,approach-review,0.325
+892830d286fffff,Chantera SW,,26.9,2.15,0.0,routed,261.0,approach-review,0.056
+892830d28a3ffff,eaves Dublin Apartments NE,,32.5,2.6,671.0,routed,170.0,approach-review,0.271
+892830d28a7ffff,The Hills at Bent Creek E,,28.7,2.29,1011.0,routed,127.0,approach-review,1.0
+892830d28afffff,Bent Creek Estates E 2,,30.1,2.41,468.0,routed,178.0,approach-review,0.078
+892830d28b7ffff,eaves Dublin Apartments,,34.8,2.78,237.0,routed,140.0,approach-review,0.258
+892830d2903ffff,Old Ranch Summit NE,,18.3,1.47,0.0,routed,391.0,approach-review,1.0
+892830d2907ffff,Old Ranch Summit NW,,21.0,1.68,232.0,routed,270.0,approach-review,1.0
+892830d290bffff,Old Ranch Estates N,,23.1,1.85,707.0,routed,184.0,approach-review,1.0
+892830d290fffff,Old Ranch Estates NW,,23.8,1.91,0.0,routed,62.0,network-estimate,1.0
+892830d2913ffff,Old Ranch Summit SE,,10.7,0.86,546.0,routed,192.0,approach-review,1.0
+892830d2917ffff,Old Ranch Summit,,14.2,1.14,1646.0,routed,62.0,network-estimate,1.0
+892830d291bffff,Old Ranch Estates,,18.7,1.5,705.0,routed,182.0,approach-review,1.0
+892830d2923ffff,Old Ranch Summit NW 3,,25.6,2.05,1021.0,routed,157.0,approach-review,1.0
+892830d2927ffff,Old Ranch Summit NW 5,,27.4,2.19,1834.0,routed,74.0,network-estimate,1.0
+892830d292bffff,Old Ranch Summit N 2,,18.9,1.52,0.0,routed,297.0,approach-review,1.0
+892830d292fffff,Old Ranch Summit NW 6,,31.1,2.48,252.0,routed,353.0,approach-review,1.0
+892830d2933ffff,Old Ranch Summit NW 2,,20.0,1.6,872.0,routed,29.0,network-estimate,1.0
+892830d2937ffff,Old Ranch Summit NW 4,,24.9,1.99,836.0,routed,133.0,approach-review,1.0
+892830d293bffff,Old Ranch Summit N,,23.4,1.87,0.0,routed,367.0,approach-review,1.0
+892830d2943ffff,Old Ranch Estates NE 2,,14.4,1.16,681.0,routed,189.0,approach-review,0.447
+892830d2947ffff,Old Ranch Estates N 2,,3.4,0.27,311.0,routed,177.0,approach-review,1.0
+892830d294bffff,Cambridge SW 2,,13.6,1.09,0.0,routed,385.0,approach-review,0.362
+892830d294fffff,Serena & Cordova SE,,8.3,0.66,1087.0,routed,117.0,approach-review,0.956
+892830d2953ffff,Old Ranch Estates E,,15.2,1.22,903.0,routed,252.0,approach-review,0.336
+892830d2957ffff,Old Ranch Estates NE,,14.5,1.16,1411.0,routed,91.0,network-estimate,1.0
+892830d2963ffff,Serena & Cordova SW,,4.8,0.38,454.0,routed,85.0,network-estimate,1.0
+892830d2967ffff,Serena & Cordova SW 2,,8.6,0.68,0.0,routed,387.0,approach-review,1.0
+892830d296bffff,Serena & Cordova S,,9.5,0.76,729.0,routed,82.0,network-estimate,1.0
+892830d296fffff,Serena & Cordova W,,13.3,1.07,823.0,routed,138.0,approach-review,1.0
+892830d2973ffff,Old Ranch Estates N 3,,0.9,0.07,0.0,routed,56.0,network-estimate,1.0
+892830d2977ffff,Old Ranch Estates NW 2,,5.9,0.47,0.0,routed,302.0,approach-review,1.0
+892830d297bffff,Serena & Cordova S 2,,4.5,0.36,928.0,routed,111.0,approach-review,1.0
+892830d2983ffff,Fairway Village Apartments N,,1.5,0.12,710.0,routed,87.0,network-estimate,1.0
+892830d2987ffff,Fairway Village Apartments N 2,,5.4,0.43,748.0,routed,160.0,approach-review,1.0
+892830d298bffff,Old Ranch Summit S 2,,7.2,0.58,1426.0,routed,91.0,network-estimate,1.0
+892830d298fffff,Old Ranch Summit S,,8.2,0.66,1374.0,routed,104.0,approach-review,1.0
+892830d2993ffff,Fairway Village Apartments,,4.1,0.33,1560.0,routed,48.0,network-estimate,1.0
+892830d2997ffff,Fairway Village Apartments NW,,4.2,0.34,64.0,routed,105.0,approach-review,1.0
+892830d299bffff,Senior Center Park Gardens,,0.8,0.07,1169.0,routed,29.0,network-estimate,1.0
+892830d29a3ffff,Old Ranch Summit W 2,,16.5,1.32,906.0,routed,161.0,approach-review,1.0
+892830d29a7ffff,Old Ranch Summit W 4,,19.5,1.56,732.0,routed,118.0,approach-review,1.0
+892830d29abffff,Old Ranch Summit W,,14.7,1.17,1425.0,routed,140.0,approach-review,1.0
+892830d29afffff,Old Ranch Summit W 3,,16.7,1.34,82.0,routed,185.0,approach-review,1.0
+892830d29b3ffff,Old Ranch Summit SW 2,,11.5,0.92,1068.0,routed,141.0,approach-review,1.0
+892830d29b7ffff,Old Ranch Summit W 5,,19.3,1.55,936.0,routed,151.0,approach-review,1.0
+892830d29bbffff,Old Ranch Summit SW,,9.3,0.74,1112.0,routed,131.0,approach-review,1.0
+892830d29c3ffff,Bent Creek Estates,,20.1,1.61,1733.0,routed,147.0,approach-review,1.0
+892830d29c7ffff,Old Ranch Estates S,,13.2,1.06,1379.0,routed,116.0,approach-review,1.0
+892830d29cbffff,Bent Creek Estates NE,,19.5,1.56,1448.0,routed,109.0,approach-review,0.523
+892830d29cfffff,Old Ranch Estates SE,,18.2,1.45,1862.0,routed,116.0,approach-review,1.0
+892830d29d3ffff,The Hills at Bent Creek,,19.6,1.57,664.0,routed,199.0,approach-review,1.0
+892830d29d7ffff,Old Ranch Park,,19.6,1.57,842.0,routed,98.0,network-estimate,1.0
+892830d29dbffff,Bent Creek Estates E,,24.7,1.98,1689.0,routed,131.0,approach-review,0.763
+892830d2a23ffff,Waterford S,,36.3,2.9,0.0,routed,437.0,approach-review,0.436
+892830d2a27ffff,La Sera E,,31.8,2.55,0.0,routed,278.0,approach-review,1.0
+892830d2a2fffff,Waterford SE,,38.9,3.11,0.0,routed,358.0,approach-review,0.947
+892830d2a33ffff,Montecito E 2,,35.1,2.8,0.0,routed,351.0,approach-review,0.318
+892830d2a37ffff,Montecito E,,31.5,2.52,518.0,routed,154.0,approach-review,1.0
+892830d2aa3ffff,Chantera SE 3,,35.9,2.88,1491.0,routed,171.0,approach-review,0.99
+892830d2aa7ffff,Chantera SE,,31.6,2.53,1831.0,routed,31.0,network-estimate,1.0
+892830d2aabffff,Chantera E 2,,37.7,3.01,0.0,routed,290.0,approach-review,0.323
+892830d2aafffff,Chantera E,,34.6,2.77,896.0,routed,58.0,network-estimate,1.0
+892830d2ab3ffff,Wallis Ranch NW,,39.2,3.14,0.0,routed,242.0,approach-review,0.021
+892830d2ab7ffff,Chantera SE 2,,35.4,2.83,576.0,routed,146.0,approach-review,0.591
+892830d2abbffff,Wallis Ranch,,40.3,3.23,148.0,routed,353.0,approach-review,0.105
+892830d2b03ffff,Torello,,13.2,1.06,704.0,routed,139.0,approach-review,1.0
+892830d2b07ffff,Torello NW,,12.4,0.99,0.0,routed,252.0,approach-review,1.0
+892830d2b0bffff,Coventry N,,22.7,1.81,103.0,routed,281.0,approach-review,1.0
+892830d2b0fffff,Canadoro SE,,17.3,1.38,328.0,routed,101.0,approach-review,1.0
+892830d2b13ffff,Wedgewood,,13.3,1.06,1953.0,routed,107.0,approach-review,1.0
+892830d2b17ffff,Cambridge,,8.1,0.65,1776.0,routed,87.0,network-estimate,1.0
+892830d2b1bffff,Coventry,,20.7,1.66,1874.0,routed,92.0,network-estimate,1.0
+892830d2b23ffff,Ambridge,,12.7,1.01,721.0,routed,103.0,approach-review,1.0
+892830d2b27ffff,Valencia,,8.6,0.69,1896.0,routed,73.0,network-estimate,1.0
+892830d2b2bffff,Canyon Oaks,,15.8,1.27,2016.0,routed,53.0,network-estimate,1.0
+892830d2b2fffff,Ambridge N,,14.8,1.19,949.0,routed,27.0,network-estimate,1.0
+892830d2b33ffff,Mill Creek,,9.5,0.76,1464.0,routed,140.0,approach-review,1.0
+892830d2b37ffff,Valencia S,,3.0,0.24,1279.0,routed,88.0,network-estimate,1.0
+892830d2b3bffff,Canadoro,,15.6,1.24,2418.0,routed,100.0,network-estimate,1.0
+892830d2b43ffff,Lunaria S,,29.8,2.39,382.0,routed,138.0,approach-review,1.0
+892830d2b47ffff,Lunaria SW,,23.9,1.91,232.0,routed,211.0,approach-review,1.0
+892830d2b4bffff,Waterford,,34.1,2.73,1981.0,routed,168.0,approach-review,1.0
+892830d2b4fffff,Lunaria,,29.7,2.38,2323.0,routed,68.0,network-estimate,1.0
+892830d2b53ffff,La Sera NE,,27.5,2.2,1299.0,routed,178.0,approach-review,1.0
+892830d2b57ffff,Coventry E,,24.1,1.92,588.0,routed,140.0,approach-review,1.0
+892830d2b5bffff,Waterford SW,,34.1,2.73,1064.0,routed,96.0,network-estimate,1.0
+892830d2b63ffff,Wyngate,,24.3,1.95,2231.0,routed,84.0,network-estimate,1.0
+892830d2b67ffff,Taramea,,21.6,1.72,1953.0,routed,56.0,network-estimate,1.0
+892830d2b6bffff,Belrose,,29.0,2.32,802.0,routed,54.0,network-estimate,1.0
+892830d2b6fffff,Fiore,,25.3,2.02,1154.0,routed,85.0,network-estimate,1.0
+892830d2b73ffff,Windemere,,20.2,1.62,1234.0,routed,84.0,network-estimate,1.0
+892830d2b77ffff,Amberley,,17.9,1.43,2386.0,routed,77.0,network-estimate,1.0
+892830d2b7bffff,Wyngate SE,,25.6,2.05,1751.0,routed,80.0,network-estimate,1.0
+892830d2b83ffff,Barcella S,,20.1,1.61,443.0,routed,290.0,approach-review,0.556
+892830d2b87ffff,Cambridge SW,,8.8,0.71,245.0,routed,232.0,approach-review,0.976
+892830d2b8bffff,Chambray,,19.3,1.54,1503.0,routed,90.0,network-estimate,1.0
+892830d2b8fffff,Barcella,,10.2,0.82,1409.0,routed,167.0,approach-review,1.0
+892830d2b9bffff,Chambray S,,23.0,1.84,0.0,routed,234.0,approach-review,0.095
+892830d2ba3ffff,Deer Creek,,0.6,0.05,641.0,routed,14.0,network-estimate,1.0
+892830d2ba7ffff,Deer Creek NW,,4.0,0.32,0.0,routed,163.0,approach-review,1.0
+892830d2babffff,Mill Creek S,,3.8,0.3,1022.0,routed,198.0,approach-review,1.0
+892830d2bafffff,Dougherty Valley,,3.4,0.27,544.0,routed,140.0,approach-review,1.0
+892830d2bb3ffff,Deer Creek S,,7.5,0.6,604.0,routed,160.0,approach-review,1.0
+892830d2bb7ffff,Deer Creek SW,,4.4,0.35,49.0,routed,60.0,network-estimate,1.0
+892830d2bbbffff,Cambridge W,,4.8,0.38,589.0,routed,68.0,network-estimate,1.0
+892830d2bc3ffff,Montecito,,23.3,1.87,2289.0,routed,109.0,approach-review,1.0
+892830d2bc7ffff,San Ramon Sports Park,,18.5,1.48,1434.0,routed,60.0,network-estimate,1.0
+892830d2bcbffff,La Sera SE,,27.6,2.21,1874.0,routed,192.0,approach-review,1.0
+892830d2bcfffff,La Sera,,24.6,1.97,1524.0,routed,96.0,network-estimate,1.0
+892830d2bd3ffff,Chantera,,25.9,2.07,1173.0,routed,125.0,approach-review,1.0
+892830d2bd7ffff,Emory,,21.4,1.71,1277.0,routed,159.0,approach-review,0.881
+892830d2bdbffff,Chantera NE,,27.0,2.16,2346.0,routed,87.0,network-estimate,1.0
+892830d2d23ffff,Easthampton,,6.6,0.53,1587.0,routed,82.0,network-estimate,0.722
+892830d2d27ffff,Easthampton W,,1.2,0.09,2050.0,routed,32.0,network-estimate,1.0
+892830d2d2bffff,Fairway Village Apartments SE,,3.6,0.29,1121.0,routed,116.0,approach-review,0.996
+892830d2d2fffff,Easthampton NE,,5.6,0.44,1365.0,routed,49.0,network-estimate,1.0
+892830d2d37ffff,Village Parkway NW,,6.3,0.51,938.0,routed,77.0,network-estimate,0.344
+892830d2d3bffff,Village Parkway,,14.0,1.12,0.0,routed,116.0,approach-review,0.022
+892830d2d63ffff,Amador Lakes Apartments NE,,5.0,0.4,0.0,routed,316.0,approach-review,0.682
+892830d2d67ffff,Amador Lakes Apartments N,,3.9,0.31,1301.0,routed,163.0,approach-review,1.0
+892830d2d6bffff,The Hills at Bent Creek S,,23.5,1.88,381.0,routed,345.0,approach-review,0.974
+892830d2d6fffff,The Hills at Bent Creek W,,4.4,0.35,0.0,routed,250.0,approach-review,1.0
+892830d2d77ffff,Amador Lakes Apartments,,10.7,0.86,310.0,routed,58.0,network-estimate,0.311
+892830d2d7bffff,The Hills at Bent Creek S 2,,17.6,1.4,0.0,routed,350.0,approach-review,0.003
+892830d44c3ffff,California Chateau at Danville Ranch SW,,20.0,1.6,0.0,routed,302.0,approach-review,0.095
+892830d44d3ffff,The Preserve NW,,8.8,0.7,0.0,routed,271.0,approach-review,1.0
+892830d44d7ffff,The Preserve NW 2,,15.7,1.26,0.0,routed,432.0,approach-review,0.323
+892830d44dbffff,California Chateau at Danville Ranch S,,22.2,1.78,0.0,routed,222.0,approach-review,0.596
+892830d6203ffff,The Preserve SW 6,,10.6,0.85,831.0,routed,212.0,approach-review,0.981
+892830d6207ffff,The Preserve SW 7,,13.8,1.1,163.0,routed,465.0,approach-review,0.173
+892830d620bffff,The Preserve SW 4,,5.8,0.46,1696.0,routed,32.0,network-estimate,0.814
+892830d620fffff,The Preserve SW 5,,4.4,0.35,0.0,routed,227.0,approach-review,0.016
+892830d6213ffff,The Preserve SW 8,,15.7,1.26,102.0,routed,232.0,approach-review,0.966
+892830d6217ffff,The Preserve SW 9,,15.8,1.26,125.0,routed,313.0,approach-review,0.522
+892830d621bffff,The Preserve S 7,,11.0,0.88,1681.0,routed,86.0,network-estimate,1.0
+892830d6243ffff,The Preserve S 4,,12.2,0.97,2033.0,routed,59.0,network-estimate,1.0
+892830d6247ffff,The Preserve S 3,,6.8,0.54,1986.0,routed,4.0,network-estimate,1.0
+892830d624bffff,The Preserve SE 3,,15.6,1.25,1324.0,routed,69.0,network-estimate,1.0
+892830d624fffff,The Preserve S 2,,14.1,1.13,1027.0,routed,94.0,network-estimate,1.0
+892830d6253ffff,The Preserve S 6,,16.2,1.3,701.0,routed,69.0,network-estimate,1.0
+892830d6257ffff,The Preserve S 5,,11.4,0.91,1797.0,routed,71.0,network-estimate,1.0
+892830d625bffff,The Preserve SE 5,,19.0,1.52,797.0,routed,165.0,approach-review,1.0
+892830d6263ffff,The Preserve SW,,6.1,0.49,493.0,routed,63.0,network-estimate,0.899
+892830d6267ffff,The Preserve W 2,,7.3,0.58,66.0,routed,193.0,approach-review,0.032
+892830d626bffff,The Preserve,,8.1,0.65,1109.0,routed,80.0,network-estimate,1.0
+892830d626fffff,The Preserve W,,12.9,1.04,0.0,routed,103.0,approach-review,0.484
+892830d6273ffff,The Preserve SW 2,,1.2,0.1,1383.0,routed,63.0,network-estimate,0.82
+892830d6277ffff,The Preserve SW 3,,3.8,0.31,190.0,routed,218.0,approach-review,0.119
+892830d627bffff,The Preserve S,,6.8,0.54,1428.0,routed,19.0,network-estimate,1.0
+892830d628bffff,The Preserve S 15,,19.3,1.54,0.0,routed,503.0,approach-review,0.187
+892830d62c3ffff,The Preserve S 12,,24.2,1.94,209.0,routed,301.0,approach-review,0.278
+892830d62c7ffff,The Preserve S 11,,16.6,1.33,4.0,routed,290.0,approach-review,0.835
+892830d62cbffff,The Preserve S 10,,17.4,1.39,1861.0,routed,82.0,network-estimate,1.0
+892830d62cfffff,The Preserve S 8,,12.9,1.03,1031.0,routed,97.0,network-estimate,0.737
+892830d62d3ffff,Norris Canyon N 2,,29.3,2.34,0.0,routed,284.0,approach-review,0.004
+892830d62dbffff,The Preserve S 14,,23.2,1.85,935.0,routed,215.0,approach-review,0.87
+892830d7003ffff,Vista San Ramon NE 2,,19.8,1.58,748.0,routed,177.0,approach-review,1.0
+892830d7007ffff,Vista San Ramon N 2,,18.6,1.49,682.0,routed,143.0,approach-review,1.0
+892830d700bffff,Siena Hills NW,,22.5,1.8,267.0,routed,283.0,approach-review,1.0
+892830d700fffff,Country View SE 2,,18.2,1.45,356.0,routed,146.0,approach-review,1.0
+892830d7013ffff,Vista San Ramon NE,,15.9,1.27,655.0,routed,91.0,network-estimate,1.0
+892830d7017ffff,Vista San Ramon N,,11.1,0.89,591.0,routed,185.0,approach-review,1.0
+892830d701bffff,Siena Hills W,,15.9,1.27,824.0,routed,161.0,approach-review,1.0
+892830d7023ffff,Country View S,,18.5,1.48,563.0,routed,189.0,approach-review,1.0
+892830d7027ffff,Country View W,,14.6,1.17,1644.0,routed,75.0,network-estimate,0.856
+892830d702bffff,Country View E,,17.3,1.39,682.0,routed,141.0,approach-review,1.0
+892830d702fffff,Country View,,17.8,1.42,1377.0,routed,115.0,approach-review,0.636
+892830d7033ffff,Country View S 2,,14.1,1.12,100.0,routed,76.0,network-estimate,1.0
+892830d7037ffff,Country View SW,,13.4,1.07,1191.0,routed,77.0,network-estimate,1.0
+892830d703bffff,Country View SE,,17.6,1.4,370.0,routed,178.0,approach-review,1.0
+892830d7043ffff,Siena Hills NE,,19.0,1.52,621.0,routed,152.0,approach-review,1.0
+892830d7047ffff,Bel Air SW 2,,21.6,1.73,1080.0,routed,190.0,approach-review,1.0
+892830d704bffff,Bel Air SE,,22.2,1.78,251.0,routed,54.0,network-estimate,1.0
+892830d704fffff,Bel Air SW,,19.7,1.58,841.0,routed,211.0,approach-review,1.0
+892830d7053ffff,Siena Hills E,,13.8,1.1,1634.0,routed,94.0,network-estimate,1.0
+892830d7057ffff,Siena Hills N,,19.3,1.54,455.0,routed,139.0,approach-review,1.0
+892830d705bffff,Cedar Bridge W,,15.8,1.26,51.0,routed,236.0,approach-review,1.0
+892830d7063ffff,Country View E 3,,8.9,0.71,797.0,routed,238.0,approach-review,1.0
+892830d7067ffff,Cobblestone,,6.8,0.54,596.0,routed,129.0,approach-review,1.0
+892830d706bffff,Canyon Crest S,,6.2,0.49,2011.0,routed,11.0,network-estimate,1.0
+892830d706fffff,Canyon Crest SW,,1.1,0.09,1300.0,routed,66.0,network-estimate,1.0
+892830d7073ffff,Bel Air SW 3,,15.2,1.22,293.0,routed,230.0,approach-review,1.0
+892830d7077ffff,Country View E 2,,13.0,1.04,1448.0,routed,104.0,approach-review,1.0
+892830d707bffff,Bel Air W,,12.6,1.01,1157.0,routed,110.0,approach-review,1.0
+892830d7083ffff,San Ramon Central Park,,0.3,0.02,1386.0,routed,17.0,network-estimate,1.0
+892830d7087ffff,Vista San Ramon SW,,7.9,0.63,0.0,routed,119.0,approach-review,1.0
+892830d708bffff,Vista San Ramon SE,,6.3,0.5,1334.0,routed,162.0,approach-review,1.0
+892830d708fffff,Vista San Ramon,,6.8,0.54,1841.0,routed,106.0,approach-review,1.0
+892830d7093ffff,San Ramon,,0.8,0.06,1243.0,routed,33.0,network-estimate,1.0
+892830d7097ffff,San Ramon W,,5.6,0.45,510.0,routed,53.0,network-estimate,1.0
+892830d709bffff,Canyon Woods Apartments,,4.0,0.32,1965.0,routed,95.0,network-estimate,1.0
+892830d70a3ffff,Bishop Ranch 6/City Village E,,11.7,0.93,64.0,routed,23.0,network-estimate,1.0
+892830d70a7ffff,Bishop Ranch 6/City Village N,,6.1,0.49,1466.0,routed,33.0,network-estimate,1.0
+892830d70abffff,Vista San Ramon NW,,13.1,1.05,533.0,routed,91.0,network-estimate,1.0
+892830d70afffff,Park Central SE,,10.1,0.81,946.0,routed,73.0,network-estimate,1.0
+892830d70b3ffff,Bishop Ranch 6/City Village SE,,13.3,1.06,779.0,routed,43.0,network-estimate,1.0
+892830d70b7ffff,Bishop Ranch 6/City Village,,10.0,0.8,2852.0,routed,39.0,network-estimate,1.0
+892830d70bbffff,Vista San Ramon W,,8.0,0.64,1187.0,routed,101.0,approach-review,1.0
+892830d70c3ffff,Canyon Lakes N 2,,18.2,1.45,1221.0,routed,20.0,network-estimate,1.0
+892830d70c7ffff,Vista San Ramon E,,15.0,1.2,1829.0,routed,90.0,network-estimate,1.0
+892830d70cbffff,Siena Hills SE,,13.5,1.08,1549.0,routed,72.0,network-estimate,1.0
+892830d70cfffff,Siena Hills,,16.3,1.3,1832.0,routed,148.0,approach-review,1.0
+892830d70d3ffff,Canyon Lakes NW,,20.4,1.63,1314.0,routed,81.0,network-estimate,1.0
+892830d70d7ffff,Canyon Lakes NW 2,,18.1,1.45,683.0,routed,151.0,approach-review,1.0
+892830d70dbffff,Canyon Lakes N,,19.9,1.59,1084.0,routed,138.0,approach-review,1.0
+892830d7107ffff,California Chateau at Danville Ranch SE 3,,9.8,0.78,405.0,routed,75.0,network-estimate,0.313
+892830d7113ffff,California Chateau at Danville Ranch SE 5,,15.1,1.21,779.0,routed,35.0,network-estimate,0.373
+892830d7117ffff,California Chateau at Danville Ranch SE 4,,10.8,0.86,920.0,routed,40.0,network-estimate,0.748
+892830d711bffff,Crow Canyon Heights W,,11.9,0.95,616.0,routed,24.0,network-estimate,0.156
+892830d7133ffff,California Chateau at Danville Ranch SE,,7.4,0.59,54.0,routed,90.0,network-estimate,0.461
+892830d7137ffff,California Chateau at Danville Ranch,,7.7,0.62,0.0,routed,110.0,approach-review,0.017
+892830d7153ffff,Crow Canyon Heights,,17.4,1.4,43.0,routed,101.0,approach-review,0.012
+892830d7157ffff,Crow Canyon Heights NW,,14.9,1.19,5.0,routed,93.0,network-estimate,0.002
+892830d7183ffff,The Preserve SE 7,,17.4,1.39,1521.0,routed,38.0,network-estimate,1.0
+892830d7187ffff,The Preserve SE 4,,18.3,1.47,904.0,routed,58.0,network-estimate,1.0
+892830d718bffff,Bishop Ranch 6/City Village NW 3,,15.4,1.24,858.0,routed,165.0,approach-review,1.0
+892830d718fffff,The Preserve E 3,,13.9,1.11,1466.0,routed,72.0,network-estimate,1.0
+892830d7193ffff,Bishop Ranch 6/City Village W 6,,21.0,1.68,739.0,routed,35.0,network-estimate,1.0
+892830d7197ffff,The Preserve SE 6,,20.3,1.63,1395.0,routed,86.0,network-estimate,1.0
+892830d719bffff,Bishop Ranch 6/City Village W 5,,17.9,1.43,660.0,routed,34.0,network-estimate,1.0
+892830d71a3ffff,The Preserve E,,3.3,0.27,1124.0,routed,159.0,approach-review,1.0
+892830d71a7ffff,The Preserve NE,,5.0,0.4,1241.0,routed,128.0,approach-review,1.0
+892830d71abffff,California Chateau at Danville Ranch SE 2,,12.4,0.99,344.0,routed,67.0,network-estimate,1.0
+892830d71afffff,California Chateau at Danville Ranch S 2,,8.3,0.67,0.0,routed,299.0,approach-review,1.0
+892830d71b3ffff,The Preserve SE 2,,16.8,1.34,1911.0,routed,43.0,network-estimate,1.0
+892830d71b7ffff,The Preserve SE,,2.6,0.21,925.0,routed,121.0,approach-review,1.0
+892830d71bbffff,The Preserve E 2,,11.4,0.92,1093.0,routed,59.0,network-estimate,1.0
+892830d71c3ffff,Park Central NW,,3.6,0.29,995.0,routed,4.0,network-estimate,1.0
+892830d71c7ffff,Crow Canyon Heights SW 2,,9.4,0.76,1062.0,routed,65.0,network-estimate,1.0
+892830d71cbffff,Crow Canyon Heights S,,10.7,0.85,1137.0,routed,88.0,network-estimate,0.942
+892830d71cfffff,Crow Canyon Heights SW,,9.2,0.74,884.0,routed,50.0,network-estimate,0.773
+892830d71d3ffff,Bishop Ranch 6/City Village NW,,2.4,0.19,347.0,routed,76.0,network-estimate,1.0
+892830d71d7ffff,Bishop Ranch 6/City Village NW 2,,7.9,0.63,353.0,routed,62.0,network-estimate,1.0
+892830d71dbffff,Park Central,,3.4,0.27,209.0,routed,66.0,network-estimate,1.0
+892830d7203ffff,Trevari,,28.1,2.25,2564.0,routed,114.0,approach-review,1.0
+892830d7207ffff,Portola SW,,27.9,2.23,1027.0,routed,169.0,approach-review,1.0
+892830d720bffff,Diablo Vista Park,,31.3,2.5,824.0,routed,103.0,approach-review,0.42
+892830d720fffff,Portola,,33.3,2.66,1666.0,routed,139.0,approach-review,0.997
+892830d7213ffff,Miravilla,,24.3,1.95,1694.0,routed,87.0,network-estimate,1.0
+892830d7217ffff,Trevari SW,,27.9,2.24,410.0,routed,160.0,approach-review,1.0
+892830d721bffff,Alta Mira NW,,26.2,2.09,1726.0,routed,103.0,approach-review,1.0
+892830d7223ffff,Portola NW 2,,31.6,2.52,0.0,routed,75.0,network-estimate,0.007
+892830d7233ffff,Portola W,,27.0,2.16,0.0,routed,314.0,approach-review,0.254
+892830d723bffff,Portola NW,,34.3,2.75,0.0,routed,328.0,approach-review,0.6
+892830d7243ffff,Tassajara Ranch,,43.9,3.51,0.0,routed,418.0,approach-review,0.072
+892830d7253ffff,Alta Mira NE 2,,30.0,2.4,0.0,routed,466.0,approach-review,1.0
+892830d7257ffff,Alta Mira NE,,30.4,2.43,0.0,routed,219.0,approach-review,0.643
+892830d725bffff,Alta Mira NE 3,,51.6,4.12,0.0,routed,439.0,approach-review,0.554
+892830d7273ffff,Heritage Park,,36.1,2.89,487.0,routed,120.0,approach-review,0.171
+892830d7277ffff,Portola N,,41.1,3.29,0.0,routed,115.0,approach-review,0.006
+892830d7283ffff,Capella W,,10.0,0.8,1181.0,routed,108.0,approach-review,1.0
+892830d7287ffff,Bel Air E 3,,17.9,1.43,827.0,routed,64.0,network-estimate,1.0
+892830d728bffff,Capella,,15.0,1.2,559.0,routed,179.0,approach-review,1.0
+892830d728fffff,Miravilla SW,,14.6,1.17,207.0,routed,209.0,approach-review,1.0
+892830d7293ffff,Cedar Bridge,,7.1,0.57,1860.0,routed,114.0,approach-review,1.0
+892830d7297ffff,Cedar Bridge NW,,6.5,0.52,464.0,routed,285.0,approach-review,1.0
+892830d729bffff,Capella S,,11.7,0.94,801.0,routed,139.0,approach-review,1.0
+892830d72a3ffff,Bel Air NE,,16.8,1.35,612.0,routed,211.0,approach-review,1.0
+892830d72a7ffff,Canyon Crest SE,,12.0,0.96,902.0,routed,134.0,approach-review,1.0
+892830d72abffff,Portola SW 2,,23.4,1.87,779.0,routed,54.0,network-estimate,1.0
+892830d72afffff,Canyon Crest E,,16.7,1.34,0.0,routed,283.0,approach-review,0.658
+892830d72b3ffff,Bel Air E,,17.7,1.42,1878.0,routed,128.0,approach-review,1.0
+892830d72b7ffff,Bel Air,,19.2,1.54,2166.0,routed,37.0,network-estimate,1.0
+892830d72bbffff,Bel Air E 2,,22.6,1.81,0.0,routed,217.0,approach-review,1.0
+892830d72c3ffff,Monarch N,,22.9,1.83,889.0,routed,28.0,network-estimate,1.0
+892830d72c7ffff,Alta Mira SW,,21.0,1.68,1131.0,routed,102.0,approach-review,1.0
+892830d72cbffff,Monarch NE,,27.3,2.18,0.0,routed,331.0,approach-review,1.0
+892830d72cfffff,Alta Mira,,25.5,2.04,868.0,routed,155.0,approach-review,1.0
+892830d72d3ffff,Monarch,,18.5,1.48,1353.0,routed,145.0,approach-review,1.0
+892830d72d7ffff,Monarch W,,16.1,1.29,1055.0,routed,218.0,approach-review,1.0
+892830d72dbffff,Monarch E,,24.1,1.93,198.0,routed,208.0,approach-review,1.0
+892830d7313ffff,Crow Canyon Country Club NE,,16.9,1.35,0.0,routed,401.0,approach-review,0.304
+892830d738bffff,Canyon Crest NW 2,,11.5,0.92,245.0,routed,310.0,approach-review,0.392
+892830d7393ffff,Country View NE,,13.1,1.05,938.0,routed,83.0,network-estimate,0.623
+892830d739bffff,Crow Canyon Country Club,,7.2,0.58,1336.0,routed,146.0,approach-review,0.587
+892830d73c3ffff,Canyon Crest N,,8.2,0.66,472.0,routed,266.0,approach-review,0.828
+892830d73c7ffff,Canyon Crest NW,,9.9,0.79,0.0,routed,331.0,approach-review,0.988
+892830d73cfffff,Canyon Crest N 2,,12.6,1.01,0.0,routed,469.0,approach-review,0.032
+892830d73d3ffff,Golden View Park,,8.0,0.64,1408.0,routed,31.0,network-estimate,1.0
+892830d73d7ffff,Canyon Crest,,6.8,0.54,1851.0,routed,148.0,approach-review,1.0
+892830d73dbffff,Canyon Crest NE,,12.1,0.97,34.0,routed,271.0,approach-review,0.321
+892830d7403ffff,Canyon Lakes SW,,8.5,0.68,1930.0,routed,71.0,network-estimate,1.0
+892830d7407ffff,Foothill Gardens E 5,,12.8,1.02,1452.0,routed,121.0,approach-review,1.0
+892830d740bffff,Canyon Lakes S 5,,13.6,1.09,1332.0,routed,70.0,network-estimate,1.0
+892830d740fffff,Canyon Woods SW 2,,12.2,0.97,1028.0,routed,133.0,approach-review,1.0
+892830d7413ffff,Canyon Lakes S 10,,3.5,0.28,1467.0,routed,120.0,approach-review,1.0
+892830d7417ffff,Foothill Gardens SE 7,,12.2,0.97,1439.0,routed,147.0,approach-review,1.0
+892830d741bffff,Canyon Lakes S 8,,8.6,0.69,986.0,routed,63.0,network-estimate,1.0
+892830d7423ffff,Foothill Gardens E 3,,12.8,1.02,80.0,routed,38.0,network-estimate,1.0
+892830d7427ffff,Foothill Gardens NE 2,,11.2,0.9,50.0,routed,63.0,network-estimate,1.0
+892830d742bffff,San Ramon S,,8.5,0.68,694.0,routed,37.0,network-estimate,1.0
+892830d742fffff,San Ramon SW,,7.4,0.59,566.0,routed,46.0,network-estimate,1.0
+892830d7433ffff,Foothill Gardens E 4,,19.0,1.52,1389.0,routed,98.0,network-estimate,1.0
+892830d7437ffff,Foothill Gardens E 2,,18.8,1.5,158.0,routed,44.0,network-estimate,1.0
+892830d743bffff,Canyon Woods SW 3,,15.4,1.23,1452.0,routed,130.0,approach-review,1.0
+892830d7443ffff,Canyon Lakes S 4,,23.5,1.88,1968.0,routed,40.0,network-estimate,1.0
+892830d7447ffff,Canyon Lakes S 3,,19.2,1.54,1535.0,routed,141.0,approach-review,1.0
+892830d744bffff,Canyon Lakes SE 3,,25.5,2.04,688.0,routed,221.0,approach-review,1.0
+892830d744fffff,Canyon Lakes S 2,,20.4,1.63,1718.0,routed,152.0,approach-review,1.0
+892830d7453ffff,Canyon Lakes S 7,,23.1,1.85,2218.0,routed,131.0,approach-review,1.0
+892830d7457ffff,Canyon Lakes S 6,,18.4,1.47,1389.0,routed,35.0,network-estimate,1.0
+892830d745bffff,Canyon Lakes SE 4,,28.3,2.26,1172.0,routed,165.0,approach-review,1.0
+892830d7463ffff,Canyon Woods,,12.4,1.0,2126.0,routed,88.0,network-estimate,1.0
+892830d7467ffff,Canyon Woods Apartments S,,6.4,0.51,1690.0,routed,91.0,network-estimate,1.0
+892830d746bffff,Canyon Lakes,,14.5,1.16,1096.0,routed,137.0,approach-review,1.0
+892830d746fffff,Canyon Woods NW,,9.2,0.74,1058.0,routed,175.0,approach-review,1.0
+892830d7473ffff,Canyon Woods S,,14.3,1.14,1504.0,routed,112.0,approach-review,1.0
+892830d7477ffff,Canyon Woods SW,,9.4,0.75,1985.0,routed,93.0,network-estimate,1.0
+892830d747bffff,Canyon Lakes S,,15.9,1.28,1620.0,routed,29.0,network-estimate,1.0
+892830d7483ffff,Foothill Gardens SE 12,,9.6,0.76,1399.0,routed,123.0,approach-review,1.0
+892830d7487ffff,Foothill Gardens SE 8,,13.4,1.07,1761.0,routed,32.0,network-estimate,1.0
+892830d748bffff,Canyon Lakes S 12,,3.9,0.31,1527.0,routed,148.0,approach-review,1.0
+892830d748fffff,Foothill Gardens SE 10,,8.1,0.65,1460.0,routed,99.0,network-estimate,1.0
+892830d7493ffff,The Gardens NW 11,,13.4,1.07,1984.0,routed,114.0,approach-review,1.0
+892830d7497ffff,Foothill Gardens SE 11,,15.6,1.25,1624.0,routed,103.0,approach-review,1.0
+892830d749bffff,Old Ranch Summit W 12,,9.6,0.76,1221.0,routed,119.0,approach-review,1.0
+892830d74a3ffff,Foothill Gardens SE 4,,20.9,1.68,1022.0,routed,40.0,network-estimate,1.0
+892830d74a7ffff,Foothill Gardens SE 2,,26.9,2.15,1225.0,routed,97.0,network-estimate,0.958
+892830d74abffff,Foothill Gardens SE 5,,16.1,1.29,981.0,routed,118.0,approach-review,1.0
+892830d74afffff,Foothill Gardens SE 3,,22.3,1.78,1426.0,routed,134.0,approach-review,1.0
+892830d74b3ffff,Foothill Gardens SE 6,,17.8,1.43,1705.0,routed,142.0,approach-review,0.939
+892830d74b7ffff,Foothill Gardens S 3,,23.6,1.89,333.0,routed,191.0,approach-review,0.175
+892830d74bbffff,Athan Downs,,13.5,1.08,825.0,routed,109.0,approach-review,1.0
+892830d74c3ffff,Old Ranch Summit W 9,,6.0,0.48,893.0,routed,111.0,approach-review,1.0
+892830d74c7ffff,Canyon Lakes S 11,,1.1,0.09,80.0,routed,24.0,network-estimate,1.0
+892830d74cbffff,Old Ranch Summit NW 7,,26.5,2.12,1608.0,routed,117.0,approach-review,1.0
+892830d74cfffff,Canyon Lakes S 9,,22.8,1.83,1557.0,routed,49.0,network-estimate,1.0
+892830d74d3ffff,Old Ranch Summit W 8,,12.4,0.99,1361.0,routed,95.0,network-estimate,1.0
+892830d74d7ffff,Old Ranch Summit W 11,,5.9,0.47,1376.0,routed,151.0,approach-review,1.0
+892830d74dbffff,Old Ranch Summit W 6,,26.6,2.12,1028.0,routed,151.0,approach-review,1.0
+892830d7503ffff,Foothill Gardens NW 3,,30.3,2.42,869.0,routed,168.0,approach-review,1.0
+892830d7507ffff,Foothill Gardens NW 5,,30.2,2.42,1425.0,routed,64.0,network-estimate,1.0
+892830d750bffff,Foothill Gardens NW 2,,26.4,2.11,1430.0,routed,140.0,approach-review,1.0
+892830d750fffff,Foothill Gardens NW 4,,24.5,1.96,1321.0,routed,112.0,approach-review,1.0
+892830d7513ffff,Foothill Gardens W 3,,38.6,3.09,1347.0,routed,195.0,approach-review,1.0
+892830d7517ffff,Foothill Gardens W 5,,33.0,2.64,1838.0,routed,102.0,approach-review,1.0
+892830d751bffff,Foothill Gardens NW,,31.2,2.5,1259.0,routed,70.0,network-estimate,1.0
+892830d7523ffff,Bishop Ranch 6/City Village W 8,,24.4,1.95,1357.0,routed,116.0,approach-review,1.0
+892830d7527ffff,The Preserve S 9,,21.0,1.68,948.0,routed,133.0,approach-review,1.0
+892830d752bffff,Bishop Ranch 6/City Village W 7,,20.5,1.64,1321.0,routed,111.0,approach-review,1.0
+892830d752fffff,The Preserve SE 8,,24.2,1.94,1375.0,routed,109.0,approach-review,1.0
+892830d7533ffff,Foothill Gardens NW 6,,26.5,2.12,1733.0,routed,100.0,network-estimate,1.0
+892830d7537ffff,The Preserve S 13,,21.5,1.72,1669.0,routed,10.0,network-estimate,1.0
+892830d753bffff,Bishop Ranch 6/City Village SW 4,,24.0,1.92,1177.0,routed,61.0,network-estimate,1.0
+892830d7543ffff,Bishop Ranch 6/City Village S 3,,15.8,1.27,383.0,routed,107.0,approach-review,1.0
+892830d7547ffff,Bishop Ranch 6/City Village S 2,,20.5,1.64,927.0,routed,50.0,network-estimate,1.0
+892830d754bffff,Bishop Ranch 6/City Village SE 2,,12.7,1.01,286.0,routed,56.0,network-estimate,1.0
+892830d754fffff,Bishop Ranch 6/City Village S,,17.1,1.37,97.0,routed,41.0,network-estimate,1.0
+892830d7553ffff,Foothill Gardens NE,,13.8,1.1,744.0,routed,67.0,network-estimate,1.0
+892830d7557ffff,Foothill Gardens N 2,,27.4,2.19,1004.0,routed,42.0,network-estimate,1.0
+892830d755bffff,San Ramon SW 2,,9.9,0.79,1379.0,routed,27.0,network-estimate,1.0
+892830d7563ffff,Bishop Ranch 6/City Village W 2,,12.9,1.03,1216.0,routed,104.0,approach-review,1.0
+892830d7567ffff,Bishop Ranch 6/City Village W 4,,15.4,1.24,1507.0,routed,49.0,network-estimate,1.0
+892830d756bffff,Bishop Ranch 6/City Village W,,8.3,0.66,284.0,routed,161.0,approach-review,1.0
+892830d756fffff,Bishop Ranch 6/City Village W 3,,11.0,0.88,556.0,routed,36.0,network-estimate,1.0
+892830d7573ffff,Bishop Ranch 6/City Village SW 2,,24.7,1.98,1522.0,routed,133.0,approach-review,1.0
+892830d7577ffff,Bishop Ranch 6/City Village SW 3,,19.1,1.53,1251.0,routed,70.0,network-estimate,1.0
+892830d757bffff,Bishop Ranch 6/City Village SW,,16.7,1.34,752.0,routed,86.0,network-estimate,1.0
+892830d7583ffff,Foothill Gardens SW 3,,45.1,3.61,13.0,routed,389.0,approach-review,0.044
+892830d7587ffff,Foothill Gardens W 7,,45.7,3.65,0.0,routed,397.0,approach-review,0.027
+892830d758bffff,Foothill Gardens W 2,,41.2,3.3,1297.0,routed,120.0,approach-review,0.923
+892830d758fffff,Foothill Gardens W 4,,38.0,3.04,896.0,routed,212.0,approach-review,0.949
+892830d759bffff,Foothill Gardens SW 2,,40.5,3.24,0.0,routed,351.0,approach-review,0.03
+892830d75a3ffff,Foothill Gardens W 9,,35.3,2.82,642.0,routed,203.0,approach-review,0.955
+892830d75a7ffff,Norris Canyon N,,29.7,2.37,370.0,routed,317.0,approach-review,0.271
+892830d75abffff,Foothill Gardens W 8,,30.2,2.42,1830.0,routed,94.0,network-estimate,1.0
+892830d75afffff,Foothill Gardens W 10,,26.9,2.15,960.0,routed,194.0,approach-review,0.845
+892830d75b3ffff,Norris Canyon,,41.4,3.31,132.0,routed,223.0,approach-review,0.179
+892830d75bbffff,Foothill Gardens W 6,,36.2,2.9,658.0,routed,271.0,approach-review,0.998
+892830d75c3ffff,Foothill Gardens,,34.3,2.75,804.0,routed,119.0,approach-review,1.0
+892830d75c7ffff,Foothill Gardens W,,35.7,2.85,192.0,routed,163.0,approach-review,1.0
+892830d75cbffff,Foothill Gardens E,,16.3,1.3,689.0,routed,87.0,network-estimate,1.0
+892830d75cfffff,Foothill Gardens N,,32.5,2.6,1719.0,routed,27.0,network-estimate,1.0
+892830d75d3ffff,Foothill Gardens S,,31.2,2.5,651.0,routed,148.0,approach-review,0.941
+892830d75d7ffff,Foothill Gardens SW,,36.2,2.89,1074.0,routed,87.0,network-estimate,0.764
+892830d75dbffff,Foothill Gardens SE,,29.2,2.34,1605.0,routed,82.0,network-estimate,1.0
+892830d7603ffff,Carmelita,,15.0,1.2,1365.0,routed,193.0,approach-review,1.0
+892830d7607ffff,Carmelita NW,,13.6,1.09,174.0,routed,93.0,network-estimate,1.0
+892830d760bffff,Rose Garden Encore,,9.2,0.74,818.0,routed,107.0,approach-review,1.0
+892830d760fffff,Carmelita N,,12.9,1.03,1356.0,routed,177.0,approach-review,1.0
+892830d7613ffff,Carmelita S,,17.5,1.4,493.0,routed,381.0,approach-review,1.0
+892830d7617ffff,Carmelita SW,,18.0,1.44,0.0,routed,443.0,approach-review,1.0
+892830d761bffff,Carmelita E,,8.4,0.67,567.0,routed,216.0,approach-review,1.0
+892830d7623ffff,Cedar Bridge SW 2,,5.8,0.47,1077.0,routed,104.0,approach-review,1.0
+892830d7627ffff,Cedar Bridge SW 3,,11.1,0.89,927.0,routed,223.0,approach-review,1.0
+892830d762bffff,Cedar Bridge S,,2.2,0.17,747.0,routed,79.0,network-estimate,1.0
+892830d762fffff,Cedar Bridge SW,,2.6,0.21,1262.0,routed,89.0,network-estimate,1.0
+892830d7633ffff,Carmelita NW 3,,10.4,0.83,1080.0,routed,199.0,approach-review,1.0
+892830d7637ffff,Canyon Lakes NE 3,,12.0,0.96,60.0,routed,236.0,approach-review,1.0
+892830d763bffff,Carmelita NW 2,,7.8,0.63,478.0,routed,113.0,approach-review,1.0
+892830d7643ffff,Rose Garden S,,1.6,0.13,1604.0,routed,106.0,approach-review,1.0
+892830d7647ffff,Rose Garden SW,,4.7,0.38,1622.0,routed,80.0,network-estimate,1.0
+892830d764bffff,Seville N,,6.7,0.53,1253.0,routed,101.0,approach-review,1.0
+892830d764fffff,Rose Garden,,9.2,0.73,1884.0,routed,37.0,network-estimate,1.0
+892830d7653ffff,Mosaic Park,,3.7,0.3,1447.0,routed,61.0,network-estimate,1.0
+892830d7657ffff,Rose Garden Encore SE,,3.8,0.3,2014.0,routed,70.0,network-estimate,1.0
+892830d765bffff,Seville,,7.2,0.58,1619.0,routed,27.0,network-estimate,1.0
+892830d7663ffff,Cornerstone,,10.7,0.85,1624.0,routed,70.0,network-estimate,1.0
+892830d7667ffff,Gale Ranch,,7.3,0.58,1072.0,routed,120.0,approach-review,1.0
+892830d766bffff,Villapaseo,,15.9,1.27,1294.0,routed,10.0,network-estimate,1.0
+892830d766fffff,Renaissance,,16.5,1.32,1883.0,routed,42.0,network-estimate,1.0
+892830d7673ffff,Wisteria,,9.6,0.77,1423.0,routed,43.0,network-estimate,1.0
+892830d7677ffff,Cornerstone W,,10.5,0.84,886.0,routed,132.0,approach-review,1.0
+892830d767bffff,Bark and Ride,,10.1,0.81,1767.0,routed,28.0,network-estimate,1.0
+892830d7683ffff,Carmelita S 3,,24.2,1.93,0.0,routed,491.0,approach-review,1.0
+892830d7687ffff,Carmelita SW 4,,26.7,2.13,0.0,routed,331.0,approach-review,1.0
+892830d768bffff,Carmelita S 2,,20.1,1.61,0.0,routed,324.0,approach-review,1.0
+892830d768fffff,Carmelita SW 2,,23.2,1.85,0.0,routed,52.0,network-estimate,1.0
+892830d7693ffff,Serena & Cordova W 3,,19.4,1.55,0.0,routed,333.0,approach-review,1.0
+892830d7697ffff,Canyon Lakes SE 5,,30.8,2.46,69.0,routed,363.0,approach-review,1.0
+892830d769bffff,Serena & Cordova W 2,,20.2,1.62,0.0,routed,387.0,approach-review,1.0
+892830d76a3ffff,Canyon Lakes E,,19.4,1.55,0.0,routed,228.0,approach-review,1.0
+892830d76a7ffff,Canyon Lakes NE,,20.6,1.65,361.0,routed,205.0,approach-review,1.0
+892830d76abffff,Carmelita W,,14.6,1.16,79.0,routed,365.0,approach-review,1.0
+892830d76afffff,Canyon Lakes NE 2,,15.2,1.22,501.0,routed,349.0,approach-review,1.0
+892830d76b3ffff,Canyon Lakes SE 2,,25.3,2.03,199.0,routed,241.0,approach-review,1.0
+892830d76b7ffff,Canyon Lakes SE,,20.8,1.66,859.0,routed,95.0,network-estimate,1.0
+892830d76bbffff,Carmelita SW 3,,19.6,1.57,0.0,routed,494.0,approach-review,1.0
+892830d76c3ffff,Serena & Cordova N,,9.2,0.74,574.0,routed,61.0,network-estimate,1.0
+892830d76c7ffff,Carmelita SE,,13.7,1.1,808.0,routed,176.0,approach-review,1.0
+892830d76cbffff,Valencia SW,,4.7,0.38,1588.0,routed,103.0,approach-review,1.0
+892830d76cfffff,Carmelita SE 2,,8.5,0.68,1322.0,routed,80.0,network-estimate,1.0
+892830d76d3ffff,Serena & Cordova,,14.6,1.17,1280.0,routed,97.0,network-estimate,1.0
+892830d76d7ffff,Serena & Cordova NW,,15.5,1.24,1310.0,routed,119.0,approach-review,1.0
+892830d76dbffff,Serena & Cordova NE,,3.2,0.26,416.0,routed,109.0,approach-review,1.0
+8928346da03ffff,West Dublin N 6,,5.0,0.4,1118.0,routed,187.0,approach-review,1.0
+8928346da07ffff,West Dublin N 7,,5.0,0.4,655.0,routed,195.0,approach-review,1.0
+8928346da0bffff,The Gardens NW 4,,15.3,1.23,1389.0,routed,92.0,network-estimate,1.0
+8928346da0fffff,West Dublin N 8,,2.0,0.16,1279.0,routed,124.0,approach-review,1.0
+8928346da13ffff,West Dublin N 3,,15.5,1.24,558.0,routed,90.0,network-estimate,1.0
+8928346da17ffff,West Dublin N 5,,9.7,0.77,0.0,routed,384.0,approach-review,0.934
+8928346da1bffff,West Dublin N 4,,12.1,0.97,1716.0,routed,96.0,network-estimate,1.0
+8928346da23ffff,West Dublin N 10,,11.4,0.91,660.0,routed,188.0,approach-review,1.0
+8928346da27ffff,West Dublin NW 7,,15.8,1.27,792.0,routed,166.0,approach-review,0.867
+8928346da2bffff,The Gardens NW 10,,7.8,0.63,2583.0,routed,128.0,approach-review,1.0
+8928346da2fffff,West Dublin N 11,,13.1,1.05,770.0,routed,125.0,approach-review,1.0
+8928346da33ffff,West Dublin NW 4,,14.9,1.19,164.0,routed,345.0,approach-review,0.753
+8928346da37ffff,West Dublin NW 5,,17.8,1.42,0.0,routed,320.0,approach-review,0.096
+8928346da3bffff,West Dublin N 9,,4.5,0.36,336.0,routed,133.0,approach-review,1.0
+8928346da43ffff,The Gardens NW,,8.4,0.67,1247.0,routed,132.0,approach-review,1.0
+8928346da47ffff,The Gardens NW 3,,13.5,1.08,1218.0,routed,87.0,network-estimate,1.0
+8928346da4bffff,The Gardens N 2,,8.3,0.66,349.0,routed,200.0,approach-review,1.0
+8928346da4fffff,The Gardens N 3,,13.0,1.04,1373.0,routed,152.0,approach-review,1.0
+8928346da53ffff,The Gardens,,5.7,0.45,1724.0,routed,171.0,approach-review,1.0
+8928346da57ffff,The Gardens NW 2,,11.0,0.88,1071.0,routed,98.0,network-estimate,1.0
+8928346da5bffff,The Gardens N,,4.1,0.33,1382.0,routed,162.0,approach-review,1.0
+8928346da63ffff,The Gardens NW 7,,14.0,1.12,769.0,routed,103.0,approach-review,1.0
+8928346da67ffff,The Gardens NW 9,,12.9,1.03,1225.0,routed,72.0,network-estimate,1.0
+8928346da6bffff,Old Ranch Summit W 7,,13.4,1.07,1190.0,routed,19.0,network-estimate,1.0
+8928346da6fffff,Old Ranch Summit W 10,,10.6,0.85,1367.0,routed,64.0,network-estimate,1.0
+8928346da73ffff,The Gardens NW 6,,15.4,1.23,1476.0,routed,98.0,network-estimate,1.0
+8928346da77ffff,The Gardens NW 8,,10.1,0.81,1850.0,routed,81.0,network-estimate,1.0
+8928346da7bffff,The Gardens NW 5,,17.9,1.43,1220.0,routed,111.0,approach-review,1.0
+8928346da83ffff,West Dublin NW,,23.9,1.91,0.0,routed,161.0,approach-review,0.153
+8928346da8bffff,West Dublin N,,22.2,1.78,0.0,routed,168.0,approach-review,1.0
+8928346da8fffff,West Dublin NW 2,,24.8,1.98,0.0,routed,141.0,approach-review,0.524
+8928346daabffff,West Dublin NW 3,,22.2,1.78,0.0,routed,441.0,approach-review,0.267
+8928346dac3ffff,Village Parkway NW 3,,14.1,1.13,1011.0,routed,125.0,approach-review,0.762
+8928346dac7ffff,West Dublin N 2,,15.8,1.27,1435.0,routed,57.0,network-estimate,1.0
+8928346dacbffff,The Vintner,,6.2,0.49,1467.0,routed,113.0,approach-review,0.999
+8928346dacfffff,The Vintner W,,8.8,0.71,1088.0,routed,83.0,network-estimate,1.0
+8928346dad7ffff,West Dublin,,15.8,1.26,351.0,routed,59.0,network-estimate,0.391
+8928346dadbffff,Village Parkway NW 2,,9.7,0.78,165.0,routed,66.0,network-estimate,0.031
+8928346db43ffff,Foothill Gardens S 6,,23.5,1.88,84.0,routed,198.0,approach-review,0.293
+8928346db4bffff,Foothill Gardens SE 9,,21.3,1.7,1634.0,routed,156.0,approach-review,1.0
+8928346db4fffff,Foothill Gardens S 5,,26.4,2.12,482.0,routed,173.0,approach-review,0.561
+8928346db53ffff,Foothill Gardens S 8,,21.5,1.72,0.0,routed,409.0,approach-review,0.619
+8928346db5bffff,Foothill Gardens S 7,,18.3,1.47,594.0,routed,116.0,approach-review,0.971
+8928346db6bffff,Foothill Gardens S 2,,31.8,2.54,86.0,routed,154.0,approach-review,0.069
+8928346db7bffff,Foothill Gardens S 4,,31.8,2.55,0.0,routed,371.0,approach-review,0.005
+8928346dbcbffff,West Dublin NW 6,,19.7,1.58,0.0,routed,429.0,approach-review,0.03

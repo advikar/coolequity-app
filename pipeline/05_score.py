@@ -26,7 +26,7 @@ CONTRACT = ["id", "name", "lst", "green", "pop", "pct65", "ac", "holc",
             "access_min", "access_km", "score", "rank", "area_m2", "street_m",
             "canopy_m2", "row_m2", "row_canopy", "veg", "place", "land", "green_src", "canopy_source", "canopy_year", "assessed_m2",
             "coverage_frac", "canopy_quality", "scenario_ok", "canopy_baseline_ok", "ac_src", "ac_coverage", "acs_year", "access_snap_m", "access_quality", "access_src",
-            "city", "city_kind"]
+            "city", "city_kind", "inside_frac"]
 
 COORD_DP = 5      # ~1 m at this latitude; halves the file the browser downloads
 
@@ -357,6 +357,9 @@ def main():
         # "should it?", and mixing the two would let good access paper over
         # real need.
         "street_m":   df["street_m"].fillna(0).round(0).astype(int),
+        # Share of the hexagon inside the study boundary (1 = wholly inside). Residents,
+        # street capacity and the city label all describe that part only.
+        "inside_frac": df.get("inside_frac", pd.Series(1.0, index=df.index)).fillna(1.0).round(3),
         "city":       df["city"],
         "city_kind":  df["city_kind"],
     })[CONTRACT]

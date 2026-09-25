@@ -60,7 +60,7 @@
   .all{margin-top:40px}
   .all h2{font-family:var(--display);font-weight:400;font-size:26px;margin:0 0 6px;color:#fff}
   .all p.sub2{color:var(--muted);font-size:13.5px;margin:0 0 20px}
-  @media (max-width:720px){.hero{min-height:0;padding-top:20px;align-items:flex-start}.hero .pick{position:static;margin-bottom:18px}.pick select{min-width:0;width:100%}.istats{gap:22px}}
+  @media (max-width:720px){.hero{min-height:0;padding-top:20px;flex-direction:column;align-items:stretch}.hero .pick{position:static;width:100%;margin-bottom:18px}.pick select{min-width:0;width:100%;flex:1}.hero-in{max-width:none}.istats{gap:22px}}
   .wdot{width:9px;height:9px;border-radius:50%;background:var(--accent);
     box-shadow:0 0 0 4px rgba(255,183,3,.16)}
   .wm{font-family:var(--display);font-size:32px;line-height:1;letter-spacing:-.01em;color:#fff}
@@ -115,7 +115,7 @@
     <div class="istats" id="istats">
       <div><b>5</b><span>study areas</span></div>
       <div><b>8,435</b><span>areas ranked</span></div>
-      <div><b>2.0M</b><span>residents</span></div>
+      <div><b>1.6M</b><span>residents</span></div>
       <div><b>2022</b><span>aerial tree cover</span></div>
     </div>
     <p class="blurb" id="blurb"></p>
@@ -148,8 +148,10 @@
     2009–2020 height model fills in (in the Contra Costa builds rescaled onto the aerial line
     and checked against the county lidar map, which itself supplies some areas); a satellite
     greenness index stands in for the last 68 of 8,435 ranked areas. Every area shows its
-    source in the app. Population and age are US Census ACS 2020–2024 five-year
-    estimates allocated into areas; <b>air-conditioning access</b> is the Census LACE 2023
+    source in the app. The San Ramon, West Contra Costa and Pittsburg &amp; Bay Point maps are
+    finer views inside the county map, so the resident total counts the county and Bakersfield
+    once; the 8,435 ranked areas are records across the five overlapping maps. Population and
+    age are US Census ACS 2020–2024 five-year estimates allocated into areas; <b>air-conditioning access</b> is the Census LACE 2023
     tract estimate, weighted zero in San Ramon and Bakersfield where it is near-universal. In Contra Costa County
     and in Pittsburg &amp; Bay Point <b>surface heat</b> is weighted zero: the county spans marine to Delta, so a hotter area there
     is mostly a different climate, not a shade problem. <b>Walking time</b> in every
@@ -163,7 +165,7 @@
   <div class="note">
     <b>About this site.</b> CoolEquity is an independent student project: an exploratory tool
     for finding areas worth investigating for shade trees, not a validated recommendation, a
-    project budget or an emergency cooling locator. Current release: September 22, 2026 (each
+    project budget or an emergency cooling locator. Current release: September 25, 2026 (each
     map's briefing and exports carry the data fingerprint).
     <br><br>
     <b>Privacy.</b> The maps need no account. Field-check notes, shortlists and priorities stay
@@ -183,7 +185,7 @@
     and LACE 2023 · USFS / CAL FIRE Urban Tree Canopy 2022 · OpenStreetMap contributors · HOLC
     grades from the University of Richmond <i>Mapping Inequality</i> · tree-cooling coefficient
     after Krayenhoff et al. (2021) · H3 grid (Uber) · basemap © CARTO. An independent student
-    project; not affiliated with, nor reviewed by, any city. Updated September 22, 2026.
+    project; not affiliated with, nor reviewed by, any city. Updated September 25, 2026.
     <a href="https://github.com/advikar/coolequity-app" style="color:inherit">Source code</a>.
   </div>
 </div>
@@ -197,7 +199,7 @@ const CE={
   westcc:{n:'West Contra Costa',go:'Explore West Contra Costa',s:[['982','areas ranked'],['272k','residents'],['13%','avg. tree cover'],['0.04 sq mi','per area']],b:'Richmond to Hercules at seven times the county map’s resolution. Half of residents live in areas under 10% tree cover; heat is scored here.'},
   pittsburg:{n:'Pittsburg & Bay Point',go:'Explore Pittsburg & Bay Point',s:[['570','areas ranked'],['90k','residents'],['10%','avg. tree cover'],['0.04 sq mi','per area']],b:'Pittsburg and Bay Point hold 15 of the county map’s 100 highest-need areas. Half of residents live in areas under 10% tree cover.'}
 };
-const ALL=[['5','study areas'],['8,435','areas ranked'],['2.0M','residents'],['2022','aerial tree cover']];
+const ALL=[['5','study areas'],['8,435','areas ranked'],['1.6M','residents'],['2022','aerial tree cover']];
 const pick=document.getElementById('pick'),go=document.getElementById('go'),lbl=document.getElementById('go-label'),st=document.getElementById('istats'),bl=document.getElementById('blurb'),gd=document.getElementById('guide'),menu=document.getElementById('menu');
 function show(slug){
   const c=CE[slug];
