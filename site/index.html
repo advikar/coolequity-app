@@ -19,7 +19,9 @@
     -webkit-font-smoothing:antialiased;min-height:100vh;
     background-image:radial-gradient(120% 80% at 15% 0%,rgba(255,122,69,.09) 0%,transparent 55%),
       radial-gradient(90% 70% at 90% 10%,rgba(255,183,3,.06) 0%,transparent 50%)}
-  .wrap{max-width:940px;margin:0 auto;padding:0 26px 72px}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 32px 64px}
+  .below{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;align-items:start}
+  @media (max-width:900px){.below{grid-template-columns:1fr}}
   /* Hero: the same first screen every city map opens with, made generic. */
   .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:48px 26px}
   .hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.5;filter:blur(.4px);transform:scale(1.02)}
@@ -80,13 +82,13 @@
     font-variant-numeric:tabular-nums;letter-spacing:-.01em}
   .figs div span{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted2)}
   .go{margin-top:16px;font-size:13px;font-weight:600;color:var(--accent)}
-  .contact{margin:18px 0 0;max-width:70ch;box-sizing:border-box;padding:16px 20px;border:1px solid var(--edge);border-radius:12px;background:var(--panel);display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;font-size:15px}
+  .contact{margin:18px 0 0;max-width:none;box-sizing:border-box;padding:16px 20px;border:1px solid var(--edge);border-radius:12px;background:var(--panel);display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;font-size:15px}
 .contact b{font-size:16px}.contact a{font-size:17px;font-weight:600;color:var(--accent2);text-decoration:underline;word-break:break-all}.contact span{flex-basis:100%;color:var(--muted);font-size:13.5px}
-.note{margin-top:42px;padding-top:22px;border-top:1px solid var(--edge);
-    font-size:12.5px;color:var(--muted);line-height:1.7;max-width:70ch}
+.note{margin-top:36px;padding-top:22px;border-top:1px solid var(--edge);
+    font-size:13px;color:var(--muted);line-height:1.7;max-width:none}
   .note b{color:var(--txt)}
   .note a{color:var(--accent)}
-  .foot{margin-top:26px;font-size:10.5px;color:var(--muted2);line-height:1.6;max-width:80ch}
+  .foot{margin-top:26px;font-size:10.5px;color:var(--muted2);line-height:1.6;max-width:none;grid-column:1/-1}
 </style>
 </head>
 <body>
@@ -137,6 +139,7 @@
   </div>
 </section>
 <div class="wrap">
+  <div class="below">
   <div class="note">
     <b>What is measured, and what is estimated.</b> Surface temperature (Landsat 8/9 thermal)
     is measured per area. Tree cover starts from the
@@ -156,6 +159,7 @@
     planning assumptions, not quotes. Every build carries a
     <a href="contracosta/app/guide.html">data &amp; methods guide</a> with sources and limits.
   </div>
+  <div>
   <div class="note">
     <b>About this site.</b> CoolEquity is an independent student project: an exploratory tool
     for finding areas worth investigating for shade trees, not a validated recommendation, a
@@ -171,6 +175,8 @@
     <b>Questions, feedback or corrections?</b>
     <a href="mailto:coolequity.contact@gmail.com">coolequity.contact@gmail.com</a>
     <span>Corrections to place names, facilities and costs are especially welcome.</span>
+  </div>
+  </div>
   </div>
   <div class="foot">
     Landsat 8/9 and Sentinel-2 via Microsoft Planetary Computer · US Census ACS 2020–2024 5-year

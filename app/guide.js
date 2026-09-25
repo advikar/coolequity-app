@@ -15,7 +15,8 @@ articles.forEach(a=>a.querySelector('details').addEventListener('toggle',syncExp
 (function(){
   const sel=document.getElementById('guide-city'),list=window.CE_CITIES;if(!sel||!list)return;
   const here=(location.pathname.match(/\/([a-z0-9-]+)\/app\/guide\.html$/)||[])[1];
+  const home=document.createElement('option');home.value='';home.textContent='All study areas…';sel.appendChild(home);
   for(const c of list){const o=document.createElement('option');o.value=c.slug;o.textContent=c.name;if(c.slug===here)o.selected=true;sel.appendChild(o);}
   if(!here)sel.closest('.gcity').hidden=true;
-  sel.addEventListener('change',()=>{if(sel.value&&sel.value!==here)location.href='../../'+sel.value+'/app/guide.html'+location.hash;});
+  sel.addEventListener('change',()=>{if(sel.value==='')location.href='../../';else if(sel.value!==here)location.href='../../'+sel.value+'/app/guide.html'+location.hash;});
 })();

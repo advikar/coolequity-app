@@ -2485,10 +2485,11 @@ function buildSwitch(){
   // current city is selected, choosing another opens that city's own app.
   for(const id of ['city-pick','city-nav']){
     const el=document.getElementById(id);if(!el)continue;
-    el.innerHTML=CITY_NAV.map(c=>`<option value="${c.slug}"${c.slug===THIS_CITY?' selected':''}>${c.name}</option>`).join('');
+    // First entry is the site's own start page, so the list is also the way home.
+    el.innerHTML='<option value="">All study areas…</option>'+CITY_NAV.map(c=>`<option value="${c.slug}"${c.slug===THIS_CITY?' selected':''}>${c.name}</option>`).join('');
     // From the map header, land on the other city's map; from the start
     // screen, land on its start screen. Nobody should hit two landing pages.
-    el.onchange=()=>{const c=CITY_NAV.find(x=>x.slug===el.value);if(c&&c.slug!==THIS_CITY)location.href=SITE_ROOT+c.sub+(id==='city-nav'?'?go=1':'');};
+    el.onchange=()=>{if(el.value===''){location.href=SITE_ROOT||'../../';return;}const c=CITY_NAV.find(x=>x.slug===el.value);if(c&&c.slug!==THIS_CITY)location.href=SITE_ROOT+c.sub+(id==='city-nav'?'?go=1':'');};
   }
 }
 
