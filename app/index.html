@@ -987,7 +987,7 @@
         </div>
       </section>
       <div class="foot"><b id="foot-scale" style="color:var(--muted)"></b>
-        <a class="method-link" href="guide.html#geography" target="ce-guide">About these areas &amp; sources ↗</a><div class="disclaim">Independent student project · not a city or county product · not reviewed by any city or county · exploratory, not a field survey</div></div>
+        <a class="method-link" href="guide.html#geography" target="ce-guide">About these areas &amp; sources ↗</a><div class="disclaim">Independent student project · not a city or county product · not reviewed by any city or county · exploratory, not a field survey · questions or corrections: <a href="mailto:coolequity.contact@gmail.com">coolequity.contact@gmail.com</a></div></div>
     </div>
   </aside>
 
@@ -1542,7 +1542,7 @@ async function sha256Hex(text){
 }
 const CITY_NAME=(CITY_NAV.find(c=>c.slug===THIS_CITY)||{}).name||CITY_SLUG;
 function exportNotes(){return [
-  'Independent student project. Not a city or county product and not reviewed by any city or county. Exploratory analysis, not a field survey. Nothing is published at address or household resolution.',
+  'Independent student project. Not a city or county product and not reviewed by any city or county. Exploratory analysis, not a field survey. Nothing is published at address or household resolution. Questions or corrections: coolequity.contact@gmail.com.',
   'Scores are relative 0–100 within this study area under the weights in this file; they are not health-risk probabilities or cross-city rankings.',
   'rank/score are computed live from the exported weights; rank_default/score_default are the pipeline defaults shipped with the data. rank_recommended_mix_p05/p95 and top_tier_share come from re-drawing ACS and LACE inputs within their margins of error and jittering the recommended weights; ranks are estimates with a band, not exact positions.',
   'Population, age and A/C are allocated estimates from ACS block groups and Census LACE tracts, not household counts.',
@@ -2130,7 +2130,7 @@ ol,ul{padding-left:18px;font-size:10pt}li{margin-bottom:6px}
   <div class="kpis"><div><b>${order.length.toLocaleString()}</b><span>areas ranked</span></div><div><b>${fInt(topRes)}</b><span>residents in the top 25</span></div><div><b>${sl.length}</b><span>shortlisted areas</span></div><div><b>${sl.length?money(slCost):'—'}</b><span>shortlist planting cost</span></div></div>
   ${mapPng?`<img class="mapimg" src="${mapPng}" alt="Priority map"><p class="fine">Map: the ${esc(LAYERS[current].title||current)} layer as shown on screen when this briefing was made${RANK_CITY?`, limited to ${esc(RANK_CITY)}`:''}${RANK_FILTERS.size?', with list filters applied':''}, at the zoom then in view. The table below is not limited by that view.</p>`:'<p class="fine">Map snapshot unavailable in this browser.</p>'}
   <div class="legend"><span>${esc(LAYERS[current].title)}</span><i></i><span>deeper color = more need · relative within ${esc(CITY_NAME)}</span></div>
-  <div class="foot"><span>CoolEquity · data ${esc(hdr.dataset.version_tag||'')}</span><span>Independent student project · not a city or county product · not reviewed · confirm on the ground</span></div>
+  <div class="foot"><span>CoolEquity · data ${esc(hdr.dataset.version_tag||'')}</span><span>Independent student project · not a city or county product · not reviewed · confirm on the ground · coolequity.contact@gmail.com</span></div>
 </div>
 <div class="page">
   <h2>Top 25 areas under “${esc(q)}”</h2><p class="fine">The 25 highest-ranked of all ${order.length.toLocaleString()} ranked areas in ${esc(CITY_NAME)}, regardless of any city or list filter on the map. Trees: percent of assessed land under tree crowns; a greenness index (/100) where no assessment exists.</p>
@@ -2147,7 +2147,7 @@ ${sl.length?`<div class="page"><h2>Shortlist · ${sl.length} area${sl.length===1
   <ul>${exportNotes().map(n=>`<li>${esc(n)}</li>`).join('')}</ul>
   <h2 style="margin-top:22px">Sources</h2>
   <table class="src">${sources.map(([a,b])=>`<tr><td>${esc(a)}</td><td>${esc(b)}</td></tr>`).join('')}<tr><td>Data file</td><td>${esc(hdr.dataset.file)} · version ${esc(hdr.dataset.version_tag||'')}${DATA_SHA?' · sha256 '+esc(String(DATA_SHA).slice(0,12))+'…':''}</td></tr><tr><td>Generated</td><td>${esc(hdr.exported_at)} · weights ${W_INPUTS.map(w=>Math.round(W[w.k]*100)+'%').join(' / ')} · people ${Math.round(POPW*100)}%</td></tr></table>
-  <div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Independent student project · not a city or county product · not reviewed by any city or county</span></div>
+  <div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Independent student project · not a city or county product · not reviewed by any city or county · coolequity.contact@gmail.com</span></div>
 </div>
 </body></html>`;
   const w=window.open('','ce-report');
@@ -2475,7 +2475,7 @@ function buildIntro(){
   buildSwitch();
   if(CE_CITY.introNote){for(const id of ['inote','pnote']){const n=document.getElementById(id);n.textContent=CE_CITY.introNote;n.hidden=false;}}
 
-  document.getElementById('ifine').innerHTML='Independent student project. Not a city or county product; not reviewed by any city or county. A planning screen, not a field survey. Tree-cover share counts residents of areas with a tree-cover source (2022 aerial, height model or lidar); ground temperature is a satellite surface reading, not air temperature; walks are to mapped facilities whose cooling status is not verified. Census ACS 2024. <a href="guide.html#overview" target="ce-guide">Data &amp; methods ↗</a>';
+  document.getElementById('ifine').innerHTML='Independent student project. Not a city or county product; not reviewed by any city or county. A planning screen, not a field survey. Tree-cover share counts residents of areas with a tree-cover source (2022 aerial, height model or lidar); ground temperature is a satellite surface reading, not air temperature; walks are to mapped facilities whose cooling status is not verified. Census ACS 2024. <a href="guide.html#overview" target="ce-guide">Data &amp; methods ↗</a> · Questions or corrections: <a href="mailto:coolequity.contact@gmail.com">coolequity.contact@gmail.com</a>';
 
   document.getElementById('intro-go').onclick=()=>dismissIntro();
   document.addEventListener('keydown',e=>{
