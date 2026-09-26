@@ -526,8 +526,11 @@
     #panel .brand p,#takeaway-sec{display:none}
     #legend{width:190px;left:8px;bottom:24px;padding:8px 10px}
     .brandtop #units{margin-left:auto}.helpnav{margin-top:8px}
-    #intro{flex-direction:column;padding:0}
-    #intro-city{position:relative;z-index:3;margin:14px 16px 0;flex:none}
+    /* Column layout that starts at the top: centring a card taller than the phone screen
+     * pushes its top (the study-area picker) above the viewport where nothing can scroll to it. */
+    #intro{flex-direction:column;justify-content:flex-start;padding:0}
+    #intro-city{position:relative;top:auto;right:auto;z-index:3;margin:14px 16px 0;flex:none;align-self:flex-start;max-width:calc(100% - 32px)}
+    #intro-city .cityselect{max-width:none;min-width:0}
     #mapwrap{flex:1;min-height:0;width:100%}
     #detail{width:100%;height:100dvh;z-index:45}
     #chip{max-width:calc(100% - 28px);font-size:11px;white-space:normal}
@@ -761,7 +764,10 @@
   html[data-theme=light] input[type=range]::-moz-range-thumb{border-color:#fff}
   html[data-theme=light] .mixbar:hover,html[data-theme=light] .mixbar[aria-expanded=true]{border-color:var(--accent)}
   html[data-theme=light] .brand p,html[data-theme=light] .hint,html[data-theme=light] .layer span,html[data-theme=light] .row .mx i{color:var(--muted)}
-  @media(max-width:760px){#chip{max-width:calc(100% - 28px);white-space:normal;flex-wrap:wrap;font-size:10.5px}}
+  @media(max-width:760px){#chip{max-width:calc(100% - 28px);white-space:normal;flex-wrap:wrap;font-size:10.5px;padding:5px 9px;gap:3px;border-radius:8px}
+    #chip-layer,#chip .chip-sep-layer{display:none}#chip-share{font-size:10.5px;margin-left:6px}
+    /* The toolbar sits under the chip whatever the chip's height (a long city name or a selection wraps it). */
+    .mapctl{top:var(--chip-b,54px)}}
   @media print{
     body{background:#fff;color:#000;overflow:visible}
     #app{display:block;height:auto}
@@ -1010,7 +1016,7 @@
         </div>
     </div>
     <button type="button" class="float lshow" id="legend-show" hidden title="Show the color scale">Color scale ▴</button>
-    <div id="chip" class="float"><span class="city-name"></span> <span id="chip-n" hidden>loading…</span> · <b id="chip-q">Recommended mix</b> · <b id="chip-layer">Heat &amp; canopy priority</b><span id="chip-sel" hidden></span><button type="button" id="chip-share" title="Copy a link: these priorities, this layer and this selection">⛓ Share</button></div>
+    <div id="chip" class="float"><span class="city-name"></span> <span id="chip-n" hidden>loading…</span><span class="chip-sep"> · </span><b id="chip-q">Recommended mix</b><span class="chip-sep chip-sep-layer"> · </span><b id="chip-layer">Heat &amp; canopy priority</b><span id="chip-sel" hidden></span><button type="button" id="chip-share" title="Copy a link: these priorities, this layer and this selection">⛓ Share</button></div>
     <div class="mapctl" id="mapctl"><button type="button" class="mapbtn" id="map-zoom" title="Zoom back out to the whole study area">⤢ Reset zoom</button><button type="button" class="mapbtn" id="map-reset" title="Back to the map's original settings: recommended mix, Priority colors, all places shown, nothing selected, whole area in view. Asks first if you would lose a custom mix or planting shares.">⟲ Reset map</button><div class="seg" id="basemap" role="group" aria-label="Basemap" hidden>
       <button data-b="map" class="on" type="button">Map</button><button data-b="sat" type="button">Satellite</button>
     </div></div>
@@ -2195,6 +2201,7 @@ async function boot(){
   loadNotes();
   buildCityPick();
   wireMobileView();wirePanelSize();
+  if(window.ResizeObserver){const chipEl=document.getElementById('chip');new ResizeObserver(()=>{document.documentElement.style.setProperty('--chip-b',Math.round(chipEl.getBoundingClientRect().height+20)+'px');}).observe(chipEl);}
   document.getElementById('chip-n').textContent=`${HEX.features.filter(f=>f.properties.place==='res').length.toLocaleString()} areas`;
   syncHolcAvailable();
 
