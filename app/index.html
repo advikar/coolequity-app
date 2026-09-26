@@ -2120,7 +2120,12 @@ table{width:100%;border-collapse:collapse;font-size:9.5pt}th{text-align:left;fon
 ol,ul{padding-left:18px;font-size:10pt}li{margin-bottom:6px}
 .src td:first-child{font-weight:500;width:34%}
 .foot{position:absolute;left:56px;right:56px;bottom:26px;display:flex;justify-content:space-between;font-size:8pt;color:#8b95a1;border-top:1px solid #eceff3;padding-top:6px}
-@media print{html{background:#fff}.tool{display:none}.page{margin:0;box-shadow:none;width:auto;min-height:0;padding:0}.foot{position:static;margin-top:28px}}
+@media print{html{background:#fff}.tool{display:none}.page{margin:0;box-shadow:none;width:auto;min-height:0;padding:0}.foot{position:static;margin-top:28px}
+/* Verified against printed Letter PDFs: the map is capped so the title page holds the
+ * KPIs, map, caption and legend on one sheet, and the top-25 table is compacted so it
+ * stays on one sheet at its widest (11 columns, wrapped names). */
+.mapimg{max-height:104mm;object-fit:cover;object-position:center}.foot{margin-top:10px;padding-top:6px}.kpis{margin:14px 0}
+table:not(.src){font-size:8.5pt}table:not(.src) td{padding:2px 5px}table:not(.src) th{padding:3px 5px;font-size:7pt}td.n{white-space:nowrap}.rk{width:19px;height:19px;font-size:8pt}.page p.fine{font-size:7.5pt;line-height:1.35;margin:6px 0 0}.page:not(:first-of-type):not(:last-of-type) .foot{display:none}}
 </style></head><body>
 <div class="tool"><button onclick="window.print()">Print / Save as PDF</button><span>Choose “Save as PDF” in the print dialog. Letter size; the map, the top 25${sl.length?', the shortlist':''}, then method and limits.</span></div>
 <div class="page">
@@ -2137,7 +2142,7 @@ ol,ul{padding-left:18px;font-size:10pt}li{margin-bottom:6px}
   <div class="wbar">${wbar}</div><div class="leg">${swatchRow}<span><i style="background:#8b5cf6"></i>Count people more <b>${Math.round(POPW*100)}%</b></span></div>
   <table style="margin-top:14px"><thead><tr><th>#</th><th>Area</th><th class="n">Need</th><th class="n">Heat</th><th class="n">Trees</th><th class="n">Residents</th><th class="n">65+</th><th class="n">Walk</th><th>City</th><th class="n">Likely rank (rec. mix)</th><th class="n">Rec. rank</th></tr></thead><tbody>${rows}</tbody></table>
   <p class="fine" style="margin-top:10px">Need is a relative 0–100 index within ${esc(CITY_NAME)} under these weights. “Likely rank” is the 5th–95th percentile of the area's rank under the recommended mix when census inputs are re-drawn within their margins of error and those weights are nudged; heat, tree cover and walking time are held fixed, so it is a sensitivity range, not a confidence interval, and beside a custom mix it describes the recommended ranking rather than this one. Treat rank differences smaller than the band as not established. “Rec. rank” is the area's rank under the recommended mix; it reads — when the recommended mix is in force.</p>
-  <div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Page 2</span></div>
+  <div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Top 25</span></div>
 </div>
 ${sl.length?`<div class="page"><h2>Shortlist · ${sl.length} area${sl.length===1?'':'s'}</h2><p class="lede" style="margin-top:0">${fInt(slRes)} residents · ${fInt(slTrees)} trees · ${money(slCost)} at ${money(COST_TREE)} per tree, each area at its own planting share.</p>${slPages}<div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Shortlist</span></div></div>`:''}
 <div class="page">
