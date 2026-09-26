@@ -767,7 +767,9 @@
   @media(max-width:760px){#chip{max-width:calc(100% - 28px);white-space:normal;flex-wrap:wrap;font-size:10.5px;padding:5px 9px;gap:3px;border-radius:8px}
     #chip-layer,#chip .chip-sep-layer{display:none}#chip-share{font-size:10.5px;margin-left:6px}
     /* The toolbar sits under the chip whatever the chip's height (a long city name or a selection wraps it). */
-    .mapctl{top:var(--chip-b,54px)}}
+    .mapctl{top:var(--chip-b,54px)}
+    /* Collapsing the panel must not apply the desktop offsets (a Show-panel button that phones never show). */
+    #app.pcol #chip{left:14px;max-width:calc(100% - 28px)}}
   @media print{
     body{background:#fff;color:#000;overflow:visible}
     #app{display:block;height:auto}
