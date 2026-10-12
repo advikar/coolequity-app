@@ -86,3 +86,15 @@ COOLING_SOURCE_URL = 'https://ehsd.org/wp-content/uploads/2026/07/Senior_Cooling
 # The June 2026 EHSD revision explicitly identifies these libraries as lacking A/C.
 # Exact name + kind avoids excluding unrelated facilities in the same city.
 NO_AC_LIBRARIES = frozenset({'Kensington Branch Library', 'El Cerrito Branch Contra Costa County Library'})
+
+# ---------------------------------------------------------------- wards / districts
+# The county's own GIS service: the five supervisorial districts from the
+# 2021 redistricting (adopted November 23, 2021). Supervisor names are whatever
+# the service says on the day 04e runs; the district number is the stable label.
+WARDS = dict(
+    service="https://gis.cccounty.us/arcgis/rest/services/BOS_District_Labels/MapServer/0",
+    fields=dict(id="SUP_DIST", name="SUP_DIST", member="SUP_NAME", url="URL"),
+    label="District {n}", outside="Outside the county",
+    what="Supervisorial districts", publisher="Contra Costa County GIS",
+    adopted="2021 redistricting, adopted November 23, 2021",
+)

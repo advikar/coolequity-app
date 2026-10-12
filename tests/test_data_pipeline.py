@@ -171,3 +171,19 @@ class CoolingSources(unittest.TestCase):
         # nothing silently dropped: located + outside + unlocated == directory
         d=json.loads((C.DATA/f'cooling_directory_{C.SLUG}.json').read_text())
         self.assertEqual(len(g['features'])+len(g['properties']['outside_study_area'])+len(g['properties']['unlocated']),len(d['sites']))
+
+class WardRollup(unittest.TestCase):
+    """04e_wards: the per-ward summary must add up to the scored output it was built from."""
+    def test_wards_cover_the_scored_output(self):
+        if not getattr(C,'WARDS',None) or not C.WARDS_SUMMARY_CSV.exists():
+            self.skipTest('no ward source for this city')
+        import json
+        feats=json.loads(C.OUT_FILE.read_text())['features']
+        res=[f['properties'] for f in feats if f['properties'].get('place')=='res']
+        summary=pd.read_csv(C.WARDS_SUMMARY_CSV,dtype={'ward_id':str}).fillna({'ward_id':''})
+        self.assertEqual(int(summary['areas'].sum()),len(res))
+        self.assertAlmostEqual(summary['residents'].sum(),sum(p['pop'] for p in res),delta=len(summary))
+        ids={w['properties']['ward_id'] for w in json.loads(C.WARDS_FILE.read_text())['features']}
+        self.assertTrue(all((p.get('ward_id') in ids) or p.get('ward_id') is None for p in res))
+        self.assertTrue(any(p.get('ward_id') for p in res),'no hexagon carries a ward')
+

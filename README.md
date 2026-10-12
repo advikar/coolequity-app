@@ -54,6 +54,28 @@ for the browser, each beside the reasoning for it. `tests/ui-contract.cjs` fails
 disagree, and checks that the browser's live ranking reproduces the pipeline's rank for every
 residential area of every city.
 
+## Wards and districts
+
+Where a city publishes its council wards or supervisorial districts on a GIS service,
+`cities/<slug>/config.py` names it in a `WARDS` entry and `pipeline/04e_wards.py` fetches the
+boundaries, assigns every area by its centre, writes a per-ward summary and stamps `ward_id` and
+`ward_name` onto the scored output. The app then shows a "By ward" (or "By district") roll-up,
+an outline toggle on the map, a list filter, ward fields in every export and a page in the
+briefing. A fetch that changes boundaries is refused until rerun with `--accept-boundaries`.
+Bakersfield (7 wards), Contra Costa (5 supervisorial districts) and San Ramon (4 council
+districts) are configured; West Contra Costa and Pittsburg have no source yet.
+
+Every fetching stage can record what it fetched with `pipeline/sources.py`, which writes
+`cities/<slug>/data/sources.json` and `SOURCES.md` (URL, date, record count, file hash).
+The ward stage does; nobody edits those files by hand.
+
+## Licence, privacy and standing
+
+Code is MIT; data, documents and the guides are CC BY 4.0 (see [LICENSE](LICENSE)). Nothing is
+published at address or household resolution; the rules are in [PRIVACY.md](PRIVACY.md). This
+is an independent student project, not a city or county product, and not reviewed by any city
+or county.
+
 ## Run it
 
 ```bash

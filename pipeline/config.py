@@ -205,6 +205,12 @@ SCENE_CAP_PER_TILE = True
 COOLING_SOURCE_URL = None
 NO_AC_LIBRARIES = frozenset()
 
+# ---------------------------------------------------------------- wards / districts
+# Optional per-city source for council wards or supervisorial districts, read by
+# 04e_wards.py. None means the city has no district roll-up (the app hides it).
+# See cities/bakersfield/config.py for the shape of an entry.
+WARDS = None
+
 # ---------------------------------------------------------------- the city
 # Load cities/<slug>/config.py and let it set or override any UPPERCASE name.
 _spec = importlib.util.spec_from_file_location(
@@ -235,6 +241,10 @@ CENTERS_FILE = DATA / f"centers_{SLUG}.geojson"  # 04 -> the app
 HOLC_FILE = DATA / f"holc_{SLUG}.geojson"        # 04 fallback (unused: HOLC_URL is None)
 PLACES_FILE = DATA / f"places_{SLUG}.geojson"    # 04 fallback, committed (hex names)
 BOUNDARY_FILE = DATA / f"boundary_{SLUG}.geojson"  # 01 clip polygon, committed
+# 04e -> 05 and the app: council wards / supervisorial districts (optional).
+WARDS_FILE = DATA / f"wards_{SLUG}.geojson"          # boundaries, normalised
+WARDS_CSV = DATA / f"wards_{SLUG}.csv"               # hexagon -> ward
+WARDS_SUMMARY_CSV = DATA / f"wards_summary_{SLUG}.csv"
 ACS_FILE = DATA / f"acs_{SLUG}.csv"              # 03 fallback, committed
 # Residential building footprints, committed. 03 uses them to place people
 # INSIDE a block group instead of smearing them evenly across its area.

@@ -1,0 +1,542 @@
+h3,id,ward_id,ward_name
+892830d0883ffff,0,,
+892830d0893ffff,1,4,District 4
+892830d0897ffff,2,4,District 4
+892830d0993ffff,3,,
+892830d0c07ffff,4,4,District 4
+892830d0c17ffff,5,,
+892830d0c23ffff,6,4,District 4
+892830d0c27ffff,7,4,District 4
+892830d0c2bffff,8,4,District 4
+892830d0c2fffff,9,4,District 4
+892830d0c33ffff,10,4,District 4
+892830d0c37ffff,11,4,District 4
+892830d0c3bffff,12,4,District 4
+892830d0c83ffff,13,,
+892830d0c87ffff,14,4,District 4
+892830d0c8fffff,15,,
+892830d0c93ffff,16,,
+892830d0c97ffff,17,4,District 4
+892830d0ca3ffff,18,4,District 4
+892830d0ca7ffff,19,4,District 4
+892830d0cabffff,20,4,District 4
+892830d0cafffff,21,4,District 4
+892830d0cb3ffff,22,4,District 4
+892830d0cb7ffff,23,4,District 4
+892830d0cbbffff,24,4,District 4
+892830d0d03ffff,25,4,District 4
+892830d0d07ffff,26,4,District 4
+892830d0d0bffff,27,4,District 4
+892830d0d0fffff,28,4,District 4
+892830d0d13ffff,29,4,District 4
+892830d0d17ffff,30,4,District 4
+892830d0d1bffff,31,4,District 4
+892830d0d23ffff,32,4,District 4
+892830d0d27ffff,33,4,District 4
+892830d0d2bffff,34,4,District 4
+892830d0d2fffff,35,4,District 4
+892830d0d33ffff,36,4,District 4
+892830d0d37ffff,37,4,District 4
+892830d0d3bffff,38,4,District 4
+892830d0d43ffff,39,4,District 4
+892830d0d47ffff,40,,
+892830d0d4bffff,41,,
+892830d0d53ffff,42,4,District 4
+892830d0d57ffff,43,4,District 4
+892830d0d5bffff,44,4,District 4
+892830d0d63ffff,45,,
+892830d0d67ffff,46,4,District 4
+892830d0d77ffff,47,4,District 4
+892830d0d83ffff,48,4,District 4
+892830d0d87ffff,49,3,District 3
+892830d0d8bffff,50,4,District 4
+892830d0d8fffff,51,3,District 3
+892830d0d93ffff,52,4,District 4
+892830d0d97ffff,53,3,District 3
+892830d0d9bffff,54,4,District 4
+892830d0da3ffff,55,3,District 3
+892830d0da7ffff,56,3,District 3
+892830d0dabffff,57,4,District 4
+892830d0dafffff,58,4,District 4
+892830d0db3ffff,59,3,District 3
+892830d0db7ffff,60,3,District 3
+892830d0dbbffff,61,3,District 3
+892830d0dc3ffff,62,4,District 4
+892830d0dc7ffff,63,4,District 4
+892830d0dcbffff,64,4,District 4
+892830d0dcfffff,65,4,District 4
+892830d0dd3ffff,66,4,District 4
+892830d0dd7ffff,67,4,District 4
+892830d0ddbffff,68,4,District 4
+892830d286bffff,69,,
+892830d286fffff,70,,
+892830d28a3ffff,71,,
+892830d28a7ffff,72,2,District 2
+892830d28afffff,73,,
+892830d28b7ffff,74,,
+892830d2903ffff,75,2,District 2
+892830d2907ffff,76,2,District 2
+892830d290bffff,77,2,District 2
+892830d290fffff,78,2,District 2
+892830d2913ffff,79,2,District 2
+892830d2917ffff,80,2,District 2
+892830d291bffff,81,2,District 2
+892830d2923ffff,82,2,District 2
+892830d2927ffff,83,2,District 2
+892830d292bffff,84,2,District 2
+892830d292fffff,85,2,District 2
+892830d2933ffff,86,2,District 2
+892830d2937ffff,87,2,District 2
+892830d293bffff,88,2,District 2
+892830d2943ffff,89,,
+892830d2947ffff,90,2,District 2
+892830d294bffff,91,,
+892830d294fffff,92,3,District 3
+892830d2953ffff,93,,
+892830d2957ffff,94,2,District 2
+892830d2963ffff,95,2,District 2
+892830d2967ffff,96,2,District 2
+892830d296bffff,97,2,District 2
+892830d296fffff,98,2,District 2
+892830d2973ffff,99,2,District 2
+892830d2977ffff,100,2,District 2
+892830d297bffff,101,2,District 2
+892830d2983ffff,102,2,District 2
+892830d2987ffff,103,2,District 2
+892830d298bffff,104,2,District 2
+892830d298fffff,105,2,District 2
+892830d2993ffff,106,2,District 2
+892830d2997ffff,107,2,District 2
+892830d299bffff,108,2,District 2
+892830d29a3ffff,109,2,District 2
+892830d29a7ffff,110,2,District 2
+892830d29abffff,111,2,District 2
+892830d29afffff,112,2,District 2
+892830d29b3ffff,113,2,District 2
+892830d29b7ffff,114,2,District 2
+892830d29bbffff,115,2,District 2
+892830d29c3ffff,116,2,District 2
+892830d29c7ffff,117,2,District 2
+892830d29cbffff,118,2,District 2
+892830d29cfffff,119,2,District 2
+892830d29d3ffff,120,2,District 2
+892830d29d7ffff,121,2,District 2
+892830d29dbffff,122,2,District 2
+892830d2a23ffff,123,,
+892830d2a27ffff,124,4,District 4
+892830d2a2fffff,125,4,District 4
+892830d2a33ffff,126,,
+892830d2a37ffff,127,4,District 4
+892830d2aa3ffff,128,4,District 4
+892830d2aa7ffff,129,4,District 4
+892830d2aabffff,130,,
+892830d2aafffff,131,4,District 4
+892830d2ab3ffff,132,,
+892830d2ab7ffff,133,3,District 3
+892830d2abbffff,134,,
+892830d2b03ffff,135,3,District 3
+892830d2b07ffff,136,3,District 3
+892830d2b0bffff,137,3,District 3
+892830d2b0fffff,138,3,District 3
+892830d2b13ffff,139,3,District 3
+892830d2b17ffff,140,3,District 3
+892830d2b1bffff,141,3,District 3
+892830d2b23ffff,142,3,District 3
+892830d2b27ffff,143,3,District 3
+892830d2b2bffff,144,3,District 3
+892830d2b2fffff,145,3,District 3
+892830d2b33ffff,146,3,District 3
+892830d2b37ffff,147,3,District 3
+892830d2b3bffff,148,3,District 3
+892830d2b43ffff,149,3,District 3
+892830d2b47ffff,150,3,District 3
+892830d2b4bffff,151,4,District 4
+892830d2b4fffff,152,3,District 3
+892830d2b53ffff,153,3,District 3
+892830d2b57ffff,154,3,District 3
+892830d2b5bffff,155,4,District 4
+892830d2b63ffff,156,4,District 4
+892830d2b67ffff,157,4,District 4
+892830d2b6bffff,158,4,District 4
+892830d2b6fffff,159,4,District 4
+892830d2b73ffff,160,3,District 3
+892830d2b77ffff,161,3,District 3
+892830d2b7bffff,162,4,District 4
+892830d2b83ffff,163,3,District 3
+892830d2b87ffff,164,3,District 3
+892830d2b8bffff,165,3,District 3
+892830d2b8fffff,166,3,District 3
+892830d2b9bffff,167,,
+892830d2ba3ffff,168,3,District 3
+892830d2ba7ffff,169,3,District 3
+892830d2babffff,170,3,District 3
+892830d2bafffff,171,3,District 3
+892830d2bb3ffff,172,3,District 3
+892830d2bb7ffff,173,3,District 3
+892830d2bbbffff,174,3,District 3
+892830d2bc3ffff,175,4,District 4
+892830d2bc7ffff,176,4,District 4
+892830d2bcbffff,177,4,District 4
+892830d2bcfffff,178,4,District 4
+892830d2bd3ffff,179,3,District 3
+892830d2bd7ffff,180,3,District 3
+892830d2bdbffff,181,4,District 4
+892830d2d23ffff,182,2,District 2
+892830d2d27ffff,183,2,District 2
+892830d2d2bffff,184,2,District 2
+892830d2d2fffff,185,2,District 2
+892830d2d37ffff,186,,
+892830d2d3bffff,187,,
+892830d2d63ffff,188,2,District 2
+892830d2d67ffff,189,2,District 2
+892830d2d6bffff,190,2,District 2
+892830d2d6fffff,191,2,District 2
+892830d2d77ffff,192,,
+892830d2d7bffff,193,,
+892830d44c3ffff,194,,
+892830d44d3ffff,195,1,District 1
+892830d44d7ffff,196,,
+892830d44dbffff,197,1,District 1
+892830d6203ffff,198,1,District 1
+892830d6207ffff,199,,
+892830d620bffff,200,1,District 1
+892830d620fffff,201,,
+892830d6213ffff,202,1,District 1
+892830d6217ffff,203,1,District 1
+892830d621bffff,204,1,District 1
+892830d6243ffff,205,1,District 1
+892830d6247ffff,206,1,District 1
+892830d624bffff,207,1,District 1
+892830d624fffff,208,1,District 1
+892830d6253ffff,209,1,District 1
+892830d6257ffff,210,1,District 1
+892830d625bffff,211,1,District 1
+892830d6263ffff,212,1,District 1
+892830d6267ffff,213,,
+892830d626bffff,214,1,District 1
+892830d626fffff,215,,
+892830d6273ffff,216,1,District 1
+892830d6277ffff,217,,
+892830d627bffff,218,1,District 1
+892830d628bffff,219,,
+892830d62c3ffff,220,,
+892830d62c7ffff,221,1,District 1
+892830d62cbffff,222,1,District 1
+892830d62cfffff,223,,
+892830d62d3ffff,224,,
+892830d62dbffff,225,1,District 1
+892830d7003ffff,226,4,District 4
+892830d7007ffff,227,4,District 4
+892830d700bffff,228,4,District 4
+892830d700fffff,229,4,District 4
+892830d7013ffff,230,4,District 4
+892830d7017ffff,231,4,District 4
+892830d701bffff,232,4,District 4
+892830d7023ffff,233,4,District 4
+892830d7027ffff,234,4,District 4
+892830d702bffff,235,4,District 4
+892830d702fffff,236,4,District 4
+892830d7033ffff,237,4,District 4
+892830d7037ffff,238,4,District 4
+892830d703bffff,239,4,District 4
+892830d7043ffff,240,4,District 4
+892830d7047ffff,241,4,District 4
+892830d704bffff,242,4,District 4
+892830d704fffff,243,4,District 4
+892830d7053ffff,244,4,District 4
+892830d7057ffff,245,4,District 4
+892830d705bffff,246,4,District 4
+892830d7063ffff,247,4,District 4
+892830d7067ffff,248,4,District 4
+892830d706bffff,249,4,District 4
+892830d706fffff,250,4,District 4
+892830d7073ffff,251,4,District 4
+892830d7077ffff,252,4,District 4
+892830d707bffff,253,4,District 4
+892830d7083ffff,254,1,District 1
+892830d7087ffff,255,1,District 1
+892830d708bffff,256,4,District 4
+892830d708fffff,257,4,District 4
+892830d7093ffff,258,1,District 1
+892830d7097ffff,259,1,District 1
+892830d709bffff,260,1,District 1
+892830d70a3ffff,261,1,District 1
+892830d70a7ffff,262,1,District 1
+892830d70abffff,263,4,District 4
+892830d70afffff,264,1,District 1
+892830d70b3ffff,265,1,District 1
+892830d70b7ffff,266,1,District 1
+892830d70bbffff,267,1,District 1
+892830d70c3ffff,268,4,District 4
+892830d70c7ffff,269,1,District 1
+892830d70cbffff,270,4,District 4
+892830d70cfffff,271,4,District 4
+892830d70d3ffff,272,1,District 1
+892830d70d7ffff,273,1,District 1
+892830d70dbffff,274,4,District 4
+892830d7107ffff,275,,
+892830d7113ffff,276,,
+892830d7117ffff,277,1,District 1
+892830d711bffff,278,,
+892830d7133ffff,279,,
+892830d7137ffff,280,,
+892830d7153ffff,281,,
+892830d7157ffff,282,,
+892830d7183ffff,283,1,District 1
+892830d7187ffff,284,1,District 1
+892830d718bffff,285,1,District 1
+892830d718fffff,286,1,District 1
+892830d7193ffff,287,1,District 1
+892830d7197ffff,288,1,District 1
+892830d719bffff,289,1,District 1
+892830d71a3ffff,290,1,District 1
+892830d71a7ffff,291,1,District 1
+892830d71abffff,292,1,District 1
+892830d71afffff,293,1,District 1
+892830d71b3ffff,294,1,District 1
+892830d71b7ffff,295,1,District 1
+892830d71bbffff,296,1,District 1
+892830d71c3ffff,297,1,District 1
+892830d71c7ffff,298,1,District 1
+892830d71cbffff,299,1,District 1
+892830d71cfffff,300,1,District 1
+892830d71d3ffff,301,1,District 1
+892830d71d7ffff,302,1,District 1
+892830d71dbffff,303,1,District 1
+892830d7203ffff,304,4,District 4
+892830d7207ffff,305,4,District 4
+892830d720bffff,306,,
+892830d720fffff,307,4,District 4
+892830d7213ffff,308,4,District 4
+892830d7217ffff,309,4,District 4
+892830d721bffff,310,4,District 4
+892830d7223ffff,311,,
+892830d7233ffff,312,,
+892830d723bffff,313,4,District 4
+892830d7243ffff,314,,
+892830d7253ffff,315,4,District 4
+892830d7257ffff,316,4,District 4
+892830d725bffff,317,4,District 4
+892830d7273ffff,318,,
+892830d7277ffff,319,,
+892830d7283ffff,320,4,District 4
+892830d7287ffff,321,4,District 4
+892830d728bffff,322,4,District 4
+892830d728fffff,323,4,District 4
+892830d7293ffff,324,3,District 3
+892830d7297ffff,325,4,District 4
+892830d729bffff,326,3,District 3
+892830d72a3ffff,327,4,District 4
+892830d72a7ffff,328,4,District 4
+892830d72abffff,329,4,District 4
+892830d72afffff,330,4,District 4
+892830d72b3ffff,331,4,District 4
+892830d72b7ffff,332,4,District 4
+892830d72bbffff,333,4,District 4
+892830d72c3ffff,334,4,District 4
+892830d72c7ffff,335,4,District 4
+892830d72cbffff,336,4,District 4
+892830d72cfffff,337,4,District 4
+892830d72d3ffff,338,4,District 4
+892830d72d7ffff,339,4,District 4
+892830d72dbffff,340,4,District 4
+892830d7313ffff,341,,
+892830d738bffff,342,,
+892830d7393ffff,343,4,District 4
+892830d739bffff,344,,
+892830d73c3ffff,345,4,District 4
+892830d73c7ffff,346,4,District 4
+892830d73cfffff,347,,
+892830d73d3ffff,348,4,District 4
+892830d73d7ffff,349,4,District 4
+892830d73dbffff,350,,
+892830d7403ffff,351,2,District 2
+892830d7407ffff,352,1,District 1
+892830d740bffff,353,2,District 2
+892830d740fffff,354,1,District 1
+892830d7413ffff,355,2,District 2
+892830d7417ffff,356,2,District 2
+892830d741bffff,357,2,District 2
+892830d7423ffff,358,1,District 1
+892830d7427ffff,359,1,District 1
+892830d742bffff,360,1,District 1
+892830d742fffff,361,1,District 1
+892830d7433ffff,362,1,District 1
+892830d7437ffff,363,1,District 1
+892830d743bffff,364,1,District 1
+892830d7443ffff,365,2,District 2
+892830d7447ffff,366,2,District 2
+892830d744bffff,367,2,District 2
+892830d744fffff,368,2,District 2
+892830d7453ffff,369,2,District 2
+892830d7457ffff,370,2,District 2
+892830d745bffff,371,2,District 2
+892830d7463ffff,372,1,District 1
+892830d7467ffff,373,1,District 1
+892830d746bffff,374,1,District 1
+892830d746fffff,375,1,District 1
+892830d7473ffff,376,1,District 1
+892830d7477ffff,377,1,District 1
+892830d747bffff,378,1,District 1
+892830d7483ffff,379,2,District 2
+892830d7487ffff,380,2,District 2
+892830d748bffff,381,2,District 2
+892830d748fffff,382,2,District 2
+892830d7493ffff,383,2,District 2
+892830d7497ffff,384,2,District 2
+892830d749bffff,385,2,District 2
+892830d74a3ffff,386,1,District 1
+892830d74a7ffff,387,1,District 1
+892830d74abffff,388,1,District 1
+892830d74afffff,389,1,District 1
+892830d74b3ffff,390,1,District 1
+892830d74b7ffff,391,,
+892830d74bbffff,392,1,District 1
+892830d74c3ffff,393,2,District 2
+892830d74c7ffff,394,2,District 2
+892830d74cbffff,395,2,District 2
+892830d74cfffff,396,2,District 2
+892830d74d3ffff,397,2,District 2
+892830d74d7ffff,398,2,District 2
+892830d74dbffff,399,2,District 2
+892830d7503ffff,400,1,District 1
+892830d7507ffff,401,1,District 1
+892830d750bffff,402,1,District 1
+892830d750fffff,403,1,District 1
+892830d7513ffff,404,1,District 1
+892830d7517ffff,405,1,District 1
+892830d751bffff,406,1,District 1
+892830d7523ffff,407,1,District 1
+892830d7527ffff,408,1,District 1
+892830d752bffff,409,1,District 1
+892830d752fffff,410,1,District 1
+892830d7533ffff,411,1,District 1
+892830d7537ffff,412,1,District 1
+892830d753bffff,413,1,District 1
+892830d7543ffff,414,1,District 1
+892830d7547ffff,415,1,District 1
+892830d754bffff,416,1,District 1
+892830d754fffff,417,1,District 1
+892830d7553ffff,418,1,District 1
+892830d7557ffff,419,1,District 1
+892830d755bffff,420,1,District 1
+892830d7563ffff,421,1,District 1
+892830d7567ffff,422,1,District 1
+892830d756bffff,423,1,District 1
+892830d756fffff,424,1,District 1
+892830d7573ffff,425,1,District 1
+892830d7577ffff,426,1,District 1
+892830d757bffff,427,1,District 1
+892830d7583ffff,428,,
+892830d7587ffff,429,,
+892830d758bffff,430,1,District 1
+892830d758fffff,431,1,District 1
+892830d759bffff,432,,
+892830d75a3ffff,433,1,District 1
+892830d75a7ffff,434,1,District 1
+892830d75abffff,435,1,District 1
+892830d75afffff,436,1,District 1
+892830d75b3ffff,437,,
+892830d75bbffff,438,1,District 1
+892830d75c3ffff,439,1,District 1
+892830d75c7ffff,440,1,District 1
+892830d75cbffff,441,1,District 1
+892830d75cfffff,442,1,District 1
+892830d75d3ffff,443,1,District 1
+892830d75d7ffff,444,1,District 1
+892830d75dbffff,445,1,District 1
+892830d7603ffff,446,2,District 2
+892830d7607ffff,447,2,District 2
+892830d760bffff,448,3,District 3
+892830d760fffff,449,2,District 2
+892830d7613ffff,450,2,District 2
+892830d7617ffff,451,2,District 2
+892830d761bffff,452,2,District 2
+892830d7623ffff,453,2,District 2
+892830d7627ffff,454,4,District 4
+892830d762bffff,455,2,District 2
+892830d762fffff,456,4,District 4
+892830d7633ffff,457,2,District 2
+892830d7637ffff,458,4,District 4
+892830d763bffff,459,2,District 2
+892830d7643ffff,460,3,District 3
+892830d7647ffff,461,3,District 3
+892830d764bffff,462,3,District 3
+892830d764fffff,463,3,District 3
+892830d7653ffff,464,3,District 3
+892830d7657ffff,465,3,District 3
+892830d765bffff,466,3,District 3
+892830d7663ffff,467,3,District 3
+892830d7667ffff,468,3,District 3
+892830d766bffff,469,3,District 3
+892830d766fffff,470,3,District 3
+892830d7673ffff,471,3,District 3
+892830d7677ffff,472,3,District 3
+892830d767bffff,473,3,District 3
+892830d7683ffff,474,2,District 2
+892830d7687ffff,475,2,District 2
+892830d768bffff,476,2,District 2
+892830d768fffff,477,2,District 2
+892830d7693ffff,478,2,District 2
+892830d7697ffff,479,2,District 2
+892830d769bffff,480,2,District 2
+892830d76a3ffff,481,2,District 2
+892830d76a7ffff,482,4,District 4
+892830d76abffff,483,2,District 2
+892830d76afffff,484,2,District 2
+892830d76b3ffff,485,2,District 2
+892830d76b7ffff,486,2,District 2
+892830d76bbffff,487,2,District 2
+892830d76c3ffff,488,2,District 2
+892830d76c7ffff,489,2,District 2
+892830d76cbffff,490,3,District 3
+892830d76cfffff,491,3,District 3
+892830d76d3ffff,492,2,District 2
+892830d76d7ffff,493,2,District 2
+892830d76dbffff,494,3,District 3
+8928346da03ffff,495,2,District 2
+8928346da07ffff,496,2,District 2
+8928346da0bffff,497,2,District 2
+8928346da0fffff,498,2,District 2
+8928346da13ffff,499,2,District 2
+8928346da17ffff,500,2,District 2
+8928346da1bffff,501,2,District 2
+8928346da23ffff,502,2,District 2
+8928346da27ffff,503,2,District 2
+8928346da2bffff,504,2,District 2
+8928346da2fffff,505,2,District 2
+8928346da33ffff,506,2,District 2
+8928346da37ffff,507,,
+8928346da3bffff,508,2,District 2
+8928346da43ffff,509,2,District 2
+8928346da47ffff,510,2,District 2
+8928346da4bffff,511,2,District 2
+8928346da4fffff,512,2,District 2
+8928346da53ffff,513,2,District 2
+8928346da57ffff,514,2,District 2
+8928346da5bffff,515,2,District 2
+8928346da63ffff,516,2,District 2
+8928346da67ffff,517,2,District 2
+8928346da6bffff,518,2,District 2
+8928346da6fffff,519,2,District 2
+8928346da73ffff,520,2,District 2
+8928346da77ffff,521,2,District 2
+8928346da7bffff,522,2,District 2
+8928346da83ffff,523,,
+8928346da8bffff,524,2,District 2
+8928346da8fffff,525,2,District 2
+8928346daabffff,526,,
+8928346dac3ffff,527,2,District 2
+8928346dac7ffff,528,2,District 2
+8928346dacbffff,529,2,District 2
+8928346dacfffff,530,2,District 2
+8928346dad7ffff,531,,
+8928346dadbffff,532,,
+8928346db43ffff,533,,
+8928346db4bffff,534,2,District 2
+8928346db4fffff,535,,
+8928346db53ffff,536,2,District 2
+8928346db5bffff,537,2,District 2
+8928346db6bffff,538,,
+8928346db7bffff,539,,
+8928346dbcbffff,540,,

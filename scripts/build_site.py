@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 APP_FILES = ["index.html", "guide.css", "guide.js", "cities.js", "vendor"]
 CITY_PAGES = ["city.js", "guide.html", "cooling.html"]
 DATA_FILES = ["{slug}.geojson", "centers_{slug}.geojson", "boundary_{slug}.geojson", "designated_{slug}.geojson"]
+OPTIONAL_DATA_FILES = ["wards_{slug}.geojson"]   # council wards / districts, where a city publishes them
 
 
 def listed_cities():
@@ -102,6 +103,10 @@ def build(out: Path) -> list[str]:
         for pattern in DATA_FILES:
             name = pattern.format(slug=slug)
             shutil.copy2(city / "data" / name, data / name)
+        for pattern in OPTIONAL_DATA_FILES:
+            name = pattern.format(slug=slug)
+            if (city / "data" / name).exists():
+                shutil.copy2(city / "data" / name, data / name)
     for path in sorted(out.rglob("*")):
         if path.is_file() and path.stat().st_size == 0 and path.name != ".nojekyll":
             sys.exit(f"empty file in build: {path.relative_to(out)}")

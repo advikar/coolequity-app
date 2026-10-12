@@ -1,5 +1,30 @@
 # HANDOFF
 
+## Checkpoint — October 12, 2026 (Claude): ward/district roll-up, provenance, licence
+
+Task: bring the ward work from the `one-repo` branch of `advikar/coolequity` into this
+repository. Owner: advikar. Files: `pipeline/04e_wards.py`, `pipeline/sources.py`,
+`pipeline/config.py`, `pipeline/05_score.py`, `cities/{bakersfield,contracosta,sanramon}/config.py`
+and `city.js`, `app/index.html`, `cities/*/guide.html`, `scripts/build_site.py`,
+`tests/test_data_pipeline.py`, `LICENSE`, `PRIVACY.md`, `README.md`.
+
+- **Done:** `04e_wards.py` (04c was taken by designated cooling) fetches each configured city's
+  ward or district layer from its own GIS service, assigns every grid hexagon by centre, writes
+  `wards_<slug>.{geojson,csv}` and `wards_summary_<slug>.csv`, stamps `ward_id`/`ward_name` onto
+  the scored output and records the fetch in `data/SOURCES.md`; `05_score.py` merges the CSV on
+  rebuilds. App: "By ward/district" section with the roll-up table (residents, mean need under
+  the current mix, areas in the top 100, starred trees and cost), map outline toggle with labels,
+  ward filter, row tags, ward on the detail header, `ward_id`/`ward_name` in exports (column key
+  regenerated), a By-ward page in the briefing; `districtUnit` and `wardsOutsideLabel` in
+  `city.js` drive the wording. Guides gained a `#wards` topic. `build_site.py` serves the ward
+  file when present. `LICENSE` (MIT + CC BY 4.0, Advika Richhariya) and `PRIVACY.md` added.
+- **Tests run:** `scripts/test.sh` (all five cities) passed after the port: map contract, column
+  key and guide facts in sync, pipeline contracts (incl. the new `WardRollup` check), clean site
+  build. Verified in the local build on Bakersfield: section, filter, outlines, exports.
+- **Not verified:** printed briefing pagination with the extra page; a phone session.
+- **Left for later:** sources for West Contra Costa (several cities) and Pittsburg; calling
+  `sources.record()` from the satellite, census and OSM stages so `SOURCES.md` is complete.
+
 ## Checkpoint — September 21, 2026 (Claude): outreach-readiness audit fixes
 
 Task: apply the release-integrity findings of `reports/OUTREACH_READINESS_AUDIT_2026-09-21.md`

@@ -699,6 +699,19 @@
   @media(min-width:1101px) and (max-width:1560px){#app:has(#detail.show) .mapctl{top:50px}}
   @media(min-width:1561px){#app:has(#detail.show) #chip{max-width:calc(100% - 700px)}}
   /* Between tablet and desktop the detail slides over the list, not the map. */
+  .wtable{display:grid;grid-template-columns:minmax(0,1.5fr) 56px 44px 40px 54px;gap:0 8px;font-size:11px;margin-top:4px}
+  .wtable .wh{color:var(--muted2);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:4px 0;border-bottom:1px solid var(--edge)}
+  .wtable .wh:not(:first-child),.wtable .wc:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+  .wtable .wr{display:contents;cursor:pointer}
+  .wtable .wr .wc{padding:6px 0;border-bottom:1px solid var(--edge);color:var(--muted)}
+  .wtable .wr .wc:first-child{color:var(--txt);font-weight:550;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .wtable .wr:hover .wc{background:#0e1620}
+  .wtable .wr.on .wc{background:#1a1310;color:var(--txt)}
+  .wtable .wr .wc b{color:var(--txt);font-weight:600}
+  .wtable .wneed{display:block;width:100%;height:4px;border-radius:2px;background:#1a2430;margin-top:3px;overflow:hidden}.wtable .wneed i{display:block;height:100%}
+  .wtable .wr .wc.sub{grid-column:1/-1;padding:0 0 6px;font-size:10px;color:var(--muted2);border-bottom:1px solid var(--edge)}
+  .wardtag{display:inline-block;font-style:normal;font-size:9px;font-weight:700;letter-spacing:.04em;color:#93a1b0;background:#151d27;border:1px solid var(--edge2);border-radius:5px;padding:0 4px;margin-left:6px;vertical-align:1px}
+  #ward-filter{margin-right:4px}
   @media(max-width:1100px) and (min-width:761px){
     #detail{left:0;right:auto;width:366px;transform:translateX(-100%)}
     #detail.show{transform:translateX(0)}
@@ -892,6 +905,7 @@
           <div class="cityrow"><label for="rank-city">Show</label><select id="rank-city" class="sortsel" aria-label="Limit the list and the map to one city or community"><option value="">every city and community</option></select></div>
           <input id="rank-search" type="search" placeholder="Search by place name or cell number…" autocomplete="off"/>
           <div class="filters" id="rank-filters" role="group" aria-label="Filters">
+            <select id="ward-filter" class="sortsel" aria-label="Limit to a ward or district" hidden><option value="">All wards</option></select>
             <button type="button" class="pst" data-f="walk" title="Walk to nearest cool place over 15 minutes">Walk &gt; 15 min</button>
             <button type="button" class="pst" data-f="pop" title="At least 500 estimated residents">500+ residents</button>
             <button type="button" class="pst" data-f="green" title="Under 10% tree cover">Trees &lt; 10%</button>
@@ -936,6 +950,22 @@
           <div class="sw"></div>
           <div><div class="tt">Redlining (1930s) <span class="tag us">US only</span></div><div class="ts">historical lending grades vs. today's heat</div></div>
         </button>
+        </div>
+      </section>
+      <section class="section fold" id="sec-wards" data-fold="sec-wards" hidden>
+        <div class="fhead">
+          <button type="button" class="fbtn" aria-expanded="true" aria-controls="sec-wards-body"><svg class="dchev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg><span data-unit="By ward">By ward</span></button>
+          <a class="info-link" href="guide.html#wards" target="ce-guide" aria-label="About the ward roll-up">i</a>
+          <span class="cnt" id="ward-n">—</span>
+        </div>
+        <div class="fbody" id="sec-wards-body">
+        <p class="hint lead" data-unit="The ranking rolled up by ward. Need and the top-100 count follow the mix in force; trees and cost add up the starred areas. Click a ward to filter the list.">The ranking rolled up by ward. Need and the top-100 count follow the mix in force; trees and cost add up the starred areas. Click a ward to filter the list.</p>
+        <button type="button" class="toggle" id="tg-wards" data-layer="wards">
+          <div class="sw"></div>
+          <div><div class="tt" data-unit="Outline wards on the map">Outline wards on the map</div><div class="ts" data-unit="boundaries and ward numbers over any layer">boundaries and ward numbers over any layer</div></div>
+        </button>
+        <div class="wtable" id="ward-table" role="table" aria-label="Ranking by ward"></div>
+        <p class="hint" id="ward-note" style="margin-top:8px"></p>
         </div>
       </section>
       <section class="section fold" id="sec-sites" data-fold="sec-sites">
@@ -1138,6 +1168,7 @@ const DATA_URL     = `../data/${_q.get('data') || CITY_SLUG}.geojson?v=${CE_CITY
 const CENTERS_URL  = `../data/centers_${CITY_SLUG}.geojson?v=${CE_CITY.centersVersion}`;
 const BOUNDARY_URL = `../data/boundary_${CITY_SLUG}.geojson`;  // flat fallback only
 const DESIGNATED_URL = `../data/designated_${CITY_SLUG}.geojson?v=${CE_CITY.centersVersion}`;  // county-listed cooling locations
+const WARDS_URL    = `../data/wards_${CITY_SLUG}.geojson?v=${CE_CITY.dataVersion}`;      // optional: council wards / districts from 04e
 // The page's city-specific wording.
 for(const el of document.querySelectorAll('.city-name'))el.textContent=CE_CITY.name;
 document.getElementById('intro-for').textContent=CE_CITY.possessive;
@@ -1262,7 +1293,8 @@ const FLAT_STYLE={version:8,sources:{},layers:[
   {id:'bg',type:'background',paint:{'background-color':'#eceff3'}}]};
 
 // ---- state populated once the data lands ----
-let HEX=null, CENTERS=null, BOUNDARY=null, map=null;
+let HEX=null, WARDS=null, CENTERS=null, BOUNDARY=null, map=null;
+let wardsOn=false, RANK_WARD='';
 const vals={};    // raw min/max per property — drives the color ramps and legend
 const svals={};   // SCORING bounds: p2/p98 from the geojson's `norm`, clamped [0,1]
 const AREA_M2_FALLBACK=5160000, TREE_M2=40, DEFAULT_COST_TREE=500; let COST_TREE=DEFAULT_COST_TREE;  // ~5.16 km2 res-7 hex
@@ -1581,6 +1613,7 @@ function exportHeader(){
 const EXPORT_FIELDS=['id','name','city','place','rank','score','rank_default','score_default','rank_lo','rank_hi','rank_top_share','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
   'coverage_frac','canopy_quality','canopy_m2','assessed_m2','pop','pct65','ac_pct','ac_src','ac_coverage','acs_year','access_min','access_km',
   'access_quality','access_snap_m','area_m2','street_m','scenario_ok','canopy_baseline_ok','land','holc',
+  'ward_id','ward_name',
   'planting_share','trees','trees_surviving','canopy_gain_points','cost_usd','cooling_c','future_canopy_pct','field_status','field_note','field_note_updated'];
 function cellRecord(p){
   const s=sc(p), r=rk(p), share=effectiveShare(p.id), scn=(share!=null)?scenarioFor(p,share):null;
@@ -1592,7 +1625,7 @@ function cellRecord(p){
     canopy_m2:num(p.canopy_m2), assessed_m2:num(p.assessed_m2), pop:num(p.pop), pct65:num(p.pct65), ac_pct:num(p.ac), ac_src:p.ac_src??null,
     ac_coverage:num(p.ac_coverage), acs_year:num(p.acs_year), access_min:num(p.access_min), access_km:num(p.access_km),
     access_quality:p.access_quality??null, access_src:p.access_src??null, inside_frac:num(p.inside_frac), access_snap_m:num(p.access_snap_m), area_m2:num(p.area_m2), street_m:num(p.street_m),
-    scenario_ok:p.scenario_ok===true, canopy_baseline_ok:p.canopy_baseline_ok===true, land:p.land??null, holc:p.holc??null,
+    scenario_ok:p.scenario_ok===true, ward_id:p.ward_id??null, ward_name:p.ward_name??null, canopy_baseline_ok:p.canopy_baseline_ok===true, land:p.land??null, holc:p.holc??null,
     planting_share:scn?scn.share:null, trees:scn?scn.trees:null, trees_surviving:scn?scn.trees_surviving:null, canopy_gain_points:scn?scn.canopy_gain_points:null,
     cost_usd:scn?scn.cost_usd:null, cooling_c:scn?scn.cooling_c:null, future_canopy_pct:scn?scn.future_canopy_pct:null,
     field_status:noteOf(p.id).status?FC_LABEL[noteOf(p.id).status]:null, field_note:noteOf(p.id).note||null, field_note_updated:noteOf(p.id).updated||null};
@@ -1639,6 +1672,8 @@ const FIELD_KEY={
   canopy_baseline_ok:['tree_cover_baseline_complete','true when the aerial assessment covers ≥99% of the area'],
   land:['land_cover','Dominant land cover (ESA WorldCover) for undeveloped areas'],
   holc:['redlining_grade','1930s HOLC grade A–D where a map exists'],
+  ward_id:['ward_id','Council ward or district number, where the city publishes boundaries'],
+  ward_name:['ward_name','Council ward or district name; blank = outside every ward'],
   planting_share:['planting_share_pct','Share of street capacity planted in this scenario, %'],
   trees:['scenario_trees_planted','Trees planted in this scenario'],
   trees_surviving:['scenario_trees_surviving','Trees assumed to reach maturity (survival_share_pct in planting_assumptions)'],
@@ -1826,6 +1861,7 @@ function resetMap(){
   plantingShares.clear();userShares.clear();
   applyPreset('default');
   holcOn=false;accessOn=false;syncToggles();setLayer('score');
+  if(WARDS){setWards(false);RANK_WARD='';const wf=document.getElementById('ward-filter');if(wf)wf.value='';}
   kindOn=new Set(KIND_KEYS.filter(k=>document.querySelector(`.kind[data-k="${k}"]`)));syncKinds();
   if(document.querySelector('#basemap button.on')?.dataset.b==='sat')setBasemap('map');
   RANK_FILTERS.clear();document.querySelectorAll('.pst').forEach(b=>{b.classList.remove('on');b.setAttribute('aria-pressed','false');});
@@ -1988,6 +2024,7 @@ function wireLeave(){
  * guide anchor the button already points at, so a button with no card falls
  * back to opening the guide, and the contract test checks every key exists. */
 const TIPS={
+  wards:{t:'By ward',d:'The ranking rolled up by council ward: residents, the mean need index under the current mix, how many of the top 100 areas fall in each ward, and the trees and cost of the starred areas there. Boundaries come from the city’s own GIS service; member names are as of the date shown and change at elections. Click a ward to limit the list to it.'},
   popweight:{t:'Count people more',d:'Decides how much the number of residents matters. At 0%, an area is judged only on its conditions, so a hot, bare area with 12 residents can rank above a slightly better one with 3,000. As you raise it, areas with more people move up the list. At 100%, an area with almost no residents scores near zero however bad its conditions. The recommended 45% makes the most-populated area count about 1.8 times the least. The line under the sliders always states the multiplier in force.'},
   weights:{t:'What matters most',d:'Choose what the ranking should reward. Presets are ready-made mixes; “Fine-tune” lets you set each share yourself. The map and the list re-rank immediately.'},
   display:{t:'Color the map by',d:'Switch what the colors show, one measure at a time. Darker always means more need. Changing the color does not change the ranking.'},
@@ -2135,7 +2172,7 @@ ol,ul{padding-left:18px;font-size:10pt}li{margin-bottom:6px}
 .mapimg{max-height:104mm;object-fit:cover;object-position:center}.foot{margin-top:10px;padding-top:6px}.kpis{margin:14px 0}
 table:not(.src){font-size:8.5pt}table:not(.src) td{padding:2px 5px}table:not(.src) th{padding:3px 5px;font-size:7pt}td.n{white-space:nowrap}.rk{width:19px;height:19px;font-size:8pt}.page p.fine{font-size:7.5pt;line-height:1.35;margin:6px 0 0}.page:not(:first-of-type):not(:last-of-type) .foot{display:none}}
 </style></head><body>
-<div class="tool"><button onclick="window.print()">Print / Save as PDF</button><span>Choose “Save as PDF” in the print dialog. Letter size; the map, the top 25${sl.length?', the shortlist':''}, then method and limits.</span></div>
+<div class="tool"><button onclick="window.print()">Print / Save as PDF</button><span>Choose “Save as PDF” in the print dialog. Letter size; the map, the top 25${WARDS?', by '+(CE_CITY.districtUnit||'ward'):''}${sl.length?', the shortlist':''}, then method and limits.</span></div>
 <div class="page">
   <div class="eyebrow">CoolEquity briefing · ${esc(CITY_NAME)} · ${new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}</div>
   <h1>Where new street trees would help ${esc(CITY_NAME)} residents most</h1>
@@ -2152,6 +2189,11 @@ table:not(.src){font-size:8.5pt}table:not(.src) td{padding:2px 5px}table:not(.sr
   <p class="fine" style="margin-top:10px">Need is a relative 0–100 index within ${esc(CITY_NAME)} under these weights. “Likely rank” is the 5th–95th percentile of the area's rank under the recommended mix when census inputs are re-drawn within their margins of error and those weights are nudged; heat, tree cover and walking time are held fixed, so it is a sensitivity range, not a confidence interval, and beside a custom mix it describes the recommended ranking rather than this one. Treat rank differences smaller than the band as not established. “Rec. rank” is the area's rank under the recommended mix; it reads — when the recommended mix is in force.</p>
   <div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Top 25</span></div>
 </div>
+${WARDS?`<div class="page"><h2>By ${esc(CE_CITY.districtUnit==='district'?'district':'council ward')}</h2><p class="lede" style="margin-top:0">Each ward's share of the need under “${esc(q)}”, with the starred areas' planting totals. Need is the mean 0–100 index of the ward's areas; “Top 100” counts its areas among the city's 100 highest.</p>
+  <table style="margin-top:10px"><thead><tr><th>Ward</th><th>Member</th><th class="n">Residents</th><th class="n">Areas</th><th class="n">Need</th><th class="n">Top 100</th><th class="n">Tree cover</th><th class="n">★ Areas</th><th class="n">★ Trees</th><th class="n">★ Cost</th></tr></thead><tbody>${wardRows().map(r=>`<tr><td class="nm">${esc(r.name)}</td><td class="muted">${esc(r.member)}</td><td class="n">${fInt(r.res)}</td><td class="n">${r.areas}</td><td class="n"><b>${r.mean.toFixed(0)}</b></td><td class="n">${r.top}</td><td class="n">${r.cover==null?'—':r.cover.toFixed(0)+'%'}</td><td class="n">${r.sl||'—'}</td><td class="n">${r.sl?fInt(r.trees):'—'}</td><td class="n">${r.sl?money(r.cost):'—'}</td></tr>`).join('')}</tbody></table>
+  <div style="margin-top:16px">${wardRows().map(r=>`<div style="display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:8px;font-size:9pt;margin:3px 0"><span>${esc(r.name)}</span><span style="height:9px;border-radius:4px;background:#e5e9ee;overflow:hidden"><i style="display:block;height:100%;width:${Math.max(2,r.mean).toFixed(0)}%;background:${colorFor('score',Math.min(100,r.mean))}"></i></span><b style="text-align:right">${r.mean.toFixed(0)}</b></div>`).join('')}</div>
+  <p class="fine" style="margin-top:12px">${esc([WARDS.boundaries_adopted?'Boundaries: '+WARDS.boundaries_adopted:'',WARDS.members_as_of?'member names as of '+WARDS.members_as_of:'',WARDS.source?'source: '+WARDS.source:''].filter(Boolean).join(' · '))}. Wards are political boundaries; the need lives where it lives, and an even split across wards is a policy choice, not a finding.</p>
+  <div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>By ward</span></div></div>`:''}
 ${sl.length?`<div class="page"><h2>Shortlist · ${sl.length} area${sl.length===1?'':'s'}</h2><p class="lede" style="margin-top:0">${fInt(slRes)} residents · ${fInt(slTrees)} trees · ${money(slCost)} at ${money(COST_TREE)} per tree, each area at its own planting share.</p>${slPages}<div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Shortlist</span></div></div>`:''}
 <div class="page">
   <h2>How the ranking is built</h2>
@@ -2184,13 +2226,15 @@ function applyHash(){
 }
 async function boot(){
   // Only the hex file is load-bearing; the other two degrade to nothing.
-  const [h,c,b,dg]=await Promise.all([
+  const [h,c,b,dg,w]=await Promise.all([
     fetch(DATA_URL,{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(`${DATA_URL} → ${r.status}`);return r.text();}).then(async t=>{DATA_SHA=await sha256Hex(t);return JSON.parse(t);}),
     optional(CENTERS_URL),
     optional(BOUNDARY_URL),
-    optional(DESIGNATED_URL)
+    optional(DESIGNATED_URL),
+    optional(WARDS_URL)
   ]);
-  HEX=h;CENTERS=c;BOUNDARY=b;DESIGNATED=dg;
+  HEX=h;CENTERS=c;BOUNDARY=b;DESIGNATED=dg;WARDS=(w&&!w.loadFailed&&w.features&&w.features.length&&h.features.some(f=>f.properties.ward_id))?w:null;
+  initWards();
   {const n=DESIGNATED.features.length,o=((DESIGNATED.properties||{}).outside_study_area||[]).length,
    ts=document.getElementById('tg-designated-sub');
    // Only sites in (or within ~1.5 km of) this study area are drawn; the county's
@@ -2319,6 +2363,15 @@ function initMap(style){
       layout:{visibility:'none'},paint:{'raster-opacity':1}});
   }
 
+  // Council wards: outline plus number, over every layer, off until toggled.
+  if(WARDS){
+    s.sources.wards={type:'geojson',data:WARDS};
+    s.layers.push({id:'wards-line',type:'line',source:'wards',layout:{visibility:wardsOn?'visible':'none'},
+      paint:{'line-color':'#0b0f14','line-width':['interpolate',['linear'],['zoom'],9,1.2,13,2.4],'line-dasharray':[3,2],'line-opacity':0.85}});
+    if(s.glyphs)s.layers.push({id:'wards-label',type:'symbol',source:'wards',layout:{visibility:wardsOn?'visible':'none','text-field':['get','ward_name'],
+      'text-size':['interpolate',['linear'],['zoom'],9,11,13,16],'text-font':['Open Sans Bold','Arial Unicode MS Bold'],'text-allow-overlap':true},
+      paint:{'text-color':'#0b0f14','text-halo-color':'#ffffff','text-halo-width':2}});
+  }
   // Selection ring and center markers stay above everything, labels included:
   // both are things the user is actively hunting for.
   s.layers.push(
@@ -2827,6 +2880,54 @@ function wireUI(){
   };
 }
 
+function setWards(on){
+  wardsOn=!!on;
+  styleOp(()=>{for(const id of ['wards-line','wards-label'])if(map.getLayer(id))map.setLayoutProperty(id,'visibility',wardsOn?'visible':'none');});
+  const t=document.getElementById('tg-wards');if(t){t.classList.toggle('on',wardsOn);t.setAttribute('aria-pressed',wardsOn);}
+  try{sessionStorage.setItem('ce-wards-'+CITY_SLUG,wardsOn?'1':'');}catch(_){}
+}
+/* Council wards (optional, from 04c_wards.py). The section, the list filter and
+ * the map outline all appear only when the data carries wards. */
+function wardLabel(id){const w=WARDS&&WARDS.features.find(f=>f.properties.ward_id===id);return w?w.properties.ward_name:(id?('Ward '+id):(CE_CITY.wardsOutsideLabel||'Outside every ward'));}
+function initWards(){
+  const sec=document.getElementById('sec-wards'),sel=document.getElementById('ward-filter');
+  if(!WARDS){if(sec)sec.hidden=true;if(sel)sel.hidden=true;return;}
+  sec.hidden=false;sel.hidden=false;
+  const ids=WARDS.features.map(f=>f.properties.ward_id);
+  sel.innerHTML='<option value="">All wards</option>'+ids.map(id=>`<option value="${escapeHtml(id)}">${escapeHtml(wardLabel(id))}</option>`).join('')+
+    (HEX.features.some(f=>f.properties.place==='res'&&!f.properties.ward_id)?`<option value="__outside">${escapeHtml(wardLabel(''))}</option>`:'');
+  sel.onchange=()=>{RANK_WARD=sel.value;rankPage=0;buildRank();};
+  document.getElementById('tg-wards').onclick=()=>setWards(!wardsOn);
+  let on=false;try{on=sessionStorage.getItem('ce-wards-'+CITY_SLUG)==='1';}catch(_){}
+  wardsOn=on;const t=document.getElementById('tg-wards');t.classList.toggle('on',on);t.setAttribute('aria-pressed',on);
+  const unit=CE_CITY.districtUnit||'ward';
+  const n=document.getElementById('ward-n');if(n)n.textContent=ids.length+' '+unit+'s';
+  document.querySelectorAll('[data-unit]').forEach(el=>el.textContent=el.dataset.unit.replace(/ward/g,unit).replace(/Ward/g,unit[0].toUpperCase()+unit.slice(1)));
+  sel.options[0].textContent='All '+unit+'s';
+  const note=document.getElementById('ward-note');
+  if(note)note.textContent=[WARDS.boundaries_adopted?'Boundaries: '+WARDS.boundaries_adopted:'',WARDS.members_as_of?'Member names as of '+WARDS.members_as_of:'',WARDS.source?'Source: '+WARDS.source:''].filter(Boolean).join(' · ')+'.';
+}
+function wardRows(){
+  if(!WARDS)return [];
+  const acc=new Map();const get=k=>{if(!acc.has(k))acc.set(k,{id:k,areas:0,res:0,need:0,top:0,cw:0,cp:0,sl:0,trees:0,cost:0});return acc.get(k);};
+  WARDS.features.forEach(f=>get(f.properties.ward_id));
+  LIVE.order.forEach(f=>{const p=f.properties,a=get(p.ward_id||'');a.areas++;a.res+=p.pop||0;a.need+=sc(p)||0;if((rk(p)||1e9)<=100)a.top++;
+    if(p.green_src==='canopy'){a.cw+=(p.green||0)*(p.pop||0);a.cp+=p.pop||0;}
+    if(SHORTLIST.has(p.id)){a.sl++;const c=scenarioFor(p,plantingShares.get(p.id)??25);if(c){a.trees+=c.trees;a.cost+=c.cost_usd;}}});
+  return [...acc.values()].filter(a=>a.areas>0).map(a=>({...a,name:wardLabel(a.id),member:(WARDS.features.find(f=>f.properties.ward_id===a.id)||{properties:{}}).properties.member||'',
+    mean:a.areas?a.need/a.areas:0,cover:a.cp?a.cw/a.cp:null})).sort((x,y)=>y.mean-x.mean);
+}
+function buildWardTable(){
+  const el=document.getElementById('ward-table');if(!el||!WARDS)return;
+  const rows=wardRows();const mx=Math.max(1,...rows.map(r=>r.mean));
+  el.innerHTML=`<div class="wh">${escapeHtml((CE_CITY.districtUnit||'ward').replace(/^./,c=>c.toUpperCase()))}</div><div class="wh" title="Estimated residents">People</div><div class="wh" title="Mean need index under the current mix">Need</div><div class="wh" title="Areas in the top 100">Top</div><div class="wh" title="Starred areas: trees at their planting shares">★ Trees</div>`+
+    rows.map(r=>{const c=colorFor('score',Math.min(100,r.mean));return `<div class="wr${RANK_WARD===(r.id||'__outside')?' on':''}" role="row" data-w="${escapeHtml(r.id||'__outside')}" title="${escapeHtml(r.member?r.name+' · '+r.member:r.name)}. Click to limit the list to this ward.">
+      <div class="wc">${escapeHtml(r.name)}<span class="wneed"><i style="width:${(100*r.mean/mx).toFixed(0)}%;background:${c}"></i></span></div>
+      <div class="wc">${fInt(r.res)}</div><div class="wc"><b>${r.mean.toFixed(0)}</b></div><div class="wc">${r.top}</div>
+      <div class="wc">${r.sl?`<b>${fInt(r.trees)}</b><br><span style="font-size:9.5px">${r.cost.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0})}</span>`:'<span style="color:var(--muted2)">—</span>'}</div></div>`;}).join('');
+  el.querySelectorAll('.wr').forEach(row=>row.onclick=()=>{const v=row.dataset.w;RANK_WARD=RANK_WARD===v?'':v;document.getElementById('ward-filter').value=RANK_WARD;rankPage=0;buildRank();
+    if(RANK_WARD)document.getElementById('rankwrap').scrollIntoView({block:'start',behavior:'smooth'});});
+}
 function syncToggles(){
   document.getElementById('tg-holc').classList.toggle('on',holcOn);
   document.getElementById('tg-holc').setAttribute('aria-pressed',holcOn);
@@ -2967,6 +3068,7 @@ function buildRank(){
     if(F.has('green')&&!(p.green_src!=='ndvi'&&p.green<10))return false;   // greenness stand-ins are not low tree cover
     if(F.has('age')&&!(p.pct65>=20))return false;
     if(F.has('scen')&&p.scenario_ok!==true)return false;
+    if(RANK_WARD&&(RANK_WARD==='__outside'?!!p.ward_id:(p.ward_id||'')!==RANK_WARD))return false;
     if(F.has('aerial')&&!(p.canopy_source==='usfs-2022'&&p.canopy_quality==='full'))return false;
     if(F.has('stable')&&!(p.rank_top_share>=0.8))return false;
     if(RANK_CITY&&p.city!==RANK_CITY)return false;
@@ -2974,7 +3076,7 @@ function buildRank(){
   if(sortK!=='need'||RANK_DIR!=='most'){const dir=RANK_DIR==='most'?1:-1;const v=p=>sortK==='need'?(sc(p)??-1):(p.properties?p.properties[sortK]:p[sortK])??0;matches=matches.slice().sort((a,b)=>dir*((v(b.properties)-v(a.properties))));}
   rankPage=Math.max(0,Math.min(rankPage,Math.ceil(matches.length/RANK_PAGE_SIZE)-1));
   const start=rankPage*RANK_PAGE_SIZE,top=matches.slice(start,start+RANK_PAGE_SIZE);
-  const filt=(query?1:0)+F.size+(RANK_CITY?1:0);
+  const filt=(RANK_WARD?1:0)+(query?1:0)+F.size+(RANK_CITY?1:0);
   document.getElementById('rank-count').textContent=matches.length?`${start+1}–${start+top.length} of ${matches.length.toLocaleString()} ${filt?'matching':'ranked'} areas`+(sortK!=='need'||RANK_DIR!=='most'?` · sorted by ${document.querySelector('#rank-sort option:checked').textContent}, ${RANK_DIR} first`:''):'No matching area. Clear a filter or try a nearby place name.';
   document.getElementById('rank-prev').disabled=rankPage===0;
   document.getElementById('rank-next').disabled=start+RANK_PAGE_SIZE>=matches.length;
@@ -2990,6 +3092,7 @@ function buildRank(){
   if(rankFlash){el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');rankFlash=false;}
   top.forEach(f=>el.appendChild(makeRow(f.properties,def)));
   buildShortlist();
+  buildWardTable();
 }
 // The list must not make a height-model or partly assessed figure look like a
 // full aerial one: the tree label says which it is, and the hover says why.
@@ -3007,7 +3110,7 @@ function makeRow(p,def){
   if(p.id===selId)row.classList.add('sel');
   const c=colorFor('score',s),on=SHORTLIST.has(p.id);
   row.innerHTML=`<div class="badge" style="background:${c};color:${inkOn(c)}">${rk(p)}</div>
-    <div class="nm" role="button" tabindex="0" aria-label="Open ${escapeHtml(nameOf(p))}, rank ${rk(p)}">${escapeHtml(nameOf(p))}${def?'':moveChip(p)}${fieldTag(p)}</div>
+    <div class="nm" role="button" tabindex="0" aria-label="Open ${escapeHtml(nameOf(p))}, rank ${rk(p)}">${escapeHtml(nameOf(p))}${WARDS&&p.ward_id?`<i class="wardtag" title="${escapeHtml(wardLabel(p.ward_id))}">${(CE_CITY.districtUnit||'ward')[0].toUpperCase()}${escapeHtml(p.ward_id)}</i>`:''}${def?'':moveChip(p)}${fieldTag(p)}</div>
     <button type="button" class="pin${on?' on':''}" aria-pressed="${on}" title="${on?'Remove from':'Add to'} shortlist">${on?'★':'☆'}</button>
     <div class="sc" style="color:${lift(c)}">${s.toFixed(0)}</div>
     <div class="cbar" aria-hidden="true">${contribBar(p)}</div>
@@ -3123,7 +3226,7 @@ function selectHex(id,fly){
     ? `Undeveloped · ${p.land||'no development'} · not ranked`
     : activity
     ? 'Developed area · no residents · not ranked'
-    : `Rank ${r} of ${LIVE.order.length.toLocaleString()} · need index ${s.toFixed(0)}`+(isDefaultW()?'':' · your weights')+(p.city?` · ${p.city}${p.city_kind==='cdp'?' (unincorporated)':''}`:'')+` · area #${p.id}`;
+    : `Rank ${r} of ${LIVE.order.length.toLocaleString()} · need index ${s.toFixed(0)}`+(isDefaultW()?'':' · your weights')+(WARDS?' · '+wardLabel(p.ward_id||''):'')+(p.city?` · ${p.city}${p.city_kind==='cdp'?' (unincorporated)':''}`:'')+` · area #${p.id}`;
   // Rank band from 05b_stability.py: 5th–95th percentile rank across re-draws of
   // census margins and the recommended weights. It describes the recommended
   // mix; under custom weights it is shown as context for that mix only.

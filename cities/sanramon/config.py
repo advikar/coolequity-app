@@ -88,3 +88,15 @@ SCENE_CAP_PER_TILE = False
 # San Ramon is in Contra Costa County, so the county EHSD corrections apply.
 COOLING_SOURCE_URL = 'https://ehsd.org/wp-content/uploads/2026/07/Senior_Cooling-Centers-Tips_July-2026.docx'
 NO_AC_LIBRARIES = frozenset({'Kensington Branch Library', 'El Cerrito Branch Contra Costa County Library'})
+
+# ---------------------------------------------------------------- wards / districts
+# The city's own GIS service: the four council districts (by-district elections
+# since 2020; lines redrawn after the 2020 census). Member names are whatever
+# the service says on the day 04e runs; the district number is the stable label.
+WARDS = dict(
+    service="https://gis.sanramon.ca.gov/server/rest/services/Infrastructure/City_Council_Districts/MapServer/0",
+    fields=dict(id="DistrictName", name="DistrictName", member="CouncilMember", url="WebPageBio"),
+    label="District {n}", outside="Outside the city",
+    what="City council districts", publisher="City of San Ramon GIS",
+    adopted="2022 redistricting after the 2020 census (by-district elections since November 2020)",
+)

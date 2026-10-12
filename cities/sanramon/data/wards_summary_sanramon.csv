@@ -1,0 +1,6 @@
+ward_id,ward_name,member,areas,residents,residents_65plus,mean_need_0_100,areas_in_top_100,tree_cover_pct_pop_weighted,mean_surface_heat_c,plantable_street_km,tree_positions_upper_bound
+1,District 1,Robert Jweinat,106,21136,2745,44.3,18,21.1,45.2,117.2,23436
+2,District 2,Richard Adler,125,22810,3259,58.6,46,16.1,46.6,130.1,26018
+3,District 3,Sridhar Verose,58,19197,1721,55.5,15,16.8,45.7,72.8,14557
+4,District 4,Marisol Rubio,103,20597,2302,51.1,21,16.5,45.6,103.6,20716
+,Outside the city,,27,1704,222,35.4,0,21.4,44.8,10.5,2092

@@ -61,3 +61,16 @@ BUILDINGS_MARGIN_DEG = 0.09
 # sites (libraries, pools, community centres) that lack A/C.
 COOLING_SOURCE_URL = 'https://www.kerncounty.com/government/aging-adult-services/services/cooling-centers'
 NO_AC_LIBRARIES = frozenset()
+
+# ---------------------------------------------------------------- wards / districts
+# The city's own GIS service. Boundaries are the 2022 redistricting map (council
+# map 5B, the "Unity Map"), first used for the November 2022 election. Member
+# names are whatever the service says on the day 04e runs; the ward number is
+# the stable label.
+WARDS = dict(
+    service="https://gis.bakersfieldcity.us/webmaps/rest/services/General/Boundary/MapServer/5",
+    fields=dict(id="WARD_ID", name="FEAT_NAME", member="MEMBER", url="LINK"),
+    label="Ward {n}", outside="Unincorporated (Kern County)",
+    what="Council wards", publisher="City of Bakersfield GIS Office",
+    adopted="2022 redistricting, council map 5B (Unity Map)",
+)

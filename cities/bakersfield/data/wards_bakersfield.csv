@@ -1,0 +1,4055 @@
+h3,id,ward_id,ward_name
+8929ac48043ffff,0,1,Ward 1
+8929ac48047ffff,1,,
+8929ac4804bffff,2,,
+8929ac48053ffff,3,1,Ward 1
+8929ac48057ffff,4,,
+8929ac4805bffff,5,1,Ward 1
+8929ac480c3ffff,6,,
+8929ac480cbffff,7,1,Ward 1
+8929ac480cfffff,8,,
+8929ac480d3ffff,9,,
+8929ac480dbffff,10,1,Ward 1
+8929ac48203ffff,11,,
+8929ac4820bffff,12,1,Ward 1
+8929ac4820fffff,13,,
+8929ac48213ffff,14,,
+8929ac4821bffff,15,1,Ward 1
+8929ac48223ffff,16,1,Ward 1
+8929ac48227ffff,17,1,Ward 1
+8929ac4822bffff,18,1,Ward 1
+8929ac4822fffff,19,1,Ward 1
+8929ac48233ffff,20,,
+8929ac48237ffff,21,,
+8929ac4823bffff,22,1,Ward 1
+8929ac48243ffff,23,1,Ward 1
+8929ac48247ffff,24,1,Ward 1
+8929ac4824bffff,25,1,Ward 1
+8929ac4824fffff,26,1,Ward 1
+8929ac48253ffff,27,1,Ward 1
+8929ac48257ffff,28,1,Ward 1
+8929ac4825bffff,29,1,Ward 1
+8929ac48263ffff,30,1,Ward 1
+8929ac48267ffff,31,1,Ward 1
+8929ac4826bffff,32,,
+8929ac4826fffff,33,1,Ward 1
+8929ac48273ffff,34,1,Ward 1
+8929ac48277ffff,35,1,Ward 1
+8929ac4827bffff,36,1,Ward 1
+8929ac48283ffff,37,,
+8929ac4828bffff,38,,
+8929ac48293ffff,39,1,Ward 1
+8929ac48297ffff,40,1,Ward 1
+8929ac4829bffff,41,,
+8929ac482c3ffff,42,1,Ward 1
+8929ac482c7ffff,43,1,Ward 1
+8929ac482cbffff,44,1,Ward 1
+8929ac482cfffff,45,1,Ward 1
+8929ac482d3ffff,46,1,Ward 1
+8929ac482d7ffff,47,1,Ward 1
+8929ac482dbffff,48,1,Ward 1
+8929ac48343ffff,49,1,Ward 1
+8929ac48347ffff,50,,
+8929ac4834bffff,51,1,Ward 1
+8929ac4834fffff,52,1,Ward 1
+8929ac48353ffff,53,1,Ward 1
+8929ac48357ffff,54,,
+8929ac4835bffff,55,1,Ward 1
+8929ac48363ffff,56,,
+8929ac48367ffff,57,1,Ward 1
+8929ac4836bffff,58,1,Ward 1
+8929ac4836fffff,59,1,Ward 1
+8929ac4837bffff,60,,
+8929ac483c3ffff,61,,
+8929ac483cbffff,62,1,Ward 1
+8929ac483cfffff,63,,
+8929ac48603ffff,64,1,Ward 1
+8929ac48607ffff,65,1,Ward 1
+8929ac4860bffff,66,,
+8929ac4860fffff,67,1,Ward 1
+8929ac4861bffff,68,,
+8929ac48623ffff,69,1,Ward 1
+8929ac48627ffff,70,1,Ward 1
+8929ac4862bffff,71,1,Ward 1
+8929ac4862fffff,72,1,Ward 1
+8929ac48633ffff,73,1,Ward 1
+8929ac48637ffff,74,1,Ward 1
+8929ac4863bffff,75,1,Ward 1
+8929ac48663ffff,76,,
+8929ac48667ffff,77,1,Ward 1
+8929ac4866fffff,78,,
+8929ac48673ffff,79,,
+8929ac48677ffff,80,1,Ward 1
+8929ac486a7ffff,81,1,Ward 1
+8929ac486abffff,82,1,Ward 1
+8929ac486afffff,83,1,Ward 1
+8929ac48827ffff,84,,
+8929ac48867ffff,85,,
+8929ac4886fffff,86,7,Ward 7
+8929ac48923ffff,87,7,Ward 7
+8929ac48927ffff,88,7,Ward 7
+8929ac4892bffff,89,7,Ward 7
+8929ac4892fffff,90,7,Ward 7
+8929ac48933ffff,91,7,Ward 7
+8929ac48937ffff,92,7,Ward 7
+8929ac4893bffff,93,,
+8929ac48943ffff,94,7,Ward 7
+8929ac48947ffff,95,,
+8929ac4894bffff,96,7,Ward 7
+8929ac4894fffff,97,7,Ward 7
+8929ac48953ffff,98,7,Ward 7
+8929ac48957ffff,99,,
+8929ac4895bffff,100,,
+8929ac48963ffff,101,7,Ward 7
+8929ac48967ffff,102,7,Ward 7
+8929ac4896bffff,103,7,Ward 7
+8929ac4896fffff,104,7,Ward 7
+8929ac48973ffff,105,,
+8929ac48977ffff,106,7,Ward 7
+8929ac4897bffff,107,7,Ward 7
+8929ac489a3ffff,108,,
+8929ac489a7ffff,109,,
+8929ac489abffff,110,7,Ward 7
+8929ac489afffff,111,7,Ward 7
+8929ac489b7ffff,112,,
+8929ac489cbffff,113,,
+8929ac489cfffff,114,,
+8929ac48a37ffff,115,7,Ward 7
+8929ac48a6fffff,116,,
+8929ac48aa7ffff,117,,
+8929ac48aafffff,118,7,Ward 7
+8929ac48b03ffff,119,7,Ward 7
+8929ac48b07ffff,120,7,Ward 7
+8929ac48b0bffff,121,7,Ward 7
+8929ac48b0fffff,122,7,Ward 7
+8929ac48b13ffff,123,7,Ward 7
+8929ac48b17ffff,124,7,Ward 7
+8929ac48b1bffff,125,7,Ward 7
+8929ac48b23ffff,126,7,Ward 7
+8929ac48b27ffff,127,7,Ward 7
+8929ac48b2bffff,128,7,Ward 7
+8929ac48b2fffff,129,7,Ward 7
+8929ac48b33ffff,130,7,Ward 7
+8929ac48b37ffff,131,7,Ward 7
+8929ac48b3bffff,132,7,Ward 7
+8929ac48b47ffff,133,,
+8929ac48b4bffff,134,,
+8929ac48b4fffff,135,7,Ward 7
+8929ac48b57ffff,136,,
+8929ac48b63ffff,137,7,Ward 7
+8929ac48b67ffff,138,7,Ward 7
+8929ac48b6bffff,139,7,Ward 7
+8929ac48b6fffff,140,7,Ward 7
+8929ac48b73ffff,141,7,Ward 7
+8929ac48b77ffff,142,7,Ward 7
+8929ac48b7bffff,143,7,Ward 7
+8929ac48b83ffff,144,,
+8929ac48b87ffff,145,,
+8929ac48b8bffff,146,7,Ward 7
+8929ac48b8fffff,147,,
+8929ac48b97ffff,148,,
+8929ac48b9bffff,149,,
+8929ac48ba3ffff,150,,
+8929ac48ba7ffff,151,7,Ward 7
+8929ac48babffff,152,7,Ward 7
+8929ac48bafffff,153,,
+8929ac48bb3ffff,154,,
+8929ac48bb7ffff,155,7,Ward 7
+8929ac48bbbffff,156,,
+8929ac48bc3ffff,157,7,Ward 7
+8929ac48bc7ffff,158,7,Ward 7
+8929ac48bcbffff,159,,
+8929ac48bcfffff,160,,
+8929ac48bd3ffff,161,7,Ward 7
+8929ac48bd7ffff,162,7,Ward 7
+8929ac48bdbffff,163,7,Ward 7
+8929ac49183ffff,164,,
+8929ac49187ffff,165,,
+8929ac49193ffff,166,,
+8929ac49197ffff,167,1,Ward 1
+8929ac491a3ffff,168,,
+8929ac491b3ffff,169,,
+8929ac491b7ffff,170,1,Ward 1
+8929ac49507ffff,171,,
+8929ac49523ffff,172,1,Ward 1
+8929ac49527ffff,173,1,Ward 1
+8929ac4952bffff,174,,
+8929ac4952fffff,175,1,Ward 1
+8929ac49533ffff,176,1,Ward 1
+8929ac49537ffff,177,1,Ward 1
+8929ac4953bffff,178,,
+8929ac495a7ffff,179,,
+8929ac495abffff,180,,
+8929ac495afffff,181,1,Ward 1
+8929ac49803ffff,182,1,Ward 1
+8929ac49807ffff,183,1,Ward 1
+8929ac4980bffff,184,,
+8929ac4980fffff,185,,
+8929ac49813ffff,186,1,Ward 1
+8929ac49817ffff,187,1,Ward 1
+8929ac4981bffff,188,,
+8929ac49827ffff,189,,
+8929ac49833ffff,190,,
+8929ac49837ffff,191,,
+8929ac49883ffff,192,1,Ward 1
+8929ac49887ffff,193,1,Ward 1
+8929ac4988bffff,194,1,Ward 1
+8929ac4988fffff,195,1,Ward 1
+8929ac49893ffff,196,1,Ward 1
+8929ac49897ffff,197,1,Ward 1
+8929ac4989bffff,198,1,Ward 1
+8929ac498a3ffff,199,1,Ward 1
+8929ac498a7ffff,200,1,Ward 1
+8929ac498abffff,201,1,Ward 1
+8929ac498afffff,202,1,Ward 1
+8929ac498b3ffff,203,1,Ward 1
+8929ac498b7ffff,204,1,Ward 1
+8929ac498bbffff,205,1,Ward 1
+8929ac498c7ffff,206,,
+8929ac498d7ffff,207,,
+8929ac49923ffff,208,,
+8929ac49927ffff,209,,
+8929ac4992bffff,210,1,Ward 1
+8929ac4992fffff,211,1,Ward 1
+8929ac49933ffff,212,,
+8929ac49937ffff,213,1,Ward 1
+8929ac4993bffff,214,,
+8929ac4994bffff,215,,
+8929ac4994fffff,216,,
+8929ac4995bffff,217,,
+8929ac49963ffff,218,1,Ward 1
+8929ac49967ffff,219,1,Ward 1
+8929ac4996bffff,220,1,Ward 1
+8929ac4996fffff,221,1,Ward 1
+8929ac49973ffff,222,,
+8929ac49977ffff,223,1,Ward 1
+8929ac4997bffff,224,1,Ward 1
+8929ac499a7ffff,225,,
+8929ac499abffff,226,,
+8929ac499afffff,227,1,Ward 1
+8929ac499dbffff,228,,
+8929ac49b03ffff,229,1,Ward 1
+8929ac49b07ffff,230,1,Ward 1
+8929ac49b0bffff,231,1,Ward 1
+8929ac49b0fffff,232,1,Ward 1
+8929ac49b13ffff,233,1,Ward 1
+8929ac49b17ffff,234,1,Ward 1
+8929ac49b1bffff,235,1,Ward 1
+8929ac49b23ffff,236,1,Ward 1
+8929ac49b27ffff,237,1,Ward 1
+8929ac49b2bffff,238,1,Ward 1
+8929ac49b2fffff,239,1,Ward 1
+8929ac49b33ffff,240,1,Ward 1
+8929ac49b37ffff,241,1,Ward 1
+8929ac49b3bffff,242,1,Ward 1
+8929ac49b63ffff,243,1,Ward 1
+8929ac49b67ffff,244,1,Ward 1
+8929ac49b6fffff,245,1,Ward 1
+8929ac49b73ffff,246,1,Ward 1
+8929ac49b77ffff,247,1,Ward 1
+8929ac49b87ffff,248,,
+8929ac49b8bffff,249,,
+8929ac49b8fffff,250,1,Ward 1
+8929ac49ba3ffff,251,1,Ward 1
+8929ac49ba7ffff,252,1,Ward 1
+8929ac49babffff,253,1,Ward 1
+8929ac49bafffff,254,1,Ward 1
+8929ac49bb3ffff,255,1,Ward 1
+8929ac49bb7ffff,256,1,Ward 1
+8929ac49bbbffff,257,1,Ward 1
+8929ac49bc7ffff,258,1,Ward 1
+8929ac49c13ffff,259,,
+8929ac49c2fffff,260,,
+8929ac49c67ffff,261,,
+8929ac49c6fffff,262,,
+8929ac49c83ffff,263,1,Ward 1
+8929ac49c87ffff,264,1,Ward 1
+8929ac49c8bffff,265,1,Ward 1
+8929ac49c8fffff,266,1,Ward 1
+8929ac49c93ffff,267,1,Ward 1
+8929ac49c97ffff,268,1,Ward 1
+8929ac49c9bffff,269,1,Ward 1
+8929ac49ca3ffff,270,,
+8929ac49ca7ffff,271,,
+8929ac49cb3ffff,272,1,Ward 1
+8929ac49cb7ffff,273,1,Ward 1
+8929ac49cbbffff,274,,
+8929ac49cc7ffff,275,,
+8929ac49cd3ffff,276,,
+8929ac49cd7ffff,277,,
+8929ac49d03ffff,278,1,Ward 1
+8929ac49d07ffff,279,,
+8929ac49d0bffff,280,,
+8929ac49d0fffff,281,,
+8929ac49d13ffff,282,1,Ward 1
+8929ac49d17ffff,283,,
+8929ac49d1bffff,284,1,Ward 1
+8929ac49d43ffff,285,1,Ward 1
+8929ac49d4bffff,286,1,Ward 1
+8929ac49d4fffff,287,1,Ward 1
+8929ac49d53ffff,288,,
+8929ac49d57ffff,289,1,Ward 1
+8929ac49d5bffff,290,1,Ward 1
+8929ac49d63ffff,291,1,Ward 1
+8929ac49d67ffff,292,,
+8929ac49d6bffff,293,1,Ward 1
+8929ac49d6fffff,294,,
+8929ac49d73ffff,295,1,Ward 1
+8929ac49d77ffff,296,,
+8929ac49d7bffff,297,1,Ward 1
+8929ac49d83ffff,298,,
+8929ac49d8bffff,299,1,Ward 1
+8929ac49d8fffff,300,,
+8929ac49d93ffff,301,,
+8929ac49d9bffff,302,1,Ward 1
+8929ac49dc3ffff,303,1,Ward 1
+8929ac49dc7ffff,304,1,Ward 1
+8929ac49dcbffff,305,,
+8929ac49dcfffff,306,1,Ward 1
+8929ac49dd3ffff,307,1,Ward 1
+8929ac49dd7ffff,308,1,Ward 1
+8929ac49ddbffff,309,,
+8929ac4c00bffff,310,5,Ward 5
+8929ac4c01bffff,311,5,Ward 5
+8929ac4c043ffff,312,5,Ward 5
+8929ac4c047ffff,313,5,Ward 5
+8929ac4c04bffff,314,5,Ward 5
+8929ac4c04fffff,315,5,Ward 5
+8929ac4c053ffff,316,5,Ward 5
+8929ac4c057ffff,317,5,Ward 5
+8929ac4c05bffff,318,5,Ward 5
+8929ac4c063ffff,319,5,Ward 5
+8929ac4c06bffff,320,5,Ward 5
+8929ac4c06fffff,321,5,Ward 5
+8929ac4c073ffff,322,5,Ward 5
+8929ac4c07bffff,323,5,Ward 5
+8929ac4c0c3ffff,324,5,Ward 5
+8929ac4c0c7ffff,325,5,Ward 5
+8929ac4c0cbffff,326,5,Ward 5
+8929ac4c0cfffff,327,5,Ward 5
+8929ac4c0d3ffff,328,5,Ward 5
+8929ac4c0d7ffff,329,5,Ward 5
+8929ac4c0dbffff,330,5,Ward 5
+8929ac4c123ffff,331,,
+8929ac4c127ffff,332,5,Ward 5
+8929ac4c12bffff,333,5,Ward 5
+8929ac4c12fffff,334,5,Ward 5
+8929ac4c14fffff,335,,
+8929ac4c163ffff,336,5,Ward 5
+8929ac4c167ffff,337,5,Ward 5
+8929ac4c16bffff,338,5,Ward 5
+8929ac4c16fffff,339,5,Ward 5
+8929ac4c173ffff,340,,
+8929ac4c177ffff,341,,
+8929ac4c17bffff,342,5,Ward 5
+8929ac4c203ffff,343,,
+8929ac4c207ffff,344,5,Ward 5
+8929ac4c20bffff,345,5,Ward 5
+8929ac4c20fffff,346,5,Ward 5
+8929ac4c213ffff,347,5,Ward 5
+8929ac4c217ffff,348,5,Ward 5
+8929ac4c21bffff,349,5,Ward 5
+8929ac4c223ffff,350,5,Ward 5
+8929ac4c227ffff,351,5,Ward 5
+8929ac4c22bffff,352,5,Ward 5
+8929ac4c22fffff,353,5,Ward 5
+8929ac4c233ffff,354,5,Ward 5
+8929ac4c237ffff,355,5,Ward 5
+8929ac4c23bffff,356,5,Ward 5
+8929ac4c243ffff,357,5,Ward 5
+8929ac4c247ffff,358,5,Ward 5
+8929ac4c24bffff,359,5,Ward 5
+8929ac4c24fffff,360,5,Ward 5
+8929ac4c253ffff,361,5,Ward 5
+8929ac4c257ffff,362,5,Ward 5
+8929ac4c25bffff,363,5,Ward 5
+8929ac4c263ffff,364,5,Ward 5
+8929ac4c267ffff,365,5,Ward 5
+8929ac4c26bffff,366,5,Ward 5
+8929ac4c26fffff,367,5,Ward 5
+8929ac4c273ffff,368,5,Ward 5
+8929ac4c277ffff,369,5,Ward 5
+8929ac4c27bffff,370,5,Ward 5
+8929ac4c283ffff,371,5,Ward 5
+8929ac4c287ffff,372,5,Ward 5
+8929ac4c28bffff,373,5,Ward 5
+8929ac4c28fffff,374,5,Ward 5
+8929ac4c293ffff,375,5,Ward 5
+8929ac4c297ffff,376,5,Ward 5
+8929ac4c29bffff,377,5,Ward 5
+8929ac4c2a3ffff,378,5,Ward 5
+8929ac4c2a7ffff,379,5,Ward 5
+8929ac4c2abffff,380,5,Ward 5
+8929ac4c2afffff,381,5,Ward 5
+8929ac4c2b3ffff,382,5,Ward 5
+8929ac4c2b7ffff,383,5,Ward 5
+8929ac4c2bbffff,384,5,Ward 5
+8929ac4c2c3ffff,385,5,Ward 5
+8929ac4c2c7ffff,386,5,Ward 5
+8929ac4c2cbffff,387,5,Ward 5
+8929ac4c2cfffff,388,5,Ward 5
+8929ac4c2d3ffff,389,5,Ward 5
+8929ac4c2d7ffff,390,5,Ward 5
+8929ac4c2dbffff,391,5,Ward 5
+8929ac4c303ffff,392,5,Ward 5
+8929ac4c307ffff,393,5,Ward 5
+8929ac4c30bffff,394,5,Ward 5
+8929ac4c30fffff,395,5,Ward 5
+8929ac4c313ffff,396,5,Ward 5
+8929ac4c317ffff,397,5,Ward 5
+8929ac4c31bffff,398,5,Ward 5
+8929ac4c323ffff,399,5,Ward 5
+8929ac4c327ffff,400,5,Ward 5
+8929ac4c32bffff,401,5,Ward 5
+8929ac4c32fffff,402,5,Ward 5
+8929ac4c333ffff,403,5,Ward 5
+8929ac4c337ffff,404,5,Ward 5
+8929ac4c33bffff,405,5,Ward 5
+8929ac4c343ffff,406,5,Ward 5
+8929ac4c347ffff,407,5,Ward 5
+8929ac4c34bffff,408,5,Ward 5
+8929ac4c34fffff,409,5,Ward 5
+8929ac4c353ffff,410,5,Ward 5
+8929ac4c357ffff,411,5,Ward 5
+8929ac4c35bffff,412,5,Ward 5
+8929ac4c363ffff,413,5,Ward 5
+8929ac4c367ffff,414,5,Ward 5
+8929ac4c36bffff,415,5,Ward 5
+8929ac4c36fffff,416,5,Ward 5
+8929ac4c373ffff,417,5,Ward 5
+8929ac4c377ffff,418,5,Ward 5
+8929ac4c37bffff,419,5,Ward 5
+8929ac4c387ffff,420,,
+8929ac4c38bffff,421,,
+8929ac4c38fffff,422,5,Ward 5
+8929ac4c3a3ffff,423,5,Ward 5
+8929ac4c3a7ffff,424,5,Ward 5
+8929ac4c3abffff,425,5,Ward 5
+8929ac4c3afffff,426,5,Ward 5
+8929ac4c3b3ffff,427,5,Ward 5
+8929ac4c3b7ffff,428,5,Ward 5
+8929ac4c3bbffff,429,5,Ward 5
+8929ac4c3c3ffff,430,5,Ward 5
+8929ac4c3c7ffff,431,5,Ward 5
+8929ac4c3cbffff,432,5,Ward 5
+8929ac4c3cfffff,433,5,Ward 5
+8929ac4c3d3ffff,434,5,Ward 5
+8929ac4c3d7ffff,435,5,Ward 5
+8929ac4c3dbffff,436,5,Ward 5
+8929ac4c46bffff,437,,
+8929ac4c46fffff,438,5,Ward 5
+8929ac4c603ffff,439,5,Ward 5
+8929ac4c607ffff,440,5,Ward 5
+8929ac4c60bffff,441,5,Ward 5
+8929ac4c60fffff,442,5,Ward 5
+8929ac4c617ffff,443,,
+8929ac4c61bffff,444,,
+8929ac4c623ffff,445,5,Ward 5
+8929ac4c627ffff,446,5,Ward 5
+8929ac4c62bffff,447,5,Ward 5
+8929ac4c62fffff,448,5,Ward 5
+8929ac4c633ffff,449,5,Ward 5
+8929ac4c637ffff,450,5,Ward 5
+8929ac4c63bffff,451,5,Ward 5
+8929ac4c643ffff,452,5,Ward 5
+8929ac4c647ffff,453,5,Ward 5
+8929ac4c64bffff,454,5,Ward 5
+8929ac4c64fffff,455,5,Ward 5
+8929ac4c653ffff,456,5,Ward 5
+8929ac4c657ffff,457,5,Ward 5
+8929ac4c65bffff,458,5,Ward 5
+8929ac4c663ffff,459,5,Ward 5
+8929ac4c667ffff,460,5,Ward 5
+8929ac4c66bffff,461,5,Ward 5
+8929ac4c66fffff,462,5,Ward 5
+8929ac4c673ffff,463,5,Ward 5
+8929ac4c677ffff,464,5,Ward 5
+8929ac4c67bffff,465,5,Ward 5
+8929ac4c6a3ffff,466,,
+8929ac4c6a7ffff,467,5,Ward 5
+8929ac4c6abffff,468,5,Ward 5
+8929ac4c6afffff,469,5,Ward 5
+8929ac4c6cfffff,470,,
+8929ac4c803ffff,471,5,Ward 5
+8929ac4c807ffff,472,5,Ward 5
+8929ac4c80bffff,473,5,Ward 5
+8929ac4c80fffff,474,5,Ward 5
+8929ac4c813ffff,475,5,Ward 5
+8929ac4c817ffff,476,5,Ward 5
+8929ac4c81bffff,477,5,Ward 5
+8929ac4c823ffff,478,5,Ward 5
+8929ac4c827ffff,479,5,Ward 5
+8929ac4c82bffff,480,5,Ward 5
+8929ac4c82fffff,481,5,Ward 5
+8929ac4c833ffff,482,5,Ward 5
+8929ac4c837ffff,483,5,Ward 5
+8929ac4c83bffff,484,5,Ward 5
+8929ac4c843ffff,485,5,Ward 5
+8929ac4c847ffff,486,5,Ward 5
+8929ac4c84bffff,487,5,Ward 5
+8929ac4c84fffff,488,5,Ward 5
+8929ac4c853ffff,489,5,Ward 5
+8929ac4c857ffff,490,5,Ward 5
+8929ac4c85bffff,491,5,Ward 5
+8929ac4c863ffff,492,5,Ward 5
+8929ac4c867ffff,493,,
+8929ac4c86bffff,494,5,Ward 5
+8929ac4c86fffff,495,,
+8929ac4c873ffff,496,5,Ward 5
+8929ac4c877ffff,497,5,Ward 5
+8929ac4c87bffff,498,5,Ward 5
+8929ac4c887ffff,499,5,Ward 5
+8929ac4c88bffff,500,,
+8929ac4c88fffff,501,5,Ward 5
+8929ac4c897ffff,502,,
+8929ac4c89bffff,503,5,Ward 5
+8929ac4c8a3ffff,504,5,Ward 5
+8929ac4c8a7ffff,505,5,Ward 5
+8929ac4c8abffff,506,5,Ward 5
+8929ac4c8afffff,507,5,Ward 5
+8929ac4c8b3ffff,508,5,Ward 5
+8929ac4c8b7ffff,509,5,Ward 5
+8929ac4c8bbffff,510,5,Ward 5
+8929ac4c8c3ffff,511,,
+8929ac4c8c7ffff,512,,
+8929ac4c8cfffff,513,,
+8929ac4c8d3ffff,514,5,Ward 5
+8929ac4c8d7ffff,515,5,Ward 5
+8929ac4c953ffff,516,,
+8929ac4c95bffff,517,,
+8929ac4c9c3ffff,518,,
+8929ac4c9cbffff,519,,
+8929ac4c9d3ffff,520,5,Ward 5
+8929ac4c9d7ffff,521,,
+8929ac4c9dbffff,522,5,Ward 5
+8929ac4ca03ffff,523,,
+8929ac4ca07ffff,524,5,Ward 5
+8929ac4ca0bffff,525,5,Ward 5
+8929ac4ca0fffff,526,5,Ward 5
+8929ac4ca13ffff,527,,
+8929ac4ca17ffff,528,5,Ward 5
+8929ac4ca1bffff,529,5,Ward 5
+8929ac4ca23ffff,530,5,Ward 5
+8929ac4ca27ffff,531,,
+8929ac4ca2bffff,532,5,Ward 5
+8929ac4ca2fffff,533,,
+8929ac4ca33ffff,534,5,Ward 5
+8929ac4ca37ffff,535,5,Ward 5
+8929ac4ca3bffff,536,5,Ward 5
+8929ac4ca43ffff,537,5,Ward 5
+8929ac4ca47ffff,538,5,Ward 5
+8929ac4ca4bffff,539,5,Ward 5
+8929ac4ca4fffff,540,5,Ward 5
+8929ac4ca53ffff,541,5,Ward 5
+8929ac4ca57ffff,542,5,Ward 5
+8929ac4ca5bffff,543,5,Ward 5
+8929ac4ca63ffff,544,5,Ward 5
+8929ac4ca67ffff,545,5,Ward 5
+8929ac4ca6bffff,546,5,Ward 5
+8929ac4ca6fffff,547,5,Ward 5
+8929ac4ca73ffff,548,5,Ward 5
+8929ac4ca77ffff,549,5,Ward 5
+8929ac4ca7bffff,550,5,Ward 5
+8929ac4ca87ffff,551,5,Ward 5
+8929ac4ca97ffff,552,5,Ward 5
+8929ac4caa3ffff,553,5,Ward 5
+8929ac4caa7ffff,554,5,Ward 5
+8929ac4caabffff,555,5,Ward 5
+8929ac4caafffff,556,5,Ward 5
+8929ac4cab3ffff,557,5,Ward 5
+8929ac4cab7ffff,558,5,Ward 5
+8929ac4cabbffff,559,5,Ward 5
+8929ac4cac3ffff,560,5,Ward 5
+8929ac4cac7ffff,561,,
+8929ac4cacbffff,562,5,Ward 5
+8929ac4cacfffff,563,5,Ward 5
+8929ac4cad3ffff,564,,
+8929ac4cadbffff,565,5,Ward 5
+8929ac4cb03ffff,566,,
+8929ac4cb0bffff,567,5,Ward 5
+8929ac4cb0fffff,568,,
+8929ac4cb43ffff,569,5,Ward 5
+8929ac4cb47ffff,570,5,Ward 5
+8929ac4cb4bffff,571,5,Ward 5
+8929ac4cb4fffff,572,5,Ward 5
+8929ac4cb57ffff,573,,
+8929ac4cb5bffff,574,,
+8929ac4cb63ffff,575,5,Ward 5
+8929ac4cb67ffff,576,,
+8929ac4cb6bffff,577,,
+8929ac4cb73ffff,578,5,Ward 5
+8929ac4cb77ffff,579,,
+8929ac4cb7bffff,580,5,Ward 5
+8929ac4cb93ffff,581,,
+8929ac4cbc3ffff,582,5,Ward 5
+8929ac4cbcbffff,583,,
+8929ac4cbd3ffff,584,5,Ward 5
+8929ac4cbd7ffff,585,,
+8929ac4cbdbffff,586,5,Ward 5
+8929ac4cc03ffff,587,5,Ward 5
+8929ac4cc0bffff,588,5,Ward 5
+8929ac4cc0fffff,589,5,Ward 5
+8929ac4cc13ffff,590,5,Ward 5
+8929ac4cc1bffff,591,5,Ward 5
+8929ac4cc43ffff,592,5,Ward 5
+8929ac4cc47ffff,593,5,Ward 5
+8929ac4cc4bffff,594,5,Ward 5
+8929ac4cc4fffff,595,5,Ward 5
+8929ac4cc53ffff,596,5,Ward 5
+8929ac4cc57ffff,597,5,Ward 5
+8929ac4cc5bffff,598,5,Ward 5
+8929ac4cc63ffff,599,5,Ward 5
+8929ac4cc67ffff,600,5,Ward 5
+8929ac4cc6bffff,601,5,Ward 5
+8929ac4cc6fffff,602,5,Ward 5
+8929ac4cc73ffff,603,5,Ward 5
+8929ac4cc77ffff,604,5,Ward 5
+8929ac4cc7bffff,605,5,Ward 5
+8929ac4ccc7ffff,606,,
+8929ac4cccbffff,607,,
+8929ac4cccfffff,608,5,Ward 5
+8929ac4cd03ffff,609,5,Ward 5
+8929ac4cd07ffff,610,5,Ward 5
+8929ac4cd0bffff,611,5,Ward 5
+8929ac4cd0fffff,612,5,Ward 5
+8929ac4cd13ffff,613,,
+8929ac4cd17ffff,614,5,Ward 5
+8929ac4cd1bffff,615,5,Ward 5
+8929ac4cd23ffff,616,5,Ward 5
+8929ac4cd27ffff,617,,
+8929ac4cd2bffff,618,5,Ward 5
+8929ac4cd2fffff,619,,
+8929ac4cd33ffff,620,5,Ward 5
+8929ac4cd37ffff,621,5,Ward 5
+8929ac4cd3bffff,622,5,Ward 5
+8929ac4cd43ffff,623,5,Ward 5
+8929ac4cd47ffff,624,5,Ward 5
+8929ac4cd4bffff,625,5,Ward 5
+8929ac4cd4fffff,626,5,Ward 5
+8929ac4cd53ffff,627,,
+8929ac4cd57ffff,628,5,Ward 5
+8929ac4cd5bffff,629,,
+8929ac4cd63ffff,630,5,Ward 5
+8929ac4cd67ffff,631,,
+8929ac4cd6bffff,632,5,Ward 5
+8929ac4cd6fffff,633,,
+8929ac4cd73ffff,634,5,Ward 5
+8929ac4cd77ffff,635,5,Ward 5
+8929ac4cd7bffff,636,5,Ward 5
+8929ac4cd8fffff,637,,
+8929ac4cda3ffff,638,5,Ward 5
+8929ac4cda7ffff,639,5,Ward 5
+8929ac4cdabffff,640,5,Ward 5
+8929ac4cdafffff,641,5,Ward 5
+8929ac4cdb3ffff,642,,
+8929ac4cdb7ffff,643,5,Ward 5
+8929ac4cdbbffff,644,5,Ward 5
+8929ac4cdcfffff,645,,
+8929ac4ce03ffff,646,,
+8929ac4ce13ffff,647,5,Ward 5
+8929ac4ce17ffff,648,5,Ward 5
+8929ac4ce1bffff,649,,
+8929ac4ce2fffff,650,,
+8929ac4ce43ffff,651,,
+8929ac4ce4bffff,652,5,Ward 5
+8929ac4ce4fffff,653,,
+8929ac4ce53ffff,654,,
+8929ac4ce5bffff,655,5,Ward 5
+8929ac4ce83ffff,656,5,Ward 5
+8929ac4ce87ffff,657,5,Ward 5
+8929ac4ce8bffff,658,5,Ward 5
+8929ac4ce8fffff,659,5,Ward 5
+8929ac4ce93ffff,660,5,Ward 5
+8929ac4ce97ffff,661,5,Ward 5
+8929ac4ce9bffff,662,5,Ward 5
+8929ac4cea3ffff,663,5,Ward 5
+8929ac4cea7ffff,664,5,Ward 5
+8929ac4ceabffff,665,,
+8929ac4ceb3ffff,666,5,Ward 5
+8929ac4ceb7ffff,667,5,Ward 5
+8929ac4cebbffff,668,5,Ward 5
+8929ac4cec3ffff,669,5,Ward 5
+8929ac4cec7ffff,670,5,Ward 5
+8929ac4cecbffff,671,5,Ward 5
+8929ac4cecfffff,672,5,Ward 5
+8929ac4ced3ffff,673,5,Ward 5
+8929ac4ced7ffff,674,5,Ward 5
+8929ac4cedbffff,675,5,Ward 5
+8929ac4d003ffff,676,7,Ward 7
+8929ac4d007ffff,677,7,Ward 7
+8929ac4d00bffff,678,7,Ward 7
+8929ac4d00fffff,679,6,Ward 6
+8929ac4d013ffff,680,7,Ward 7
+8929ac4d017ffff,681,7,Ward 7
+8929ac4d01bffff,682,7,Ward 7
+8929ac4d023ffff,683,6,Ward 6
+8929ac4d027ffff,684,6,Ward 6
+8929ac4d02bffff,685,6,Ward 6
+8929ac4d02fffff,686,6,Ward 6
+8929ac4d033ffff,687,6,Ward 6
+8929ac4d037ffff,688,6,Ward 6
+8929ac4d03bffff,689,6,Ward 6
+8929ac4d043ffff,690,7,Ward 7
+8929ac4d047ffff,691,7,Ward 7
+8929ac4d04bffff,692,7,Ward 7
+8929ac4d04fffff,693,7,Ward 7
+8929ac4d053ffff,694,7,Ward 7
+8929ac4d057ffff,695,7,Ward 7
+8929ac4d05bffff,696,7,Ward 7
+8929ac4d063ffff,697,7,Ward 7
+8929ac4d067ffff,698,6,Ward 6
+8929ac4d06bffff,699,7,Ward 7
+8929ac4d06fffff,700,7,Ward 7
+8929ac4d073ffff,701,7,Ward 7
+8929ac4d077ffff,702,6,Ward 6
+8929ac4d07bffff,703,7,Ward 7
+8929ac4d083ffff,704,7,Ward 7
+8929ac4d087ffff,705,7,Ward 7
+8929ac4d08bffff,706,7,Ward 7
+8929ac4d08fffff,707,7,Ward 7
+8929ac4d093ffff,708,7,Ward 7
+8929ac4d097ffff,709,7,Ward 7
+8929ac4d09bffff,710,7,Ward 7
+8929ac4d0a3ffff,711,7,Ward 7
+8929ac4d0a7ffff,712,7,Ward 7
+8929ac4d0abffff,713,7,Ward 7
+8929ac4d0afffff,714,7,Ward 7
+8929ac4d0b3ffff,715,7,Ward 7
+8929ac4d0b7ffff,716,7,Ward 7
+8929ac4d0bbffff,717,7,Ward 7
+8929ac4d0c3ffff,718,7,Ward 7
+8929ac4d0c7ffff,719,7,Ward 7
+8929ac4d0cbffff,720,7,Ward 7
+8929ac4d0cfffff,721,7,Ward 7
+8929ac4d0d3ffff,722,7,Ward 7
+8929ac4d0d7ffff,723,7,Ward 7
+8929ac4d0dbffff,724,7,Ward 7
+8929ac4d103ffff,725,5,Ward 5
+8929ac4d107ffff,726,5,Ward 5
+8929ac4d10bffff,727,5,Ward 5
+8929ac4d10fffff,728,5,Ward 5
+8929ac4d113ffff,729,5,Ward 5
+8929ac4d117ffff,730,5,Ward 5
+8929ac4d11bffff,731,5,Ward 5
+8929ac4d123ffff,732,5,Ward 5
+8929ac4d127ffff,733,5,Ward 5
+8929ac4d12bffff,734,5,Ward 5
+8929ac4d12fffff,735,5,Ward 5
+8929ac4d133ffff,736,5,Ward 5
+8929ac4d137ffff,737,5,Ward 5
+8929ac4d13bffff,738,5,Ward 5
+8929ac4d143ffff,739,6,Ward 6
+8929ac4d147ffff,740,5,Ward 5
+8929ac4d14bffff,741,6,Ward 6
+8929ac4d14fffff,742,6,Ward 6
+8929ac4d153ffff,743,6,Ward 6
+8929ac4d157ffff,744,5,Ward 5
+8929ac4d15bffff,745,6,Ward 6
+8929ac4d163ffff,746,5,Ward 5
+8929ac4d167ffff,747,5,Ward 5
+8929ac4d16bffff,748,5,Ward 5
+8929ac4d16fffff,749,5,Ward 5
+8929ac4d173ffff,750,5,Ward 5
+8929ac4d177ffff,751,5,Ward 5
+8929ac4d17bffff,752,5,Ward 5
+8929ac4d183ffff,753,5,Ward 5
+8929ac4d187ffff,754,5,Ward 5
+8929ac4d18bffff,755,5,Ward 5
+8929ac4d18fffff,756,5,Ward 5
+8929ac4d193ffff,757,5,Ward 5
+8929ac4d197ffff,758,5,Ward 5
+8929ac4d19bffff,759,5,Ward 5
+8929ac4d1a3ffff,760,5,Ward 5
+8929ac4d1a7ffff,761,5,Ward 5
+8929ac4d1abffff,762,5,Ward 5
+8929ac4d1afffff,763,5,Ward 5
+8929ac4d1b3ffff,764,5,Ward 5
+8929ac4d1b7ffff,765,5,Ward 5
+8929ac4d1bbffff,766,5,Ward 5
+8929ac4d1c3ffff,767,5,Ward 5
+8929ac4d1c7ffff,768,5,Ward 5
+8929ac4d1cbffff,769,6,Ward 6
+8929ac4d1cfffff,770,5,Ward 5
+8929ac4d1d3ffff,771,5,Ward 5
+8929ac4d1d7ffff,772,5,Ward 5
+8929ac4d1dbffff,773,6,Ward 6
+8929ac4d203ffff,774,7,Ward 7
+8929ac4d207ffff,775,7,Ward 7
+8929ac4d20bffff,776,7,Ward 7
+8929ac4d20fffff,777,7,Ward 7
+8929ac4d213ffff,778,7,Ward 7
+8929ac4d217ffff,779,7,Ward 7
+8929ac4d21bffff,780,7,Ward 7
+8929ac4d223ffff,781,6,Ward 6
+8929ac4d227ffff,782,6,Ward 6
+8929ac4d22bffff,783,6,Ward 6
+8929ac4d22fffff,784,6,Ward 6
+8929ac4d233ffff,785,6,Ward 6
+8929ac4d237ffff,786,6,Ward 6
+8929ac4d23bffff,787,6,Ward 6
+8929ac4d243ffff,788,7,Ward 7
+8929ac4d247ffff,789,7,Ward 7
+8929ac4d24bffff,790,7,Ward 7
+8929ac4d24fffff,791,7,Ward 7
+8929ac4d253ffff,792,7,Ward 7
+8929ac4d257ffff,793,7,Ward 7
+8929ac4d25bffff,794,7,Ward 7
+8929ac4d263ffff,795,6,Ward 6
+8929ac4d267ffff,796,6,Ward 6
+8929ac4d26bffff,797,6,Ward 6
+8929ac4d26fffff,798,6,Ward 6
+8929ac4d273ffff,799,6,Ward 6
+8929ac4d277ffff,800,6,Ward 6
+8929ac4d27bffff,801,7,Ward 7
+8929ac4d283ffff,802,7,Ward 7
+8929ac4d287ffff,803,7,Ward 7
+8929ac4d28bffff,804,7,Ward 7
+8929ac4d28fffff,805,7,Ward 7
+8929ac4d293ffff,806,7,Ward 7
+8929ac4d297ffff,807,7,Ward 7
+8929ac4d29bffff,808,7,Ward 7
+8929ac4d2a3ffff,809,7,Ward 7
+8929ac4d2a7ffff,810,7,Ward 7
+8929ac4d2abffff,811,7,Ward 7
+8929ac4d2afffff,812,6,Ward 6
+8929ac4d2b3ffff,813,7,Ward 7
+8929ac4d2b7ffff,814,7,Ward 7
+8929ac4d2bbffff,815,7,Ward 7
+8929ac4d2c3ffff,816,7,Ward 7
+8929ac4d2c7ffff,817,7,Ward 7
+8929ac4d2cbffff,818,7,Ward 7
+8929ac4d2cfffff,819,7,Ward 7
+8929ac4d2d3ffff,820,7,Ward 7
+8929ac4d2d7ffff,821,7,Ward 7
+8929ac4d2dbffff,822,7,Ward 7
+8929ac4d303ffff,823,6,Ward 6
+8929ac4d307ffff,824,6,Ward 6
+8929ac4d30bffff,825,6,Ward 6
+8929ac4d30fffff,826,6,Ward 6
+8929ac4d313ffff,827,6,Ward 6
+8929ac4d317ffff,828,6,Ward 6
+8929ac4d31bffff,829,6,Ward 6
+8929ac4d323ffff,830,6,Ward 6
+8929ac4d327ffff,831,6,Ward 6
+8929ac4d32bffff,832,6,Ward 6
+8929ac4d32fffff,833,6,Ward 6
+8929ac4d333ffff,834,6,Ward 6
+8929ac4d337ffff,835,6,Ward 6
+8929ac4d33bffff,836,6,Ward 6
+8929ac4d343ffff,837,6,Ward 6
+8929ac4d347ffff,838,6,Ward 6
+8929ac4d34bffff,839,6,Ward 6
+8929ac4d34fffff,840,6,Ward 6
+8929ac4d353ffff,841,6,Ward 6
+8929ac4d357ffff,842,6,Ward 6
+8929ac4d35bffff,843,6,Ward 6
+8929ac4d363ffff,844,6,Ward 6
+8929ac4d367ffff,845,6,Ward 6
+8929ac4d36bffff,846,6,Ward 6
+8929ac4d36fffff,847,6,Ward 6
+8929ac4d373ffff,848,6,Ward 6
+8929ac4d377ffff,849,6,Ward 6
+8929ac4d37bffff,850,6,Ward 6
+8929ac4d383ffff,851,6,Ward 6
+8929ac4d387ffff,852,6,Ward 6
+8929ac4d38bffff,853,6,Ward 6
+8929ac4d38fffff,854,6,Ward 6
+8929ac4d393ffff,855,6,Ward 6
+8929ac4d397ffff,856,6,Ward 6
+8929ac4d39bffff,857,6,Ward 6
+8929ac4d3a3ffff,858,6,Ward 6
+8929ac4d3a7ffff,859,6,Ward 6
+8929ac4d3abffff,860,6,Ward 6
+8929ac4d3afffff,861,6,Ward 6
+8929ac4d3b3ffff,862,6,Ward 6
+8929ac4d3b7ffff,863,6,Ward 6
+8929ac4d3bbffff,864,6,Ward 6
+8929ac4d3c3ffff,865,6,Ward 6
+8929ac4d3c7ffff,866,6,Ward 6
+8929ac4d3cbffff,867,6,Ward 6
+8929ac4d3cfffff,868,6,Ward 6
+8929ac4d3d3ffff,869,6,Ward 6
+8929ac4d3d7ffff,870,6,Ward 6
+8929ac4d3dbffff,871,6,Ward 6
+8929ac4d403ffff,872,7,Ward 7
+8929ac4d407ffff,873,7,Ward 7
+8929ac4d40bffff,874,7,Ward 7
+8929ac4d40fffff,875,7,Ward 7
+8929ac4d413ffff,876,7,Ward 7
+8929ac4d417ffff,877,7,Ward 7
+8929ac4d41bffff,878,7,Ward 7
+8929ac4d423ffff,879,7,Ward 7
+8929ac4d427ffff,880,7,Ward 7
+8929ac4d42bffff,881,7,Ward 7
+8929ac4d42fffff,882,7,Ward 7
+8929ac4d433ffff,883,7,Ward 7
+8929ac4d437ffff,884,7,Ward 7
+8929ac4d43bffff,885,7,Ward 7
+8929ac4d443ffff,886,7,Ward 7
+8929ac4d447ffff,887,7,Ward 7
+8929ac4d44bffff,888,7,Ward 7
+8929ac4d44fffff,889,7,Ward 7
+8929ac4d453ffff,890,7,Ward 7
+8929ac4d457ffff,891,7,Ward 7
+8929ac4d45bffff,892,7,Ward 7
+8929ac4d463ffff,893,7,Ward 7
+8929ac4d467ffff,894,7,Ward 7
+8929ac4d46bffff,895,7,Ward 7
+8929ac4d46fffff,896,7,Ward 7
+8929ac4d473ffff,897,7,Ward 7
+8929ac4d477ffff,898,7,Ward 7
+8929ac4d47bffff,899,7,Ward 7
+8929ac4d483ffff,900,7,Ward 7
+8929ac4d487ffff,901,7,Ward 7
+8929ac4d48bffff,902,7,Ward 7
+8929ac4d48fffff,903,7,Ward 7
+8929ac4d493ffff,904,7,Ward 7
+8929ac4d497ffff,905,7,Ward 7
+8929ac4d49bffff,906,7,Ward 7
+8929ac4d4a3ffff,907,7,Ward 7
+8929ac4d4a7ffff,908,7,Ward 7
+8929ac4d4abffff,909,7,Ward 7
+8929ac4d4afffff,910,7,Ward 7
+8929ac4d4b7ffff,911,7,Ward 7
+8929ac4d4bbffff,912,7,Ward 7
+8929ac4d4c3ffff,913,7,Ward 7
+8929ac4d4c7ffff,914,7,Ward 7
+8929ac4d4cbffff,915,7,Ward 7
+8929ac4d4cfffff,916,7,Ward 7
+8929ac4d4d3ffff,917,7,Ward 7
+8929ac4d4d7ffff,918,7,Ward 7
+8929ac4d4dbffff,919,7,Ward 7
+8929ac4d503ffff,920,5,Ward 5
+8929ac4d507ffff,921,5,Ward 5
+8929ac4d50bffff,922,5,Ward 5
+8929ac4d50fffff,923,5,Ward 5
+8929ac4d513ffff,924,5,Ward 5
+8929ac4d51bffff,925,5,Ward 5
+8929ac4d523ffff,926,5,Ward 5
+8929ac4d527ffff,927,5,Ward 5
+8929ac4d52bffff,928,5,Ward 5
+8929ac4d52fffff,929,5,Ward 5
+8929ac4d533ffff,930,5,Ward 5
+8929ac4d537ffff,931,5,Ward 5
+8929ac4d53bffff,932,5,Ward 5
+8929ac4d543ffff,933,7,Ward 7
+8929ac4d547ffff,934,5,Ward 5
+8929ac4d54bffff,935,7,Ward 7
+8929ac4d54fffff,936,7,Ward 7
+8929ac4d553ffff,937,7,Ward 7
+8929ac4d557ffff,938,5,Ward 5
+8929ac4d55bffff,939,7,Ward 7
+8929ac4d563ffff,940,5,Ward 5
+8929ac4d567ffff,941,5,Ward 5
+8929ac4d56bffff,942,5,Ward 5
+8929ac4d56fffff,943,5,Ward 5
+8929ac4d573ffff,944,5,Ward 5
+8929ac4d577ffff,945,5,Ward 5
+8929ac4d57bffff,946,5,Ward 5
+8929ac4d583ffff,947,5,Ward 5
+8929ac4d58bffff,948,5,Ward 5
+8929ac4d593ffff,949,5,Ward 5
+8929ac4d59bffff,950,5,Ward 5
+8929ac4d5a3ffff,951,5,Ward 5
+8929ac4d5a7ffff,952,5,Ward 5
+8929ac4d5abffff,953,5,Ward 5
+8929ac4d5afffff,954,5,Ward 5
+8929ac4d5b3ffff,955,5,Ward 5
+8929ac4d5b7ffff,956,5,Ward 5
+8929ac4d5c3ffff,957,5,Ward 5
+8929ac4d5c7ffff,958,5,Ward 5
+8929ac4d5cbffff,959,7,Ward 7
+8929ac4d5cfffff,960,5,Ward 5
+8929ac4d5d3ffff,961,5,Ward 5
+8929ac4d5d7ffff,962,5,Ward 5
+8929ac4d5dbffff,963,7,Ward 7
+8929ac4d603ffff,964,7,Ward 7
+8929ac4d607ffff,965,7,Ward 7
+8929ac4d60bffff,966,7,Ward 7
+8929ac4d60fffff,967,7,Ward 7
+8929ac4d613ffff,968,7,Ward 7
+8929ac4d617ffff,969,7,Ward 7
+8929ac4d61bffff,970,7,Ward 7
+8929ac4d623ffff,971,7,Ward 7
+8929ac4d627ffff,972,7,Ward 7
+8929ac4d62bffff,973,7,Ward 7
+8929ac4d62fffff,974,7,Ward 7
+8929ac4d633ffff,975,7,Ward 7
+8929ac4d637ffff,976,7,Ward 7
+8929ac4d63bffff,977,7,Ward 7
+8929ac4d643ffff,978,7,Ward 7
+8929ac4d647ffff,979,7,Ward 7
+8929ac4d64bffff,980,7,Ward 7
+8929ac4d64fffff,981,7,Ward 7
+8929ac4d653ffff,982,7,Ward 7
+8929ac4d657ffff,983,7,Ward 7
+8929ac4d65bffff,984,7,Ward 7
+8929ac4d663ffff,985,7,Ward 7
+8929ac4d667ffff,986,7,Ward 7
+8929ac4d66bffff,987,7,Ward 7
+8929ac4d66fffff,988,7,Ward 7
+8929ac4d673ffff,989,7,Ward 7
+8929ac4d677ffff,990,7,Ward 7
+8929ac4d67bffff,991,7,Ward 7
+8929ac4d683ffff,992,7,Ward 7
+8929ac4d687ffff,993,7,Ward 7
+8929ac4d68bffff,994,7,Ward 7
+8929ac4d68fffff,995,7,Ward 7
+8929ac4d693ffff,996,7,Ward 7
+8929ac4d697ffff,997,7,Ward 7
+8929ac4d69bffff,998,7,Ward 7
+8929ac4d6a3ffff,999,7,Ward 7
+8929ac4d6a7ffff,1000,7,Ward 7
+8929ac4d6abffff,1001,7,Ward 7
+8929ac4d6afffff,1002,7,Ward 7
+8929ac4d6b3ffff,1003,7,Ward 7
+8929ac4d6b7ffff,1004,7,Ward 7
+8929ac4d6bbffff,1005,7,Ward 7
+8929ac4d6c3ffff,1006,7,Ward 7
+8929ac4d6c7ffff,1007,7,Ward 7
+8929ac4d6cbffff,1008,7,Ward 7
+8929ac4d6cfffff,1009,7,Ward 7
+8929ac4d6d3ffff,1010,7,Ward 7
+8929ac4d6d7ffff,1011,7,Ward 7
+8929ac4d6dbffff,1012,7,Ward 7
+8929ac4d803ffff,1013,5,Ward 5
+8929ac4d807ffff,1014,5,Ward 5
+8929ac4d80bffff,1015,5,Ward 5
+8929ac4d80fffff,1016,5,Ward 5
+8929ac4d813ffff,1017,5,Ward 5
+8929ac4d817ffff,1018,5,Ward 5
+8929ac4d81bffff,1019,5,Ward 5
+8929ac4d823ffff,1020,5,Ward 5
+8929ac4d827ffff,1021,5,Ward 5
+8929ac4d82bffff,1022,5,Ward 5
+8929ac4d82fffff,1023,5,Ward 5
+8929ac4d833ffff,1024,5,Ward 5
+8929ac4d837ffff,1025,5,Ward 5
+8929ac4d83bffff,1026,5,Ward 5
+8929ac4d843ffff,1027,5,Ward 5
+8929ac4d847ffff,1028,5,Ward 5
+8929ac4d84bffff,1029,5,Ward 5
+8929ac4d84fffff,1030,5,Ward 5
+8929ac4d853ffff,1031,5,Ward 5
+8929ac4d857ffff,1032,5,Ward 5
+8929ac4d85bffff,1033,5,Ward 5
+8929ac4d863ffff,1034,5,Ward 5
+8929ac4d867ffff,1035,5,Ward 5
+8929ac4d86bffff,1036,5,Ward 5
+8929ac4d86fffff,1037,4,Ward 4
+8929ac4d873ffff,1038,5,Ward 5
+8929ac4d877ffff,1039,5,Ward 5
+8929ac4d87bffff,1040,5,Ward 5
+8929ac4d883ffff,1041,5,Ward 5
+8929ac4d887ffff,1042,5,Ward 5
+8929ac4d88bffff,1043,5,Ward 5
+8929ac4d88fffff,1044,5,Ward 5
+8929ac4d893ffff,1045,5,Ward 5
+8929ac4d897ffff,1046,5,Ward 5
+8929ac4d89bffff,1047,5,Ward 5
+8929ac4d8a3ffff,1048,5,Ward 5
+8929ac4d8a7ffff,1049,5,Ward 5
+8929ac4d8abffff,1050,5,Ward 5
+8929ac4d8afffff,1051,5,Ward 5
+8929ac4d8b3ffff,1052,5,Ward 5
+8929ac4d8b7ffff,1053,5,Ward 5
+8929ac4d8bbffff,1054,5,Ward 5
+8929ac4d8c3ffff,1055,5,Ward 5
+8929ac4d8c7ffff,1056,5,Ward 5
+8929ac4d8cbffff,1057,5,Ward 5
+8929ac4d8cfffff,1058,5,Ward 5
+8929ac4d8d3ffff,1059,5,Ward 5
+8929ac4d8d7ffff,1060,5,Ward 5
+8929ac4d8dbffff,1061,5,Ward 5
+8929ac4d903ffff,1062,5,Ward 5
+8929ac4d907ffff,1063,5,Ward 5
+8929ac4d90bffff,1064,5,Ward 5
+8929ac4d90fffff,1065,5,Ward 5
+8929ac4d913ffff,1066,5,Ward 5
+8929ac4d917ffff,1067,5,Ward 5
+8929ac4d91bffff,1068,5,Ward 5
+8929ac4d923ffff,1069,5,Ward 5
+8929ac4d927ffff,1070,5,Ward 5
+8929ac4d92bffff,1071,5,Ward 5
+8929ac4d92fffff,1072,5,Ward 5
+8929ac4d933ffff,1073,5,Ward 5
+8929ac4d937ffff,1074,5,Ward 5
+8929ac4d93bffff,1075,5,Ward 5
+8929ac4d943ffff,1076,5,Ward 5
+8929ac4d947ffff,1077,5,Ward 5
+8929ac4d94bffff,1078,5,Ward 5
+8929ac4d94fffff,1079,5,Ward 5
+8929ac4d953ffff,1080,5,Ward 5
+8929ac4d957ffff,1081,5,Ward 5
+8929ac4d95bffff,1082,5,Ward 5
+8929ac4d963ffff,1083,,
+8929ac4d967ffff,1084,,
+8929ac4d96bffff,1085,5,Ward 5
+8929ac4d96fffff,1086,,
+8929ac4d973ffff,1087,5,Ward 5
+8929ac4d977ffff,1088,5,Ward 5
+8929ac4d97bffff,1089,5,Ward 5
+8929ac4d983ffff,1090,5,Ward 5
+8929ac4d987ffff,1091,5,Ward 5
+8929ac4d98bffff,1092,5,Ward 5
+8929ac4d98fffff,1093,5,Ward 5
+8929ac4d993ffff,1094,5,Ward 5
+8929ac4d997ffff,1095,5,Ward 5
+8929ac4d99bffff,1096,5,Ward 5
+8929ac4d9a3ffff,1097,5,Ward 5
+8929ac4d9a7ffff,1098,5,Ward 5
+8929ac4d9abffff,1099,5,Ward 5
+8929ac4d9afffff,1100,5,Ward 5
+8929ac4d9b3ffff,1101,5,Ward 5
+8929ac4d9b7ffff,1102,5,Ward 5
+8929ac4d9bbffff,1103,5,Ward 5
+8929ac4d9c3ffff,1104,5,Ward 5
+8929ac4d9c7ffff,1105,5,Ward 5
+8929ac4d9cbffff,1106,5,Ward 5
+8929ac4d9cfffff,1107,5,Ward 5
+8929ac4d9d3ffff,1108,5,Ward 5
+8929ac4d9d7ffff,1109,5,Ward 5
+8929ac4d9dbffff,1110,5,Ward 5
+8929ac4da03ffff,1111,5,Ward 5
+8929ac4da07ffff,1112,5,Ward 5
+8929ac4da0bffff,1113,5,Ward 5
+8929ac4da0fffff,1114,5,Ward 5
+8929ac4da13ffff,1115,5,Ward 5
+8929ac4da17ffff,1116,5,Ward 5
+8929ac4da1bffff,1117,5,Ward 5
+8929ac4da23ffff,1118,4,Ward 4
+8929ac4da27ffff,1119,4,Ward 4
+8929ac4da2bffff,1120,4,Ward 4
+8929ac4da2fffff,1121,4,Ward 4
+8929ac4da33ffff,1122,5,Ward 5
+8929ac4da37ffff,1123,4,Ward 4
+8929ac4da3bffff,1124,4,Ward 4
+8929ac4da43ffff,1125,6,Ward 6
+8929ac4da47ffff,1126,5,Ward 5
+8929ac4da4bffff,1127,6,Ward 6
+8929ac4da4fffff,1128,6,Ward 6
+8929ac4da53ffff,1129,6,Ward 6
+8929ac4da57ffff,1130,5,Ward 5
+8929ac4da5bffff,1131,6,Ward 6
+8929ac4da63ffff,1132,4,Ward 4
+8929ac4da67ffff,1133,4,Ward 4
+8929ac4da6bffff,1134,4,Ward 4
+8929ac4da6fffff,1135,4,Ward 4
+8929ac4da73ffff,1136,4,Ward 4
+8929ac4da77ffff,1137,4,Ward 4
+8929ac4da7bffff,1138,4,Ward 4
+8929ac4da83ffff,1139,5,Ward 5
+8929ac4da87ffff,1140,5,Ward 5
+8929ac4da8bffff,1141,5,Ward 5
+8929ac4da8fffff,1142,5,Ward 5
+8929ac4da93ffff,1143,5,Ward 5
+8929ac4da97ffff,1144,5,Ward 5
+8929ac4da9bffff,1145,5,Ward 5
+8929ac4daa3ffff,1146,5,Ward 5
+8929ac4daa7ffff,1147,5,Ward 5
+8929ac4daabffff,1148,5,Ward 5
+8929ac4daafffff,1149,5,Ward 5
+8929ac4dab3ffff,1150,5,Ward 5
+8929ac4dab7ffff,1151,5,Ward 5
+8929ac4dabbffff,1152,5,Ward 5
+8929ac4dac3ffff,1153,5,Ward 5
+8929ac4dac7ffff,1154,5,Ward 5
+8929ac4dacbffff,1155,6,Ward 6
+8929ac4dacfffff,1156,5,Ward 5
+8929ac4dad3ffff,1157,6,Ward 6
+8929ac4dad7ffff,1158,5,Ward 5
+8929ac4dadbffff,1159,6,Ward 6
+8929ac4db03ffff,1160,4,Ward 4
+8929ac4db07ffff,1161,5,Ward 5
+8929ac4db0bffff,1162,4,Ward 4
+8929ac4db0fffff,1163,4,Ward 4
+8929ac4db13ffff,1164,4,Ward 4
+8929ac4db17ffff,1165,4,Ward 4
+8929ac4db1bffff,1166,4,Ward 4
+8929ac4db23ffff,1167,5,Ward 5
+8929ac4db27ffff,1168,5,Ward 5
+8929ac4db2bffff,1169,5,Ward 5
+8929ac4db2fffff,1170,5,Ward 5
+8929ac4db33ffff,1171,5,Ward 5
+8929ac4db37ffff,1172,5,Ward 5
+8929ac4db3bffff,1173,5,Ward 5
+8929ac4db43ffff,1174,4,Ward 4
+8929ac4db47ffff,1175,4,Ward 4
+8929ac4db4bffff,1176,4,Ward 4
+8929ac4db4fffff,1177,4,Ward 4
+8929ac4db53ffff,1178,4,Ward 4
+8929ac4db57ffff,1179,4,Ward 4
+8929ac4db5bffff,1180,4,Ward 4
+8929ac4db63ffff,1181,4,Ward 4
+8929ac4db67ffff,1182,4,Ward 4
+8929ac4db6bffff,1183,,
+8929ac4db6fffff,1184,4,Ward 4
+8929ac4db73ffff,1185,4,Ward 4
+8929ac4db77ffff,1186,4,Ward 4
+8929ac4db7bffff,1187,4,Ward 4
+8929ac4db83ffff,1188,4,Ward 4
+8929ac4db87ffff,1189,4,Ward 4
+8929ac4db8bffff,1190,4,Ward 4
+8929ac4db8fffff,1191,4,Ward 4
+8929ac4db93ffff,1192,5,Ward 5
+8929ac4db97ffff,1193,5,Ward 5
+8929ac4db9bffff,1194,4,Ward 4
+8929ac4dba3ffff,1195,5,Ward 5
+8929ac4dba7ffff,1196,5,Ward 5
+8929ac4dbabffff,1197,5,Ward 5
+8929ac4dbafffff,1198,5,Ward 5
+8929ac4dbb3ffff,1199,5,Ward 5
+8929ac4dbb7ffff,1200,5,Ward 5
+8929ac4dbbbffff,1201,4,Ward 4
+8929ac4dbc3ffff,1202,4,Ward 4
+8929ac4dbc7ffff,1203,4,Ward 4
+8929ac4dbcbffff,1204,4,Ward 4
+8929ac4dbcfffff,1205,4,Ward 4
+8929ac4dbd3ffff,1206,5,Ward 5
+8929ac4dbd7ffff,1207,4,Ward 4
+8929ac4dbdbffff,1208,5,Ward 5
+8929ac4dc03ffff,1209,5,Ward 5
+8929ac4dc07ffff,1210,5,Ward 5
+8929ac4dc0bffff,1211,5,Ward 5
+8929ac4dc0fffff,1212,5,Ward 5
+8929ac4dc13ffff,1213,5,Ward 5
+8929ac4dc17ffff,1214,5,Ward 5
+8929ac4dc1bffff,1215,5,Ward 5
+8929ac4dc23ffff,1216,5,Ward 5
+8929ac4dc27ffff,1217,5,Ward 5
+8929ac4dc2bffff,1218,5,Ward 5
+8929ac4dc2fffff,1219,5,Ward 5
+8929ac4dc33ffff,1220,5,Ward 5
+8929ac4dc37ffff,1221,5,Ward 5
+8929ac4dc3bffff,1222,5,Ward 5
+8929ac4dc43ffff,1223,5,Ward 5
+8929ac4dc47ffff,1224,5,Ward 5
+8929ac4dc4bffff,1225,5,Ward 5
+8929ac4dc4fffff,1226,5,Ward 5
+8929ac4dc53ffff,1227,5,Ward 5
+8929ac4dc57ffff,1228,5,Ward 5
+8929ac4dc5bffff,1229,5,Ward 5
+8929ac4dc63ffff,1230,5,Ward 5
+8929ac4dc67ffff,1231,5,Ward 5
+8929ac4dc6bffff,1232,5,Ward 5
+8929ac4dc6fffff,1233,5,Ward 5
+8929ac4dc73ffff,1234,5,Ward 5
+8929ac4dc77ffff,1235,5,Ward 5
+8929ac4dc7bffff,1236,5,Ward 5
+8929ac4dc83ffff,1237,5,Ward 5
+8929ac4dc87ffff,1238,5,Ward 5
+8929ac4dc8bffff,1239,5,Ward 5
+8929ac4dc8fffff,1240,5,Ward 5
+8929ac4dc93ffff,1241,5,Ward 5
+8929ac4dc97ffff,1242,5,Ward 5
+8929ac4dc9bffff,1243,5,Ward 5
+8929ac4dca3ffff,1244,5,Ward 5
+8929ac4dca7ffff,1245,5,Ward 5
+8929ac4dcabffff,1246,5,Ward 5
+8929ac4dcafffff,1247,5,Ward 5
+8929ac4dcb3ffff,1248,5,Ward 5
+8929ac4dcb7ffff,1249,5,Ward 5
+8929ac4dcbbffff,1250,5,Ward 5
+8929ac4dcc3ffff,1251,5,Ward 5
+8929ac4dcc7ffff,1252,5,Ward 5
+8929ac4dccbffff,1253,5,Ward 5
+8929ac4dccfffff,1254,5,Ward 5
+8929ac4dcd3ffff,1255,5,Ward 5
+8929ac4dcd7ffff,1256,5,Ward 5
+8929ac4dcdbffff,1257,5,Ward 5
+8929ac4dd03ffff,1258,5,Ward 5
+8929ac4dd07ffff,1259,5,Ward 5
+8929ac4dd0bffff,1260,5,Ward 5
+8929ac4dd0fffff,1261,5,Ward 5
+8929ac4dd13ffff,1262,5,Ward 5
+8929ac4dd17ffff,1263,5,Ward 5
+8929ac4dd1bffff,1264,5,Ward 5
+8929ac4dd23ffff,1265,5,Ward 5
+8929ac4dd27ffff,1266,5,Ward 5
+8929ac4dd2bffff,1267,5,Ward 5
+8929ac4dd2fffff,1268,5,Ward 5
+8929ac4dd33ffff,1269,5,Ward 5
+8929ac4dd37ffff,1270,5,Ward 5
+8929ac4dd3bffff,1271,5,Ward 5
+8929ac4dd43ffff,1272,5,Ward 5
+8929ac4dd47ffff,1273,5,Ward 5
+8929ac4dd4bffff,1274,5,Ward 5
+8929ac4dd4fffff,1275,5,Ward 5
+8929ac4dd53ffff,1276,5,Ward 5
+8929ac4dd57ffff,1277,5,Ward 5
+8929ac4dd5bffff,1278,5,Ward 5
+8929ac4dd63ffff,1279,5,Ward 5
+8929ac4dd67ffff,1280,5,Ward 5
+8929ac4dd6bffff,1281,5,Ward 5
+8929ac4dd6fffff,1282,5,Ward 5
+8929ac4dd73ffff,1283,5,Ward 5
+8929ac4dd77ffff,1284,5,Ward 5
+8929ac4dd7bffff,1285,5,Ward 5
+8929ac4dd83ffff,1286,5,Ward 5
+8929ac4dd87ffff,1287,5,Ward 5
+8929ac4dd8bffff,1288,5,Ward 5
+8929ac4dd8fffff,1289,5,Ward 5
+8929ac4dd93ffff,1290,5,Ward 5
+8929ac4dd97ffff,1291,5,Ward 5
+8929ac4dd9bffff,1292,5,Ward 5
+8929ac4dda3ffff,1293,5,Ward 5
+8929ac4dda7ffff,1294,5,Ward 5
+8929ac4ddabffff,1295,5,Ward 5
+8929ac4ddafffff,1296,5,Ward 5
+8929ac4ddb3ffff,1297,5,Ward 5
+8929ac4ddb7ffff,1298,5,Ward 5
+8929ac4ddbbffff,1299,5,Ward 5
+8929ac4ddc3ffff,1300,5,Ward 5
+8929ac4ddc7ffff,1301,5,Ward 5
+8929ac4ddcbffff,1302,5,Ward 5
+8929ac4ddcfffff,1303,5,Ward 5
+8929ac4ddd3ffff,1304,5,Ward 5
+8929ac4ddd7ffff,1305,5,Ward 5
+8929ac4dddbffff,1306,5,Ward 5
+8929ac4de03ffff,1307,6,Ward 6
+8929ac4de07ffff,1308,5,Ward 5
+8929ac4de0bffff,1309,5,Ward 5
+8929ac4de0fffff,1310,5,Ward 5
+8929ac4de13ffff,1311,6,Ward 6
+8929ac4de17ffff,1312,5,Ward 5
+8929ac4de1bffff,1313,6,Ward 6
+8929ac4de23ffff,1314,5,Ward 5
+8929ac4de27ffff,1315,5,Ward 5
+8929ac4de2bffff,1316,5,Ward 5
+8929ac4de2fffff,1317,5,Ward 5
+8929ac4de33ffff,1318,5,Ward 5
+8929ac4de37ffff,1319,5,Ward 5
+8929ac4de3bffff,1320,5,Ward 5
+8929ac4de43ffff,1321,6,Ward 6
+8929ac4de47ffff,1322,6,Ward 6
+8929ac4de4bffff,1323,6,Ward 6
+8929ac4de4fffff,1324,6,Ward 6
+8929ac4de53ffff,1325,6,Ward 6
+8929ac4de57ffff,1326,6,Ward 6
+8929ac4de5bffff,1327,6,Ward 6
+8929ac4de63ffff,1328,5,Ward 5
+8929ac4de67ffff,1329,5,Ward 5
+8929ac4de6bffff,1330,6,Ward 6
+8929ac4de6fffff,1331,5,Ward 5
+8929ac4de73ffff,1332,5,Ward 5
+8929ac4de77ffff,1333,5,Ward 5
+8929ac4de7bffff,1334,6,Ward 6
+8929ac4de83ffff,1335,6,Ward 6
+8929ac4de87ffff,1336,5,Ward 5
+8929ac4de8bffff,1337,6,Ward 6
+8929ac4de8fffff,1338,6,Ward 6
+8929ac4de93ffff,1339,5,Ward 5
+8929ac4de97ffff,1340,5,Ward 5
+8929ac4de9bffff,1341,6,Ward 6
+8929ac4dea3ffff,1342,5,Ward 5
+8929ac4dea7ffff,1343,5,Ward 5
+8929ac4deabffff,1344,5,Ward 5
+8929ac4deafffff,1345,5,Ward 5
+8929ac4deb3ffff,1346,5,Ward 5
+8929ac4deb7ffff,1347,5,Ward 5
+8929ac4debbffff,1348,5,Ward 5
+8929ac4dec3ffff,1349,6,Ward 6
+8929ac4dec7ffff,1350,6,Ward 6
+8929ac4decbffff,1351,6,Ward 6
+8929ac4decfffff,1352,6,Ward 6
+8929ac4ded3ffff,1353,5,Ward 5
+8929ac4ded7ffff,1354,6,Ward 6
+8929ac4dedbffff,1355,6,Ward 6
+8929ac4f20fffff,1356,,
+8929ac4f223ffff,1357,7,Ward 7
+8929ac4f227ffff,1358,7,Ward 7
+8929ac4f22bffff,1359,7,Ward 7
+8929ac4f22fffff,1360,7,Ward 7
+8929ac4f23bffff,1361,,
+8929ac4f247ffff,1362,,
+8929ac4f24fffff,1363,,
+8929ac4f263ffff,1364,7,Ward 7
+8929ac4f267ffff,1365,7,Ward 7
+8929ac4f26bffff,1366,7,Ward 7
+8929ac4f26fffff,1367,7,Ward 7
+8929ac4f277ffff,1368,7,Ward 7
+8929ac4f27bffff,1369,7,Ward 7
+8929ac4f327ffff,1370,,
+8929ac4f34fffff,1371,7,Ward 7
+8929ac4f363ffff,1372,5,Ward 5
+8929ac4f367ffff,1373,5,Ward 5
+8929ac4f36bffff,1374,5,Ward 5
+8929ac4f36fffff,1375,5,Ward 5
+8929ac4f37bffff,1376,5,Ward 5
+8929ac7b0c3ffff,1377,,
+8929ac7b0cbffff,1378,,
+8929ac7b0cfffff,1379,,
+8929ac7b0dbffff,1380,,
+8929ac7b29bffff,1381,,
+8929ac7b2c3ffff,1382,,
+8929ac7b2c7ffff,1383,,
+8929ac7b2d3ffff,1384,5,Ward 5
+8929ac7b2d7ffff,1385,,
+8929ac7b2dbffff,1386,5,Ward 5
+8929ac7b623ffff,1387,,
+8929ac7b62bffff,1388,5,Ward 5
+8929ac7b62fffff,1389,,
+8929ac7b633ffff,1390,,
+8929ac7b637ffff,1391,5,Ward 5
+8929ac7b63bffff,1392,,
+8929ac7b663ffff,1393,5,Ward 5
+8929ac7b667ffff,1394,,
+8929ac7b66bffff,1395,5,Ward 5
+8929ac7b66fffff,1396,5,Ward 5
+8929ac7b677ffff,1397,5,Ward 5
+8929ac7b67bffff,1398,,
+8929ac7b6afffff,1399,,
+8929aeb0003ffff,1400,2,Ward 2
+8929aeb0007ffff,1401,2,Ward 2
+8929aeb000bffff,1402,,
+8929aeb000fffff,1403,2,Ward 2
+8929aeb0013ffff,1404,2,Ward 2
+8929aeb0017ffff,1405,2,Ward 2
+8929aeb001bffff,1406,,
+8929aeb0023ffff,1407,2,Ward 2
+8929aeb0027ffff,1408,2,Ward 2
+8929aeb002bffff,1409,2,Ward 2
+8929aeb002fffff,1410,2,Ward 2
+8929aeb0033ffff,1411,2,Ward 2
+8929aeb0037ffff,1412,2,Ward 2
+8929aeb003bffff,1413,2,Ward 2
+8929aeb0063ffff,1414,2,Ward 2
+8929aeb0067ffff,1415,2,Ward 2
+8929aeb006fffff,1416,2,Ward 2
+8929aeb0073ffff,1417,2,Ward 2
+8929aeb0077ffff,1418,2,Ward 2
+8929aeb0083ffff,1419,2,Ward 2
+8929aeb0087ffff,1420,2,Ward 2
+8929aeb008bffff,1421,2,Ward 2
+8929aeb008fffff,1422,2,Ward 2
+8929aeb0093ffff,1423,2,Ward 2
+8929aeb0097ffff,1424,2,Ward 2
+8929aeb009bffff,1425,2,Ward 2
+8929aeb00a3ffff,1426,2,Ward 2
+8929aeb00a7ffff,1427,2,Ward 2
+8929aeb00abffff,1428,2,Ward 2
+8929aeb00afffff,1429,2,Ward 2
+8929aeb00b3ffff,1430,2,Ward 2
+8929aeb00b7ffff,1431,2,Ward 2
+8929aeb00bbffff,1432,2,Ward 2
+8929aeb00c3ffff,1433,,
+8929aeb00c7ffff,1434,,
+8929aeb00d3ffff,1435,2,Ward 2
+8929aeb00d7ffff,1436,,
+8929aeb0103ffff,1437,2,Ward 2
+8929aeb0107ffff,1438,2,Ward 2
+8929aeb010bffff,1439,2,Ward 2
+8929aeb010fffff,1440,2,Ward 2
+8929aeb0113ffff,1441,2,Ward 2
+8929aeb0117ffff,1442,2,Ward 2
+8929aeb011bffff,1443,2,Ward 2
+8929aeb0123ffff,1444,3,Ward 3
+8929aeb0127ffff,1445,3,Ward 3
+8929aeb012bffff,1446,3,Ward 3
+8929aeb012fffff,1447,3,Ward 3
+8929aeb0133ffff,1448,2,Ward 2
+8929aeb0137ffff,1449,3,Ward 3
+8929aeb013bffff,1450,2,Ward 2
+8929aeb0143ffff,1451,2,Ward 2
+8929aeb0147ffff,1452,2,Ward 2
+8929aeb014bffff,1453,2,Ward 2
+8929aeb014fffff,1454,2,Ward 2
+8929aeb0153ffff,1455,2,Ward 2
+8929aeb0157ffff,1456,2,Ward 2
+8929aeb015bffff,1457,2,Ward 2
+8929aeb0163ffff,1458,3,Ward 3
+8929aeb0167ffff,1459,3,Ward 3
+8929aeb016bffff,1460,3,Ward 3
+8929aeb016fffff,1461,3,Ward 3
+8929aeb0173ffff,1462,2,Ward 2
+8929aeb0177ffff,1463,3,Ward 3
+8929aeb017bffff,1464,3,Ward 3
+8929aeb0183ffff,1465,2,Ward 2
+8929aeb0187ffff,1466,2,Ward 2
+8929aeb018bffff,1467,2,Ward 2
+8929aeb018fffff,1468,2,Ward 2
+8929aeb0193ffff,1469,2,Ward 2
+8929aeb0197ffff,1470,2,Ward 2
+8929aeb019bffff,1471,2,Ward 2
+8929aeb01a3ffff,1472,2,Ward 2
+8929aeb01a7ffff,1473,2,Ward 2
+8929aeb01abffff,1474,2,Ward 2
+8929aeb01afffff,1475,2,Ward 2
+8929aeb01b3ffff,1476,2,Ward 2
+8929aeb01b7ffff,1477,2,Ward 2
+8929aeb01bbffff,1478,2,Ward 2
+8929aeb01c3ffff,1479,2,Ward 2
+8929aeb01c7ffff,1480,2,Ward 2
+8929aeb01cbffff,1481,2,Ward 2
+8929aeb01cfffff,1482,2,Ward 2
+8929aeb01d3ffff,1483,2,Ward 2
+8929aeb01d7ffff,1484,2,Ward 2
+8929aeb01dbffff,1485,2,Ward 2
+8929aeb0223ffff,1486,,
+8929aeb0227ffff,1487,3,Ward 3
+8929aeb022bffff,1488,3,Ward 3
+8929aeb022fffff,1489,3,Ward 3
+8929aeb0237ffff,1490,,
+8929aeb0267ffff,1491,,
+8929aeb026fffff,1492,3,Ward 3
+8929aeb02afffff,1493,,
+8929aeb0307ffff,1494,,
+8929aeb030bffff,1495,,
+8929aeb0317ffff,1496,,
+8929aeb032bffff,1497,3,Ward 3
+8929aeb033bffff,1498,,
+8929aeb0343ffff,1499,,
+8929aeb0347ffff,1500,3,Ward 3
+8929aeb034bffff,1501,3,Ward 3
+8929aeb034fffff,1502,3,Ward 3
+8929aeb0353ffff,1503,,
+8929aeb0357ffff,1504,,
+8929aeb035bffff,1505,3,Ward 3
+8929aeb0363ffff,1506,3,Ward 3
+8929aeb0367ffff,1507,3,Ward 3
+8929aeb036bffff,1508,3,Ward 3
+8929aeb036fffff,1509,3,Ward 3
+8929aeb0373ffff,1510,,
+8929aeb0377ffff,1511,,
+8929aeb037bffff,1512,3,Ward 3
+8929aeb0383ffff,1513,2,Ward 2
+8929aeb0387ffff,1514,2,Ward 2
+8929aeb038bffff,1515,,
+8929aeb038fffff,1516,,
+8929aeb0393ffff,1517,2,Ward 2
+8929aeb0397ffff,1518,2,Ward 2
+8929aeb039bffff,1519,2,Ward 2
+8929aeb03a3ffff,1520,2,Ward 2
+8929aeb03a7ffff,1521,2,Ward 2
+8929aeb03abffff,1522,2,Ward 2
+8929aeb03afffff,1523,,
+8929aeb03b3ffff,1524,2,Ward 2
+8929aeb03b7ffff,1525,2,Ward 2
+8929aeb03bbffff,1526,2,Ward 2
+8929aeb03c3ffff,1527,,
+8929aeb03cbffff,1528,3,Ward 3
+8929aeb03cfffff,1529,,
+8929aeb03d7ffff,1530,2,Ward 2
+8929aeb03dbffff,1531,3,Ward 3
+8929aeb0403ffff,1532,1,Ward 1
+8929aeb0407ffff,1533,,
+8929aeb040bffff,1534,1,Ward 1
+8929aeb040fffff,1535,2,Ward 2
+8929aeb0413ffff,1536,1,Ward 1
+8929aeb0417ffff,1537,,
+8929aeb041bffff,1538,1,Ward 1
+8929aeb0423ffff,1539,,
+8929aeb0427ffff,1540,2,Ward 2
+8929aeb042bffff,1541,2,Ward 2
+8929aeb042fffff,1542,2,Ward 2
+8929aeb0433ffff,1543,,
+8929aeb0437ffff,1544,,
+8929aeb043bffff,1545,2,Ward 2
+8929aeb0443ffff,1546,1,Ward 1
+8929aeb0447ffff,1547,1,Ward 1
+8929aeb044bffff,1548,2,Ward 2
+8929aeb044fffff,1549,1,Ward 1
+8929aeb0453ffff,1550,1,Ward 1
+8929aeb0457ffff,1551,1,Ward 1
+8929aeb045bffff,1552,1,Ward 1
+8929aeb0463ffff,1553,2,Ward 2
+8929aeb0467ffff,1554,2,Ward 2
+8929aeb046bffff,1555,2,Ward 2
+8929aeb046fffff,1556,2,Ward 2
+8929aeb0473ffff,1557,2,Ward 2
+8929aeb0477ffff,1558,2,Ward 2
+8929aeb047bffff,1559,2,Ward 2
+8929aeb0483ffff,1560,1,Ward 1
+8929aeb0487ffff,1561,1,Ward 1
+8929aeb048bffff,1562,1,Ward 1
+8929aeb048fffff,1563,1,Ward 1
+8929aeb0493ffff,1564,1,Ward 1
+8929aeb0497ffff,1565,1,Ward 1
+8929aeb049bffff,1566,1,Ward 1
+8929aeb04a3ffff,1567,,
+8929aeb04a7ffff,1568,,
+8929aeb04abffff,1569,,
+8929aeb04afffff,1570,2,Ward 2
+8929aeb04b3ffff,1571,1,Ward 1
+8929aeb04b7ffff,1572,,
+8929aeb04bbffff,1573,,
+8929aeb04c3ffff,1574,1,Ward 1
+8929aeb04c7ffff,1575,1,Ward 1
+8929aeb04cbffff,1576,1,Ward 1
+8929aeb04cfffff,1577,1,Ward 1
+8929aeb04d3ffff,1578,1,Ward 1
+8929aeb04d7ffff,1579,1,Ward 1
+8929aeb04dbffff,1580,1,Ward 1
+8929aeb0503ffff,1581,2,Ward 2
+8929aeb0507ffff,1582,2,Ward 2
+8929aeb050bffff,1583,2,Ward 2
+8929aeb050fffff,1584,2,Ward 2
+8929aeb0513ffff,1585,2,Ward 2
+8929aeb0517ffff,1586,2,Ward 2
+8929aeb051bffff,1587,2,Ward 2
+8929aeb0523ffff,1588,2,Ward 2
+8929aeb0527ffff,1589,2,Ward 2
+8929aeb052bffff,1590,2,Ward 2
+8929aeb052fffff,1591,2,Ward 2
+8929aeb0533ffff,1592,2,Ward 2
+8929aeb0537ffff,1593,2,Ward 2
+8929aeb053bffff,1594,2,Ward 2
+8929aeb0543ffff,1595,2,Ward 2
+8929aeb0547ffff,1596,2,Ward 2
+8929aeb054bffff,1597,2,Ward 2
+8929aeb054fffff,1598,2,Ward 2
+8929aeb0553ffff,1599,2,Ward 2
+8929aeb0557ffff,1600,2,Ward 2
+8929aeb055bffff,1601,2,Ward 2
+8929aeb0563ffff,1602,2,Ward 2
+8929aeb0567ffff,1603,2,Ward 2
+8929aeb056bffff,1604,2,Ward 2
+8929aeb056fffff,1605,2,Ward 2
+8929aeb0573ffff,1606,2,Ward 2
+8929aeb0577ffff,1607,2,Ward 2
+8929aeb057bffff,1608,2,Ward 2
+8929aeb0583ffff,1609,2,Ward 2
+8929aeb0587ffff,1610,2,Ward 2
+8929aeb058bffff,1611,2,Ward 2
+8929aeb058fffff,1612,2,Ward 2
+8929aeb0593ffff,1613,2,Ward 2
+8929aeb0597ffff,1614,2,Ward 2
+8929aeb059bffff,1615,,
+8929aeb05a3ffff,1616,2,Ward 2
+8929aeb05a7ffff,1617,2,Ward 2
+8929aeb05abffff,1618,2,Ward 2
+8929aeb05afffff,1619,2,Ward 2
+8929aeb05b3ffff,1620,2,Ward 2
+8929aeb05b7ffff,1621,2,Ward 2
+8929aeb05bbffff,1622,2,Ward 2
+8929aeb05c3ffff,1623,2,Ward 2
+8929aeb05c7ffff,1624,2,Ward 2
+8929aeb05cbffff,1625,2,Ward 2
+8929aeb05cfffff,1626,2,Ward 2
+8929aeb05d3ffff,1627,,
+8929aeb05d7ffff,1628,,
+8929aeb05dbffff,1629,2,Ward 2
+8929aeb0603ffff,1630,2,Ward 2
+8929aeb0607ffff,1631,,
+8929aeb060bffff,1632,,
+8929aeb060fffff,1633,,
+8929aeb0613ffff,1634,2,Ward 2
+8929aeb0617ffff,1635,2,Ward 2
+8929aeb061bffff,1636,2,Ward 2
+8929aeb0633ffff,1637,,
+8929aeb0643ffff,1638,2,Ward 2
+8929aeb0647ffff,1639,,
+8929aeb064bffff,1640,2,Ward 2
+8929aeb064fffff,1641,,
+8929aeb0653ffff,1642,,
+8929aeb0657ffff,1643,2,Ward 2
+8929aeb065bffff,1644,,
+8929aeb0683ffff,1645,2,Ward 2
+8929aeb0687ffff,1646,2,Ward 2
+8929aeb068bffff,1647,1,Ward 1
+8929aeb068fffff,1648,2,Ward 2
+8929aeb0693ffff,1649,1,Ward 1
+8929aeb0697ffff,1650,1,Ward 1
+8929aeb069bffff,1651,1,Ward 1
+8929aeb06a3ffff,1652,2,Ward 2
+8929aeb06a7ffff,1653,,
+8929aeb06abffff,1654,2,Ward 2
+8929aeb06afffff,1655,2,Ward 2
+8929aeb06b3ffff,1656,2,Ward 2
+8929aeb06b7ffff,1657,2,Ward 2
+8929aeb06bbffff,1658,2,Ward 2
+8929aeb06c3ffff,1659,2,Ward 2
+8929aeb06c7ffff,1660,2,Ward 2
+8929aeb06cbffff,1661,2,Ward 2
+8929aeb06cfffff,1662,,
+8929aeb06d3ffff,1663,2,Ward 2
+8929aeb06d7ffff,1664,2,Ward 2
+8929aeb06dbffff,1665,2,Ward 2
+8929aeb0893ffff,1666,,
+8929aeb0897ffff,1667,,
+8929aeb089bffff,1668,,
+8929aeb08c3ffff,1669,,
+8929aeb08cbffff,1670,,
+8929aeb08d3ffff,1671,3,Ward 3
+8929aeb08d7ffff,1672,,
+8929aeb08dbffff,1673,3,Ward 3
+8929aeb0983ffff,1674,,
+8929aeb0993ffff,1675,4,Ward 4
+8929aeb099bffff,1676,,
+8929aeb0ad3ffff,1677,,
+8929aeb0c03ffff,1678,3,Ward 3
+8929aeb0c07ffff,1679,3,Ward 3
+8929aeb0c0bffff,1680,3,Ward 3
+8929aeb0c0fffff,1681,3,Ward 3
+8929aeb0c13ffff,1682,3,Ward 3
+8929aeb0c17ffff,1683,3,Ward 3
+8929aeb0c1bffff,1684,3,Ward 3
+8929aeb0c23ffff,1685,3,Ward 3
+8929aeb0c27ffff,1686,3,Ward 3
+8929aeb0c2bffff,1687,3,Ward 3
+8929aeb0c2fffff,1688,3,Ward 3
+8929aeb0c33ffff,1689,3,Ward 3
+8929aeb0c37ffff,1690,3,Ward 3
+8929aeb0c3bffff,1691,3,Ward 3
+8929aeb0c43ffff,1692,3,Ward 3
+8929aeb0c47ffff,1693,3,Ward 3
+8929aeb0c4bffff,1694,3,Ward 3
+8929aeb0c4fffff,1695,3,Ward 3
+8929aeb0c53ffff,1696,3,Ward 3
+8929aeb0c57ffff,1697,3,Ward 3
+8929aeb0c5bffff,1698,3,Ward 3
+8929aeb0c63ffff,1699,3,Ward 3
+8929aeb0c67ffff,1700,3,Ward 3
+8929aeb0c6bffff,1701,3,Ward 3
+8929aeb0c6fffff,1702,3,Ward 3
+8929aeb0c73ffff,1703,3,Ward 3
+8929aeb0c77ffff,1704,3,Ward 3
+8929aeb0c7bffff,1705,3,Ward 3
+8929aeb0c83ffff,1706,2,Ward 2
+8929aeb0c87ffff,1707,2,Ward 2
+8929aeb0c8bffff,1708,3,Ward 3
+8929aeb0c8fffff,1709,3,Ward 3
+8929aeb0c93ffff,1710,2,Ward 2
+8929aeb0c97ffff,1711,2,Ward 2
+8929aeb0c9bffff,1712,2,Ward 2
+8929aeb0ca3ffff,1713,3,Ward 3
+8929aeb0ca7ffff,1714,3,Ward 3
+8929aeb0cabffff,1715,3,Ward 3
+8929aeb0cafffff,1716,3,Ward 3
+8929aeb0cb3ffff,1717,3,Ward 3
+8929aeb0cb7ffff,1718,3,Ward 3
+8929aeb0cbbffff,1719,3,Ward 3
+8929aeb0cc3ffff,1720,3,Ward 3
+8929aeb0cc7ffff,1721,3,Ward 3
+8929aeb0ccbffff,1722,3,Ward 3
+8929aeb0ccfffff,1723,3,Ward 3
+8929aeb0cd3ffff,1724,2,Ward 2
+8929aeb0cd7ffff,1725,2,Ward 2
+8929aeb0cdbffff,1726,2,Ward 2
+8929aeb0d07ffff,1727,4,Ward 4
+8929aeb0d0fffff,1728,4,Ward 4
+8929aeb0d17ffff,1729,,
+8929aeb0d23ffff,1730,4,Ward 4
+8929aeb0d27ffff,1731,4,Ward 4
+8929aeb0d2bffff,1732,4,Ward 4
+8929aeb0d2fffff,1733,4,Ward 4
+8929aeb0d33ffff,1734,4,Ward 4
+8929aeb0d37ffff,1735,4,Ward 4
+8929aeb0d3bffff,1736,4,Ward 4
+8929aeb0d43ffff,1737,3,Ward 3
+8929aeb0d47ffff,1738,,
+8929aeb0d4bffff,1739,3,Ward 3
+8929aeb0d4fffff,1740,3,Ward 3
+8929aeb0d53ffff,1741,3,Ward 3
+8929aeb0d57ffff,1742,,
+8929aeb0d5bffff,1743,3,Ward 3
+8929aeb0d63ffff,1744,,
+8929aeb0d67ffff,1745,,
+8929aeb0d6bffff,1746,,
+8929aeb0d73ffff,1747,,
+8929aeb0d77ffff,1748,4,Ward 4
+8929aeb0d7bffff,1749,3,Ward 3
+8929aeb0da3ffff,1750,4,Ward 4
+8929aeb0da7ffff,1751,4,Ward 4
+8929aeb0dabffff,1752,4,Ward 4
+8929aeb0dafffff,1753,4,Ward 4
+8929aeb0db3ffff,1754,,
+8929aeb0db7ffff,1755,4,Ward 4
+8929aeb0dbbffff,1756,4,Ward 4
+8929aeb0dcbffff,1757,3,Ward 3
+8929aeb0ddbffff,1758,3,Ward 3
+8929aeb0e03ffff,1759,3,Ward 3
+8929aeb0e07ffff,1760,3,Ward 3
+8929aeb0e0bffff,1761,3,Ward 3
+8929aeb0e0fffff,1762,3,Ward 3
+8929aeb0e13ffff,1763,3,Ward 3
+8929aeb0e17ffff,1764,3,Ward 3
+8929aeb0e1bffff,1765,3,Ward 3
+8929aeb0e23ffff,1766,3,Ward 3
+8929aeb0e27ffff,1767,,
+8929aeb0e2bffff,1768,3,Ward 3
+8929aeb0e2fffff,1769,,
+8929aeb0e33ffff,1770,3,Ward 3
+8929aeb0e37ffff,1771,3,Ward 3
+8929aeb0e3bffff,1772,3,Ward 3
+8929aeb0e47ffff,1773,,
+8929aeb0e4bffff,1774,,
+8929aeb0e4fffff,1775,,
+8929aeb0e57ffff,1776,,
+8929aeb0e63ffff,1777,3,Ward 3
+8929aeb0e67ffff,1778,3,Ward 3
+8929aeb0e6bffff,1779,3,Ward 3
+8929aeb0e6fffff,1780,3,Ward 3
+8929aeb0e73ffff,1781,3,Ward 3
+8929aeb0e77ffff,1782,3,Ward 3
+8929aeb0e7bffff,1783,3,Ward 3
+8929aeb0e83ffff,1784,3,Ward 3
+8929aeb0e87ffff,1785,3,Ward 3
+8929aeb0e8bffff,1786,3,Ward 3
+8929aeb0e8fffff,1787,3,Ward 3
+8929aeb0e93ffff,1788,3,Ward 3
+8929aeb0e97ffff,1789,3,Ward 3
+8929aeb0e9bffff,1790,3,Ward 3
+8929aeb0ea3ffff,1791,3,Ward 3
+8929aeb0ea7ffff,1792,3,Ward 3
+8929aeb0eabffff,1793,3,Ward 3
+8929aeb0eafffff,1794,3,Ward 3
+8929aeb0eb3ffff,1795,3,Ward 3
+8929aeb0eb7ffff,1796,3,Ward 3
+8929aeb0ebbffff,1797,3,Ward 3
+8929aeb0ec3ffff,1798,,
+8929aeb0ec7ffff,1799,3,Ward 3
+8929aeb0ecfffff,1800,,
+8929aeb0ed3ffff,1801,3,Ward 3
+8929aeb0ed7ffff,1802,3,Ward 3
+8929aeb0edbffff,1803,3,Ward 3
+8929aeb1003ffff,1804,3,Ward 3
+8929aeb1007ffff,1805,3,Ward 3
+8929aeb100bffff,1806,,
+8929aeb100fffff,1807,3,Ward 3
+8929aeb1013ffff,1808,,
+8929aeb1017ffff,1809,,
+8929aeb101bffff,1810,,
+8929aeb1023ffff,1811,3,Ward 3
+8929aeb1027ffff,1812,3,Ward 3
+8929aeb102bffff,1813,3,Ward 3
+8929aeb102fffff,1814,3,Ward 3
+8929aeb1033ffff,1815,3,Ward 3
+8929aeb1037ffff,1816,3,Ward 3
+8929aeb103bffff,1817,3,Ward 3
+8929aeb1043ffff,1818,,
+8929aeb1047ffff,1819,3,Ward 3
+8929aeb104bffff,1820,3,Ward 3
+8929aeb104fffff,1821,3,Ward 3
+8929aeb1053ffff,1822,,
+8929aeb105bffff,1823,3,Ward 3
+8929aeb1063ffff,1824,3,Ward 3
+8929aeb1067ffff,1825,3,Ward 3
+8929aeb106bffff,1826,3,Ward 3
+8929aeb106fffff,1827,3,Ward 3
+8929aeb1073ffff,1828,3,Ward 3
+8929aeb1077ffff,1829,3,Ward 3
+8929aeb107bffff,1830,3,Ward 3
+8929aeb10a3ffff,1831,,
+8929aeb10a7ffff,1832,3,Ward 3
+8929aeb10abffff,1833,3,Ward 3
+8929aeb10afffff,1834,3,Ward 3
+8929aeb10b3ffff,1835,,
+8929aeb10b7ffff,1836,3,Ward 3
+8929aeb10cbffff,1837,,
+8929aeb10dbffff,1838,3,Ward 3
+8929aeb1103ffff,1839,3,Ward 3
+8929aeb110bffff,1840,3,Ward 3
+8929aeb110fffff,1841,3,Ward 3
+8929aeb1113ffff,1842,3,Ward 3
+8929aeb111bffff,1843,3,Ward 3
+8929aeb1123ffff,1844,3,Ward 3
+8929aeb1127ffff,1845,3,Ward 3
+8929aeb112bffff,1846,3,Ward 3
+8929aeb112fffff,1847,3,Ward 3
+8929aeb1133ffff,1848,,
+8929aeb1137ffff,1849,3,Ward 3
+8929aeb113bffff,1850,3,Ward 3
+8929aeb1143ffff,1851,3,Ward 3
+8929aeb1147ffff,1852,3,Ward 3
+8929aeb114bffff,1853,3,Ward 3
+8929aeb114fffff,1854,3,Ward 3
+8929aeb1153ffff,1855,3,Ward 3
+8929aeb1157ffff,1856,3,Ward 3
+8929aeb115bffff,1857,3,Ward 3
+8929aeb1163ffff,1858,3,Ward 3
+8929aeb1167ffff,1859,3,Ward 3
+8929aeb116bffff,1860,3,Ward 3
+8929aeb116fffff,1861,3,Ward 3
+8929aeb1173ffff,1862,3,Ward 3
+8929aeb1177ffff,1863,3,Ward 3
+8929aeb117bffff,1864,3,Ward 3
+8929aeb1183ffff,1865,3,Ward 3
+8929aeb1187ffff,1866,,
+8929aeb118bffff,1867,3,Ward 3
+8929aeb118fffff,1868,,
+8929aeb1193ffff,1869,3,Ward 3
+8929aeb1197ffff,1870,,
+8929aeb119bffff,1871,,
+8929aeb11a7ffff,1872,,
+8929aeb11c3ffff,1873,3,Ward 3
+8929aeb11c7ffff,1874,3,Ward 3
+8929aeb11cbffff,1875,3,Ward 3
+8929aeb11cfffff,1876,3,Ward 3
+8929aeb11d3ffff,1877,3,Ward 3
+8929aeb11d7ffff,1878,3,Ward 3
+8929aeb11dbffff,1879,3,Ward 3
+8929aeb1203ffff,1880,3,Ward 3
+8929aeb1207ffff,1881,3,Ward 3
+8929aeb120bffff,1882,3,Ward 3
+8929aeb120fffff,1883,3,Ward 3
+8929aeb1213ffff,1884,3,Ward 3
+8929aeb1217ffff,1885,3,Ward 3
+8929aeb121bffff,1886,3,Ward 3
+8929aeb1223ffff,1887,3,Ward 3
+8929aeb1227ffff,1888,3,Ward 3
+8929aeb122bffff,1889,3,Ward 3
+8929aeb122fffff,1890,3,Ward 3
+8929aeb1233ffff,1891,3,Ward 3
+8929aeb1237ffff,1892,3,Ward 3
+8929aeb123bffff,1893,3,Ward 3
+8929aeb1243ffff,1894,3,Ward 3
+8929aeb1247ffff,1895,3,Ward 3
+8929aeb124bffff,1896,3,Ward 3
+8929aeb124fffff,1897,3,Ward 3
+8929aeb1253ffff,1898,3,Ward 3
+8929aeb1257ffff,1899,3,Ward 3
+8929aeb125bffff,1900,3,Ward 3
+8929aeb1263ffff,1901,3,Ward 3
+8929aeb1267ffff,1902,3,Ward 3
+8929aeb126bffff,1903,3,Ward 3
+8929aeb126fffff,1904,3,Ward 3
+8929aeb1273ffff,1905,3,Ward 3
+8929aeb1277ffff,1906,3,Ward 3
+8929aeb127bffff,1907,3,Ward 3
+8929aeb1283ffff,1908,3,Ward 3
+8929aeb1287ffff,1909,3,Ward 3
+8929aeb128bffff,1910,3,Ward 3
+8929aeb128fffff,1911,3,Ward 3
+8929aeb1293ffff,1912,3,Ward 3
+8929aeb1297ffff,1913,3,Ward 3
+8929aeb129bffff,1914,3,Ward 3
+8929aeb12a3ffff,1915,3,Ward 3
+8929aeb12a7ffff,1916,3,Ward 3
+8929aeb12abffff,1917,3,Ward 3
+8929aeb12afffff,1918,3,Ward 3
+8929aeb12b3ffff,1919,3,Ward 3
+8929aeb12b7ffff,1920,3,Ward 3
+8929aeb12bbffff,1921,3,Ward 3
+8929aeb12c3ffff,1922,3,Ward 3
+8929aeb12c7ffff,1923,3,Ward 3
+8929aeb12cbffff,1924,3,Ward 3
+8929aeb12cfffff,1925,3,Ward 3
+8929aeb12d3ffff,1926,3,Ward 3
+8929aeb12d7ffff,1927,3,Ward 3
+8929aeb12dbffff,1928,3,Ward 3
+8929aeb1303ffff,1929,3,Ward 3
+8929aeb1307ffff,1930,3,Ward 3
+8929aeb130bffff,1931,3,Ward 3
+8929aeb130fffff,1932,3,Ward 3
+8929aeb1313ffff,1933,3,Ward 3
+8929aeb1317ffff,1934,3,Ward 3
+8929aeb131bffff,1935,3,Ward 3
+8929aeb1323ffff,1936,3,Ward 3
+8929aeb1327ffff,1937,3,Ward 3
+8929aeb132bffff,1938,3,Ward 3
+8929aeb132fffff,1939,3,Ward 3
+8929aeb1333ffff,1940,3,Ward 3
+8929aeb1337ffff,1941,3,Ward 3
+8929aeb133bffff,1942,3,Ward 3
+8929aeb1343ffff,1943,3,Ward 3
+8929aeb1347ffff,1944,3,Ward 3
+8929aeb134bffff,1945,3,Ward 3
+8929aeb134fffff,1946,3,Ward 3
+8929aeb1353ffff,1947,3,Ward 3
+8929aeb1357ffff,1948,3,Ward 3
+8929aeb135bffff,1949,3,Ward 3
+8929aeb1363ffff,1950,3,Ward 3
+8929aeb1367ffff,1951,3,Ward 3
+8929aeb136bffff,1952,3,Ward 3
+8929aeb136fffff,1953,3,Ward 3
+8929aeb1373ffff,1954,3,Ward 3
+8929aeb1377ffff,1955,3,Ward 3
+8929aeb137bffff,1956,3,Ward 3
+8929aeb1383ffff,1957,3,Ward 3
+8929aeb1387ffff,1958,3,Ward 3
+8929aeb138bffff,1959,3,Ward 3
+8929aeb138fffff,1960,3,Ward 3
+8929aeb1393ffff,1961,3,Ward 3
+8929aeb1397ffff,1962,3,Ward 3
+8929aeb139bffff,1963,3,Ward 3
+8929aeb13a3ffff,1964,3,Ward 3
+8929aeb13a7ffff,1965,3,Ward 3
+8929aeb13abffff,1966,3,Ward 3
+8929aeb13afffff,1967,3,Ward 3
+8929aeb13b3ffff,1968,3,Ward 3
+8929aeb13b7ffff,1969,3,Ward 3
+8929aeb13bbffff,1970,3,Ward 3
+8929aeb13c3ffff,1971,3,Ward 3
+8929aeb13c7ffff,1972,3,Ward 3
+8929aeb13cbffff,1973,3,Ward 3
+8929aeb13cfffff,1974,3,Ward 3
+8929aeb13d3ffff,1975,3,Ward 3
+8929aeb13d7ffff,1976,3,Ward 3
+8929aeb13dbffff,1977,3,Ward 3
+8929aeb152fffff,1978,,
+8929aeb1567ffff,1979,,
+8929aeb156bffff,1980,3,Ward 3
+8929aeb157bffff,1981,,
+8929aeb1603ffff,1982,3,Ward 3
+8929aeb1607ffff,1983,3,Ward 3
+8929aeb160bffff,1984,3,Ward 3
+8929aeb160fffff,1985,3,Ward 3
+8929aeb1613ffff,1986,,
+8929aeb1617ffff,1987,3,Ward 3
+8929aeb161bffff,1988,3,Ward 3
+8929aeb1623ffff,1989,3,Ward 3
+8929aeb1627ffff,1990,3,Ward 3
+8929aeb162bffff,1991,3,Ward 3
+8929aeb162fffff,1992,3,Ward 3
+8929aeb1633ffff,1993,3,Ward 3
+8929aeb1637ffff,1994,3,Ward 3
+8929aeb163bffff,1995,3,Ward 3
+8929aeb1663ffff,1996,3,Ward 3
+8929aeb1667ffff,1997,3,Ward 3
+8929aeb166fffff,1998,3,Ward 3
+8929aeb1673ffff,1999,3,Ward 3
+8929aeb1677ffff,2000,3,Ward 3
+8929aeb16a3ffff,2001,3,Ward 3
+8929aeb16a7ffff,2002,3,Ward 3
+8929aeb16abffff,2003,3,Ward 3
+8929aeb16afffff,2004,3,Ward 3
+8929aeb16b3ffff,2005,3,Ward 3
+8929aeb16b7ffff,2006,,
+8929aeb16bbffff,2007,,
+8929aeb1803ffff,2008,,
+8929aeb1807ffff,2009,,
+8929aeb1817ffff,2010,,
+8929aeb1833ffff,2011,,
+8929aeb1853ffff,2012,,
+8929aeb185bffff,2013,,
+8929aeb1883ffff,2014,,
+8929aeb188bffff,2015,,
+8929aeb1893ffff,2016,3,Ward 3
+8929aeb1897ffff,2017,,
+8929aeb189bffff,2018,3,Ward 3
+8929aeb18a3ffff,2019,,
+8929aeb18a7ffff,2020,,
+8929aeb18abffff,2021,3,Ward 3
+8929aeb18afffff,2022,3,Ward 3
+8929aeb18c3ffff,2023,3,Ward 3
+8929aeb18c7ffff,2024,,
+8929aeb18cbffff,2025,3,Ward 3
+8929aeb18cfffff,2026,,
+8929aeb18d3ffff,2027,3,Ward 3
+8929aeb18d7ffff,2028,3,Ward 3
+8929aeb18dbffff,2029,3,Ward 3
+8929aeb19d3ffff,2030,3,Ward 3
+8929aeb19dbffff,2031,,
+8929aeb1a03ffff,2032,,
+8929aeb1a0bffff,2033,3,Ward 3
+8929aeb1a0fffff,2034,3,Ward 3
+8929aeb1a13ffff,2035,,
+8929aeb1a1bffff,2036,3,Ward 3
+8929aeb1a2bffff,2037,,
+8929aeb1a3bffff,2038,,
+8929aeb1a43ffff,2039,3,Ward 3
+8929aeb1a47ffff,2040,3,Ward 3
+8929aeb1a4bffff,2041,3,Ward 3
+8929aeb1a4fffff,2042,3,Ward 3
+8929aeb1a53ffff,2043,3,Ward 3
+8929aeb1a57ffff,2044,3,Ward 3
+8929aeb1a5bffff,2045,3,Ward 3
+8929aeb1a63ffff,2046,3,Ward 3
+8929aeb1a67ffff,2047,,
+8929aeb1a6bffff,2048,,
+8929aeb1a73ffff,2049,3,Ward 3
+8929aeb1a77ffff,2050,3,Ward 3
+8929aeb1a7bffff,2051,3,Ward 3
+8929aeb1a8bffff,2052,,
+8929aeb1a93ffff,2053,,
+8929aeb1a97ffff,2054,,
+8929aeb1a9bffff,2055,3,Ward 3
+8929aeb1ac3ffff,2056,3,Ward 3
+8929aeb1ac7ffff,2057,3,Ward 3
+8929aeb1acbffff,2058,3,Ward 3
+8929aeb1acfffff,2059,3,Ward 3
+8929aeb1ad3ffff,2060,3,Ward 3
+8929aeb1ad7ffff,2061,3,Ward 3
+8929aeb1adbffff,2062,3,Ward 3
+8929aeb1c03ffff,2063,3,Ward 3
+8929aeb1c07ffff,2064,3,Ward 3
+8929aeb1c0bffff,2065,3,Ward 3
+8929aeb1c0fffff,2066,3,Ward 3
+8929aeb1c13ffff,2067,3,Ward 3
+8929aeb1c17ffff,2068,3,Ward 3
+8929aeb1c1bffff,2069,3,Ward 3
+8929aeb1c23ffff,2070,3,Ward 3
+8929aeb1c27ffff,2071,3,Ward 3
+8929aeb1c2bffff,2072,3,Ward 3
+8929aeb1c2fffff,2073,3,Ward 3
+8929aeb1c33ffff,2074,3,Ward 3
+8929aeb1c37ffff,2075,3,Ward 3
+8929aeb1c3bffff,2076,3,Ward 3
+8929aeb1c43ffff,2077,3,Ward 3
+8929aeb1c47ffff,2078,3,Ward 3
+8929aeb1c4bffff,2079,3,Ward 3
+8929aeb1c4fffff,2080,3,Ward 3
+8929aeb1c53ffff,2081,3,Ward 3
+8929aeb1c57ffff,2082,3,Ward 3
+8929aeb1c5bffff,2083,3,Ward 3
+8929aeb1c63ffff,2084,3,Ward 3
+8929aeb1c67ffff,2085,3,Ward 3
+8929aeb1c6bffff,2086,3,Ward 3
+8929aeb1c6fffff,2087,3,Ward 3
+8929aeb1c73ffff,2088,3,Ward 3
+8929aeb1c77ffff,2089,3,Ward 3
+8929aeb1c7bffff,2090,3,Ward 3
+8929aeb1c83ffff,2091,3,Ward 3
+8929aeb1c87ffff,2092,3,Ward 3
+8929aeb1c8bffff,2093,3,Ward 3
+8929aeb1c8fffff,2094,3,Ward 3
+8929aeb1c93ffff,2095,3,Ward 3
+8929aeb1c97ffff,2096,3,Ward 3
+8929aeb1c9bffff,2097,3,Ward 3
+8929aeb1ca3ffff,2098,3,Ward 3
+8929aeb1ca7ffff,2099,3,Ward 3
+8929aeb1cabffff,2100,3,Ward 3
+8929aeb1cafffff,2101,3,Ward 3
+8929aeb1cb3ffff,2102,3,Ward 3
+8929aeb1cb7ffff,2103,3,Ward 3
+8929aeb1cbbffff,2104,3,Ward 3
+8929aeb1cc3ffff,2105,3,Ward 3
+8929aeb1cc7ffff,2106,3,Ward 3
+8929aeb1ccbffff,2107,3,Ward 3
+8929aeb1ccfffff,2108,3,Ward 3
+8929aeb1cd3ffff,2109,3,Ward 3
+8929aeb1cd7ffff,2110,3,Ward 3
+8929aeb1cdbffff,2111,3,Ward 3
+8929aeb1d03ffff,2112,3,Ward 3
+8929aeb1d07ffff,2113,,
+8929aeb1d0bffff,2114,3,Ward 3
+8929aeb1d0fffff,2115,,
+8929aeb1d13ffff,2116,3,Ward 3
+8929aeb1d17ffff,2117,3,Ward 3
+8929aeb1d1bffff,2118,3,Ward 3
+8929aeb1d47ffff,2119,,
+8929aeb1d53ffff,2120,3,Ward 3
+8929aeb1d57ffff,2121,,
+8929aeb1d5bffff,2122,3,Ward 3
+8929aeb1d63ffff,2123,3,Ward 3
+8929aeb1d6bffff,2124,3,Ward 3
+8929aeb1d6fffff,2125,3,Ward 3
+8929aeb1d73ffff,2126,3,Ward 3
+8929aeb1d7bffff,2127,,
+8929aeb1d83ffff,2128,3,Ward 3
+8929aeb1d87ffff,2129,3,Ward 3
+8929aeb1d8bffff,2130,3,Ward 3
+8929aeb1d8fffff,2131,3,Ward 3
+8929aeb1d93ffff,2132,3,Ward 3
+8929aeb1d9bffff,2133,3,Ward 3
+8929aeb1da3ffff,2134,3,Ward 3
+8929aeb1da7ffff,2135,3,Ward 3
+8929aeb1dabffff,2136,3,Ward 3
+8929aeb1dafffff,2137,,
+8929aeb1db3ffff,2138,,
+8929aeb1db7ffff,2139,3,Ward 3
+8929aeb1dbbffff,2140,3,Ward 3
+8929aeb1dc3ffff,2141,3,Ward 3
+8929aeb1dc7ffff,2142,3,Ward 3
+8929aeb1dcbffff,2143,3,Ward 3
+8929aeb1dcfffff,2144,3,Ward 3
+8929aeb1dd3ffff,2145,3,Ward 3
+8929aeb1dd7ffff,2146,3,Ward 3
+8929aeb1ddbffff,2147,3,Ward 3
+8929aeb1e03ffff,2148,3,Ward 3
+8929aeb1e07ffff,2149,3,Ward 3
+8929aeb1e0bffff,2150,3,Ward 3
+8929aeb1e0fffff,2151,3,Ward 3
+8929aeb1e13ffff,2152,3,Ward 3
+8929aeb1e17ffff,2153,3,Ward 3
+8929aeb1e1bffff,2154,3,Ward 3
+8929aeb1e23ffff,2155,3,Ward 3
+8929aeb1e27ffff,2156,3,Ward 3
+8929aeb1e2bffff,2157,3,Ward 3
+8929aeb1e2fffff,2158,3,Ward 3
+8929aeb1e33ffff,2159,3,Ward 3
+8929aeb1e37ffff,2160,3,Ward 3
+8929aeb1e3bffff,2161,3,Ward 3
+8929aeb1e43ffff,2162,3,Ward 3
+8929aeb1e47ffff,2163,3,Ward 3
+8929aeb1e4bffff,2164,3,Ward 3
+8929aeb1e4fffff,2165,3,Ward 3
+8929aeb1e53ffff,2166,3,Ward 3
+8929aeb1e57ffff,2167,3,Ward 3
+8929aeb1e5bffff,2168,3,Ward 3
+8929aeb1e63ffff,2169,3,Ward 3
+8929aeb1e67ffff,2170,3,Ward 3
+8929aeb1e6bffff,2171,3,Ward 3
+8929aeb1e6fffff,2172,3,Ward 3
+8929aeb1e73ffff,2173,3,Ward 3
+8929aeb1e77ffff,2174,3,Ward 3
+8929aeb1e7bffff,2175,3,Ward 3
+8929aeb1e83ffff,2176,3,Ward 3
+8929aeb1e87ffff,2177,3,Ward 3
+8929aeb1e8bffff,2178,3,Ward 3
+8929aeb1e8fffff,2179,3,Ward 3
+8929aeb1e93ffff,2180,3,Ward 3
+8929aeb1e97ffff,2181,3,Ward 3
+8929aeb1e9bffff,2182,3,Ward 3
+8929aeb1ea3ffff,2183,3,Ward 3
+8929aeb1ea7ffff,2184,3,Ward 3
+8929aeb1eabffff,2185,3,Ward 3
+8929aeb1eafffff,2186,3,Ward 3
+8929aeb1eb3ffff,2187,3,Ward 3
+8929aeb1eb7ffff,2188,3,Ward 3
+8929aeb1ebbffff,2189,3,Ward 3
+8929aeb1ec3ffff,2190,3,Ward 3
+8929aeb1ec7ffff,2191,3,Ward 3
+8929aeb1ecbffff,2192,3,Ward 3
+8929aeb1ecfffff,2193,3,Ward 3
+8929aeb1ed3ffff,2194,3,Ward 3
+8929aeb1ed7ffff,2195,3,Ward 3
+8929aeb1edbffff,2196,3,Ward 3
+8929aeb2003ffff,2197,,
+8929aeb2007ffff,2198,1,Ward 1
+8929aeb200bffff,2199,,
+8929aeb200fffff,2200,1,Ward 1
+8929aeb2013ffff,2201,,
+8929aeb2017ffff,2202,1,Ward 1
+8929aeb2023ffff,2203,1,Ward 1
+8929aeb2027ffff,2204,1,Ward 1
+8929aeb202bffff,2205,1,Ward 1
+8929aeb202fffff,2206,1,Ward 1
+8929aeb2033ffff,2207,1,Ward 1
+8929aeb2037ffff,2208,1,Ward 1
+8929aeb203bffff,2209,1,Ward 1
+8929aeb2043ffff,2210,,
+8929aeb2047ffff,2211,1,Ward 1
+8929aeb204bffff,2212,1,Ward 1
+8929aeb204fffff,2213,1,Ward 1
+8929aeb2053ffff,2214,,
+8929aeb205bffff,2215,1,Ward 1
+8929aeb2063ffff,2216,1,Ward 1
+8929aeb2067ffff,2217,1,Ward 1
+8929aeb206bffff,2218,1,Ward 1
+8929aeb206fffff,2219,1,Ward 1
+8929aeb2073ffff,2220,,
+8929aeb2077ffff,2221,1,Ward 1
+8929aeb207bffff,2222,1,Ward 1
+8929aeb2083ffff,2223,1,Ward 1
+8929aeb2087ffff,2224,1,Ward 1
+8929aeb208bffff,2225,,
+8929aeb208fffff,2226,1,Ward 1
+8929aeb2093ffff,2227,1,Ward 1
+8929aeb2097ffff,2228,1,Ward 1
+8929aeb209bffff,2229,1,Ward 1
+8929aeb20a3ffff,2230,1,Ward 1
+8929aeb20a7ffff,2231,1,Ward 1
+8929aeb20abffff,2232,1,Ward 1
+8929aeb20afffff,2233,1,Ward 1
+8929aeb20b3ffff,2234,1,Ward 1
+8929aeb20b7ffff,2235,1,Ward 1
+8929aeb20bbffff,2236,1,Ward 1
+8929aeb20cbffff,2237,,
+8929aeb20d3ffff,2238,,
+8929aeb20d7ffff,2239,,
+8929aeb20dbffff,2240,,
+8929aeb2103ffff,2241,1,Ward 1
+8929aeb2107ffff,2242,1,Ward 1
+8929aeb210bffff,2243,1,Ward 1
+8929aeb210fffff,2244,1,Ward 1
+8929aeb2113ffff,2245,1,Ward 1
+8929aeb2117ffff,2246,1,Ward 1
+8929aeb211bffff,2247,1,Ward 1
+8929aeb2123ffff,2248,1,Ward 1
+8929aeb2127ffff,2249,1,Ward 1
+8929aeb212bffff,2250,1,Ward 1
+8929aeb212fffff,2251,1,Ward 1
+8929aeb2133ffff,2252,1,Ward 1
+8929aeb2137ffff,2253,1,Ward 1
+8929aeb213bffff,2254,1,Ward 1
+8929aeb2143ffff,2255,1,Ward 1
+8929aeb2147ffff,2256,1,Ward 1
+8929aeb214bffff,2257,1,Ward 1
+8929aeb214fffff,2258,1,Ward 1
+8929aeb2153ffff,2259,1,Ward 1
+8929aeb2157ffff,2260,1,Ward 1
+8929aeb215bffff,2261,1,Ward 1
+8929aeb2163ffff,2262,1,Ward 1
+8929aeb2167ffff,2263,1,Ward 1
+8929aeb216bffff,2264,1,Ward 1
+8929aeb216fffff,2265,1,Ward 1
+8929aeb2173ffff,2266,1,Ward 1
+8929aeb2177ffff,2267,1,Ward 1
+8929aeb217bffff,2268,1,Ward 1
+8929aeb2183ffff,2269,1,Ward 1
+8929aeb2187ffff,2270,1,Ward 1
+8929aeb218bffff,2271,1,Ward 1
+8929aeb218fffff,2272,1,Ward 1
+8929aeb2193ffff,2273,7,Ward 7
+8929aeb2197ffff,2274,7,Ward 7
+8929aeb219bffff,2275,7,Ward 7
+8929aeb21a3ffff,2276,7,Ward 7
+8929aeb21a7ffff,2277,6,Ward 6
+8929aeb21abffff,2278,1,Ward 1
+8929aeb21afffff,2279,1,Ward 1
+8929aeb21b3ffff,2280,7,Ward 7
+8929aeb21b7ffff,2281,6,Ward 6
+8929aeb21bbffff,2282,1,Ward 1
+8929aeb21c3ffff,2283,1,Ward 1
+8929aeb21c7ffff,2284,1,Ward 1
+8929aeb21cbffff,2285,1,Ward 1
+8929aeb21cfffff,2286,1,Ward 1
+8929aeb21d3ffff,2287,1,Ward 1
+8929aeb21d7ffff,2288,1,Ward 1
+8929aeb21dbffff,2289,1,Ward 1
+8929aeb2203ffff,2290,1,Ward 1
+8929aeb2207ffff,2291,1,Ward 1
+8929aeb220bffff,2292,1,Ward 1
+8929aeb220fffff,2293,1,Ward 1
+8929aeb2213ffff,2294,1,Ward 1
+8929aeb2217ffff,2295,1,Ward 1
+8929aeb221bffff,2296,1,Ward 1
+8929aeb2223ffff,2297,1,Ward 1
+8929aeb2227ffff,2298,1,Ward 1
+8929aeb222bffff,2299,1,Ward 1
+8929aeb222fffff,2300,1,Ward 1
+8929aeb2233ffff,2301,1,Ward 1
+8929aeb2237ffff,2302,1,Ward 1
+8929aeb223bffff,2303,1,Ward 1
+8929aeb2243ffff,2304,1,Ward 1
+8929aeb2247ffff,2305,1,Ward 1
+8929aeb224bffff,2306,1,Ward 1
+8929aeb224fffff,2307,1,Ward 1
+8929aeb2253ffff,2308,1,Ward 1
+8929aeb2257ffff,2309,1,Ward 1
+8929aeb225bffff,2310,1,Ward 1
+8929aeb2263ffff,2311,1,Ward 1
+8929aeb2267ffff,2312,1,Ward 1
+8929aeb226bffff,2313,1,Ward 1
+8929aeb226fffff,2314,1,Ward 1
+8929aeb2273ffff,2315,1,Ward 1
+8929aeb2277ffff,2316,1,Ward 1
+8929aeb227bffff,2317,1,Ward 1
+8929aeb2283ffff,2318,1,Ward 1
+8929aeb2287ffff,2319,1,Ward 1
+8929aeb228bffff,2320,1,Ward 1
+8929aeb228fffff,2321,1,Ward 1
+8929aeb2293ffff,2322,,
+8929aeb2297ffff,2323,1,Ward 1
+8929aeb229bffff,2324,1,Ward 1
+8929aeb22a3ffff,2325,1,Ward 1
+8929aeb22a7ffff,2326,1,Ward 1
+8929aeb22abffff,2327,1,Ward 1
+8929aeb22afffff,2328,1,Ward 1
+8929aeb22b3ffff,2329,1,Ward 1
+8929aeb22b7ffff,2330,1,Ward 1
+8929aeb22bbffff,2331,1,Ward 1
+8929aeb22c3ffff,2332,1,Ward 1
+8929aeb22c7ffff,2333,1,Ward 1
+8929aeb22cbffff,2334,1,Ward 1
+8929aeb22cfffff,2335,1,Ward 1
+8929aeb22d3ffff,2336,1,Ward 1
+8929aeb22d7ffff,2337,1,Ward 1
+8929aeb22dbffff,2338,1,Ward 1
+8929aeb2303ffff,2339,,
+8929aeb2307ffff,2340,,
+8929aeb230bffff,2341,1,Ward 1
+8929aeb230fffff,2342,,
+8929aeb2313ffff,2343,,
+8929aeb2317ffff,2344,,
+8929aeb231bffff,2345,1,Ward 1
+8929aeb2327ffff,2346,,
+8929aeb232bffff,2347,,
+8929aeb232fffff,2348,2,Ward 2
+8929aeb2333ffff,2349,,
+8929aeb2343ffff,2350,1,Ward 1
+8929aeb2347ffff,2351,1,Ward 1
+8929aeb234bffff,2352,1,Ward 1
+8929aeb234fffff,2353,1,Ward 1
+8929aeb2353ffff,2354,1,Ward 1
+8929aeb2357ffff,2355,1,Ward 1
+8929aeb235bffff,2356,1,Ward 1
+8929aeb2363ffff,2357,,
+8929aeb2367ffff,2358,2,Ward 2
+8929aeb2373ffff,2359,1,Ward 1
+8929aeb2377ffff,2360,,
+8929aeb237bffff,2361,1,Ward 1
+8929aeb2383ffff,2362,1,Ward 1
+8929aeb2387ffff,2363,1,Ward 1
+8929aeb238bffff,2364,1,Ward 1
+8929aeb238fffff,2365,1,Ward 1
+8929aeb2393ffff,2366,1,Ward 1
+8929aeb2397ffff,2367,1,Ward 1
+8929aeb239bffff,2368,1,Ward 1
+8929aeb23a3ffff,2369,1,Ward 1
+8929aeb23a7ffff,2370,1,Ward 1
+8929aeb23abffff,2371,1,Ward 1
+8929aeb23afffff,2372,,
+8929aeb23b3ffff,2373,1,Ward 1
+8929aeb23b7ffff,2374,1,Ward 1
+8929aeb23bbffff,2375,1,Ward 1
+8929aeb23c3ffff,2376,1,Ward 1
+8929aeb23c7ffff,2377,1,Ward 1
+8929aeb23cbffff,2378,1,Ward 1
+8929aeb23cfffff,2379,1,Ward 1
+8929aeb23d3ffff,2380,1,Ward 1
+8929aeb23d7ffff,2381,1,Ward 1
+8929aeb23dbffff,2382,1,Ward 1
+8929aeb2403ffff,2383,1,Ward 1
+8929aeb2407ffff,2384,1,Ward 1
+8929aeb240bffff,2385,1,Ward 1
+8929aeb240fffff,2386,1,Ward 1
+8929aeb2413ffff,2387,1,Ward 1
+8929aeb2417ffff,2388,1,Ward 1
+8929aeb241bffff,2389,1,Ward 1
+8929aeb2423ffff,2390,1,Ward 1
+8929aeb2427ffff,2391,1,Ward 1
+8929aeb242bffff,2392,1,Ward 1
+8929aeb242fffff,2393,1,Ward 1
+8929aeb2433ffff,2394,1,Ward 1
+8929aeb2437ffff,2395,7,Ward 7
+8929aeb243bffff,2396,1,Ward 1
+8929aeb2443ffff,2397,,
+8929aeb2447ffff,2398,1,Ward 1
+8929aeb244bffff,2399,,
+8929aeb244fffff,2400,1,Ward 1
+8929aeb2453ffff,2401,,
+8929aeb2457ffff,2402,1,Ward 1
+8929aeb2463ffff,2403,1,Ward 1
+8929aeb2467ffff,2404,1,Ward 1
+8929aeb246bffff,2405,1,Ward 1
+8929aeb246fffff,2406,1,Ward 1
+8929aeb2473ffff,2407,1,Ward 1
+8929aeb2477ffff,2408,1,Ward 1
+8929aeb247bffff,2409,1,Ward 1
+8929aeb2483ffff,2410,,
+8929aeb2487ffff,2411,1,Ward 1
+8929aeb248bffff,2412,,
+8929aeb248fffff,2413,1,Ward 1
+8929aeb249bffff,2414,,
+8929aeb24a3ffff,2415,7,Ward 7
+8929aeb24a7ffff,2416,7,Ward 7
+8929aeb24abffff,2417,1,Ward 1
+8929aeb24afffff,2418,7,Ward 7
+8929aeb24b3ffff,2419,7,Ward 7
+8929aeb24b7ffff,2420,7,Ward 7
+8929aeb24bbffff,2421,1,Ward 1
+8929aeb24c3ffff,2422,1,Ward 1
+8929aeb24c7ffff,2423,1,Ward 1
+8929aeb24cbffff,2424,1,Ward 1
+8929aeb24cfffff,2425,1,Ward 1
+8929aeb24d3ffff,2426,1,Ward 1
+8929aeb24d7ffff,2427,1,Ward 1
+8929aeb24dbffff,2428,1,Ward 1
+8929aeb2503ffff,2429,7,Ward 7
+8929aeb2507ffff,2430,7,Ward 7
+8929aeb250bffff,2431,7,Ward 7
+8929aeb250fffff,2432,7,Ward 7
+8929aeb2513ffff,2433,7,Ward 7
+8929aeb2517ffff,2434,7,Ward 7
+8929aeb251bffff,2435,7,Ward 7
+8929aeb2523ffff,2436,7,Ward 7
+8929aeb2527ffff,2437,7,Ward 7
+8929aeb252bffff,2438,7,Ward 7
+8929aeb252fffff,2439,7,Ward 7
+8929aeb2533ffff,2440,7,Ward 7
+8929aeb2537ffff,2441,7,Ward 7
+8929aeb253bffff,2442,7,Ward 7
+8929aeb2543ffff,2443,1,Ward 1
+8929aeb2547ffff,2444,1,Ward 1
+8929aeb254bffff,2445,1,Ward 1
+8929aeb254fffff,2446,1,Ward 1
+8929aeb2553ffff,2447,1,Ward 1
+8929aeb2557ffff,2448,1,Ward 1
+8929aeb255bffff,2449,1,Ward 1
+8929aeb2563ffff,2450,7,Ward 7
+8929aeb2567ffff,2451,7,Ward 7
+8929aeb256bffff,2452,1,Ward 1
+8929aeb256fffff,2453,7,Ward 7
+8929aeb2573ffff,2454,7,Ward 7
+8929aeb2577ffff,2455,7,Ward 7
+8929aeb257bffff,2456,1,Ward 1
+8929aeb2583ffff,2457,7,Ward 7
+8929aeb2587ffff,2458,7,Ward 7
+8929aeb258bffff,2459,7,Ward 7
+8929aeb258fffff,2460,7,Ward 7
+8929aeb2593ffff,2461,7,Ward 7
+8929aeb2597ffff,2462,7,Ward 7
+8929aeb259bffff,2463,7,Ward 7
+8929aeb25a3ffff,2464,7,Ward 7
+8929aeb25a7ffff,2465,7,Ward 7
+8929aeb25abffff,2466,7,Ward 7
+8929aeb25afffff,2467,7,Ward 7
+8929aeb25b3ffff,2468,7,Ward 7
+8929aeb25b7ffff,2469,7,Ward 7
+8929aeb25bbffff,2470,7,Ward 7
+8929aeb25c3ffff,2471,7,Ward 7
+8929aeb25c7ffff,2472,7,Ward 7
+8929aeb25cbffff,2473,7,Ward 7
+8929aeb25cfffff,2474,1,Ward 1
+8929aeb25d3ffff,2475,7,Ward 7
+8929aeb25d7ffff,2476,7,Ward 7
+8929aeb25dbffff,2477,7,Ward 7
+8929aeb2603ffff,2478,1,Ward 1
+8929aeb2607ffff,2479,1,Ward 1
+8929aeb260bffff,2480,1,Ward 1
+8929aeb260fffff,2481,1,Ward 1
+8929aeb2613ffff,2482,1,Ward 1
+8929aeb2617ffff,2483,1,Ward 1
+8929aeb261bffff,2484,1,Ward 1
+8929aeb2623ffff,2485,1,Ward 1
+8929aeb2627ffff,2486,1,Ward 1
+8929aeb262fffff,2487,1,Ward 1
+8929aeb2633ffff,2488,1,Ward 1
+8929aeb2637ffff,2489,1,Ward 1
+8929aeb2643ffff,2490,1,Ward 1
+8929aeb2647ffff,2491,1,Ward 1
+8929aeb264bffff,2492,1,Ward 1
+8929aeb264fffff,2493,1,Ward 1
+8929aeb2653ffff,2494,1,Ward 1
+8929aeb2657ffff,2495,1,Ward 1
+8929aeb265bffff,2496,1,Ward 1
+8929aeb2663ffff,2497,1,Ward 1
+8929aeb2667ffff,2498,1,Ward 1
+8929aeb266bffff,2499,1,Ward 1
+8929aeb266fffff,2500,1,Ward 1
+8929aeb2673ffff,2501,1,Ward 1
+8929aeb2677ffff,2502,1,Ward 1
+8929aeb267bffff,2503,1,Ward 1
+8929aeb2683ffff,2504,,
+8929aeb2687ffff,2505,,
+8929aeb268bffff,2506,,
+8929aeb268fffff,2507,,
+8929aeb2693ffff,2508,1,Ward 1
+8929aeb2697ffff,2509,1,Ward 1
+8929aeb269bffff,2510,1,Ward 1
+8929aeb26a3ffff,2511,1,Ward 1
+8929aeb26a7ffff,2512,1,Ward 1
+8929aeb26abffff,2513,1,Ward 1
+8929aeb26afffff,2514,1,Ward 1
+8929aeb26b3ffff,2515,1,Ward 1
+8929aeb26b7ffff,2516,1,Ward 1
+8929aeb26bbffff,2517,,
+8929aeb26c3ffff,2518,1,Ward 1
+8929aeb26c7ffff,2519,1,Ward 1
+8929aeb26cbffff,2520,1,Ward 1
+8929aeb26cfffff,2521,1,Ward 1
+8929aeb26d3ffff,2522,1,Ward 1
+8929aeb26d7ffff,2523,1,Ward 1
+8929aeb26dbffff,2524,1,Ward 1
+8929aeb2803ffff,2525,,
+8929aeb2807ffff,2526,6,Ward 6
+8929aeb280bffff,2527,,
+8929aeb280fffff,2528,2,Ward 2
+8929aeb2813ffff,2529,,
+8929aeb2817ffff,2530,,
+8929aeb2823ffff,2531,2,Ward 2
+8929aeb2827ffff,2532,6,Ward 6
+8929aeb282bffff,2533,2,Ward 2
+8929aeb282fffff,2534,2,Ward 2
+8929aeb2833ffff,2535,2,Ward 2
+8929aeb2837ffff,2536,6,Ward 6
+8929aeb283bffff,2537,2,Ward 2
+8929aeb2843ffff,2538,2,Ward 2
+8929aeb2847ffff,2539,2,Ward 2
+8929aeb284bffff,2540,2,Ward 2
+8929aeb284fffff,2541,2,Ward 2
+8929aeb2853ffff,2542,,
+8929aeb2857ffff,2543,,
+8929aeb285bffff,2544,2,Ward 2
+8929aeb2863ffff,2545,2,Ward 2
+8929aeb2867ffff,2546,2,Ward 2
+8929aeb286bffff,2547,2,Ward 2
+8929aeb286fffff,2548,2,Ward 2
+8929aeb2873ffff,2549,2,Ward 2
+8929aeb2877ffff,2550,2,Ward 2
+8929aeb287bffff,2551,2,Ward 2
+8929aeb2883ffff,2552,6,Ward 6
+8929aeb2887ffff,2553,6,Ward 6
+8929aeb288bffff,2554,6,Ward 6
+8929aeb288fffff,2555,,
+8929aeb2893ffff,2556,6,Ward 6
+8929aeb2897ffff,2557,6,Ward 6
+8929aeb289bffff,2558,6,Ward 6
+8929aeb28a3ffff,2559,6,Ward 6
+8929aeb28a7ffff,2560,6,Ward 6
+8929aeb28abffff,2561,6,Ward 6
+8929aeb28afffff,2562,6,Ward 6
+8929aeb28b3ffff,2563,6,Ward 6
+8929aeb28b7ffff,2564,6,Ward 6
+8929aeb28bbffff,2565,6,Ward 6
+8929aeb28c3ffff,2566,,
+8929aeb28c7ffff,2567,,
+8929aeb28cbffff,2568,,
+8929aeb28d7ffff,2569,6,Ward 6
+8929aeb2903ffff,2570,3,Ward 3
+8929aeb2907ffff,2571,3,Ward 3
+8929aeb290bffff,2572,3,Ward 3
+8929aeb290fffff,2573,3,Ward 3
+8929aeb2913ffff,2574,6,Ward 6
+8929aeb2917ffff,2575,6,Ward 6
+8929aeb291bffff,2576,6,Ward 6
+8929aeb2923ffff,2577,,
+8929aeb2927ffff,2578,4,Ward 4
+8929aeb292fffff,2579,,
+8929aeb2933ffff,2580,3,Ward 3
+8929aeb2937ffff,2581,3,Ward 3
+8929aeb293bffff,2582,3,Ward 3
+8929aeb2943ffff,2583,3,Ward 3
+8929aeb2947ffff,2584,3,Ward 3
+8929aeb294bffff,2585,3,Ward 3
+8929aeb294fffff,2586,3,Ward 3
+8929aeb2953ffff,2587,6,Ward 6
+8929aeb2957ffff,2588,6,Ward 6
+8929aeb295bffff,2589,2,Ward 2
+8929aeb2963ffff,2590,,
+8929aeb296bffff,2591,,
+8929aeb2973ffff,2592,3,Ward 3
+8929aeb2977ffff,2593,,
+8929aeb297bffff,2594,3,Ward 3
+8929aeb2983ffff,2595,6,Ward 6
+8929aeb2987ffff,2596,6,Ward 6
+8929aeb298bffff,2597,6,Ward 6
+8929aeb298fffff,2598,6,Ward 6
+8929aeb2993ffff,2599,6,Ward 6
+8929aeb2997ffff,2600,6,Ward 6
+8929aeb299bffff,2601,,
+8929aeb29a3ffff,2602,6,Ward 6
+8929aeb29a7ffff,2603,4,Ward 4
+8929aeb29abffff,2604,6,Ward 6
+8929aeb29afffff,2605,3,Ward 3
+8929aeb29b3ffff,2606,6,Ward 6
+8929aeb29b7ffff,2607,6,Ward 6
+8929aeb29bbffff,2608,6,Ward 6
+8929aeb29c3ffff,2609,6,Ward 6
+8929aeb29c7ffff,2610,6,Ward 6
+8929aeb29cbffff,2611,6,Ward 6
+8929aeb29cfffff,2612,6,Ward 6
+8929aeb29d3ffff,2613,6,Ward 6
+8929aeb29d7ffff,2614,6,Ward 6
+8929aeb29dbffff,2615,6,Ward 6
+8929aeb2a03ffff,2616,2,Ward 2
+8929aeb2a07ffff,2617,2,Ward 2
+8929aeb2a0bffff,2618,2,Ward 2
+8929aeb2a0fffff,2619,2,Ward 2
+8929aeb2a13ffff,2620,2,Ward 2
+8929aeb2a17ffff,2621,2,Ward 2
+8929aeb2a1bffff,2622,2,Ward 2
+8929aeb2a23ffff,2623,2,Ward 2
+8929aeb2a27ffff,2624,2,Ward 2
+8929aeb2a2bffff,2625,2,Ward 2
+8929aeb2a2fffff,2626,2,Ward 2
+8929aeb2a33ffff,2627,2,Ward 2
+8929aeb2a37ffff,2628,2,Ward 2
+8929aeb2a3bffff,2629,2,Ward 2
+8929aeb2a43ffff,2630,2,Ward 2
+8929aeb2a47ffff,2631,2,Ward 2
+8929aeb2a4bffff,2632,2,Ward 2
+8929aeb2a4fffff,2633,2,Ward 2
+8929aeb2a53ffff,2634,2,Ward 2
+8929aeb2a57ffff,2635,2,Ward 2
+8929aeb2a5bffff,2636,2,Ward 2
+8929aeb2a63ffff,2637,2,Ward 2
+8929aeb2a67ffff,2638,2,Ward 2
+8929aeb2a6bffff,2639,2,Ward 2
+8929aeb2a6fffff,2640,2,Ward 2
+8929aeb2a73ffff,2641,2,Ward 2
+8929aeb2a77ffff,2642,2,Ward 2
+8929aeb2a7bffff,2643,2,Ward 2
+8929aeb2a83ffff,2644,2,Ward 2
+8929aeb2a87ffff,2645,2,Ward 2
+8929aeb2a8bffff,2646,2,Ward 2
+8929aeb2a8fffff,2647,2,Ward 2
+8929aeb2a93ffff,2648,,
+8929aeb2a97ffff,2649,2,Ward 2
+8929aeb2a9bffff,2650,2,Ward 2
+8929aeb2aa3ffff,2651,2,Ward 2
+8929aeb2aa7ffff,2652,2,Ward 2
+8929aeb2aabffff,2653,2,Ward 2
+8929aeb2aafffff,2654,2,Ward 2
+8929aeb2ab3ffff,2655,2,Ward 2
+8929aeb2ab7ffff,2656,2,Ward 2
+8929aeb2abbffff,2657,2,Ward 2
+8929aeb2ac3ffff,2658,2,Ward 2
+8929aeb2ac7ffff,2659,2,Ward 2
+8929aeb2acbffff,2660,2,Ward 2
+8929aeb2acfffff,2661,2,Ward 2
+8929aeb2ad3ffff,2662,2,Ward 2
+8929aeb2ad7ffff,2663,2,Ward 2
+8929aeb2adbffff,2664,2,Ward 2
+8929aeb2b03ffff,2665,3,Ward 3
+8929aeb2b07ffff,2666,3,Ward 3
+8929aeb2b0bffff,2667,3,Ward 3
+8929aeb2b0fffff,2668,3,Ward 3
+8929aeb2b13ffff,2669,2,Ward 2
+8929aeb2b17ffff,2670,3,Ward 3
+8929aeb2b1bffff,2671,3,Ward 3
+8929aeb2b23ffff,2672,3,Ward 3
+8929aeb2b27ffff,2673,,
+8929aeb2b2bffff,2674,,
+8929aeb2b2fffff,2675,,
+8929aeb2b33ffff,2676,3,Ward 3
+8929aeb2b37ffff,2677,3,Ward 3
+8929aeb2b3bffff,2678,3,Ward 3
+8929aeb2b43ffff,2679,2,Ward 2
+8929aeb2b47ffff,2680,3,Ward 3
+8929aeb2b4bffff,2681,2,Ward 2
+8929aeb2b4fffff,2682,3,Ward 3
+8929aeb2b53ffff,2683,2,Ward 2
+8929aeb2b57ffff,2684,3,Ward 3
+8929aeb2b5bffff,2685,2,Ward 2
+8929aeb2b63ffff,2686,,
+8929aeb2b6bffff,2687,3,Ward 3
+8929aeb2b6fffff,2688,,
+8929aeb2b73ffff,2689,3,Ward 3
+8929aeb2b77ffff,2690,,
+8929aeb2b7bffff,2691,3,Ward 3
+8929aeb2b83ffff,2692,2,Ward 2
+8929aeb2b87ffff,2693,2,Ward 2
+8929aeb2b8bffff,2694,2,Ward 2
+8929aeb2b8fffff,2695,2,Ward 2
+8929aeb2b93ffff,2696,2,Ward 2
+8929aeb2b97ffff,2697,2,Ward 2
+8929aeb2b9bffff,2698,2,Ward 2
+8929aeb2ba3ffff,2699,3,Ward 3
+8929aeb2ba7ffff,2700,3,Ward 3
+8929aeb2babffff,2701,3,Ward 3
+8929aeb2bafffff,2702,3,Ward 3
+8929aeb2bb3ffff,2703,3,Ward 3
+8929aeb2bb7ffff,2704,3,Ward 3
+8929aeb2bbbffff,2705,3,Ward 3
+8929aeb2bc3ffff,2706,2,Ward 2
+8929aeb2bc7ffff,2707,2,Ward 2
+8929aeb2bcbffff,2708,2,Ward 2
+8929aeb2bcfffff,2709,2,Ward 2
+8929aeb2bd3ffff,2710,2,Ward 2
+8929aeb2bd7ffff,2711,2,Ward 2
+8929aeb2bdbffff,2712,2,Ward 2
+8929aeb2c03ffff,2713,1,Ward 1
+8929aeb2c07ffff,2714,1,Ward 1
+8929aeb2c0bffff,2715,1,Ward 1
+8929aeb2c0fffff,2716,1,Ward 1
+8929aeb2c13ffff,2717,6,Ward 6
+8929aeb2c17ffff,2718,6,Ward 6
+8929aeb2c1bffff,2719,6,Ward 6
+8929aeb2c23ffff,2720,6,Ward 6
+8929aeb2c27ffff,2721,6,Ward 6
+8929aeb2c2bffff,2722,6,Ward 6
+8929aeb2c2fffff,2723,6,Ward 6
+8929aeb2c33ffff,2724,6,Ward 6
+8929aeb2c37ffff,2725,6,Ward 6
+8929aeb2c3bffff,2726,6,Ward 6
+8929aeb2c43ffff,2727,1,Ward 1
+8929aeb2c47ffff,2728,1,Ward 1
+8929aeb2c4bffff,2729,1,Ward 1
+8929aeb2c4fffff,2730,1,Ward 1
+8929aeb2c53ffff,2731,1,Ward 1
+8929aeb2c57ffff,2732,1,Ward 1
+8929aeb2c5bffff,2733,1,Ward 1
+8929aeb2c63ffff,2734,1,Ward 1
+8929aeb2c67ffff,2735,6,Ward 6
+8929aeb2c6bffff,2736,1,Ward 1
+8929aeb2c6fffff,2737,6,Ward 6
+8929aeb2c73ffff,2738,1,Ward 1
+8929aeb2c77ffff,2739,1,Ward 1
+8929aeb2c7bffff,2740,1,Ward 1
+8929aeb2c83ffff,2741,6,Ward 6
+8929aeb2c87ffff,2742,6,Ward 6
+8929aeb2c8bffff,2743,6,Ward 6
+8929aeb2c8fffff,2744,6,Ward 6
+8929aeb2c93ffff,2745,6,Ward 6
+8929aeb2c97ffff,2746,6,Ward 6
+8929aeb2c9bffff,2747,6,Ward 6
+8929aeb2ca3ffff,2748,6,Ward 6
+8929aeb2ca7ffff,2749,6,Ward 6
+8929aeb2cabffff,2750,6,Ward 6
+8929aeb2cafffff,2751,6,Ward 6
+8929aeb2cb3ffff,2752,6,Ward 6
+8929aeb2cb7ffff,2753,6,Ward 6
+8929aeb2cbbffff,2754,6,Ward 6
+8929aeb2cc3ffff,2755,6,Ward 6
+8929aeb2cc7ffff,2756,6,Ward 6
+8929aeb2ccbffff,2757,6,Ward 6
+8929aeb2ccfffff,2758,1,Ward 1
+8929aeb2cd3ffff,2759,6,Ward 6
+8929aeb2cd7ffff,2760,6,Ward 6
+8929aeb2cdbffff,2761,6,Ward 6
+8929aeb2d03ffff,2762,6,Ward 6
+8929aeb2d07ffff,2763,6,Ward 6
+8929aeb2d0bffff,2764,6,Ward 6
+8929aeb2d0fffff,2765,6,Ward 6
+8929aeb2d13ffff,2766,6,Ward 6
+8929aeb2d17ffff,2767,6,Ward 6
+8929aeb2d1bffff,2768,6,Ward 6
+8929aeb2d23ffff,2769,6,Ward 6
+8929aeb2d27ffff,2770,6,Ward 6
+8929aeb2d2bffff,2771,,
+8929aeb2d2fffff,2772,6,Ward 6
+8929aeb2d33ffff,2773,6,Ward 6
+8929aeb2d37ffff,2774,,
+8929aeb2d3bffff,2775,,
+8929aeb2d43ffff,2776,6,Ward 6
+8929aeb2d47ffff,2777,6,Ward 6
+8929aeb2d4bffff,2778,6,Ward 6
+8929aeb2d4fffff,2779,6,Ward 6
+8929aeb2d53ffff,2780,6,Ward 6
+8929aeb2d57ffff,2781,6,Ward 6
+8929aeb2d5bffff,2782,6,Ward 6
+8929aeb2d63ffff,2783,,
+8929aeb2d6bffff,2784,6,Ward 6
+8929aeb2d6fffff,2785,,
+8929aeb2d73ffff,2786,6,Ward 6
+8929aeb2d7bffff,2787,6,Ward 6
+8929aeb2d83ffff,2788,6,Ward 6
+8929aeb2d87ffff,2789,6,Ward 6
+8929aeb2d8bffff,2790,6,Ward 6
+8929aeb2d8fffff,2791,6,Ward 6
+8929aeb2d93ffff,2792,6,Ward 6
+8929aeb2d97ffff,2793,6,Ward 6
+8929aeb2d9bffff,2794,6,Ward 6
+8929aeb2da3ffff,2795,6,Ward 6
+8929aeb2da7ffff,2796,6,Ward 6
+8929aeb2dabffff,2797,6,Ward 6
+8929aeb2dafffff,2798,6,Ward 6
+8929aeb2db3ffff,2799,6,Ward 6
+8929aeb2db7ffff,2800,6,Ward 6
+8929aeb2dbbffff,2801,6,Ward 6
+8929aeb2dc3ffff,2802,6,Ward 6
+8929aeb2dc7ffff,2803,6,Ward 6
+8929aeb2dcbffff,2804,6,Ward 6
+8929aeb2dcfffff,2805,6,Ward 6
+8929aeb2dd3ffff,2806,6,Ward 6
+8929aeb2dd7ffff,2807,6,Ward 6
+8929aeb2ddbffff,2808,6,Ward 6
+8929aeb2e03ffff,2809,,
+8929aeb2e13ffff,2810,1,Ward 1
+8929aeb2e17ffff,2811,1,Ward 1
+8929aeb2e1bffff,2812,1,Ward 1
+8929aeb2e27ffff,2813,2,Ward 2
+8929aeb2e2fffff,2814,,
+8929aeb2e33ffff,2815,,
+8929aeb2e43ffff,2816,2,Ward 2
+8929aeb2e47ffff,2817,2,Ward 2
+8929aeb2e4bffff,2818,2,Ward 2
+8929aeb2e4fffff,2819,2,Ward 2
+8929aeb2e53ffff,2820,2,Ward 2
+8929aeb2e57ffff,2821,,
+8929aeb2e5bffff,2822,2,Ward 2
+8929aeb2e63ffff,2823,,
+8929aeb2e67ffff,2824,,
+8929aeb2e6bffff,2825,2,Ward 2
+8929aeb2e6fffff,2826,2,Ward 2
+8929aeb2e7bffff,2827,,
+8929aeb2e83ffff,2828,1,Ward 1
+8929aeb2e87ffff,2829,1,Ward 1
+8929aeb2e8bffff,2830,1,Ward 1
+8929aeb2e8fffff,2831,1,Ward 1
+8929aeb2e93ffff,2832,1,Ward 1
+8929aeb2e97ffff,2833,1,Ward 1
+8929aeb2e9bffff,2834,1,Ward 1
+8929aeb2ea3ffff,2835,1,Ward 1
+8929aeb2ea7ffff,2836,,
+8929aeb2eabffff,2837,1,Ward 1
+8929aeb2eafffff,2838,1,Ward 1
+8929aeb2eb3ffff,2839,1,Ward 1
+8929aeb2eb7ffff,2840,1,Ward 1
+8929aeb2ebbffff,2841,1,Ward 1
+8929aeb2ec3ffff,2842,1,Ward 1
+8929aeb2ec7ffff,2843,1,Ward 1
+8929aeb2ecfffff,2844,1,Ward 1
+8929aeb2ed3ffff,2845,1,Ward 1
+8929aeb2ed7ffff,2846,1,Ward 1
+8929aeb3023ffff,2847,1,Ward 1
+8929aeb3027ffff,2848,1,Ward 1
+8929aeb302bffff,2849,,
+8929aeb302fffff,2850,1,Ward 1
+8929aeb3033ffff,2851,,
+8929aeb3037ffff,2852,1,Ward 1
+8929aeb3063ffff,2853,,
+8929aeb3067ffff,2854,1,Ward 1
+8929aeb306bffff,2855,,
+8929aeb306fffff,2856,1,Ward 1
+8929aeb30afffff,2857,,
+8929aeb3103ffff,2858,1,Ward 1
+8929aeb3107ffff,2859,1,Ward 1
+8929aeb310bffff,2860,1,Ward 1
+8929aeb310fffff,2861,1,Ward 1
+8929aeb3113ffff,2862,1,Ward 1
+8929aeb3117ffff,2863,1,Ward 1
+8929aeb311bffff,2864,1,Ward 1
+8929aeb3123ffff,2865,1,Ward 1
+8929aeb3127ffff,2866,1,Ward 1
+8929aeb312bffff,2867,1,Ward 1
+8929aeb312fffff,2868,1,Ward 1
+8929aeb3133ffff,2869,1,Ward 1
+8929aeb3137ffff,2870,1,Ward 1
+8929aeb313bffff,2871,1,Ward 1
+8929aeb3143ffff,2872,1,Ward 1
+8929aeb3147ffff,2873,1,Ward 1
+8929aeb314bffff,2874,1,Ward 1
+8929aeb314fffff,2875,1,Ward 1
+8929aeb3153ffff,2876,1,Ward 1
+8929aeb3157ffff,2877,1,Ward 1
+8929aeb315bffff,2878,1,Ward 1
+8929aeb3163ffff,2879,1,Ward 1
+8929aeb3167ffff,2880,1,Ward 1
+8929aeb316bffff,2881,2,Ward 2
+8929aeb316fffff,2882,1,Ward 1
+8929aeb3173ffff,2883,1,Ward 1
+8929aeb3177ffff,2884,1,Ward 1
+8929aeb317bffff,2885,2,Ward 2
+8929aeb3183ffff,2886,1,Ward 1
+8929aeb3187ffff,2887,1,Ward 1
+8929aeb318bffff,2888,1,Ward 1
+8929aeb318fffff,2889,1,Ward 1
+8929aeb3193ffff,2890,1,Ward 1
+8929aeb3197ffff,2891,1,Ward 1
+8929aeb319bffff,2892,1,Ward 1
+8929aeb31a3ffff,2893,1,Ward 1
+8929aeb31a7ffff,2894,1,Ward 1
+8929aeb31abffff,2895,1,Ward 1
+8929aeb31afffff,2896,1,Ward 1
+8929aeb31b3ffff,2897,1,Ward 1
+8929aeb31b7ffff,2898,1,Ward 1
+8929aeb31bbffff,2899,1,Ward 1
+8929aeb31c3ffff,2900,1,Ward 1
+8929aeb31c7ffff,2901,1,Ward 1
+8929aeb31cbffff,2902,1,Ward 1
+8929aeb31cfffff,2903,1,Ward 1
+8929aeb31d3ffff,2904,,
+8929aeb31d7ffff,2905,1,Ward 1
+8929aeb31dbffff,2906,1,Ward 1
+8929aeb3327ffff,2907,,
+8929aeb3337ffff,2908,2,Ward 2
+8929aeb3383ffff,2909,1,Ward 1
+8929aeb3387ffff,2910,,
+8929aeb338bffff,2911,1,Ward 1
+8929aeb338fffff,2912,,
+8929aeb3393ffff,2913,1,Ward 1
+8929aeb3397ffff,2914,1,Ward 1
+8929aeb339bffff,2915,1,Ward 1
+8929aeb33a3ffff,2916,2,Ward 2
+8929aeb33a7ffff,2917,2,Ward 2
+8929aeb33afffff,2918,2,Ward 2
+8929aeb33b3ffff,2919,2,Ward 2
+8929aeb33b7ffff,2920,2,Ward 2
+8929aeb33c3ffff,2921,1,Ward 1
+8929aeb33c7ffff,2922,,
+8929aeb33d3ffff,2923,1,Ward 1
+8929aeb33d7ffff,2924,1,Ward 1
+8929aeb3503ffff,2925,1,Ward 1
+8929aeb3507ffff,2926,1,Ward 1
+8929aeb350bffff,2927,1,Ward 1
+8929aeb350fffff,2928,1,Ward 1
+8929aeb3513ffff,2929,1,Ward 1
+8929aeb3517ffff,2930,1,Ward 1
+8929aeb351bffff,2931,1,Ward 1
+8929aeb3523ffff,2932,1,Ward 1
+8929aeb3527ffff,2933,1,Ward 1
+8929aeb352bffff,2934,1,Ward 1
+8929aeb352fffff,2935,1,Ward 1
+8929aeb3533ffff,2936,1,Ward 1
+8929aeb3537ffff,2937,1,Ward 1
+8929aeb353bffff,2938,1,Ward 1
+8929aeb3563ffff,2939,1,Ward 1
+8929aeb3567ffff,2940,1,Ward 1
+8929aeb356fffff,2941,1,Ward 1
+8929aeb3573ffff,2942,1,Ward 1
+8929aeb3577ffff,2943,1,Ward 1
+8929aeb3583ffff,2944,1,Ward 1
+8929aeb3587ffff,2945,1,Ward 1
+8929aeb358bffff,2946,1,Ward 1
+8929aeb358fffff,2947,1,Ward 1
+8929aeb3593ffff,2948,1,Ward 1
+8929aeb3597ffff,2949,1,Ward 1
+8929aeb359bffff,2950,1,Ward 1
+8929aeb35a3ffff,2951,1,Ward 1
+8929aeb35a7ffff,2952,1,Ward 1
+8929aeb35abffff,2953,1,Ward 1
+8929aeb35afffff,2954,1,Ward 1
+8929aeb35b3ffff,2955,1,Ward 1
+8929aeb35b7ffff,2956,1,Ward 1
+8929aeb35bbffff,2957,1,Ward 1
+8929aeb35c7ffff,2958,1,Ward 1
+8929aeb35d7ffff,2959,1,Ward 1
+8929aeb4003ffff,2960,4,Ward 4
+8929aeb4007ffff,2961,4,Ward 4
+8929aeb400fffff,2962,,
+8929aeb4013ffff,2963,4,Ward 4
+8929aeb4017ffff,2964,4,Ward 4
+8929aeb4033ffff,2965,,
+8929aeb4043ffff,2966,,
+8929aeb4053ffff,2967,4,Ward 4
+8929aeb4057ffff,2968,4,Ward 4
+8929aeb405bffff,2969,4,Ward 4
+8929aeb4083ffff,2970,4,Ward 4
+8929aeb4087ffff,2971,4,Ward 4
+8929aeb408bffff,2972,4,Ward 4
+8929aeb408fffff,2973,4,Ward 4
+8929aeb4093ffff,2974,4,Ward 4
+8929aeb4097ffff,2975,4,Ward 4
+8929aeb409bffff,2976,4,Ward 4
+8929aeb40a3ffff,2977,4,Ward 4
+8929aeb40a7ffff,2978,4,Ward 4
+8929aeb40abffff,2979,4,Ward 4
+8929aeb40afffff,2980,4,Ward 4
+8929aeb40b3ffff,2981,4,Ward 4
+8929aeb40b7ffff,2982,4,Ward 4
+8929aeb40bbffff,2983,4,Ward 4
+8929aeb40c3ffff,2984,4,Ward 4
+8929aeb40cbffff,2985,4,Ward 4
+8929aeb40cfffff,2986,4,Ward 4
+8929aeb40d3ffff,2987,4,Ward 4
+8929aeb40d7ffff,2988,4,Ward 4
+8929aeb40dbffff,2989,4,Ward 4
+8929aeb4183ffff,2990,,
+8929aeb4187ffff,2991,,
+8929aeb4193ffff,2992,4,Ward 4
+8929aeb4197ffff,2993,4,Ward 4
+8929aeb419bffff,2994,4,Ward 4
+8929aeb41d3ffff,2995,4,Ward 4
+8929aeb41d7ffff,2996,,
+8929aeb41dbffff,2997,,
+8929aeb4293ffff,2998,4,Ward 4
+8929aeb4297ffff,2999,,
+8929aeb429bffff,3000,,
+8929aeb42d3ffff,3001,,
+8929aeb4403ffff,3002,4,Ward 4
+8929aeb4407ffff,3003,4,Ward 4
+8929aeb440bffff,3004,4,Ward 4
+8929aeb440fffff,3005,4,Ward 4
+8929aeb4413ffff,3006,4,Ward 4
+8929aeb4417ffff,3007,4,Ward 4
+8929aeb441bffff,3008,4,Ward 4
+8929aeb4423ffff,3009,4,Ward 4
+8929aeb4427ffff,3010,4,Ward 4
+8929aeb442bffff,3011,4,Ward 4
+8929aeb442fffff,3012,4,Ward 4
+8929aeb4433ffff,3013,4,Ward 4
+8929aeb4437ffff,3014,4,Ward 4
+8929aeb443bffff,3015,4,Ward 4
+8929aeb4443ffff,3016,4,Ward 4
+8929aeb4447ffff,3017,4,Ward 4
+8929aeb444bffff,3018,4,Ward 4
+8929aeb444fffff,3019,4,Ward 4
+8929aeb4453ffff,3020,4,Ward 4
+8929aeb4457ffff,3021,4,Ward 4
+8929aeb445bffff,3022,4,Ward 4
+8929aeb4463ffff,3023,4,Ward 4
+8929aeb4467ffff,3024,4,Ward 4
+8929aeb446bffff,3025,4,Ward 4
+8929aeb446fffff,3026,4,Ward 4
+8929aeb4473ffff,3027,4,Ward 4
+8929aeb4477ffff,3028,4,Ward 4
+8929aeb447bffff,3029,4,Ward 4
+8929aeb4483ffff,3030,,
+8929aeb4487ffff,3031,4,Ward 4
+8929aeb448bffff,3032,4,Ward 4
+8929aeb448fffff,3033,4,Ward 4
+8929aeb4493ffff,3034,4,Ward 4
+8929aeb4497ffff,3035,4,Ward 4
+8929aeb449bffff,3036,,
+8929aeb44a3ffff,3037,4,Ward 4
+8929aeb44a7ffff,3038,4,Ward 4
+8929aeb44abffff,3039,4,Ward 4
+8929aeb44afffff,3040,4,Ward 4
+8929aeb44b3ffff,3041,4,Ward 4
+8929aeb44b7ffff,3042,4,Ward 4
+8929aeb44bbffff,3043,4,Ward 4
+8929aeb44c3ffff,3044,4,Ward 4
+8929aeb44c7ffff,3045,4,Ward 4
+8929aeb44cbffff,3046,4,Ward 4
+8929aeb44cfffff,3047,4,Ward 4
+8929aeb44d3ffff,3048,4,Ward 4
+8929aeb44d7ffff,3049,4,Ward 4
+8929aeb44dbffff,3050,4,Ward 4
+8929aeb4503ffff,3051,4,Ward 4
+8929aeb4507ffff,3052,4,Ward 4
+8929aeb450bffff,3053,4,Ward 4
+8929aeb450fffff,3054,4,Ward 4
+8929aeb4513ffff,3055,4,Ward 4
+8929aeb4517ffff,3056,4,Ward 4
+8929aeb451bffff,3057,4,Ward 4
+8929aeb4523ffff,3058,4,Ward 4
+8929aeb4527ffff,3059,4,Ward 4
+8929aeb452bffff,3060,4,Ward 4
+8929aeb452fffff,3061,4,Ward 4
+8929aeb4533ffff,3062,4,Ward 4
+8929aeb4537ffff,3063,4,Ward 4
+8929aeb453bffff,3064,4,Ward 4
+8929aeb4543ffff,3065,4,Ward 4
+8929aeb4547ffff,3066,4,Ward 4
+8929aeb454bffff,3067,4,Ward 4
+8929aeb454fffff,3068,4,Ward 4
+8929aeb4553ffff,3069,4,Ward 4
+8929aeb4557ffff,3070,4,Ward 4
+8929aeb455bffff,3071,4,Ward 4
+8929aeb4563ffff,3072,4,Ward 4
+8929aeb4567ffff,3073,4,Ward 4
+8929aeb456bffff,3074,4,Ward 4
+8929aeb456fffff,3075,4,Ward 4
+8929aeb4573ffff,3076,4,Ward 4
+8929aeb4577ffff,3077,4,Ward 4
+8929aeb457bffff,3078,4,Ward 4
+8929aeb4583ffff,3079,4,Ward 4
+8929aeb4587ffff,3080,4,Ward 4
+8929aeb458bffff,3081,4,Ward 4
+8929aeb458fffff,3082,4,Ward 4
+8929aeb4593ffff,3083,4,Ward 4
+8929aeb4597ffff,3084,4,Ward 4
+8929aeb459bffff,3085,4,Ward 4
+8929aeb45a3ffff,3086,4,Ward 4
+8929aeb45a7ffff,3087,4,Ward 4
+8929aeb45abffff,3088,4,Ward 4
+8929aeb45afffff,3089,4,Ward 4
+8929aeb45b3ffff,3090,4,Ward 4
+8929aeb45b7ffff,3091,4,Ward 4
+8929aeb45bbffff,3092,4,Ward 4
+8929aeb45c3ffff,3093,4,Ward 4
+8929aeb45c7ffff,3094,4,Ward 4
+8929aeb45cbffff,3095,4,Ward 4
+8929aeb45cfffff,3096,4,Ward 4
+8929aeb45d3ffff,3097,4,Ward 4
+8929aeb45d7ffff,3098,4,Ward 4
+8929aeb45dbffff,3099,4,Ward 4
+8929aeb4603ffff,3100,,
+8929aeb4607ffff,3101,4,Ward 4
+8929aeb460bffff,3102,4,Ward 4
+8929aeb460fffff,3103,4,Ward 4
+8929aeb4613ffff,3104,4,Ward 4
+8929aeb4617ffff,3105,,
+8929aeb461bffff,3106,4,Ward 4
+8929aeb4623ffff,3107,4,Ward 4
+8929aeb4627ffff,3108,4,Ward 4
+8929aeb462bffff,3109,4,Ward 4
+8929aeb462fffff,3110,4,Ward 4
+8929aeb4633ffff,3111,4,Ward 4
+8929aeb4637ffff,3112,4,Ward 4
+8929aeb463bffff,3113,4,Ward 4
+8929aeb4643ffff,3114,4,Ward 4
+8929aeb4647ffff,3115,4,Ward 4
+8929aeb464bffff,3116,4,Ward 4
+8929aeb464fffff,3117,4,Ward 4
+8929aeb4653ffff,3118,4,Ward 4
+8929aeb4657ffff,3119,,
+8929aeb465bffff,3120,4,Ward 4
+8929aeb4663ffff,3121,4,Ward 4
+8929aeb4667ffff,3122,4,Ward 4
+8929aeb466bffff,3123,4,Ward 4
+8929aeb466fffff,3124,4,Ward 4
+8929aeb4673ffff,3125,4,Ward 4
+8929aeb4677ffff,3126,4,Ward 4
+8929aeb467bffff,3127,4,Ward 4
+8929aeb4683ffff,3128,4,Ward 4
+8929aeb4687ffff,3129,4,Ward 4
+8929aeb468bffff,3130,4,Ward 4
+8929aeb468fffff,3131,4,Ward 4
+8929aeb4693ffff,3132,4,Ward 4
+8929aeb4697ffff,3133,4,Ward 4
+8929aeb469bffff,3134,4,Ward 4
+8929aeb46a3ffff,3135,,
+8929aeb46a7ffff,3136,,
+8929aeb46abffff,3137,,
+8929aeb46afffff,3138,,
+8929aeb46b3ffff,3139,4,Ward 4
+8929aeb46b7ffff,3140,4,Ward 4
+8929aeb46bbffff,3141,4,Ward 4
+8929aeb46c3ffff,3142,4,Ward 4
+8929aeb46c7ffff,3143,4,Ward 4
+8929aeb46cbffff,3144,4,Ward 4
+8929aeb46cfffff,3145,4,Ward 4
+8929aeb46d3ffff,3146,4,Ward 4
+8929aeb46d7ffff,3147,4,Ward 4
+8929aeb46dbffff,3148,4,Ward 4
+8929aeb5403ffff,3149,4,Ward 4
+8929aeb5407ffff,3150,4,Ward 4
+8929aeb540bffff,3151,,
+8929aeb540fffff,3152,4,Ward 4
+8929aeb5413ffff,3153,4,Ward 4
+8929aeb5417ffff,3154,4,Ward 4
+8929aeb541bffff,3155,4,Ward 4
+8929aeb5423ffff,3156,4,Ward 4
+8929aeb5427ffff,3157,4,Ward 4
+8929aeb542bffff,3158,,
+8929aeb542fffff,3159,,
+8929aeb5433ffff,3160,4,Ward 4
+8929aeb5437ffff,3161,4,Ward 4
+8929aeb543bffff,3162,4,Ward 4
+8929aeb5457ffff,3163,,
+8929aeb548fffff,3164,,
+8929aeb54a3ffff,3165,4,Ward 4
+8929aeb54a7ffff,3166,4,Ward 4
+8929aeb54abffff,3167,4,Ward 4
+8929aeb54afffff,3168,4,Ward 4
+8929aeb54b3ffff,3169,,
+8929aeb54b7ffff,3170,4,Ward 4
+8929aeb54bbffff,3171,4,Ward 4
+8929aeb54c7ffff,3172,,
+8929aeb54cfffff,3173,,
+8929aeb5503ffff,3174,,
+8929aeb5513ffff,3175,4,Ward 4
+8929aeb5517ffff,3176,4,Ward 4
+8929aeb551bffff,3177,4,Ward 4
+8929aeb5553ffff,3178,4,Ward 4
+8929aeb5557ffff,3179,,
+8929aeb555bffff,3180,,
+8929aeb5583ffff,3181,4,Ward 4
+8929aeb5587ffff,3182,4,Ward 4
+8929aeb558bffff,3183,,
+8929aeb558fffff,3184,,
+8929aeb5593ffff,3185,,
+8929aeb5597ffff,3186,4,Ward 4
+8929aeb559bffff,3187,4,Ward 4
+8929aeb55a3ffff,3188,4,Ward 4
+8929aeb55a7ffff,3189,4,Ward 4
+8929aeb55abffff,3190,,
+8929aeb55afffff,3191,,
+8929aeb55b3ffff,3192,4,Ward 4
+8929aeb55b7ffff,3193,4,Ward 4
+8929aeb55bbffff,3194,4,Ward 4
+8929aeb55c3ffff,3195,4,Ward 4
+8929aeb55c7ffff,3196,4,Ward 4
+8929aeb55cbffff,3197,4,Ward 4
+8929aeb55cfffff,3198,4,Ward 4
+8929aeb55d3ffff,3199,4,Ward 4
+8929aeb55d7ffff,3200,4,Ward 4
+8929aeb55dbffff,3201,4,Ward 4
+8929aeb60c3ffff,3202,5,Ward 5
+8929aeb60c7ffff,3203,,
+8929aeb60d3ffff,3204,5,Ward 5
+8929aeb60d7ffff,3205,,
+8929aeb60dbffff,3206,,
+8929aeb6223ffff,3207,,
+8929aeb6227ffff,3208,,
+8929aeb622bffff,3209,4,Ward 4
+8929aeb622fffff,3210,4,Ward 4
+8929aeb6247ffff,3211,,
+8929aeb624bffff,3212,,
+8929aeb624fffff,3213,4,Ward 4
+8929aeb625bffff,3214,,
+8929aeb626bffff,3215,,
+8929aeb626fffff,3216,4,Ward 4
+8929aeb627bffff,3217,,
+8929aeb6283ffff,3218,,
+8929aeb628bffff,3219,,
+8929aeb6293ffff,3220,,
+8929aeb629bffff,3221,5,Ward 5
+8929aeb62c3ffff,3222,,
+8929aeb62d7ffff,3223,5,Ward 5
+8929aeb6327ffff,3224,,
+8929aeb632bffff,3225,,
+8929aeb632fffff,3226,4,Ward 4
+8929aeb634bffff,3227,4,Ward 4
+8929aeb635bffff,3228,4,Ward 4
+8929aeb6363ffff,3229,4,Ward 4
+8929aeb6367ffff,3230,4,Ward 4
+8929aeb636bffff,3231,4,Ward 4
+8929aeb636fffff,3232,4,Ward 4
+8929aeb637bffff,3233,,
+8929aeb6403ffff,3234,,
+8929aeb640bffff,3235,5,Ward 5
+8929aeb6413ffff,3236,5,Ward 5
+8929aeb6417ffff,3237,,
+8929aeb641bffff,3238,5,Ward 5
+8929aeb6443ffff,3239,5,Ward 5
+8929aeb6447ffff,3240,,
+8929aeb644bffff,3241,,
+8929aeb644fffff,3242,,
+8929aeb6453ffff,3243,5,Ward 5
+8929aeb6457ffff,3244,5,Ward 5
+8929aeb645bffff,3245,5,Ward 5
+8929aeb646bffff,3246,,
+8929aeb646fffff,3247,5,Ward 5
+8929aeb647bffff,3248,,
+8929aeb6483ffff,3249,5,Ward 5
+8929aeb6487ffff,3250,5,Ward 5
+8929aeb648bffff,3251,5,Ward 5
+8929aeb648fffff,3252,5,Ward 5
+8929aeb6493ffff,3253,5,Ward 5
+8929aeb6497ffff,3254,5,Ward 5
+8929aeb649bffff,3255,5,Ward 5
+8929aeb64abffff,3256,,
+8929aeb64b3ffff,3257,5,Ward 5
+8929aeb64b7ffff,3258,5,Ward 5
+8929aeb64bbffff,3259,5,Ward 5
+8929aeb64c3ffff,3260,5,Ward 5
+8929aeb64c7ffff,3261,5,Ward 5
+8929aeb64cbffff,3262,5,Ward 5
+8929aeb64cfffff,3263,5,Ward 5
+8929aeb64d3ffff,3264,5,Ward 5
+8929aeb64d7ffff,3265,5,Ward 5
+8929aeb64dbffff,3266,5,Ward 5
+8929aeb6603ffff,3267,5,Ward 5
+8929aeb6607ffff,3268,,
+8929aeb660bffff,3269,5,Ward 5
+8929aeb660fffff,3270,5,Ward 5
+8929aeb6613ffff,3271,,
+8929aeb6617ffff,3272,5,Ward 5
+8929aeb661bffff,3273,5,Ward 5
+8929aeb662bffff,3274,,
+8929aeb663bffff,3275,,
+8929aeb6643ffff,3276,,
+8929aeb6647ffff,3277,,
+8929aeb664bffff,3278,,
+8929aeb6653ffff,3279,5,Ward 5
+8929aeb6657ffff,3280,5,Ward 5
+8929aeb665bffff,3281,5,Ward 5
+8929aeb6663ffff,3282,5,Ward 5
+8929aeb6667ffff,3283,5,Ward 5
+8929aeb666bffff,3284,,
+8929aeb666fffff,3285,5,Ward 5
+8929aeb6673ffff,3286,5,Ward 5
+8929aeb6677ffff,3287,5,Ward 5
+8929aeb667bffff,3288,,
+8929aeb6687ffff,3289,,
+8929aeb668fffff,3290,5,Ward 5
+8929aeb6693ffff,3291,5,Ward 5
+8929aeb6697ffff,3292,,
+8929aeb66a3ffff,3293,5,Ward 5
+8929aeb66a7ffff,3294,,
+8929aeb66abffff,3295,,
+8929aeb66afffff,3296,,
+8929aeb66b3ffff,3297,,
+8929aeb66b7ffff,3298,5,Ward 5
+8929aeb66bbffff,3299,5,Ward 5
+8929aeb66c3ffff,3300,5,Ward 5
+8929aeb66cbffff,3301,5,Ward 5
+8929aeb66cfffff,3302,5,Ward 5
+8929aeb66d3ffff,3303,5,Ward 5
+8929aeb66d7ffff,3304,,
+8929aeb66dbffff,3305,5,Ward 5
+8929aeb6843ffff,3306,4,Ward 4
+8929aeb684bffff,3307,4,Ward 4
+8929aeb684fffff,3308,4,Ward 4
+8929aeb685bffff,3309,,
+8929aeb6a03ffff,3310,4,Ward 4
+8929aeb6a07ffff,3311,4,Ward 4
+8929aeb6a0bffff,3312,4,Ward 4
+8929aeb6a0fffff,3313,4,Ward 4
+8929aeb6a13ffff,3314,4,Ward 4
+8929aeb6a17ffff,3315,4,Ward 4
+8929aeb6a1bffff,3316,4,Ward 4
+8929aeb6a33ffff,3317,4,Ward 4
+8929aeb6a37ffff,3318,,
+8929aeb6a3bffff,3319,,
+8929aeb6a43ffff,3320,4,Ward 4
+8929aeb6a47ffff,3321,,
+8929aeb6a4bffff,3322,4,Ward 4
+8929aeb6a4fffff,3323,,
+8929aeb6a53ffff,3324,4,Ward 4
+8929aeb6a57ffff,3325,4,Ward 4
+8929aeb6a5bffff,3326,4,Ward 4
+8929aeb6a73ffff,3327,,
+8929aeb6a83ffff,3328,4,Ward 4
+8929aeb6a87ffff,3329,4,Ward 4
+8929aeb6a8bffff,3330,4,Ward 4
+8929aeb6a8fffff,3331,4,Ward 4
+8929aeb6a93ffff,3332,4,Ward 4
+8929aeb6a97ffff,3333,4,Ward 4
+8929aeb6a9bffff,3334,4,Ward 4
+8929aeb6aa3ffff,3335,4,Ward 4
+8929aeb6aa7ffff,3336,4,Ward 4
+8929aeb6aabffff,3337,4,Ward 4
+8929aeb6aafffff,3338,4,Ward 4
+8929aeb6ab3ffff,3339,4,Ward 4
+8929aeb6ab7ffff,3340,4,Ward 4
+8929aeb6abbffff,3341,4,Ward 4
+8929aeb6ac3ffff,3342,4,Ward 4
+8929aeb6ac7ffff,3343,4,Ward 4
+8929aeb6acbffff,3344,4,Ward 4
+8929aeb6acfffff,3345,4,Ward 4
+8929aeb6ad3ffff,3346,4,Ward 4
+8929aeb6ad7ffff,3347,4,Ward 4
+8929aeb6adbffff,3348,4,Ward 4
+8929aeb6bdbffff,3349,4,Ward 4
+8929aeb6e0bffff,3350,4,Ward 4
+8929aeb6e1bffff,3351,4,Ward 4
+8929aeb6e23ffff,3352,4,Ward 4
+8929aeb6e27ffff,3353,,
+8929aeb6e2bffff,3354,4,Ward 4
+8929aeb6e2fffff,3355,4,Ward 4
+8929aeb6e37ffff,3356,,
+8929aeb6e3bffff,3357,,
+8929aeb6e43ffff,3358,4,Ward 4
+8929aeb6e47ffff,3359,4,Ward 4
+8929aeb6e4bffff,3360,4,Ward 4
+8929aeb6e4fffff,3361,4,Ward 4
+8929aeb6e53ffff,3362,4,Ward 4
+8929aeb6e57ffff,3363,4,Ward 4
+8929aeb6e5bffff,3364,4,Ward 4
+8929aeb6e63ffff,3365,4,Ward 4
+8929aeb6e67ffff,3366,4,Ward 4
+8929aeb6e6bffff,3367,4,Ward 4
+8929aeb6e6fffff,3368,4,Ward 4
+8929aeb6e73ffff,3369,4,Ward 4
+8929aeb6e77ffff,3370,4,Ward 4
+8929aeb6e7bffff,3371,4,Ward 4
+8929aeb6ecfffff,3372,,
+8929aeb7003ffff,3373,4,Ward 4
+8929aeb7007ffff,3374,4,Ward 4
+8929aeb700bffff,3375,4,Ward 4
+8929aeb700fffff,3376,4,Ward 4
+8929aeb7013ffff,3377,4,Ward 4
+8929aeb7017ffff,3378,4,Ward 4
+8929aeb701bffff,3379,4,Ward 4
+8929aeb7023ffff,3380,4,Ward 4
+8929aeb7027ffff,3381,4,Ward 4
+8929aeb702bffff,3382,4,Ward 4
+8929aeb702fffff,3383,4,Ward 4
+8929aeb7033ffff,3384,4,Ward 4
+8929aeb7037ffff,3385,4,Ward 4
+8929aeb703bffff,3386,4,Ward 4
+8929aeb7043ffff,3387,4,Ward 4
+8929aeb7047ffff,3388,4,Ward 4
+8929aeb704bffff,3389,4,Ward 4
+8929aeb704fffff,3390,4,Ward 4
+8929aeb7053ffff,3391,4,Ward 4
+8929aeb7057ffff,3392,4,Ward 4
+8929aeb705bffff,3393,4,Ward 4
+8929aeb7063ffff,3394,4,Ward 4
+8929aeb7067ffff,3395,4,Ward 4
+8929aeb706bffff,3396,4,Ward 4
+8929aeb706fffff,3397,4,Ward 4
+8929aeb7073ffff,3398,4,Ward 4
+8929aeb7077ffff,3399,4,Ward 4
+8929aeb707bffff,3400,4,Ward 4
+8929aeb7083ffff,3401,4,Ward 4
+8929aeb7087ffff,3402,4,Ward 4
+8929aeb708bffff,3403,4,Ward 4
+8929aeb708fffff,3404,4,Ward 4
+8929aeb7093ffff,3405,4,Ward 4
+8929aeb7097ffff,3406,4,Ward 4
+8929aeb709bffff,3407,4,Ward 4
+8929aeb70a3ffff,3408,4,Ward 4
+8929aeb70abffff,3409,4,Ward 4
+8929aeb70afffff,3410,4,Ward 4
+8929aeb70b3ffff,3411,,
+8929aeb70bbffff,3412,4,Ward 4
+8929aeb70c3ffff,3413,4,Ward 4
+8929aeb70c7ffff,3414,4,Ward 4
+8929aeb70cbffff,3415,4,Ward 4
+8929aeb70cfffff,3416,4,Ward 4
+8929aeb70d3ffff,3417,4,Ward 4
+8929aeb70d7ffff,3418,4,Ward 4
+8929aeb70dbffff,3419,4,Ward 4
+8929aeb7103ffff,3420,4,Ward 4
+8929aeb7107ffff,3421,4,Ward 4
+8929aeb710bffff,3422,4,Ward 4
+8929aeb710fffff,3423,4,Ward 4
+8929aeb7113ffff,3424,4,Ward 4
+8929aeb7117ffff,3425,4,Ward 4
+8929aeb711bffff,3426,4,Ward 4
+8929aeb7123ffff,3427,4,Ward 4
+8929aeb7127ffff,3428,4,Ward 4
+8929aeb712bffff,3429,4,Ward 4
+8929aeb712fffff,3430,4,Ward 4
+8929aeb7133ffff,3431,4,Ward 4
+8929aeb7137ffff,3432,4,Ward 4
+8929aeb713bffff,3433,4,Ward 4
+8929aeb7143ffff,3434,4,Ward 4
+8929aeb7147ffff,3435,4,Ward 4
+8929aeb714bffff,3436,4,Ward 4
+8929aeb714fffff,3437,4,Ward 4
+8929aeb7153ffff,3438,4,Ward 4
+8929aeb7157ffff,3439,4,Ward 4
+8929aeb715bffff,3440,4,Ward 4
+8929aeb7163ffff,3441,4,Ward 4
+8929aeb7167ffff,3442,4,Ward 4
+8929aeb716bffff,3443,4,Ward 4
+8929aeb716fffff,3444,4,Ward 4
+8929aeb7173ffff,3445,4,Ward 4
+8929aeb7177ffff,3446,4,Ward 4
+8929aeb717bffff,3447,4,Ward 4
+8929aeb7183ffff,3448,4,Ward 4
+8929aeb7187ffff,3449,4,Ward 4
+8929aeb718bffff,3450,4,Ward 4
+8929aeb718fffff,3451,4,Ward 4
+8929aeb7193ffff,3452,4,Ward 4
+8929aeb7197ffff,3453,4,Ward 4
+8929aeb719bffff,3454,,
+8929aeb71a3ffff,3455,4,Ward 4
+8929aeb71a7ffff,3456,4,Ward 4
+8929aeb71abffff,3457,4,Ward 4
+8929aeb71afffff,3458,4,Ward 4
+8929aeb71b3ffff,3459,4,Ward 4
+8929aeb71b7ffff,3460,4,Ward 4
+8929aeb71bbffff,3461,4,Ward 4
+8929aeb71c3ffff,3462,4,Ward 4
+8929aeb71c7ffff,3463,4,Ward 4
+8929aeb71cbffff,3464,4,Ward 4
+8929aeb71cfffff,3465,4,Ward 4
+8929aeb71d3ffff,3466,,
+8929aeb71d7ffff,3467,4,Ward 4
+8929aeb71dbffff,3468,4,Ward 4
+8929aeb7207ffff,3469,,
+8929aeb720bffff,3470,,
+8929aeb720fffff,3471,,
+8929aeb7213ffff,3472,,
+8929aeb7217ffff,3473,,
+8929aeb721bffff,3474,,
+8929aeb7233ffff,3475,,
+8929aeb7243ffff,3476,,
+8929aeb7247ffff,3477,,
+8929aeb7253ffff,3478,4,Ward 4
+8929aeb7257ffff,3479,4,Ward 4
+8929aeb725bffff,3480,,
+8929aeb7273ffff,3481,,
+8929aeb7283ffff,3482,4,Ward 4
+8929aeb7287ffff,3483,4,Ward 4
+8929aeb728bffff,3484,4,Ward 4
+8929aeb728fffff,3485,4,Ward 4
+8929aeb7293ffff,3486,,
+8929aeb7297ffff,3487,4,Ward 4
+8929aeb729bffff,3488,4,Ward 4
+8929aeb72a3ffff,3489,,
+8929aeb72a7ffff,3490,4,Ward 4
+8929aeb72abffff,3491,,
+8929aeb72afffff,3492,4,Ward 4
+8929aeb72b3ffff,3493,4,Ward 4
+8929aeb72b7ffff,3494,4,Ward 4
+8929aeb72bbffff,3495,4,Ward 4
+8929aeb72c3ffff,3496,4,Ward 4
+8929aeb72c7ffff,3497,4,Ward 4
+8929aeb72cbffff,3498,4,Ward 4
+8929aeb72cfffff,3499,4,Ward 4
+8929aeb72d3ffff,3500,,
+8929aeb72d7ffff,3501,4,Ward 4
+8929aeb72dbffff,3502,,
+8929aeb7303ffff,3503,4,Ward 4
+8929aeb7307ffff,3504,,
+8929aeb730bffff,3505,,
+8929aeb7313ffff,3506,4,Ward 4
+8929aeb7317ffff,3507,4,Ward 4
+8929aeb731bffff,3508,4,Ward 4
+8929aeb7323ffff,3509,4,Ward 4
+8929aeb7327ffff,3510,4,Ward 4
+8929aeb732fffff,3511,4,Ward 4
+8929aeb7333ffff,3512,4,Ward 4
+8929aeb7337ffff,3513,4,Ward 4
+8929aeb7343ffff,3514,,
+8929aeb7353ffff,3515,4,Ward 4
+8929aeb7357ffff,3516,4,Ward 4
+8929aeb7363ffff,3517,4,Ward 4
+8929aeb736bffff,3518,4,Ward 4
+8929aeb736fffff,3519,4,Ward 4
+8929aeb737bffff,3520,,
+8929aeb7383ffff,3521,4,Ward 4
+8929aeb7387ffff,3522,4,Ward 4
+8929aeb738bffff,3523,4,Ward 4
+8929aeb738fffff,3524,4,Ward 4
+8929aeb7393ffff,3525,4,Ward 4
+8929aeb7397ffff,3526,4,Ward 4
+8929aeb739bffff,3527,4,Ward 4
+8929aeb73a3ffff,3528,4,Ward 4
+8929aeb73a7ffff,3529,4,Ward 4
+8929aeb73abffff,3530,4,Ward 4
+8929aeb73afffff,3531,4,Ward 4
+8929aeb73b3ffff,3532,4,Ward 4
+8929aeb73b7ffff,3533,4,Ward 4
+8929aeb73bbffff,3534,4,Ward 4
+8929aeb73c3ffff,3535,4,Ward 4
+8929aeb73c7ffff,3536,4,Ward 4
+8929aeb73cbffff,3537,4,Ward 4
+8929aeb73cfffff,3538,4,Ward 4
+8929aeb73d3ffff,3539,4,Ward 4
+8929aeb73d7ffff,3540,4,Ward 4
+8929aeb73dbffff,3541,4,Ward 4
+8929aeb7403ffff,3542,4,Ward 4
+8929aeb7407ffff,3543,,
+8929aeb740bffff,3544,4,Ward 4
+8929aeb740fffff,3545,4,Ward 4
+8929aeb7413ffff,3546,4,Ward 4
+8929aeb7417ffff,3547,4,Ward 4
+8929aeb741bffff,3548,4,Ward 4
+8929aeb742bffff,3549,,
+8929aeb742fffff,3550,,
+8929aeb7433ffff,3551,,
+8929aeb743bffff,3552,4,Ward 4
+8929aeb7443ffff,3553,4,Ward 4
+8929aeb7447ffff,3554,4,Ward 4
+8929aeb744bffff,3555,4,Ward 4
+8929aeb744fffff,3556,4,Ward 4
+8929aeb7453ffff,3557,4,Ward 4
+8929aeb7457ffff,3558,4,Ward 4
+8929aeb745bffff,3559,4,Ward 4
+8929aeb7463ffff,3560,4,Ward 4
+8929aeb7467ffff,3561,,
+8929aeb746bffff,3562,4,Ward 4
+8929aeb746fffff,3563,4,Ward 4
+8929aeb7473ffff,3564,4,Ward 4
+8929aeb7477ffff,3565,4,Ward 4
+8929aeb747bffff,3566,4,Ward 4
+8929aeb7483ffff,3567,4,Ward 4
+8929aeb7487ffff,3568,4,Ward 4
+8929aeb748bffff,3569,4,Ward 4
+8929aeb748fffff,3570,4,Ward 4
+8929aeb7493ffff,3571,4,Ward 4
+8929aeb7497ffff,3572,4,Ward 4
+8929aeb749bffff,3573,4,Ward 4
+8929aeb74a3ffff,3574,,
+8929aeb74abffff,3575,,
+8929aeb74b3ffff,3576,4,Ward 4
+8929aeb74b7ffff,3577,,
+8929aeb74bbffff,3578,4,Ward 4
+8929aeb74c3ffff,3579,4,Ward 4
+8929aeb74c7ffff,3580,4,Ward 4
+8929aeb74cbffff,3581,4,Ward 4
+8929aeb74cfffff,3582,4,Ward 4
+8929aeb74d3ffff,3583,4,Ward 4
+8929aeb74d7ffff,3584,4,Ward 4
+8929aeb74dbffff,3585,4,Ward 4
+8929aeb7523ffff,3586,4,Ward 4
+8929aeb7527ffff,3587,,
+8929aeb752bffff,3588,4,Ward 4
+8929aeb752fffff,3589,4,Ward 4
+8929aeb753bffff,3590,,
+8929aeb7543ffff,3591,4,Ward 4
+8929aeb7547ffff,3592,,
+8929aeb754bffff,3593,4,Ward 4
+8929aeb7553ffff,3594,,
+8929aeb7557ffff,3595,,
+8929aeb755bffff,3596,4,Ward 4
+8929aeb7567ffff,3597,,
+8929aeb7577ffff,3598,,
+8929aeb7583ffff,3599,5,Ward 5
+8929aeb7587ffff,3600,,
+8929aeb758bffff,3601,,
+8929aeb7593ffff,3602,5,Ward 5
+8929aeb7597ffff,3603,,
+8929aeb759bffff,3604,4,Ward 4
+8929aeb75d7ffff,3605,4,Ward 4
+8929aeb7613ffff,3606,4,Ward 4
+8929aeb7617ffff,3607,,
+8929aeb761bffff,3608,,
+8929aeb7623ffff,3609,,
+8929aeb7627ffff,3610,,
+8929aeb762bffff,3611,,
+8929aeb762fffff,3612,4,Ward 4
+8929aeb7637ffff,3613,,
+8929aeb764fffff,3614,4,Ward 4
+8929aeb766bffff,3615,4,Ward 4
+8929aeb766fffff,3616,,
+8929aeb767bffff,3617,,
+8929aeb7687ffff,3618,,
+8929aeb768fffff,3619,,
+8929aeb7697ffff,3620,,
+8929aeb76a3ffff,3621,4,Ward 4
+8929aeb76a7ffff,3622,4,Ward 4
+8929aeb76abffff,3623,,
+8929aeb76b3ffff,3624,4,Ward 4
+8929aeb76b7ffff,3625,4,Ward 4
+8929aeb76bbffff,3626,4,Ward 4
+8929aeb76c3ffff,3627,,
+8929aeb76cbffff,3628,3,Ward 3
+8929aeb76cfffff,3629,,
+8929aeb76d3ffff,3630,,
+8929aeb76d7ffff,3631,,
+8929aeb76dbffff,3632,3,Ward 3
+8929aeb8403ffff,3633,3,Ward 3
+8929aeb8407ffff,3634,3,Ward 3
+8929aeb840bffff,3635,3,Ward 3
+8929aeb840fffff,3636,3,Ward 3
+8929aeb8413ffff,3637,3,Ward 3
+8929aeb8417ffff,3638,3,Ward 3
+8929aeb841bffff,3639,3,Ward 3
+8929aeb8423ffff,3640,3,Ward 3
+8929aeb8427ffff,3641,3,Ward 3
+8929aeb842fffff,3642,3,Ward 3
+8929aeb8433ffff,3643,3,Ward 3
+8929aeb8437ffff,3644,3,Ward 3
+8929aeb843bffff,3645,,
+8929aeb8443ffff,3646,3,Ward 3
+8929aeb8447ffff,3647,3,Ward 3
+8929aeb844bffff,3648,3,Ward 3
+8929aeb844fffff,3649,3,Ward 3
+8929aeb8453ffff,3650,3,Ward 3
+8929aeb8457ffff,3651,3,Ward 3
+8929aeb845bffff,3652,3,Ward 3
+8929aeb8463ffff,3653,,
+8929aeb8473ffff,3654,3,Ward 3
+8929aeb8477ffff,3655,,
+8929aeb847bffff,3656,3,Ward 3
+8929aeb8483ffff,3657,3,Ward 3
+8929aeb8487ffff,3658,3,Ward 3
+8929aeb848bffff,3659,3,Ward 3
+8929aeb848fffff,3660,3,Ward 3
+8929aeb8493ffff,3661,3,Ward 3
+8929aeb8497ffff,3662,3,Ward 3
+8929aeb849bffff,3663,3,Ward 3
+8929aeb84a3ffff,3664,3,Ward 3
+8929aeb84a7ffff,3665,3,Ward 3
+8929aeb84abffff,3666,3,Ward 3
+8929aeb84afffff,3667,3,Ward 3
+8929aeb84b3ffff,3668,3,Ward 3
+8929aeb84b7ffff,3669,3,Ward 3
+8929aeb84bbffff,3670,3,Ward 3
+8929aeb84c7ffff,3671,,
+8929aeb84cbffff,3672,,
+8929aeb84cfffff,3673,3,Ward 3
+8929aeb84d7ffff,3674,,
+8929aeb850bffff,3675,,
+8929aeb851bffff,3676,,
+8929aeb8553ffff,3677,3,Ward 3
+8929aeb8557ffff,3678,3,Ward 3
+8929aeb855bffff,3679,,
+8929aeb85c3ffff,3680,3,Ward 3
+8929aeb85c7ffff,3681,,
+8929aeb85cbffff,3682,3,Ward 3
+8929aeb85cfffff,3683,3,Ward 3
+8929aeb85d3ffff,3684,3,Ward 3
+8929aeb85d7ffff,3685,,
+8929aeb85dbffff,3686,3,Ward 3
+8929aeb8617ffff,3687,,
+8929aeb8683ffff,3688,,
+8929aeb8687ffff,3689,3,Ward 3
+8929aeb868fffff,3690,,
+8929aeb8693ffff,3691,3,Ward 3
+8929aeb8697ffff,3692,3,Ward 3
+8929aeb869bffff,3693,3,Ward 3
+8929aeb86a3ffff,3694,,
+8929aeb86abffff,3695,,
+8929aeb86b3ffff,3696,3,Ward 3
+8929aeb86b7ffff,3697,,
+8929aeb86bbffff,3698,3,Ward 3
+8929aeb86d3ffff,3699,3,Ward 3
+8929aeb86d7ffff,3700,,
+8929aeb86dbffff,3701,,
+8929aeba003ffff,3702,3,Ward 3
+8929aeba007ffff,3703,3,Ward 3
+8929aeba00bffff,3704,3,Ward 3
+8929aeba00fffff,3705,3,Ward 3
+8929aeba013ffff,3706,3,Ward 3
+8929aeba017ffff,3707,3,Ward 3
+8929aeba01bffff,3708,3,Ward 3
+8929aeba023ffff,3709,3,Ward 3
+8929aeba027ffff,3710,3,Ward 3
+8929aeba02bffff,3711,3,Ward 3
+8929aeba02fffff,3712,3,Ward 3
+8929aeba033ffff,3713,3,Ward 3
+8929aeba037ffff,3714,3,Ward 3
+8929aeba03bffff,3715,3,Ward 3
+8929aeba043ffff,3716,,
+8929aeba047ffff,3717,3,Ward 3
+8929aeba04bffff,3718,3,Ward 3
+8929aeba04fffff,3719,3,Ward 3
+8929aeba053ffff,3720,,
+8929aeba057ffff,3721,3,Ward 3
+8929aeba063ffff,3722,3,Ward 3
+8929aeba067ffff,3723,3,Ward 3
+8929aeba06bffff,3724,3,Ward 3
+8929aeba06fffff,3725,3,Ward 3
+8929aeba073ffff,3726,3,Ward 3
+8929aeba077ffff,3727,3,Ward 3
+8929aeba07bffff,3728,3,Ward 3
+8929aeba083ffff,3729,3,Ward 3
+8929aeba087ffff,3730,3,Ward 3
+8929aeba08bffff,3731,3,Ward 3
+8929aeba08fffff,3732,3,Ward 3
+8929aeba093ffff,3733,3,Ward 3
+8929aeba097ffff,3734,3,Ward 3
+8929aeba09bffff,3735,3,Ward 3
+8929aeba0a3ffff,3736,,
+8929aeba0abffff,3737,3,Ward 3
+8929aeba0afffff,3738,,
+8929aeba0b3ffff,3739,,
+8929aeba0bbffff,3740,3,Ward 3
+8929aeba0c3ffff,3741,3,Ward 3
+8929aeba0c7ffff,3742,3,Ward 3
+8929aeba0cbffff,3743,,
+8929aeba0cfffff,3744,3,Ward 3
+8929aeba0d3ffff,3745,3,Ward 3
+8929aeba0d7ffff,3746,3,Ward 3
+8929aeba103ffff,3747,3,Ward 3
+8929aeba107ffff,3748,,
+8929aeba10bffff,3749,3,Ward 3
+8929aeba10fffff,3750,3,Ward 3
+8929aeba117ffff,3751,3,Ward 3
+8929aeba11bffff,3752,,
+8929aeba123ffff,3753,3,Ward 3
+8929aeba127ffff,3754,3,Ward 3
+8929aeba12bffff,3755,3,Ward 3
+8929aeba12fffff,3756,3,Ward 3
+8929aeba133ffff,3757,3,Ward 3
+8929aeba137ffff,3758,3,Ward 3
+8929aeba13bffff,3759,3,Ward 3
+8929aeba143ffff,3760,3,Ward 3
+8929aeba147ffff,3761,3,Ward 3
+8929aeba14bffff,3762,3,Ward 3
+8929aeba14fffff,3763,3,Ward 3
+8929aeba153ffff,3764,3,Ward 3
+8929aeba157ffff,3765,3,Ward 3
+8929aeba15bffff,3766,3,Ward 3
+8929aeba163ffff,3767,3,Ward 3
+8929aeba167ffff,3768,3,Ward 3
+8929aeba16bffff,3769,3,Ward 3
+8929aeba16fffff,3770,3,Ward 3
+8929aeba173ffff,3771,3,Ward 3
+8929aeba177ffff,3772,3,Ward 3
+8929aeba17bffff,3773,3,Ward 3
+8929aeba183ffff,3774,3,Ward 3
+8929aeba187ffff,3775,,
+8929aeba18fffff,3776,,
+8929aeba193ffff,3777,3,Ward 3
+8929aeba197ffff,3778,3,Ward 3
+8929aeba1a3ffff,3779,,
+8929aeba1a7ffff,3780,3,Ward 3
+8929aeba1abffff,3781,,
+8929aeba1afffff,3782,3,Ward 3
+8929aeba1b3ffff,3783,,
+8929aeba1b7ffff,3784,3,Ward 3
+8929aeba1bbffff,3785,,
+8929aeba1cbffff,3786,3,Ward 3
+8929aeba1dbffff,3787,3,Ward 3
+8929aeba203ffff,3788,3,Ward 3
+8929aeba207ffff,3789,3,Ward 3
+8929aeba20bffff,3790,,
+8929aeba20fffff,3791,3,Ward 3
+8929aeba213ffff,3792,3,Ward 3
+8929aeba217ffff,3793,3,Ward 3
+8929aeba21bffff,3794,,
+8929aeba223ffff,3795,3,Ward 3
+8929aeba227ffff,3796,3,Ward 3
+8929aeba22bffff,3797,3,Ward 3
+8929aeba22fffff,3798,3,Ward 3
+8929aeba233ffff,3799,3,Ward 3
+8929aeba237ffff,3800,3,Ward 3
+8929aeba23bffff,3801,3,Ward 3
+8929aeba263ffff,3802,,
+8929aeba267ffff,3803,3,Ward 3
+8929aeba26fffff,3804,,
+8929aeba273ffff,3805,,
+8929aeba277ffff,3806,3,Ward 3
+8929aeba283ffff,3807,3,Ward 3
+8929aeba287ffff,3808,3,Ward 3
+8929aeba28bffff,3809,3,Ward 3
+8929aeba28fffff,3810,3,Ward 3
+8929aeba297ffff,3811,,
+8929aeba29bffff,3812,,
+8929aeba2a3ffff,3813,3,Ward 3
+8929aeba2a7ffff,3814,3,Ward 3
+8929aeba2abffff,3815,3,Ward 3
+8929aeba2afffff,3816,3,Ward 3
+8929aeba2b3ffff,3817,3,Ward 3
+8929aeba2b7ffff,3818,3,Ward 3
+8929aeba2bbffff,3819,3,Ward 3
+8929aeba2c7ffff,3820,,
+8929aeba2d7ffff,3821,,
+8929aeba303ffff,3822,3,Ward 3
+8929aeba307ffff,3823,3,Ward 3
+8929aeba30bffff,3824,3,Ward 3
+8929aeba30fffff,3825,3,Ward 3
+8929aeba313ffff,3826,3,Ward 3
+8929aeba317ffff,3827,3,Ward 3
+8929aeba31bffff,3828,3,Ward 3
+8929aeba323ffff,3829,3,Ward 3
+8929aeba327ffff,3830,3,Ward 3
+8929aeba32bffff,3831,,
+8929aeba32fffff,3832,,
+8929aeba333ffff,3833,3,Ward 3
+8929aeba337ffff,3834,3,Ward 3
+8929aeba33bffff,3835,3,Ward 3
+8929aeba343ffff,3836,3,Ward 3
+8929aeba347ffff,3837,3,Ward 3
+8929aeba34bffff,3838,3,Ward 3
+8929aeba34fffff,3839,3,Ward 3
+8929aeba353ffff,3840,3,Ward 3
+8929aeba357ffff,3841,3,Ward 3
+8929aeba35bffff,3842,3,Ward 3
+8929aeba363ffff,3843,,
+8929aeba36bffff,3844,3,Ward 3
+8929aeba36fffff,3845,,
+8929aeba373ffff,3846,3,Ward 3
+8929aeba377ffff,3847,3,Ward 3
+8929aeba37bffff,3848,3,Ward 3
+8929aeba383ffff,3849,3,Ward 3
+8929aeba387ffff,3850,3,Ward 3
+8929aeba38bffff,3851,3,Ward 3
+8929aeba38fffff,3852,3,Ward 3
+8929aeba393ffff,3853,3,Ward 3
+8929aeba397ffff,3854,3,Ward 3
+8929aeba39bffff,3855,3,Ward 3
+8929aeba3a3ffff,3856,3,Ward 3
+8929aeba3a7ffff,3857,3,Ward 3
+8929aeba3abffff,3858,3,Ward 3
+8929aeba3afffff,3859,3,Ward 3
+8929aeba3b3ffff,3860,3,Ward 3
+8929aeba3b7ffff,3861,3,Ward 3
+8929aeba3bbffff,3862,3,Ward 3
+8929aeba3c3ffff,3863,3,Ward 3
+8929aeba3c7ffff,3864,3,Ward 3
+8929aeba3cbffff,3865,3,Ward 3
+8929aeba3cfffff,3866,3,Ward 3
+8929aeba3d3ffff,3867,3,Ward 3
+8929aeba3d7ffff,3868,3,Ward 3
+8929aeba3dbffff,3869,3,Ward 3
+8929aeba42fffff,3870,,
+8929aeba467ffff,3871,,
+8929aeba46bffff,3872,,
+8929aeba46fffff,3873,3,Ward 3
+8929aeba507ffff,3874,3,Ward 3
+8929aeba523ffff,3875,3,Ward 3
+8929aeba527ffff,3876,3,Ward 3
+8929aeba52bffff,3877,3,Ward 3
+8929aeba52fffff,3878,3,Ward 3
+8929aeba533ffff,3879,3,Ward 3
+8929aeba537ffff,3880,3,Ward 3
+8929aeba53bffff,3881,3,Ward 3
+8929aeba54bffff,3882,,
+8929aeba55bffff,3883,,
+8929aeba5a7ffff,3884,,
+8929aeba5abffff,3885,,
+8929aeba5afffff,3886,3,Ward 3
+8929aeba883ffff,3887,,
+8929aeba887ffff,3888,,
+8929aeba88bffff,3889,,
+8929aeba893ffff,3890,3,Ward 3
+8929aeba897ffff,3891,3,Ward 3
+8929aeba89bffff,3892,3,Ward 3
+8929aeba8b3ffff,3893,,
+8929aeba8b7ffff,3894,,
+8929aeba8c3ffff,3895,,
+8929aeba8cbffff,3896,3,Ward 3
+8929aeba8d3ffff,3897,3,Ward 3
+8929aeba8d7ffff,3898,,
+8929aeba8dbffff,3899,3,Ward 3
+8929aeba983ffff,3900,,
+8929aeba993ffff,3901,3,Ward 3
+8929aeba997ffff,3902,3,Ward 3
+8929aeba99bffff,3903,3,Ward 3
+8929aeba9d3ffff,3904,,
+8929aeba9d7ffff,3905,,
+8929aebac03ffff,3906,3,Ward 3
+8929aebac07ffff,3907,3,Ward 3
+8929aebac0bffff,3908,3,Ward 3
+8929aebac0fffff,3909,3,Ward 3
+8929aebac13ffff,3910,3,Ward 3
+8929aebac17ffff,3911,3,Ward 3
+8929aebac1bffff,3912,3,Ward 3
+8929aebac23ffff,3913,3,Ward 3
+8929aebac27ffff,3914,3,Ward 3
+8929aebac2bffff,3915,3,Ward 3
+8929aebac2fffff,3916,3,Ward 3
+8929aebac33ffff,3917,3,Ward 3
+8929aebac37ffff,3918,3,Ward 3
+8929aebac3bffff,3919,3,Ward 3
+8929aebac43ffff,3920,3,Ward 3
+8929aebac47ffff,3921,3,Ward 3
+8929aebac4bffff,3922,3,Ward 3
+8929aebac4fffff,3923,3,Ward 3
+8929aebac53ffff,3924,3,Ward 3
+8929aebac57ffff,3925,3,Ward 3
+8929aebac5bffff,3926,3,Ward 3
+8929aebac63ffff,3927,3,Ward 3
+8929aebac67ffff,3928,3,Ward 3
+8929aebac6bffff,3929,3,Ward 3
+8929aebac6fffff,3930,3,Ward 3
+8929aebac73ffff,3931,3,Ward 3
+8929aebac77ffff,3932,3,Ward 3
+8929aebac7bffff,3933,3,Ward 3
+8929aebac83ffff,3934,3,Ward 3
+8929aebac87ffff,3935,3,Ward 3
+8929aebac8bffff,3936,3,Ward 3
+8929aebac8fffff,3937,3,Ward 3
+8929aebac93ffff,3938,3,Ward 3
+8929aebac97ffff,3939,3,Ward 3
+8929aebac9bffff,3940,3,Ward 3
+8929aebaca3ffff,3941,3,Ward 3
+8929aebaca7ffff,3942,3,Ward 3
+8929aebacabffff,3943,3,Ward 3
+8929aebacafffff,3944,3,Ward 3
+8929aebacb3ffff,3945,3,Ward 3
+8929aebacb7ffff,3946,3,Ward 3
+8929aebacbbffff,3947,3,Ward 3
+8929aebacc3ffff,3948,3,Ward 3
+8929aebacc7ffff,3949,3,Ward 3
+8929aebaccbffff,3950,3,Ward 3
+8929aebaccfffff,3951,3,Ward 3
+8929aebacd3ffff,3952,3,Ward 3
+8929aebacd7ffff,3953,3,Ward 3
+8929aebacdbffff,3954,3,Ward 3
+8929aebad03ffff,3955,3,Ward 3
+8929aebad07ffff,3956,3,Ward 3
+8929aebad0bffff,3957,3,Ward 3
+8929aebad0fffff,3958,3,Ward 3
+8929aebad13ffff,3959,3,Ward 3
+8929aebad17ffff,3960,3,Ward 3
+8929aebad1bffff,3961,3,Ward 3
+8929aebad23ffff,3962,3,Ward 3
+8929aebad27ffff,3963,3,Ward 3
+8929aebad2bffff,3964,3,Ward 3
+8929aebad2fffff,3965,3,Ward 3
+8929aebad33ffff,3966,3,Ward 3
+8929aebad37ffff,3967,3,Ward 3
+8929aebad3bffff,3968,3,Ward 3
+8929aebad43ffff,3969,3,Ward 3
+8929aebad47ffff,3970,3,Ward 3
+8929aebad4bffff,3971,3,Ward 3
+8929aebad4fffff,3972,3,Ward 3
+8929aebad53ffff,3973,3,Ward 3
+8929aebad57ffff,3974,3,Ward 3
+8929aebad5bffff,3975,3,Ward 3
+8929aebad63ffff,3976,3,Ward 3
+8929aebad67ffff,3977,3,Ward 3
+8929aebad6bffff,3978,,
+8929aebad6fffff,3979,3,Ward 3
+8929aebad73ffff,3980,3,Ward 3
+8929aebad77ffff,3981,3,Ward 3
+8929aebad7bffff,3982,3,Ward 3
+8929aebad83ffff,3983,3,Ward 3
+8929aebad87ffff,3984,3,Ward 3
+8929aebad8bffff,3985,3,Ward 3
+8929aebad8fffff,3986,3,Ward 3
+8929aebad93ffff,3987,3,Ward 3
+8929aebad97ffff,3988,3,Ward 3
+8929aebad9bffff,3989,3,Ward 3
+8929aebada3ffff,3990,3,Ward 3
+8929aebada7ffff,3991,3,Ward 3
+8929aebadabffff,3992,3,Ward 3
+8929aebadafffff,3993,3,Ward 3
+8929aebadb3ffff,3994,3,Ward 3
+8929aebadb7ffff,3995,3,Ward 3
+8929aebadbbffff,3996,3,Ward 3
+8929aebadc3ffff,3997,3,Ward 3
+8929aebadc7ffff,3998,3,Ward 3
+8929aebadcbffff,3999,3,Ward 3
+8929aebadcfffff,4000,3,Ward 3
+8929aebadd3ffff,4001,3,Ward 3
+8929aebadd7ffff,4002,3,Ward 3
+8929aebaddbffff,4003,3,Ward 3
+8929aebae03ffff,4004,3,Ward 3
+8929aebae07ffff,4005,3,Ward 3
+8929aebae0bffff,4006,3,Ward 3
+8929aebae0fffff,4007,3,Ward 3
+8929aebae13ffff,4008,3,Ward 3
+8929aebae17ffff,4009,3,Ward 3
+8929aebae1bffff,4010,3,Ward 3
+8929aebae23ffff,4011,,
+8929aebae33ffff,4012,3,Ward 3
+8929aebae37ffff,4013,3,Ward 3
+8929aebae3bffff,4014,,
+8929aebae47ffff,4015,,
+8929aebae53ffff,4016,,
+8929aebae57ffff,4017,3,Ward 3
+8929aebae73ffff,4018,,
+8929aebae83ffff,4019,3,Ward 3
+8929aebae87ffff,4020,3,Ward 3
+8929aebae8bffff,4021,3,Ward 3
+8929aebae8fffff,4022,3,Ward 3
+8929aebae93ffff,4023,3,Ward 3
+8929aebae97ffff,4024,3,Ward 3
+8929aebae9bffff,4025,3,Ward 3
+8929aebaea3ffff,4026,3,Ward 3
+8929aebaea7ffff,4027,3,Ward 3
+8929aebaeabffff,4028,3,Ward 3
+8929aebaeafffff,4029,3,Ward 3
+8929aebaeb3ffff,4030,3,Ward 3
+8929aebaeb7ffff,4031,3,Ward 3
+8929aebaebbffff,4032,3,Ward 3
+8929aebaec3ffff,4033,3,Ward 3
+8929aebaec7ffff,4034,3,Ward 3
+8929aebaecbffff,4035,3,Ward 3
+8929aebaecfffff,4036,3,Ward 3
+8929aebaed3ffff,4037,3,Ward 3
+8929aebaed7ffff,4038,3,Ward 3
+8929aebaedbffff,4039,3,Ward 3
+8929aebb123ffff,4040,,
+8929aebb127ffff,4041,3,Ward 3
+8929aebb12bffff,4042,3,Ward 3
+8929aebb12fffff,4043,3,Ward 3
+8929aebb14fffff,4044,,
+8929aebb163ffff,4045,3,Ward 3
+8929aebb167ffff,4046,3,Ward 3
+8929aebb16bffff,4047,3,Ward 3
+8929aebb16fffff,4048,3,Ward 3
+8929aebb173ffff,4049,,
+8929aebb177ffff,4050,,
+8929aebb17bffff,4051,3,Ward 3
+8929aebb3a7ffff,4052,3,Ward 3
+8929aebb3b7ffff,4053,3,Ward 3

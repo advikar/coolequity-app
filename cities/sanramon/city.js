@@ -22,6 +22,8 @@ window.CE_CITY={
   slug:'sanramon',
   name:"San Ramon",
   possessive:"San Ramon’s",   // "Built for …’s urban forestry, climate and public works teams"
+  districtUnit:'district',               // what this city calls its council areas (By ward / By district)
+  wardsOutsideLabel:"Outside the city",
   scope:'city',                         // "relative within this city"
   dataVersion:'20260921-stability',
   // How 03_census.py placed residents in this build (guide.html says why); the briefing's source table reads it.

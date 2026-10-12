@@ -1,0 +1,16 @@
+{
+ "city": "bakersfield",
+ "entries": [
+  {
+   "stage": "04e_wards",
+   "what": "Council wards",
+   "url": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/Boundary/MapServer/5",
+   "publisher": "City of Bakersfield GIS Office",
+   "retrieved": "2026-10-12",
+   "count": 7,
+   "note": "2022 redistricting, council map 5B (Unity Map). Member names as fetched; the ward number is the stable label.",
+   "file": "wards_bakersfield.geojson",
+   "sha256_12": "cfa05a18572a"
+  }
+ ]
+}

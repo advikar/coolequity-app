@@ -23,6 +23,8 @@ window.CE_CITY={
   slug:'bakersfield',
   name:"Bakersfield",
   possessive:"Bakersfield’s",   // "Built for …’s urban forestry, climate and public works teams"
+  districtUnit:'ward',               // what this city calls its council areas (By ward / By district)
+  wardsOutsideLabel:"Unincorporated (Kern County)",
   scope:'city',                         // "relative within this city"
   dataVersion:'20260921-stability',
   // How 03_census.py placed residents in this build (guide.html says why); the briefing's source table reads it.

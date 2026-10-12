@@ -1,0 +1,7 @@
+ward_id,ward_name,member,areas,residents,residents_65plus,mean_need_0_100,areas_in_top_100,tree_cover_pct_pop_weighted,mean_surface_heat_c,plantable_street_km,tree_positions_upper_bound
+1,District 1,John Gioia,269,234906,37643,51.1,64,13.3,36.3,1004.3,200859
+2,District 2,Candace Andersen,613,240093,47895,28.9,0,28.8,42.2,1817.5,363493
+3,District 3,Diane Burgis,884,222273,32545,38.6,1,10.5,43.6,1659.4,331888
+4,District 4,Ken Carlson,338,242623,43165,36.3,10,22.7,44.3,1352.8,270556
+5,District 5,Shanelle Scales-Preston,490,221093,34506,44.3,25,12.7,40.1,1309.9,261977
+,Outside the county,,103,3933,637,37.8,0,20.7,34.5,12.6,2514

@@ -26,7 +26,7 @@ CONTRACT = ["id", "name", "lst", "green", "pop", "pct65", "ac", "holc",
             "access_min", "access_km", "score", "rank", "area_m2", "street_m",
             "canopy_m2", "row_m2", "row_canopy", "veg", "place", "land", "green_src", "canopy_source", "canopy_year", "assessed_m2",
             "coverage_frac", "canopy_quality", "scenario_ok", "canopy_baseline_ok", "ac_src", "ac_coverage", "acs_year", "access_snap_m", "access_quality", "access_src",
-            "city", "city_kind", "inside_frac"]
+            "city", "city_kind", "inside_frac", "ward_id", "ward_name"]
 
 COORD_DP = 5      # ~1 m at this latitude; halves the file the browser downloads
 
@@ -226,6 +226,16 @@ def load():
         df["city_kind"] = None
         log("  jurisdiction: no CSV — run 04d_jurisdiction.py for city labels and filter")
 
+    # Council wards / districts per cell (04e): optional, so a city without a
+    # district source still builds. Blank ward_id means outside every ward.
+    if C.WARDS_CSV.exists():
+        wd = pd.read_csv(C.WARDS_CSV, dtype={"ward_id": str, "ward_name": str})[["h3", "ward_id", "ward_name"]]
+        df = df.merge(wd, on="h3", how="left")
+        log(f"  wards: {int(df['ward_id'].fillna('').ne('').sum())}/{len(df)} hexes inside a ward")
+    else:
+        df["ward_id"] = None; df["ward_name"] = None
+        log("  wards: no wards CSV — run 04e_wards.py for the ward roll-up")
+
     missing = df["lst_c"].isna().sum() + df["pop"].isna().sum()
     if missing:
         raise SystemExit(f"\n{missing} hexes missing inputs — rerun 02/03/04.")
@@ -311,6 +321,8 @@ def main():
     out = pd.DataFrame({
         "id":         df["id"].astype(int),
         "name":       df["name"].fillna("Unnamed"),
+        "ward_id":    df["ward_id"].where(df["ward_id"].fillna("").ne(""), None),
+        "ward_name":  df["ward_name"].where(df["ward_name"].fillna("").ne(""), None),
         "lst":        df["lst_c"].round(2),
         "green":      df["green_pct"].round(2),
         "green_src":  df["green_src"],

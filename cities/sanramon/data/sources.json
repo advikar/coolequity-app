@@ -1,0 +1,16 @@
+{
+ "city": "sanramon",
+ "entries": [
+  {
+   "stage": "04e_wards",
+   "what": "City council districts",
+   "url": "https://gis.sanramon.ca.gov/server/rest/services/Infrastructure/City_Council_Districts/MapServer/0",
+   "publisher": "City of San Ramon GIS",
+   "retrieved": "2026-10-12",
+   "count": 4,
+   "note": "2022 redistricting after the 2020 census (by-district elections since November 2020). Member names as fetched; the district number is the stable label.",
+   "file": "wards_sanramon.geojson",
+   "sha256_12": "ecc2392443fa"
+  }
+ ]
+}

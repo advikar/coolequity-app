@@ -39,6 +39,8 @@ window.CE_CITY={
   slug:'contracosta',
   name:"Contra Costa County",
   possessive:"Contra Costa’s",   // "Built for …’s urban forestry, climate and public works teams"
+  districtUnit:'district',               // what this city calls its council areas (By ward / By district)
+  wardsOutsideLabel:"Outside the county",
   scope:'county',                         // "relative within this county"
   dataVersion:'20260921-stability',
   // How 03_census.py placed residents in this build (guide.html says why); the briefing's source table reads it.

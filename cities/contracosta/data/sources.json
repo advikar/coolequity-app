@@ -1,0 +1,16 @@
+{
+ "city": "contracosta",
+ "entries": [
+  {
+   "stage": "04e_wards",
+   "what": "Supervisorial districts",
+   "url": "https://gis.cccounty.us/arcgis/rest/services/BOS_District_Labels/MapServer/0",
+   "publisher": "Contra Costa County GIS",
+   "retrieved": "2026-10-12",
+   "count": 5,
+   "note": "2021 redistricting, adopted November 23, 2021. Member names as fetched; the district number is the stable label.",
+   "file": "wards_contracosta.geojson",
+   "sha256_12": "2c7e0213fb52"
+  }
+ ]
+}
