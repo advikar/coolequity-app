@@ -186,4 +186,3 @@ class WardRollup(unittest.TestCase):
         ids={w['properties']['ward_id'] for w in json.loads(C.WARDS_FILE.read_text())['features']}
         self.assertTrue(all((p.get('ward_id') in ids) or p.get('ward_id') is None for p in res))
         self.assertTrue(any(p.get('ward_id') for p in res),'no hexagon carries a ward')
-
