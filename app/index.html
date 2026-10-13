@@ -710,6 +710,11 @@
   .wtable .wr .wc b{color:var(--txt);font-weight:600}
   .wtable .wneed{display:block;width:100%;height:4px;border-radius:2px;background:#1a2430;margin-top:3px;overflow:hidden}.wtable .wneed i{display:block;height:100%}
   .wtable .wr .wc.sub{grid-column:1/-1;padding:0 0 6px;font-size:10px;color:var(--muted2);border-bottom:1px solid var(--edge)}
+  .lkey{display:flex;align-items:center;gap:8px;margin-top:7px;font-size:10.5px;color:var(--muted)}
+  .lkey i{width:26px;height:0;border-top:2px dashed #3b4a5c;flex:none;box-shadow:0 0 0 2px rgba(255,255,255,.55)}
+  .lkey i.solid{border-top:2px solid #55657a}
+  .lkey[hidden]{display:none}
+  .ward-pop .maplibregl-popup-content{font:12px var(--sans)}
   .wardtag{display:inline-block;font-style:normal;font-size:9px;font-weight:700;letter-spacing:.04em;color:#93a1b0;background:#151d27;border:1px solid var(--edge2);border-radius:5px;padding:0 4px;margin-left:6px;vertical-align:1px}
   #ward-filter{margin-right:4px}
   @media(max-width:1100px) and (min-width:761px){
@@ -1042,6 +1047,8 @@
         <div class="dir" id="legend-dir">↑ more need for cooling</div>
         <div class="lrel" id="legend-rel">Relative ranking within this area</div>
         <div class="lcap" id="legend-cap"></div>
+        <div class="lkey" id="legend-limit" hidden><i class="solid"></i><span>city limit</span></div>
+        <div class="lkey" id="legend-wards" hidden><i></i><span>ward boundary</span></div>
         <div class="lhint" id="legend-hint">Click any area to see why it ranks there</div>
         <div class="holc-key" id="holc-key" style="display:none">
           <div style="background:#6ea966">A</div><div style="background:#6a9fb5">B</div>
@@ -1170,6 +1177,7 @@ const CENTERS_URL  = `../data/centers_${CITY_SLUG}.geojson?v=${CE_CITY.centersVe
 const BOUNDARY_URL = `../data/boundary_${CITY_SLUG}.geojson`;  // flat fallback only
 const DESIGNATED_URL = `../data/designated_${CITY_SLUG}.geojson?v=${CE_CITY.centersVersion}`;  // county-listed cooling locations
 const WARDS_URL    = `../data/wards_${CITY_SLUG}.geojson?v=${CE_CITY.dataVersion}`;      // optional: council wards / districts from 04e
+const JURIS_URL    = `../data/jurisdictions_${CITY_SLUG}.geojson?v=${CE_CITY.dataVersion}`;  // optional: city outlines from 04d, drawn when one city is chosen
 // The page's city-specific wording.
 for(const el of document.querySelectorAll('.city-name'))el.textContent=CE_CITY.name;
 document.getElementById('intro-for').textContent=CE_CITY.possessive;
@@ -1297,7 +1305,7 @@ const FLAT_STYLE={version:8,sources:{},layers:[
   {id:'bg',type:'background',paint:{'background-color':'#eceff3'}}]};
 
 // ---- state populated once the data lands ----
-let HEX=null, WARDS=null, CENTERS=null, BOUNDARY=null, map=null;
+let HEX=null, WARDS=null, JURIS=null, WARD_PTS=null, CENTERS=null, BOUNDARY=null, map=null;
 let wardsOn=false, RANK_WARD='';
 const vals={};    // raw min/max per property — drives the color ramps and legend
 const svals={};   // SCORING bounds: p2/p98 from the geojson's `norm`, clamped [0,1]
@@ -2245,14 +2253,17 @@ function applyHash(){
 }
 async function boot(){
   // Only the hex file is load-bearing; the other two degrade to nothing.
-  const [h,c,b,dg,w]=await Promise.all([
+  const [h,c,b,dg,w,j]=await Promise.all([
     fetch(DATA_URL,{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(`${DATA_URL} → ${r.status}`);return r.text();}).then(async t=>{DATA_SHA=await sha256Hex(t);return JSON.parse(t);}),
     optional(CENTERS_URL),
     optional(BOUNDARY_URL),
     optional(DESIGNATED_URL),
-    CE_CITY.districtUnit?optional(WARDS_URL):Promise.resolve({loadFailed:true})   // only cities with a district source have the file; no 404 noise elsewhere
+    CE_CITY.districtUnit?optional(WARDS_URL):Promise.resolve({loadFailed:true}),   // only cities with a district source have the file; no 404 noise elsewhere
+    optional(JURIS_URL)
   ]);
-  HEX=h;CENTERS=c;BOUNDARY=b;DESIGNATED=dg;WARDS=(w&&!w.loadFailed&&w.features&&w.features.length&&h.features.some(f=>f.properties.ward_id))?w:null;
+  HEX=h;CENTERS=c;BOUNDARY=b;DESIGNATED=dg;
+  {const lk=document.getElementById('legend-limit');if(lk&&b&&!b.loadFailed&&b.features&&b.features.length){lk.hidden=false;lk.querySelector('span').textContent=CE_CITY.scope==='city'?'city limit':CE_CITY.scope==='county'?'county line':'study area';}}WARDS=(w&&!w.loadFailed&&w.features&&w.features.length&&h.features.some(f=>f.properties.ward_id))?w:null;
+  JURIS=(j&&!j.loadFailed&&j.features&&j.features.length)?j:null;
   initWards();
   {const n=DESIGNATED.features.length,o=((DESIGNATED.properties||{}).outside_study_area||[]).length,
    ts=document.getElementById('tg-designated-sub');
@@ -2352,9 +2363,18 @@ function initMap(style){
   // street basemap; it sits under the fill, so it shows through only in the gaps.
   if(BOUNDARY&&BOUNDARY.features.length){
     s.sources.boundary={type:'geojson',data:BOUNDARY};
-    s.layers.push({id:'boundary',type:'line',source:'boundary',
-      paint:{'line-color': style===FLAT_STYLE?'#b6c0cc':'#9aa6b4',
-             'line-width':1.4,'line-opacity':0.7}});
+    // Everything outside the limit, as one polygon: a wide rectangle with the
+    // city's outer rings as holes, plus each county island as its own polygon.
+    // Painted as a light veil over the hexagons, it makes the colour stop at
+    // the line, so the limit reads as one continuous edge even where whole
+    // hexagons straddle it. Outside cells stay readable and clickable.
+    const outer=[],islands=[];
+    for(const f of BOUNDARY.features){const g=f.geometry;const polys=g.type==='MultiPolygon'?g.coordinates:[g.coordinates];
+      for(const p of polys){outer.push(p[0]);for(const h of p.slice(1))islands.push([h]);}}
+    const R=[[-180,-85],[180,-85],[180,85],[-180,85],[-180,-85]];
+    s.sources.outside={type:'geojson',data:{type:'FeatureCollection',features:[
+      {type:'Feature',properties:{},geometry:{type:'Polygon',coordinates:[R,...outer]}},
+      ...islands.map(h=>({type:'Feature',properties:{},geometry:{type:'Polygon',coordinates:h}}))]}};
   }
 
   /* Choropleth goes UNDER the basemap's own labels, not on top of them. Place
@@ -2368,12 +2388,31 @@ function initMap(style){
     {id:'fill',type:'fill',source:'hex',
       paint:{'fill-color':emptyWrap(fillExpr(current)),'fill-opacity':0.82}},
     {id:'line',type:'line',source:'hex',
-      paint:{'line-color':'#ffffff','line-width':0.4,'line-opacity':0.35}});
+      paint:{'line-color':'#ffffff','line-width':0.4,'line-opacity':0.35}},
+    // The study-area limit: the real jurisdiction polygon from the pipeline's clip
+    // (county islands are holes in it), drawn over the hexagons as a solid dark
+    // line on a white casing so it reads as a boundary at every zoom. Solid, so it
+    // is never confused with the dashed ward lines; the hexagon edge stays quiet.
+    ...(BOUNDARY&&BOUNDARY.features.length?[
+      {id:'outside',type:'fill',source:'outside',paint:{'fill-color':'#f4f5f7','fill-opacity':0.5}},
+      {id:'boundary-case',type:'line',source:'boundary',layout:{'line-join':'round','line-cap':'round'},
+        paint:{'line-color':'#ffffff','line-width':['interpolate',['linear'],['zoom'],9,3.5,13,5.5],'line-opacity':0.5}},
+      {id:'boundary',type:'line',source:'boundary',layout:{'line-join':'round','line-cap':'round'},
+        paint:{'line-color':'#55657a','line-width':['interpolate',['linear'],['zoom'],9,1.3,13,2.2],'line-opacity':0.85}}]:[]));
 
   // Optional aerial basemap (Esri World Imagery). Baked in hidden, toggled by the
   // Map/Satellite control, and spliced BELOW the choropleth so hexes and the
   // basemap's own place labels still draw on top of the imagery. Skipped in
   // ?flat mode, which is the no-network path. See setBasemap().
+  // The basemap's roads are line layers that sit ABOVE the choropleth on purpose
+  // (streets stay readable through the colour), so a limit spliced with the
+  // hexagons gets cut by every white road casing that crosses it. Lift the
+  // limit above the last basemap road line, still below the place labels.
+  {const lastLine=s.layers.reduce((m,l,i)=>(l.type==='line'&&!['hex','boundary','wards','juris','outside'].includes(l.source))?i:m,-1);
+   const mine=['boundary-case','boundary'].map(id=>s.layers.findIndex(l=>l.id===id)).filter(i=>i>=0);
+   if(lastLine>=0&&mine.length){const moved=mine.map(i=>s.layers[i]);mine.sort((a,b)=>b-a).forEach(i=>s.layers.splice(i,1));
+     const dest=s.layers.reduce((m,l,i)=>(l.type==='line'&&!['hex','boundary','wards','juris','outside'].includes(l.source))?i:m,-1)+1;
+     s.layers.splice(dest,0,...moved);}}
   if(style!==FLAT_STYLE){
     s.sources.satimg={type:'raster',tileSize:256,
       tiles:['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],
@@ -2382,14 +2421,34 @@ function initMap(style){
       layout:{visibility:'none'},paint:{'raster-opacity':1}});
   }
 
-  // Council wards: outline plus number, over every layer, off until toggled.
+  // City outline (04d jurisdictions): drawn only while one city is chosen in
+  // "Show", so the dimmed mask has a visible edge. Sits under the ward line.
+  if(JURIS){
+    s.sources.juris={type:'geojson',data:JURIS};
+    s.layers.push({id:'city-line',type:'line',source:'juris',filter:['==',['get','name'],RANK_CITY||'\u0000'],
+      paint:{'line-color':'#1f2a36','line-width':['interpolate',['linear'],['zoom'],9,1.4,13,2.2],'line-opacity':0.9}});
+  }
+  // Council wards, off until toggled. Cartography: a wide soft casing under a
+  // thin desaturated line so the border reads at every zoom without competing
+  // with the pure-black selection ring; one label per ward, set in tracked
+  // small capitals at the largest part's centre; an invisible fill for hover
+  // and click; a highlight line for the ward under the pointer.
   if(WARDS){
     s.sources.wards={type:'geojson',data:WARDS};
-    s.layers.push({id:'wards-line',type:'line',source:'wards',layout:{visibility:wardsOn?'visible':'none'},
-      paint:{'line-color':'#0b0f14','line-width':['interpolate',['linear'],['zoom'],9,1.2,13,2.4],'line-dasharray':[3,2],'line-opacity':0.85}});
-    if(s.glyphs)s.layers.push({id:'wards-label',type:'symbol',source:'wards',layout:{visibility:wardsOn?'visible':'none','text-field':['get','ward_name'],
-      'text-size':['interpolate',['linear'],['zoom'],9,11,13,16],'text-font':['Open Sans Bold','Arial Unicode MS Bold'],'text-allow-overlap':true},
-      paint:{'text-color':'#0b0f14','text-halo-color':'#ffffff','text-halo-width':2}});
+    if(WARD_PTS)s.sources['wards-pts']={type:'geojson',data:WARD_PTS};
+    const vis={visibility:wardsOn?'visible':'none'};
+    s.layers.push(
+      {id:'wards-hit',type:'line',source:'wards',layout:{...vis,'line-join':'round'},paint:{'line-color':'#000','line-width':14,'line-opacity':0}},
+      {id:'wards-case',type:'line',source:'wards',layout:{...vis,'line-join':'round'},
+        paint:{'line-color':'#ffffff','line-width':['interpolate',['linear'],['zoom'],9,3.5,13,6],'line-opacity':0.55}},
+      {id:'wards-line',type:'line',source:'wards',layout:{...vis,'line-join':'round'},
+        paint:{'line-color':'#3b4a5c','line-width':['interpolate',['linear'],['zoom'],9,1,13,1.8],'line-dasharray':[4,2.5],'line-opacity':0.9}},
+      {id:'wards-hi',type:'line',source:'wards',layout:{...vis,'line-join':'round'},filter:['==',['get','ward_id'],'\u0000'],
+        paint:{'line-color':'#ff7a45','line-width':['interpolate',['linear'],['zoom'],9,2.4,13,3.6],'line-opacity':0.95}});
+    if(s.glyphs)s.layers.push({id:'wards-label',type:'symbol',source:WARD_PTS?'wards-pts':'wards',layout:{...vis,'text-field':['get','label'],
+      'text-size':['interpolate',['linear'],['zoom'],9,10,13,14],'text-font':['Open Sans Bold','Arial Unicode MS Bold'],'text-letter-spacing':0.18,'text-transform':'uppercase',
+      'text-allow-overlap':false,'text-ignore-placement':false,'text-padding':6},
+      paint:{'text-color':'#3b4a5c','text-halo-color':'rgba(255,255,255,0.92)','text-halo-width':1.6,'text-opacity':0.95}});
   }
   // Selection ring and center markers stay above everything, labels included:
   // both are things the user is actively hunting for.
@@ -2421,6 +2480,8 @@ function initMap(style){
   map=m;
   document.getElementById('zoom-in').onclick=()=>m.zoomIn();document.getElementById('zoom-out').onclick=()=>m.zoomOut();
   wireHover();m.resize();fitData(m);
+  // A ward toggle remembered from the session needs its legend key and the basemap's admin lines settled once the style is in.
+  if(WARDS)m.once('load',()=>setWards(wardsOn));
 }
 
 /** Frame the data, with padding the container can actually afford.
@@ -2901,7 +2962,10 @@ function wireUI(){
 
 function setWards(on){
   wardsOn=!!on;
-  styleOp(()=>{for(const id of ['wards-line','wards-label'])if(map.getLayer(id))map.setLayoutProperty(id,'visibility',wardsOn?'visible':'none');});
+  styleOp(()=>{for(const id of ['wards-hit','wards-case','wards-line','wards-hi','wards-label'])if(map.getLayer(id))map.setLayoutProperty(id,'visibility',wardsOn?'visible':'none');
+    // The basemap draws its own county and state lines; two boundary systems on one map read as noise, so they rest while ours are on.
+    for(const l of map.getStyle().layers)if(/^boundary_(county|state)/.test(l.id))map.setLayoutProperty(l.id,'visibility',wardsOn?'none':'visible');});
+  const lk=document.getElementById('legend-wards');if(lk){lk.hidden=!wardsOn;}
   const t=document.getElementById('tg-wards');if(t){t.classList.toggle('on',wardsOn);t.setAttribute('aria-pressed',wardsOn);}
   try{sessionStorage.setItem('ce-wards-'+CITY_SLUG,wardsOn?'1':'');}catch(_){}
 }
@@ -2916,6 +2980,12 @@ function initWards(){
   sel.innerHTML='<option value="">All wards</option>'+ids.map(id=>`<option value="${escapeHtml(id)}">${escapeHtml(wardLabel(id))}</option>`).join('')+
     (HEX.features.some(f=>f.properties.place==='res'&&!f.properties.ward_id)?`<option value="__outside">${escapeHtml(wardLabel(''))}</option>`:'');
   sel.onchange=()=>{RANK_WARD=sel.value;rankPage=0;buildRank();};
+  // One label per ward at the centre of its largest part (multi-part wards used to get one per part).
+  WARD_PTS={type:'FeatureCollection',features:WARDS.features.map(f=>{const g=f.geometry;const polys=g.type==='MultiPolygon'?g.coordinates:[g.coordinates];
+    let best=null,bestA=-1;for(const poly of polys){const r=poly[0];let a=0,cx=0,cy=0;for(let i=0;i<r.length-1;i++){const w=r[i][0]*r[i+1][1]-r[i+1][0]*r[i][1];a+=w;cx+=(r[i][0]+r[i+1][0])*w;cy+=(r[i][1]+r[i+1][1])*w;}
+      if(Math.abs(a)>bestA){bestA=Math.abs(a);best=a?[cx/(3*a),cy/(3*a)]:r[0];}}
+    return {type:'Feature',properties:{ward_id:f.properties.ward_id,label:f.properties.ward_name},geometry:{type:'Point',coordinates:best}};})};
+  const lk=document.getElementById('legend-wards');if(lk){lk.querySelector('span').textContent=(CE_CITY.districtUnit||'ward')+' boundary'+(WARDS.members_as_of?' · members as of '+WARDS.members_as_of:'');}
   document.getElementById('tg-wards').onclick=()=>setWards(!wardsOn);
   let on=false;try{on=sessionStorage.getItem('ce-wards-'+CITY_SLUG)==='1';}catch(_){}
   wardsOn=on;const t=document.getElementById('tg-wards');t.classList.toggle('on',on);t.setAttribute('aria-pressed',on);
@@ -3053,6 +3123,7 @@ function buildCityPick(){
 }
 // Fade areas outside the chosen city on the map so the list and the map agree.
 function applyCityMask(){if(!map||!map.getLayer('fill'))return;const base=document.querySelector('#basemap button.on')?.dataset.b==='sat'?0.88:0.82;
+  if(map.getLayer('city-line'))map.setFilter('city-line',['==',['get','name'],RANK_CITY||'\u0000']);
   map.setPaintProperty('fill','fill-opacity',RANK_CITY?['case',['==',['get','city'],RANK_CITY],base,0.12]:base);}
 /* Direction per sort key: 'most' puts the largest value first. Every key's
    natural reading is "most need first", which for tree cover means least. */
@@ -3466,9 +3537,31 @@ function updateROI(p){
     : 'No eligible street length is mapped here. Capacity is unknown; this does not establish that public planting land is absent.';
 }
 
+function wireWardHover(){
+  if(!WARDS)return;   // layer-scoped listeners may be registered before the style has loaded
+  const wpop=new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:10,className:'ward-pop'});
+  let last=null;
+  map.on('mousemove','wards-hit',e=>{
+    if(!wardsOn)return;
+    const p=e.features[0].properties;
+    if(p.ward_id!==last){last=p.ward_id;map.setFilter('wards-hi',['==',['get','ward_id'],p.ward_id]);}
+    const r=wardRows().find(x=>x.id===p.ward_id);
+    wpop.setLngLat(e.lngLat).setHTML(`<b>${escapeHtml(p.ward_name)}</b>${p.member?`<div class="tt-kind">${escapeHtml(p.member)}</div>`:''}
+      ${r?`<div class="tt-row"><span>Residents</span><span>${fInt(r.res)}</span></div><div class="tt-row"><span>Mean need</span><span>${r.mean.toFixed(0)}</span></div><div class="tt-row"><span>Top-100 areas</span><span>${r.top}</span></div>`:''}
+      <div class="tt-what">Click to limit the list to this ${CE_CITY.districtUnit||'ward'}.</div>`).addTo(map);
+    map.getCanvas().style.cursor='pointer';});
+  map.on('mouseleave','wards-hit',()=>{wpop.remove();map.getCanvas().style.cursor='';if(last){map.setFilter('wards-hi',['==',['get','ward_id'],'\u0000']);last=null;}});
+  map.on('click','wards-hit',e=>{
+    if(!wardsOn)return;
+    const id=e.features[0].properties.ward_id;RANK_WARD=RANK_WARD===id?'':id;
+    const wf=document.getElementById('ward-filter');if(wf)wf.value=RANK_WARD;rankPage=0;buildRank();
+    toast(RANK_WARD?`List limited to ${escapeHtml(e.features[0].properties.ward_name)}. Click the ${CE_CITY.districtUnit||'ward'} again to clear.`:'Showing every area again.');});
+}
 function wireHover(){
+  wireWardHover();
   const pop=new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:8});
-  map.on('mousemove','fill',e=>{map.getCanvas().style.cursor='pointer';const p=e.features[0].properties;
+  const onBorder=e=>wardsOn&&map.getLayer('wards-hit')&&map.queryRenderedFeatures(e.point,{layers:['wards-hit']}).length>0;
+  map.on('mousemove','fill',e=>{if(onBorder(e)){pop.remove();return;}map.getCanvas().style.cursor='pointer';const p=e.features[0].properties;
     // Live score/rank, not the frozen properties MapLibre hands back — otherwise
     // the tooltip would quietly disagree with the hex it is pointing at.
     const s=sc(p),r=rk(p);
@@ -3480,6 +3573,7 @@ function wireHover(){
        <div class="tt-row"><span>Walk to cooling</span><span>${fMin(+p.access_min)}</span></div>`).addTo(map);});
   map.on('mouseleave','fill',()=>{map.getCanvas().style.cursor='';pop.remove();});
   map.on('click','fill',e=>{
+    if(onBorder(e))return;   // the ward border under the pointer takes the click
     // A center sits on top of the hex it is in, and both layers get the click.
     // Let the marker win — you clicked the dot, not the 0.8 km² under it.
     if(map.queryRenderedFeatures(e.point,{layers:['centers','designated'].filter(l=>map.getLayer(l))}).length)return;

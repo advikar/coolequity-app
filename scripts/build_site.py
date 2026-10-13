@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 APP_FILES = ["index.html", "guide.css", "guide.js", "cities.js", "vendor"]
 CITY_PAGES = ["city.js", "guide.html", "cooling.html"]
 DATA_FILES = ["{slug}.geojson", "centers_{slug}.geojson", "boundary_{slug}.geojson", "designated_{slug}.geojson"]
-OPTIONAL_DATA_FILES = ["wards_{slug}.geojson"]   # council wards / districts, where a city publishes them
+OPTIONAL_DATA_FILES = ["wards_{slug}.geojson", "jurisdictions_{slug}.geojson"]   # wards / districts and city outlines, where present
 
 
 def listed_cities():

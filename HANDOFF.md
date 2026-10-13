@@ -1,5 +1,28 @@
 # HANDOFF
 
+## Checkpoint — October 13, 2026 (Claude): ward and city-limit cartography
+
+Files: `app/index.html`, `scripts/build_site.py`. Ward and district borders redrawn to
+professional standard: a soft white casing under a thin desaturated dashed line (the pure
+black ring is now only the selection); one label per ward in tracked uppercase at the largest
+part's centre, with collision avoidance; a legend key with the member date while the toggle is
+on; the basemap's own county and state lines rest while ours show; a solid city outline (from
+04d jurisdictions, now served as an optional data file) whenever one city is chosen in "Show";
+hovering the border highlights the ward and shows member, residents, mean need and top-100
+count; clicking the border limits the list. Tests: `scripts/test.sh` all cities. Verified in
+the local build on Bakersfield (wards) and Contra Costa (districts + Richmond outline).
+Also: the study-area limit (the pipeline's clip polygon, the real city or county line with
+county islands as holes) is now drawn above the hexagons as a solid slate line on a white
+casing instead of a faint grey under them, with a "city limit" / "county line" / "study area"
+legend key worded by `CE_CITY.scope`. The hexagon edge stays quiet. Verified on Bakersfield.
+Second pass after review: the limit is lighter and thinner (slate `#55657a`, 1.3–2.2 px on a
+soft casing), and a light veil (`outside` fill, 50% off-white) covers everything beyond the
+limit, including county islands, so the colour stops at the line and the edge reads as
+continuous where whole hexagons straddle it. Outside cells stay readable and clickable.
+Third pass: the basemap's road lines sit above the choropleth by design, so the limit was
+cut by every white road casing crossing it; the limit (casing + line) is now moved above the
+last basemap line layer, still below place labels, so it draws continuously over roads.
+
 ## Checkpoint — October 13, 2026 (Claude): UI and feature audit
 
 Task: exercise every option on every city and report. Owner: advikar. Files: `app/index.html`
