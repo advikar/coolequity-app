@@ -1,5 +1,19 @@
 # HANDOFF
 
+## Checkpoint — October 13, 2026 (Claude): UI and feature audit
+
+Task: exercise every option on every city and report. Owner: advikar. Files: `app/index.html`
+(one fix), `docs/UI_AUDIT_2026-10-13.md`.
+
+- **Done:** scripted walk of presets, sliders, nine layers, every filter and sort, search, paging,
+  rows, detail, scenario inputs, field checks, every export, briefing build, share link, scenario
+  reload, reset, units, theme, panel, legend, basemap, popovers, aria basics, on all five cities;
+  phone layout, chooser, guide, cooling page; link and anchor crawl of the built site. No
+  functional defects. Fixed: the optional ward fetch no longer logs a 404 where a city has no
+  district source. Findings and suggested improvements in `docs/UI_AUDIT_2026-10-13.md`.
+- **Tests run:** `scripts/test.sh` (all five cities).
+- **Left for later:** phone detail header wrapping; need-versus-room scatter; off-street band.
+
 ## Checkpoint — October 12, 2026 (Claude): street room layer and row labels
 
 Task: show feasibility beside need (reviewer feedback). Owner: advikar. Files: `app/index.html`,

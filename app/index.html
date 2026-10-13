@@ -2250,7 +2250,7 @@ async function boot(){
     optional(CENTERS_URL),
     optional(BOUNDARY_URL),
     optional(DESIGNATED_URL),
-    optional(WARDS_URL)
+    CE_CITY.districtUnit?optional(WARDS_URL):Promise.resolve({loadFailed:true})   // only cities with a district source have the file; no 404 noise elsewhere
   ]);
   HEX=h;CENTERS=c;BOUNDARY=b;DESIGNATED=dg;WARDS=(w&&!w.loadFailed&&w.features&&w.features.length&&h.features.some(f=>f.properties.ward_id))?w:null;
   initWards();
