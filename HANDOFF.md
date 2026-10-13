@@ -22,6 +22,9 @@ continuous where whole hexagons straddle it. Outside cells stay readable and cli
 Third pass: the basemap's road lines sit above the choropleth by design, so the limit was
 cut by every white road casing crossing it; the limit (casing + line) is now moved above the
 last basemap line layer, still below place labels, so it draws continuously over roads.
+Correction: the outside veil also faded the street map and the satellite imagery beyond the
+limit. Removed; instead the hexagons that lie mostly outside the limit (inside_frac < 0.5)
+are painted at 45% of the fill opacity, so the basemap keeps its full contrast everywhere.
 
 ## Checkpoint — October 13, 2026 (Claude): UI and feature audit
 

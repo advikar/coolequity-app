@@ -2363,18 +2363,6 @@ function initMap(style){
   // street basemap; it sits under the fill, so it shows through only in the gaps.
   if(BOUNDARY&&BOUNDARY.features.length){
     s.sources.boundary={type:'geojson',data:BOUNDARY};
-    // Everything outside the limit, as one polygon: a wide rectangle with the
-    // city's outer rings as holes, plus each county island as its own polygon.
-    // Painted as a light veil over the hexagons, it makes the colour stop at
-    // the line, so the limit reads as one continuous edge even where whole
-    // hexagons straddle it. Outside cells stay readable and clickable.
-    const outer=[],islands=[];
-    for(const f of BOUNDARY.features){const g=f.geometry;const polys=g.type==='MultiPolygon'?g.coordinates:[g.coordinates];
-      for(const p of polys){outer.push(p[0]);for(const h of p.slice(1))islands.push([h]);}}
-    const R=[[-180,-85],[180,-85],[180,85],[-180,85],[-180,-85]];
-    s.sources.outside={type:'geojson',data:{type:'FeatureCollection',features:[
-      {type:'Feature',properties:{},geometry:{type:'Polygon',coordinates:[R,...outer]}},
-      ...islands.map(h=>({type:'Feature',properties:{},geometry:{type:'Polygon',coordinates:h}}))]}};
   }
 
   /* Choropleth goes UNDER the basemap's own labels, not on top of them. Place
@@ -2386,7 +2374,7 @@ function initMap(style){
   const at=firstSymbol<0?s.layers.length:firstSymbol;
   s.layers.splice(at,0,
     {id:'fill',type:'fill',source:'hex',
-      paint:{'fill-color':emptyWrap(fillExpr(current)),'fill-opacity':0.82}},
+      paint:{'fill-color':emptyWrap(fillExpr(current)),'fill-opacity':fillOpacity(0.82)}},
     {id:'line',type:'line',source:'hex',
       paint:{'line-color':'#ffffff','line-width':0.4,'line-opacity':0.35}},
     // The study-area limit: the real jurisdiction polygon from the pipeline's clip
@@ -2394,7 +2382,6 @@ function initMap(style){
     // line on a white casing so it reads as a boundary at every zoom. Solid, so it
     // is never confused with the dashed ward lines; the hexagon edge stays quiet.
     ...(BOUNDARY&&BOUNDARY.features.length?[
-      {id:'outside',type:'fill',source:'outside',paint:{'fill-color':'#f4f5f7','fill-opacity':0.5}},
       {id:'boundary-case',type:'line',source:'boundary',layout:{'line-join':'round','line-cap':'round'},
         paint:{'line-color':'#ffffff','line-width':['interpolate',['linear'],['zoom'],9,3.5,13,5.5],'line-opacity':0.5}},
       {id:'boundary',type:'line',source:'boundary',layout:{'line-join':'round','line-cap':'round'},
@@ -2408,10 +2395,10 @@ function initMap(style){
   // (streets stay readable through the colour), so a limit spliced with the
   // hexagons gets cut by every white road casing that crosses it. Lift the
   // limit above the last basemap road line, still below the place labels.
-  {const lastLine=s.layers.reduce((m,l,i)=>(l.type==='line'&&!['hex','boundary','wards','juris','outside'].includes(l.source))?i:m,-1);
+  {const lastLine=s.layers.reduce((m,l,i)=>(l.type==='line'&&!['hex','boundary','wards','juris'].includes(l.source))?i:m,-1);
    const mine=['boundary-case','boundary'].map(id=>s.layers.findIndex(l=>l.id===id)).filter(i=>i>=0);
    if(lastLine>=0&&mine.length){const moved=mine.map(i=>s.layers[i]);mine.sort((a,b)=>b-a).forEach(i=>s.layers.splice(i,1));
-     const dest=s.layers.reduce((m,l,i)=>(l.type==='line'&&!['hex','boundary','wards','juris','outside'].includes(l.source))?i:m,-1)+1;
+     const dest=s.layers.reduce((m,l,i)=>(l.type==='line'&&!['hex','boundary','wards','juris'].includes(l.source))?i:m,-1)+1;
      s.layers.splice(dest,0,...moved);}}
   if(style!==FLAT_STYLE){
     s.sources.satimg={type:'raster',tileSize:256,
@@ -3122,9 +3109,14 @@ function buildCityPick(){
   el.onchange=()=>{RANK_CITY=el.value;rankPage=0;buildRank();applyCityMask();};
 }
 // Fade areas outside the chosen city on the map so the list and the map agree.
+/* Cells that lie mostly outside the study limit (county islands, the far side
+ * of a boundary hexagon) are painted paler, so the colour stops at the limit
+ * and the line reads as one edge. Only the hexagons fade: the street map and
+ * the imagery underneath keep their full contrast everywhere. */
+function fillOpacity(base){return ['case',['<',['coalesce',['get','inside_frac'],1],0.5],+(base*0.45).toFixed(3),base];}
 function applyCityMask(){if(!map||!map.getLayer('fill'))return;const base=document.querySelector('#basemap button.on')?.dataset.b==='sat'?0.88:0.82;
   if(map.getLayer('city-line'))map.setFilter('city-line',['==',['get','name'],RANK_CITY||'\u0000']);
-  map.setPaintProperty('fill','fill-opacity',RANK_CITY?['case',['==',['get','city'],RANK_CITY],base,0.12]:base);}
+  map.setPaintProperty('fill','fill-opacity',RANK_CITY?['case',['==',['get','city'],RANK_CITY],fillOpacity(base),0.12]:fillOpacity(base));}
 /* Direction per sort key: 'most' puts the largest value first. Every key's
    natural reading is "most need first", which for tree cover means least. */
 let RANK_DIR='most';
