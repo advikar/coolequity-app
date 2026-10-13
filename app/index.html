@@ -592,7 +592,7 @@
   .row .sc{margin-left:0;text-align:right}
   .row .cbar{grid-column:2/5;display:flex;height:3px;border-radius:2px;overflow:hidden;background:#1a2430;gap:1px}
   .row .cbar i{display:block;height:100%}
-  .row .mxs{grid-column:2/5;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:1px}
+  .row .mxs{grid-column:2/5;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:1px}
   .row .mx{display:flex;align-items:baseline;gap:4px;font-variant-numeric:tabular-nums;white-space:nowrap}
   .row .mx b{font-size:11px;font-weight:600;color:var(--muted)}
   .row .mx i{font-style:normal;font-size:11px;color:var(--muted2);letter-spacing:.03em}
@@ -940,6 +940,7 @@
           <button class="layer" data-k="pop"><b>Population</b><span>people living here</span></button>
           <button class="layer" data-k="pct65"><b>Age 65+</b><span>share of older residents</span></button>
           <button class="layer" data-k="ac"><b>A/C access</b><span>homes with air conditioning</span></button>
+          <button class="layer" data-k="room"><b>Street room</b><span>tree spots along mapped streets</span></button>
         </div>
         <p class="hint layer-note" id="layer-note" role="status" hidden></p>
         <p class="lbl sub" id="story-heading" hidden style="margin:14px 0 0">Historical context</p>
@@ -1207,6 +1208,7 @@ const CANOPY  =['#5c3a17','#87582b','#ab8047','#c6ab6b','#b9c67c','#8dc276','#63
 const ACCESS_AC=['#08306b','#0a4a92','#1f6cb5','#4292c6','#6baed6','#9ecae1','#bcd4ea','#cfe0f0','#dfe9f5'];
 const POPU    =['#dbe4ee','#c2d2e4','#aabdd8','#96a8cc','#8b90bd','#8574ac','#7f5099','#6f2680','#4d004b'];
 const AGE     =['#fbf1c6','#fbe4a2','#fbd382','#f9bd5c','#f2a03d','#e17a1e','#c85c07','#973404','#662506'];
+const ROOM    =['#113f3d','#1d5c57','#2c7a71','#3f968a','#5eaea0','#83c3b6','#a8d6cc','#c9e6e0','#e6f3f1'];  // deep = little street room
 const WALK    =['#fbdfd9','#f9c8c6','#f6adb4','#f28ea6','#e96f9a','#d94f92','#ae017e','#7a0177','#49006a'];
 
 function hex(h){return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];}
@@ -1278,6 +1280,8 @@ const LAYERS={
     cap:'Census LACE 2023 tract estimates, weighted by occupied homes. Income proxy where unavailable; gray = no occupied-home support.'},
   access:{title:'Walk to cooling',ramp:WALK,worse:'hi',fmt:v=>fMin(v),key:'access_min',est:true,
     cap:'Estimated walk to mapped sites at 4.8 km/h on the OSM network. Hours and cooling availability are unverified.'},
+  room:{title:'Street room',ramp:ROOM,worse:'lo',fmt:v=>fInt(v)+' spots',est:true,
+    cap:'Tree spots that mapped street centerlines inside the boundary could hold at 10 m spacing on both sides. An upper bound from OpenStreetMap, not a site survey: utilities, driveways and sidewalk width are not known. Deeper = less room, so shade here would have to come from parks, schools or private land.'},
   // Categorical layer — no ramp. Present in LAYERS so setLayer() can read .title/.cap
   // uniformly; the legend swaps to the A–D swatch key instead of a gradient bar.
   holc:{title:'Redlining grade (HOLC)',ramp:null,fmt:v=>v,
@@ -1443,7 +1447,10 @@ function syncHolcAvailable(){
 }
 
 function computeRanges(){
-  ['score','lst','green','veg','pop','pct65','ac','access_min'].forEach(k=>{
+  HEX.features.forEach(f=>{f.properties.room=roomOf(f.properties);});
+  {const a=HEX.features.filter(f=>f.properties.place==='res'&&f.properties.room>0).map(f=>f.properties.room).sort((x,y)=>x-y);
+   const q=t=>a.length?a[Math.min(a.length-1,Math.floor(t*a.length))]:0;ROOM_CUTS=[q(1/3),q(2/3)];}
+  ['score','lst','green','veg','pop','pct65','ac','access_min','room'].forEach(k=>{
     const a=HEX.features.map(f=>f.properties[k]).filter(v=>typeof v==='number'&&isFinite(v));
     vals[k]=a.length?[Math.min(...a),Math.max(...a)]:[0,1];
     if(vals[k][0]===vals[k][1])vals[k][1]=vals[k][0]+1;  // avoid divide-by-zero on flat fields
@@ -1457,7 +1464,7 @@ function computeRanges(){
   // so one leafy or one crowded hex no longer sets the scale for the score; the
   // color ramps above stay on the raw range so the map still spans real values.
   // Falls back to the raw range when `norm` is absent (older data files).
-  ['score','lst','green','veg','pop','pct65','ac','access_min'].forEach(k=>{svals[k]=vals[k];});
+  ['score','lst','green','veg','pop','pct65','ac','access_min','room'].forEach(k=>{svals[k]=vals[k];});
   const nm=HEX&&HEX.norm;
   if(nm) for(const k in nm){ if(Array.isArray(nm[k])&&nm[k][1]>nm[k][0]) svals[k]=nm[k]; }
 }
@@ -1565,6 +1572,15 @@ const optional=url=>fetch(url,{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Er
  * export schema is refused; a file built on different data is loaded with a
  * visible warning, because the numbers may not reproduce. */
 const EXPORT_SCHEMA=1;
+/* Street room: how many trees the mapped street centerlines inside the boundary
+ * could hold at TREE_SPACING_M on both sides. The same upper bound the planting
+ * scenario starts from, drawn as a layer and read as a word on every row so
+ * need and feasibility can be seen together. Bands are city-relative tertiles
+ * of the ranked areas that have any mapped street at all. */
+function roomOf(p){return Math.floor(Math.max(0,p.street_m||0)*2/TREE_SPACING_M);}
+let ROOM_CUTS=[0,0];
+function roomBand(p){const r=roomOf(p);return r<=0?'no mapped street':r<ROOM_CUTS[0]?'little room':r<ROOM_CUTS[1]?'some room':'plenty of room';}
+function roomWord(p){return roomBand(p).replace(' of room','').replace(' room','').replace('no mapped street','none');}
 /** The satellite greenness stand-in is stored on the pipeline's 0–45 scale;
  *  everything a person sees (map, list, exports, briefing) is the 0–100 index. */
 const NDVI_SCALE=45;const ndviIndex=v=>v/NDVI_SCALE*100;
@@ -1612,7 +1628,7 @@ function exportHeader(){
 }
 const EXPORT_FIELDS=['id','name','city','place','rank','score','rank_default','score_default','rank_lo','rank_hi','rank_top_share','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
   'coverage_frac','canopy_quality','canopy_m2','assessed_m2','pop','pct65','ac_pct','ac_src','ac_coverage','acs_year','access_min','access_km',
-  'access_quality','access_snap_m','area_m2','street_m','scenario_ok','canopy_baseline_ok','land','holc',
+  'access_quality','access_snap_m','area_m2','street_m','street_room_positions','street_room_band','scenario_ok','canopy_baseline_ok','land','holc',
   'ward_id','ward_name',
   'planting_share','trees','trees_surviving','canopy_gain_points','cost_usd','cooling_c','future_canopy_pct','field_status','field_note','field_note_updated'];
 function cellRecord(p){
@@ -1624,7 +1640,7 @@ function cellRecord(p){
     canopy_source:p.canopy_source??null, canopy_year:p.canopy_year??null, coverage_frac:num(p.coverage_frac), canopy_quality:p.canopy_quality??null,
     canopy_m2:num(p.canopy_m2), assessed_m2:num(p.assessed_m2), pop:num(p.pop), pct65:num(p.pct65), ac_pct:num(p.ac), ac_src:p.ac_src??null,
     ac_coverage:num(p.ac_coverage), acs_year:num(p.acs_year), access_min:num(p.access_min), access_km:num(p.access_km),
-    access_quality:p.access_quality??null, access_src:p.access_src??null, inside_frac:num(p.inside_frac), access_snap_m:num(p.access_snap_m), area_m2:num(p.area_m2), street_m:num(p.street_m),
+    access_quality:p.access_quality??null, access_src:p.access_src??null, inside_frac:num(p.inside_frac), access_snap_m:num(p.access_snap_m), area_m2:num(p.area_m2), street_m:num(p.street_m), street_room_positions:Math.floor(Math.max(0,p.street_m||0)*2/TREE_SPACING_M), street_room_band:(typeof roomBand==='function'?roomBand(p):null),
     scenario_ok:p.scenario_ok===true, ward_id:p.ward_id??null, ward_name:p.ward_name??null, canopy_baseline_ok:p.canopy_baseline_ok===true, land:p.land??null, holc:p.holc??null,
     planting_share:scn?scn.share:null, trees:scn?scn.trees:null, trees_surviving:scn?scn.trees_surviving:null, canopy_gain_points:scn?scn.canopy_gain_points:null,
     cost_usd:scn?scn.cost_usd:null, cooling_c:scn?scn.cooling_c:null, future_canopy_pct:scn?scn.future_canopy_pct:null,
@@ -1668,6 +1684,8 @@ const FIELD_KEY={
   access_snap_m:['walk_network_connection_m','Straight-line meters from the area center to the walking network'],
   area_m2:['area_m2','Area of the hexagon, m²'],
   street_m:['mapped_street_m','Mapped street centerline in the area, m: theoretical capacity from OpenStreetMap, not surveyed plantable space'],
+  street_room_positions:['street_room_tree_spots','Tree spots the mapped street could hold at 10 m spacing on both sides: an upper bound, not a site survey'],
+  street_room_band:['street_room_band','no mapped street, little room, some room or plenty of room: city-relative thirds of the areas with any mapped street'],
   scenario_ok:['planting_scenario_available','true when mapped street capacity exists'],
   canopy_baseline_ok:['tree_cover_baseline_complete','true when the aerial assessment covers ≥99% of the area'],
   land:['land_cover','Dominant land cover (ESA WorldCover) for undeveloped areas'],
@@ -2024,6 +2042,7 @@ function wireLeave(){
  * guide anchor the button already points at, so a button with no card falls
  * back to opening the guide, and the contract test checks every key exists. */
 const TIPS={
+  room:{t:'Street room',d:'How many trees the mapped streets inside this area could hold at 10 m spacing on both sides. It is the ceiling the planting scenario starts from, not a surveyed count: utilities, driveways, sidewalk width and existing trees are unknown. “Little”, “some” and “plenty” are thirds of this city’s areas that have any mapped street. Where need is high and room is little, shade has to come from parks, schools or private land.'},
   wards:{t:'By ward',d:'The ranking rolled up by council ward: residents, the mean need index under the current mix, how many of the top 100 areas fall in each ward, and the trees and cost of the starred areas there. Boundaries come from the city’s own GIS service; member names are as of the date shown and change at elections. Click a ward to limit the list to it.'},
   popweight:{t:'Count people more',d:'Decides how much the number of residents matters. At 0%, an area is judged only on its conditions, so a hot, bare area with 12 residents can rank above a slightly better one with 3,000. As you raise it, areas with more people move up the list. At 100%, an area with almost no residents scores near zero however bad its conditions. The recommended 45% makes the most-populated area count about 1.8 times the least. The line under the sliders always states the multiplier in force.'},
   weights:{t:'What matters most',d:'Choose what the ranking should reward. Presets are ready-made mixes; “Fine-tune” lets you set each share yourself. The map and the list re-rank immediately.'},
@@ -2118,7 +2137,7 @@ function openReport(){
     return {bar:vis.map(([k,v])=>{const w=W_INPUTS.find(x=>x.k===k);return `<i style="width:${(100*v/tot).toFixed(1)}%;background:${w.swatch}"></i>`;}).join(''),
       leg:vis.map(([k,v])=>{const w=W_INPUTS.find(x=>x.k===k);return `<span><i style="background:${w.swatch}"></i>${esc(w.label.replace(' (65+)',''))} <b>${Math.round(100*v/tot)}%</b></span>`;}).join('')};};
   const rows=top.map(f=>{const p=f.properties,s=sc(p),c=colorFor('score',s);
-    return `<tr><td><span class="rk" style="background:${c};color:${inkOn(c)}">${rk(p)}</span></td><td class="nm">${esc(nameOf(p))}</td><td class="n">${s.toFixed(0)}</td><td class="n">${fTemp(p.lst)}</td><td class="n">${treesCell(p)}</td><td class="n">${fInt(p.pop)}</td><td class="n">${LAYERS.pct65.fmt(p.pct65)}</td><td class="n">${fMin(p.access_min)}</td><td>${esc(p.city||'—')}</td><td class="n muted">${p.rank_lo!=null?p.rank_lo+'–'+p.rank_hi:'—'}</td><td class="n muted">${def?'—':(p.rank||'—')}</td></tr>`;}).join('');
+    return `<tr><td><span class="rk" style="background:${c};color:${inkOn(c)}">${rk(p)}</span></td><td class="nm">${esc(nameOf(p))}</td><td class="n">${s.toFixed(0)}</td><td class="n">${fTemp(p.lst)}</td><td class="n">${treesCell(p)}</td><td class="n">${fInt(p.pop)}</td><td class="n">${LAYERS.pct65.fmt(p.pct65)}</td><td class="n">${fMin(p.access_min)}</td><td>${esc(roomBand(p))}</td><td>${esc(p.city||'—')}</td><td class="n muted">${p.rank_lo!=null?p.rank_lo+'–'+p.rank_hi:'—'}</td><td class="n muted">${def?'—':(p.rank||'—')}</td></tr>`;}).join('');
   const slPages=sl.map(f=>{const p=f.properties,s=sc(p),c=colorFor('score',s),share=effectiveShare(p.id),scn=scenarioFor(p,share),d=drivers(p),st=cityStats();
     const seniors=Math.round(p.pop*p.pct65/100);
     const m=[['Surface heat',fTemp(p.lst),norm('lst',p.lst),lift(colorFor('lst',p.lst),130)],[p.green_src==='ndvi'?'Greenness (satellite, 0–100)':'Tree cover'+(treesFlag(p)?' ('+treesFlag(p)+')':''),treesLbl(p),norm('green',p.green),lift(colorFor('green',p.green),130)],['Residents',fInt(p.pop),norm('pop',p.pop),lift(colorFor('pop',p.pop),130)],['Age 65+',LAYERS.pct65.fmt(p.pct65),norm('pct65',p.pct65),lift(colorFor('pct65',p.pct65),130)],['Homes with A/C (est.)',LAYERS.ac.fmt(p.ac),norm('ac',p.ac),lift(colorFor('ac',p.ac),130)],['Walk to cooling (est.)',`${fMin(p.access_min)} · ${fDist(p.access_km)}`,norm('access',p.access_min),lift(colorFor('access',p.access_min),130)]];
@@ -2185,7 +2204,7 @@ table:not(.src){font-size:8.5pt}table:not(.src) td{padding:2px 5px}table:not(.sr
 <div class="page">
   <h2>Top 25 areas under “${esc(q)}”</h2><p class="fine">The 25 highest-ranked of all ${order.length.toLocaleString()} ranked areas in ${esc(CITY_NAME)}, regardless of any city or list filter on the map. Trees: percent of assessed land under tree crowns; a greenness index (/100) where no assessment exists.</p>
   <div class="wbar">${wbar}</div><div class="leg">${swatchRow}<span><i style="background:#8b5cf6"></i>Count people more <b>${Math.round(POPW*100)}%</b></span></div>
-  <table style="margin-top:14px"><thead><tr><th>#</th><th>Area</th><th class="n">Need</th><th class="n">Heat</th><th class="n">Trees</th><th class="n">Residents</th><th class="n">65+</th><th class="n">Walk</th><th>City</th><th class="n">Likely rank (rec. mix)</th><th class="n">Rec. rank</th></tr></thead><tbody>${rows}</tbody></table>
+  <table style="margin-top:14px"><thead><tr><th>#</th><th>Area</th><th class="n">Need</th><th class="n">Heat</th><th class="n">Trees</th><th class="n">Residents</th><th class="n">65+</th><th class="n">Walk</th><th>Room</th><th>City</th><th class="n">Likely rank (rec. mix)</th><th class="n">Rec. rank</th></tr></thead><tbody>${rows}</tbody></table>
   <p class="fine" style="margin-top:10px">Need is a relative 0–100 index within ${esc(CITY_NAME)} under these weights. “Likely rank” is the 5th–95th percentile of the area's rank under the recommended mix when census inputs are re-drawn within their margins of error and those weights are nudged; heat, tree cover and walking time are held fixed, so it is a sensitivity range, not a confidence interval, and beside a custom mix it describes the recommended ranking rather than this one. Treat rank differences smaller than the band as not established. “Rec. rank” is the area's rank under the recommended mix; it reads — when the recommended mix is in force.</p>
   <div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Top 25</span></div>
 </div>
@@ -3114,7 +3133,7 @@ function makeRow(p,def){
     <button type="button" class="pin${on?' on':''}" aria-pressed="${on}" title="${on?'Remove from':'Add to'} shortlist">${on?'★':'☆'}</button>
     <div class="sc" style="color:${lift(c)}">${s.toFixed(0)}</div>
     <div class="cbar" aria-hidden="true">${contribBar(p)}</div>
-    <div class="mxs"><span class="mx"><b>${fTemp(p.lst)}</b><i>heat</i></span><span class="mx" title="${escapeHtml(rowSrcTitle(p))}"><b>${p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':p.green.toFixed(0)+'%'}</b><i>${rowSrcLabel(p)}</i></span><span class="mx"><b>${fMin(p.access_min)}</b><i>walk</i></span></div>`;
+    <div class="mxs"><span class="mx"><b>${fTemp(p.lst)}</b><i>heat</i></span><span class="mx" title="${escapeHtml(rowSrcTitle(p))}"><b>${p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':p.green.toFixed(0)+'%'}</b><i>${rowSrcLabel(p)}</i></span><span class="mx"><b>${fMin(p.access_min)}</b><i>walk</i></span><span class="mx" title="Street room: ${fInt(roomOf(p))} tree spots along mapped streets at 10 m spacing, an upper bound, not a site survey"><b>${roomWord(p)}</b><i>room</i></span></div>`;
   const open=()=>{selectHex(p.id,true);document.getElementById('d-close').focus({preventScroll:true});};
   row.onclick=e=>{if(e.target.closest('.pin')){togglePin(p.id);return;}open();};
   row.querySelector('.nm').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};
@@ -3258,6 +3277,7 @@ function selectHex(id,fly){
     ['Age 65+','pct65',p.pct65,LAYERS.pct65.fmt(p.pct65),false],
     [p.ac_src==='income-model'?'A/C (income estimate)':'Homes with A/C','ac',p.ac,LAYERS.ac.fmt(p.ac),true],
     ['Walk to cooling','access',p.access_min,`${fMin(p.access_min)} · ${fDist(p.access_km)}`+(p.access_src==='straightline'?' · straight-line':''),true],
+    ['Street room','room',roomOf(p),`${fInt(roomOf(p))} tree spots · ${roomBand(p)}`,true],
   ];
   document.getElementById('d-metrics').innerHTML=m.map(([lab,k,v,disp,est,tag])=>{
     const t=norm(k,v);

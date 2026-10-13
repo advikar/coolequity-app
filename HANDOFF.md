@@ -1,5 +1,21 @@
 # HANDOFF
 
+## Checkpoint — October 12, 2026 (Claude): street room layer and row labels
+
+Task: show feasibility beside need (reviewer feedback). Owner: advikar. Files: `app/index.html`,
+`cities/*/guide.html`.
+
+- **Done:** `roomOf(p)` = tree spots the mapped street centrelines inside the boundary hold at
+  10 m on both sides (the scenario's own ceiling), stamped onto every feature at load.
+  "Street room" map layer (deeper = less room, keeping the deeper-means-more-need rule), a
+  fourth mini-column on every row (none / little / some / plenty, city-relative thirds of ranked
+  areas with any mapped street), a detail metric with the count, `street_room_tree_spots` and
+  `street_room_band` in exports (column key regenerated), a Room column in the briefing's top-25
+  table, a `#room` guide topic and popover.
+- **Tests run:** `scripts/test.sh` (all five cities). Verified in the local build on Bakersfield.
+- **Left for later:** a need-versus-room scatter in the briefing; city right-of-way, utility and
+  sidewalk layers to replace the OSM upper bound.
+
 ## Checkpoint — October 12, 2026 (Claude): ward/district roll-up, provenance, licence
 
 Task: bring the ward work from the `one-repo` branch of `advikar/coolequity` into this
