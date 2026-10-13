@@ -1,5 +1,16 @@
 # HANDOFF
 
+## Checkpoint — October 13, 2026 (Claude): basemap tone per theme, shorter disclaimer
+
+- Street basemap (CARTO Positron) ground is toned to the chrome's map grey and water a
+  shade deeper in the **dark** theme only (`toneBasemap`/`retoneMap` in app/index.html);
+  the light theme keeps Positron's own near-white ground. Switching theme re-tones the
+  live map. Done on the style's own layers, not an overlay (a veil washed out roads
+  and imagery).
+- Disclaimer on every page shortened to "Independent student project. Not a city or
+  county product." (app, guide and cooling pages, all cities). README prose and the
+  guide "field note" sentences were left as they were.
+
 ## Checkpoint — October 13, 2026 (Claude): ward and city-limit cartography
 
 Files: `app/index.html`, `scripts/build_site.py`. Ward and district borders redrawn to

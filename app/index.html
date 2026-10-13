@@ -28,7 +28,7 @@
     --shadow:0 18px 50px rgba(0,0,0,.55);
     /* The map is light (CARTO positron) so that "deeper = worse" can read at all;
        see the RAMPS comment in the script. Chrome stays dark around it. */
-    --map-bg:#eceff3;
+    --map-bg:#e6e9ed;   /* dark chrome: toned ground (see toneBasemap) */
     --sans:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     --display:"Instrument Serif",Georgia,"Times New Roman",serif;
     --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
@@ -730,6 +730,7 @@
     --bg:#eef1f5;--panel:#ffffff;--panel2:#f6f8fa;--edge:#dfe4ea;--edge2:#c6ced8;
     --txt:#141a21;--muted:#4a5663;--muted2:#5b6774;--shadow:0 18px 50px rgba(20,30,40,.18);
     --why:#8a4b00;   /* 6.4:1 on the light card; the yellow accent is 1.6:1 there */
+    --map-bg:#eceff3;   /* light chrome keeps Positron's own near-white ground */
     --c-hover:#f1f4f8;--c-field:#f6f8fa;--c-btn:#eef1f5;--c-btnedge:#b9c3ce;--c-track:#e3e8ee;--c-card:#f6f8fa;--c-link:#8a4b00;--c-up:#177a45;--c-dn:#a83a1e;--c-glass:rgba(255,255,255,.92)}
   html[data-theme=light] #panel{background:var(--panel)}
   html[data-theme=light] .seg,html[data-theme=light] .home,html[data-theme=light] .cityselect,html[data-theme=light] .pst,html[data-theme=light] .pwhy,html[data-theme=light] .layer,html[data-theme=light] .mixbar,html[data-theme=light] .explain,html[data-theme=light] .drivers,html[data-theme=light] .roi-feas,html[data-theme=light] .sortsel,html[data-theme=light] .cityinfo,html[data-theme=light] .tip{background:var(--c-field)}
@@ -1031,7 +1032,7 @@
         </div>
       </section>
       <div class="foot"><b id="foot-scale" style="color:var(--muted)"></b>
-        <a class="method-link" href="guide.html#geography" target="ce-guide">About these areas &amp; sources ↗</a><div class="disclaim">Independent student project · not a city or county product · not reviewed by any city or county · exploratory, not a field survey · questions or corrections: <a href="mailto:coolequity.contact@gmail.com">coolequity.contact@gmail.com</a></div></div>
+        <a class="method-link" href="guide.html#geography" target="ce-guide">About these areas &amp; sources ↗</a><div class="disclaim">Independent student project · not a city or county product · exploratory, not a field survey · questions or corrections: <a href="mailto:coolequity.contact@gmail.com">coolequity.contact@gmail.com</a></div></div>
     </div>
   </aside>
 
@@ -1606,7 +1607,7 @@ async function sha256Hex(text){
 }
 const CITY_NAME=(CITY_NAV.find(c=>c.slug===THIS_CITY)||{}).name||CITY_SLUG;
 function exportNotes(){return [
-  'Independent student project. Not a city or county product and not reviewed by any city or county. Exploratory analysis, not a field survey. Nothing is published at address or household resolution. Questions or corrections: coolequity.contact@gmail.com.',
+  'Independent student project. Not a city or county product. Exploratory analysis, not a field survey. Nothing is published at address or household resolution. Questions or corrections: coolequity.contact@gmail.com.',
   'Scores are relative 0–100 within this study area under the weights in this file; they are not health-risk probabilities or cross-city rankings.',
   'rank/score are computed live from the exported weights; rank_default/score_default are the pipeline defaults shipped with the data. rank_recommended_mix_p05/p95 and top_tier_share come from re-drawing ACS and LACE inputs within their margins of error and jittering the recommended weights; ranks are estimates with a band, not exact positions.',
   'Population, age and A/C are allocated estimates from ACS block groups and Census LACE tracts, not household counts.',
@@ -1967,6 +1968,7 @@ function wireDrawers(){
   document.getElementById('d-pin').onclick=()=>{if(selId!=null)togglePin(selId);};
   const setTheme=(t,re)=>{document.documentElement.dataset.theme=t;try{localStorage.setItem('ce-theme',t);}catch(_){}
     document.querySelectorAll('#theme button').forEach(b=>{const on=b.dataset.t===t;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});
+    retoneMap();
     if(re){applyWeights();buildRank();if(selId!=null)selectHex(selId,false);}};
   setTheme(document.documentElement.dataset.theme||'dark',false);
   document.getElementById('theme').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setTheme(b.dataset.t,true);});
@@ -2229,7 +2231,7 @@ ${sl.length?`<div class="page"><h2>Shortlist · ${sl.length} area${sl.length===1
   <ul>${exportNotes().map(n=>`<li>${esc(n)}</li>`).join('')}</ul>
   <h2 style="margin-top:22px">Sources</h2>
   <table class="src">${sources.map(([a,b])=>`<tr><td>${esc(a)}</td><td>${esc(b)}</td></tr>`).join('')}<tr><td>Data file</td><td>${esc(hdr.dataset.file)} · version ${esc(hdr.dataset.version_tag||'')}${DATA_SHA?' · sha256 '+esc(String(DATA_SHA).slice(0,12))+'…':''}</td></tr><tr><td>Generated</td><td>${esc(hdr.exported_at)} · weights ${W_INPUTS.map(w=>Math.round(W[w.k]*100)+'%').join(' / ')} · people ${Math.round(POPW*100)}%</td></tr></table>
-  <div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Independent student project · not a city or county product · not reviewed by any city or county · coolequity.contact@gmail.com</span></div>
+  <div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Independent student project · not a city or county product · coolequity.contact@gmail.com</span></div>
 </div>
 </body></html>`;
   const w=window.open('','ce-report');
@@ -2318,20 +2320,52 @@ async function boot(){
  *  Deliberately NOT a timeout on the map's 'load' event: 'load' waits on the first
  *  render, so a backgrounded tab (rAF suspended) looks identical to a dead CDN, and
  *  a fallback keyed on it will tear down a perfectly good map. */
+/** Positron ships with a near-white ground (#fafaf8) under white roads, so in the
+ *  dark theme the country outside the study area reads as blank paper next to
+ *  the dark chrome — the satellite view has texture there and the street view
+ *  had none. In the DARK theme the ground is toned to the chrome's map grey and
+ *  the water a notch deeper; the LIGHT theme keeps Positron's own colours, which
+ *  sit naturally against the white panel. Roads, labels and the hex ramp are
+ *  untouched either way, so "deeper = worse" still reads. Done on the style's
+ *  own layers, not with an overlay: a veil over the basemap washed the roads
+ *  and imagery out too (tried, reverted). */
+const TONE={ground:'#e6e9ed',water:'#c9d2d9'};
+const TONE_ORIG={};            // the style's own colours, kept so light can restore them
+function toneLayers(style){return (style.layers||[]).filter(l=>l.type==='background'||l.id==='water');}
+function toneBasemap(style){
+  for(const l of toneLayers(style)){
+    const p=l.paint||(l.paint={});
+    const k=l.type==='background'?'background-color':'fill-color';
+    if(!(l.id in TONE_ORIG))TONE_ORIG[l.id]=p[k];
+    const dark=document.documentElement.dataset.theme!=='light';
+    p[k]=dark?(l.type==='background'?TONE.ground:TONE.water):TONE_ORIG[l.id];
+  }
+  return style;
+}
+/** Re-tone a live map when the theme changes (setTheme). No-op before the map
+ *  exists; initMap already receives a style toned for the theme at load. */
+function retoneMap(){
+  if(!map)return;
+  const run=()=>{for(const id in TONE_ORIG){if(!map.getLayer(id))continue;
+    const bg=map.getLayer(id).type==='background';
+    const dark=document.documentElement.dataset.theme!=='light';
+    map.setPaintProperty(id,bg?'background-color':'fill-color',dark?(bg?TONE.ground:TONE.water):TONE_ORIG[id]);}};
+  if(map.isStyleLoaded())run();else map.once('load',run);
+}
 async function basemapStyle(){
   // ?flat=1 forces the no-network look. The fallback is the one path you can't
   // rehearse without actually killing the Wi-Fi.
-  if(_q.has('flat')){console.warn('Basemap skipped (?flat) — flat background');return FLAT_STYLE;}
+  if(_q.has('flat')){console.warn('Basemap skipped (?flat) — flat background');return toneBasemap(FLAT_STYLE);}
   try{
     const ctl=new AbortController();
     const t=setTimeout(()=>ctl.abort(),BASEMAP_TIMEOUT_MS);
     const r=await fetch(BASEMAP_URL,{signal:ctl.signal});
     clearTimeout(t);
     if(!r.ok)throw new Error(`HTTP ${r.status}`);
-    return await r.json();          // CARTO's style uses absolute sprite/glyph/tile URLs
+    return toneBasemap(await r.json());   // CARTO's style uses absolute sprite/glyph/tile URLs
   }catch(e){
     console.warn(`Basemap unreachable (${e.message}) — flat background; hexes still render`);
-    return FLAT_STYLE;
+    return toneBasemap(FLAT_STYLE);
   }
 }
 
@@ -2609,7 +2643,7 @@ function buildIntro(){
   buildSwitch();
   if(CE_CITY.introNote){for(const id of ['inote','pnote']){const n=document.getElementById(id);n.textContent=CE_CITY.introNote;n.hidden=false;}}
 
-  document.getElementById('ifine').innerHTML='Independent student project. Not a city or county product; not reviewed by any city or county. A planning screen, not a field survey. Tree-cover share counts residents of areas with a tree-cover source (2022 aerial, height model or lidar); ground temperature is a satellite surface reading, not air temperature; walks are to mapped facilities whose cooling status is not verified. Census ACS 2024. <a href="guide.html#overview" target="ce-guide">Data &amp; methods ↗</a> · Questions or corrections: <a href="mailto:coolequity.contact@gmail.com">coolequity.contact@gmail.com</a>';
+  document.getElementById('ifine').innerHTML='Independent student project. Not a city or county product. A planning screen, not a field survey. Tree-cover share counts residents of areas with a tree-cover source (2022 aerial, height model or lidar); ground temperature is a satellite surface reading, not air temperature; walks are to mapped facilities whose cooling status is not verified. Census ACS 2024. <a href="guide.html#overview" target="ce-guide">Data &amp; methods ↗</a> · Questions or corrections: <a href="mailto:coolequity.contact@gmail.com">coolequity.contact@gmail.com</a>';
 
   document.getElementById('intro-go').onclick=()=>dismissIntro();
   document.addEventListener('keydown',e=>{
