@@ -24,11 +24,15 @@ assert(CITY&&CITY.slug===slug,`cities/${slug}/city.js must declare slug ${slug}`
 console.log(`\n== ${CITY.name} (${slug})`);
 // The map's recommended weights and the pipeline's must be the same numbers.
 const py=fs.readFileSync(`cities/${slug}/config.py`,'utf8');
-const pyW=Object.fromEntries([...py.slice(py.indexOf('WEIGHTS = {'),py.indexOf('}',py.indexOf('WEIGHTS = {'))).matchAll(/"(heat|green|ac|age65)":\s*([0-9.]+)/g)].map(m=>[m[1],Number(m[2])]));
-assert.deepEqual(Object.keys(pyW).sort(),['ac','age65','green','heat']);
+const pyW=Object.fromEntries([...py.slice(py.indexOf('WEIGHTS = {'),py.indexOf('}',py.indexOf('WEIGHTS = {'))).matchAll(/"(heat|green|ac|age65|dac)":\s*([0-9.]+)/g)].map(m=>[m[1],Number(m[2])]));
+// `dac` (SB 535 share) exists only where the city set SB535_URL; then both files must carry it.
+const hasDac='dac' in CITY.weights;
+assert.deepEqual(Object.keys(pyW).sort(),hasDac?['ac','age65','dac','green','heat']:['ac','age65','green','heat'],`${slug}: config.py WEIGHTS keys`);
+assert.equal(hasDac,/^SB535_URL\s*=\s*\(?\s*["']/m.test(py),`${slug}: city.js weights.dac must exist exactly when config.py sets SB535_URL`);
 for(const k of Object.keys(pyW))assert.equal(CITY.weights[k],pyW[k],`${slug}: city.js weight ${k} differs from config.py`);
 assert.equal(CITY.weights.access,0);
-for(const pr of CITY.presets){if(pr.w!=='default')for(const k of ['heat','green','ac','age65','access'])assert.equal(typeof pr.w[k],'number',`${slug} preset ${pr.id} weight ${k}`);}
+const wkeys=['heat','green','ac','age65','access',...(hasDac?['dac']:[])];
+for(const pr of CITY.presets){if(pr.w!=='default')for(const k of wkeys)assert.equal(typeof pr.w[k],'number',`${slug} preset ${pr.id} weight ${k}`);}
 assert(CITY.presets.some(pr=>pr.id==='default'&&pr.w==='default'&&pr.pop==='default'),`${slug}: needs the default preset`);
 const guide=fs.readFileSync(`cities/${slug}/guide.html`,'utf8');
 const ids=new Set([...guide.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));
@@ -45,6 +49,10 @@ let cases=0;
 for(const f of data.features){const p=f.properties;let last=0;for(const share of [0,25,50,100]){node('roi-slider').value=share;node('roi-slider').disabled=!(p.street_m>0);ctx.p=p;vm.runInContext('updateROI(p)',ctx);if(!p.scenario_ok){assert.equal(node('roi-trees').textContent,'—');assert.equal(node('roi-cost').textContent,'—');assert.match(node("roi-note").textContent,/No (mapped|eligible) street/);cases++;continue;}const trees=Number(node('roi-trees').textContent.replaceAll(',',''));assert(trees>=last);assert(trees<=Math.floor((p.street_m||0)*2/10));const known=p.canopy_baseline_ok?Math.max(p.canopy_m2,p.green/100*p.area_m2):p.canopy_source==='usfs-2022'?p.canopy_m2:0;assert(trees*40<=Math.max(0,p.area_m2-known)+1);if(!p.canopy_baseline_ok&&trees>0)assert(!node('roi-note').textContent.includes('→'));assert(!/NaN|Infinity/.test([...nodes.values()].map(n=>n.textContent).join(' ')));if(share===0){assert.equal(trees,0);assert.equal(node('roi-cost').textContent,'≈$0');}last=trees;cases++;}}
 assert.equal(data.features.filter(f=>f.properties.place==='res').length,EXPECT[slug].res);
 assert.equal(data.features.filter(f=>f.properties.holc).length,0);
+// SB 535 share: present, 0–1, with a criterion exactly where the share is positive; absent elsewhere.
+if(hasDac){assert(data.features.some(f=>f.properties.dac>0),`${slug}: no cell carries an SB 535 share`);
+  for(const f of data.features){const p=f.properties;assert(typeof p.dac==='number'&&p.dac>=0&&p.dac<=1,'dac '+p.id);assert.equal(!!p.dac_type,p.dac>0,'dac_type '+p.id);}}
+else for(const f of data.features)assert(!(f.properties.dac>0),`${slug}: unexpected SB 535 share`);
 assert.equal(data.features.filter(f=>f.properties.place==='res'&&f.properties.green_src==='ndvi').length,EXPECT[slug].ndvi);
 console.log(`PASS: syntax, guide anchors, residential count, HOLC availability, ${cases} scenario cases across ${data.features.length} cells.`);
 
@@ -69,6 +77,21 @@ vm.runInContext(html.slice(html.indexOf('function rescore(){'),html.indexOf('con
 vm.runInContext('rescore()',scoring);
 for(const f of ranked){const p=f.properties;assert.equal(live.rank.get(p.id),p.rank,'Browser/export rank mismatch '+p.id);assert(Math.abs(live.score.get(p.id)-p.score)<=.050001);}
 console.log('PASS: browser/export scoring and rank parity for every residential cell.');
+// SB 535 term with a non-zero weight: the browser scorer must equal an independent recompute
+// of W·inputs under the "Disadvantaged communities" preset, and designated cells must lead.
+if(hasDac){
+  const pre=CITY.presets.find(p=>p.id==='dac');assert(pre&&pre.w.dac>0,`${slug}: needs a preset that weights dac`);
+  const s=Object.values(pre.w).reduce((a,b)=>a+b,0),W=Object.fromEntries(Object.entries(pre.w).map(([k,v])=>[k,v/s]));
+  scoring.normW=()=>W;scoring.POPW=pre.pop==='default'?.45:pre.pop;vm.runInContext('rescore()',scoring);
+  const nv=(p,k)=>{const[lo,hi]=data.norm[k];return Math.max(0,Math.min(1,(p[k]-lo)/(hi-lo)));};
+  const pri=new Map(ranked.map(f=>{const p=f.properties;const b=W.heat*nv(p,'lst')+W.green*(1-nv(p,'green'))+W.ac*(1-nv(p,'ac'))+W.age65*nv(p,'pct65')+W.access*Math.max(0,Math.min(1,p.access_min/scoring.svals.access_min[1]))+W.dac*nv(p,'dac');return [p.id,b*((1-scoring.POPW)+scoring.POPW*nv(p,'pop'))];}));
+  const lo=Math.min(...pri.values()),hi=Math.max(...pri.values());
+  for(const f of ranked){const p=f.properties;assert(Math.abs(live.score.get(p.id)-100*(pri.get(p.id)-lo)/(hi-lo))<1e-6,'dac-weighted score '+p.id);}
+  const top=[...ranked].sort((a,b)=>live.rank.get(a.properties.id)-live.rank.get(b.properties.id)).slice(0,50);
+  assert(top.every(f=>f.properties.dac>=0.5),`${slug}: top 50 under the dac preset must be designated`);
+  scoring.normW=()=>({...CITY.weights});scoring.POPW=.45;vm.runInContext('rescore()',scoring);
+  console.log('PASS: SB 535 term scored with a non-zero weight matches an independent recompute.');
+}
 
 assert(!html.includes("+' pts'"));assert(html.includes('percentage-point canopy gain'));
 const directory=fs.readFileSync(`cities/${slug}/cooling.html`,'utf8');for(const m of directory.matchAll(/<script>([\s\S]*?)<\/script>/g))new vm.Script(m[1]);
@@ -138,6 +161,19 @@ const directory=fs.readFileSync(`cities/${slug}/cooling.html`,'utf8');for(const 
     assert.equal(ex.NOTES.get(b).note,'seen locally','newer local note must be kept');
     assert.deepEqual([...ex.SHORTLIST],[a,b]);assert.match(r.msg,/1 field check, a shortlist of 2/);assert.match(r.msg,/1 field check in this browser is newer/);}
   console.log('PASS: scenario export builder, CSV shape, and reload acceptance/refusal.');
+  // With the real input list of a city that carries the SB 535 term: a file saved before the term
+  // existed (five weights) loads with dac = 0, and the weight column is exported.
+  if(hasDac){
+    ex.W_INPUTS=[{k:'heat'},{k:'green'},{k:'ac'},{k:'age65'},{k:'access'},{k:'dac',optional:true}];
+    ex.W_RAW={heat:.2,green:.5,ac:.2,age65:.1,access:0,dac:0};ex.normW=()=>({heat:.2,green:.5,ac:.2,age65:.1,access:0,dac:0});
+    const h6=vm.runInContext('exportHeader()',ex);assert.deepEqual(Object.keys(h6.weights),['heat','green','ac','age65','access','dac']);
+    ex.header6=h6;assert(vm.runInContext('toCsv(recs,header6)',ex).split('\r\n')[0].split(',').includes('weight_sb535_community'));
+    ex.old5={...header,kind:'ranked-list',cells:ex.recs};   // header was built with five weights above
+    const r=vm.runInContext('loadScenario(old5)',ex);assert.equal(r.ok,true,'five-weight file must load: '+r.msg);
+    assert.equal(ex.W_RAW.dac,0);assert.equal(ex.W_RAW.green,.5);
+    ex.bad6={...h6,weights:{...h6.weights,heat:'x'}};assert.equal(vm.runInContext('loadScenario(bad6)',ex).ok,false);
+    console.log('PASS: pre-SB 535 scenario files load with the term at 0; weight column exported.');
+  }
   // UX round 2: every info button has a popover card and every card points at a real guide topic.
   const tips=vm.runInContext('Object.keys(TIPS)',ex);
   for(const k of tips)assert(ids.has(k),'popover without guide topic '+k);

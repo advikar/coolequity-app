@@ -26,18 +26,29 @@ def field_key() -> list[tuple[str, str, str]]:
     return rows
 
 
-def table() -> str:
+# Columns that exist only in builds carrying the SB 535 designation (city.js
+# declares weights.dac). The dac_* cell columns are exported everywhere (empty
+# where absent); the weight column is written only where the input exists.
+DAC_ONLY = {"w_dac"}
+
+
+def has_dac(guide: Path) -> bool:
+    city_js = guide.parent / "city.js"
+    return city_js.exists() and re.search(r"weights:\{[^}]*\bdac:", city_js.read_text()) is not None
+
+
+def table(dac: bool) -> str:
     body = "".join(f"<tr><td><code>{html.escape(c)}</code></td><td><code>{html.escape(k)}</code></td>"
-                   f"<td>{html.escape(d)}</td></tr>" for k, c, d in field_key())
+                   f"<td>{html.escape(d)}</td></tr>" for k, c, d in field_key() if dac or k not in DAC_ONLY)
     return ("<!-- column-key --><div class=\"table-wrap\"><table class=\"fields\"><thead><tr><th>Spreadsheet column</th>"
             "<th>JSON key</th><th>Meaning</th></tr></thead><tbody>" + body + "</tbody></table></div><!-- /column-key -->")
 
 
 def main() -> int:
     check = "--check" in sys.argv
-    new = table()
     stale = []
     for g in sorted(ROOT.glob("cities/*/guide.html")):
+        new = table(has_dac(g))
         text = g.read_text()
         if "<!-- column-key -->" not in text:
             # first run: wrap the existing table

@@ -26,7 +26,7 @@ CONTRACT = ["id", "name", "lst", "green", "pop", "pct65", "ac", "holc",
             "access_min", "access_km", "score", "rank", "area_m2", "street_m",
             "canopy_m2", "row_m2", "row_canopy", "veg", "place", "land", "green_src", "canopy_source", "canopy_year", "assessed_m2",
             "coverage_frac", "canopy_quality", "scenario_ok", "canopy_baseline_ok", "ac_src", "ac_coverage", "acs_year", "access_snap_m", "access_quality", "access_src",
-            "city", "city_kind", "inside_frac", "ward_id", "ward_name"]
+            "city", "city_kind", "inside_frac", "ward_id", "ward_name", "dac", "dac_type", "dac_tract"]
 
 COORD_DP = 5      # ~1 m at this latitude; halves the file the browser downloads
 
@@ -235,6 +235,19 @@ def load():
     else:
         df["ward_id"] = None; df["ward_name"] = None
         log("  wards: no wards CSV — run 04e_wards.py for the ward roll-up")
+    # SB 535 disadvantaged-community share per cell (04f), where the city set a
+    # designation URL. Absent: zero everywhere, and the term carries no weight.
+    if C.SB535_CSV.exists():
+        df = df.merge(pd.read_csv(C.SB535_CSV, dtype={"dac_tract": str}), on="h3", how="left")
+        df["dac"] = df["dac"].fillna(0.0)
+        log(f"  SB 535: {int((df['dac'] >= 0.5).sum())}/{len(df)} cells mostly inside a designated community")
+    else:
+        df["dac"] = 0.0
+        df["dac_type"] = None
+        df["dac_tract"] = None
+        if C.WEIGHTS.get("dac", 0) > 0:
+            raise SystemExit("WEIGHTS['dac'] > 0 but no SB 535 CSV — run 04f_sb535.py first")
+        log("  SB 535: no CSV (SB535_URL unset or 04f not run); term scored at 0")
 
     missing = df["lst_c"].isna().sum() + df["pop"].isna().sum()
     if missing:
@@ -288,6 +301,9 @@ def main():
         "ac":    clip_bounds(R["ac_est"],    clip_high=True),
         "pct65": clip_bounds(R["pct65_s"],  clip_high=False),
         "pop":   clip_bounds(R["pop"],       clip_high=True),
+        # A designation share is already 0-1 and not a distribution to clip: a
+        # wholly designated cell is 1 whether or not any other cell is.
+        "dac":   (0.0, 1.0),
     }
     log("  score inputs clipped to p2/p98: " + ", ".join(
         f"{k} {lo:.1f}–{hi:.1f}" for k, (lo, hi) in bounds.items()))
@@ -297,13 +313,15 @@ def main():
         "ac":    clip_minmax(df["ac_est"], bounds["ac"]),
         "age65": clip_minmax(df["pct65_s"], bounds["pct65"]),
         "pop":   clip_minmax(df["pop"], bounds["pop"]),
+        "dac":   clip_minmax(df["dac"], bounds["dac"]),
     })
 
     W = C.WEIGHTS
     base = (W["heat"] * n["heat"]
             + W["green"] * (1 - n["green"])
             + W["ac"] * (1 - n["ac"])
-            + W["age65"] * n["age65"])
+            + W["age65"] * n["age65"]
+            + W.get("dac", 0.0) * n["dac"])
     priority = base * (C.POP_FLOOR + C.POP_WEIGHT * n["pop"])
 
     # Score and rank RESIDENTIAL hexes only; activity hexes get null score/rank
@@ -374,6 +392,11 @@ def main():
         "inside_frac": df.get("inside_frac", pd.Series(1.0, index=df.index)).fillna(1.0).round(3),
         "city":       df["city"],
         "city_kind":  df["city_kind"],
+        # SB 535 disadvantaged community: share of the cell designated (0-1),
+        # the criterion and the tract. A policy designation, not a measurement.
+        "dac":        df["dac"].round(3),
+        "dac_type":   df["dac_type"].where(df["dac"] > 0, None),
+        "dac_tract":  df["dac_tract"].where(df["dac"] > 0, None),
     })[CONTRACT]
 
     # Rank exactly the published values/endpoints used by the browser. This
@@ -381,7 +404,8 @@ def main():
     norm = {k: [round(lo, 4), round(hi, 4)] for k, (lo, hi) in bounds.items()}
     published = {k: clip_minmax(out[k], b) for k, b in norm.items()}
     risk = (W["heat"] * published["lst"] + W["green"] * (1-published["green"])
-            + W["ac"] * (1-published["ac"]) + W["age65"] * published["pct65"])
+            + W["ac"] * (1-published["ac"]) + W["age65"] * published["pct65"]
+            + W.get("dac", 0.0) * published["dac"])
     pr = (risk * (C.POP_FLOOR + C.POP_WEIGHT * published["pop"]))[res]
     out.loc[res, "score"] = (100 * minmax(pr)).round(1).values
     out.loc[res, "rank"] = pr.rank(method="first", ascending=False).values

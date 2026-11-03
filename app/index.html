@@ -947,6 +947,8 @@
           <button class="layer" data-k="pct65"><b>Age 65+</b><span>share of older residents</span></button>
           <button class="layer" data-k="ac"><b>A/C access</b><span>homes with air conditioning</span></button>
           <button class="layer" data-k="room"><b>Street room</b><span>tree spots along mapped streets</span></button>
+          <!-- Hidden at boot unless a cell carries an SB 535 share — see syncDacAvailable(). -->
+          <button class="layer" data-k="dac" id="layer-dac" hidden><b>SB 535 community</b><span>state-designated disadvantaged tracts</span></button>
         </div>
         <p class="hint layer-note" id="layer-note" role="status" hidden></p>
         <p class="lbl sub" id="story-heading" hidden style="margin:14px 0 0">Historical context</p>
@@ -1215,6 +1217,9 @@ const CANOPY  =['#5c3a17','#87582b','#ab8047','#c6ab6b','#b9c67c','#8dc276','#63
 /* The two protective ramps run deep -> pale, so their PALE end is the "fine" end
    and stopping short of white is what keeps a well-served hex visible. */
 const ACCESS_AC=['#08306b','#0a4a92','#1f6cb5','#4292c6','#6baed6','#9ecae1','#bcd4ea','#cfe0f0','#dfe9f5'];
+// SB 535 share, pale -> deep purple: a hue no other ramp uses, so a designated
+// area is never mistaken for a hot or bare one.
+const DAC=['#f3eef8','#e3d7ee','#cdb8e0','#b497d0','#9a76bf','#7f57ab','#653b93','#4c2478','#35125c'];
 const POPU    =['#dbe4ee','#c2d2e4','#aabdd8','#96a8cc','#8b90bd','#8574ac','#7f5099','#6f2680','#4d004b'];
 const AGE     =['#fbf1c6','#fbe4a2','#fbd382','#f9bd5c','#f2a03d','#e17a1e','#c85c07','#973404','#662506'];
 const ROOM    =['#113f3d','#1d5c57','#2c7a71','#3f968a','#5eaea0','#83c3b6','#a8d6cc','#c9e6e0','#e6f3f1'];  // deep = little street room
@@ -1293,6 +1298,8 @@ const LAYERS={
     cap:'Tree spots that mapped street centerlines inside the boundary could hold at 10 m spacing on both sides. An upper bound from OpenStreetMap, not a site survey: utilities, driveways and sidewalk width are not known. Deeper = less room, so shade here would have to come from parks, schools or private land.'},
   // Categorical layer — no ramp. Present in LAYERS so setLayer() can read .title/.cap
   // uniformly; the legend swaps to the A–D swatch key instead of a gradient bar.
+  dac:{title:'Disadvantaged community (SB 535)',ramp:DAC,worse:'hi',fmt:v=>Math.round(v*100)+'%',
+    cap:'Share of the area inside a census tract designated by CalEPA under SB 535 (final designation, September 2026; CalEnviroScreen 5.0). A state policy designation, not a measurement of this area.'},
   holc:{title:'Redlining grade (HOLC)',ramp:null,fmt:v=>v,
     cap:'1930s Home Owners’ Loan Corporation grades, drawn in the original map’s own colors. D-graded (“hazardous”) blocks are hotter and barer today. US-only historical layer.'}
 };
@@ -1365,6 +1372,11 @@ const W_INPUTS=[
    note:'prioritize older residents'},
   {k:'access',prop:'access_min',label:'Far from cooling',swatch:WALK[7], est:true,
    note:'not in the shipped model — starts at 0', show:v=>fMin(v)},
+  // SB 535 disadvantaged-community share: only where the city's data carries the
+  // designation (cities/<slug>/city.js declares the weight). A policy screen, so
+  // it is a slider and a layer, not part of the recommended need ranking.
+  ...('dac' in CE_CITY.weights?[{k:'dac',prop:'dac',label:'Disadvantaged community (SB 535)',swatch:DAC[7], optional:true,
+   note:CE_CITY.inputNotes.dac||'share of the area in a designated tract', show:v=>Math.round(v*100)+'%'}]:[]),
 ];
 /** Presets set all four weights at once, which is the only way a single click
  *  can visibly change the answer. Moving one slider alone barely moves the map:
@@ -1404,7 +1416,8 @@ function rescore(){
     const p=F[i].properties;
     const base=W.heat*nv(p,'lst') + W.green*(1-nv(p,'green'))
              + W.ac*(1-nv(p,'ac')) + W.age65*nv(p,'pct65')
-             + W.access*nv(p,'access_min');
+             + W.access*nv(p,'access_min')
+             + (W.dac?W.dac*nv(p,'dac'):0);
     pri[i]=base*((1-POPW)+POPW*nv(p,'pop'));
   }
   let lo=Infinity,hi=-Infinity;
@@ -1438,7 +1451,8 @@ function liveScoreExpr(){
     ['*',W.green,['-',1,nx('green')]],
     ['*',W.ac,   ['-',1,nx('ac')]],
     ['*',W.age65,nx('pct65')],
-    ['*',W.access,nx('access_min')]];
+    ['*',W.access,nx('access_min')],
+    ['*',W.dac||0,nx('dac')]];
   const pri=['*',base,['+',1-POPW,['*',POPW,nx('pop')]]];
   return ['*',100,['/',['-',pri,LIVE.lo],Math.max(1e-12,LIVE.hi-LIVE.lo)]];
 }
@@ -1455,11 +1469,19 @@ function syncHolcAvailable(){
   return any;
 }
 
+/** Show the SB 535 layer only where the pipeline produced a designation share
+ *  (04e ran for this city). Reads the data, like syncHolcAvailable(). */
+function syncDacAvailable(){
+  const any=HEX.features.some(f=>f.properties.dac>0);
+  const b=document.getElementById('layer-dac');if(b)b.hidden=!any;
+  return any;
+}
+
 function computeRanges(){
   HEX.features.forEach(f=>{f.properties.room=roomOf(f.properties);});
   {const a=HEX.features.filter(f=>f.properties.place==='res'&&f.properties.room>0).map(f=>f.properties.room).sort((x,y)=>x-y);
    const q=t=>a.length?a[Math.min(a.length-1,Math.floor(t*a.length))]:0;ROOM_CUTS=[q(1/3),q(2/3)];}
-  ['score','lst','green','veg','pop','pct65','ac','access_min','room'].forEach(k=>{
+  ['score','lst','green','veg','pop','pct65','ac','access_min','room','dac'].forEach(k=>{
     const a=HEX.features.map(f=>f.properties[k]).filter(v=>typeof v==='number'&&isFinite(v));
     vals[k]=a.length?[Math.min(...a),Math.max(...a)]:[0,1];
     if(vals[k][0]===vals[k][1])vals[k][1]=vals[k][0]+1;  // avoid divide-by-zero on flat fields
@@ -1469,11 +1491,12 @@ function computeRanges(){
   // a slider moves, which would read as the scale rather than the map changing.
   vals.score=[0,100];
   vals.veg=[0,45];
+  vals.dac=[0,1];        // a designation share: the scale is 0–100% whatever the data holds
   // Scoring normalizes against the pipeline's p2/p98 endpoints (geojson `norm`),
   // so one leafy or one crowded hex no longer sets the scale for the score; the
   // color ramps above stay on the raw range so the map still spans real values.
   // Falls back to the raw range when `norm` is absent (older data files).
-  ['score','lst','green','veg','pop','pct65','ac','access_min','room'].forEach(k=>{svals[k]=vals[k];});
+  ['score','lst','green','veg','pop','pct65','ac','access_min','room','dac'].forEach(k=>{svals[k]=vals[k];});
   const nm=HEX&&HEX.norm;
   if(nm) for(const k in nm){ if(Array.isArray(nm[k])&&nm[k][1]>nm[k][0]) svals[k]=nm[k]; }
 }
@@ -1637,7 +1660,7 @@ function exportHeader(){
 }
 const EXPORT_FIELDS=['id','name','city','place','rank','score','rank_default','score_default','rank_lo','rank_hi','rank_top_share','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
   'coverage_frac','canopy_quality','canopy_m2','assessed_m2','pop','pct65','ac_pct','ac_src','ac_coverage','acs_year','access_min','access_km',
-  'access_quality','access_snap_m','area_m2','street_m','street_room_positions','street_room_band','scenario_ok','canopy_baseline_ok','land','holc',
+  'access_quality','access_snap_m','area_m2','street_m','street_room_positions','street_room_band','scenario_ok','canopy_baseline_ok','land','holc','dac','dac_type','dac_tract',
   'ward_id','ward_name',
   'planting_share','trees','trees_surviving','canopy_gain_points','cost_usd','cooling_c','future_canopy_pct','field_status','field_note','field_note_updated'];
 function cellRecord(p){
@@ -1651,6 +1674,7 @@ function cellRecord(p){
     ac_coverage:num(p.ac_coverage), acs_year:num(p.acs_year), access_min:num(p.access_min), access_km:num(p.access_km),
     access_quality:p.access_quality??null, access_src:p.access_src??null, inside_frac:num(p.inside_frac), access_snap_m:num(p.access_snap_m), area_m2:num(p.area_m2), street_m:num(p.street_m), street_room_positions:Math.floor(Math.max(0,p.street_m||0)*2/TREE_SPACING_M), street_room_band:(typeof roomBand==='function'?roomBand(p):null),
     scenario_ok:p.scenario_ok===true, ward_id:p.ward_id??null, ward_name:p.ward_name??null, canopy_baseline_ok:p.canopy_baseline_ok===true, land:p.land??null, holc:p.holc??null,
+    dac:p.dac==null?null:+(+p.dac*100).toFixed(1), dac_type:p.dac_type??null, dac_tract:p.dac_tract??null,
     planting_share:scn?scn.share:null, trees:scn?scn.trees:null, trees_surviving:scn?scn.trees_surviving:null, canopy_gain_points:scn?scn.canopy_gain_points:null,
     cost_usd:scn?scn.cost_usd:null, cooling_c:scn?scn.cooling_c:null, future_canopy_pct:scn?scn.future_canopy_pct:null,
     field_status:noteOf(p.id).status?FC_LABEL[noteOf(p.id).status]:null, field_note:noteOf(p.id).note||null, field_note_updated:noteOf(p.id).updated||null};
@@ -1701,6 +1725,9 @@ const FIELD_KEY={
   holc:['redlining_grade','1930s HOLC grade A–D where a map exists'],
   ward_id:['ward_id','Council ward or district number, where the city publishes boundaries'],
   ward_name:['ward_name','Council ward or district name; blank = outside every ward'],
+  dac:['sb535_dac_share_pct','Share of the area inside an SB 535 disadvantaged community (CalEPA, September 2026), %'],
+  dac_type:['sb535_dac_criterion','Designation criterion of the tract covering most of the area'],
+  dac_tract:['sb535_dac_tract','Census tract GEOID of that designated tract'],
   planting_share:['planting_share_pct','Share of street capacity planted in this scenario, %'],
   trees:['scenario_trees_planted','Trees planted in this scenario'],
   trees_surviving:['scenario_trees_surviving','Trees assumed to reach maturity (survival_share_pct in planting_assumptions)'],
@@ -1720,6 +1747,7 @@ const FIELD_KEY={
   w_heat:['weight_hotter_ground','Share of the ranking given to hotter ground'],w_green:['weight_fewer_trees','Share given to fewer trees'],
   w_ac:['weight_homes_without_ac','Share given to homes without A/C'],w_age65:['weight_older_residents','Share given to older residents'],
   w_access:['weight_far_from_cooling','Share given to distance from cooling'],
+  w_dac:['weight_sb535_community','Share given to SB 535 disadvantaged-community designation'],
 };
 const csvName=k=>(FIELD_KEY[k]||[k])[0];
 function csvCell(v){if(v==null)return '';let t=typeof v==='boolean'?(v?'true':'false'):String(v);
@@ -1779,10 +1807,12 @@ function loadScenario(doc){
   if(doc.export_schema!==EXPORT_SCHEMA)return {ok:false,msg:`This file uses export schema ${doc.export_schema??'?'}; this app reads schema ${EXPORT_SCHEMA}. Not loaded.`};
   if(doc.city_slug!==CITY_SLUG)return {ok:false,msg:`This scenario is for ${(doc.city&&doc.city!==CITY_NAME)?doc.city:(doc.city_slug||'another city')}, not ${CITY_NAME}. Not loaded.`};
   const w=doc.weights||{};
-  if(!W_INPUTS.every(({k})=>typeof w[k]==='number'&&isFinite(w[k])&&w[k]>=0))return {ok:false,msg:'Scenario weights are missing or invalid. Not loaded.'};
+  // An input added after a file was saved (`optional`, e.g. the SB 535 term) reads as 0.
+  const okW=o=>W_INPUTS.every(({k,optional})=>(optional&&o[k]==null)||(typeof o[k]==='number'&&isFinite(o[k])&&o[k]>=0));
+  if(!okW(w))return {ok:false,msg:'Scenario weights are missing or invalid. Not loaded.'};
   if(typeof doc.population_weight!=='number'||doc.population_weight<0||doc.population_weight>1)return {ok:false,msg:'Population weight is missing or invalid. Not loaded.'};
-  const raw=doc.weights_raw&&W_INPUTS.every(({k})=>typeof doc.weights_raw[k]==='number'&&isFinite(doc.weights_raw[k])&&doc.weights_raw[k]>=0)?doc.weights_raw:w;
-  W_RAW=W_INPUTS.reduce((o,{k})=>(o[k]=raw[k],o),{});POPW=doc.population_weight;
+  const raw=doc.weights_raw&&okW(doc.weights_raw)?doc.weights_raw:w;
+  W_RAW=W_INPUTS.reduce((o,{k})=>(o[k]=raw[k]??0,o),{});POPW=doc.population_weight;
   W_INPUTS.forEach(x=>{const el=document.getElementById('ws-'+x.k);if(el)el.value=Math.round(W_RAW[x.k]*100);});
   const pe=document.getElementById('ws-pop');if(pe)pe.value=Math.round(POPW*100);
   const pa=doc.planting_assumptions||{};
@@ -2073,6 +2103,7 @@ const TIPS={
   pct65:{t:'Residents aged 65+',d:'The estimated share of residents aged 65 or older, who are most at risk in extreme heat.'},
   ac:{t:'Homes with A/C',d:'The Census estimate of homes with air conditioning. Fewer homes with A/C means more reliance on shade and public cooling.'},
   holc:{t:'Redlining (1930s)',d:'Historical federal lending grades, shown where a map exists. Areas graded “hazardous” then are often the hottest and least shaded now.'},
+  dac:{t:'SB 535 disadvantaged community',d:'Census tracts designated by CalEPA under SB 535 (final designation, September 2026, from CalEnviroScreen 5.0). The map shows how much of each area falls inside a designated tract. A funding-eligibility designation, not a measurement of heat or shade; use it to see which priority areas also meet a program’s disadvantaged-community commitment.'},
   sort:{t:'Sort options',d:'Need: the priority score under the current mix (the rank badges). Residents: estimated people living in the area. Surface heat: summer late-morning ground temperature from satellite. Tree cover: share of assessed land under tree crowns. Walk to cooling: estimated minutes on foot to the nearest cool place. Age 65+: share of residents aged 65 or older. Sorting re-orders the list only; rank badges and the map never change.'},
   geography:{t:'About these areas',d:'Each hexagon is a fixed analysis area, not a neighborhood boundary. Names are the nearest mapped place; gray areas have no residents to rank.'},
 };
@@ -2142,7 +2173,7 @@ function openReport(){
   const treesCell=p=>{const f=treesFlag(p);return treesLbl(p)+(f?` <small class="muted">${esc(f)}</small>`:'');};
   const swatchRow=W_INPUTS.filter(w=>W[w.k]>0.005).map(w=>`<span><i style="background:${w.swatch}"></i>${esc(w.label)} <b>${Math.round(W[w.k]*100)}%</b></span>`).join('');
   const wbar=W_INPUTS.filter(w=>W[w.k]>0.005).map(w=>`<i style="width:${(W[w.k]*100).toFixed(1)}%;background:${w.swatch}"></i>`).join('');
-  const drivers=p=>{const parts=[['heat',W.heat*snv(p,'lst')],['green',W.green*(1-snv(p,'green'))],['ac',W.ac*(1-snv(p,'ac'))],['age65',W.age65*snv(p,'pct65')],['access',W.access*snv(p,'access_min')]];
+  const drivers=p=>{const parts=[['heat',W.heat*snv(p,'lst')],['green',W.green*(1-snv(p,'green'))],['ac',W.ac*(1-snv(p,'ac'))],['age65',W.age65*snv(p,'pct65')],['access',W.access*snv(p,'access_min')],['dac',(W.dac||0)*snv(p,'dac')]];
     const tot=parts.reduce((a,[,v])=>a+v,0)||1;const vis=parts.filter(([,v])=>v/tot>0.02).sort((a,b)=>b[1]-a[1]);
     return {bar:vis.map(([k,v])=>{const w=W_INPUTS.find(x=>x.k===k);return `<i style="width:${(100*v/tot).toFixed(1)}%;background:${w.swatch}"></i>`;}).join(''),
       leg:vis.map(([k,v])=>{const w=W_INPUTS.find(x=>x.k===k);return `<span><i style="background:${w.swatch}"></i>${esc(w.label.replace(' (65+)',''))} <b>${Math.round(100*v/tot)}%</b></span>`;}).join('')};};
@@ -2150,7 +2181,7 @@ function openReport(){
     return `<tr><td><span class="rk" style="background:${c};color:${inkOn(c)}">${rk(p)}</span></td><td class="nm">${esc(nameOf(p))}</td><td class="n">${s.toFixed(0)}</td><td class="n">${fTemp(p.lst)}</td><td class="n">${treesCell(p)}</td><td class="n">${fInt(p.pop)}</td><td class="n">${LAYERS.pct65.fmt(p.pct65)}</td><td class="n">${fMin(p.access_min)}</td><td>${esc(roomBand(p))}</td><td>${esc(p.city||'—')}</td><td class="n muted">${p.rank_lo!=null?p.rank_lo+'–'+p.rank_hi:'—'}</td><td class="n muted">${def?'—':(p.rank||'—')}</td></tr>`;}).join('');
   const slPages=sl.map(f=>{const p=f.properties,s=sc(p),c=colorFor('score',s),share=effectiveShare(p.id),scn=scenarioFor(p,share),d=drivers(p),st=cityStats();
     const seniors=Math.round(p.pop*p.pct65/100);
-    const m=[['Surface heat',fTemp(p.lst),norm('lst',p.lst),lift(colorFor('lst',p.lst),130)],[p.green_src==='ndvi'?'Greenness (satellite, 0–100)':'Tree cover'+(treesFlag(p)?' ('+treesFlag(p)+')':''),treesLbl(p),norm('green',p.green),lift(colorFor('green',p.green),130)],['Residents',fInt(p.pop),norm('pop',p.pop),lift(colorFor('pop',p.pop),130)],['Age 65+',LAYERS.pct65.fmt(p.pct65),norm('pct65',p.pct65),lift(colorFor('pct65',p.pct65),130)],['Homes with A/C (est.)',LAYERS.ac.fmt(p.ac),norm('ac',p.ac),lift(colorFor('ac',p.ac),130)],['Walk to cooling (est.)',`${fMin(p.access_min)} · ${fDist(p.access_km)}`,norm('access',p.access_min),lift(colorFor('access',p.access_min),130)]];
+    const m=[['Surface heat',fTemp(p.lst),norm('lst',p.lst),lift(colorFor('lst',p.lst),130)],[p.green_src==='ndvi'?'Greenness (satellite, 0–100)':'Tree cover'+(treesFlag(p)?' ('+treesFlag(p)+')':''),treesLbl(p),norm('green',p.green),lift(colorFor('green',p.green),130)],['Residents',fInt(p.pop),norm('pop',p.pop),lift(colorFor('pop',p.pop),130)],['Age 65+',LAYERS.pct65.fmt(p.pct65),norm('pct65',p.pct65),lift(colorFor('pct65',p.pct65),130)],['Homes with A/C (est.)',LAYERS.ac.fmt(p.ac),norm('ac',p.ac),lift(colorFor('ac',p.ac),130)],['Walk to cooling (est.)',`${fMin(p.access_min)} · ${fDist(p.access_km)}`,norm('access',p.access_min),lift(colorFor('access',p.access_min),130)],...('dac' in CE_CITY.weights?[['SB 535 community',p.dac>0?Math.round(p.dac*100)+'% designated':'not designated',norm('dac',p.dac||0),lift(colorFor('dac',p.dac||0),130)]]:[])];
     return `<section class="area"><div class="ahead"><span class="rk big" style="background:${c};color:${inkOn(c)}">${rk(p)}</span><div><h3>${esc(nameOf(p))}</h3><div class="sub">Rank ${rk(p)} of ${order.length.toLocaleString()}${p.rank_lo!=null?` · likely ${p.rank_lo}–${p.rank_hi} under the recommended mix`:''}${p.city?' · '+esc(p.city):''} · need index ${s.toFixed(0)}${def?'':' · under '+esc(q)} · area #${p.id}</div></div></div>
       ${noteOf(p.id).status||noteOf(p.id).note?`<p class="fine" style="margin:0 0 8px"><b>Field check:</b> ${noteOf(p.id).status?esc(FC_LABEL[noteOf(p.id).status]):'no status'}${noteOf(p.id).note?' — '+esc(noteOf(p.id).note):''}${noteOf(p.id).updated?' ('+esc(new Date(noteOf(p.id).updated).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}))+')':''}</p>`:''}
       <p class="lede">About <b>${fInt(p.pop)}</b> people live here, <b>${fInt(seniors)}</b> aged 65 or older. Surface heat is <b>${fTemp(p.lst)}</b>${p.green_src==='ndvi'?` and no aerial tree-cover value exists here; satellite greenness reads <b>${treesLbl(p)}</b>, an index, not percent cover`:` and trees cover <b>${treesLbl(p)}</b> of the assessed ground, ${p.green<st.medGreen?'below':p.green>st.medGreen?'above':'at'} the city median of ${st.medGreen.toFixed(0)}%`}. The nearest mapped cool place is about <b>${fMin(p.access_min)}</b> on foot.</p>
@@ -2159,7 +2190,7 @@ function openReport(){
       <div class="scen"><div class="k">Planting scenario · ${share}% of mapped street space</div>${scn?`<div class="stats"><div><b>${fInt(scn.trees)}</b><span>trees</span></div><div><b>+${scn.canopy_gain_points.toFixed(1)}</b><span>canopy points</span></div><div><b>${money(scn.cost_usd)}</b><span>indicative cost</span></div></div>
         <p class="fine">${scn.capacity?`Mapped streets imply an upper bound of ${fInt(scn.capacity)} positions at ${TREE_SPACING_M} m spacing on both sides.`:'No eligible street length is mapped here.'} ${p.canopy_baseline_ok?`Canopy ${p.green.toFixed(1)}% → ${(p.green+scn.canopy_gain_points).toFixed(1)}% at maturity.`:'Whole-area canopy baseline is not fully assessed.'} Site feasibility, ownership, utilities and species are unverified.</p>`:`<p class="fine">${esc(noCapacityWhy(p))}</p>`}</div></div>
     </section>`;}).join('');
-  const sources=[['Surface temperature','Landsat 8/9 thermal, summer composite (USGS/NASA)'],['Tree cover',canopySourcesLabel()],['Population and age','US Census ACS 5-year'+(hdr.dataset.acs_year?' ('+hdr.dataset.acs_year+')':'')+(CE_CITY.popAllocation==='dasymetric'?', allocated into areas by mapped residential floor area (dasymetric)':', allocated into areas by overlap area')],['Home air conditioning','Census LACE'+(hdr.dataset.lace_year?' '+hdr.dataset.lace_year:'')+', tract estimates'],['Streets, buildings, cool places','OpenStreetMap; walking time routed on the pedestrian network'],['Areas','H3 hexagons · '+(document.getElementById('foot-scale')?.textContent||'each hexagon covers about 0.04 sq mi')]];
+  const sources=[['Surface temperature','Landsat 8/9 thermal, summer composite (USGS/NASA)'],['Tree cover',canopySourcesLabel()],['Population and age','US Census ACS 5-year'+(hdr.dataset.acs_year?' ('+hdr.dataset.acs_year+')':'')+(CE_CITY.popAllocation==='dasymetric'?', allocated into areas by mapped residential floor area (dasymetric)':', allocated into areas by overlap area')],['Home air conditioning','Census LACE'+(hdr.dataset.lace_year?' '+hdr.dataset.lace_year:'')+', tract estimates'],['Streets, buildings, cool places','OpenStreetMap; walking time routed on the pedestrian network'],...('dac' in CE_CITY.weights?[['Disadvantaged communities','CalEPA SB 535 designation, final September 2026 (CalEnviroScreen 5.0); share of each area inside a designated tract']]:[]),['Areas','H3 hexagons · '+(document.getElementById('foot-scale')?.textContent||'each hexagon covers about 0.04 sq mi')]];
   const font=u=>new URL('vendor/'+u,location.href).href;
   const html=`<!doctype html><html><head><meta charset="utf-8"><title>CoolEquity briefing · ${esc(CITY_NAME)} · ${new Date().toISOString().slice(0,10)}</title>
 <style>
@@ -2243,11 +2274,15 @@ ${sl.length?`<div class="page"><h2>Shortlist · ${sl.length} area${sl.length===1
 /** Apply the view carried in the URL hash (from the Share button). */
 function applyHash(){
   try{const h=new URLSearchParams(location.hash.slice(1));
-    if(h.has('w')){const ws=h.get('w').split(',').map(Number);if(ws.length===W_INPUTS.length&&ws.every(v=>Number.isFinite(v)&&v>=0)&&ws.some(v=>v>0)){W_INPUTS.forEach((w,i)=>{W_RAW[w.k]=ws[i]/100;const el=document.getElementById('ws-'+w.k);if(el)el.value=ws[i];});
+    if(h.has('w')){const ws=h.get('w').split(',').map(Number);
+      // A link made before an `optional` input existed carries one value fewer; that input reads as 0.
+      while(ws.length<W_INPUTS.length&&W_INPUTS[ws.length].optional)ws.push(0);
+      if(ws.length===W_INPUTS.length&&ws.every(v=>Number.isFinite(v)&&v>=0)&&ws.some(v=>v>0)){W_INPUTS.forEach((w,i)=>{W_RAW[w.k]=ws[i]/100;const el=document.getElementById('ws-'+w.k);if(el)el.value=ws[i];});
       if(h.has('pop')&&Number.isFinite(+h.get('pop'))){POPW=Math.max(0,Math.min(1,+h.get('pop')/100));const pe=document.getElementById('ws-pop');if(pe)pe.value=Math.round(POPW*100);}applyWeights();}}
     if(h.has('layer')&&LAYERS[h.get('layer')]){const L=h.get('layer');   // overlays are layers too: honor the one the link promises
       if(L==='access'){accessOn=true;holcOn=false;syncToggles();setLayer(L);}
       else if(L==='holc'){holcOn=HEX.features.some(f=>f.properties.holc);accessOn=false;syncToggles();if(holcOn)setLayer(L);}
+      else if(L==='dac'&&!syncDacAvailable()){holcOn=false;accessOn=false;syncToggles();}   // a link from a build with the layer, opened where there is none
       else{holcOn=false;accessOn=false;syncToggles();setLayer(L);}}
     if(h.get('d')&&DATA_SHA!=='unavailable'&&!DATA_SHA.startsWith(h.get('d')))toast('This link was made with an earlier data release; ranks and figures may differ from what the sender saw.',true);
     if(h.get('sel'))setTimeout(()=>{const id=+h.get('sel');if(HEX.features.some(f=>f.properties.id===id))selectHex(id,true);},600);
@@ -2282,6 +2317,7 @@ async function boot(){
   if(window.ResizeObserver){const chipEl=document.getElementById('chip');new ResizeObserver(()=>{document.documentElement.style.setProperty('--chip-b',Math.round(chipEl.getBoundingClientRect().height+20)+'px');}).observe(chipEl);}
   document.getElementById('chip-n').textContent=`${HEX.features.filter(f=>f.properties.place==='res').length.toLocaleString()} areas`;
   syncHolcAvailable();
+  syncDacAvailable();
 
   // Panel UI is data-only. Render it BEFORE the map so a slow or blocked basemap
   // CDN can never leave the user staring at an empty screen.
@@ -2821,7 +2857,7 @@ function buildMixBar(W){
 }
 function contribBar(p){
   const W=normW();
-  const parts=[['heat',W.heat*snv(p,'lst')],['green',W.green*(1-snv(p,'green'))],['ac',W.ac*(1-snv(p,'ac'))],['age65',W.age65*snv(p,'pct65')],['access',W.access*snv(p,'access_min')]];
+  const parts=[['heat',W.heat*snv(p,'lst')],['green',W.green*(1-snv(p,'green'))],['ac',W.ac*(1-snv(p,'ac'))],['age65',W.age65*snv(p,'pct65')],['access',W.access*snv(p,'access_min')],['dac',(W.dac||0)*snv(p,'dac')]];
   const tot=parts.reduce((a,[,v])=>a+v,0)||1;
   return parts.filter(([,v])=>v>0.002).map(([k,v])=>{const w=W_INPUTS.find(x=>x.k===k);
     return `<i style="width:${(100*v/tot).toFixed(1)}%;background:${w.swatch}" title="${w.label}: ${Math.round(100*v/tot)}% of this area's need"></i>`;}).join('');
@@ -2851,13 +2887,14 @@ function matchPreset(){
  * Bakersfield: 96.5–100% across ranked areas), the order separates tiny
  * differences and should be read as a weak signal. Spans are the scoring
  * bounds (p2–p98) the ranking actually uses. */
-const SIGNAL_MIN={lst:3,green:8,ac:8,pct65:5,access_min:10};
-const SIGNAL_NAME={heat:'Hotter ground',green:'Fewer trees',ac:'Homes without A/C',age65:'Older residents',access:'Far from cooling'};
+const SIGNAL_MIN={lst:3,green:8,ac:8,pct65:5,access_min:10,dac:0.5};
+const SIGNAL_NAME={heat:'Hotter ground',green:'Fewer trees',ac:'Homes without A/C',age65:'Older residents',access:'Far from cooling',dac:'SB 535 community'};
 /** The inputs with a non-zero weight, as prose for the briefing: an input at 0% is not scored. */
 function activeInputsText(){
-  const W=normW();const N={heat:'surface heat',green:'tree cover',ac:'home air conditioning',age65:'residents aged 65+',access:'the walk to a cool place'};
-  const on=['heat','green','ac','age65','access'].filter(k=>W[k]>0.005).map(k=>`${N[k]} (${Math.round(W[k]*100)}%)`);
-  const off=['heat','green','ac','age65','access'].filter(k=>!(W[k]>0.005)).map(k=>N[k]);
+  const W=normW();const N={heat:'surface heat',green:'tree cover',ac:'home air conditioning',age65:'residents aged 65+',access:'the walk to a cool place',dac:'SB 535 disadvantaged-community designation'};
+  const keys=W_INPUTS.map(w=>w.k);
+  const on=keys.filter(k=>W[k]>0.005).map(k=>`${N[k]} (${Math.round(W[k]*100)}%)`);
+  const off=keys.filter(k=>!(W[k]>0.005)).map(k=>N[k]);
   return (on.length>1?on.slice(0,-1).join(', ')+' and '+on[on.length-1]:on[0]||'no inputs')+(off.length?`; ${off.length>1?off.slice(0,-1).join(', ')+' and '+off[off.length-1]:off[0]} carr${off.length===1?'ies':'y'} no weight here`:'');
 }
 function lowSignal(W){
@@ -2907,6 +2944,7 @@ function applyWeights(){
   if(W.ac>0.005)    parts.push(`homes without A/C (${Math.round(W.ac*100)}%)`);
   if(W.age65>0.005) parts.push(`older residents (${Math.round(W.age65*100)}%)`);
   if(W.access>0.005)parts.push(`walk to cooling (${Math.round(W.access*100)}%)`);
+  if(W.dac>0.005)   parts.push(`SB 535 disadvantaged community (${Math.round(W.dac*100)}%)`);
   LAYERS.score.cap=`${parts.join(' · ')}. Adjusted for population; relative within this ${CE_CITY.scope}. `+(HEX&&HEX.features.some(f=>f.properties.green_src==='ndvi')?' Some areas use a satellite greenness stand-in for tree cover.':'')+(W.heat<=0.005?' Ground heat is not counted.':'');
   if(current==='score')setLayer('score');     // repaints AND refreshes the caption
   buildRank();
@@ -3356,7 +3394,7 @@ function selectHex(id,fly){
   explainHex(p);
   const dv=document.getElementById('d-drivers');
   if(dv){ if(unranked) dv.hidden=true; else { dv.hidden=false; const W=normW();
-    const parts=[['heat',W.heat*snv(p,'lst')],['green',W.green*(1-snv(p,'green'))],['ac',W.ac*(1-snv(p,'ac'))],['age65',W.age65*snv(p,'pct65')],['access',W.access*snv(p,'access_min')]];
+    const parts=[['heat',W.heat*snv(p,'lst')],['green',W.green*(1-snv(p,'green'))],['ac',W.ac*(1-snv(p,'ac'))],['age65',W.age65*snv(p,'pct65')],['access',W.access*snv(p,'access_min')],['dac',(W.dac||0)*snv(p,'dac')]];
     const tot=parts.reduce((a,[,v])=>a+v,0)||1;
     dv.innerHTML=`<div class="dvtop"><span>What puts it here</span><a class="info-link" href="guide.html#score" target="ce-guide" aria-label="About the score">i</a></div><div class="cbar">${contribBar(p)}</div><div class="dvleg">${parts.filter(([,v])=>v/tot>0.02).sort((a,b)=>b[1]-a[1]).map(([k,v])=>{const w=W_INPUTS.find(x=>x.k===k);return `<span><i style="background:${w.swatch}"></i>${w.label.replace(' (65+)','')} <b>${Math.round(100*v/tot)}%</b></span>`;}).join('')}</div>`; } }
   syncDetailPin();
@@ -3375,6 +3413,7 @@ function selectHex(id,fly){
     [p.ac_src==='income-model'?'A/C (income estimate)':'Homes with A/C','ac',p.ac,LAYERS.ac.fmt(p.ac),true],
     ['Walk to cooling','access',p.access_min,`${fMin(p.access_min)} · ${fDist(p.access_km)}`+(p.access_src==='straightline'?' · straight-line':''),true],
     ['Street room','room',roomOf(p),`${fInt(roomOf(p))} tree spots · ${roomBand(p)}`,true],
+    ...('dac' in CE_CITY.weights?[['SB 535 community','dac',p.dac||0,(p.dac>0?Math.round(p.dac*100)+'% designated':'not designated')+(p.dac_type?' · '+p.dac_type:''),false]]:[]),
   ];
   document.getElementById('d-metrics').innerHTML=m.map(([lab,k,v,disp,est,tag])=>{
     const t=norm(k,v);
@@ -3473,6 +3512,7 @@ const DRIVER={
   ac:p=>`homes without A/C (${(100-p.ac).toFixed(0)}% lack it)`,
   age65:p=>`many residents aged 65+ (${p.pct65.toFixed(0)}%)`,
   access:p=>`a long walk to cooling (${fMin(p.access_min)})`,
+  dac:p=>p.dac>=0.995?`its SB 535 disadvantaged-community designation`:`its ${Math.round(p.dac*100)}% overlap with an SB 535 disadvantaged community`,
 };
 function explainHex(p){
   const el=document.getElementById('d-explain');if(!el)return;

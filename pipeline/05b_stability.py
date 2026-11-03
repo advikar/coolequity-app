@@ -158,6 +158,8 @@ def main():
     base_ac = props["ac"].to_numpy(float)
     lst = props["lst"].to_numpy(float)
     green = props["green"].to_numpy(float)
+    # SB 535 share (04f): a fixed designation, held constant like heat and tree cover.
+    dac = props["dac"].fillna(0.0).to_numpy(float) if "dac" in props.columns else np.zeros(len(props))
     W0 = dict(C.WEIGHTS)
     wsum = sum(W0.values())
     rng = np.random.default_rng(SEED)
@@ -185,7 +187,8 @@ def main():
         b = {"lst": S.clip_bounds(R["lst"], False), "green": S.clip_bounds(R["green"], True),
              "ac": S.clip_bounds(R["ac"], True), "p65": S.clip_bounds(R["p65"], False), "pop": S.clip_bounds(R["pop"], True)}
         n = {k: S.clip_minmax(R[k], b[k]).to_numpy() for k in b}
-        risk = W["heat"] * n["lst"] + W["green"] * (1 - n["green"]) + W["ac"] * (1 - n["ac"]) + W["age65"] * n["p65"]
+        risk = (W["heat"] * n["lst"] + W["green"] * (1 - n["green"]) + W["ac"] * (1 - n["ac"]) + W["age65"] * n["p65"]
+                + W.get("dac", 0.0) * dac[res])
         pr = risk * (floor + slope * n["pop"])
         ranks[d, res] = pd.Series(pr).rank(method="first", ascending=False).to_numpy()
 
@@ -207,7 +210,7 @@ def main():
         "draws": DRAWS, "seed": SEED, "top_tier_n": top_n, "rank_percentiles": [5, 95],
         "varied": "ACS block-group population and residents 65+ within 90% MOE (overlap-weighted, correlated across cells); "
                   "LACE tract A/C within 90% MOE; non-zero weights ±0.10 renormalised; population slope ±0.10",
-        "held_fixed": "surface temperature, tree cover, walking time, within-block-group allocation",
+        "held_fixed": "surface temperature, tree cover, walking time, SB 535 designation share, within-block-group allocation",
         "age_share": "raw census share re-drawn, then shrink_age65 once (as 05)",
         "computed": time.strftime("%Y-%m-%d"),
     }

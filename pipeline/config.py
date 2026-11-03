@@ -129,6 +129,13 @@ HOLC_URL = None
 # clips a boundary would be coloured as if it were redlined.
 HOLC_MIN_COVER = 0.25
 
+# CalEPA SB 535 Disadvantaged Communities (04f). The ArcGIS feature service of
+# the designation a city screens its planting against; None means no layer and
+# a zero-weighted term. California-only by construction. Set per city, because
+# the designation is a state policy instrument and a city outside California
+# has no equivalent to borrow.
+SB535_URL = None
+
 # Public Overpass instances, tried in order. The main one throttles hard on a
 # demo day, so the mirror leads.
 OVERPASS_MIRRORS = (
@@ -263,6 +270,7 @@ NDVI_TIF = DATA / f"ndvi_{SLUG}.tif"             # 02 composite cache, committed
 SAT_CSV = DATA / f"satellite_{SLUG}.csv"
 CENSUS_CSV = DATA / f"census_{SLUG}.csv"
 OVERLAYS_CSV = DATA / f"overlays_{SLUG}.csv"
+SB535_CSV = DATA / f"sb535_{SLUG}.csv"           # 04f -> 05, only where SB535_URL is set
 
 DATA.mkdir(parents=True, exist_ok=True)
 CACHE.mkdir(exist_ok=True)

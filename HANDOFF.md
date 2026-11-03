@@ -1,5 +1,50 @@
 # HANDOFF
 
+## Checkpoint — November 2, 2026 (Claude): SB 535 disadvantaged communities (Bakersfield)
+
+Task: Bakersfield's urban forestry contact asked for CalEPA's SB 535 Disadvantaged Communities
+2026 designation as a layer and priority component (the city plants ≥80% of new trees in
+designated tracts) for a City Council slide. Owner: advikar. Files: `pipeline/04f_sb535.py` (new),
+`pipeline/config.py`, `pipeline/05_score.py`, `pipeline/05b_stability.py`, `app/index.html`,
+`cities/bakersfield/{config.py,city.js,guide.html,data/sb535_bakersfield.{geojson,csv},data/bakersfield.geojson,reports/stability_bakersfield.json}`,
+`cities/*/guide.html` (dac topic + column key), `tests/ui-contract.cjs`, `README.md`.
+
+- **Data.** `04f_sb535.py` queries the CalEPA feature service
+  `SB_535_Disadvantaged_Communities_2026` (tracts + three tribal layers) for the bbox and
+  writes per cell `dac` (share of area inside a designated polygon, 0–1), `dac_type`
+  (criterion) and `dac_tract`. Bakersfield: 92 Kern tracts in the box (68 CES 5.0 top 25%,
+  24 CES 4.0 carry-over, no tribal land); 1,494 of 4,054 cells ≥50% designated, 1,320 of the
+  3,767 ranked cells, holding 40% of residents; 67 of the top 100 ranked areas are inside.
+  Gated by `SB535_URL` in the city config (None elsewhere → term 0, no layer).
+- **Scoring.** New term `W["dac"] * dac` on a fixed 0–1 scale (no percentile clip) in 05,
+  05b and the browser (`rescore`, `liveScoreExpr`, drivers, briefing). Recommended mix keeps
+  `dac` at 0, so **no rank, score or stability band changed** (checked cell by cell against
+  the previous file). New preset **"Disadvantaged communities"**: dac 35 / heat 30 / green 30 /
+  age 5, population default. `W_INPUTS` adds the slider only where `city.js` declares
+  `weights.dac`; old scenario files without the key load with it at 0 (`optional`).
+- **UI.** "SB 535 community" map layer (purple ramp, hidden where no cell carries a share),
+  detail and briefing metric rows, caption/driver text, export columns
+  `sb535_dac_share_pct`, `sb535_dac_criterion`, `sb535_dac_tract`, `weight_sb535_community`;
+  guide topic `#dac` in every city (the other four say the build does not carry it).
+  `dataVersion` → `20261102-sb535`.
+- **Tests run:** `scripts/test.sh` (all five cities) passed, including new contract assertions
+  (dac keys in config.py ⇔ city.js ⇔ `SB535_URL`; share in 0–1 with a criterion iff > 0).
+- **Audit (November 3, independent review + data recompute).** Fixed: tract GEOIDs lost
+  California's leading 0 (now 11 digits); the ArcGIS `exceededTransferLimit` flag was read
+  from the wrong place so a >2,000-tract bbox would have truncated silently (04e now pages);
+  null geometries / GeometryCollections from `make_valid` are handled; a pre-change share
+  link with five `w=` values reads the SB 535 weight as 0 instead of being ignored;
+  `#layer=dac` on a build without the layer falls back to Priority; the briefing source table
+  and `metadata.stability.held_fixed` name the designation; guides say "the weights in force"
+  rather than "five weights" and non-Bakersfield column keys omit `weight_sb535_community`.
+  New contract cases: dac-weighted browser score equals an independent recompute and the
+  top 50 under the preset are designated; a five-weight scenario file loads with dac = 0.
+  Data verified: per-cell shares match an EPSG:3310 recompute within 0.0005; centroid-in-tract
+  agrees with share ≥ 0.5 for all 1,494 cells; 92 of Kern's 122 designated tracts fall in the
+  bbox; service last edited September 2026. `reports/stability_bakersfield.json` is unchanged.
+- **Not done / decisions left to the owner:** the recommended mix is unchanged; the city's
+  email asks for DAC + canopy + heat to lead, which the preset does. Making it the default
+  would re-rank the city and re-run 05b. Not committed or pushed.
 ## Checkpoint — October 13, 2026 (Claude): basemap tone per theme, shorter disclaimer
 
 - Street basemap (CARTO Positron) ground is toned to the chrome's map grey and water a

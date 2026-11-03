@@ -31,11 +31,21 @@ H3_RES = 9
 # scaling would stretch that 3.5-point modelled spread to a full 0-1 term, so a
 # non-zero weight would score model noise, not a housing difference. The input
 # stays measured, displayed and movable; the "Homes without A/C" preset shows it.
+#
+# SB 535 DISADVANTAGED COMMUNITIES ships at 0 in the recommended mix and is the
+# lead term of the "Disadvantaged communities" preset (city.js). The city's
+# planting program commits at least 80% of new trees to SB 535-designated
+# tracts (CalEPA, final designation September 2026), so the designation is an
+# input and a layer here. It is a policy screen, not a measurement: a 0/1 share
+# of the hex inside a designated tract, not a continuous need gradient. Keeping
+# it out of the recommended mix keeps the shipped ranking a physical and
+# demographic need ranking; the preset answers "where, within the commitment".
 WEIGHTS = {
     "heat":     0.45,   # heat_n
     "green":    0.35,   # (1 - canopy_n)
     "ac":       0.00,   # (1 - ac_access_n) — nearly uniform, see above
     "age65":    0.20,   # age65_n
+    "dac":      0.00,   # dac (share of the hex in an SB 535 tract) — preset only
 }
 
 # ---------------------------------------------------------------- census (US)
@@ -48,6 +58,12 @@ CLIP_URL = ("https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/"
             "returnGeometry=true&outSR=4326&f=geojson")
 
 HOLC_URL = None              # no digitised HOLC map for Bakersfield
+
+# CalEPA SB 535 Disadvantaged Communities, final designation September 2026
+# (CalEnviroScreen 5.0). 04f caches the tracts in the bbox as
+# data/sb535_bakersfield.geojson: 92 Kern tracts, none tribal.
+SB535_URL = ("https://services1.arcgis.com/PCHfdHz4GlDNAhBb/ArcGIS/rest/services/"
+             "SB_535_Disadvantaged_Communities_2026/FeatureServer")
 
 # ---------------------------------------------------------------- buildings
 # How far outside BBOX 02b pulls buildings. The bbox is the incorporated city,
