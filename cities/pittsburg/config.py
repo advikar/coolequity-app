@@ -40,11 +40,17 @@ H3_RES = 9
 #
 # A/C is scored: Census LACE 2023 runs 69-96% of homes across the area, so the
 # input carries real signal (unlike Bakersfield and San Ramon).
+# Re-measured November 11, 2026 on the 2024-2026 composite (the figures above
+# are the 2022-2024 build's): among the 566 ranked cells above 35 C position
+# explains 16% of the variance (county 20%, West Contra Costa 11%, same test)
+# and LST still correlates +0.24 with aerial canopy. The position share fell;
+# the sign of the canopy relationship, which is the decisive point, did not.
 WEIGHTS = {
     "heat":     0.00,   # heat_n — built, viewable, NOT scored (see above)
     "green":    0.55,   # (1 - canopy_n)
     "ac":       0.25,   # (1 - ac_access_n)
     "age65":    0.20,   # age65_n
+    "dac":      0.00,   # dac (share of the hex in an SB 535 tract) — preset only
 }
 
 # ---------------------------------------------------------------- census (US)
@@ -60,6 +66,13 @@ CLIP_URL = ("https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/"
             "returnGeometry=true&outSR=4326&f=geojson")
 
 HOLC_URL = None              # Mapping Inequality has no 1930s map of Pittsburg
+
+# CalEPA SB 535 Disadvantaged Communities, final designation September 2026
+# (CalEnviroScreen 5.0). 04f caches the tracts in the bbox. The designation is
+# a funding-eligibility screen, not a measurement: it ships at weight 0 and
+# leads the "Disadvantaged communities" preset (city.js).
+SB535_URL = ("https://services1.arcgis.com/PCHfdHz4GlDNAhBb/ArcGIS/rest/services/"
+             "SB_535_Disadvantaged_Communities_2026/FeatureServer")
 
 # ---------------------------------------------------------------- buildings
 # Block groups along the shoreline and the city line run past the bbox.

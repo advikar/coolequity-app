@@ -77,9 +77,13 @@ class DataContracts(unittest.TestCase):
             self.assertEqual(p['canopy_baseline_ok'],p['canopy_source']=='usfs-2022' and p['coverage_frac']>=.99)
             self.assertEqual(p['scenario_ok'],p['street_m']>0 and p['area_m2']>0)
             if p['place']=='res':
-                # A tract the Census suppresses in LACE keeps the income model, flagged
-                # (the app greys it out and says "income estimate"); it must stay rare.
-                if p['ac_src']=='income-model' and p.get('ac_coverage') is None: income_model+=1
+                # A tract with no LACE estimate (suppressed, or no occupied homes: a campus,
+                # a national-forest tract) keeps the income model, flagged (the app greys it
+                # out and says "income estimate"); it must stay rare. That covers cells with
+                # no housing denominator at all (ac_coverage empty) and cells that mix such a
+                # tract with a covered one (ac_coverage below 1), never a fully covered cell.
+                if p['ac_src']=='income-model':
+                    self.assertTrue(p.get('ac_coverage') is None or p['ac_coverage']<1-1e-9,p['id']);income_model+=1
                 else: self.assertIn(p['ac_src'],('lace','lace-pop'))
             self.assertEqual(p['acs_year'],2024)
         nres=sum(1 for f in features if f['properties']['place']=='res')
@@ -154,10 +158,17 @@ class CoolingSources(unittest.TestCase):
         # line for all of its centers instead of a number per site.
         count,revision={'contracosta':(17,'June 2026'),'sanramon':(17,'June 2026'),
                         'bakersfield':(10,'2026 season'),'westcc':(17,'June 2026'),
-                        'pittsburg':(17,'June 2026')}[C.SLUG]
+                        'pittsburg':(17,'June 2026'),
+                        'losangeles':(153,'August 2026')}[C.SLUG]
         self.assertEqual(len(d['sites']),count)
+        w,s_,e,n=C.BBOX
         for s in d['sites']:
-            self.assertIsNone(s['opening_hours']);self.assertIsNone(s['coordinates'])
+            self.assertIsNone(s['opening_hours'])
+            # Coordinates are allowed only when the publisher supplies them and the
+            # directory says so (Los Angeles County's map layer); never geocoded in.
+            if d.get('coordinates_source'):
+                x,y=s['coordinates'];self.assertTrue(w-2<=x<=e+2 and s_-2<=y<=n+2,s['name'])
+            else:self.assertIsNone(s['coordinates'])
             self.assertTrue(s['address']);self.assertTrue(s['phone'] or d['contact_phone'])
         self.assertIn(revision,d['source_revision'])
     def test_designated_points_are_in_study_area(self):

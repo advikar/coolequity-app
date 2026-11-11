@@ -9,7 +9,7 @@
  * normalised min-max WITHIN the study area, which assumes the study area is one
  * climate. Bakersfield is: one flat valley floor about 30 km across with no
  * marine gradient, so a hotter cell here really is a hotter place to live rather
- * than a different climate. Measured summer surface range 36-58 C.
+ * than a different climate. Measured summer surface range 32-59 C (summers 2024-2026).
  *
  * A/C ships at 0 because it is NEARLY UNIFORM here: Census LACE 2023 puts A/C
  * in 96.5-100% of occupied homes across ranked cells (median 99.8%). Scaling

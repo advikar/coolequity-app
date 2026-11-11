@@ -26,7 +26,8 @@ CONTRACT = ["id", "name", "lst", "green", "pop", "pct65", "ac", "holc",
             "access_min", "access_km", "score", "rank", "area_m2", "street_m",
             "canopy_m2", "row_m2", "row_canopy", "veg", "place", "land", "green_src", "canopy_source", "canopy_year", "assessed_m2",
             "coverage_frac", "canopy_quality", "scenario_ok", "canopy_baseline_ok", "ac_src", "ac_coverage", "acs_year", "access_snap_m", "access_quality", "access_src",
-            "city", "city_kind", "inside_frac", "ward_id", "ward_name", "dac", "dac_type", "dac_tract"]
+            "city", "city_kind", "inside_frac", "ward_id", "ward_name", "dac", "dac_type", "dac_tract",
+            "fire", "fire_name", "fire_year"]
 
 COORD_DP = 5      # ~1 m at this latitude; halves the file the browser downloads
 
@@ -178,7 +179,8 @@ def load():
             if ok_aer and ok_hm:
                 legacy = have & (df["canopy_source"] == "chm-legacy")
                 lidar_eq = (df["green_pct"] - hm["fit_intercept"]) / hm["fit_slope"]
-                df.loc[legacy, "green_pct"] = (aer["fit_intercept"] + aer["fit_slope"] * lidar_eq).clip(lower=0)[legacy].round(2)
+                # A fitted line can run past the physical range at the dense end; cover is 0-100%.
+                df.loc[legacy, "green_pct"] = (aer["fit_intercept"] + aer["fit_slope"] * lidar_eq).clip(lower=0, upper=100)[legacy].round(2)
                 df.loc[legacy, "canopy_quality"] = "calibrated"
                 log(f"  canopy: {int(legacy.sum())} height-model cells rescaled onto the aerial line via lidar "
                     f"(model {hm['fit_intercept']:+.2f}+{hm['fit_slope']:.3f}·lidar -> aerial {aer['fit_intercept']:+.2f}+{aer['fit_slope']:.3f}·lidar)")
@@ -186,7 +188,7 @@ def load():
                 log(f"  canopy: height-model cells left as assessed (fit n={hm.get('n')}, Spearman {hm.get('spearman')}; not trusted for rescaling)")
             if ok_aer:
                 swap = (~have) & df["lidar_pct"].notna() & (df["lidar_coverage"].fillna(0) >= 0.9)
-                df.loc[swap, "green_pct"] = (aer["fit_intercept"] + aer["fit_slope"] * df.loc[swap, "lidar_pct"]).clip(lower=0).round(2)
+                df.loc[swap, "green_pct"] = (aer["fit_intercept"] + aer["fit_slope"] * df.loc[swap, "lidar_pct"]).clip(lower=0, upper=100).round(2)
                 df.loc[swap, "green_src"] = "canopy"
                 df.loc[swap, "canopy_source"] = "lidar-2020"
                 df.loc[swap, "canopy_year"] = "2020"
@@ -248,6 +250,17 @@ def load():
         if C.WEIGHTS.get("dac", 0) > 0:
             raise SystemExit("WEIGHTS['dac'] > 0 but no SB 535 CSV — run 04f_sb535.py first")
         log("  SB 535: no CSV (SB535_URL unset or 04f not run); term scored at 0")
+
+    # Wildfire perimeters newer than the tree-cover and census inputs (04g),
+    # where the city set FIRE_PERIMETERS. A flag, never a score input.
+    if C.FIRE_CSV.exists():
+        df = df.merge(pd.read_csv(C.FIRE_CSV, dtype={"fire_name": str, "fire_year": str}), on="h3", how="left")
+        df["fire"] = df["fire"].fillna(0.0)
+        log(f"  fire: {int((df['fire'] >= 0.5).sum())}/{len(df)} cells mostly inside a perimeter newer than the inputs")
+    else:
+        df["fire"] = 0.0
+        df["fire_name"] = None
+        df["fire_year"] = None
 
     missing = df["lst_c"].isna().sum() + df["pop"].isna().sum()
     if missing:
@@ -397,6 +410,11 @@ def main():
         "dac":        df["dac"].round(3),
         "dac_type":   df["dac_type"].where(df["dac"] > 0, None),
         "dac_tract":  df["dac_tract"].where(df["dac"] > 0, None),
+        # Share of the cell inside a wildfire perimeter newer than the tree-cover
+        # and census inputs, with the fire's name and year. Not scored.
+        "fire":       df["fire"].round(3),
+        "fire_name":  df["fire_name"].where(df["fire"] > 0, None),
+        "fire_year":  df["fire_year"].where(df["fire"] > 0, None),
     })[CONTRACT]
 
     # Rank exactly the published values/endpoints used by the browser. This

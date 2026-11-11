@@ -48,11 +48,19 @@ H3_RES = 8
 # NOTE ON CIRCULARITY: measured A/C prevalence still correlates with income, so
 # the canopy-equity finding is computed on RAW MEASURED CANOPY against income,
 # with no score involved. Keep it that way.
+# Re-measured November 11, 2026 on the 2024-2026 composite (the figures above
+# are from the first county build): mean LST over ranked cells is 37.8 C in the
+# western third and 42.0 C in the eastern third; position explains 26% of the
+# variance over all cells and 14% over ranked cells; LST correlates only -0.20
+# with tree cover across ranked cells (Los Angeles -0.66, San Ramon -0.56).
+# The gradient is smaller than first measured and heat is still mostly not a
+# shade signal at county scale. The weight stays at zero.
 WEIGHTS = {
     "heat":     0.00,   # built, viewable, NOT scored — see above
     "green":    0.55,   # (1 - greenness_n)   the model's centre of gravity
     "ac":       0.25,   # (1 - ac_access_n)
     "age65":    0.20,   # age65_n
+    "dac":      0.00,   # dac (share of the hex in an SB 535 tract) — preset only
 }
 
 # ---------------------------------------------------------------- census (US)
@@ -72,6 +80,13 @@ CLIP_URL = ("https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/"
 # graded A, B or C, with NO D grades at all. Turning the layer on would draw a
 # sliver over El Cerrito and imply a redlining story the data cannot support.
 HOLC_URL = None
+
+# CalEPA SB 535 Disadvantaged Communities, final designation September 2026
+# (CalEnviroScreen 5.0). 04f caches the tracts in the bbox. The designation is
+# a funding-eligibility screen, not a measurement: it ships at weight 0 and
+# leads the "Disadvantaged communities" preset (city.js).
+SB535_URL = ("https://services1.arcgis.com/PCHfdHz4GlDNAhBb/ArcGIS/rest/services/"
+             "SB_535_Disadvantaged_Communities_2026/FeatureServer")
 
 # ---------------------------------------------------------------- buildings
 # How far outside BBOX 02b pulls buildings. 03 divides a block group's residents

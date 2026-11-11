@@ -1,0 +1,213 @@
+{
+ "city": "Los Angeles",
+ "draws": 300,
+ "ranked": 9021,
+ "top_tier_n": 903,
+ "median_band_width": 937.25,
+ "p90_band_width": 1871.4,
+ "share_band_within_10pct_of_list": 0.480434541625097,
+ "point_top_tier_always_top_tier": 0.5780730897009967,
+ "point_top_tier_usually_top_tier": 0.7563676633444075,
+ "top25_point": [
+  {
+   "id": 10062,
+   "name": "Downtown NW",
+   "rank": 1,
+   "rank_lo": 1,
+   "rank_hi": 16,
+   "top_share": 1.0
+  },
+  {
+   "id": 8455,
+   "name": "East Hollywood NW 4",
+   "rank": 2,
+   "rank_lo": 1,
+   "rank_hi": 82,
+   "top_share": 1.0
+  },
+  {
+   "id": 9331,
+   "name": "Westlake SW 4",
+   "rank": 3,
+   "rank_lo": 1,
+   "rank_hi": 27,
+   "top_share": 1.0
+  },
+  {
+   "id": 9239,
+   "name": "Westlake S 4",
+   "rank": 4,
+   "rank_lo": 1,
+   "rank_hi": 14,
+   "top_share": 1.0
+  },
+  {
+   "id": 10057,
+   "name": "Downtown N",
+   "rank": 5,
+   "rank_lo": 3,
+   "rank_hi": 17,
+   "top_share": 1.0
+  },
+  {
+   "id": 8454,
+   "name": "East Hollywood NW 2",
+   "rank": 6,
+   "rank_lo": 4,
+   "rank_hi": 58,
+   "top_share": 1.0
+  },
+  {
+   "id": 9271,
+   "name": "Westlake S 3",
+   "rank": 7,
+   "rank_lo": 1,
+   "rank_hi": 14,
+   "top_share": 1.0
+  },
+  {
+   "id": 11522,
+   "name": "Vermont-Slauson E 2",
+   "rank": 8,
+   "rank_lo": 2,
+   "rank_hi": 149,
+   "top_share": 1.0
+  },
+  {
+   "id": 9151,
+   "name": "Pico-Union",
+   "rank": 9,
+   "rank_lo": 3,
+   "rank_hi": 27,
+   "top_share": 1.0
+  },
+  {
+   "id": 8484,
+   "name": "East Hollywood W",
+   "rank": 10,
+   "rank_lo": 4,
+   "rank_hi": 27,
+   "top_share": 1.0
+  },
+  {
+   "id": 9156,
+   "name": "Pico-Union E 3",
+   "rank": 11,
+   "rank_lo": 8,
+   "rank_hi": 186,
+   "top_share": 1.0
+  },
+  {
+   "id": 9274,
+   "name": "Pico-Union NE 2",
+   "rank": 12,
+   "rank_lo": 8,
+   "rank_hi": 147,
+   "top_share": 1.0
+  },
+  {
+   "id": 2419,
+   "name": "Van Nuys N 13",
+   "rank": 13,
+   "rank_lo": 1,
+   "rank_hi": 126,
+   "top_share": 1.0
+  },
+  {
+   "id": 9272,
+   "name": "Westlake SW 3",
+   "rank": 14,
+   "rank_lo": 14,
+   "rank_hi": 119,
+   "top_share": 1.0
+  },
+  {
+   "id": 9269,
+   "name": "Westlake SW 5",
+   "rank": 15,
+   "rank_lo": 6,
+   "rank_hi": 92,
+   "top_share": 1.0
+  },
+  {
+   "id": 9270,
+   "name": "Westlake SW 6",
+   "rank": 16,
+   "rank_lo": 12,
+   "rank_hi": 38,
+   "top_share": 1.0
+  },
+  {
+   "id": 10454,
+   "name": "Harbor Gateway S 46",
+   "rank": 17,
+   "rank_lo": 2,
+   "rank_hi": 161,
+   "top_share": 1.0
+  },
+  {
+   "id": 10752,
+   "name": "San Pedro SE 4",
+   "rank": 18,
+   "rank_lo": 5,
+   "rank_hi": 242,
+   "top_share": 1.0
+  },
+  {
+   "id": 11594,
+   "name": "Historic South-Central S 7",
+   "rank": 19,
+   "rank_lo": 11,
+   "rank_hi": 173,
+   "top_share": 1.0
+  },
+  {
+   "id": 9311,
+   "name": "Koreatown SE 3",
+   "rank": 20,
+   "rank_lo": 12,
+   "rank_hi": 44,
+   "top_share": 1.0
+  },
+  {
+   "id": 9905,
+   "name": "Chinatown W 2",
+   "rank": 21,
+   "rank_lo": 14,
+   "rank_hi": 215,
+   "top_share": 1.0
+  },
+  {
+   "id": 9160,
+   "name": "Koreatown SE 8",
+   "rank": 22,
+   "rank_lo": 9,
+   "rank_hi": 44,
+   "top_share": 1.0
+  },
+  {
+   "id": 9136,
+   "name": "Pico-Union SW 2",
+   "rank": 23,
+   "rank_lo": 8,
+   "rank_hi": 145,
+   "top_share": 1.0
+  },
+  {
+   "id": 9153,
+   "name": "Pico-Union NE",
+   "rank": 24,
+   "rank_lo": 16,
+   "rank_hi": 180,
+   "top_share": 1.0
+  },
+  {
+   "id": 9293,
+   "name": "Koreatown N 6",
+   "rank": 25,
+   "rank_lo": 28,
+   "rank_hi": 135,
+   "top_share": 1.0
+  }
+ ]
+}

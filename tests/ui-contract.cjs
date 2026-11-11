@@ -13,6 +13,7 @@ const EXPECT={
   bakersfield:{res:3767,ndvi:62},
   westcc:{res:982,ndvi:1},
   pittsburg:{res:570,ndvi:0},
+  losangeles:{res:9021,ndvi:73},   // 43 outside the assessed urban boundary, 30 assessed on under 10% of the cell
 };
 const want=process.argv.slice(2);
 const slugs=want.length?want:CITIES.map(c=>c.slug);
@@ -48,7 +49,10 @@ vm.runInContext(html.slice(start,end),ctx);
 let cases=0;
 for(const f of data.features){const p=f.properties;let last=0;for(const share of [0,25,50,100]){node('roi-slider').value=share;node('roi-slider').disabled=!(p.street_m>0);ctx.p=p;vm.runInContext('updateROI(p)',ctx);if(!p.scenario_ok){assert.equal(node('roi-trees').textContent,'—');assert.equal(node('roi-cost').textContent,'—');assert.match(node("roi-note").textContent,/No (mapped|eligible) street/);cases++;continue;}const trees=Number(node('roi-trees').textContent.replaceAll(',',''));assert(trees>=last);assert(trees<=Math.floor((p.street_m||0)*2/10));const known=p.canopy_baseline_ok?Math.max(p.canopy_m2,p.green/100*p.area_m2):p.canopy_source==='usfs-2022'?p.canopy_m2:0;assert(trees*40<=Math.max(0,p.area_m2-known)+1);if(!p.canopy_baseline_ok&&trees>0)assert(!node('roi-note').textContent.includes('→'));assert(!/NaN|Infinity/.test([...nodes.values()].map(n=>n.textContent).join(' ')));if(share===0){assert.equal(trees,0);assert.equal(node('roi-cost').textContent,'≈$0');}last=trees;cases++;}}
 assert.equal(data.features.filter(f=>f.properties.place==='res').length,EXPECT[slug].res);
-assert.equal(data.features.filter(f=>f.properties.holc).length,0);
+// HOLC grades exist only where Mapping Inequality has a map and the city set HOLC_URL (Los Angeles, 1939).
+const hasHolc=/^HOLC_URL\s*=\s*\(?\s*["']/m.test(py),graded=data.features.filter(f=>f.properties.holc);
+if(hasHolc){assert(graded.length>0,`${slug}: HOLC_URL is set but no cell carries a grade`);for(const f of graded)assert(['A','B','C','D'].includes(f.properties.holc),'holc '+f.properties.id);}
+else assert.equal(graded.length,0);
 // SB 535 share: present, 0–1, with a criterion exactly where the share is positive; absent elsewhere.
 if(hasDac){assert(data.features.some(f=>f.properties.dac>0),`${slug}: no cell carries an SB 535 share`);
   for(const f of data.features){const p=f.properties;assert(typeof p.dac==='number'&&p.dac>=0&&p.dac<=1,'dac '+p.id);assert.equal(!!p.dac_type,p.dac>0,'dac_type '+p.id);}}

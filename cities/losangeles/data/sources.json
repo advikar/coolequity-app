@@ -1,0 +1,82 @@
+{
+ "city": "losangeles",
+ "entries": [
+  {
+   "stage": "00_osm_extract",
+   "what": "Pedestrian network (OpenStreetMap)",
+   "url": "https://download.geofabrik.de/north-america/us/california/socal-261110.osm.pbf",
+   "publisher": "OpenStreetMap contributors, via Geofabrik",
+   "retrieved": "2026-11-11",
+   "count": 575806,
+   "note": "Graph nodes after simplification; cached outside the repository (_cache/).",
+   "file": null,
+   "sha256_12": null
+  },
+  {
+   "stage": "00_osm_extract",
+   "what": "Place names and named areas (OpenStreetMap)",
+   "url": "https://download.geofabrik.de/north-america/us/california/socal-261110.osm.pbf",
+   "publisher": "OpenStreetMap contributors, via Geofabrik",
+   "retrieved": "2026-11-11",
+   "count": 1776,
+   "note": null,
+   "file": "places_losangeles.geojson",
+   "sha256_12": "23707d55998f"
+  },
+  {
+   "stage": "00_osm_extract",
+   "what": "Plantable street centrelines (OpenStreetMap)",
+   "url": "https://download.geofabrik.de/north-america/us/california/socal-261110.osm.pbf",
+   "publisher": "OpenStreetMap contributors, via Geofabrik",
+   "retrieved": "2026-11-11",
+   "count": 85650,
+   "note": null,
+   "file": "streets_losangeles.geojson",
+   "sha256_12": "7fa0029a4aa0"
+  },
+  {
+   "stage": "00_osm_extract",
+   "what": "Residential building footprints (OpenStreetMap)",
+   "url": "https://download.geofabrik.de/north-america/us/california/socal-261110.osm.pbf",
+   "publisher": "OpenStreetMap contributors, via Geofabrik",
+   "retrieved": "2026-11-11",
+   "count": 1667445,
+   "note": "Extract socal-261110.osm.pbf (SHA-256 98bd541bca91\u2026), read locally by 00_osm_extract.py with the tag rules of the Overpass queries in 02b and 04 and osmnx's walk filter. \u00a9 OpenStreetMap contributors, ODbL.",
+   "file": "buildings_losangeles.geojson",
+   "sha256_12": "43396ff30de4"
+  },
+  {
+   "stage": "04_overlays",
+   "what": "Neighbourhood names",
+   "url": "https://services5.arcgis.com/7nsPwEMP38bSkCjy/arcgis/rest/services/LA_Times_Neighborhoods/FeatureServer/0",
+   "publisher": "Los Angeles Times Mapping L.A., published on the City of Los Angeles GeoHub",
+   "retrieved": "2026-11-11",
+   "count": 114,
+   "note": "Used to name cells by the neighbourhood containing their centre. Not a legal boundary; nothing is scored by neighbourhood.",
+   "file": "places_losangeles.geojson",
+   "sha256_12": "23707d55998f"
+  },
+  {
+   "stage": "04e_wards",
+   "what": "Council districts",
+   "url": "https://maps.lacity.org/lahub/rest/services/Boundaries/MapServer/13",
+   "publisher": "City of Los Angeles, Bureau of Engineering (GIS Mapping Division)",
+   "retrieved": "2026-11-11",
+   "count": 15,
+   "note": "2021 redistricting, Ordinance 187279, effective December 10, 2021. Member names as fetched; the district number is the stable label.",
+   "file": "wards_losangeles.geojson",
+   "sha256_12": "343e1c060fa2"
+  },
+  {
+   "stage": "04g_fire",
+   "what": "Wildfire perimeters",
+   "url": "https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/California_Historic_Fire_Perimeters/FeatureServer/0",
+   "publisher": "CAL FIRE, Fire and Resource Assessment Program (FRAP)",
+   "retrieved": "2026-11-11",
+   "count": 2,
+   "note": "Perimeters of fires from 2023 on that reach the study area. A perimeter is the fire's outer line, not a map of what burned.",
+   "file": "fire_losangeles.geojson",
+   "sha256_12": "d17de04a802e"
+  }
+ ]
+}

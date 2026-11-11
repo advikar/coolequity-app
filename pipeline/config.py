@@ -72,7 +72,13 @@ AGE65_SHRINK_POP = 100.0
 # 02 searches each year separately and concatenates. A straight range would pull
 # in January scenes and quietly turn "peak summer surface temperature" into an
 # annual mean.
-SUMMER_YEARS = (2022, 2023, 2024)
+#
+# The window is the three most recent complete summers. It was 2022-2024 until
+# November 2026, when summers 2025 and 2026 had reached the archive and every
+# build was re-composited on 2024-2026 (checked first: each city has at least
+# as many scenes under the cloud filter in the new window as in the old one).
+# Move it forward again the same way; never mix windows between cities.
+SUMMER_YEARS = (2024, 2025, 2026)
 SUMMER_MMDD = ("06-01", "09-15")
 MAX_CLOUD_PCT = 20
 
@@ -155,6 +161,10 @@ OVERPASS_MIRRORS = (
 # Off for LA, whose committed places.geojson is place nodes only and whose names
 # are already good.
 NAME_FROM_LANDUSE = True
+# Optional published neighbourhood polygons (an ArcGIS layer and its name
+# field) that 04 adds to the name anchors, so a hex is named for the
+# neighbourhood it lies in. None everywhere but Los Angeles; see its config.py.
+NAME_AREAS = None
 
 OVERPASS_TIMEOUT_S = 180
 OVERPASS_ROUNDS = 3          # passes over the mirror list before giving up
@@ -211,6 +221,12 @@ SCENE_CAP_PER_TILE = True
 # Source-specific corrections to the OSM discovery inventory (cooling_sources.py).
 COOLING_SOURCE_URL = None
 NO_AC_LIBRARIES = frozenset()
+
+# ---------------------------------------------------------------- fire perimeters
+# Optional per-city source of wildfire perimeters newer than the tree-cover and
+# census inputs, read by 04g_fire.py. None means no flag (05 writes a zero
+# share). See cities/losangeles/config.py for the shape of an entry.
+FIRE_PERIMETERS = None
 
 # ---------------------------------------------------------------- wards / districts
 # Optional per-city source for council wards or supervisorial districts, read by
@@ -271,6 +287,7 @@ SAT_CSV = DATA / f"satellite_{SLUG}.csv"
 CENSUS_CSV = DATA / f"census_{SLUG}.csv"
 OVERLAYS_CSV = DATA / f"overlays_{SLUG}.csv"
 SB535_CSV = DATA / f"sb535_{SLUG}.csv"           # 04f -> 05, only where SB535_URL is set
+FIRE_CSV = DATA / f"fire_{SLUG}.csv"             # 04g -> 05, only where FIRE_PERIMETERS is set
 
 DATA.mkdir(parents=True, exist_ok=True)
 CACHE.mkdir(exist_ok=True)

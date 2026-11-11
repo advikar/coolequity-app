@@ -36,6 +36,12 @@ H3_RES = 9
 # barer hex, which is the signal a shade-planting screen wants. Heat therefore
 # carries the weight it does in the other city-scale builds.
 #
+# Re-measured November 11, 2026 on the 2024-2026 composite (the figures above
+# are the 2022-2024 build's): over land cells at or above 27 C (1,524) position
+# explains 7.0% and LST correlates -0.55 with greenness; over the 982 ranked
+# cells position explains 6.0% (county: 14.1%) and LST correlates -0.35 with
+# tree cover. The decision stands.
+#
 # A/C is scored: Census LACE 2023 runs 46-82% of homes across this area, the
 # widest spread of any build, so the input carries real signal.
 WEIGHTS = {
@@ -43,6 +49,7 @@ WEIGHTS = {
     "green":    0.35,   # (1 - canopy_n)
     "ac":       0.15,   # (1 - ac_access_n)
     "age65":    0.15,   # age65_n
+    "dac":      0.00,   # dac (share of the hex in an SB 535 tract) — preset only
 }
 
 # ---------------------------------------------------------------- census (US)
@@ -60,6 +67,13 @@ CLIP_URL = ("https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/"
 
 # Set below once the Mapping Inequality coverage of Richmond is confirmed.
 HOLC_URL = None
+
+# CalEPA SB 535 Disadvantaged Communities, final designation September 2026
+# (CalEnviroScreen 5.0). 04f caches the tracts in the bbox. The designation is
+# a funding-eligibility screen, not a measurement: it ships at weight 0 and
+# leads the "Disadvantaged communities" preset (city.js).
+SB535_URL = ("https://services1.arcgis.com/PCHfdHz4GlDNAhBb/ArcGIS/rest/services/"
+             "SB_535_Disadvantaged_Communities_2026/FeatureServer")
 
 # ---------------------------------------------------------------- buildings
 # Block groups along the shoreline and the county line run past the bbox.

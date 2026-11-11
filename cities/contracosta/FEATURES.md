@@ -2,6 +2,54 @@
 
 # CoolEquity — every feature, its data source, and its limitations
 
+## Update — November 11, 2026 (later): 2024–2026 summers, SB 535 here, audit fixes (all builds)
+
+- **Surface heat** is now the median of summers 2024–2026 in every build (was 2022–2024).
+  This county's ranking does not score heat and did not move; its heat layer and sort changed.
+- **SB 535** (CalEPA, September 2026) is now an input at weight 0, a map layer and a preset
+  in this build, West Contra Costa and Pittsburg & Bay Point, as in Bakersfield and Los Angeles.
+- **Fixes from the November 11 app audit:** the printable briefing no longer fails when the
+  redlining layer is showing; CSV exports include `walk_method` and `share_inside_study_area`;
+  the heat legend states the right years and the population legend the right allocation
+  method per city; loading a scenario no longer leaves a false unsaved-changes prompt; the
+  "driven most by" sentence names an input only when it is in the needier half of its scale;
+  guide search handles "65+" and "$500", and links to sub-topics open the folded topic; the
+  fire note appears in the briefing's shortlist blocks and the compare table; CSV files start
+  with a byte-order mark so Excel reads "·" and "°"; dragging a weight slider no longer
+  scrolls the list; Enter on a start-screen control no longer dismisses the screen; greenness
+  stand-in areas sort last on tree cover and read "/100" in "Why this rank?"; the district
+  page of the briefing says district where the city has districts; the "Show" menu is hidden
+  where there is one city; Reset map restores the county-listed dots; `dac_type` and
+  `canopy_year` are escaped; the column key lists `none`, `below-threshold` and `unassessed`;
+  `scripts/build_site.py` refuses an `--out` that is not an earlier build.
+
+## Update — November 11, 2026: Los Angeles build; shared changes it brought (all builds)
+
+- **Wildfire flag (new, shared).** `pipeline/04g_fire.py` reads CAL FIRE FRAP perimeters for
+  fires newer than the tree-cover and census inputs where a city sets `FIRE_PERIMETERS`
+  (Los Angeles only: Palisades and Hurst, January 2025). 05 writes `fire`, `fire_name` and
+  `fire_year` per cell. The app shows a note at the top of the detail panel where at least 5%
+  of an area is inside a perimeter, a "fire <year>" tag on list rows mostly inside one, a
+  popover and a `#fire` guide topic, and exports `fire_perimeter_share_pct`, `fire_name`,
+  `fire_year` (column keys regenerated in every guide). No score, rank or weight changes. The
+  five earlier builds carry no flag; their committed data files simply lack the three keys
+  until their next 05 run, and the app treats that as no fire.
+- **Published coordinates for designated cooling sites.** `04c_designated_cooling.py` uses a
+  directory's own `coordinates` when the directory declares `coordinates_source`, instead of
+  geocoding the address. Only Los Angeles County publishes them; the other directories still
+  carry `coordinates: null` and are geocoded as before.
+- **HOLC contract is per city.** The map contract required zero graded cells everywhere; it now
+  requires them exactly where a city sets `HOLC_URL` (Los Angeles, 1939 map).
+- **A/C fallback contract.** A residential cell may keep the income-model A/C estimate when its
+  tract has no LACE estimate, with or without a partial housing denominator, still capped at
+  0.5% of ranked cells. Los Angeles has 16 (university housing in Westwood, forest-edge cells).
+- **Optional local OpenStreetMap stage.** `pipeline/00_osm_extract.py` writes the buildings,
+  streets, place-name and walking-graph files that 02b, 04 and 04b otherwise fetch from
+  Overpass, from a regional extract on disk. 02b's footprint rule and writer were split into
+  functions so both paths share them; its Overpass path is unchanged.
+- **Neighbourhood names from a published layer.** `NAME_AREAS` (Los Angeles only) adds
+  neighbourhood polygons to 04's name anchors.
+
 ## Update — September 21, 2026: outreach-readiness audit fixes (shared app, all builds)
 
 Findings 1–6 and the sharing/layout items of `OUTREACH_READINESS_AUDIT_2026-09-21.md`

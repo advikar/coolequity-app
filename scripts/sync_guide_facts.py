@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SLUGS = re.findall(r"slug:'([a-z0-9-]+)'", (ROOT / "app" / "cities.js").read_text())
-KIND = {"contracosta": "county", "bakersfield": "city", "sanramon": "city"}
+KIND = {"contracosta": "county", "bakersfield": "city", "sanramon": "city", "losangeles": "city"}
 
 
 def n(v): return f"{v:,}"

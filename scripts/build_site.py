@@ -73,6 +73,10 @@ def build(out: Path) -> list[str]:
     if sorted(slugs) != folders:
         sys.exit(f"app/cities.js lists {sorted(slugs)} but cities/ has {folders}")
     if out.exists():
+        # The build replaces --out wholesale. Refuse a directory that is not an earlier build,
+        # so `--out .` or `--out ~` cannot delete a working tree.
+        if any(out.iterdir()) and not (out / ".nojekyll").exists():
+            sys.exit(f"{out} exists, is not empty and is not an earlier build (no .nojekyll); refusing to delete it")
         shutil.rmtree(out)
     out.mkdir(parents=True)
     shutil.copy2(ROOT / "site" / "index.html", out / "index.html")

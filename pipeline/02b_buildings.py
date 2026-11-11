@@ -76,36 +76,39 @@ def main():
             f"({len(gj['features'])} residential) — --refresh to re-pull")
         return
 
-    import geopandas as gpd
-    from shapely.geometry import Polygon
-
     sys.path.insert(0, str(C.ROOT / "pipeline"))
     overlays = __import__("04_overlays")
 
     log(f"Phase 2b — buildings | {C.CITY}")
     els = overlays.overpass(BUILDINGS_OQL, "buildings")
 
-    rows = []
-    for e in els:
-        g = e.get("geometry")
-        if not g or len(g) < 4:
-            continue
-        bt = e.get("tags", {}).get("building", "yes")
-        if bt not in RESIDENTIAL:
-            continue
-        ring = [(p["lon"], p["lat"]) for p in g]
-        if ring[0] != ring[-1]:
-            ring.append(ring[0])
-        try:
-            poly = Polygon(ring)
-        except Exception:
-            continue
-        if not poly.is_valid:
-            poly = poly.buffer(0)
-        if poly.is_empty or poly.geom_type != "Polygon":
-            continue
-        rows.append({"bt": bt, "geometry": poly})
+    rows = [r for r in (footprint(e.get("tags", {}).get("building", "yes"),
+                                  [(p["lon"], p["lat"]) for p in (e.get("geometry") or [])])
+                        for e in els) if r]
+    write_buildings(rows)
 
+
+def footprint(bt, ring):
+    """One residential footprint row from a building tag and its (lon, lat) ring,
+    or None. Shared by the Overpass path above and 00_osm_extract.py."""
+    from shapely.geometry import Polygon
+    if len(ring) < 4 or bt not in RESIDENTIAL:
+        return None
+    if ring[0] != ring[-1]:
+        ring = ring + [ring[0]]
+    try:
+        poly = Polygon(ring)
+    except Exception:
+        return None
+    if not poly.is_valid:
+        poly = poly.buffer(0)
+    if poly.is_empty or poly.geom_type != "Polygon":
+        return None
+    return {"bt": bt, "geometry": poly}
+
+
+def write_buildings(rows):
+    import geopandas as gpd
     gdf = gpd.GeoDataFrame(rows, crs="EPSG:4326").to_crs(C.RASTER_CRS)
     gdf["area_m2"] = gdf.geometry.area
     n_raw = len(gdf)

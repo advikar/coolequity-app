@@ -1,0 +1,17 @@
+ward_id,ward_name,member,areas,residents,residents_65plus,mean_need_0_100,areas_in_top_100,tree_cover_pct_pop_weighted,mean_surface_heat_c,plantable_street_km,tree_positions_upper_bound
+1,District 1,Eunisses Hernandez,323,246886,33884,52.0,26,12.5,44.1,409.2,81836
+2,District 2,Adrin Nazarian,467,246334,31965,49.3,0,14.1,46.0,574.0,114802
+3,District 3,Bob Blumenfield,719,256861,38572,40.7,0,17.6,45.4,782.2,156435
+4,District 4,Nithya Raman,857,258463,40840,27.9,2,24.0,41.3,997.0,199398
+5,District 5,Katy Yaroslavsky,683,257928,37749,29.6,0,19.5,38.7,750.4,150083
+6,District 6,Imelda Padilla,527,250994,30770,50.7,1,12.6,46.8,521.0,104191
+7,District 7,Monica Rodriguez,826,251190,36082,43.0,0,13.6,45.0,724.4,144881
+8,District 8,Marqueece Harris-Dawson,363,252262,32105,65.8,10,7.3,45.9,534.4,106871
+9,District 9,Curren D. Price Jr.,284,247779,20725,70.0,13,8.2,46.8,390.6,78112
+10,District 10,Heather Hutt,323,262100,34653,61.0,21,9.9,44.2,456.7,91338
+11,District 11,Traci Park,760,258963,40881,35.2,0,15.8,39.3,854.7,170940
+12,District 12,John Lee,1066,270776,46554,42.2,0,16.1,45.7,1143.2,228648
+13,District 13,Hugo Soto-Martinez,344,251333,35037,52.0,13,13.5,43.8,475.6,95122
+14,District 14,Ysabel J. Jurado,512,259880,37315,50.9,7,12.9,45.0,612.9,122585
+15,District 15,Tim McOsker,575,243827,32950,56.4,7,8.1,43.4,627.1,125419
+,City-line areas (center outside the limit),,392,40995,5903,39.1,0,12.6,41.8,124.3,24864

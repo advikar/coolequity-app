@@ -1,5 +1,107 @@
 # HANDOFF
 
+## Checkpoint — November 11, 2026 (Claude), later: all builds on summers 2024–2026; SB 535 in three more; app audit fixes
+
+Owner: advikar. Committed and pushed to `main` on the owner's instruction after a final pass
+(below). This entry supersedes the "five earlier builds were
+not rebuilt" line in the checkpoint below.
+
+- **Satellite window.** `SUMMER_YEARS` is now (2024, 2025, 2026) in `pipeline/config.py` for
+  every city (checked first: each city has at least as many Landsat scenes under the cloud
+  filter as in 2022–2024). 02 re-run live for the five earlier cities (Landsat scenes: county
+  96, Bakersfield 104, San Ramon 11, West CC 37, Pittsburg 41), then 05, 04e `--cached`, 05b.
+  Against the previous commit, nothing but surface temperature, greenness and what follows
+  from them changed (population, age, A/C, tree cover, streets, walking time, names, wards and
+  place classes identical cell by cell; Bakersfield's 60 greenness stand-in cells re-read).
+  - Contra Costa, Pittsburg: heat weight 0, **no rank moved**.
+  - West Contra Costa: old/new LST r = 0.984; Spearman 0.997; top-25 overlap 24/25; top tier 94/98.
+  - Bakersfield: LST r = 0.921; Spearman 0.974; top-25 22/25; top tier 359/377; median move 96 ranks.
+  - San Ramon: LST r = 0.875 (11 scenes; mean −3.3 °C); Spearman 0.956; top-25 19/25; top tier 32/42.
+  Anything already handed to city staff from Bakersfield, San Ramon or West CC quotes the old ranks.
+- **Heat evidence re-measured** (ranked cells, linear fit on lon/lat; LST vs tree cover r):
+  LA 8.8% / −0.66; San Ramon 13.5% / −0.56; West CC 6.0% / −0.35; Bakersfield 8.2% / −0.33;
+  county 14.1% / −0.20; Pittsburg 15.7% / +0.23. The 38.8%, 28% and 11.1% quoted in older
+  configs came from earlier builds and other cell subsets and do not reproduce; configs now
+  carry dated re-measurement notes and the guides quote the new figures. **For the owner:** the
+  position share no longer separates scored from unscored builds (San Ramon 13.5% scored,
+  county 14.1% not); the tree-cover correlation does. No weight was changed.
+- **SB 535** added as input (weight 0), layer and "Disadvantaged communities" preset to
+  Contra Costa (408 cells at least half designated), West CC (480) and Pittsburg (475).
+  San Ramon has no designated tract and stays without it. County preset is dac 50 / green 40 /
+  ac 5 / age 5 because the contract test requires the top 50 under the preset to be designated.
+  Recommended ranks unchanged by it.
+- **App audit** (independent read of `app/`, `site/`, `scripts/build_site.py`; findings and
+  fixes itemised in `cities/contracosta/FEATURES.md`). Fixed: briefing crashed with the HOLC
+  layer on; CSV dropped `walk_method` and `share_inside_study_area`; heat and population legend
+  captions; false unsaved-changes prompt after loading a scenario; "driven most by" naming
+  inputs that are not high; guide search and sub-anchor links; fire note in briefing and
+  compare table; CSV byte-order mark; list scrolling during slider drags; start-screen keys;
+  stand-in sort and label; district wording; one-entry Show menu hidden; reset restores county
+  dots; two unescaped strings; column-key values; `build_site.py --out` guard; ward-summary CSV
+  line endings. **Not fixed, left for the owner:** `aria-pressed` on the Units and Basemap
+  toggles, a label on the field-check textarea, keyboard access to ward-table rows, planting
+  shares not restored after a reload, HOLC grade not shown in the detail panel, and throttling
+  slider redraws on Los Angeles if dragging feels slow.
+- **Final pass before the push.** A range check on every data file found two Contra Costa
+  cells (Canyon S, Canyon SW) with calibrated tree cover of 103.9% and 100.8%, present since
+  the September lidar calibration: the fitted aerial line runs past 100 at the dense end. 05
+  now caps calibrated and lidar-substituted cover at 100; both cells read 100%, no rank moved.
+  All six maps, guides, cooling pages and data files answer 200 in the local build, every
+  preset applies without error, and each map draws.
+- **Tests run:** `scripts/test.sh`, all six cities, passed. In the local build: county SB 535
+  layer and preset, Los Angeles briefing with the HOLC layer on, corrected captions, hidden
+  Show menu, CSV columns; no console errors. Not verified: the printed briefing's appearance,
+  phone layout, Firefox/Safari.
+
+## Checkpoint — November 11, 2026 (Claude): Los Angeles build, with a source-vintage audit
+
+Task: add the City of Los Angeles as a sixth study area, after checking every data source for a
+newer vintage. Owner: advikar. Committed with the entry above.
+
+- **Source audit (all checked November 11, 2026).** Still the newest release, kept: ACS
+  2020–2024 5-year (the 2025 endpoint returns 404; due December 2026), Census LACE 2023 (only
+  vintage), USFS/CAL FIRE canopy 2022 (page updated March 2026, no later map), ESA WorldCover
+  2021 v200, SB 535 2026 designation. **Outdated: the satellite window.** `SUMMER_YEARS`
+  defaults to 2022–2024; summers 2025 and 2026 are in the archive. Los Angeles overrides it to
+  2024–2026. **The five earlier builds were not rebuilt** and still carry 2022–2024: moving
+  them changes every heat value and re-ranks the three that score heat, which is the owner's call.
+- **Build.** `cities/losangeles/`: city limit (TIGERweb 0644000), res 9, UTM 11N; 11,893 cells,
+  9,021 ranked, 3,856,571 residents (ACS place total 3,857,263). Landsat: 35 scenes (15/13/7 for
+  2024/25/26). Canopy: USFS 2022 on 8,948 ranked cells, greenness stand-in on 73, no height
+  model (02c not run, reasons in config.py). Population is dasymetric; `DASY_MAX_INCOME_BIAS =
+  3.0` with the evidence in config.py (the 2.7x count-per-unit reading is apartment housing;
+  one-unit block groups read 1.1–1.3 buildings per unit in every income quartile). Weights
+  0.35/0.35/0.15/0.15 on measured evidence (position explains 8.8% of LST variance over ranked
+  cells; LST vs canopy r = −0.66; LACE 44–100%). HOLC 1939 on 3,621 cells. SB 535 on 4,614
+  cells (preset only). 15 council districts from the city's GIS service; each holds 244k–271k
+  residents, which is what equal-population districts should hold. 153 county cooling sites
+  from the county's own map layer (August 2026), 94 drawn. Fire flag: 129 ranked cells mostly
+  inside the Palisades or Hurst perimeters; best rank among flagged cells is 4,172.
+- **OpenStreetMap came from a local extract**, not Overpass: both mirrors timed out and the
+  main instance answered "at capacity". `pipeline/00_osm_extract.py` (new, optional, needs
+  `pip install osmium`; installed outside the venv for this run) read Geofabrik's
+  `socal-261110.osm.pbf` and wrote buildings (1,667,445 footprints, 284 MB, gitignored),
+  streets (24.6 MB, committed like every city's), place nodes and the walk graph (575,806
+  nodes). The cool-place inventory (669 sites) is the one Overpass pull that succeeded.
+  Names: place nodes alone mislabelled whole districts, so `NAME_AREAS` adds the 114 Mapping
+  L.A. neighbourhood polygons from the City GeoHub.
+- **Shared code touched:** `app/index.html` (fire note, tag, popover, export fields),
+  `pipeline/{02b_buildings,04_overlays,04c_designated_cooling,05_score,config}.py`, new
+  `pipeline/{00_osm_extract,04g_fire}.py`, `tests/*`, `scripts/sync_guide_facts.py`, every
+  guide (`#fire` topic, regenerated column key), `app/cities.js`, `site/index.html`,
+  `README.md`, `.gitignore`. Itemised in `cities/contracosta/FEATURES.md`.
+- **Tests run:** `scripts/test.sh`, all six cities, passed (map contract incl. rank parity for
+  all 9,021 Los Angeles cells, data contracts, guide facts and column keys, clean build).
+  Verified in the local build (`scripts/build_site.py --serve`, port 8010): map loads with no
+  console errors, live rescore of 11,893 cells takes about 12 ms, Priority and HOLC layers, the
+  fire note and row tag on Pacific Palisades, 15 district outlines loaded, guide and cooling
+  pages render. **Not verified:** a phone session, the printed briefing, exports opened in a
+  spreadsheet, GitHub Pages serving a 13.7 MB data file (it gzips; untested live), and
+  `06_audit_rebuild.py` (no baseline; `reports/` holds only the stability file).
+- **Left to the owner:** commit and push (CI deploys on push to main); whether to rebuild the
+  other five cities on summers 2024–2026; whether to rename the Los Angeles guide's and
+  chooser's wording. `cities/losangeles/` has no STATUS.md or README.md history file.
+
 ## Checkpoint — November 2, 2026 (Claude): SB 535 disadvantaged communities (Bakersfield)
 
 Task: Bakersfield's urban forestry contact asked for CalEPA's SB 535 Disadvantaged Communities

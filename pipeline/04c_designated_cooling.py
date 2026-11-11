@@ -97,8 +97,17 @@ def main():
     if area is None:
         print("  WARNING: no boundary file; every located site is kept", file=sys.stderr)
     feats, unlocated, outside = [], [], []
+    published = 0
     for it in items:
-        lat, lon, quality, matched = geocode(it, C.CITY, cache)
+        if it.get("coordinates"):
+            # The publisher's own point for the site (the directory names where it
+            # came from in `coordinates_source`). Never re-geocoded: an address
+            # match can only be as good as, or worse than, the source's location.
+            lon, lat = it["coordinates"]
+            quality, matched = "published", doc.get("coordinates_source", "coordinates published by the source")
+            published += 1
+        else:
+            lat, lon, quality, matched = geocode(it, C.CITY, cache)
         rec = {k: it.get(k) for k in ("id", "name", "address", "city", "phone", "opening_hours", "eligibility", "designation", "note")}
         rec["geocode_quality"] = quality
         rec["geocode_match"] = matched
@@ -118,7 +127,8 @@ def main():
     CACHE.parent.mkdir(exist_ok=True)
     CACHE.write_text(json.dumps(cache, indent=1))
     out = {"type": "FeatureCollection",
-           "properties": {**meta, "geocoder": "OpenStreetMap Nominatim, address match",
+           "properties": {**meta, "geocoder": ("none: coordinates published by the source" if published == len(items)
+                                               else "OpenStreetMap Nominatim, address match"),
                           "geocoded": time.strftime("%Y-%m-%d"), "unlocated": unlocated,
                           "study_area_pad_m": NEAR_M, "outside_study_area": outside},
            "features": feats}

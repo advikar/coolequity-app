@@ -226,7 +226,7 @@ def main():
     summary = summarise(rows, wards, cfg.get("outside", "Outside every ward"))
     if summary:
         with open(C.WARDS_SUMMARY_CSV, "w", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=list(summary[0].keys())); w.writeheader(); w.writerows(summary)
+            w = csv.DictWriter(f, fieldnames=list(summary[0].keys()), lineterminator="\n"); w.writeheader(); w.writerows(summary)
         for r in summary:
             log(f"    {r['ward_name']:<28} {r['areas']:>5} areas {r['residents']:>9,} residents  need {r['mean_need_0_100']:>5}  top-100 {r['areas_in_top_100']:>3}")
         log(f"  wrote {C.WARDS_SUMMARY_CSV.relative_to(C.ROOT)}")

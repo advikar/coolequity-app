@@ -9,8 +9,9 @@
  * understanding here. Every input is normalised min-max WITHIN the study area,
  * which assumes the study area is one climate. A city is. This county is not: it
  * runs from the Richmond shoreline to the Delta, mean summer surface temperature
- * 36.8 °C west against 43.1 °C east, and 38.8% of ALL variance in surface
- * temperature is explained by longitude and latitude alone.
+ * 37.8 °C in the western third against 42.0 °C in the eastern third (summers
+ * 2024-2026), and across ranked areas surface temperature barely tracks tree
+ * cover (r = -0.20, against -0.56 in San Ramon and -0.66 in Los Angeles).
  *
  * The effect is measurable rather than theoretical. In San Ramon
  * corr(LST, canopy) = -0.800, and -0.808 after removing a spatial trend: shade
@@ -46,25 +47,28 @@ window.CE_CITY={
   // How 03_census.py placed residents in this build (guide.html says why); the briefing's source table reads it.
   popAllocation:'area',
   centersVersion:'20260907-ehsd',
+  layerNotes:{dac:"State-designated disadvantaged communities (CalEPA, September 2026). A funding-eligibility screen, not a measurement; the “Disadvantaged communities” preset ranks within it."},
   coolingLinkLabel:"County-listed locations & contacts ↗",
   scoreTitle:"Canopy priority",
   introNote:"Surface heat is measured and shown here but not scored: across a county that runs from the Bay shoreline to the Delta it mostly tracks distance from the water, not a shade problem. The ranking uses tree cover, homes without A/C and older residents.",
-  weights:{heat:0.00,green:0.55,ac:0.25,age65:0.20,access:0},
-  inputNotes:{heat:"climate-confounded at county scale — starts at 0",ac:"Census LACE estimate — scored here"},
+  weights:{heat:0.00,green:0.55,ac:0.25,age65:0.20,access:0,dac:0.00},
+  inputNotes:{heat:"climate-confounded at county scale — starts at 0",ac:"Census LACE estimate — scored here",dac:"CalEPA 2026 designation — a policy screen, starts at 0"},
   /** Presets set all four weights at once. w:'default' / pop:'default' mean the
    *  recommended weights and population multiplier above. */
   presets:[
   {id:'default',name:'Recommended mix',w:'default',pop:'default',
    why:'Mostly missing tree cover (55%), then homes without A/C (25%) and older residents (20%), adjusted for how many people live in each area.'},
-  {id:'canopy',name:'Fewest trees',w:{heat:0,green:1,ac:0,age65:0,access:0},pop:.45,
+  {id:'dac',name:'Disadvantaged communities',w:{heat:0,green:.40,ac:.05,age65:.05,access:0,dac:.50},pop:'default',
+   why:'SB 535-designated disadvantaged communities (50%) and missing tree cover (40%), with homes without A/C (5%) and older residents (5%), adjusted for population. The designation carries half the weight here because only 17% of county residents live in a designated tract. Bare areas inside designated tracts lead; the same conditions outside them rank lower but stay on the list.'},
+  {id:'canopy',name:'Fewest trees',w:{heat:0,green:1,ac:0,age65:0,access:0,dac:0},pop:.45,
    why:'Tree cover alone, adjusted for population. Ignores heat, A/C and age.'},
-  {id:'heat',name:'Heat only',w:{heat:1,green:0,ac:0,age65:0,access:0},pop:.45,
+  {id:'heat',name:'Heat only',w:{heat:1,green:0,ac:0,age65:0,access:0,dac:0},pop:.45,
    why:'Only ground heat and population. In this county that mostly shows distance from the Bay, not a shade problem.'},
-  {id:'seniors',name:'Older residents',w:{heat:0,green:.35,ac:.15,age65:.50,access:0},pop:.45,
+  {id:'seniors',name:'Older residents',w:{heat:0,green:.35,ac:.15,age65:.50,access:0,dac:0},pop:.45,
    why:'Puts most weight on residents aged 65+, with tree cover and A/C still counting.'},
-  {id:'ac',name:'Homes without A/C',w:{heat:0,green:.30,ac:.60,age65:.10,access:0},pop:.45,
+  {id:'ac',name:'Homes without A/C',w:{heat:0,green:.30,ac:.60,age65:.10,access:0,dac:0},pop:.45,
    why:'Puts most weight on homes without air conditioning (Census estimates).'},
-  {id:'stranded',name:'Far from cooling',w:{heat:0,green:.40,ac:.20,age65:.15,access:.25},pop:.45,
+  {id:'stranded',name:'Far from cooling',w:{heat:0,green:.40,ac:.20,age65:.15,access:.25,dac:0},pop:.45,
    why:'Adds walking distance to the nearest mapped cool place. Those places are not verified as open cooling centers.'},
   {id:'people',name:'Most people',w:'default',pop:.90,
    why:'The recommended mix, but areas with more residents count much more.'},

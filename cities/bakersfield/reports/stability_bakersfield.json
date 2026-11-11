@@ -3,211 +3,211 @@
  "draws": 300,
  "ranked": 3767,
  "top_tier_n": 377,
- "median_band_width": 436.25,
- "p90_band_width": 1110.1600000000003,
- "share_band_within_10pct_of_list": 0.42686487921422883,
- "point_top_tier_always_top_tier": 0.3660477453580902,
- "point_top_tier_usually_top_tier": 0.6392572944297082,
+ "median_band_width": 483.1500000000001,
+ "p90_band_width": 1236.7900000000002,
+ "share_band_within_10pct_of_list": 0.3777541810459251,
+ "point_top_tier_always_top_tier": 0.35013262599469497,
+ "point_top_tier_usually_top_tier": 0.6206896551724138,
  "top25_point": [
-  {
-   "id": 2223,
-   "name": "Village at Lakeside E 7",
-   "rank": 1,
-   "rank_lo": 1,
-   "rank_hi": 27,
-   "top_share": 1.0
-  },
   {
    "id": 2744,
    "name": "Coventry Place Apartments W 12",
-   "rank": 2,
-   "rank_lo": 2,
-   "rank_hi": 53,
-   "top_share": 1.0
-  },
-  {
-   "id": 2630,
-   "name": "Bakersfield S 3",
-   "rank": 3,
+   "rank": 1,
    "rank_lo": 1,
-   "rank_hi": 29,
+   "rank_hi": 48,
    "top_share": 1.0
   },
   {
    "id": 2249,
    "name": "Coventry Place Apartments SW",
-   "rank": 4,
+   "rank": 2,
    "rank_lo": 2,
-   "rank_hi": 88,
+   "rank_hi": 80,
    "top_share": 0.997
   },
   {
-   "id": 2741,
-   "name": "Coventry Place Apartments SW 12",
-   "rank": 5,
-   "rank_lo": 2,
-   "rank_hi": 84,
+   "id": 2885,
+   "name": "Crestview Meadows SW 45",
+   "rank": 3,
+   "rank_lo": 1,
+   "rank_hi": 108,
    "top_share": 1.0
   },
   {
-   "id": 2382,
-   "name": "Village at Lakeside NE 44",
-   "rank": 6,
-   "rank_lo": 2,
-   "rank_hi": 182,
-   "top_share": 0.99
+   "id": 2630,
+   "name": "Bakersfield S 3",
+   "rank": 4,
+   "rank_lo": 1,
+   "rank_hi": 30,
+   "top_share": 1.0
   },
   {
-   "id": 2634,
-   "name": "Bakersfield S 5",
-   "rank": 7,
-   "rank_lo": 3,
-   "rank_hi": 22,
+   "id": 2223,
+   "name": "Village at Lakeside E 7",
+   "rank": 5,
+   "rank_lo": 1,
+   "rank_hi": 36,
    "top_share": 1.0
   },
   {
    "id": 2301,
    "name": "Village at Lakeside NE 54",
-   "rank": 8,
-   "rank_lo": 3,
+   "rank": 6,
+   "rank_lo": 2,
    "rank_hi": 173,
    "top_share": 0.987
   },
   {
-   "id": 2746,
-   "name": "Coventry Place Apartments SW 17",
-   "rank": 9,
-   "rank_lo": 4,
-   "rank_hi": 157,
+   "id": 2741,
+   "name": "Coventry Place Apartments SW 12",
+   "rank": 7,
+   "rank_lo": 3,
+   "rank_hi": 95,
    "top_share": 1.0
   },
   {
    "id": 974,
    "name": "Village at Lakeside W 35",
+   "rank": 8,
+   "rank_lo": 2,
+   "rank_hi": 447,
+   "top_share": 0.937
+  },
+  {
+   "id": 2634,
+   "name": "Bakersfield S 5",
+   "rank": 9,
+   "rank_lo": 2,
+   "rank_hi": 23,
+   "top_share": 1.0
+  },
+  {
+   "id": 2382,
+   "name": "Village at Lakeside NE 44",
    "rank": 10,
-   "rank_lo": 3,
-   "rank_hi": 473,
-   "top_share": 0.933
+   "rank_lo": 2,
+   "rank_hi": 203,
+   "top_share": 0.987
   },
   {
    "id": 2554,
    "name": "Coventry Place Apartments NW 20",
    "rank": 11,
-   "rank_lo": 3,
-   "rank_hi": 23,
+   "rank_lo": 2,
+   "rank_hi": 22,
    "top_share": 1.0
   },
   {
-   "id": 2885,
-   "name": "Crestview Meadows SW 45",
+   "id": 2746,
+   "name": "Coventry Place Apartments SW 17",
    "rank": 12,
-   "rank_lo": 4,
-   "rank_hi": 147,
-   "top_share": 1.0
+   "rank_lo": 7,
+   "rank_hi": 189,
+   "top_share": 0.997
   },
   {
    "id": 2742,
    "name": "Coventry Place Apartments W 17",
    "rank": 13,
    "rank_lo": 1,
-   "rank_hi": 94,
+   "rank_hi": 101,
    "top_share": 0.997
   },
   {
-   "id": 1804,
-   "name": "Crestview Meadows",
+   "id": 1422,
+   "name": "Bakersfield E 39",
    "rank": 14,
-   "rank_lo": 8,
-   "rank_hi": 465,
-   "top_share": 0.917
+   "rank_lo": 5,
+   "rank_hi": 80,
+   "top_share": 1.0
   },
   {
    "id": 1405,
    "name": "Bakersfield E 38",
    "rank": 15,
    "rank_lo": 5,
-   "rank_hi": 120,
+   "rank_hi": 121,
    "top_share": 0.997
   },
   {
-   "id": 1422,
-   "name": "Bakersfield E 39",
+   "id": 1804,
+   "name": "Crestview Meadows",
    "rank": 16,
-   "rank_lo": 7,
-   "rank_hi": 84,
-   "top_share": 1.0
+   "rank_lo": 10,
+   "rank_hi": 490,
+   "top_share": 0.907
   },
   {
    "id": 2285,
    "name": "Village at Lakeside N 15",
    "rank": 17,
-   "rank_lo": 9,
-   "rank_hi": 143,
+   "rank_lo": 10,
+   "rank_hi": 141,
    "top_share": 0.993
-  },
-  {
-   "id": 1605,
-   "name": "Bakersfield SE 13",
-   "rank": 18,
-   "rank_lo": 9,
-   "rank_hi": 205,
-   "top_share": 0.987
-  },
-  {
-   "id": 3612,
-   "name": "Breakwater Apartments E 3",
-   "rank": 19,
-   "rank_lo": 13,
-   "rank_hi": 134,
-   "top_share": 1.0
   },
   {
    "id": 971,
    "name": "Village at Lakeside W 37",
-   "rank": 20,
-   "rank_lo": 13,
-   "rank_hi": 362,
+   "rank": 18,
+   "rank_lo": 10,
+   "rank_hi": 353,
    "top_share": 0.95
+  },
+  {
+   "id": 370,
+   "name": "Park Square Apartments SE 26",
+   "rank": 19,
+   "rank_lo": 8,
+   "rank_hi": 100,
+   "top_share": 1.0
+  },
+  {
+   "id": 1605,
+   "name": "Bakersfield SE 13",
+   "rank": 20,
+   "rank_lo": 10,
+   "rank_hi": 196,
+   "top_share": 0.987
+  },
+  {
+   "id": 2920,
+   "name": "Crestview Meadows SW 34",
+   "rank": 21,
+   "rank_lo": 10,
+   "rank_hi": 47,
+   "top_share": 1.0
   },
   {
    "id": 369,
    "name": "Park Square Apartments S 23",
-   "rank": 21,
-   "rank_lo": 4,
-   "rank_hi": 221,
-   "top_share": 1.0
-  },
-  {
-   "id": 2226,
-   "name": "Village at Lakeside NE 9",
    "rank": 22,
-   "rank_lo": 7,
-   "rank_hi": 120,
+   "rank_lo": 3,
+   "rank_hi": 211,
    "top_share": 1.0
   },
   {
-   "id": 2636,
-   "name": "Bakersfield SE 4",
+   "id": 3612,
+   "name": "Breakwater Apartments E 3",
    "rank": 23,
-   "rank_lo": 5,
-   "rank_hi": 63,
+   "rank_lo": 11,
+   "rank_hi": 133,
    "top_share": 1.0
   },
   {
    "id": 2735,
    "name": "Coventry Place Apartments NW 12",
    "rank": 24,
-   "rank_lo": 17,
-   "rank_hi": 191,
-   "top_share": 0.997
+   "rank_lo": 16,
+   "rank_hi": 185,
+   "top_share": 1.0
   },
   {
-   "id": 804,
-   "name": "Village at Lakeside W 24",
+   "id": 764,
+   "name": "Park Square Apartments SE 31",
    "rank": 25,
-   "rank_lo": 13,
-   "rank_hi": 216,
-   "top_share": 0.993
+   "rank_lo": 6,
+   "rank_hi": 108,
+   "top_share": 1.0
   }
  ]
 }

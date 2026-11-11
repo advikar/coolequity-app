@@ -348,6 +348,8 @@
   .dhead .nm{font-size:15px;font-weight:650}
   .dhead .rk{font-size:11px;color:var(--muted);margin-top:1px}
   .rk.band{margin-top:2px}.rk.band b{color:var(--txt);font-weight:600}
+  .firenote{font-size:12px;margin:0 0 10px;padding:7px 10px;border-left:3px solid #d9822b;background:rgba(217,130,43,.12);border-radius:0 6px 6px 0;color:var(--txt);line-height:1.35}
+  .firetag{display:inline-block;font-style:normal;font-size:9px;font-weight:700;letter-spacing:.04em;color:#d9822b;border:1px solid #d9822b;border-radius:5px;padding:0 4px;margin-left:6px;vertical-align:1px}
   .dhead .x{margin-left:auto;color:var(--muted2);cursor:pointer;font-size:20px;line-height:1;padding:2px 5px}
   .dhead .x:hover{color:var(--txt)}
   .dbody{overflow-y:auto;padding:14px 16px 22px}
@@ -1107,6 +1109,7 @@
       <button class="x" id="d-close" aria-label="Close selected area">×</button>
     </div>
     <div class="dbody">
+      <div class="firenote" id="d-fire" hidden></div>
       <div class="explain" id="d-explain"></div>
       <div class="drivers" id="d-drivers"></div>
       <div id="d-metrics"></div>
@@ -1281,13 +1284,13 @@ const LAYERS={
   score:{title:CE_CITY.scoreTitle,ramp:PRIORITY,worse:'hi',fmt:v=>v.toFixed(0),
     cap:'Weighted mix of the inputs in force, scaled by the population exposed. Weights are live — drag them above. Deeper = greater need for cooling investment.'},
   lst:{title:'Surface temperature',ramp:HEAT,worse:'hi',fmt:v=>fTemp(v),
-    cap:'Mid-morning surface temperature, summer medians 2022–24. This is not air temperature.'},
+    cap:'Mid-morning surface temperature, summer medians 2024–26. This is not air temperature.'},
   green:{title:'Tree cover',ramp:CANOPY,worse:'lo',fmt:v=>v.toFixed(0)+'%',
     cap:'Aerial classification or legacy height-map canopy, as a share of assessed ground. Gray = canopy unavailable. Open a cell for source and coverage.'},
   veg:{title:'Greenness (satellite)',ramp:CANOPY,worse:'lo',fmt:v=>ndviIndex(v).toFixed(0),
     cap:'Scaled satellite vegetation index, 0–100. Includes trees, grass and shrubs; this is not percent cover. Describes summer greenness, not planting feasibility.'},
   pop:{title:'Population',ramp:POPU,worse:'hi',fmt:v=>v>=1000?(v/1000).toFixed(1)+'k':v.toFixed(0),
-    cap:'Estimated residents, allocated from ACS 2024 block groups by area. These are not cell-level counts.'},
+    cap:`Estimated residents, allocated from ACS 2024 block groups by ${CE_CITY.popAllocation==='dasymetric'?'mapped residential building footprint':'overlap area'}. These are not cell-level counts.`},
   pct65:{title:'Residents aged 65+',ramp:AGE,worse:'hi',fmt:v=>v.toFixed(0)+'%',
     cap:'Estimated share aged 65+, smoothed for small populations.'},
   ac:{title:'Homes with A/C',ramp:ACCESS_AC,worse:'lo',fmt:v=>v.toFixed(0)+'%',est:false,
@@ -1539,9 +1542,9 @@ function nameOf(p){return p.name||`Area ${p.id}`;}
  *  Returns [short label, full title] or null. The four states are the pipeline's own. */
 function canopyTag(p){
   if(p.green_src==='ndvi'){const f=Math.round((p.coverage_frac||0)*100);return p.canopy_quality==='below-threshold'?['satellite stand-in',`The aerial assessment observed only ${f<1?'under 1%':f+'%'} of this area, too little to describe it, so satellite greenness stands in and is scored on its own scale.`]:['satellite stand-in','No aerial tree-cover assessment here; satellite greenness stands in and is scored on its own scale.'];}
-  const yr=p.canopy_year?` ${p.canopy_year}`:'';
+  const yr=p.canopy_year?` ${escapeHtml(String(p.canopy_year))}`:'';
   if(p.canopy_source==='lidar-2020'){const f=Math.round((p.coverage_frac||0)*100);return ['lidar 2017–22',`No aerial assessment here; canopy from the county's lidar vegetation map (CDFW 2025; returns above 4.6 m), covering ${f}% of this area, rescaled onto the aerial line.`];}
-  const legacy=p.canopy_source==='chm-legacy',kind=legacy?'height model':'aerial',what=legacy?`Canopy-height model (imagery ${p.canopy_year||'2009–2020'}, trees = 2 m and taller)`:`Aerial classification${yr}`;
+  const legacy=p.canopy_source==='chm-legacy',kind=legacy?'height model':'aerial',what=legacy?`Canopy-height model (imagery ${escapeHtml(String(p.canopy_year||'2009–2020'))}, trees = 2 m and taller)`:`Aerial classification${yr}`;
   if(p.canopy_quality==='calibrated')return [`${kind} · calibrated`,`${what}, rescaled onto the aerial product's line using the county lidar map, so it compares with aerial cells on one scale.`];
   if(p.canopy_quality==='full')return [`${kind}${legacy?'':yr}`,`${what} covering essentially the whole area.`];
   if(p.canopy_quality==='partial'){const f=Math.round((p.coverage_frac||0)*100),fs=f<1?'under 1%':f+'%';return [`${kind}${legacy?'':yr} · ${fs} assessed`,`${what} observed only ${fs} of this area; the tree-cover figure describes that part only.`];}
@@ -1637,6 +1640,7 @@ function exportNotes(){return [
   'Canopy percentages are assessed cover per canopy_source; chm-legacy cells have unknown assessed extent (coverage_frac empty). In Contra Costa builds, height-model cells are rescaled onto the aerial line and lidar-2020 cells come from the county lidar map, both fitted against that map (reports/canopy_validation_<slug>.json).',
   'Planting scenarios are theoretical: mapped street length at 10 m spacing, capped by cell area minus known canopy. Site feasibility, ownership, utilities and species are unverified.',
   `Cost is planted trees × $${COST_TREE.toLocaleString('en-US')} per tree, taken as ${costScope()}; a program-average assumption, not a local quote. Added tree cover and cooling count only the share of planted trees assumed to reach maturity (survival_share_pct, default 70%; Sacramento\'s long-term monitoring found 42.4% alive after 22 years). Cooling is an illustrative clear-sky summer air-temperature figure, 0.3 °C per 10 canopy points, not a local forecast.`,
+  'Where fire_perimeter_share_pct is above zero, the area lies partly or wholly inside the perimeter of a wildfire newer than the tree-cover and census inputs: its tree cover, residents, A/C and street capacity describe the ground before the fire, and its rank should not be used without a field check.',
   'Walking access is routed on the OpenStreetMap pedestrian network to mapped discovery sites, whose hours and cooling designation are unverified; approach-review flags a >100 m straight connection from the cell center to the network. Minutes are estimates, not verified door-to-door accessible routes.',
 ];}
 function currentPresetId(){const m=typeof matchPreset==='function'?matchPreset():null;return m?m.id:null;}
@@ -1659,8 +1663,8 @@ function exportHeader(){
   };
 }
 const EXPORT_FIELDS=['id','name','city','place','rank','score','rank_default','score_default','rank_lo','rank_hi','rank_top_share','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
-  'coverage_frac','canopy_quality','canopy_m2','assessed_m2','pop','pct65','ac_pct','ac_src','ac_coverage','acs_year','access_min','access_km',
-  'access_quality','access_snap_m','area_m2','street_m','street_room_positions','street_room_band','scenario_ok','canopy_baseline_ok','land','holc','dac','dac_type','dac_tract',
+  'coverage_frac','canopy_quality','canopy_m2','assessed_m2','pop','pct65','ac_pct','ac_src','ac_coverage','acs_year','access_min','access_km','access_src','inside_frac',
+  'access_quality','access_snap_m','area_m2','street_m','street_room_positions','street_room_band','scenario_ok','canopy_baseline_ok','land','holc','dac','dac_type','dac_tract','fire','fire_name','fire_year',
   'ward_id','ward_name',
   'planting_share','trees','trees_surviving','canopy_gain_points','cost_usd','cooling_c','future_canopy_pct','field_status','field_note','field_note_updated'];
 function cellRecord(p){
@@ -1675,6 +1679,7 @@ function cellRecord(p){
     access_quality:p.access_quality??null, access_src:p.access_src??null, inside_frac:num(p.inside_frac), access_snap_m:num(p.access_snap_m), area_m2:num(p.area_m2), street_m:num(p.street_m), street_room_positions:Math.floor(Math.max(0,p.street_m||0)*2/TREE_SPACING_M), street_room_band:(typeof roomBand==='function'?roomBand(p):null),
     scenario_ok:p.scenario_ok===true, ward_id:p.ward_id??null, ward_name:p.ward_name??null, canopy_baseline_ok:p.canopy_baseline_ok===true, land:p.land??null, holc:p.holc??null,
     dac:p.dac==null?null:+(+p.dac*100).toFixed(1), dac_type:p.dac_type??null, dac_tract:p.dac_tract??null,
+    fire:p.fire==null?null:+(+p.fire*100).toFixed(1), fire_name:p.fire>0?(p.fire_name??null):null, fire_year:p.fire>0?(p.fire_year??null):null,
     planting_share:scn?scn.share:null, trees:scn?scn.trees:null, trees_surviving:scn?scn.trees_surviving:null, canopy_gain_points:scn?scn.canopy_gain_points:null,
     cost_usd:scn?scn.cost_usd:null, cooling_c:scn?scn.cooling_c:null, future_canopy_pct:scn?scn.future_canopy_pct:null,
     field_status:noteOf(p.id).status?FC_LABEL[noteOf(p.id).status]:null, field_note:noteOf(p.id).note||null, field_note_updated:noteOf(p.id).updated||null};
@@ -1697,10 +1702,10 @@ const FIELD_KEY={
   canopy_pct:['tree_cover_pct','Tree cover, % of assessed land; empty where only satellite greenness is available'],
   greenness_index:['greenness_index_0_100','Satellite greenness index, 0–100; filled only where tree_cover_source_type = ndvi'],
   green_src:['tree_cover_source_type','canopy = tree-cover map (aerial classification, calibrated height model or lidar; see tree_cover_dataset); ndvi = satellite greenness stand-in'],
-  canopy_source:['tree_cover_dataset','usfs-2022 aerial classification, chm-legacy height model, or lidar-2020 county lidar map'],
+  canopy_source:['tree_cover_dataset','usfs-2022 aerial classification, chm-legacy height model, lidar-2020 county lidar map, or none (no tree-cover assessment; greenness stand-in)'],
   canopy_year:['tree_cover_year','Year of the tree-cover dataset'],
   coverage_frac:['tree_cover_assessed_fraction','Share of the area the aerial assessment covers (0–1)'],
-  canopy_quality:['tree_cover_quality','full, partial, calibrated (height model rescaled to the aerial line), lidar, or coverage-unknown'],
+  canopy_quality:['tree_cover_quality','full, partial, calibrated (height model rescaled to the aerial line), lidar, coverage-unknown, below-threshold (assessed on under 10% of the area) or unassessed'],
   canopy_m2:['tree_cover_m2','Assessed tree crown area, m²'],
   assessed_m2:['assessed_area_m2','Land the assessment covers, m²'],
   pop:['residents','Estimated residents (ACS, allocated into the area)'],
@@ -1728,6 +1733,9 @@ const FIELD_KEY={
   dac:['sb535_dac_share_pct','Share of the area inside an SB 535 disadvantaged community (CalEPA, September 2026), %'],
   dac_type:['sb535_dac_criterion','Designation criterion of the tract covering most of the area'],
   dac_tract:['sb535_dac_tract','Census tract GEOID of that designated tract'],
+  fire:['fire_perimeter_share_pct','Share of the area inside the perimeter of a wildfire newer than the tree-cover and census inputs, %; empty or 0 where none'],
+  fire_name:['fire_name','Name of that fire (CAL FIRE perimeter)'],
+  fire_year:['fire_year','Year of that fire'],
   planting_share:['planting_share_pct','Share of street capacity planted in this scenario, %'],
   trees:['scenario_trees_planted','Trees planted in this scenario'],
   trees_surviving:['scenario_trees_surviving','Trees assumed to reach maturity (survival_share_pct in planting_assumptions)'],
@@ -1771,7 +1779,8 @@ function toCsv(records,header){
   return lines.join('\r\n')+'\r\n';
 }
 function download(name,text,type){
-  const blob=new Blob([text],{type});const url=URL.createObjectURL(blob);
+  // Excel reads a CSV without a byte-order mark as the local code page and garbles “·”, “°” and accents.
+  const blob=new Blob([type==='text/csv'?'\ufeff'+text:text],{type});const url=URL.createObjectURL(blob);
   const a=document.createElement('a');a.href=url;a.download=name;a.rel='noopener';document.body.appendChild(a);a.click();
   setTimeout(()=>{a.remove();URL.revokeObjectURL(url);},4000);   // keep the anchor alive until the browser has taken the file
   return name;
@@ -1819,7 +1828,7 @@ function loadScenario(doc){
   if(typeof pa.cost_per_tree_usd==='number'&&pa.cost_per_tree_usd>0){COST_TREE=pa.cost_per_tree_usd;const ce=document.getElementById('cost-tree');if(ce)ce.value=COST_TREE;}markCostPreset();
   if(typeof pa.survival_share_pct==='number'&&pa.survival_share_pct>0&&pa.survival_share_pct<=100){SURVIVAL=pa.survival_share_pct;const se=document.getElementById('survival');if(se)se.value=SURVIVAL;}
   else if(pa.survival_share_pct===undefined){SURVIVAL=100;const se=document.getElementById('survival');if(se)se.value=100;}   // files written before survival existed assumed every tree matured; reproduce them exactly
-  plantingShares.clear();
+  plantingShares.clear();userShares.clear();
   const cells=doc.kind==='area'?(doc.selected?[doc.selected]:[]):(Array.isArray(doc.cells)?doc.cells:[]);
   let shares=0;for(const c of cells){if(c&&typeof c.planting_share==='number'&&c.id!=null){plantingShares.set(+c.id,Math.max(0,Math.min(100,c.planting_share)));userShares.add(+c.id);shares++;}}
   // Field checks travel in the file as the status label, the note and its time.
@@ -1828,7 +1837,8 @@ function loadScenario(doc){
   // file's is newer; otherwise the local record is kept.
   const fcKeyOf=Object.fromEntries(Object.entries(FC_LABEL).map(([k,v])=>[v,k]));
   let fcIn=0,fcKept=0;
-  for(const c of cells){if(!c||c.id==null||!HEX.features.some(f=>f.properties.id===+c.id))continue;
+  const knownIds=new Set(HEX.features.map(f=>f.properties.id));
+  for(const c of cells){if(!c||c.id==null||!knownIds.has(+c.id))continue;
     const st=c.field_status?(fcKeyOf[c.field_status]||''):'',note=typeof c.field_note==='string'?c.field_note:'';
     if(!st&&!note.trim())continue;
     const cur=noteOf(+c.id),empty=!cur.status&&!(cur.note||'').trim();
@@ -1836,7 +1846,7 @@ function loadScenario(doc){
     if(empty||newer){NOTES.set(+c.id,{status:st,note,updated:c.field_note_updated||new Date().toISOString()});fcIn++;}else fcKept++;}
   if(fcIn)saveNotes();
   // A ranked-list file carries the shortlist; an area file does not touch it.
-  if(Array.isArray(doc.shortlist)){SHORTLIST.clear();for(const id of doc.shortlist)if(HEX.features.some(f=>f.properties.id===+id))SHORTLIST.add(+id);saveShortlist();}
+  if(Array.isArray(doc.shortlist)){SHORTLIST.clear();for(const id of doc.shortlist)if(knownIds.has(+id))SHORTLIST.add(+id);saveShortlist();}
   applyWeights();
   if(Array.isArray(doc.shortlist)&&typeof buildShortlist==='function')buildShortlist();
   const sel=doc.kind==='area'?(doc.selected&&doc.selected.id):doc.selected_id;
@@ -1917,7 +1927,7 @@ function resetMap(){
   if(!document.getElementById('detail').inert)document.getElementById('d-close').click();
   plantingShares.clear();userShares.clear();
   applyPreset('default');
-  holcOn=false;accessOn=false;syncToggles();setLayer('score');
+  holcOn=false;accessOn=false;designatedOn=true;if(map&&map.getLayer('designated'))map.setLayoutProperty('designated','visibility','visible');syncToggles();setLayer('score');
   if(WARDS){setWards(false);RANK_WARD='';const wf=document.getElementById('ward-filter');if(wf)wf.value='';}
   kindOn=new Set(KIND_KEYS.filter(k=>document.querySelector(`.kind[data-k="${k}"]`)));syncKinds();
   if(document.querySelector('#basemap button.on')?.dataset.b==='sat')setBasemap('map');
@@ -1999,7 +2009,7 @@ function wireDrawers(){
   const setTheme=(t,re)=>{document.documentElement.dataset.theme=t;try{localStorage.setItem('ce-theme',t);}catch(_){}
     document.querySelectorAll('#theme button').forEach(b=>{const on=b.dataset.t===t;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});
     retoneMap();
-    if(re){applyWeights();buildRank();if(selId!=null)selectHex(selId,false);}};
+    if(re){applyWeights();buildRank();if(selId!=null)selectHex(selId,false,true);}};
   setTheme(document.documentElement.dataset.theme||'dark',false);
   document.getElementById('theme').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setTheme(b.dataset.t,true);});
   syncExportButtons();
@@ -2091,6 +2101,7 @@ const TIPS={
   score:{t:'Priority score & ranking',d:'0 to 100, relative within this study area: 100 is the area with the most need under the current mix. It is a screening score, not a health-risk figure. Click any area to see the arithmetic behind its rank.'},
   export:{t:'Export & share',d:'Save the ranked list as a spreadsheet, or as a file that reloads your mix of priorities, planting shares, cost assumptions, selection, shortlist and field checks. Nothing is uploaded; files stay on your computer.'},
   fieldcheck:{t:'Field check',d:'Record what a site visit found: a status and a short note. Saved in this browser only (per city), never uploaded. Both go into every export and the printed briefing, so a colleague can see which areas were verified and what was seen.'},
+  fire:{t:'Fire perimeter',d:'This area lies inside the perimeter of a wildfire that burned after the tree-cover imagery (2022) and the census estimates (2020–2024) were collected. Its tree cover, residents, A/C and street capacity describe the ground before the fire; only surface heat is newer. A perimeter is a fire’s outer line, not a map of what burned. The flag changes no score: check on the ground before using this area’s rank.'},
   stability:{t:'Likely rank',d:'A rank is an estimate. Census population, age and A/C figures were re-drawn within their published margins of error and the recommended weights nudged by ±10 points, 300 times; this is the 5th–95th percentile of the ranks that came out. It is a sensitivity range under stated assumptions (heat, tree cover and walking time held fixed), not a confidence interval; treat rank differences smaller than the band as not established. The top-tier share says how often the area stayed in the best 10%.'},
   'export-area':{t:'Export this area',d:'Save this area’s numbers, sources, rank and planting scenario as one file for a meeting or a colleague. A JSON file reloads this view.'},
   planting:{t:'Planting scenario',d:'Explore how many street trees could fit along this area’s mapped streets, what they would cost, and the shade they would add at maturity. An estimate for scoping, not a plan.'},
@@ -2164,7 +2175,7 @@ function openReport(){
   const topRes=top.reduce((a,f)=>a+(f.properties.pop||0),0);
   let slRes=0,slTrees=0,slCost=0;sl.forEach(f=>{const p=f.properties;slRes+=p.pop||0;const c=scenarioFor(p,effectiveShare(p.id));if(c){slTrees+=c.trees;slCost+=c.cost_usd;}});
   let mapPng='';try{if(map)mapPng=map.getCanvas().toDataURL('image/png');}catch(_){}
-  const legendCss=`linear-gradient(90deg,${LAYERS[current].ramp.join(',')})`;
+  const legendCss=`linear-gradient(90deg,${(LAYERS[current].ramp||Object.values(HOLC)).join(',')})`;
   const money=v=>v.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
   const treesLbl=p=>p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':p.green.toFixed(0)+'%';
   // Every row carries its own tree-cover source, so a reader can tell a partial
@@ -2183,6 +2194,7 @@ function openReport(){
     const seniors=Math.round(p.pop*p.pct65/100);
     const m=[['Surface heat',fTemp(p.lst),norm('lst',p.lst),lift(colorFor('lst',p.lst),130)],[p.green_src==='ndvi'?'Greenness (satellite, 0–100)':'Tree cover'+(treesFlag(p)?' ('+treesFlag(p)+')':''),treesLbl(p),norm('green',p.green),lift(colorFor('green',p.green),130)],['Residents',fInt(p.pop),norm('pop',p.pop),lift(colorFor('pop',p.pop),130)],['Age 65+',LAYERS.pct65.fmt(p.pct65),norm('pct65',p.pct65),lift(colorFor('pct65',p.pct65),130)],['Homes with A/C (est.)',LAYERS.ac.fmt(p.ac),norm('ac',p.ac),lift(colorFor('ac',p.ac),130)],['Walk to cooling (est.)',`${fMin(p.access_min)} · ${fDist(p.access_km)}`,norm('access',p.access_min),lift(colorFor('access',p.access_min),130)],...('dac' in CE_CITY.weights?[['SB 535 community',p.dac>0?Math.round(p.dac*100)+'% designated':'not designated',norm('dac',p.dac||0),lift(colorFor('dac',p.dac||0),130)]]:[])];
     return `<section class="area"><div class="ahead"><span class="rk big" style="background:${c};color:${inkOn(c)}">${rk(p)}</span><div><h3>${esc(nameOf(p))}</h3><div class="sub">Rank ${rk(p)} of ${order.length.toLocaleString()}${p.rank_lo!=null?` · likely ${p.rank_lo}–${p.rank_hi} under the recommended mix`:''}${p.city?' · '+esc(p.city):''} · need index ${s.toFixed(0)}${def?'':' · under '+esc(q)} · area #${p.id}</div></div></div>
+      ${fireOf(p)?`<p class="fine" style="margin:0 0 8px"><b>Fire perimeter:</b> ${Math.round(fireOf(p).share*100)}% of this area is inside the ${esc(fireOf(p).name)} fire perimeter${fireOf(p).year?' ('+esc(fireOf(p).year)+')':''}. Its tree cover, residents, A/C and street capacity predate the fire; check on the ground.</p>`:''}
       ${noteOf(p.id).status||noteOf(p.id).note?`<p class="fine" style="margin:0 0 8px"><b>Field check:</b> ${noteOf(p.id).status?esc(FC_LABEL[noteOf(p.id).status]):'no status'}${noteOf(p.id).note?' — '+esc(noteOf(p.id).note):''}${noteOf(p.id).updated?' ('+esc(new Date(noteOf(p.id).updated).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}))+')':''}</p>`:''}
       <p class="lede">About <b>${fInt(p.pop)}</b> people live here, <b>${fInt(seniors)}</b> aged 65 or older. Surface heat is <b>${fTemp(p.lst)}</b>${p.green_src==='ndvi'?` and no aerial tree-cover value exists here; satellite greenness reads <b>${treesLbl(p)}</b>, an index, not percent cover`:` and trees cover <b>${treesLbl(p)}</b> of the assessed ground, ${p.green<st.medGreen?'below':p.green>st.medGreen?'above':'at'} the city median of ${st.medGreen.toFixed(0)}%`}. The nearest mapped cool place is about <b>${fMin(p.access_min)}</b> on foot.</p>
       <div class="two"><div><div class="k">What puts it here</div><div class="cbar">${d.bar}</div><div class="leg">${d.leg}</div>
@@ -2249,11 +2261,11 @@ table:not(.src){font-size:8.5pt}table:not(.src) td{padding:2px 5px}table:not(.sr
   <p class="fine" style="margin-top:10px">Need is a relative 0–100 index within ${esc(CITY_NAME)} under these weights. “Likely rank” is the 5th–95th percentile of the area's rank under the recommended mix when census inputs are re-drawn within their margins of error and those weights are nudged; heat, tree cover and walking time are held fixed, so it is a sensitivity range, not a confidence interval, and beside a custom mix it describes the recommended ranking rather than this one. Treat rank differences smaller than the band as not established. “Rec. rank” is the area's rank under the recommended mix; it reads — when the recommended mix is in force.</p>
   <div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Top 25</span></div>
 </div>
-${WARDS?`<div class="page"><h2>By ${esc(CE_CITY.districtUnit==='district'?'district':'council ward')}</h2><p class="lede" style="margin-top:0">Each ward's share of the need under “${esc(q)}”, with the starred areas' planting totals. Need is the mean 0–100 index of the ward's areas; “Top 100” counts its areas among the city's 100 highest.</p>
-  <table style="margin-top:10px"><thead><tr><th>Ward</th><th>Member</th><th class="n">Residents</th><th class="n">Areas</th><th class="n">Need</th><th class="n">Top 100</th><th class="n">Tree cover</th><th class="n">★ Areas</th><th class="n">★ Trees</th><th class="n">★ Cost</th></tr></thead><tbody>${wardRows().map(r=>`<tr><td class="nm">${esc(r.name)}</td><td class="muted">${esc(r.member)}</td><td class="n">${fInt(r.res)}</td><td class="n">${r.areas}</td><td class="n"><b>${r.mean.toFixed(0)}</b></td><td class="n">${r.top}</td><td class="n">${r.cover==null?'—':r.cover.toFixed(0)+'%'}</td><td class="n">${r.sl||'—'}</td><td class="n">${r.sl?fInt(r.trees):'—'}</td><td class="n">${r.sl?money(r.cost):'—'}</td></tr>`).join('')}</tbody></table>
+${WARDS?`<div class="page"><h2>By ${esc(CE_CITY.districtUnit==='district'?'district':'council ward')}</h2><p class="lede" style="margin-top:0">Each ${esc(CE_CITY.districtUnit==='district'?'district':'ward')}'s share of the need under “${esc(q)}”, with the starred areas' planting totals. Need is the mean 0–100 index of the ${esc(CE_CITY.districtUnit==='district'?'district':'ward')}'s areas; “Top 100” counts its areas among the 100 highest in this study area.</p>
+  <table style="margin-top:10px"><thead><tr><th>${esc(CE_CITY.districtUnit==='district'?'District':'Ward')}</th><th>Member</th><th class="n">Residents</th><th class="n">Areas</th><th class="n">Need</th><th class="n">Top 100</th><th class="n">Tree cover</th><th class="n">★ Areas</th><th class="n">★ Trees</th><th class="n">★ Cost</th></tr></thead><tbody>${wardRows().map(r=>`<tr><td class="nm">${esc(r.name)}</td><td class="muted">${esc(r.member)}</td><td class="n">${fInt(r.res)}</td><td class="n">${r.areas}</td><td class="n"><b>${r.mean.toFixed(0)}</b></td><td class="n">${r.top}</td><td class="n">${r.cover==null?'—':r.cover.toFixed(0)+'%'}</td><td class="n">${r.sl||'—'}</td><td class="n">${r.sl?fInt(r.trees):'—'}</td><td class="n">${r.sl?money(r.cost):'—'}</td></tr>`).join('')}</tbody></table>
   <div style="margin-top:16px">${wardRows().map(r=>`<div style="display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:8px;font-size:9pt;margin:3px 0"><span>${esc(r.name)}</span><span style="height:9px;border-radius:4px;background:#e5e9ee;overflow:hidden"><i style="display:block;height:100%;width:${Math.max(2,r.mean).toFixed(0)}%;background:${colorFor('score',Math.min(100,r.mean))}"></i></span><b style="text-align:right">${r.mean.toFixed(0)}</b></div>`).join('')}</div>
-  <p class="fine" style="margin-top:12px">${esc([WARDS.boundaries_adopted?'Boundaries: '+WARDS.boundaries_adopted:'',WARDS.members_as_of?'member names as of '+WARDS.members_as_of:'',WARDS.source?'source: '+WARDS.source:''].filter(Boolean).join(' · '))}. Wards are political boundaries; the need lives where it lives, and an even split across wards is a policy choice, not a finding.</p>
-  <div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>By ward</span></div></div>`:''}
+  <p class="fine" style="margin-top:12px">${esc([WARDS.boundaries_adopted?'Boundaries: '+WARDS.boundaries_adopted:'',WARDS.members_as_of?'member names as of '+WARDS.members_as_of:'',WARDS.source?'source: '+WARDS.source:''].filter(Boolean).join(' · '))}. ${esc(CE_CITY.districtUnit==='district'?'Districts':'Wards')} are political boundaries; the need lives where it lives, and an even split across them is a policy choice, not a finding.</p>
+  <div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>By ${esc(CE_CITY.districtUnit==='district'?'district':'ward')}</span></div></div>`:''}
 ${sl.length?`<div class="page"><h2>Shortlist · ${sl.length} area${sl.length===1?'':'s'}</h2><p class="lede" style="margin-top:0">${fInt(slRes)} residents · ${fInt(slTrees)} trees · ${money(slCost)} at ${money(COST_TREE)} per tree, each area at its own planting share.</p>${slPages}<div class="foot"><span>CoolEquity · ${esc(CITY_NAME)}</span><span>Shortlist</span></div></div>`:''}
 <div class="page">
   <h2>How the ranking is built</h2>
@@ -2685,7 +2697,7 @@ function buildIntro(){
   document.addEventListener('keydown',e=>{
     // Not while the user is typing a city name — Enter there picks from the
     // list, and Escape closes the list, neither of which should launch the map.
-    if(e.target.closest&&e.target.closest('#picker'))return;
+    if(e.target.closest&&e.target.closest('select,input,textarea,a,button'))return;
     if(e.key==='Escape'||e.key==='Enter'){const el=document.getElementById('intro');
       if(el&&!el.classList.contains('gone'))dismissIntro();}
   });
@@ -2948,7 +2960,7 @@ function applyWeights(){
   LAYERS.score.cap=`${parts.join(' · ')}. Adjusted for population; relative within this ${CE_CITY.scope}. `+(HEX&&HEX.features.some(f=>f.properties.green_src==='ndvi')?' Some areas use a satellite greenness stand-in for tree cover.':'')+(W.heat<=0.005?' Ground heat is not counted.':'');
   if(current==='score')setLayer('score');     // repaints AND refreshes the caption
   buildRank();
-  if(selId!=null)selectHex(selId,false);
+  if(selId!=null)selectHex(selId,false,true);
   saveSession();
 }
 
@@ -2976,7 +2988,7 @@ function setUnits(u){
   updateScaleNote();
   setLayer(current);                                    // legend endpoints are formatted
   buildRank();
-  if(selId!=null)selectHex(selId,false);
+  if(selId!=null)selectHex(selId,false,true);
 }
 
 function wireUI(){
@@ -3069,7 +3081,7 @@ function buildWardTable(){
   const el=document.getElementById('ward-table');if(!el||!WARDS)return;
   const rows=wardRows();const mx=Math.max(1,...rows.map(r=>r.mean));
   el.innerHTML=`<div class="wh">${escapeHtml((CE_CITY.districtUnit||'ward').replace(/^./,c=>c.toUpperCase()))}</div><div class="wh" title="Estimated residents">People</div><div class="wh" title="Mean need index under the current mix">Need</div><div class="wh" title="Areas in the top 100">Top</div><div class="wh" title="Starred areas: trees at their planting shares">★ Trees</div>`+
-    rows.map(r=>{const c=colorFor('score',Math.min(100,r.mean));return `<div class="wr${RANK_WARD===(r.id||'__outside')?' on':''}" role="row" data-w="${escapeHtml(r.id||'__outside')}" title="${escapeHtml(r.member?r.name+' · '+r.member:r.name)}. Click to limit the list to this ward.">
+    rows.map(r=>{const c=colorFor('score',Math.min(100,r.mean));return `<div class="wr${RANK_WARD===(r.id||'__outside')?' on':''}" role="row" data-w="${escapeHtml(r.id||'__outside')}" title="${escapeHtml(r.member?r.name+' · '+r.member:r.name)}. Click to limit the list to this ${escapeHtml(CE_CITY.districtUnit||'ward')}.">
       <div class="wc">${escapeHtml(r.name)}<span class="wneed"><i style="width:${(100*r.mean/mx).toFixed(0)}%;background:${c}"></i></span></div>
       <div class="wc">${fInt(r.res)}</div><div class="wc"><b>${r.mean.toFixed(0)}</b></div><div class="wc">${r.top}</div>
       <div class="wc">${r.sl?`<b>${fInt(r.trees)}</b><br><span style="font-size:9.5px">${r.cost.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0})}</span>`:'<span style="color:var(--muted2)">—</span>'}</div></div>`;}).join('');
@@ -3129,6 +3141,13 @@ function saveNotes(){try{localStorage.setItem(FC_KEY,JSON.stringify(Object.fromE
 function noteOf(id){return NOTES.get(id)||{status:'',note:'',updated:null};}
 function setNote(id,patch){const cur=noteOf(id);const nxt={...cur,...patch,updated:new Date().toISOString()};
   if(!nxt.status&&!nxt.note.trim())NOTES.delete(id);else NOTES.set(id,nxt);saveNotes();}
+/* Wildfire perimeter newer than the tree-cover and census inputs (pipeline 04g).
+ * A flag only: it changes no score. Shown where at least 5% of the area is inside. */
+const FIRE_MIN=0.05;
+function fireOf(p){return (p&&p.fire>=FIRE_MIN&&p.fire_name)?{share:+p.fire,name:String(p.fire_name),year:p.fire_year?String(p.fire_year):''}:null;}
+function fireTag(p){const f=fireOf(p);if(!f||f.share<0.5)return '';return `<i class="firetag" title="Mostly inside the ${escapeHtml(f.name)} fire perimeter${f.year?' ('+escapeHtml(f.year)+')':''}; tree cover, residents and buildings here predate the fire">fire ${escapeHtml(f.year)}</i>`;}
+function fireNote(p){const f=fireOf(p);if(!f)return '';const pc=Math.round(f.share*100);
+  return `<b>${pc>=95?'Inside':pc+'% inside'} the ${escapeHtml(f.name)} fire perimeter${f.year?' ('+escapeHtml(f.year)+')':''}.</b> Tree cover, residents, A/C and street capacity here predate the fire; surface heat is newer. Check on the ground before using this area. <a class="info-link" href="guide.html#fire" target="ce-guide" aria-label="About fire perimeters">i</a>`;}
 function fieldTag(p){const n=noteOf(p.id);if(!n.status)return '';return `<span class="fc-tag ${n.status}" title="Field check: ${FC_LABEL[n.status]}">${FC_LABEL[n.status].replace('Checked · ','')}</span>`;}
 function renderFieldCheck(p,ranked){
   const box=document.getElementById('d-field');if(!box)return;box.hidden=!ranked;if(!ranked)return;
@@ -3175,7 +3194,7 @@ function wireMobileView(){
 function buildCityPick(){
   const el=document.getElementById('rank-city');if(!el||!HEX)return;
   const n=new Map();for(const f of HEX.features){const p=f.properties;if(p.place!=='res'||!p.city)continue;n.set(p.city,(n.get(p.city)||0)+1);}
-  if(!n.size){el.closest('.cityrow').hidden=true;return;}
+  if(n.size<2){el.closest('.cityrow').hidden=true;return;}   // one city: the menu would change nothing
   const rows=[...n.entries()].sort((a,b)=>a[0]==='Unincorporated'?1:b[0]==='Unincorporated'?-1:b[1]-a[1]);
   el.innerHTML='<option value="">every city and community</option>'+rows.map(([c,k])=>`<option value="${escapeHtml(c)}">${escapeHtml(c)} · ${k.toLocaleString()} area${k===1?'':'s'}</option>`).join('');
   el.onchange=()=>{RANK_CITY=el.value;rankPage=0;buildRank();applyCityMask();};
@@ -3227,7 +3246,7 @@ function buildRank(){
     if(F.has('stable')&&!(p.rank_top_share>=0.8))return false;
     if(RANK_CITY&&p.city!==RANK_CITY)return false;
     return true;});
-  if(sortK!=='need'||RANK_DIR!=='most'){const dir=RANK_DIR==='most'?1:-1;const v=p=>sortK==='need'?(sc(p)??-1):(p.properties?p.properties[sortK]:p[sortK])??0;matches=matches.slice().sort((a,b)=>dir*((v(b.properties)-v(a.properties))));}
+  if(sortK!=='need'||RANK_DIR!=='most'){const dir=RANK_DIR==='most'?1:-1;const v=p=>sortK==='need'?(sc(p)??-1):(sortK==='green'&&p.green_src==='ndvi')?(RANK_DIR==='most'?-1e9:1e9):(p.properties?p.properties[sortK]:p[sortK])??0;matches=matches.slice().sort((a,b)=>dir*((v(b.properties)-v(a.properties))));}
   rankPage=Math.max(0,Math.min(rankPage,Math.ceil(matches.length/RANK_PAGE_SIZE)-1));
   const start=rankPage*RANK_PAGE_SIZE,top=matches.slice(start,start+RANK_PAGE_SIZE);
   const filt=(RANK_WARD?1:0)+(query?1:0)+F.size+(RANK_CITY?1:0);
@@ -3264,7 +3283,7 @@ function makeRow(p,def){
   if(p.id===selId)row.classList.add('sel');
   const c=colorFor('score',s),on=SHORTLIST.has(p.id);
   row.innerHTML=`<div class="badge" style="background:${c};color:${inkOn(c)}">${rk(p)}</div>
-    <div class="nm" role="button" tabindex="0" aria-label="Open ${escapeHtml(nameOf(p))}, rank ${rk(p)}">${escapeHtml(nameOf(p))}${WARDS&&p.ward_id?`<i class="wardtag" title="${escapeHtml(wardLabel(p.ward_id))}">${(CE_CITY.districtUnit||'ward')[0].toUpperCase()}${escapeHtml(p.ward_id)}</i>`:''}${def?'':moveChip(p)}${fieldTag(p)}</div>
+    <div class="nm" role="button" tabindex="0" aria-label="Open ${escapeHtml(nameOf(p))}, rank ${rk(p)}">${escapeHtml(nameOf(p))}${WARDS&&p.ward_id?`<i class="wardtag" title="${escapeHtml(wardLabel(p.ward_id))}">${(CE_CITY.districtUnit||'ward')[0].toUpperCase()}${escapeHtml(p.ward_id)}</i>`:''}${def?'':moveChip(p)}${fireTag(p)}${fieldTag(p)}</div>
     <button type="button" class="pin${on?' on':''}" aria-pressed="${on}" title="${on?'Remove from':'Add to'} shortlist">${on?'★':'☆'}</button>
     <div class="sc" style="color:${lift(c)}">${s.toFixed(0)}</div>
     <div class="cbar" aria-hidden="true">${contribBar(p)}</div>
@@ -3322,6 +3341,7 @@ function compareTable(items){
   const rows=[
     ['Likely rank (rec. mix)',p=>p.rank_lo!=null?`${p.rank_lo}–${p.rank_hi}`:'—',null],
     ['City',p=>p.city||'—',null],
+    ...(P.some(p=>fireOf(p))?[['Fire perimeter',p=>{const f=fireOf(p);return f?`${Math.round(f.share*100)}% inside ${escapeHtml(f.name)} ${escapeHtml(f.year)}`:'—';},null]]:[]),
     ['Residents',p=>fInt(p.pop),p=>p.pop],
     ['Aged 65+',p=>LAYERS.pct65.fmt(p.pct65),p=>p.pct65],
     ['Surface heat',p=>fTemp(p.lst),p=>p.lst],
@@ -3362,11 +3382,11 @@ function syncDetailAccess(){
 }
 addEventListener('resize',syncDetailAccess);
 
-function selectHex(id,fly){
+function selectHex(id,fly,keepScroll){
   selId=id;const f=HEX.features.find(x=>x.properties.id===id);if(!f)return;const p=f.properties;
   paintSel();
   document.querySelectorAll('.row').forEach(r=>r.classList.toggle('sel',+r.dataset.id===id));
-  document.querySelector('#rank .row.sel')?.scrollIntoView({block:'nearest'});
+  if(!keepScroll)document.querySelector('#rank .row.sel')?.scrollIntoView({block:'nearest'});
   const s=sc(p),r=rk(p);
   const empty=p.place==='empty';
   const activity=p.place==='activity'||(s===undefined&&!empty);
@@ -3389,6 +3409,7 @@ function selectHex(id,fly){
     else{b.hidden=false;const meta=(HEX.metadata||{}).stability||{};const top=Math.round((p.rank_top_share||0)*100);
       b.innerHTML=`<b>Likely rank ${p.rank_lo}–${p.rank_hi}</b>${isDefaultW()?'':' under the recommended mix'} · in the top ${meta.top_tier_n?meta.top_tier_n.toLocaleString():'tier'} in ${top}% of ${meta.draws||''} re-draws <a class="info-link" href="guide.html#stability" target="ce-guide" aria-label="About rank stability">i</a>`;
       b.title='Census inputs re-drawn within their published margins of error and the recommended weights jittered by ±10 points; 5th–95th percentile of the resulting ranks.';}}}
+  {const fn=document.getElementById('d-fire');if(fn){const h=fireNote(p);fn.hidden=!h;fn.innerHTML=h;}}
   renderFieldCheck(p,!unranked);
   document.getElementById('d-name').title=p.name?'Name generated from nearby mapped places; not an official boundary. Area #'+p.id:'Area #'+p.id;
   explainHex(p);
@@ -3413,7 +3434,7 @@ function selectHex(id,fly){
     [p.ac_src==='income-model'?'A/C (income estimate)':'Homes with A/C','ac',p.ac,LAYERS.ac.fmt(p.ac),true],
     ['Walk to cooling','access',p.access_min,`${fMin(p.access_min)} · ${fDist(p.access_km)}`+(p.access_src==='straightline'?' · straight-line':''),true],
     ['Street room','room',roomOf(p),`${fInt(roomOf(p))} tree spots · ${roomBand(p)}`,true],
-    ...('dac' in CE_CITY.weights?[['SB 535 community','dac',p.dac||0,(p.dac>0?Math.round(p.dac*100)+'% designated':'not designated')+(p.dac_type?' · '+p.dac_type:''),false]]:[]),
+    ...('dac' in CE_CITY.weights?[['SB 535 community','dac',p.dac||0,(p.dac>0?Math.round(p.dac*100)+'% designated':'not designated')+(p.dac_type?' · '+escapeHtml(p.dac_type):''),false]]:[]),
   ];
   document.getElementById('d-metrics').innerHTML=m.map(([lab,k,v,disp,est,tag])=>{
     const t=norm(k,v);
@@ -3460,7 +3481,7 @@ function renderBreakdown(p,score){
   const parts=W_INPUTS.map(w=>{
     const raw=nv(w.prop), t=w.invert?1-raw:raw;
     return {...w,t,pts:W[w.k]*t,
-      shown:w.show?w.show(p[w.prop]):w.prop==='lst'?fTemp(p.lst):p[w.prop].toFixed(0)+'%'};
+      shown:w.show?w.show(p[w.prop]):w.prop==='lst'?fTemp(p.lst):(w.prop==='green'&&p.green_src==='ndvi')?LAYERS.veg.fmt(p.green)+'/100':p[w.prop].toFixed(0)+'%'};
   });
   const base=parts.reduce((a,b)=>a+b.pts,0);
   const mult=(1-POPW)+POPW*nv('pop');
@@ -3529,15 +3550,17 @@ function explainHex(p){
   }
   const s=sc(p),r=rk(p),st=cityStats();
   const W=normW();
-  const parts=W_INPUTS.map(w=>{const raw=snv(p,w.prop),t=w.invert?1-raw:raw;return {k:w.k,pts:W[w.k]*t};})
+  const parts=W_INPUTS.map(w=>{const raw=snv(p,w.prop),t=w.invert?1-raw:raw;return {k:w.k,t,pts:W[w.k]*t};})
     .filter(x=>x.pts>0.001).sort((a,b)=>b.pts-a.pts);
-  const drivers=parts.slice(0,2).map(x=>DRIVER[x.k]).filter(Boolean).map((f,i)=>f(p));
-  const driverTxt=drivers.length?drivers.join(' and '):'a combination of factors';
+  // Name an input as a driver only where it is in the needier half of its own scale;
+  // otherwise a low-ranked area was described by deficits it does not have.
+  const drivers=parts.filter(x=>x.t>=0.5).slice(0,2).map(x=>DRIVER[x.k]).filter(Boolean).map((f,i)=>f(p));
+  const driverTxt=drivers.length?drivers.join(' and '):'';
   const seniors=Math.round(p.pop*p.pct65/100);
   const canopyCtx=p.green<st.medGreen?'below':p.green>st.medGreen?'above':'at';
   el.innerHTML=`Ranks <b>#${r} of ${st.n.toLocaleString()}</b> for cooling need`
     +(isDefaultW()?'':' <span class="why">(at your weights)</span>')
-    +` — driven most by <span class="why">${driverTxt}</span>. `
+    +(driverTxt?` — driven most by <span class="why">${driverTxt}</span>. `:` — <span class="why">no input in the mix is high here</span>. `)
     +`About <b>${fInt(Math.round(p.pop))}</b> people live here, ${seniors.toLocaleString()} aged 65 or older. `
     +(p.green_src==='ndvi'?`Satellite greenness: <b>${LAYERS.veg.fmt(p.green)}/100</b>. No tree-cover survey is available here. `:`Trees cover <b>${p.green.toFixed(0)}%</b> of the assessed ground. `)
     +`<a class="method-link" href="guide.html#score" target="ce-guide">About this ranking ↗</a>`;

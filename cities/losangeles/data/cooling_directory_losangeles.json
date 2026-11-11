@@ -1,0 +1,2464 @@
+{
+ "source": "Los Angeles County Operational Area, Authoritative Cooling Center List (County Office of Emergency Management)",
+ "source_url": "https://ready.lacounty.gov/heat/",
+ "list_url": "https://ready.lacounty.gov/wp-content/uploads/2026/08/Cooling-Center-Sites-8.2026-final-1.pdf",
+ "layer_url": "https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/Cooling_Centers_-_Los_Angeles_County_Regional_(Official_-_Updated_July_2022)_(View)/FeatureServer/0",
+ "source_revision": "August 2026 list (map layer last edited August 26, 2026); checked November 11, 2026",
+ "checked": "2026-11-11",
+ "source_sha256": "51568e91be047b5d45143e402de62d9be50fe11753b0109c3c88492b5c6792b6",
+ "coordinates_source": "Published by Los Angeles County with each site on its cooling center map layer; not geocoded by this project.",
+ "contact_phone": "211",
+ "transport_phone": "211",
+ "activation": "The county lists these sites with their regular days and hours. During extreme heat events some sites are designated Augmented Cooling Centers with extended hours, announced on the county page.",
+ "notes": "The county list covers the whole county, including City of Los Angeles library branches and recreation sites. Hours in each note are the regular hours the county list printed in August 2026, not live opening status. Per-site contact numbers on the county list are not reproduced here; call 2-1-1 or check the county page.",
+ "sites": [
+  {
+   "id": "lacoa-2026-001",
+   "name": "A C Bilbrew Library",
+   "address": "150 E El Segundo Blvd",
+   "city": "Los Angeles",
+   "zip": "90061",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.272077,
+    33.916124
+   ],
+   "note": "County list: Monday-Thursday: 10 am - 8 pm; Friday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-002",
+   "name": "Acton/Agua Dulce Library",
+   "address": "33792 Crown Valley Road",
+   "city": "Acton",
+   "zip": "93510",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.19768,
+    34.49508
+   ],
+   "note": "County list: Monday-Thursday: 10 am - 8 pm; Friday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-003",
+   "name": "Adventure Park",
+   "address": "10130 Gunn Avenue",
+   "city": "Whittier",
+   "zip": "90605",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.036822,
+    33.942334
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm"
+  },
+  {
+   "id": "lacoa-2026-004",
+   "name": "Agoura Hills Library",
+   "address": "29901 Ladyface Court",
+   "city": "Agoura Hills",
+   "zip": "91301",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.775707,
+    34.144543
+   ],
+   "note": "County list: Tuesday-Wednesday: 12 pm - 8 pm; Thursday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-005",
+   "name": "Alexander Hughes Community Center",
+   "address": "1700 Danbury Road",
+   "city": "Claremont",
+   "zip": "91711",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.733234,
+    34.115426
+   ],
+   "note": "County list: Monday - Thursday: 9 a.m. - 9 p.m.; Friday: 9 a.m. - 6 p.m.; Saturday: 9 a.m. - 2 p.m."
+  },
+  {
+   "id": "lacoa-2026-006",
+   "name": "Alhambra AJCC",
+   "address": "2550 W. Main Street, Suite 101",
+   "city": "Alhambra",
+   "zip": "91801",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.151728,
+    34.094962
+   ],
+   "note": "County list: Monday - Thursday: 9 am - 12 pm, 1:30 pm - 5 pm; Closed Fridays"
+  },
+  {
+   "id": "lacoa-2026-007",
+   "name": "Alondra Community Regional Park",
+   "address": "3850 Manhattan Beach Boulevard",
+   "city": "Lawndale",
+   "zip": "90260",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.33431,
+    33.880985
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm"
+  },
+  {
+   "id": "lacoa-2026-008",
+   "name": "Amelia Mayberry Park",
+   "address": "13201 Meyer Road",
+   "city": "Whittier",
+   "zip": "90605",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.049898,
+    33.930645
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-009",
+   "name": "Angeles Mesa Branch Library",
+   "address": "2700 W. 52nd Street",
+   "city": "Los Angeles",
+   "zip": "90043",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.32285,
+    33.99494
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m."
+  },
+  {
+   "id": "lacoa-2026-010",
+   "name": "Angelo M Iacoboni Library",
+   "address": "4990 Clark Avenue",
+   "city": "Lakewood",
+   "zip": "90712",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.1333,
+    33.848716
+   ],
+   "note": "County list: Tuesday-Wednesday: 12 pm - 8 pm; Thursday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-011",
+   "name": "Antelope Valley Senior Center",
+   "address": "777 W. Jackman Street",
+   "city": "Lancaster",
+   "zip": "93534",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.154162,
+    34.685933
+   ],
+   "note": "County list: Monday-Friday: 8 am - 5pm"
+  },
+  {
+   "id": "lacoa-2026-012",
+   "name": "Arroyo Seco Regional Library",
+   "address": "6145 N. Figueroa Street",
+   "city": "Los Angeles",
+   "zip": "90042",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.18653,
+    34.11384
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m."
+  },
+  {
+   "id": "lacoa-2026-013",
+   "name": "Artesia Lbrary",
+   "address": "18801 Elaine Avenue",
+   "city": "Artesia",
+   "zip": "90701",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.161544,
+    33.927894
+   ],
+   "note": "County list: Tuesday - Wednesday: 12 pm - 8 pm; Thursday - Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-014",
+   "name": "Ascot Branch Library",
+   "address": "120 W. Florence Avenue",
+   "city": "Los Angeles",
+   "zip": "90003",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.27443,
+    33.97444
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m."
+  },
+  {
+   "id": "lacoa-2026-015",
+   "name": "Asian Community Center",
+   "address": "14112 S. Kingsley Drive",
+   "city": "Gardena",
+   "zip": "90249",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.30389,
+    33.90287
+   ],
+   "note": "County list: Monday-Friday: 8 am - 5pm"
+  },
+  {
+   "id": "lacoa-2026-016",
+   "name": "Atwater Village Branch Library",
+   "address": "3379 Glendale Boulevard",
+   "city": "Los Angeles",
+   "zip": "90039",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.25933,
+    34.12022
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m."
+  },
+  {
+   "id": "lacoa-2026-017",
+   "name": "Baldwin Hills Branch Library",
+   "address": "2906 S. La Brea Avenue",
+   "city": "Los Angeles",
+   "zip": "90016",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.3526,
+    34.02809
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-018",
+   "name": "Baldwin Park Library",
+   "address": "4181 Baldwin Park Boulevard",
+   "city": "Baldwin Park",
+   "zip": "91706",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.96537,
+    34.08839
+   ],
+   "note": "County list: Tuesday-Wednesday: 12 pm - 8 pm; Thursday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-019",
+   "name": "Bartlett Senior Center",
+   "address": "1318 Cravens Ave",
+   "city": "Torrance",
+   "zip": "90501",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.3182,
+    33.83532
+   ],
+   "note": "County list: Monday - Friday: 8 a.m.- 4 p.m."
+  },
+  {
+   "id": "lacoa-2026-020",
+   "name": "Cahuenga Branch Library",
+   "address": "4591 Santa Monica Boulevard",
+   "city": "Los Angeles",
+   "zip": "90029",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.28896,
+    34.09135
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-021",
+   "name": "Canoga Park Branch Library",
+   "address": "20939 Sherman Way",
+   "city": "Canoga Park",
+   "zip": "91303",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.59018,
+    34.20153
+   ],
+   "note": "County list: Monday - Thursday: 10 a.m. - 8 pm.; Friday - Saturday: 9:30 a.m. - 5:30 p.m. Sunday: 1 p.m. - 5 p.m."
+  },
+  {
+   "id": "lacoa-2026-022",
+   "name": "Central Library",
+   "address": "630 W. 5th Street",
+   "city": "Los Angeles",
+   "zip": "90071",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.25512,
+    34.05035
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m."
+  },
+  {
+   "id": "lacoa-2026-023",
+   "name": "Centro Maravilla Service Center",
+   "address": "4716 E Cesar E Chavez Ave",
+   "city": "Los Angeles",
+   "zip": "90022",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.16442,
+    34.04037
+   ],
+   "note": "County list: Monday-Friday: 8 am - 4:30 pm"
+  },
+  {
+   "id": "lacoa-2026-024",
+   "name": "Chatsworth Branch Library",
+   "address": "21052 Devonshire Street",
+   "city": "Chatsworth",
+   "zip": "91311",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.59273,
+    34.25667
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-025",
+   "name": "Chinatown Branch Library",
+   "address": "639 N. Hill Street",
+   "city": "Los Angeles",
+   "zip": "90012",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.24106,
+    34.06088
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-026",
+   "name": "City Terrace Park",
+   "address": "1126 N. Hazard Avenue",
+   "city": "Los Angeles",
+   "zip": "90063",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.1793,
+    34.0486
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-027",
+   "name": "Claremont Helen Renwick Library",
+   "address": "208 N Harvard Avenue",
+   "city": "Claremont",
+   "zip": "91711",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.716,
+    34.0959
+   ],
+   "note": "County list: Tuesday-Wednesday: 12 pm - 8 pm; Thursday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-028",
+   "name": "Clifton M. Brakensiek Library",
+   "address": "9945 E. Flower Street",
+   "city": "Bellflower",
+   "zip": "90706",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.1215,
+    33.88245
+   ],
+   "note": "County list: Tuesday-Wednesday: 12 pm - 8 pm; Thursday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-029",
+   "name": "Community Center District 2",
+   "address": "1201 N. La Tijera Blvd.",
+   "city": "Inglewood",
+   "zip": "90302",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.36341,
+    33.97828
+   ],
+   "note": "County list: Monday - Friday: 11 a.m. - 6 p.m.; Saturday: 9 a.m. - 5 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-030",
+   "name": "Crenshaw Imperial Library",
+   "address": "11141 Crenshaw Blvd.",
+   "city": "Inglewood",
+   "zip": "90301",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.316818,
+    33.932331
+   ],
+   "note": "County list: Monday - Thursday: 11 a.m. - 6 p.m.; Friday: Closed; Saturday: 10 a.m. - 6 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-031",
+   "name": "Crescenta Valley Community Regional Park",
+   "address": "3901 Dunsmore Avenue",
+   "city": "La Crescenta",
+   "zip": "91214",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.25663,
+    34.22363
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-032",
+   "name": "Darby Park",
+   "address": "3400 W. Arbor Vitae St.",
+   "city": "Inglewood",
+   "zip": "90301",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.379432,
+    33.953004
+   ],
+   "note": "County list: Monday - Friday: 8 a.m. - 8 p.m.; Saturday: 9 a.m. - 5 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-033",
+   "name": "Dee Hardison Sports Center",
+   "address": "2400 Jefferson Street",
+   "city": "Torrance",
+   "zip": "90501",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.325881,
+    33.82692
+   ],
+   "note": "County list: Monday - Friday: 9 a.m. - 10 p.m.; Saturday: 8 a.m. - 7 p.m.; Sunday: 12 p.m. - 7 p.m."
+  },
+  {
+   "id": "lacoa-2026-034",
+   "name": "Del Aire Park",
+   "address": "12601 Isis Avenue",
+   "city": "Hawthorne",
+   "zip": "90251",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.3751,
+    33.9178
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-035",
+   "name": "Dexter Park",
+   "address": "11053 N. Trail Road",
+   "city": "Sylmar",
+   "zip": "91342",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.37554,
+    34.30316
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-036",
+   "name": "Don Knabe Community Regional Park",
+   "address": "19700 Bloomfield Avenue",
+   "city": "Cerritos",
+   "zip": "90703",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.05904,
+    33.84994
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-037",
+   "name": "Duarte Library",
+   "address": "1301 Buena Vista Street",
+   "city": "Duarte",
+   "zip": "91010",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.97807,
+    34.13813
+   ],
+   "note": "County list: Tuesday-Wednesday: 12 pm - 8 pm; Thursday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-038",
+   "name": "Eagle Rock Branch Library",
+   "address": "5027 Caspar Avenue",
+   "city": "Los Angeles",
+   "zip": "90041",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.21357,
+    34.13779
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-039",
+   "name": "East Los Angeles Library",
+   "address": "4837 E 3rd Street",
+   "city": "Los Angeles",
+   "zip": "90022",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.15975,
+    34.03388
+   ],
+   "note": "County list: Monday-Thursday: 10 am - 8 pm; Friday-Saturday: 10 am - 6pm Sunday 1 pm - 5 pm"
+  },
+  {
+   "id": "lacoa-2026-040",
+   "name": "East Los Angeles Service Center",
+   "address": "133 N. Sunol Drive",
+   "city": "Los Angeles",
+   "zip": "90063",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.179303,
+    34.037144
+   ],
+   "note": "County list: Monday-Friday: 8 am - 5pm"
+  },
+  {
+   "id": "lacoa-2026-041",
+   "name": "East Rancho Dominguez Community Center and Park",
+   "address": "15116 S. Atlantic Avenue",
+   "city": "Compton",
+   "zip": "90221",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.19271,
+    33.89477
+   ],
+   "note": "County list: Monday-Friday: 8 am - 5pm"
+  },
+  {
+   "id": "lacoa-2026-042",
+   "name": "Echo Park Branch Library",
+   "address": "1410 W. Temple Street",
+   "city": "Los Angeles",
+   "zip": "90026",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.25722,
+    34.06741
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-043",
+   "name": "Edendale Branch Library",
+   "address": "2011 W. Sunset Boulevard",
+   "city": "Los Angeles",
+   "zip": "90026",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.26246,
+    34.07835
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-044",
+   "name": "El Cariso Community Regional Park",
+   "address": "13100 Hubbard Street",
+   "city": "Sylmar",
+   "zip": "91342",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.418317,
+    34.316275
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-045",
+   "name": "El Monte Library",
+   "address": "3224 N Tyler Avenue",
+   "city": "El Monte",
+   "zip": "91731",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.0289,
+    34.0725
+   ],
+   "note": "County list: Tuesday-Wednesday: 12 pm - 8 pm; Thursday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-046",
+   "name": "El Retiro Library",
+   "address": "126 Vista Del Parque",
+   "city": "Torrance",
+   "zip": "90277",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.3822,
+    33.8156
+   ],
+   "note": "County list: Monday, Wednesday & Friday:; 10 a.m. - 6 p.m.; Tuesday & Thursday: 2 p.m.- 6p.m."
+  },
+  {
+   "id": "lacoa-2026-047",
+   "name": "El Sereno Branch Library",
+   "address": "5226 S. Huntington Drive",
+   "city": "Los Angeles",
+   "zip": "90032",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.16862,
+    34.08928
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-048",
+   "name": "Encino - Tarzana Branch Library",
+   "address": "18231 Ventura Boulevard",
+   "city": "Tarzana",
+   "zip": "91356",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.530033,
+    34.166723
+   ],
+   "note": "County list: Monday - Thursday: 10 a.m. - 8 pm.; Friday - Saturday: 9:30 a.m. - 5:30 p.m."
+  },
+  {
+   "id": "lacoa-2026-049",
+   "name": "Ervin \"Magic\" Johnson Recreation Area",
+   "address": "905 E El Segundo Boulevard",
+   "city": "Los Angeles",
+   "zip": "90059",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.2577,
+    33.9236
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-050",
+   "name": "Exposition Park - Dr. Mary McLeod Bethune Regional Library",
+   "address": "3900 S. Western Avenue",
+   "city": "Los Angeles",
+   "zip": "90062",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.30852,
+    34.01409
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: 1-5pm"
+  },
+  {
+   "id": "lacoa-2026-051",
+   "name": "Fairfax Branch Library",
+   "address": "161 S. Gardner Street",
+   "city": "Los Angeles",
+   "zip": "90036",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.35384,
+    34.07179
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-052",
+   "name": "Felipe de Neve Branch Library",
+   "address": "2820 W. 6th Street",
+   "city": "Los Angeles",
+   "zip": "90057",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.28439,
+    34.06348
+   ],
+   "note": "County list: Monday - Thursday: 10 a.m. - 8 pm.; Friday - Saturday: 9:30 a.m. - 5:30 p.m. Sunday: 1 p.m. - 5 p.m."
+  },
+  {
+   "id": "lacoa-2026-053",
+   "name": "Frances Howard Goldwyn - Hollywood Regional Library",
+   "address": "1623 Ivar Avenue",
+   "city": "Los Angeles",
+   "zip": "90028",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.32825,
+    34.10042
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: 1-5 p.m."
+  },
+  {
+   "id": "lacoa-2026-054",
+   "name": "Franklin D. Roosevelt park",
+   "address": "7600 Graham Avenue",
+   "city": "Los Angeles",
+   "zip": "90001",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.24274,
+    33.96974
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-055",
+   "name": "George Lane Park",
+   "address": "5520 W Avenue L8",
+   "city": "Quartz Hill",
+   "zip": "93536",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.228628,
+    34.652273
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-056",
+   "name": "George Washington Carver Park",
+   "address": "1400 E 118th Street",
+   "city": "Los Angeles",
+   "zip": "90059",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.25054,
+    33.92564
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-057",
+   "name": "Granada Hills Branch Library",
+   "address": "10640 Petit Avenue",
+   "city": "Granada Hills",
+   "zip": "91344",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.49765,
+    34.26402
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-058",
+   "name": "Gus Velasco Neighborhood Center",
+   "address": "9255 Pioneer Blvd.",
+   "city": "Santa Fe Springs",
+   "zip": "90670",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.085725,
+    33.958606
+   ],
+   "note": "County list: Monday - Friday: 8 a.m. - 8 p.m.; Saturday: 8 a.m. - 12 p.m."
+  },
+  {
+   "id": "lacoa-2026-059",
+   "name": "Hacienda Community and Recreation Center",
+   "address": "1234 Valencia Avenue",
+   "city": "Hacienda Heights",
+   "zip": "91745",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.962058,
+    33.992019
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-060",
+   "name": "Harbor City - Harbor Gateway Branch Library",
+   "address": "24000 S. Western",
+   "city": "Harbor City",
+   "zip": "90710",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.30711,
+    33.80697
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-061",
+   "name": "Helen Keller Park",
+   "address": "12521 Vermont Avenue",
+   "city": "Los Angeles",
+   "zip": "90044",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.2931,
+    33.9187
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-062",
+   "name": "Henderson Library",
+   "address": "4805 Emerald Street",
+   "city": "Torrance",
+   "zip": "90503",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.364722,
+    33.841667
+   ],
+   "note": "County list: Monday - Friday: 10 a.m. - 6 p.m.; Saturday: 9 a.m. - 5 p.m."
+  },
+  {
+   "id": "lacoa-2026-063",
+   "name": "Hyde Park Miriam Matthews Branch Library",
+   "address": "2205 W. Florence Avenue",
+   "city": "Los Angeles",
+   "zip": "90043",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.31821,
+    33.97498
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-064",
+   "name": "Inglewood Senior Center",
+   "address": "111 N. Locust Street",
+   "city": "Inglewood",
+   "zip": "90301",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.361099,
+    33.951594
+   ],
+   "note": "County list: Monday - Friday: 10 a.m. - 5 p.m.; Saturday & Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-065",
+   "name": "Jackie Robinson Park",
+   "address": "8773 E Avenue R",
+   "city": "Littlerock",
+   "zip": "93543",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.973445,
+    34.573917
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-066",
+   "name": "Jefferson - Vassie D. Wright Memorial Branch Library",
+   "address": "2211 W. Jefferson Boulevard",
+   "city": "Los Angeles",
+   "zip": "90018",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.3191,
+    34.02582
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-067",
+   "name": "Jesse Owens Park",
+   "address": "9651 S. Western Avenue",
+   "city": "Los Angeles",
+   "zip": "90047",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.309,
+    33.9478
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-068",
+   "name": "John Muir Branch Library",
+   "address": "1005 W. 64th Street",
+   "city": "Los Angeles",
+   "zip": "90044",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.29234,
+    33.98163
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-069",
+   "name": "Junipero Serra Branch Library",
+   "address": "4607 S. Main Street",
+   "city": "Los Angeles",
+   "zip": "90037",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.27466,
+    34.00165
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-070",
+   "name": "Katy Geissert Civic Center Library",
+   "address": "3301 Torrance Blvd.",
+   "city": "Torrance",
+   "zip": "90503",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.3443,
+    33.8406
+   ],
+   "note": "County list: Monday & Wednesday: 12 p.m. - 8 p.m.; Tuesday, Thursday, & Friday:; 10 a.m. - 6 p.m.; Saturday: 9 a.m. - 6 p.m."
+  },
+  {
+   "id": "lacoa-2026-071",
+   "name": "La Crescenta Library",
+   "address": "2809 Foothill Boulevard",
+   "city": "La Crescenta",
+   "zip": "91214",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.240337,
+    34.224751
+   ],
+   "note": "County list: Monday-Thursday: 10 am - 8 pm; Friday-Saturday: 10 am - 6pm Sunday 1 pm - 5 pm"
+  },
+  {
+   "id": "lacoa-2026-072",
+   "name": "La Puente Library",
+   "address": "15920 E. Central Avenue",
+   "city": "La Puente",
+   "zip": "91744",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.9515,
+    34.0203
+   ],
+   "note": "County list: Tuesday-Wednesday: 12 pm - 8 pm; Thursday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-073",
+   "name": "Ladera Park",
+   "address": "6027 Ladera Park Avenue",
+   "city": "Los Angeles",
+   "zip": "90056",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.359521,
+    33.986124
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-074",
+   "name": "Lake View Terrace Branch Library",
+   "address": "12002 Osborne Street",
+   "city": "Lake View Terrace",
+   "zip": "91342",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.394143,
+    34.272793
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-075",
+   "name": "Lancaster Library",
+   "address": "601 W Lancaster Boulevard",
+   "city": "Lancaster",
+   "zip": "93534",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.1407,
+    34.6985
+   ],
+   "note": "County list: Tuesday-Wednesday: 12 pm - 8 pm; Thursday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-076",
+   "name": "Little Tokyo Branch Library",
+   "address": "203 S. Los Angeles Street",
+   "city": "Los Angeles",
+   "zip": "90012",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.24378,
+    34.05013
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-077",
+   "name": "Loma Alta Park",
+   "address": "3330 N Lincoln Avenue",
+   "city": "Altadena",
+   "zip": "91001",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.15753,
+    34.20208
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-078",
+   "name": "Lomita Library",
+   "address": "24200 Narbonne Avenue",
+   "city": "Lomita",
+   "zip": "90717",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.3196,
+    33.8016
+   ],
+   "note": "County list: Tuesday-Wednesday: 12 pm - 8 pm; Thursday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-079",
+   "name": "Los Feliz Branch Library",
+   "address": "1874 Hillhurst Avenue",
+   "city": "Los Angeles",
+   "zip": "90027",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.287,
+    34.10497
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-080",
+   "name": "Los Nietos Community and Senior Center",
+   "address": "11640 E. Slauson Avenue",
+   "city": "Whittier",
+   "zip": "90606",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.067533,
+    33.964297
+   ],
+   "note": "County list: Monday-Friday: 8 am - 5pm"
+  },
+  {
+   "id": "lacoa-2026-081",
+   "name": "Lynwood Senior Center",
+   "address": "11329 Ernestine Ave",
+   "city": "Lynwood",
+   "zip": "90262",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.198234,
+    33.926148
+   ],
+   "note": "County list: Monday - Thursday: 8 am - 5 pm; Friday: 8 am - 1 pm"
+  },
+  {
+   "id": "lacoa-2026-082",
+   "name": "Malabar Branch Library",
+   "address": "2801 Wabash Avenue",
+   "city": "Los Angeles",
+   "zip": "90033",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.19787,
+    34.05069
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-083",
+   "name": "Malibu Library",
+   "address": "23519 W Civic Center Way",
+   "city": "Malibu",
+   "zip": "90265",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.688685,
+    34.037072
+   ],
+   "note": "County list: Monday-Thursday: 10 am - 8 pm; Friday-Saturday: 9 am - 5 pm Sunday 1 pm - 5 pm"
+  },
+  {
+   "id": "lacoa-2026-084",
+   "name": "Mar Vista Branch Library",
+   "address": "12006 Venice Boulevard",
+   "city": "Los Angeles",
+   "zip": "90066",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.4289,
+    34.00558
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-085",
+   "name": "Mark Twain Branch Library",
+   "address": "9621 S. Figueroa Street",
+   "city": "Los Angeles",
+   "zip": "90003",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.28321,
+    33.94851
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-086",
+   "name": "Mary M. Bethune Park",
+   "address": "1244 E 61st Street",
+   "city": "Los Angeles",
+   "zip": "90001",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.253315,
+    33.984341
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-087",
+   "name": "Memorial Branch Library",
+   "address": "4625 W. Olympic Boulevard",
+   "city": "Los Angeles",
+   "zip": "90019",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.33183,
+    34.05745
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-088",
+   "name": "Mid-Valley Regional Library",
+   "address": "16244 Nordhoff Street",
+   "city": "North Hills",
+   "zip": "91343",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.4871,
+    34.23516
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: 1-5 p.m."
+  },
+  {
+   "id": "lacoa-2026-089",
+   "name": "Mona Park",
+   "address": "2291 E 121st Street",
+   "city": "Compton",
+   "zip": "90222",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.2302,
+    33.92209
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-090",
+   "name": "Morningside Park Branch Library",
+   "address": "3202 W. 85th Street",
+   "city": "Inglewood",
+   "zip": "90305",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.32789,
+    33.96068
+   ],
+   "note": "County list: Monday-Friday: 11 am - 6 pm; Saturday: 10 am - 6 pm; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-091",
+   "name": "North Hollywood Amelia Earhart Regional Library",
+   "address": "5211 Tujunga Avenue",
+   "city": "North Hollywood",
+   "zip": "91601",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.37944,
+    34.16581
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-092",
+   "name": "North Torrance Library",
+   "address": "3604 Artesia Blvd.",
+   "city": "Torrance",
+   "zip": "90504",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.335439,
+    33.872629
+   ],
+   "note": "County list: Monday to Friday: 10 a.m. - 6 p.m.; Saturday 9 a.m. - 5 p.m."
+  },
+  {
+   "id": "lacoa-2026-093",
+   "name": "Northwest Library",
+   "address": "3323 W. Victory Boulevard",
+   "city": "Burbank",
+   "zip": "91505",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.347356,
+    34.185052
+   ],
+   "note": "County list: Monday 12 PM to 6 PM; Tuesday 12 PM to 8 PM; Wednesday - Thursday 12 PM to 6 PM; Sunday 10 Am to 2 PM; Closed Friday and Saturday"
+  },
+  {
+   "id": "lacoa-2026-094",
+   "name": "Pacoima Branch Library",
+   "address": "13605 Van Nuys Boulevard",
+   "city": "Pacoima",
+   "zip": "91331",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.42953,
+    34.26152
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-095",
+   "name": "Palmdale AJCC",
+   "address": "38510 Sierra Highway",
+   "city": "Palmdale",
+   "zip": "93550",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.116542,
+    34.581846
+   ],
+   "note": "County list: Monday - Friday: 8 am - 4:30 pm"
+  },
+  {
+   "id": "lacoa-2026-096",
+   "name": "Palms - Rancho Park Branch Library",
+   "address": "2920 Overland Avenue",
+   "city": "Los Angeles",
+   "zip": "90064",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.41798,
+    34.03383
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-097",
+   "name": "Palomares Park Community Center",
+   "address": "499 E Arrow Highway",
+   "city": "Pomona",
+   "zip": "91766",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.742127,
+    34.090758
+   ],
+   "note": "County list: Monday-Friday: 10am-5pm; Saturday-Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-098",
+   "name": "Panorama City Branch Library",
+   "address": "14345 Roscoe Boulevard",
+   "city": "Panorama City",
+   "zip": "91402",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.44657,
+    34.22195
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-099",
+   "name": "Paramount Community Center",
+   "address": "14400 Paramount Boulevard",
+   "city": "Paramount",
+   "zip": "90723",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.159623,
+    33.902224
+   ],
+   "note": "County list: Monday - Thursday: 8:00 am - 5:30 pm; Friday: 8:00 am - 5:00 pm"
+  },
+  {
+   "id": "lacoa-2026-100",
+   "name": "Pearblossom Park",
+   "address": "33922 121st Street E",
+   "city": "Pearblossom",
+   "zip": "93553",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.913319,
+    34.501684
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-101",
+   "name": "Pico Union Branch Library",
+   "address": "1030 S. Alvarado Street",
+   "city": "Los Angeles",
+   "zip": "90006",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.28009,
+    34.05113
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-102",
+   "name": "Pio Pico - Koreatown Branch Library",
+   "address": "694 S. Oxford Avenue",
+   "city": "Los Angeles",
+   "zip": "90005",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.30746,
+    34.06
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-103",
+   "name": "Platt Branch Library",
+   "address": "23600 Victory Boulevard",
+   "city": "Woodland Hills",
+   "zip": "91367",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.64172,
+    34.18635
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-104",
+   "name": "Playa Vista Branch Library",
+   "address": "6400 Playa Vista Drive",
+   "city": "Los Angeles",
+   "zip": "90094",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.4256,
+    33.97036
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-105",
+   "name": "Pomona Public Library",
+   "address": "505 S Garey Avenue",
+   "city": "Pomona",
+   "zip": "91766",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.751201,
+    34.054678
+   ],
+   "note": "County list: Monday-Thursday: 12-7 PM; Saturday: 12-5 PM"
+  },
+  {
+   "id": "lacoa-2026-106",
+   "name": "Pomona Valley AJCC",
+   "address": "1460 E Holt Avenue",
+   "city": "Pomona",
+   "zip": "91767",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.720403,
+    34.060863
+   ],
+   "note": "County list: Monday - Friday: 8 am - 5 pm"
+  },
+  {
+   "id": "lacoa-2026-107",
+   "name": "Porter Ranch Branch Library",
+   "address": "11371 Tampa Avenue",
+   "city": "Porter Ranch",
+   "zip": "91326",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.55985,
+    34.27744
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-108",
+   "name": "Potrero Heights Park Community and Senior Center",
+   "address": "8051 Arroyo Drive",
+   "city": "Montebello",
+   "zip": "90640",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.09442,
+    34.043357
+   ],
+   "note": "County list: Monday-Friday: 8 am - 5pm"
+  },
+  {
+   "id": "lacoa-2026-109",
+   "name": "Quartz Hill Library",
+   "address": "5040 West Avenue M-2",
+   "city": "Quartz Hill",
+   "zip": "93536",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.219663,
+    34.64336
+   ],
+   "note": "County list: Monday-Thursday: 10 am - 8 pm; Friday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-110",
+   "name": "Rancho Dominguez AJCC (KRA)",
+   "address": "2909 E. Pacific Commerce Drive",
+   "city": "Compton",
+   "zip": "90221",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.208506,
+    33.850083
+   ],
+   "note": "County list: Monday - Friday: 8 am - 5 pm"
+  },
+  {
+   "id": "lacoa-2026-111",
+   "name": "Rio Hondo Comprehensive AJCC",
+   "address": "10400 Pioneer Boulevard, Suite 9",
+   "city": "Santa Fe Springs",
+   "zip": "90670",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.081268,
+    33.941201
+   ],
+   "note": "County list: Monday - Friday: 8 am - 5 pm"
+  },
+  {
+   "id": "lacoa-2026-112",
+   "name": "Robert Louis Stevenson Branch Library",
+   "address": "803 Spence Street",
+   "city": "Los Angeles",
+   "zip": "90023",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.19823,
+    34.02767
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-113",
+   "name": "Rogers Park",
+   "address": "400 W. Beach Avenue",
+   "city": "Inglewood",
+   "zip": "90301",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.359976,
+    33.969068
+   ],
+   "note": "County list: Monday-Friday: 8 am - 8 pm; Saturday: 9 am - 5 pm; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-114",
+   "name": "Rowland Heights Library",
+   "address": "1850 Nogales Street",
+   "city": "Rowland Heights",
+   "zip": "91748",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.888785,
+    33.984504
+   ],
+   "note": "County list: Monday-Thursday: 10 am - 8 pm; Friday-Saturday: 10 am - 6pm; Sunday: 1 pm - 5pm"
+  },
+  {
+   "id": "lacoa-2026-115",
+   "name": "Roy Campanella Park",
+   "address": "14812 S Stanford Avenue",
+   "city": "Compton",
+   "zip": "90220",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.260208,
+    33.898371
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-116",
+   "name": "Salazar Park",
+   "address": "3864 Whittier Boulevard",
+   "city": "Los Angeles",
+   "zip": "90023",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.190513,
+    34.023451
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-117",
+   "name": "San Gabriel Library",
+   "address": "500 S. Del Mar Avenue",
+   "city": "San Gabriel",
+   "zip": "91776",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.099425,
+    34.095759
+   ],
+   "note": "County list: Tuesday-Wednesday: 12 pm - 8 pm; Thursday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-118",
+   "name": "San Pedro Regional Library",
+   "address": "931 S. Gaffey Street",
+   "city": "San Pedro",
+   "zip": "90731",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.29284,
+    33.73558
+   ],
+   "note": "County list: Monday- Thurs: 10 a.m. - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: 1pm- 5pm"
+  },
+  {
+   "id": "lacoa-2026-119",
+   "name": "San Pedro Service Center",
+   "address": "769 W. Third Street",
+   "city": "San Pedro",
+   "zip": "90731",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.293965,
+    33.741372
+   ],
+   "note": "County list: Monday-Friday: 8 am - 5pm"
+  },
+  {
+   "id": "lacoa-2026-120",
+   "name": "Santa Fe Springs Library",
+   "address": "11700 Telegraph Road",
+   "city": "Santa Fe Springs",
+   "zip": "90670",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.084,
+    33.945102
+   ],
+   "note": "County list: Mondays-Thursdays 10am-8pm Fridays 10am-6pm Saturdays 10am-5pm"
+  },
+  {
+   "id": "lacoa-2026-121",
+   "name": "Sherman Oaks Martin Pollard Branch Library",
+   "address": "14245 Moorpark Street",
+   "city": "Sherman Oaks",
+   "zip": "91423",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.44415,
+    34.15132
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-122",
+   "name": "Sierra Madre Library",
+   "address": "440 West Sierra Madre Blvd.",
+   "city": "Sierra Madre",
+   "zip": "91024",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.060112,
+    34.161678
+   ],
+   "note": "County list: Monday & Wednesday: 11 a.m. - 8 p.m.; Tuesday, Friday, & Sunday: Closed; Thursday & Saturday: 10 a.m. - 6 p.m."
+  },
+  {
+   "id": "lacoa-2026-123",
+   "name": "Silver Lake Branch Library",
+   "address": "2411 Glendale Boulevard",
+   "city": "Los Angeles",
+   "zip": "90039",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.25947,
+    34.10053
+   ],
+   "note": "County list: Monday - Thursday: 10 a.m. - 8 pm.; Friday - Saturday: 9:30 a.m. - 5:30 p.m. Sunday: 1 p.m. - 5 p.m."
+  },
+  {
+   "id": "lacoa-2026-124",
+   "name": "Slawson AJCC",
+   "address": "5500 Rickenbacker Road",
+   "city": "Bell",
+   "zip": "90201",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.168179,
+    33.990559
+   ],
+   "note": "County list: Monday - Friday: 8 am - 5 pm"
+  },
+  {
+   "id": "lacoa-2026-125",
+   "name": "South El Monte Senior Center",
+   "address": "1556 Central Avenue",
+   "city": "South El Monte",
+   "zip": "91733",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.0466,
+    34.04713
+   ],
+   "note": "County list: Monday - Thursday: 12:00p - 5:00p Friday 8 a.m. - 4:30 p.m."
+  },
+  {
+   "id": "lacoa-2026-126",
+   "name": "South Whittier Library",
+   "address": "11543 Colima Road",
+   "city": "Whittier",
+   "zip": "90604",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.024492,
+    33.924234
+   ],
+   "note": "County list: Monday-Thursday: 10 am - 8 pm; Friday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-127",
+   "name": "Southeast LA Comprehensive AJCC",
+   "address": "4354 Tweedy Boulevard",
+   "city": "South Gate",
+   "zip": "90280",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.195387,
+    33.942743
+   ],
+   "note": "County list: Monday - Friday: 8 am - 5 pm"
+  },
+  {
+   "id": "lacoa-2026-128",
+   "name": "Southeast Library",
+   "address": "23115 Arlington Ave",
+   "city": "Torrance",
+   "zip": "90501",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.32019,
+    33.81535
+   ],
+   "note": "County list: Monday to Friday: 10 a.m. - 6 p.m.; Saturday 9 a.m. - 5 p.m."
+  },
+  {
+   "id": "lacoa-2026-129",
+   "name": "Stephen Sorensen Park",
+   "address": "16801 E. Avenue P",
+   "city": "Lake Los Angeles",
+   "zip": "93591",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.831563,
+    34.605811
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-130",
+   "name": "Stevenson Ranch Library",
+   "address": "25950 The Old Road",
+   "city": "Stevenson Ranch",
+   "zip": "91381",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.572928,
+    34.393225
+   ],
+   "note": "County list: Monday-Thursday: 10 am - 8 pm; Friday-Saturday: 10 am - 6 pm"
+  },
+  {
+   "id": "lacoa-2026-131",
+   "name": "Sun Valley Branch Library",
+   "address": "7935 Vineland Avenue",
+   "city": "Sun Valley",
+   "zip": "91352",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.37105,
+    34.21505
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-132",
+   "name": "Sunland - Tujunga Branch Library",
+   "address": "7771 Foothill Boulevard",
+   "city": "Tujunga",
+   "zip": "91042",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.30122,
+    34.25804
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-133",
+   "name": "Sunshine Park",
+   "address": "515 S. Deepmead Avenue",
+   "city": "La Puente",
+   "zip": "91744",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -117.900796,
+    34.009711
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-134",
+   "name": "Sylmar Branch Library",
+   "address": "14561 Polk Street",
+   "city": "Sylmar",
+   "zip": "91342",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.45065,
+    34.30724
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-135",
+   "name": "Ted Watkins Memorial Park",
+   "address": "1335 E. 103rd Street",
+   "city": "Los Angeles",
+   "zip": "90002",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.249611,
+    33.94393
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-136",
+   "name": "Topanga Library",
+   "address": "122 N Topanga Canyon Boulevard",
+   "city": "Topanga",
+   "zip": "90290",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.603473,
+    34.090002
+   ],
+   "note": "County list: Monday-Thursday: 10 am - 8 pm; Friday-Saturday: 10 am - 6pm; Sunday: 1 pm - 5pm"
+  },
+  {
+   "id": "lacoa-2026-137",
+   "name": "Val Verde Community Regional Park",
+   "address": "30300 Arlington Street",
+   "city": "Val Verde",
+   "zip": "91384",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.665182,
+    34.446145
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-138",
+   "name": "Valley Plaza Branch Library",
+   "address": "12311 Vanowen Street",
+   "city": "North Hollywood",
+   "zip": "91605",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.4012,
+    34.19486
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-139",
+   "name": "Van Nuys Branch Library",
+   "address": "6250 Sylmar Avenue",
+   "city": "Van Nuys",
+   "zip": "91401",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.4458,
+    34.18401
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-140",
+   "name": "Vermont Square Branch Library",
+   "address": "1201 W. 48th. Street",
+   "city": "Los Angeles",
+   "zip": "90037",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.29592,
+    34.00009
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-141",
+   "name": "Vernon - Leon H. Washington Jr. Memorial Branch Library",
+   "address": "4504 S. Central Avenue",
+   "city": "Los Angeles",
+   "zip": "90011",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.25612,
+    34.00283
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-142",
+   "name": "Veteran's Memorial Community Regional Park",
+   "address": "13000 Sayre Street",
+   "city": "Sylmar",
+   "zip": "91342",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.415507,
+    34.325092
+   ],
+   "note": "County list: Monday-Thursday: 10:30 am to 9:00 pm; Friday: 10:30 am to 7:00 pm; Saturday: 8:30 am to 5:00 pm. Pet friendly (dogs on a leash, owner present)"
+  },
+  {
+   "id": "lacoa-2026-143",
+   "name": "Walteria Library",
+   "address": "3815 242nd Street",
+   "city": "Torrance",
+   "zip": "90505",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.35303,
+    33.804539
+   ],
+   "note": "County list: Monday - Friday 10 a.m. – 6 p.m.; Saturday 9am-5pm"
+  },
+  {
+   "id": "lacoa-2026-144",
+   "name": "Washington Irving Branch Library",
+   "address": "4117 W. Washington Boulevard",
+   "city": "Los Angeles",
+   "zip": "90018",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.3289,
+    34.04015
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-145",
+   "name": "West Hollywood Library",
+   "address": "625 N. San Vicente Boulevard",
+   "city": "West Hollywood",
+   "zip": "90069",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.383978,
+    34.082088
+   ],
+   "note": "County list: Monday-Thursday: 11 am - 7 pm; Friday-Saturday: 10 am - 6 pm; Sunday: 1pm - 5pm"
+  },
+  {
+   "id": "lacoa-2026-146",
+   "name": "West Los Angeles AJCC",
+   "address": "5446 Sepulveda Boulevard",
+   "city": "Culver City",
+   "zip": "90230",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.395126,
+    33.993857
+   ],
+   "note": "County list: Monday - Friday: 8 am - 5 pm"
+  },
+  {
+   "id": "lacoa-2026-147",
+   "name": "West Los Angeles Regional Library",
+   "address": "11360 Santa Monica Boulevard",
+   "city": "Los Angeles",
+   "zip": "90025",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.44999,
+    34.04586
+   ],
+   "note": "County list: Monday - Thursday: 10 a.m. - 8 pm.; Friday - Saturday: 9:30 a.m. - 5:30 p.m. Sunday: 1 p.m. - 5 p.m."
+  },
+  {
+   "id": "lacoa-2026-148",
+   "name": "West Valley Regional Branch Library",
+   "address": "19036 Vanowen Street",
+   "city": "Reseda",
+   "zip": "91335",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.54811,
+    34.19306
+   ],
+   "note": "County list: Monday - Thursday: 10 a.m. - 8 pm.; Friday - Saturday: 9:30 a.m. - 5:30 p.m. Sunday: 1 p.m. - 5 p.m."
+  },
+  {
+   "id": "lacoa-2026-149",
+   "name": "Westchester - Loyola Village Branch Library",
+   "address": "7114 W. Manchester Avenue",
+   "city": "Los Angeles",
+   "zip": "90045",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.41734,
+    33.95915
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-150",
+   "name": "Westwood Branch Library",
+   "address": "1246 Glendon Avenue",
+   "city": "Los Angeles",
+   "zip": "90024",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.4415,
+    34.05797
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-151",
+   "name": "Will & Ariel Durant Branch Library",
+   "address": "7140 W. Sunset Boulevard",
+   "city": "Los Angeles",
+   "zip": "90046",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.34562,
+    34.09756
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  },
+  {
+   "id": "lacoa-2026-152",
+   "name": "Willowbrook Senior Center",
+   "address": "12915 Jarvis Avenue",
+   "city": "Los Angeles",
+   "zip": "90061",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.272198,
+    33.914984
+   ],
+   "note": "County list: Monday-Friday: 8 am - 5pm"
+  },
+  {
+   "id": "lacoa-2026-153",
+   "name": "Woodland Hills Branch Library",
+   "address": "22200 Ventura Boulevard",
+   "city": "Woodland Hills",
+   "zip": "91364",
+   "phone": null,
+   "designation": "listed on the Los Angeles County Operational Area cooling center list",
+   "opening_hours": null,
+   "eligibility": "open to the public",
+   "coordinates": [
+    -118.61075,
+    34.16806
+   ],
+   "note": "County list: Monday: 10 a.m. - 8 p.m.; Tues: 12 noon - 8 p.m.; Weds: 10 a.m. - 8 p.m.; Thurs: 12 noon - 8 p.m.; Friday - Saturday: 9:30 a.m. - 5:30 p.m.; Sunday: Closed"
+  }
+ ]
+}

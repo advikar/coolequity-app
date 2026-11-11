@@ -14,15 +14,29 @@ survey; every number carries its source and limits in each city's in-app guide.
 | San Ramon | [sanramon/app/](https://coolequity.org/sanramon/app/) | 419 | 85k | USFS/CAL FIRE 2022 aerial | LACE 2023, not scored | 0.45 |
 | West Contra Costa | [westcc/app/](https://coolequity.org/westcc/app/) | 982 | 272k | USFS/CAL FIRE 2022 aerial | LACE 2023, scored | 0.35 |
 | Pittsburg & Bay Point | [pittsburg/app/](https://coolequity.org/pittsburg/app/) | 570 | 90k | USFS/CAL FIRE 2022 aerial; county lidar (CDFW 2025) on 16 areas; 2009–2020 height model on 52 (marsh edge); no stand-in | LACE 2023, scored | 0 (shown, not scored: tracks distance from the shore) |
+| Los Angeles | [losangeles/app/](https://coolequity.org/losangeles/app/) | 9,021 | 3.86M | USFS/CAL FIRE 2022 aerial; greenness stand-in on 73 (mountain edge); no height model | LACE 2023, scored | 0.35 |
 
-All four share one app, one pipeline and one method: ACS 2020–2024 population and age
+All six share one app, one pipeline and one method: ACS 2020–2024 population and age
 allocated into H3 areas, Landsat 8/9 surface temperature, walking time routed on the
 OpenStreetMap pedestrian network, planting scenarios conditional on mapped street capacity,
 a data & methods guide, the county cooling directory and reproducible scenario export.
 
+Los Angeles was built in November 2026 after a check of every source for a newer vintage.
+ACS 2020–2024, Census LACE 2023, the USFS/CAL FIRE 2022 canopy map, ESA WorldCover 2021 and
+the SB 535 designation of September 2026 were each still the newest release. The satellite
+window was not, so every build was re-composited on summers 2024–2026 (`SUMMER_YEARS` in
+`pipeline/config.py`); the three earlier builds that score heat (Bakersfield, San Ramon, West
+Contra Costa) re-ranked, and `HANDOFF.md` records by how much. The SB 535 designation is a
+layer and a preset in every build that contains a designated tract (all but San Ramon).
+Los Angeles is also the one build with a 1939 HOLC map, with neighbourhood names
+from a published boundary layer, and with a wildfire flag: areas inside the January 2025
+Palisades and Hurst fire perimeters are marked, because their tree cover and residents
+predate the fires.
+
 This repository replaces the per-city branches of
 [advikar/coolequity](https://github.com/advikar/coolequity), which stays as it was (including
-the legacy Los Angeles build on its `master` branch, not carried over here).
+the legacy basin-wide Los Angeles build on its `master` branch; the Los Angeles map here is a
+new city-limit build, not that one).
 
 ## Layout
 
@@ -62,8 +76,9 @@ boundaries, assigns every area by its centre, writes a per-ward summary and stam
 `ward_name` onto the scored output. The app then shows a "By ward" (or "By district") roll-up,
 an outline toggle on the map, a list filter, ward fields in every export and a page in the
 briefing. A fetch that changes boundaries is refused until rerun with `--accept-boundaries`.
-Bakersfield (7 wards), Contra Costa (5 supervisorial districts) and San Ramon (4 council
-districts) are configured; West Contra Costa and Pittsburg have no source yet.
+Bakersfield (7 wards), Contra Costa (5 supervisorial districts), San Ramon (4 council
+districts) and Los Angeles (15 council districts) are configured; West Contra Costa and
+Pittsburg have no source yet.
 
 Every fetching stage can record what it fetched with `pipeline/sources.py`, which writes
 `cities/<slug>/data/sources.json` and `SOURCES.md` (URL, date, record count, file hash).
@@ -111,6 +126,7 @@ complete.
 echo "CENSUS_API_KEY=..." > .env && chmod 600 .env    # api.census.gov/data/key_signup.html
 export COOLEQUITY_CITY=bakersfield
 .venv/bin/python pipeline/01_make_grid.py
+.venv/bin/python pipeline/00_osm_extract.py --pbf /path/to/region.osm.pbf   # optional (Los Angeles): OpenStreetMap buildings, streets, names and walk graph from a downloaded extract instead of Overpass; needs `pip install osmium`
 .venv/bin/python pipeline/02_satellite.py              # --cached: use the committed rasters
 .venv/bin/python pipeline/02b_buildings.py             # --refresh: re-pull footprints
 .venv/bin/python pipeline/02c_canopy.py
@@ -123,6 +139,7 @@ export COOLEQUITY_CITY=bakersfield
 .venv/bin/python pipeline/04c_designated_cooling.py    # county cooling list -> map points (Nominatim)
 .venv/bin/python pipeline/04d_jurisdiction.py          # city / community per cell (TIGERweb places)
 .venv/bin/python pipeline/04f_sb535.py                 # SB 535 disadvantaged-community share per cell (cities with SB535_URL)
+.venv/bin/python pipeline/04g_fire.py                  # wildfire perimeters newer than the canopy and census inputs (cities with FIRE_PERIMETERS)
 .venv/bin/python pipeline/05_score.py
 .venv/bin/python pipeline/05b_stability.py            # rank bands: census margins + weight jitter, 300 draws
 .venv/bin/python pipeline/06_audit_rebuild.py --baseline <dir with the previous outputs>
@@ -135,6 +152,11 @@ Two inputs are downloaded by hand and are not in the repository:
   set `COOLEQUITY_ALLOW_INCOME_MODEL=1` to knowingly fall back to the income model instead.
 - **USFS/CAL FIRE 2022 canopy** rasters: see the docstring of `02d_canopy_usfs.py` for the
   download and where to place the zips.
+
+A third applies to Los Angeles only: the public Overpass servers cannot serve a city that
+size (two million buildings, a 576,000-node walking network), so its OpenStreetMap inputs come
+from a Geofabrik regional extract read by `00_osm_extract.py`, which writes the same files 02b,
+04 and 04b otherwise fetch. `cities/losangeles/data/SOURCES.md` names the extract and its hash.
 
 Each step's docstring states its inputs, outputs and fallbacks. `03_census.py` decides for
 itself whether the OSM building mask is complete and unbiased enough to place residents with,

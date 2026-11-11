@@ -35,3 +35,9 @@ cities/contracosta/data/ndvi_contracosta.tif
 # West Contra Costa: same reason as the county mask above (42 MB, input to 03 only).
 cities/westcc/data/buildings_westcc.geojson
 cities/pittsburg/data/buildings_pittsburg.geojson
+
+# Los Angeles: 284 MB of building centroids (input to 03 and 05 only), and the
+# 9.7 / 13.8 MB composites are rebuilt by 02; same reasons as the county build.
+cities/losangeles/data/buildings_losangeles.geojson
+cities/losangeles/data/lst_losangeles.tif
+cities/losangeles/data/ndvi_losangeles.tif

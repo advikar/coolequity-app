@@ -258,7 +258,66 @@ def fetch_places():
                     "subdivision" if tags.get("landuse") == "residential" else "place",
         }})
     log(f"    places: {pts} point anchors, {polys} named areas")
+    cfg = getattr(C, "NAME_AREAS", None)
+    if cfg:
+        feats += fetch_name_areas(cfg)
     return {"type": "FeatureCollection", "features": feats}
+
+
+def polygonal(geom):
+    """A valid Polygon/MultiPolygon mapping, or None. Published boundary layers
+    carry the odd self-touching ring, which a later dissolve refuses."""
+    from shapely import make_valid
+    from shapely.geometry import MultiPolygon, mapping, shape
+    g = shape(geom)
+    if not g.is_valid:
+        try:
+            g = make_valid(g, method="structure")
+        except Exception:
+            g = g.buffer(0)
+    parts = [p for p in getattr(g, "geoms", [g]) if p.geom_type == "Polygon" and not p.is_empty]
+    for p in list(getattr(g, "geoms", [])):
+        if p.geom_type == "MultiPolygon":
+            parts += list(p.geoms)
+    if not parts:
+        return None
+    out = parts[0] if len(parts) == 1 else MultiPolygon(parts)
+    return json.loads(json.dumps(mapping(out)))
+
+
+def fetch_name_areas(cfg):
+    """Published neighbourhood polygons to name hexes by containment (C.NAME_AREAS).
+
+    OSM place nodes are points, and a city of 1,200 km2 has a few hundred of
+    them, unevenly: nearest-node naming put most of Sylmar under the name of one
+    gated subdivision. Where a city has a published neighbourhood map, a hex
+    takes the name of the polygon its centre falls in, and the nodes only name
+    what lies outside every polygon.
+    """
+    def rnd(c):
+        return [round(c[0], 5), round(c[1], 5)] if isinstance(c[0], (int, float)) else [rnd(x) for x in c]
+    feats, offset = [], 0
+    while True:
+        r = requests.get(cfg["service"].rstrip("/") + "/query", params={
+            "where": "1=1", "outFields": cfg["name_field"], "outSR": 4326, "f": "geojson",
+            "resultOffset": offset}, headers=UA, timeout=120)
+        r.raise_for_status()
+        g = r.json()
+        if "error" in g:
+            raise RuntimeError(f"name areas: {g['error']}")
+        got = g.get("features", [])
+        for f in got:
+            name = (f["properties"].get(cfg["name_field"]) or "").strip()
+            if name and f.get("geometry") and f["geometry"]["type"] in ("Polygon", "MultiPolygon"):
+                geom = polygonal({"type": f["geometry"]["type"], "coordinates": rnd(f["geometry"]["coordinates"])})
+                if geom:
+                    feats.append({"type": "Feature", "geometry": geom,
+                                  "properties": {"name": name, "place": "neighbourhood", "kind": "neighbourhood"}})
+        if not got or not (g.get("exceededTransferLimit") or g.get("properties", {}).get("exceededTransferLimit")):
+            break
+        offset += len(got)
+    log(f"    places: {len(feats)} published neighbourhood areas ({cfg.get('what', cfg['service'])})")
+    return feats
 
 
 def fetch_holc():

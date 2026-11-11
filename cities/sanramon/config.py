@@ -38,6 +38,11 @@ H3_RES = 9
 # So the layer is still BUILT and can still be viewed, and it is scored at zero.
 # The rest is LA's ratio renormalised: 35/25/15 of 0.75 becomes
 # 0.4667/0.3333/0.20, rounded to sum to exactly 1.
+# Re-measured November 11, 2026 on the 2024-2026 composite (11 Landsat scenes):
+# ranked cells read 36.8-46.7 C; position explains 13.5% of the variance and LST
+# correlates -0.56 with tree cover. With this few scenes the composite carries
+# scene-sampling noise: the 2022-2024 and 2024-2026 values correlate 0.875
+# cell to cell, and 32 of the 42 top-tier areas are the same in both.
 WEIGHTS = {
     "heat":     0.45,   # heat_n
     "green":    0.33,   # (1 - greenness_n)

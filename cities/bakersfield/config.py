@@ -24,7 +24,8 @@ H3_RES = 9
 # was explained by position alone; comparing Richmond's 41 C to Antioch's 52 C
 # on one scale was comparing climates. Bakersfield is one flat valley floor
 # ~30 km across with no marine gradient, so within-city normalisation compares
-# like with like. Measured range: 33.2-58.1 C, median 49.8 C.
+# like with like. Measured range (summers 2024-2026): 31.9-59.0 C, median
+# 49.6 C; position explains 8% of the variance across ranked cells.
 #
 # A/C ACCESS ships at 0. The Census LACE 2023 estimate is nearly uniform here
 # (96.5-100% of occupied homes across ranked cells, median 99.8%). Min-max
