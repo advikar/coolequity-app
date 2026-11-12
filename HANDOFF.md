@@ -116,6 +116,12 @@ changes substantially; anything handed to city staff from the earlier build quot
      the camera goes to it clear of the detail panel, and the markers turn on. Seen working for
      a park and a bus stop at 1300 px wide; not checked on a phone-width screen, where the
      detail panel covers the map.
+   - November 12: the owner saw the top school read 0% while the basemap shows trees. Checked on
+     the June 2022 NAIP photo: Crescent Elementary was under construction, saplings only; the
+     model's 0.1% is right for that day and the basemap is newer. Every row, pin and card now
+     states the photo date (`tree_as_of` in the places file); the 35 places past the 2020 urban
+     line are tagged "newer site"; a "Hide newer sites" filter drops them; the ward page's top
+     three leaves them out. Not solved: new places inside the 2020 urban area are not dated.
 9. **Tree spacing is editable (done, tested; all builds).** `TREE_SPACING_M` was a constant
    10; it is now an input beside the cost (4-30 m, default 10, feet shown). `setSpacing()`
    recomputes street room, its thirds, scenarios, costs and the ward table; exports already

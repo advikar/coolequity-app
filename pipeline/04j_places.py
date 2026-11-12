@@ -318,7 +318,16 @@ def measure(g, hexes, study, cfg):
                              "stops": int(r.stops) if r.kind == "bus_stop" else None,
                              "tree_near": None if pd.isna(r.tree_near) else float(r.tree_near), "cell": int(ids[r.h3])}}
              for p, r in zip(ll, P.itertuples())]
-    OUT_PLACES.write_text(json.dumps({"type": "FeatureCollection", "features": feats}))
+    # When the trees were photographed. Every figure here is that old: a school or park built
+    # around then shows the saplings it had, and the app says the date on every row.
+    as_of = "2022"
+    rep_path = C.REPORTS / f"canopy_naip_{C.SLUG}.json"
+    if rep_path.exists():
+        flown = (json.loads(rep_path.read_text()).get("flown") or [None])[0]
+        if flown:
+            import datetime
+            as_of = datetime.date.fromisoformat(flown).strftime("%B %Y")
+    OUT_PLACES.write_text(json.dumps({"type": "FeatureCollection", "tree_as_of": as_of, "features": feats}))
     # The measured ground itself, so the app can draw exactly what a figure describes: the park,
     # the school property, the 30 m circle(s) round a stop. `i` is the place's position above.
     shapes = P.geometry.simplify(1.5).to_crs("EPSG:4326")

@@ -473,7 +473,7 @@
   .pkey{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;margin:6px 0 2px}.pkey span{display:inline-flex;align-items:center;gap:5px}.pkey .pmark{width:13px;height:13px;border-width:2px;box-shadow:none;background:#c98a5a;cursor:default}
   .ppin{display:flex;flex-direction:column;align-items:center;pointer-events:none}.ppin b{font:700 11.5px/1.25 var(--sans);background:#0b0f14;color:#fff;padding:4px 8px;border-radius:7px;white-space:nowrap;max-width:240px;overflow:hidden;text-overflow:ellipsis;box-shadow:0 2px 8px rgba(0,0,0,.45)}.ppin b small{display:block;font-weight:500;font-size:10.5px;color:#cfd6de}.ppin i{width:0;height:0;border:7px solid transparent;border-top-color:#0b0f14;margin-top:-1px}.ppin u{width:12px;height:12px;border-radius:50%;background:#ffb000;border:2.5px solid #0b0f14;margin-top:-2px}
   .place-card{font:12px/1.45 var(--sans);color:#14181e}.place-card b{font-size:12.5px}.place-card span{color:#55606c}.prow .badge{grid-row:1/4}.prow .pn{font-weight:600;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .prow .pw{grid-column:2/4;font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.prow .pm{grid-column:2/4;font-size:11px;color:var(--muted)}.prow .pm b{color:var(--txt);font-weight:600}.prow .ps{font-weight:700;font-size:13px;text-align:right}
+  .prow .pw{grid-column:2/4;font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.prow .pm{grid-column:2/4;font-size:11px;color:var(--muted)}.prow .pm b{color:var(--txt);font-weight:600}.pnew{border:1px solid #c98a2b;color:#c98a2b;border-radius:5px;padding:0 4px;font-size:10px;font-weight:600;white-space:nowrap}.prow .ps{font-weight:700;font-size:13px;text-align:right}
   .rank-pages button{background:#1b2733;color:var(--txt);border:1px solid #566579;border-radius:6px;padding:8px 12px;cursor:pointer;font:12px var(--sans)}
   .rank-pages button:disabled{opacity:.45;cursor:default}
   .load-error{padding:28px;background:#111b27;color:#edf1f5;max-width:520px;font:15px/1.6 var(--sans)}
@@ -1005,6 +1005,7 @@
           <button type="button" class="pst" data-pf="park" title="Public parks: tree cover inside the park">Parks</button>
           <button type="button" class="pst" data-pf="city" title="Only parks the city itself owns">City parks only</button>
           <button type="button" class="pst" data-pf="dac" title="Only places in an SB 535 disadvantaged community" id="places-dac">In SB 535</button>
+          <button type="button" class="pst" data-pf="est" id="places-est" title="Leave out places past the 2020 urban edge. They were most likely built around or after 2020, and trees planted since the photos were taken are not counted for them.">Hide newer sites</button>
         </div>
         <p class="hint pkey" id="places-key" hidden><span><i class="pmark k-bus_stop"></i>bus stop</span><span><i class="pmark k-school"></i>school</span><span><i class="pmark k-park"></i>park</span><span>number = position in this list · darker = hotter and barer</span></p>
         <p class="hint" id="places-count" role="status" style="margin:8px 0 4px"></p>
@@ -2392,9 +2393,14 @@ function scorePlaces(){
   PLACE_LIST.sort((a,b)=>b.need-a.need||a.i-b.i);PLACE_LIST.forEach((q,k)=>{q.rank=k+1;PLACES.features[q.i].properties.rank=k+1;});
 }
 function placesFiltered(){const F=PLACE_F,kinds=['school','bus_stop','park'].filter(k=>F.has(k));
-  return PLACE_LIST.filter(q=>(!kinds.length||kinds.includes(q.kind))&&(!F.has('city')||(q.kind==='park'&&q.city_owned))&&(!F.has('dac')||q.dac>=0.5)
+  return PLACE_LIST.filter(q=>(!F.has('est')||!placeNewer(q))&&(!kinds.length||kinds.includes(q.kind))&&(!F.has('city')||(q.kind==='park'&&q.city_owned))&&(!F.has('dac')||q.dac>=0.5)
     &&(!RANK_WARD||(RANK_WARD==='__outside'?!q.ward_id:q.ward_id===RANK_WARD)));}
-function placeTree(q){return q.tree.toFixed(0)+'% trees'+(q.tree_src==='area'?' (area figure)':q.tree_src==='modelled'?' (modelled)':'')+(q.kind==='bus_stop'&&typeof q.tree_near==='number'?', '+q.tree_near.toFixed(0)+'% within 15 m':'');}
+/** Every tree figure carries the date of the aerial photos it was read from. */
+function placeAsOf(){return (PLACES&&PLACES.tree_as_of)||'2022';}
+function placeTree(q){return q.tree.toFixed(0)+'% trees in '+placeAsOf()+(q.tree_src==='area'?' (area figure)':q.tree_src==='modelled'?' (modelled)':'')+(q.kind==='bus_stop'&&typeof q.tree_near==='number'?', '+q.tree_near.toFixed(0)+'% within 15 m':'');}
+/** Past the 2020 urban line: most likely built since, so trees planted after the photos are not in its figure. */
+function placeNewer(q){return q.tree_src!=='aerial';}
+const NEWER_NOTE='This place is past the edge of what was urban in 2020, so it was most likely built around or after then. Trees planted since the photos were taken are not counted, and it may be greener today than its figure says.';
 function placeSrc(q){return q.tree_src==='aerial'?'from the 2022 aerial tree map':q.tree_src==='modelled'?'past the edge of the aerial tree map, so read from the same 2022 aerial photos by the tested model':'the aerial tree map does not cover this place, so this is the figure for the surrounding map area';}
 function placeKind(q){return PLACE_KIND[q.kind]+(q.kind==='bus_stop'&&q.stops>1?' (both sides)':'')+(q.kind==='park'&&q.city_owned?' · city-owned':'');}
 function buildPlaces(redraw){
@@ -2408,10 +2414,10 @@ function buildPlaces(redraw){
   document.getElementById('places-next').disabled=start+PLACES_PAGE>=rows.length;
   el.innerHTML='';
   top.forEach((q,k)=>{const c=colorFor('score',q.need),row=document.createElement('div');row.className='prow';row.dataset.i=q.i;row.setAttribute('role','button');row.tabIndex=0;const pos=start+k+1;
-    row.title=`Tree cover ${q.how}, ${placeSrc(q)}. Number on the left: position in this list (${q.rank} of all ${PLACE_LIST.length.toLocaleString()} places).`;
+    row.title=`Tree cover ${q.how}, ${placeSrc(q)}, as of ${placeAsOf()}.${placeNewer(q)?' '+NEWER_NOTE:''} Number on the left: position in this list (${q.rank} of all ${PLACE_LIST.length.toLocaleString()} places).`;
     row.innerHTML=`<div class="badge" style="background:${c};color:${inkOn(c)}">${pos}</div><div class="pn">${escapeHtml(q.name||PLACE_KIND[q.kind])}</div><div class="ps" style="color:${lift(c)}">${q.need.toFixed(0)}</div>
       <div class="pw">${placeKind(q)} · ${escapeHtml(q.area)}${q.ward_id?' · '+escapeHtml(wardLabel(q.ward_id)):''}</div>
-      <div class="pm"><b>${placeTree(q)}</b> · <b>${fTemp(q.heat)}</b> ground${q.dac>=0.5?' · SB 535':''}</div>`;
+      <div class="pm"><b>${placeTree(q)}</b> · <b>${fTemp(q.heat)}</b> ground${q.dac>=0.5?' · SB 535':''}${placeNewer(q)?` · <span class="pnew" title="${escapeHtml(NEWER_NOTE)}">newer site</span>`:''}</div>`;
     const open=()=>showPlace(q);
     row.onclick=open;row.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};
     row.onmouseenter=()=>hiPlace(q.i,true,true);row.onmouseleave=()=>hiPlace(q.i,false,true);
@@ -2425,7 +2431,7 @@ function hiPlace(i,on,fromRow){
   if(placePop){placePop.remove();placePop=null;}
   if(on&&map&&placesOn){const q=PLACE_LIST.find(x=>x.i===i);if(!q||(fromRow&&!m))return;
     placePop=new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:18}).setLngLat([q.lon,q.lat])
-      .setHTML(`<div class="place-card"><b>${escapeHtml(q.name||PLACE_KIND[q.kind])}</b><br><span>${placeKind(q)}${q.ward_id?' · '+escapeHtml(wardLabel(q.ward_id)):''}</span><br>${placeTree(q)} · ${fTemp(q.heat)} ground${q.dac>=0.5?' · SB 535':''}</div>`).addTo(map);}
+      .setHTML(`<div class="place-card"><b>${escapeHtml(q.name||PLACE_KIND[q.kind])}</b><br><span>${placeKind(q)}${q.ward_id?' · '+escapeHtml(wardLabel(q.ward_id)):''}</span><br>${placeTree(q)} · ${fTemp(q.heat)} ground${q.dac>=0.5?' · SB 535':''}${placeNewer(q)?'<br><span>Newer site: trees planted since are not counted</span>':''}</div>`).addTo(map);}
 }
 /** A marker was clicked: open its area and bring its row into view in the list. */
 function openPlace(q){
@@ -2449,7 +2455,7 @@ function showPlace(q){
   if(!map)return;
   if(placePin)placePin.remove();
   const el=document.createElement('div');el.className='ppin';
-  el.innerHTML=`<b>${escapeHtml(q.name||PLACE_KIND[q.kind])}<small>${escapeHtml(placeKind(q))} · ${escapeHtml(placeTree(q))}</small></b><i></i><u></u>`;
+  el.innerHTML=`<b>${escapeHtml(q.name||PLACE_KIND[q.kind])}<small>${escapeHtml(placeKind(q))} · ${escapeHtml(placeTree(q))}</small>${placeNewer(q)?'<small>Newer site: trees planted since are not counted</small>':''}</b><i></i><u></u>`;
   placePin=new maplibregl.Marker({element:el,anchor:'bottom'}).setLngLat([q.lon,q.lat]).addTo(map);
   // Keep the place clear of the detail panel, which slides over the map (right above 1100px wide, left below).
   const vw=window.innerWidth||1200,pad={top:110,bottom:70,left:vw<=1100&&vw>760?400:60,right:vw>1100?400:60};
@@ -2500,7 +2506,7 @@ function drawPlaces(){
   applyCityMask();
 }
 function placesCsv(){
-  const cols=[['place_rank',q=>q.rank],['kind',q=>q.kind],['name',q=>q.name],['place_need_0_100',q=>q.need],['tree_cover_pct',q=>q.tree],['tree_cover_measured',q=>q.how],['tree_cover_source',q=>q.tree_src],['tree_cover_within_15m_pct',q=>q.tree_near??''],['stops_grouped',q=>q.kind==='bus_stop'?q.stops:''],
+  const cols=[['place_rank',q=>q.rank],['kind',q=>q.kind],['name',q=>q.name],['place_need_0_100',q=>q.need],['tree_cover_pct',q=>q.tree],['tree_cover_measured',q=>q.how],['tree_cover_source',q=>q.tree_src],['tree_cover_as_of',()=>placeAsOf()],['likely_newer_site',q=>placeNewer(q)],['tree_cover_within_15m_pct',q=>q.tree_near??''],['stops_grouped',q=>q.kind==='bus_stop'?q.stops:''],
     ['surface_heat_c',q=>q.heat],['city_owned_park',q=>q.kind==='park'?!!q.city_owned:''],['ward_or_district',q=>q.ward_name],['sb535_dac_share_pct',q=>+(q.dac*100).toFixed(1)],
     ['priority_population_share_pct',q=>q.pp==null?'':+(q.pp*100).toFixed(1)],['cell_id',q=>q.cell],['area_name',q=>q.area],['nearest_major_intersection',q=>q.near??''],['longitude',q=>q.lon],['latitude',q=>q.lat]];
   return [cols.map(c=>c[0]).join(','),...placesFiltered().map(q=>cols.map(c=>csvCell(c[1](q))).join(','))].join('\n')+'\n';
@@ -2509,6 +2515,7 @@ function initPlaces(){
   placesInit=true;
   document.getElementById('sec-places').hidden=false;
   const dc=document.getElementById('places-dac');if(dc)dc.hidden=!PLACE_LIST.some(q=>q.dac>=0.5);
+  const ec=document.getElementById('places-est');if(ec)ec.hidden=!PLACE_LIST.some(placeNewer);
   document.querySelectorAll('#places-filters .pst').forEach(b=>b.onclick=()=>{const k=b.dataset.pf;PLACE_F.has(k)?PLACE_F.delete(k):PLACE_F.add(k);b.classList.toggle('on',PLACE_F.has(k));b.setAttribute('aria-pressed',PLACE_F.has(k));placesPage=0;if(!placesOn){placesOn=true;const sb=document.getElementById('places-show');sb.setAttribute('aria-pressed','true');sb.classList.add('primary');sb.textContent='Hide from the map';}buildPlaces();});
   document.getElementById('places-prev').onclick=()=>{placesPage--;buildPlaces();};
   document.getElementById('places-next').onclick=()=>{placesPage++;buildPlaces();};
@@ -2583,7 +2590,7 @@ function openWardSheets(){
   <h2>Highest-ranked areas in ${esc(wardLabel(id))}</h2>
   <table><thead><tr><th>Rank</th><th>Area</th>${hasNear?'<th>Nearest major intersection</th>':''}<th class="n">Need</th><th class="n">Heat</th><th class="n">Trees</th><th class="n">Residents</th><th class="n">65+</th>${hasDac?'<th class="n">SB 535</th>':''}${hasNear?'':'<th>Street room</th>'}</tr></thead><tbody>${rows}</tbody></table>
   <p class="fine">${d.starred.length?`<b>Starred areas here: ${d.starred.length}.</b> At their planting shares they come to <b>${fInt(d.trees)}</b> trees, about <b>${money(d.cost)}</b>${hasDac&&d.trees>0?`; <b>${pct(d.dacTrees,d.trees)}</b> of those trees fall inside SB 535 communities`:''}. Tree counts are an upper bound from mapped street length, not a site survey.`:`No area in this ${esc(unit)} is starred, so there is no planting total. Star areas on the map to add one.`}</p>
-  ${(()=>{const pl=PLACE_LIST.filter(q=>q.ward_id===id);if(!pl.length)return '';const n=k=>pl.filter(q=>q.kind===k).length;return `<p class="fine"><b>Places people go:</b> ${n('school')} schools, ${n('bus_stop')} bus stops and ${n('park')} public parks measured. Hottest and barest: ${pl.slice(0,3).map(q=>esc(q.name||PLACE_KIND[q.kind])+' ('+esc(PLACE_KIND[q.kind].toLowerCase())+', '+q.tree.toFixed(0)+'% trees)').join('; ')}.</p>`;})()}
+  ${(()=>{const pl=PLACE_LIST.filter(q=>q.ward_id===id);if(!pl.length)return '';const n=k=>pl.filter(q=>q.kind===k).length;return `<p class="fine"><b>Places people go:</b> ${n('school')} schools, ${n('bus_stop')} bus stops and ${n('park')} public parks measured. Hottest and barest, leaving out newer sites (tree cover as of ${esc(placeAsOf())}): ${pl.filter(q=>!placeNewer(q)).slice(0,3).map(q=>esc(q.name||PLACE_KIND[q.kind])+' ('+esc(PLACE_KIND[q.kind].toLowerCase())+', '+q.tree.toFixed(0)+'% trees)').join('; ')}.</p>`;})()}
   <div class="foot"><span>CoolEquity · data ${esc(hdr.dataset.version_tag||'')} · weights ${W_INPUTS.filter(x=>normW()[x.k]>0.005).map(x=>esc(x.label.replace(' (65+)',''))+' '+Math.round(normW()[x.k]*100)+'%').join(', ')}</span><span>Independent student project · not a city or county product · a planning screen from public data · confirm on the ground</span></div>
 </div>`;}).join('');
   const font=u=>new URL('vendor/'+u,location.href).href;
@@ -3790,7 +3797,7 @@ function selectHex(id,fly,keepScroll){
   if(hasPlace(p)){
     const here=document.createElement('p');here.className='hint';
     const mine=PLACE_LIST.filter(q=>q.cell===p.id).slice(0,4);
-    here.innerHTML='<b>Here:</b> '+escapeHtml(placeWhat(p,true))+'.'+(mine.length?' On the <a href="guide.html#places" target="ce-guide">places people go</a> list: '+mine.map(q=>escapeHtml(q.name||PLACE_KIND[q.kind])+' ('+q.tree.toFixed(0)+'% trees, '+q.rank+' of '+PLACE_LIST.length.toLocaleString()+')').join('; ')+'.':'');
+    here.innerHTML='<b>Here:</b> '+escapeHtml(placeWhat(p,true))+'.'+(mine.length?' On the <a href="guide.html#places" target="ce-guide">places people go</a> list: '+mine.map(q=>escapeHtml(q.name||PLACE_KIND[q.kind])+' ('+q.tree.toFixed(0)+'% trees in '+escapeHtml(placeAsOf())+(placeNewer(q)?', newer site':'')+', '+q.rank+' of '+PLACE_LIST.length.toLocaleString()+')').join('; ')+'.':'');
     document.getElementById('d-metrics').appendChild(here);
   }
   if(p.access_quality==='detour-review'){
