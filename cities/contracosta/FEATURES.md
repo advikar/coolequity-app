@@ -2,6 +2,34 @@
 
 # CoolEquity — every feature, its data source, and its limitations
 
+## Update — November 11, 2026 (evening): shared stages and a ward one-pager that came with the Bakersfield work
+
+Nothing in this county's data changed. What is new for every build:
+
+- **Ward / district one-page summaries.** A button under the "By district" table opens one
+  printable Letter page per district: residents, share of the study area's top 100, need and
+  tree cover beside the study-area figures, a small map, the ten highest-ranked areas, and the
+  starred areas' trees and cost. Limits: computed from the live model, so it reflects whatever
+  priorities are in force; printed appearance not verified.
+- **Priority populations layer (optional, `pipeline/04h_priority_pop.py`).** CARB Priority
+  Populations 5.0 (SB 535 plus AB 1550 low-income communities). Built for Bakersfield only; a
+  build without it shows no layer and leaves the two export columns empty. Never scored.
+- **Agency building footprints and 2020 block weights (optional, `02b_buildings.py`).** A city
+  can name its own footprint layer (`BUILDINGS_SOURCE`) and weight footprints by 2020 Census
+  block residents (`BLOCK_WEIGHTS`). Bakersfield only. Limit: this county's own building mask
+  is still OpenStreetMap, which the income-bias guard refuses, so the county stays on area
+  weighting; a county parcel or footprint layer would be the way to change that.
+- **Area names by cross streets (optional, `pipeline/04i_street_names.py`).** Where a city
+  publishes street centrelines with names and road class, areas are named by the intersection
+  inside them, with the nearest major intersection as a second line (`near`, exported as
+  `nearest_major_intersection`). Bakersfield only. This county keeps nearest-place names; its
+  areas are larger (res 8) and span many intersections, so cross-street names would fit less well.
+- **Modelled tree cover past the USFS map (optional, `02g_canopy_naip.py`).** For cells the USFS
+  map does not assess, from NAIP 2022, written only if it beats the height model on held-out
+  urban and open-land cells. Bakersfield only. This county keeps its lidar-calibrated sources.
+  New `canopy_source` values `naip-model` (`canopy_quality` `modelled`) and `usfs+naip-model`
+  (`completed`: a partly assessed cell whose homes are mostly outside the assessed part).
+
 ## Update — November 11, 2026 (later): 2024–2026 summers, SB 535 here, audit fixes (all builds)
 
 - **Surface heat** is now the median of summers 2024–2026 in every build (was 2022–2024).

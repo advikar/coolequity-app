@@ -1,211 +1,211 @@
 {
  "city": "Bakersfield",
  "draws": 300,
- "ranked": 3767,
- "top_tier_n": 377,
- "median_band_width": 483.1500000000001,
- "p90_band_width": 1236.7900000000002,
- "share_band_within_10pct_of_list": 0.3777541810459251,
- "point_top_tier_always_top_tier": 0.35013262599469497,
- "point_top_tier_usually_top_tier": 0.6206896551724138,
+ "ranked": 1987,
+ "top_tier_n": 199,
+ "median_band_width": 279.20000000000005,
+ "p90_band_width": 537.4700000000004,
+ "share_band_within_10pct_of_list": 0.30598892803220934,
+ "point_top_tier_always_top_tier": 0.27638190954773867,
+ "point_top_tier_usually_top_tier": 0.507537688442211,
  "top25_point": [
   {
-   "id": 2744,
-   "name": "Coventry Place Apartments W 12",
+   "id": 913,
+   "name": "Commonwealth Ave & Withernsea Ln",
    "rank": 1,
    "rank_lo": 1,
-   "rank_hi": 48,
-   "top_share": 1.0
+   "rank_hi": 67,
+   "top_share": 0.993
   },
   {
-   "id": 2249,
-   "name": "Coventry Place Apartments SW",
+   "id": 1447,
+   "name": "Q St & 30th St",
    "rank": 2,
    "rank_lo": 2,
-   "rank_hi": 80,
+   "rank_hi": 48,
    "top_share": 0.997
   },
   {
-   "id": 2885,
-   "name": "Crestview Meadows SW 45",
+   "id": 2554,
+   "name": "Belle Terrace & McDonald Way",
    "rank": 3,
    "rank_lo": 1,
-   "rank_hi": 108,
-   "top_share": 1.0
-  },
-  {
-   "id": 2630,
-   "name": "Bakersfield S 3",
-   "rank": 4,
-   "rank_lo": 1,
-   "rank_hi": 30,
-   "top_share": 1.0
-  },
-  {
-   "id": 2223,
-   "name": "Village at Lakeside E 7",
-   "rank": 5,
-   "rank_lo": 1,
-   "rank_hi": 36,
-   "top_share": 1.0
-  },
-  {
-   "id": 2301,
-   "name": "Village at Lakeside NE 54",
-   "rank": 6,
-   "rank_lo": 2,
-   "rank_hi": 173,
-   "top_share": 0.987
-  },
-  {
-   "id": 2741,
-   "name": "Coventry Place Apartments SW 12",
-   "rank": 7,
-   "rank_lo": 3,
-   "rank_hi": 95,
-   "top_share": 1.0
-  },
-  {
-   "id": 974,
-   "name": "Village at Lakeside W 35",
-   "rank": 8,
-   "rank_lo": 2,
-   "rank_hi": 447,
-   "top_share": 0.937
-  },
-  {
-   "id": 2634,
-   "name": "Bakersfield S 5",
-   "rank": 9,
-   "rank_lo": 2,
-   "rank_hi": 23,
+   "rank_hi": 7,
    "top_share": 1.0
   },
   {
    "id": 2382,
-   "name": "Village at Lakeside NE 44",
-   "rank": 10,
-   "rank_lo": 2,
-   "rank_hi": 203,
-   "top_share": 0.987
-  },
-  {
-   "id": 2554,
-   "name": "Coventry Place Apartments NW 20",
-   "rank": 11,
-   "rank_lo": 2,
-   "rank_hi": 22,
-   "top_share": 1.0
-  },
-  {
-   "id": 2746,
-   "name": "Coventry Place Apartments SW 17",
-   "rank": 12,
-   "rank_lo": 7,
-   "rank_hi": 189,
-   "top_share": 0.997
-  },
-  {
-   "id": 2742,
-   "name": "Coventry Place Apartments W 17",
-   "rank": 13,
+   "name": "E Planz Rd & Madison Ave",
+   "rank": 4,
    "rank_lo": 1,
-   "rank_hi": 101,
-   "top_share": 0.997
-  },
-  {
-   "id": 1422,
-   "name": "Bakersfield E 39",
-   "rank": 14,
-   "rank_lo": 5,
-   "rank_hi": 80,
-   "top_share": 1.0
-  },
-  {
-   "id": 1405,
-   "name": "Bakersfield E 38",
-   "rank": 15,
-   "rank_lo": 5,
-   "rank_hi": 121,
-   "top_share": 0.997
-  },
-  {
-   "id": 1804,
-   "name": "Crestview Meadows",
-   "rank": 16,
-   "rank_lo": 10,
-   "rank_hi": 490,
-   "top_share": 0.907
-  },
-  {
-   "id": 2285,
-   "name": "Village at Lakeside N 15",
-   "rank": 17,
-   "rank_lo": 10,
-   "rank_hi": 141,
+   "rank_hi": 62,
    "top_share": 0.993
   },
   {
-   "id": 971,
-   "name": "Village at Lakeside W 37",
-   "rank": 18,
-   "rank_lo": 10,
-   "rank_hi": 353,
-   "top_share": 0.95
-  },
-  {
-   "id": 370,
-   "name": "Park Square Apartments SE 26",
-   "rank": 19,
-   "rank_lo": 8,
-   "rank_hi": 100,
-   "top_share": 1.0
-  },
-  {
-   "id": 1605,
-   "name": "Bakersfield SE 13",
-   "rank": 20,
-   "rank_lo": 10,
-   "rank_hi": 196,
-   "top_share": 0.987
+   "id": 3223,
+   "name": "Tyler Ct & Van Buren Pl",
+   "rank": 5,
+   "rank_lo": 4,
+   "rank_hi": 410,
+   "top_share": 0.87
   },
   {
    "id": 2920,
-   "name": "Crestview Meadows SW 34",
-   "rank": 21,
-   "rank_lo": 10,
-   "rank_hi": 47,
-   "top_share": 1.0
-  },
-  {
-   "id": 369,
-   "name": "Park Square Apartments S 23",
-   "rank": 22,
+   "name": "Ciudad Nuevo Dr & Los Gatos St",
+   "rank": 6,
    "rank_lo": 3,
-   "rank_hi": 211,
+   "rank_hi": 26,
    "top_share": 1.0
   },
   {
-   "id": 3612,
-   "name": "Breakwater Apartments E 3",
+   "id": 2516,
+   "name": "Madison St & Kidlington Ct",
+   "rank": 7,
+   "rank_lo": 2,
+   "rank_hi": 62,
+   "top_share": 1.0
+  },
+  {
+   "id": 1793,
+   "name": "45th St & Underwood Dr",
+   "rank": 8,
+   "rank_lo": 2,
+   "rank_hi": 144,
+   "top_share": 0.987
+  },
+  {
+   "id": 1446,
+   "name": "Q St & 28th St",
+   "rank": 9,
+   "rank_lo": 1,
+   "rank_hi": 136,
+   "top_share": 0.98
+  },
+  {
+   "id": 2457,
+   "name": "Basque Hills Dr & Euskara St",
+   "rank": 10,
+   "rank_lo": 5,
+   "rank_hi": 74,
+   "top_share": 1.0
+  },
+  {
+   "id": 2402,
+   "name": "Madison St & Byron Bay Dr",
+   "rank": 11,
+   "rank_lo": 4,
+   "rank_hi": 70,
+   "top_share": 1.0
+  },
+  {
+   "id": 1622,
+   "name": "S P St & Terrace Way",
+   "rank": 12,
+   "rank_lo": 3,
+   "rank_hi": 93,
+   "top_share": 1.0
+  },
+  {
+   "id": 1422,
+   "name": "Dr Martin Luther King Jr Blvd & Virginia Ave",
+   "rank": 13,
+   "rank_lo": 4,
+   "rank_hi": 93,
+   "top_share": 0.993
+  },
+  {
+   "id": 2742,
+   "name": "Grissom St & Langdon Ave",
+   "rank": 14,
+   "rank_lo": 8,
+   "rank_hi": 139,
+   "top_share": 0.973
+  },
+  {
+   "id": 124,
+   "name": "Hughes Ln & Karrie Lynn Dr",
+   "rank": 15,
+   "rank_lo": 5,
+   "rank_hi": 68,
+   "top_share": 1.0
+  },
+  {
+   "id": 696,
+   "name": "Panama Ln & Jerno Dr",
+   "rank": 16,
+   "rank_lo": 7,
+   "rank_hi": 288,
+   "top_share": 0.913
+  },
+  {
+   "id": 1405,
+   "name": "Dr Martin Luther King Jr Blvd & Potomac Ave",
+   "rank": 17,
+   "rank_lo": 5,
+   "rank_hi": 93,
+   "top_share": 0.997
+  },
+  {
+   "id": 2223,
+   "name": "Kingscross Ave & Walkabout Dr",
+   "rank": 18,
+   "rank_lo": 7,
+   "rank_hi": 76,
+   "top_share": 1.0
+  },
+  {
+   "id": 1432,
+   "name": "Dr Martin Luther King Jr Blvd & De Wolfe St",
+   "rank": 19,
+   "rank_lo": 10,
+   "rank_hi": 153,
+   "top_share": 0.97
+  },
+  {
+   "id": 972,
+   "name": "Pomerado Way & Trejo Dr",
+   "rank": 20,
+   "rank_lo": 8,
+   "rank_hi": 416,
+   "top_share": 0.833
+  },
+  {
+   "id": 2243,
+   "name": "Canadian St & Vincent Ave",
+   "rank": 21,
+   "rank_lo": 4,
+   "rank_hi": 101,
+   "top_share": 0.993
+  },
+  {
+   "id": 152,
+   "name": "McKee Rd & Benitez Dr",
+   "rank": 22,
+   "rank_lo": 2,
+   "rank_hi": 135,
+   "top_share": 0.98
+  },
+  {
+   "id": 914,
+   "name": "Flamenco Way & Packwood Dr",
    "rank": 23,
-   "rank_lo": 11,
+   "rank_lo": 3,
    "rank_hi": 133,
-   "top_share": 1.0
+   "top_share": 0.99
   },
   {
-   "id": 2735,
-   "name": "Coventry Place Apartments NW 12",
+   "id": 2202,
+   "name": "Camino Del Sol & Via De Luna",
    "rank": 24,
-   "rank_lo": 16,
-   "rank_hi": 185,
-   "top_share": 1.0
+   "rank_lo": 4,
+   "rank_hi": 82,
+   "top_share": 0.993
   },
   {
-   "id": 764,
-   "name": "Park Square Apartments SE 31",
+   "id": 2224,
+   "name": "Monitor St & Kingscross Ave",
    "rank": 25,
-   "rank_lo": 6,
+   "rank_lo": 11,
    "rank_hi": 108,
    "top_share": 1.0
   }

@@ -10,7 +10,7 @@ const CITIES=load('app/cities.js','CE_CITIES');
 const EXPECT={
   contracosta:{res:2697,ndvi:5},     // after 02f: lidar canopy replaces the stand-in wherever the CDFW map covers the cell
   sanramon:{res:419,ndvi:0},
-  bakersfield:{res:3767,ndvi:62},
+  bakersfield:{res:1987,ndvi:0},     // residents placed by city footprints weighted by 2020 block counts; tree cover past the USFS map modelled from NAIP (02g)
   westcc:{res:982,ndvi:1},
   pittsburg:{res:570,ndvi:0},
   losangeles:{res:9021,ndvi:73},   // 43 outside the assessed urban boundary, 30 assessed on under 10% of the cell
@@ -57,6 +57,21 @@ else assert.equal(graded.length,0);
 if(hasDac){assert(data.features.some(f=>f.properties.dac>0),`${slug}: no cell carries an SB 535 share`);
   for(const f of data.features){const p=f.properties;assert(typeof p.dac==='number'&&p.dac>=0&&p.dac<=1,'dac '+p.id);assert.equal(!!p.dac_type,p.dac>0,'dac_type '+p.id);}}
 else for(const f of data.features)assert(!(f.properties.dac>0),`${slug}: unexpected SB 535 share`);
+// Cross-street names (04i): only where the city set NAME_STREETS. Every area named by two streets, no two alike,
+// and `near` either absent or a phrase ending in an intersection; other builds carry no `near` at all.
+const hasStreetNames=/^NAME_STREETS\s*=\s*dict\(/m.test(py);
+if(hasStreetNames){const seen=new Set();assert.equal(CITY.nameKind,'streets',`${slug}: city.js must set nameKind:'streets'`);
+  for(const f of data.features){const p=f.properties;assert(typeof p.name==='string'&&p.name.includes(' & '),'street name '+p.id+': '+p.name);
+    assert(!seen.has(p.name),'duplicate area name '+p.name);seen.add(p.name);assert(p.near==null||(p.near.includes(' & ')&&p.near!==p.name),'near '+p.id);}}
+else for(const f of data.features)assert(!('near' in f.properties),`${slug}: unexpected near field`);
+// Priority populations (CARB): only where the city set PRIORITY_POP_URL. A share in 0–1 with a designation
+// exactly where it is positive, and never smaller than the SB 535 share, since every disadvantaged
+// community is a priority population area (tolerance for the two services' differing tract edges).
+const hasPp=/^PRIORITY_POP_URL\s*=\s*\(?\s*["']/m.test(py);
+if(hasPp){assert(data.features.some(f=>f.properties.pp>0),`${slug}: no cell carries a priority-population share`);
+  for(const f of data.features){const p=f.properties;assert(typeof p.pp==='number'&&p.pp>=0&&p.pp<=1,'pp '+p.id);assert.equal(!!p.pp_type,p.pp>0,'pp_type '+p.id);
+    assert(p.pp>=(p.dac||0)-0.05,`${slug}: area ${p.id} is ${p.dac} SB 535 but only ${p.pp} priority population`);}}
+else for(const f of data.features)assert(!('pp' in f.properties),`${slug}: unexpected priority-population field`);
 assert.equal(data.features.filter(f=>f.properties.place==='res'&&f.properties.green_src==='ndvi').length,EXPECT[slug].ndvi);
 console.log(`PASS: syntax, guide anchors, residential count, HOLC availability, ${cases} scenario cases across ${data.features.length} cells.`);
 

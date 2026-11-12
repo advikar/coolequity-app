@@ -76,6 +76,9 @@ def main():
             f"({len(gj['features'])} residential) — --refresh to re-pull")
         return
 
+    if getattr(C, "BUILDINGS_SOURCE", None):
+        return from_agency(C.BUILDINGS_SOURCE)
+
     sys.path.insert(0, str(C.ROOT / "pipeline"))
     overlays = __import__("04_overlays")
 
@@ -86,6 +89,173 @@ def main():
                                   [(p["lon"], p["lat"]) for p in (e.get("geometry") or [])])
                         for e in els) if r]
     write_buildings(rows)
+
+
+# ---------------------------------------------------------------- agency footprints
+# Where a city or county publishes its own building footprints with a use type,
+# that layer replaces OpenStreetMap: it is digitised from the agency's aerial
+# surveys to one standard across rich and poor neighbourhoods, which is the
+# property the dasymetric guard in 03 exists to check. Set BUILDINGS_SOURCE in
+# the city's config.py (see cities/bakersfield/config.py for the keys).
+def arcgis_all(url, where="1=1", fields="*", envelope=None):
+    """Every feature of an ArcGIS layer as GeoJSON features in EPSG:4326, fetched
+    by object-id chunks so a server page limit cannot silently truncate it."""
+    import time
+    import requests
+    q = {"where": where, "returnIdsOnly": "true", "f": "json"}
+    if envelope:
+        q.update(geometry=",".join(str(v) for v in envelope), geometryType="esriGeometryEnvelope",
+                 inSR=4326, spatialRel="esriSpatialRelIntersects")
+    r = requests.post(url.rstrip("/") + "/query", data=q, timeout=180)
+    r.raise_for_status()
+    meta = r.json()
+    if "error" in meta:
+        raise SystemExit(f"02b: {url}: {meta['error']}")
+    ids = sorted(meta.get("objectIds") or [])
+    oid = meta.get("objectIdFieldName", "OBJECTID")
+    feats = []
+    for i in range(0, len(ids), 500):
+        chunk = ids[i:i + 500]
+        for attempt in range(5):
+            try:
+                r = requests.post(url.rstrip("/") + "/query", data={
+                    "objectIds": ",".join(str(v) for v in chunk), "outFields": fields,
+                    "outSR": 4326, "f": "geojson", "geometryPrecision": 6}, timeout=180)
+                r.raise_for_status()
+                got = r.json()
+                if "features" not in got:
+                    raise ValueError(str(got)[:200])
+                break
+            except Exception as e:                       # noqa: BLE001 - retried, then fatal
+                if attempt == 4:
+                    raise SystemExit(f"02b: {url}: chunk at {oid} {chunk[0]} failed: {e}")
+                time.sleep(5)
+        if len(got["features"]) != len(chunk):
+            raise SystemExit(f"02b: {url}: asked for {len(chunk)} features, got {len(got['features'])}")
+        feats += got["features"]
+        if (i // 500) % 50 == 0:
+            log(f"    {len(feats):,} / {len(ids):,}")
+    return feats
+
+
+def from_agency(cfg):
+    """Residential footprints from an agency layer.
+
+    A footprint counts as residential when its use type says so. A footprint with
+    NO use type (new construction the agency has digitised but not yet typed) is
+    residential when its centre lies in a residential land-use designation; that
+    is what keeps new subdivisions on the map. Every other type is left out.
+    """
+    import geopandas as gpd
+    from sources import record
+    log(f"Phase 2b — buildings | {C.CITY} | {cfg['publisher']}")
+    w, s, e, n = C.BBOX
+    env = (w - MARGIN_DEG, s - MARGIN_DEG, e + MARGIN_DEG, n + MARGIN_DEG)
+    tf = cfg["type_field"]
+    feats = arcgis_all(cfg["service"], fields=tf, envelope=env)
+    b = gpd.GeoDataFrame.from_features(feats, crs="EPSG:4326")
+    b = b[b.geometry.notna() & ~b.geometry.is_empty].copy()
+    b["t"] = b[tf].fillna("").astype(str).str.strip().str.upper()
+    res_types = {t.upper() for t in cfg["residential"]}
+    tagged = b["t"].isin(res_types)
+    untyped = b["t"] == ""
+    log(f"  {len(b):,} footprints in the box: {int(tagged.sum()):,} typed residential, "
+        f"{int(untyped.sum()):,} untyped, {int((~tagged & ~untyped).sum()):,} other uses (left out)")
+
+    in_res = gpd.pd.Series(False, index=b.index)
+    lu_cfg = cfg.get("untyped_landuse")
+    if lu_cfg and untyped.any():
+        lu = gpd.GeoDataFrame.from_features(
+            arcgis_all(lu_cfg["service"], fields=lu_cfg["field"], envelope=env), crs="EPSG:4326")
+        lu = lu[lu[lu_cfg["field"]].fillna("").str.strip().isin(set(lu_cfg["residential"]))]
+        lu["geometry"] = lu.geometry.make_valid()
+        cen = b.loc[untyped].to_crs(C.RASTER_CRS)
+        cen = cen.set_geometry(cen.geometry.centroid)
+        hit = gpd.sjoin(cen[["geometry"]], lu[["geometry"]].to_crs(C.RASTER_CRS), how="inner", predicate="within")
+        in_res.loc[hit.index.unique()] = True
+        log(f"  untyped footprints in a residential land-use designation: {int(in_res.sum()):,} kept, "
+            f"{int(untyped.sum() - in_res.sum()):,} left out")
+
+    keep = b[tagged | in_res].copy()
+    # "residential" and "yes" are the tags 05 and the multi-family rule already know.
+    keep["bt"] = ["residential" if t else "yes" for t in tagged[keep.index]]
+    keep = keep.explode(index_parts=False)
+    keep = keep[keep.geometry.geom_type == "Polygon"]
+    keep["geometry"] = keep.geometry.make_valid()
+    keep = keep[keep.geometry.geom_type == "Polygon"]
+    write_buildings(keep[["bt", "geometry"]])
+    n_out = len(json.loads(C.BUILDINGS_FILE.read_text())["features"])
+    record("02b_buildings", "Residential building footprints", cfg["service"], path=C.BUILDINGS_FILE,
+           count=n_out, publisher=cfg["publisher"],
+           note=(f"{int(tagged.sum()):,} footprints typed {'/'.join(sorted(res_types))} plus {int(in_res.sum()):,} "
+                 "untyped footprints lying in a residential land-use designation, before the size filter. "
+                 + cfg.get("note", "")).strip())
+
+
+# ---------------------------------------------------------------- block weights
+# Footprint AREA is a proxy for where people live, and a biased one: storeys are
+# not recorded, so a three-storey apartment block weighs what a one-storey house
+# of the same footprint does, and household size is not in a footprint at all (a
+# seniors' mobile-home park and a block of family houses weigh the same per m2).
+# The 2020 Census counted both, block by block. Where a city sets BLOCK_WEIGHTS,
+# each building's weight becomes its share (by footprint area) of its block's
+# residents, so 03 splits a block group's ACS residents between its blocks the
+# way the Census found them and between a block's buildings by footprint.
+#
+# Homes built since April 2020 are not in that count. A block with more main
+# residential footprints than it had housing units in 2020 has grown by the
+# difference, and each new home is credited with its block group's 2020
+# residents per housing unit. A block of new houses on what was a field in 2020
+# therefore still carries people.
+def block_weights(gdf, cfg):
+    """Add column `w` (2020 residents, plus growth, shared by footprint area)."""
+    import geopandas as gpd
+    import numpy as np
+    from sources import record
+    w, s, e, n = C.BBOX
+    env = (w - MARGIN_DEG, s - MARGIN_DEG, e + MARGIN_DEG, n + MARGIN_DEG)
+    f = cfg.get("fields", {})
+    pop_f, hu_f, id_f = f.get("pop", "POP100"), f.get("units", "HU100"), f.get("geoid", "GEOID")
+    feats = arcgis_all(cfg["service"], fields=f"{pop_f},{hu_f},{id_f}", envelope=env)
+    blocks = gpd.GeoDataFrame.from_features(feats, crs="EPSG:4326").to_crs(C.RASTER_CRS)
+    blocks = blocks.rename(columns={pop_f: "pop20", hu_f: "hu20", id_f: "block"})[["block", "pop20", "hu20", "geometry"]]
+    blocks["geometry"] = blocks.geometry.make_valid()
+    main_m2 = float(cfg.get("main_m2", 80.0))
+
+    cen = gdf.copy()
+    cen["geometry"] = cen.geometry.centroid
+    hit = gpd.sjoin(cen[["area_m2", "geometry"]], blocks[["block", "geometry"]], how="left", predicate="within")
+    hit = hit[~hit.index.duplicated()]
+    gdf["block"] = hit["block"].reindex(gdf.index)
+    per = gdf.groupby("block").agg(area=("area_m2", "sum"), n_main=("area_m2", lambda a: int((a >= main_m2).sum())))
+    per = per.join(blocks.set_index("block")[["pop20", "hu20"]])
+    per["bg"] = per.index.str[:12]
+    bl = blocks.assign(bg=blocks["block"].str[:12])
+    bg = bl[bl["hu20"] > 0].groupby("bg")[["pop20", "hu20"]].sum()
+    county_ppu = float(bg["pop20"].sum() / bg["hu20"].sum())
+    ppu = (bg["pop20"] / bg["hu20"]).clip(lower=1.0, upper=6.0)
+    per["ppu"] = per["bg"].map(ppu).fillna(county_ppu)
+    per["growth"] = (per["n_main"] - per["hu20"]).clip(lower=0)
+    per["est"] = per["pop20"] + per["growth"] * per["ppu"]
+    gdf["w"] = gdf["area_m2"] / gdf["block"].map(per["area"]) * gdf["block"].map(per["est"])
+    lost = gdf["w"].isna()
+    if lost.any():                      # a footprint outside every block: the typical weight per m2
+        gdf.loc[lost, "w"] = gdf.loc[lost, "area_m2"] * float(np.nanmedian(gdf["w"] / gdf["area_m2"]))
+    gdf["w"] = gdf["w"].round(3)
+    with_homes = blocks[blocks["hu20"] > 0]
+    no_fp = with_homes[~with_homes["block"].isin(per.index)]
+    log(f"  block weights: {len(blocks):,} 2020 blocks in the box; {len(per):,} hold residential footprints "
+        f"({int(per['pop20'].sum()):,} residents in 2020 + {int((per['growth'] * per['ppu']).sum()):,} credited to "
+        f"{int(per['growth'].sum()):,} homes built since); {int(lost.sum())} footprints outside every block")
+    log(f"  block weights: {len(no_fp):,} blocks with housing in 2020 hold no residential footprint "
+        f"({int(no_fp['pop20'].sum()):,} residents, {no_fp['pop20'].sum() / max(1, blocks['pop20'].sum()):.1%} of the box); "
+        f"their block groups' residents go to the footprints the block group does have")
+    record("02b_buildings", "2020 Census blocks (residents and housing units, for building weights)", cfg["service"],
+           count=len(blocks), publisher="US Census Bureau, TIGERweb",
+           note=(f"2020 Census block counts (P.L. 94-171). Each residential footprint is weighted by its block's 2020 "
+                 f"residents, shared by footprint area; {int(per['growth'].sum()):,} homes built since 2020 (main footprints "
+                 f"beyond the block's 2020 housing units) are credited at their block group's residents per unit."))
+    return gdf.drop(columns=["block"])
 
 
 def footprint(bt, ring):
@@ -109,12 +279,16 @@ def footprint(bt, ring):
 
 def write_buildings(rows):
     import geopandas as gpd
-    gdf = gpd.GeoDataFrame(rows, crs="EPSG:4326").to_crs(C.RASTER_CRS)
+    gdf = (rows if isinstance(rows, gpd.GeoDataFrame) else gpd.GeoDataFrame(rows, crs="EPSG:4326")).to_crs(C.RASTER_CRS)
     gdf["area_m2"] = gdf.geometry.area
     n_raw = len(gdf)
     gdf = gdf[(gdf.area_m2 >= MIN_RES_M2) & (gdf.area_m2 <= MAX_RES_M2)].copy()
     gdf["multifamily"] = ((gdf.area_m2 >= MULTIFAMILY_M2)
                           | (gdf.bt == "apartments"))
+    cols = ["bt", "area_m2", "multifamily", "geometry"]
+    if getattr(C, "BLOCK_WEIGHTS", None):
+        gdf = block_weights(gdf, C.BLOCK_WEIGHTS)
+        cols.insert(2, "w")
 
     log(f"  {n_raw} residential-tagged -> {len(gdf)} after the "
         f"{MIN_RES_M2:.0f}-{MAX_RES_M2:.0f} m2 size filter")
@@ -133,7 +307,7 @@ def write_buildings(rows):
     out["geometry"] = out.geometry.centroid
     out["area_m2"] = out["area_m2"].round(1)
     out = out.to_crs("EPSG:4326")
-    out[["bt", "area_m2", "multifamily", "geometry"]].to_file(
+    out[cols].to_file(
         C.BUILDINGS_FILE, driver="GeoJSON", coordinate_precision=5)
     log(f"  wrote {C.BUILDINGS_FILE.relative_to(C.ROOT)} "
         f"({C.BUILDINGS_FILE.stat().st_size/1e6:.1f} MB, centroids + floor area)")

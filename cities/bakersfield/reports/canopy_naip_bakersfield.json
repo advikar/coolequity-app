@@ -1,0 +1,114 @@
+{
+ "city": "Bakersfield",
+ "imagery": "NAIP 2022",
+ "flown": [
+  "2022-06-07",
+  "2022-06-08"
+ ],
+ "label": "USFS / CAL FIRE 2022 urban tree canopy",
+ "features": [
+  "red",
+  "green",
+  "blue",
+  "nir",
+  "ndvi",
+  "bright",
+  "ndvi_sd3",
+  "nir_sd3",
+  "ndvi_sd7",
+  "nir_sd7",
+  "ndvi_m7",
+  "ndvi_m15",
+  "bright_m15",
+  "nir_sd15",
+  "ndvi_m31",
+  "ndvi_sd31",
+  "nir_sd31",
+  "ndvi_m61"
+ ],
+ "train_cells": {
+  "urban": 300,
+  "open_land": 101,
+  "edge": 123
+ },
+ "train_pixels": 2244000,
+ "held_out": {
+  "urban": {
+   "naip_model": {
+    "n": 300,
+    "bias": -0.12,
+    "mae": 0.92,
+    "rmse": 1.49,
+    "pearson": 0.962,
+    "spearman": 0.963,
+    "pixel_accuracy": 0.9594,
+    "label_vs_02d_max_abs_diff": 0.01
+   },
+   "height_model": {
+    "n": 300,
+    "bias": -1.42,
+    "mae": 1.75,
+    "rmse": 3.2,
+    "pearson": 0.852,
+    "spearman": 0.924
+   },
+   "height_model_rescaled": {
+    "n": 300,
+    "bias": 0.04,
+    "mae": 1.51,
+    "rmse": 2.84,
+    "pearson": 0.852,
+    "spearman": 0.924,
+    "intercept": 1.8,
+    "slope": 0.949
+   }
+  },
+  "open_land": {
+   "naip_model": {
+    "n": 101,
+    "bias": -0.01,
+    "mae": 0.62,
+    "rmse": 1.09,
+    "pearson": 0.994,
+    "spearman": 0.974,
+    "pixel_accuracy": 0.9783,
+    "label_vs_02d_max_abs_diff": 0.008
+   },
+   "height_model": {
+    "n": 101,
+    "bias": 0.78,
+    "mae": 3.24,
+    "rmse": 10.46,
+    "pearson": 0.508,
+    "spearman": 0.861
+   },
+   "height_model_rescaled": {
+    "n": 101,
+    "bias": 0.87,
+    "mae": 3.66,
+    "rmse": 8.41,
+    "pearson": 0.508,
+    "spearman": 0.861,
+    "intercept": 2.27,
+    "slope": 0.619
+   }
+  },
+  "edge": {
+   "naip_model": {
+    "n": 123,
+    "bias": 0.08,
+    "mae": 1.18,
+    "rmse": 1.75,
+    "pearson": 0.978,
+    "spearman": 0.963,
+    "pixel_accuracy": 0.9636,
+    "label_vs_02d_max_abs_diff": 0.014
+   }
+  }
+ },
+ "accepted": true,
+ "filled_cells": 1758,
+ "cells_no_single_quad": 0,
+ "completed_partials": 23,
+ "complete_partial_below": 0.5
+}

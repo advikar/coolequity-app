@@ -208,6 +208,11 @@ CIRCUITY = 1.273
 # 03_census.py checks both numbers over the block groups touching the study area
 # and falls back to area weighting if either fails. Do not raise these to force
 # dasymetric on; fix the mask instead.
+# An agency footprint layer to use instead of OpenStreetMap (02b). None = OSM.
+BUILDINGS_SOURCE = None
+# Weight each footprint by its 2020 Census block's residents instead of bare
+# footprint area (02b block_weights). None = footprint area.
+BLOCK_WEIGHTS = None
 DASY_MIN_COVERAGE = 0.50     # mapped buildings per ACS housing unit, study-wide
 DASY_MAX_INCOME_BIAS = 2.0   # richest-quartile coverage / poorest-quartile
 
@@ -226,6 +231,8 @@ NO_AC_LIBRARIES = frozenset()
 # Optional per-city source of wildfire perimeters newer than the tree-cover and
 # census inputs, read by 04g_fire.py. None means no flag (05 writes a zero
 # share). See cities/losangeles/config.py for the shape of an entry.
+NAME_STREETS = None           # a street layer with names and road class to name hexes by cross streets (04i)
+PRIORITY_POP_URL = None       # CARB priority populations layer (04h); None = no layer
 FIRE_PERIMETERS = None
 
 # ---------------------------------------------------------------- wards / districts
@@ -288,6 +295,8 @@ CENSUS_CSV = DATA / f"census_{SLUG}.csv"
 OVERLAYS_CSV = DATA / f"overlays_{SLUG}.csv"
 SB535_CSV = DATA / f"sb535_{SLUG}.csv"           # 04f -> 05, only where SB535_URL is set
 FIRE_CSV = DATA / f"fire_{SLUG}.csv"             # 04g -> 05, only where FIRE_PERIMETERS is set
+PRIORITY_POP_CSV = DATA / f"priority_pop_{SLUG}.csv"
+NAMES_CSV = DATA / f"names_{SLUG}.csv"            # 04i -> 05, only where NAME_STREETS is set
 
 DATA.mkdir(parents=True, exist_ok=True)
 CACHE.mkdir(exist_ok=True)

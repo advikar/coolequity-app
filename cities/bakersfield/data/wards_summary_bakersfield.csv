@@ -1,9 +1,9 @@
 ward_id,ward_name,member,areas,residents,residents_65plus,mean_need_0_100,areas_in_top_100,tree_cover_pct_pop_weighted,mean_surface_heat_c,plantable_street_km,tree_positions_upper_bound
-1,Ward 1,Eric Arias,511,56049,5339,61.1,29,6.0,48.7,237.7,47547
-2,Ward 2,Andrae Gonzales,277,60626,6283,69.1,23,8.3,49.9,332.2,66442
-3,Ward 3,Ken Weir,816,52453,7212,61.1,10,7.8,51.2,352.5,70501
-4,Ward 4,Bob Smith,537,57034,6397,50.5,1,9.6,46.9,362.9,72577
-5,Ward 5,Larry Koman,715,54939,6738,55.1,6,8.9,48.1,470.6,94120
-6,Ward 6,Zach Bashirtash,219,59815,7283,67.6,10,11.2,48.3,286.2,57237
-7,Ward 7,Manpreet Kaur,286,57479,4944,68.8,20,5.3,49.4,301.0,60206
-,Unincorporated (Kern County),,406,12051,1299,51.7,1,8.2,49.4,70.5,14109
+1,Ward 1,Eric Arias,204,55671,5206,66.6,36,6.7,50.7,216.6,43325
+2,Ward 2,Andrae Gonzales,219,56811,5880,57.8,21,9.3,49.9,299.7,59932
+3,Ward 3,Ken Weir,328,50245,7225,52.6,13,8.9,49.5,312.6,62513
+4,Ward 4,Bob Smith,283,58007,6416,45.3,0,9.2,47.7,331.0,66200
+5,Ward 5,Larry Koman,367,60181,7119,43.8,1,9.3,47.7,442.6,88515
+6,Ward 6,Zach Bashirtash,205,61534,7658,47.5,7,11.5,48.1,278.7,55731
+7,Ward 7,Manpreet Kaur,236,58732,4853,61.6,22,5.6,49.5,289.0,57799
+,Unincorporated (Kern County),,145,9499,999,43.6,0,9.2,49.1,51.3,10259

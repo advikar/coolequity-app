@@ -183,6 +183,60 @@ class CoolingSources(unittest.TestCase):
         d=json.loads((C.DATA/f'cooling_directory_{C.SLUG}.json').read_text())
         self.assertEqual(len(g['features'])+len(g['properties']['outside_study_area'])+len(g['properties']['unlocated']),len(d['sites']))
 
+class PriorityPopulations(unittest.TestCase):
+    """04h: CARB's designation codes map to the four designations, and nothing else counts."""
+    def test_designation_codes(self):
+        pp=module('pp','pipeline/04h_priority_pop.py')
+        self.assertEqual(pp.label('ces_dac'),'Disadvantaged community')
+        self.assertEqual(pp.label('tribal dac, ces dac'),'Disadvantaged community')
+        self.assertEqual(pp.label('ces dac, lic'),'Disadvantaged and low-income community')
+        self.assertEqual(pp.label('ces dac, tribal dac, lic'),'Disadvantaged and low-income community')
+        self.assertEqual(pp.label('lic'),'Low-income community')
+        self.assertIn('½ mile',pp.label('neighbor, lic'))
+        for code in ('not pp','neighbor, not pp','',None):
+            self.assertIsNone(pp.label(code))
+class ModelledCanopy(unittest.TestCase):
+    """02g: cells modelled from NAIP exist only with an accepted validation report, and are labelled."""
+    def test_modelled_cells_are_backed_by_the_report(self):
+        import json
+        c=pd.read_csv(C.CANOPY_CSV)
+        m=c[c.canopy_source=='naip-model']
+        report=C.REPORTS/f'canopy_naip_{C.SLUG}.json'
+        if m.empty:
+            self.assertFalse(getattr(C,'CANOPY_NAIP',None) and report.exists() and json.loads(report.read_text()).get('filled_cells'),
+                             'the report says cells were filled but the canopy file has none')
+            return
+        r=json.loads(report.read_text())
+        self.assertTrue(r['accepted'])
+        self.assertEqual(r['filled_cells'],len(m))
+        # Held-out cells of each kind: the model must beat the height model both inside the
+        # urban fabric and on open land (where a model trained on urban cells alone read
+        # irrigated fields as trees), and be unbiased on all three.
+        for kind in ('urban','open_land'):
+            h=r['held_out'][kind]
+            self.assertLess(h['naip_model']['mae'],min(h['height_model']['mae'],h['height_model_rescaled']['mae']),kind)
+            self.assertGreaterEqual(h['naip_model']['n'],30,kind)
+        for kind in ('urban','open_land','edge'):
+            self.assertLessEqual(abs(r['held_out'][kind]['naip_model']['bias']),1.0,kind)
+            self.assertLessEqual(r['held_out'][kind]['naip_model']['label_vs_02d_max_abs_diff'],0.5,kind)
+        self.assertTrue((m.canopy_quality=='modelled').all())
+        self.assertTrue(m.canopy_pct.between(0,100).all())
+        self.assertTrue((m.coverage_frac==1).all())
+        np.testing.assert_allclose(m.canopy_m2,m.canopy_pct/100*m.assessed_m2,rtol=.01,atol=1)
+        # Partly assessed cells completed with the model (homes mostly outside the assessed part):
+        # counted in the report, a whole-cell figure, and never a verified planting baseline.
+        done=c[c.canopy_source=='usfs+naip-model']
+        self.assertEqual(r.get('completed_partials',0),len(done))
+        if len(done):
+            self.assertTrue((done.canopy_quality=='completed').all())
+            self.assertTrue(done.coverage_frac.between(0.1,0.99).all())
+            np.testing.assert_allclose(done.canopy_m2,done.canopy_pct/100*done.assessed_m2,rtol=.01,atol=1)
+        for f in json.loads(C.OUT_FILE.read_text())['features']:
+            p=f['properties']
+            if p['canopy_source']=='usfs+naip-model':
+                self.assertEqual(p['green_src'],'canopy');self.assertFalse(p['canopy_baseline_ok'])
+            if p['canopy_source']=='naip-model':
+                self.assertEqual(p['green_src'],'canopy');self.assertFalse(p['canopy_baseline_ok'])
 class WardRollup(unittest.TestCase):
     """04e_wards: the per-ward summary must add up to the scored output it was built from."""
     def test_wards_cover_the_scored_output(self):

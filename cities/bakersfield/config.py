@@ -24,8 +24,11 @@ H3_RES = 9
 # was explained by position alone; comparing Richmond's 41 C to Antioch's 52 C
 # on one scale was comparing climates. Bakersfield is one flat valley floor
 # ~30 km across with no marine gradient, so within-city normalisation compares
-# like with like. Measured range (summers 2024-2026): 31.9-59.0 C, median
-# 49.6 C; position explains 8% of the variance across ranked cells.
+# like with like. Re-measured November 11, 2026 on the 1,987 cells ranked once
+# residents were placed by building (summers 2024-2026): 35.1-57.1 C, median
+# 49.1 C; position explains 16% of the variance and surface temperature
+# correlates -0.66 with tree cover. (On the 3,767 cells ranked under the old
+# even spread, half of them without housing, those read 8% and -0.33.)
 #
 # A/C ACCESS ships at 0. The Census LACE 2023 estimate is nearly uniform here
 # (96.5-100% of occupied homes across ranked cells, median 99.8%). Min-max
@@ -66,11 +69,54 @@ HOLC_URL = None              # no digitised HOLC map for Bakersfield
 SB535_URL = ("https://services1.arcgis.com/PCHfdHz4GlDNAhBb/ArcGIS/rest/services/"
              "SB_535_Disadvantaged_Communities_2026/FeatureServer")
 
+# Footprint area alone cannot see storeys or household size. Each footprint is
+# weighted by its 2020 Census block's residents (shared within the block by
+# footprint area), with homes built since 2020 credited at their block group's
+# residents per unit. See block_weights() in 02b.
+BLOCK_WEIGHTS = dict(
+    service="https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/2",
+    fields=dict(pop="POP100", units="HU100", geoid="GEOID"), main_m2=80.0,
+)
+
+# California Climate Investments Priority Populations 5.0 (CARB), in effect for
+# projects selected on or after September 18, 2026: the SB 535 tracts above plus
+# the AB 1550 low-income communities. Display and reporting only, never scored.
+PRIORITY_POP_URL = ("https://gis.carb.arb.ca.gov/hosting/rest/services/Hosted/"
+                    "PriorityPopulations5/FeatureServer/0")
+
 # ---------------------------------------------------------------- buildings
-# How far outside BBOX 02b pulls buildings. The bbox is the incorporated city,
-# so keep San Ramon's generous margin. (No building file is committed for this
-# build, so 03 uses area weighting.)
+# The City of Bakersfield's own footprint layer ("Building General Structure
+# Existing Site", maintained by the city's GIS office from its aerial surveys,
+# last edited July 2026), not OpenStreetMap, which has mapped too little of the
+# city to place residents with. 228,012 footprints over the metropolitan
+# general-plan area, each with a use type. Measured November 11, 2026 against
+# ACS 2020-2024 housing units over the 344 block groups touching the city:
+# 0.95 residential footprints per housing unit, and by income quartile of the
+# block group 0.84 / 0.93 / 0.97 / 1.17 (richest/poorest 1.4x, inside the 2.0x
+# guard; the low end is apartment block groups, where one building holds many
+# homes). 03 re-checks both numbers on every run.
+#
+# Residential = use type RESIDENTIAL. "MULTIPLE" is multi-tenant commercial
+# (its second type field reads Commercial / General / Industrial) and is left
+# out. 22,989 footprints carry no type, 17,075 of them digitised from the 2026
+# aerial: new construction not yet typed. Those count when their centre lies in
+# a residential designation of the Metropolitan Bakersfield General Plan land
+# use layer, so new subdivisions are not dropped.
+#
+# The margin only has to reach the far side of block groups that straddle the
+# city limit; the layer ends at the general-plan boundary in any case.
 BUILDINGS_MARGIN_DEG = 0.09
+BUILDINGS_SOURCE = dict(
+    service="https://gis.bakersfieldcity.us/webmaps/rest/services/General/Buildings/MapServer/0",
+    publisher="City of Bakersfield GIS Office",
+    type_field="FAC_TYPE_1", residential=("RESIDENTIAL",),
+    untyped_landuse=dict(
+        service="https://gis.bakersfieldcity.us/webmaps/rest/services/General/LandUse/MapServer/6",
+        field="LANDUSE",
+        residential=("LR", "LMR", "LMR/LR", "HMR", "HR", "SR", "SR/LR", "RR", "ER", "UER",
+                     "WM-LR", "WM-LMR", "WM-HMR", "WM-HR")),
+    note="City footprint layer, last edited July 2026; land use is the Metropolitan Bakersfield General Plan layer.",
+)
 
 # ---------------------------------------------------------------- cooling sources
 # No documented exclusions yet: the Kern County cooling-center page lists
@@ -91,3 +137,37 @@ WARDS = dict(
     what="Council wards", publisher="City of Bakersfield GIS Office",
     adopted="2022 redistricting, council map 5B (Unity Map)",
 )
+
+# ---------------------------------------------------------------- area names
+# OpenStreetMap has few place nodes here, so nearest-place naming gave hundreds
+# of cells names like "Village at Lakeside E 21". The city's street centreline
+# layer carries names and a road class; 04i names every cell by its cross
+# streets, the way locations are given in Bakersfield.
+NAME_STREETS = dict(
+    service="https://gis.bakersfieldcity.us/webmaps/rest/services/General/Transportation/MapServer/4",
+    publisher="City of Bakersfield GIS Office",
+    fields=dict(prefix="PREFIX", name="NAME", type="TYPE", suffix="SUFFIX", cls="CLASS"),
+    major=("ARTERIAL", "HIGHWAY", "EXPRESSWAY"),
+    collector=("COLLECTOR", "LOCAL-COLLECTOR", "CITY-COLLECTOR"),
+    skip=("RAMP", "FREEWAY", "FUTURE", "DIRT"),
+)
+
+# ---------------------------------------------------------------- tree cover past the USFS map
+# The USFS / CAL FIRE 2022 map stops at the 2020 Census urban-area line; the
+# city's newest subdivisions lie past it. 02g models tree cover there from the
+# same June 2022 NAIP aerial survey the USFS map was classified from, trained
+# on cells the USFS map covers and tested on others of three kinds: urban,
+# open land (fields, pasture, bare ground, orchards) and cells the line cuts.
+# It writes nothing unless it beats the old canopy-height model on held-out
+# urban AND open-land cells. Measured November 11, 2026 (mean absolute error
+# in percentage points of tree cover, model / height model): urban 0.92 / 1.75,
+# open land 0.62 / 3.24, edge 1.18; bias within 0.12 on all three.
+# reports/canopy_naip_bakersfield.json holds the figures.
+#
+# complete_partial_below: a cell the urban line cuts keeps the USFS figure for
+# its assessed part unless under this share of its in-city homes (weighted by
+# residents) is in that part; then the model fills the rest and the figure is
+# for the whole cell. 23 ranked cells on November 11, 2026. Completing all 217
+# partly assessed cells was compared and rejected (the owner's decision): it
+# moved 97 cells by 100+ ranks, mostly cells whose homes were already measured.
+CANOPY_NAIP = dict(year=2022, train_cells=300, test_cells=300, max_mae=2.0, complete_partial_below=0.5)

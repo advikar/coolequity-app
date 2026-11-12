@@ -71,7 +71,7 @@ echo "CENSUS_API_KEY=..." > .env && chmod 600 .env    # api.census.gov/data/key_
 cd pipeline
 ../.venv/bin/python 01_make_grid.py     # H3 res-8 grid over the bbox    → grid.geojson
 ../.venv/bin/python 02_satellite.py     # Landsat LST + Sentinel-2 NDVI  → satellite.csv
-../.venv/bin/python 02b_buildings.py    # OSM residential footprints     → buildings.geojson
+../.venv/bin/python 02b_buildings.py    # city footprint layer (config)  → buildings.geojson
 ../.venv/bin/python 03_census.py        # ACS pop / age / income         → census.csv
 ../.venv/bin/python 04_overlays.py      # cooling sites + walk + streets → overlays.csv
 ../.venv/bin/python 05_score.py         # composite score + rank         → la.geojson

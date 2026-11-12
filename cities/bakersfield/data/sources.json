@@ -2,6 +2,39 @@
  "city": "bakersfield",
  "entries": [
   {
+   "stage": "02b_buildings",
+   "what": "2020 Census blocks (residents and housing units, for building weights)",
+   "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/2",
+   "publisher": "US Census Bureau, TIGERweb",
+   "retrieved": "2026-11-11",
+   "count": 8870,
+   "note": "2020 Census block counts (P.L. 94-171). Each residential footprint is weighted by its block's 2020 residents, shared by footprint area; 15,239 homes built since 2020 (main footprints beyond the block's 2020 housing units) are credited at their block group's residents per unit.",
+   "file": null,
+   "sha256_12": null
+  },
+  {
+   "stage": "02b_buildings",
+   "what": "Residential building footprints",
+   "url": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/Buildings/MapServer/0",
+   "publisher": "City of Bakersfield GIS Office",
+   "retrieved": "2026-11-11",
+   "count": 192093,
+   "note": "187,929 footprints typed RESIDENTIAL plus 14,222 untyped footprints lying in a residential land-use designation, before the size filter. City footprint layer, last edited July 2026; land use is the Metropolitan Bakersfield General Plan layer.",
+   "file": "buildings_bakersfield.geojson",
+   "sha256_12": "ea6205598fad"
+  },
+  {
+   "stage": "02g_canopy_naip",
+   "what": "NAIP 2022 aerial imagery (tree-cover model outside the USFS map)",
+   "url": "https://planetarycomputer.microsoft.com/dataset/naip",
+   "publisher": "USDA Farm Service Agency, via Microsoft Planetary Computer",
+   "retrieved": "2026-11-11",
+   "count": 1758,
+   "note": "Flown 2022-06-07 to 2022-06-08. Per-pixel model trained on the USFS map; on held-out cells against the USFS figure: urban cells (n=300) bias -0.12 points, mean absolute error 0.92, rank correlation 0.963; open-land cells (n=101) bias -0.01, mean absolute error 0.62. Count is cells filled.",
+   "file": null,
+   "sha256_12": null
+  },
+  {
    "stage": "04e_wards",
    "what": "Council wards",
    "url": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/Boundary/MapServer/5",
@@ -11,6 +44,28 @@
    "note": "2022 redistricting, council map 5B (Unity Map). Member names as fetched; the ward number is the stable label.",
    "file": "wards_bakersfield.geojson",
    "sha256_12": "cfa05a18572a"
+  },
+  {
+   "stage": "04h_priority_pop",
+   "what": "Priority populations (California Climate Investments)",
+   "url": "https://gis.carb.arb.ca.gov/hosting/rest/services/Hosted/PriorityPopulations5/FeatureServer/0",
+   "publisher": "California Air Resources Board",
+   "retrieved": "2026-11-11",
+   "count": 119,
+   "note": "Priority Populations 5.0, in effect for projects selected on or after September 18, 2026. Areas only; low-income households qualify anywhere and are not mapped.",
+   "file": "priority_pop_bakersfield.geojson",
+   "sha256_12": "783e9e2eff9f"
+  },
+  {
+   "stage": "04i_street_names",
+   "what": "Street centrelines (area names by cross streets)",
+   "url": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/Transportation/MapServer/4",
+   "publisher": "City of Bakersfield GIS Office",
+   "retrieved": "2026-11-11",
+   "count": 26680,
+   "note": "Names and road class only; used to name each area by its cross streets, not for routing or street length.",
+   "file": "street_names_bakersfield.geojson",
+   "sha256_12": "18e17ee19baa"
   }
  ]
 }

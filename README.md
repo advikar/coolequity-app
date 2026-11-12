@@ -128,9 +128,10 @@ export COOLEQUITY_CITY=bakersfield
 .venv/bin/python pipeline/01_make_grid.py
 .venv/bin/python pipeline/00_osm_extract.py --pbf /path/to/region.osm.pbf   # optional (Los Angeles): OpenStreetMap buildings, streets, names and walk graph from a downloaded extract instead of Overpass; needs `pip install osmium`
 .venv/bin/python pipeline/02_satellite.py              # --cached: use the committed rasters
-.venv/bin/python pipeline/02b_buildings.py             # --refresh: re-pull footprints
+.venv/bin/python pipeline/02b_buildings.py             # --refresh: re-pull footprints (OpenStreetMap, or the agency layer in BUILDINGS_SOURCE)
 .venv/bin/python pipeline/02c_canopy.py
 .venv/bin/python pipeline/02d_canopy_usfs.py
+.venv/bin/python pipeline/02g_canopy_naip.py           # optional (cities with CANOPY_NAIP): tree cover outside the USFS map, modelled from NAIP and tested on held-out USFS cells; needs `pip install scikit-learn`; run after 02d and 04
 .venv/bin/python pipeline/02e_worldcover.py
 .venv/bin/python pipeline/02f_canopy_validate.py --gdb /path/to/ds3206.gdb   # Contra Costa builds: validate tree cover against the CDFW lidar map; 05 uses the fits
 .venv/bin/python pipeline/03_census.py
@@ -140,6 +141,8 @@ export COOLEQUITY_CITY=bakersfield
 .venv/bin/python pipeline/04d_jurisdiction.py          # city / community per cell (TIGERweb places)
 .venv/bin/python pipeline/04f_sb535.py                 # SB 535 disadvantaged-community share per cell (cities with SB535_URL)
 .venv/bin/python pipeline/04g_fire.py                  # wildfire perimeters newer than the canopy and census inputs (cities with FIRE_PERIMETERS)
+.venv/bin/python pipeline/04h_priority_pop.py          # CARB priority populations (SB 535 + AB 1550 low-income) share per cell (cities with PRIORITY_POP_URL)
+.venv/bin/python pipeline/04i_street_names.py          # area names by cross streets from a city street layer (cities with NAME_STREETS); replaces 04's nearest-place names
 .venv/bin/python pipeline/05_score.py
 .venv/bin/python pipeline/05b_stability.py            # rank bands: census margins + weight jitter, 300 draws
 .venv/bin/python pipeline/06_audit_rebuild.py --baseline <dir with the previous outputs>

@@ -251,6 +251,20 @@ def load():
             raise SystemExit("WEIGHTS['dac'] > 0 but no SB 535 CSV — run 04f_sb535.py first")
         log("  SB 535: no CSV (SB535_URL unset or 04f not run); term scored at 0")
 
+    # Cross-street names (04i), where the city set NAME_STREETS: they replace 04's
+    # nearest-place names, and `near` gives the nearest intersection of two through streets.
+    if C.NAMES_CSV.exists():
+        nm = pd.read_csv(C.NAMES_CSV, dtype=str).fillna("")
+        df = df.drop(columns=["name"], errors="ignore").merge(nm, on="h3", how="left")
+        log(f"  names: {int(df['name'].fillna('').ne('').sum())}/{len(df)} cells named by cross streets")
+
+    # Priority populations (04h), where the city set PRIORITY_POP_URL. A reporting
+    # field for grant terms, never a score input; absent, the columns are not written.
+    if C.PRIORITY_POP_CSV.exists():
+        df = df.merge(pd.read_csv(C.PRIORITY_POP_CSV, dtype={"pp_type": str}), on="h3", how="left")
+        df["pp"] = df["pp"].fillna(0.0)
+        log(f"  priority populations: {int((df['pp'] >= 0.5).sum())}/{len(df)} cells mostly inside an area")
+
     # Wildfire perimeters newer than the tree-cover and census inputs (04g),
     # where the city set FIRE_PERIMETERS. A flag, never a score input.
     if C.FIRE_CSV.exists():
@@ -416,6 +430,14 @@ def main():
         "fire_name":  df["fire_name"].where(df["fire"] > 0, None),
         "fire_year":  df["fire_year"].where(df["fire"] > 0, None),
     })[CONTRACT]
+    if "near" in df.columns:
+        # Nearest intersection of two through streets, as a phrase; empty where the name is it.
+        out["near"] = df["near"].where(df["near"].fillna("").ne(""), None).values
+    if "pp" in df.columns:
+        # Share of the cell inside a California Climate Investments priority
+        # population area (SB 535 or AB 1550) and its designation. Not scored.
+        out["pp"] = df["pp"].round(3).values
+        out["pp_type"] = df["pp_type"].where(df["pp"] > 0, None).values
 
     # Rank exactly the published values/endpoints used by the browser. This
     # avoids dense-rank ties and precision-dependent export/UI disagreement.

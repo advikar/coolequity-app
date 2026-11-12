@@ -911,7 +911,7 @@
             </select><button type="button" class="sortsel dirbtn" id="rank-dir" aria-label="Sort direction" title="Flip between most first and least first">most first</button><a class="info-link" href="guide.html#sort" target="ce-guide" aria-label="What each sort option means">i</a></div>
           <p class="hint sorthint" id="sort-hint" hidden></p>
           <div class="cityrow"><label for="rank-city">Show</label><select id="rank-city" class="sortsel" aria-label="Limit the list and the map to one city or community"><option value="">every city and community</option></select></div>
-          <input id="rank-search" type="search" placeholder="Search by place name or cell number…" autocomplete="off"/>
+          <input id="rank-search" type="search" placeholder="Search by place, street or cell number…" autocomplete="off"/>
           <div class="filters" id="rank-filters" role="group" aria-label="Filters">
             <select id="ward-filter" class="sortsel" aria-label="Limit to a ward or district" hidden><option value="">All wards</option></select>
             <button type="button" class="pst" data-f="walk" title="Walk to nearest cool place over 15 minutes">Walk &gt; 15 min</button>
@@ -919,7 +919,7 @@
             <button type="button" class="pst" data-f="green" title="Under 10% tree cover">Trees &lt; 10%</button>
             <button type="button" class="pst" data-f="age" title="At least 20% of residents aged 65 or older">Older 20%+</button>
             <button type="button" class="pst" data-f="scen" title="Only areas with mapped street capacity, so a planting scenario can be sized. Not a site survey.">Has street capacity</button>
-            <button type="button" class="pst" data-f="aerial" title="Only areas whose tree cover comes from the 2022 aerial assessment covering at least 99% of the area; drops height-model, partly assessed and greenness stand-in areas. Coverage is not accuracy.">Aerial coverage ≥99%</button>
+            <button type="button" class="pst" data-f="aerial" title="Only areas whose tree cover comes from the 2022 aerial assessment covering at least 99% of the area; drops modelled, height-model, partly assessed and greenness stand-in areas. Coverage is not accuracy.">Aerial coverage ≥99%</button>
             <button type="button" class="pst" data-f="stable" title="Only areas that stay in the top tier in at least 80% of re-draws of census margins and weights (recommended mix)">Stable top tier</button>
           </div>
           <p id="rank-count" role="status"></p>
@@ -951,6 +951,8 @@
           <button class="layer" data-k="room"><b>Street room</b><span>tree spots along mapped streets</span></button>
           <!-- Hidden at boot unless a cell carries an SB 535 share — see syncDacAvailable(). -->
           <button class="layer" data-k="dac" id="layer-dac" hidden><b>SB 535 community</b><span>state-designated disadvantaged tracts</span></button>
+          <!-- Hidden at boot unless a cell carries a priority-population share — see syncPpAvailable(). -->
+          <button class="layer" data-k="pp" id="layer-pp" hidden><b>Priority populations</b><span>disadvantaged or low-income tracts</span></button>
         </div>
         <p class="hint layer-note" id="layer-note" role="status" hidden></p>
         <p class="lbl sub" id="story-heading" hidden style="margin:14px 0 0">Historical context</p>
@@ -976,6 +978,7 @@
           <div><div class="tt" data-unit="Outline wards on the map">Outline wards on the map</div><div class="ts" data-unit="boundaries and ward numbers over any layer">boundaries and ward numbers over any layer</div></div>
         </button>
         <div class="wtable" id="ward-table" role="table" aria-label="Ranking by ward"></div>
+        <div class="export" style="margin-top:10px"><button type="button" id="ward-sheets" title="Opens one Letter page per ward or district: residents, comparison with the city, a map, the ten highest-ranked areas and the starred areas' planting total. With one chosen in the list filter, that one only." data-unit="Ward one-page summaries">Ward one-page summaries</button></div>
         <p class="hint" id="ward-note" style="margin-top:8px"></p>
         </div>
       </section>
@@ -1102,7 +1105,7 @@
   <aside id="detail" inert aria-label="Selected area">
     <div class="dhead">
       <div class="badge" id="d-badge">1</div>
-      <div style="flex:1"><div class="nm" id="d-name">—</div><div class="rk" id="d-rank">—</div><div class="rk band" id="d-band" hidden></div></div>
+      <div style="flex:1"><div class="nm" id="d-name">—</div><div class="rk" id="d-near" hidden></div><div class="rk" id="d-rank">—</div><div class="rk band" id="d-band" hidden></div></div>
       <button type="button" class="dnav" id="d-prev" title="Previous area in the shortlist, or in the ranking" aria-label="Previous area">‹</button>
       <button type="button" class="dnav" id="d-next" title="Next area in the shortlist, or in the ranking" aria-label="Next area">›</button>
       <button type="button" class="pin dpin" id="d-pin" aria-pressed="false" title="Add to shortlist">☆</button>
@@ -1303,6 +1306,8 @@ const LAYERS={
   // uniformly; the legend swaps to the A–D swatch key instead of a gradient bar.
   dac:{title:'Disadvantaged community (SB 535)',ramp:DAC,worse:'hi',fmt:v=>Math.round(v*100)+'%',
     cap:'Share of the area inside a census tract designated by CalEPA under SB 535 (final designation, September 2026; CalEnviroScreen 5.0). A state policy designation, not a measurement of this area.'},
+  pp:{title:'Priority populations (state climate funds)',ramp:DAC,worse:'hi',fmt:v=>Math.round(v*100)+'%',
+    cap:'Share of the area inside a California Climate Investments priority population area: an SB 535 disadvantaged community or an AB 1550 low-income community (CARB Priority Populations 5.0, in effect September 18, 2026). A state policy designation, not a measurement of this area, and never part of the score. Low-income households qualify anywhere and are not mapped.'},
   holc:{title:'Redlining grade (HOLC)',ramp:null,fmt:v=>v,
     cap:'1930s Home Owners’ Loan Corporation grades, drawn in the original map’s own colors. D-graded (“hazardous”) blocks are hotter and barer today. US-only historical layer.'}
 };
@@ -1480,11 +1485,18 @@ function syncDacAvailable(){
   return any;
 }
 
+/** The priority-populations layer, shown only where the pipeline wrote a share (04h). */
+function syncPpAvailable(){
+  const any=HEX.features.some(f=>f.properties.pp>0);
+  const b=document.getElementById('layer-pp');if(b)b.hidden=!any;
+  return any;
+}
+
 function computeRanges(){
   HEX.features.forEach(f=>{f.properties.room=roomOf(f.properties);});
   {const a=HEX.features.filter(f=>f.properties.place==='res'&&f.properties.room>0).map(f=>f.properties.room).sort((x,y)=>x-y);
    const q=t=>a.length?a[Math.min(a.length-1,Math.floor(t*a.length))]:0;ROOM_CUTS=[q(1/3),q(2/3)];}
-  ['score','lst','green','veg','pop','pct65','ac','access_min','room','dac'].forEach(k=>{
+  ['score','lst','green','veg','pop','pct65','ac','access_min','room','dac','pp'].forEach(k=>{
     const a=HEX.features.map(f=>f.properties[k]).filter(v=>typeof v==='number'&&isFinite(v));
     vals[k]=a.length?[Math.min(...a),Math.max(...a)]:[0,1];
     if(vals[k][0]===vals[k][1])vals[k][1]=vals[k][0]+1;  // avoid divide-by-zero on flat fields
@@ -1495,11 +1507,12 @@ function computeRanges(){
   vals.score=[0,100];
   vals.veg=[0,45];
   vals.dac=[0,1];        // a designation share: the scale is 0–100% whatever the data holds
+  vals.pp=[0,1];
   // Scoring normalizes against the pipeline's p2/p98 endpoints (geojson `norm`),
   // so one leafy or one crowded hex no longer sets the scale for the score; the
   // color ramps above stay on the raw range so the map still spans real values.
   // Falls back to the raw range when `norm` is absent (older data files).
-  ['score','lst','green','veg','pop','pct65','ac','access_min','room','dac'].forEach(k=>{svals[k]=vals[k];});
+  ['score','lst','green','veg','pop','pct65','ac','access_min','room','dac','pp'].forEach(k=>{svals[k]=vals[k];});
   const nm=HEX&&HEX.norm;
   if(nm) for(const k in nm){ if(Array.isArray(nm[k])&&nm[k][1]>nm[k][0]) svals[k]=nm[k]; }
 }
@@ -1544,6 +1557,8 @@ function canopyTag(p){
   if(p.green_src==='ndvi'){const f=Math.round((p.coverage_frac||0)*100);return p.canopy_quality==='below-threshold'?['satellite stand-in',`The aerial assessment observed only ${f<1?'under 1%':f+'%'} of this area, too little to describe it, so satellite greenness stands in and is scored on its own scale.`]:['satellite stand-in','No aerial tree-cover assessment here; satellite greenness stands in and is scored on its own scale.'];}
   const yr=p.canopy_year?` ${escapeHtml(String(p.canopy_year))}`:'';
   if(p.canopy_source==='lidar-2020'){const f=Math.round((p.coverage_frac||0)*100);return ['lidar 2017–22',`No aerial assessment here; canopy from the county's lidar vegetation map (CDFW 2025; returns above 4.6 m), covering ${f}% of this area, rescaled onto the aerial line.`];}
+  if(p.canopy_source==='usfs+naip-model'){const f=Math.round((p.coverage_frac||0)*100);return [`aerial${yr} + modelled`,`The${yr} aerial map covers ${f<1?'under 1%':f+'%'} of this area, and most of its homes are in the rest. Tree cover there is modelled from the same aerial survey, so the figure describes the whole area.`];}
+  if(p.canopy_source==='naip-model')return [`modelled${yr}`,`Outside the USFS aerial map. Tree cover here is modelled from the same${yr} aerial survey (NAIP) by a classifier trained on the USFS map and tested against it on areas it had not seen. A model of that map, not the map itself.`];
   const legacy=p.canopy_source==='chm-legacy',kind=legacy?'height model':'aerial',what=legacy?`Canopy-height model (imagery ${escapeHtml(String(p.canopy_year||'2009–2020'))}, trees = 2 m and taller)`:`Aerial classification${yr}`;
   if(p.canopy_quality==='calibrated')return [`${kind} · calibrated`,`${what}, rescaled onto the aerial product's line using the county lidar map, so it compares with aerial cells on one scale.`];
   if(p.canopy_quality==='full')return [`${kind}${legacy?'':yr}`,`${what} covering essentially the whole area.`];
@@ -1637,7 +1652,7 @@ function exportNotes(){return [
   'Scores are relative 0–100 within this study area under the weights in this file; they are not health-risk probabilities or cross-city rankings.',
   'rank/score are computed live from the exported weights; rank_default/score_default are the pipeline defaults shipped with the data. rank_recommended_mix_p05/p95 and top_tier_share come from re-drawing ACS and LACE inputs within their margins of error and jittering the recommended weights; ranks are estimates with a band, not exact positions.',
   'Population, age and A/C are allocated estimates from ACS block groups and Census LACE tracts, not household counts.',
-  'Canopy percentages are assessed cover per canopy_source; chm-legacy cells have unknown assessed extent (coverage_frac empty). In Contra Costa builds, height-model cells are rescaled onto the aerial line and lidar-2020 cells come from the county lidar map, both fitted against that map (reports/canopy_validation_<slug>.json).',
+  'Canopy percentages are assessed cover per canopy_source; chm-legacy cells have unknown assessed extent (coverage_frac empty). In Contra Costa builds, height-model cells are rescaled onto the aerial line and lidar-2020 cells come from the county lidar map, both fitted against that map (reports/canopy_validation_<slug>.json). naip-model cells lie outside the USFS map and carry tree cover modelled from the 2022 aerial survey, with held-out accuracy in reports/canopy_naip_<slug>.json.',
   'Planting scenarios are theoretical: mapped street length at 10 m spacing, capped by cell area minus known canopy. Site feasibility, ownership, utilities and species are unverified.',
   `Cost is planted trees × $${COST_TREE.toLocaleString('en-US')} per tree, taken as ${costScope()}; a program-average assumption, not a local quote. Added tree cover and cooling count only the share of planted trees assumed to reach maturity (survival_share_pct, default 70%; Sacramento\'s long-term monitoring found 42.4% alive after 22 years). Cooling is an illustrative clear-sky summer air-temperature figure, 0.3 °C per 10 canopy points, not a local forecast.`,
   'Where fire_perimeter_share_pct is above zero, the area lies partly or wholly inside the perimeter of a wildfire newer than the tree-cover and census inputs: its tree cover, residents, A/C and street capacity describe the ground before the fire, and its rank should not be used without a field check.',
@@ -1662,16 +1677,16 @@ function exportHeader(){
     notes:exportNotes(),
   };
 }
-const EXPORT_FIELDS=['id','name','city','place','rank','score','rank_default','score_default','rank_lo','rank_hi','rank_top_share','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
+const EXPORT_FIELDS=['id','name','near','city','place','rank','score','rank_default','score_default','rank_lo','rank_hi','rank_top_share','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
   'coverage_frac','canopy_quality','canopy_m2','assessed_m2','pop','pct65','ac_pct','ac_src','ac_coverage','acs_year','access_min','access_km','access_src','inside_frac',
-  'access_quality','access_snap_m','area_m2','street_m','street_room_positions','street_room_band','scenario_ok','canopy_baseline_ok','land','holc','dac','dac_type','dac_tract','fire','fire_name','fire_year',
+  'access_quality','access_snap_m','area_m2','street_m','street_room_positions','street_room_band','scenario_ok','canopy_baseline_ok','land','holc','dac','dac_type','dac_tract','pp','pp_type','fire','fire_name','fire_year',
   'ward_id','ward_name',
   'planting_share','trees','trees_surviving','canopy_gain_points','cost_usd','cooling_c','future_canopy_pct','field_status','field_note','field_note_updated'];
 function cellRecord(p){
   const s=sc(p), r=rk(p), share=effectiveShare(p.id), scn=(share!=null)?scenarioFor(p,share):null;
   const cityCol=p.city?(p.city+(p.city_kind==='cdp'?' (unincorporated community)':p.city_kind==='none'?' (county)':'')):null;
   const num=v=>(v==null||v==='')?null:+v;
-  return {id:p.id, name:nameOf(p), city:cityCol, place:p.place, rank:r??null, score:s==null?null:+s.toFixed(1),
+  return {id:p.id, name:nameOf(p), near:p.near??null, city:cityCol, place:p.place, rank:r??null, score:s==null?null:+s.toFixed(1),
     rank_default:num(p.rank), score_default:num(p.score), rank_lo:num(p.rank_lo), rank_hi:num(p.rank_hi), rank_top_share:num(p.rank_top_share), lst_c:num(p.lst), canopy_pct:p.green_src==='ndvi'?null:num(p.green), greenness_index:p.green_src==='ndvi'?(p.green==null?null:+ndviIndex(+p.green).toFixed(1)):null, green_src:p.green_src??null,
     canopy_source:p.canopy_source??null, canopy_year:p.canopy_year??null, coverage_frac:num(p.coverage_frac), canopy_quality:p.canopy_quality??null,
     canopy_m2:num(p.canopy_m2), assessed_m2:num(p.assessed_m2), pop:num(p.pop), pct65:num(p.pct65), ac_pct:num(p.ac), ac_src:p.ac_src??null,
@@ -1679,6 +1694,7 @@ function cellRecord(p){
     access_quality:p.access_quality??null, access_src:p.access_src??null, inside_frac:num(p.inside_frac), access_snap_m:num(p.access_snap_m), area_m2:num(p.area_m2), street_m:num(p.street_m), street_room_positions:Math.floor(Math.max(0,p.street_m||0)*2/TREE_SPACING_M), street_room_band:(typeof roomBand==='function'?roomBand(p):null),
     scenario_ok:p.scenario_ok===true, ward_id:p.ward_id??null, ward_name:p.ward_name??null, canopy_baseline_ok:p.canopy_baseline_ok===true, land:p.land??null, holc:p.holc??null,
     dac:p.dac==null?null:+(+p.dac*100).toFixed(1), dac_type:p.dac_type??null, dac_tract:p.dac_tract??null,
+    pp:p.pp==null?null:+(+p.pp*100).toFixed(1), pp_type:p.pp>0?(p.pp_type??null):null,
     fire:p.fire==null?null:+(+p.fire*100).toFixed(1), fire_name:p.fire>0?(p.fire_name??null):null, fire_year:p.fire>0?(p.fire_year??null):null,
     planting_share:scn?scn.share:null, trees:scn?scn.trees:null, trees_surviving:scn?scn.trees_surviving:null, canopy_gain_points:scn?scn.canopy_gain_points:null,
     cost_usd:scn?scn.cost_usd:null, cooling_c:scn?scn.cooling_c:null, future_canopy_pct:scn?scn.future_canopy_pct:null,
@@ -1688,7 +1704,8 @@ function cellRecord(p){
  *  keeps the internal keys (loadScenario reads them) and carries this key. */
 const FIELD_KEY={
   id:['cell_id','Stable number of the hexagon area'],
-  name:['area_name','Nearest mapped place name'],
+  name:['area_name','Area name: nearest mapped place, or the cross streets inside or nearest the area where the build names areas by street'],
+  near:['nearest_major_intersection','Nearest intersection of two through streets, with direction and distance from the area center; empty where the name is that intersection or the build does not name areas by street'],
   place:['area_type','res = residents ranked; activity = developed, no residents; empty = undeveloped'],
   city:['city_or_community','City or census-designated community containing the area\'s center (Census TIGERweb places)'],
   rank:['rank','Rank under the priorities in this file (1 = most need)'],
@@ -1701,11 +1718,11 @@ const FIELD_KEY={
   lst_c:['surface_heat_c','Summer land-surface temperature, °C (satellite)'],
   canopy_pct:['tree_cover_pct','Tree cover, % of assessed land; empty where only satellite greenness is available'],
   greenness_index:['greenness_index_0_100','Satellite greenness index, 0–100; filled only where tree_cover_source_type = ndvi'],
-  green_src:['tree_cover_source_type','canopy = tree-cover map (aerial classification, calibrated height model or lidar; see tree_cover_dataset); ndvi = satellite greenness stand-in'],
-  canopy_source:['tree_cover_dataset','usfs-2022 aerial classification, chm-legacy height model, lidar-2020 county lidar map, or none (no tree-cover assessment; greenness stand-in)'],
+  green_src:['tree_cover_source_type','canopy = tree-cover map (aerial classification or a model of it, calibrated height model or lidar; see tree_cover_dataset); ndvi = satellite greenness stand-in'],
+  canopy_source:['tree_cover_dataset','usfs-2022 aerial classification, naip-model (modelled from the 2022 aerial survey outside the USFS map), usfs+naip-model (USFS map for the assessed part, the same model for the rest, where most homes lie outside the assessed part), chm-legacy height model, lidar-2020 county lidar map, or none (no tree-cover assessment; greenness stand-in)'],
   canopy_year:['tree_cover_year','Year of the tree-cover dataset'],
   coverage_frac:['tree_cover_assessed_fraction','Share of the area the aerial assessment covers (0–1)'],
-  canopy_quality:['tree_cover_quality','full, partial, calibrated (height model rescaled to the aerial line), lidar, coverage-unknown, below-threshold (assessed on under 10% of the area) or unassessed'],
+  canopy_quality:['tree_cover_quality','full, partial, modelled (see naip-model), completed (see usfs+naip-model), calibrated (height model rescaled to the aerial line), lidar, coverage-unknown, below-threshold (assessed on under 10% of the area) or unassessed'],
   canopy_m2:['tree_cover_m2','Assessed tree crown area, m²'],
   assessed_m2:['assessed_area_m2','Land the assessment covers, m²'],
   pop:['residents','Estimated residents (ACS, allocated into the area)'],
@@ -1733,6 +1750,8 @@ const FIELD_KEY={
   dac:['sb535_dac_share_pct','Share of the area inside an SB 535 disadvantaged community (CalEPA, September 2026), %'],
   dac_type:['sb535_dac_criterion','Designation criterion of the tract covering most of the area'],
   dac_tract:['sb535_dac_tract','Census tract GEOID of that designated tract'],
+  pp:['priority_population_share_pct','Share of the area inside a California Climate Investments priority population area (CARB Priority Populations 5.0: SB 535 disadvantaged or AB 1550 low-income community), %; empty where the build does not carry the layer'],
+  pp_type:['priority_population_designation','Designation covering most of the area: disadvantaged, disadvantaged and low-income, low-income, or low-income within half a mile of a disadvantaged community'],
   fire:['fire_perimeter_share_pct','Share of the area inside the perimeter of a wildfire newer than the tree-cover and census inputs, %; empty or 0 where none'],
   fire_name:['fire_name','Name of that fire (CAL FIRE perimeter)'],
   fire_year:['fire_year','Year of that fire'],
@@ -1964,6 +1983,7 @@ function wireDrawers(){
   document.getElementById('exp-sl-csv').onclick=exportShortlist;
   document.getElementById('exp-area-csv').onclick=()=>exportCell('csv');
   document.getElementById('exp-report').onclick=openReport;
+  {const ws=document.getElementById('ward-sheets');if(ws)ws.onclick=openWardSheets;}
   // sort + filters
   document.getElementById('rank-sort').onchange=e=>{RANK_SORT=e.target.value;RANK_DIR=defaultDir(RANK_SORT);rankPage=0;syncSortUI();buildRank();};
   document.getElementById('rank-dir').onclick=()=>{RANK_DIR=RANK_DIR==='most'?'least':'most';rankPage=0;syncSortUI();buildRank();};
@@ -2115,8 +2135,9 @@ const TIPS={
   ac:{t:'Homes with A/C',d:'The Census estimate of homes with air conditioning. Fewer homes with A/C means more reliance on shade and public cooling.'},
   holc:{t:'Redlining (1930s)',d:'Historical federal lending grades, shown where a map exists. Areas graded “hazardous” then are often the hottest and least shaded now.'},
   dac:{t:'SB 535 disadvantaged community',d:'Census tracts designated by CalEPA under SB 535 (final designation, September 2026, from CalEnviroScreen 5.0). The map shows how much of each area falls inside a designated tract. A funding-eligibility designation, not a measurement of heat or shade; use it to see which priority areas also meet a program’s disadvantaged-community commitment.'},
+  pp:{t:'Priority populations',d:'Areas the state counts toward its climate-investment targets: SB 535 disadvantaged communities and AB 1550 low-income communities (CARB Priority Populations 5.0, in effect September 18, 2026). The map shows how much of each area falls inside one. A funding designation, not a measurement, and never part of the score. Low-income households qualify wherever they live; no map can show that.'},
   sort:{t:'Sort options',d:'Need: the priority score under the current mix (the rank badges). Residents: estimated people living in the area. Surface heat: summer late-morning ground temperature from satellite. Tree cover: share of assessed land under tree crowns. Walk to cooling: estimated minutes on foot to the nearest cool place. Age 65+: share of residents aged 65 or older. Sorting re-orders the list only; rank badges and the map never change.'},
-  geography:{t:'About these areas',d:'Each hexagon is a fixed analysis area, not a neighborhood boundary. Names are the nearest mapped place; gray areas have no residents to rank.'},
+  geography:{t:'About these areas',d:'Each hexagon is a fixed analysis area, not a neighborhood boundary. '+(CE_CITY.nameKind==='streets'?'Each is named by the cross streets inside it, or by direction from the nearest ones, with the nearest major intersection underneath':'Names are the nearest mapped place')+'; gray areas have no residents to rank.'},
 };
 function tipFor(a){const m=(a.getAttribute('href')||'').match(/#([a-z0-9-]+)/);return m&&TIPS[m[1]]?{...TIPS[m[1]],href:a.getAttribute('href')}:null;}
 let tipPinned=null,tipTimer=null;
@@ -2164,7 +2185,7 @@ function canopySourcesLabel(){
   const res=HEX.features.filter(f=>f.properties.place==='res').map(f=>f.properties);
   const n={};for(const p of res){const k=p.green_src==='ndvi'?'ndvi':(p.canopy_source||'unknown');n[k]=(n[k]||0)+1;}
   const name={'usfs-2022':'USFS / CAL FIRE 2022 aerial classification','chm-legacy':'2009–2020 height model'+(res.some(p=>p.canopy_quality==='calibrated')?' rescaled onto the aerial line':' (assessed extent unknown)'),
-    'lidar-2020':'county lidar map (CDFW 2025)',ndvi:'satellite greenness stand-in, no tree-cover value',unknown:'unrecorded source'};
+    'lidar-2020':'county lidar map (CDFW 2025)','naip-model':'modelled from the 2022 aerial survey (NAIP) outside the USFS map, trained and tested on that map','usfs+naip-model':'USFS map for part of the area, completed with the same model where most homes lie outside it',ndvi:'satellite greenness stand-in, no tree-cover value',unknown:'unrecorded source'};
   return Object.entries(n).sort((a,b)=>b[1]-a[1]).map(([k,c])=>`${name[k]||k}: ${c.toLocaleString()} area${c===1?'':'s'}`).join('; ');
 }
 function openReport(){
@@ -2180,7 +2201,7 @@ function openReport(){
   const treesLbl=p=>p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':p.green.toFixed(0)+'%';
   // Every row carries its own tree-cover source, so a reader can tell a partial
   // or modelled figure from a full aerial one without the source list at the end.
-  const treesFlag=p=>p.green_src==='ndvi'?'greenness index':p.canopy_source==='lidar-2020'?'lidar':p.canopy_source==='chm-legacy'?'height model':p.canopy_quality==='partial'?`partial, ${Math.round((p.coverage_frac||0)*100)}% assessed`:'';
+  const treesFlag=p=>p.green_src==='ndvi'?'greenness index':p.canopy_source==='lidar-2020'?'lidar':p.canopy_source==='naip-model'?'modelled':p.canopy_source==='usfs+naip-model'?'part modelled':p.canopy_source==='chm-legacy'?'height model':p.canopy_quality==='partial'?`partial, ${Math.round((p.coverage_frac||0)*100)}% assessed`:'';
   const treesCell=p=>{const f=treesFlag(p);return treesLbl(p)+(f?` <small class="muted">${esc(f)}</small>`:'');};
   const swatchRow=W_INPUTS.filter(w=>W[w.k]>0.005).map(w=>`<span><i style="background:${w.swatch}"></i>${esc(w.label)} <b>${Math.round(W[w.k]*100)}%</b></span>`).join('');
   const wbar=W_INPUTS.filter(w=>W[w.k]>0.005).map(w=>`<i style="width:${(W[w.k]*100).toFixed(1)}%;background:${w.swatch}"></i>`).join('');
@@ -2193,7 +2214,7 @@ function openReport(){
   const slPages=sl.map(f=>{const p=f.properties,s=sc(p),c=colorFor('score',s),share=effectiveShare(p.id),scn=scenarioFor(p,share),d=drivers(p),st=cityStats();
     const seniors=Math.round(p.pop*p.pct65/100);
     const m=[['Surface heat',fTemp(p.lst),norm('lst',p.lst),lift(colorFor('lst',p.lst),130)],[p.green_src==='ndvi'?'Greenness (satellite, 0–100)':'Tree cover'+(treesFlag(p)?' ('+treesFlag(p)+')':''),treesLbl(p),norm('green',p.green),lift(colorFor('green',p.green),130)],['Residents',fInt(p.pop),norm('pop',p.pop),lift(colorFor('pop',p.pop),130)],['Age 65+',LAYERS.pct65.fmt(p.pct65),norm('pct65',p.pct65),lift(colorFor('pct65',p.pct65),130)],['Homes with A/C (est.)',LAYERS.ac.fmt(p.ac),norm('ac',p.ac),lift(colorFor('ac',p.ac),130)],['Walk to cooling (est.)',`${fMin(p.access_min)} · ${fDist(p.access_km)}`,norm('access',p.access_min),lift(colorFor('access',p.access_min),130)],...('dac' in CE_CITY.weights?[['SB 535 community',p.dac>0?Math.round(p.dac*100)+'% designated':'not designated',norm('dac',p.dac||0),lift(colorFor('dac',p.dac||0),130)]]:[])];
-    return `<section class="area"><div class="ahead"><span class="rk big" style="background:${c};color:${inkOn(c)}">${rk(p)}</span><div><h3>${esc(nameOf(p))}</h3><div class="sub">Rank ${rk(p)} of ${order.length.toLocaleString()}${p.rank_lo!=null?` · likely ${p.rank_lo}–${p.rank_hi} under the recommended mix`:''}${p.city?' · '+esc(p.city):''} · need index ${s.toFixed(0)}${def?'':' · under '+esc(q)} · area #${p.id}</div></div></div>
+    return `<section class="area"><div class="ahead"><span class="rk big" style="background:${c};color:${inkOn(c)}">${rk(p)}</span><div><h3>${esc(nameOf(p))}</h3><div class="sub">Rank ${rk(p)} of ${order.length.toLocaleString()}${p.rank_lo!=null?` · likely ${p.rank_lo}–${p.rank_hi} under the recommended mix`:''}${p.city?' · '+esc(p.city):''}${p.near?' · '+esc(p.near):''} · need index ${s.toFixed(0)}${def?'':' · under '+esc(q)} · area #${p.id}</div></div></div>
       ${fireOf(p)?`<p class="fine" style="margin:0 0 8px"><b>Fire perimeter:</b> ${Math.round(fireOf(p).share*100)}% of this area is inside the ${esc(fireOf(p).name)} fire perimeter${fireOf(p).year?' ('+esc(fireOf(p).year)+')':''}. Its tree cover, residents, A/C and street capacity predate the fire; check on the ground.</p>`:''}
       ${noteOf(p.id).status||noteOf(p.id).note?`<p class="fine" style="margin:0 0 8px"><b>Field check:</b> ${noteOf(p.id).status?esc(FC_LABEL[noteOf(p.id).status]):'no status'}${noteOf(p.id).note?' — '+esc(noteOf(p.id).note):''}${noteOf(p.id).updated?' ('+esc(new Date(noteOf(p.id).updated).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}))+')':''}</p>`:''}
       <p class="lede">About <b>${fInt(p.pop)}</b> people live here, <b>${fInt(seniors)}</b> aged 65 or older. Surface heat is <b>${fTemp(p.lst)}</b>${p.green_src==='ndvi'?` and no aerial tree-cover value exists here; satellite greenness reads <b>${treesLbl(p)}</b>, an index, not percent cover`:` and trees cover <b>${treesLbl(p)}</b> of the assessed ground, ${p.green<st.medGreen?'below':p.green>st.medGreen?'above':'at'} the city median of ${st.medGreen.toFixed(0)}%`}. The nearest mapped cool place is about <b>${fMin(p.access_min)}</b> on foot.</p>
@@ -2202,7 +2223,7 @@ function openReport(){
       <div class="scen"><div class="k">Planting scenario · ${share}% of mapped street space</div>${scn?`<div class="stats"><div><b>${fInt(scn.trees)}</b><span>trees</span></div><div><b>+${scn.canopy_gain_points.toFixed(1)}</b><span>canopy points</span></div><div><b>${money(scn.cost_usd)}</b><span>indicative cost</span></div></div>
         <p class="fine">${scn.capacity?`Mapped streets imply an upper bound of ${fInt(scn.capacity)} positions at ${TREE_SPACING_M} m spacing on both sides.`:'No eligible street length is mapped here.'} ${p.canopy_baseline_ok?`Canopy ${p.green.toFixed(1)}% → ${(p.green+scn.canopy_gain_points).toFixed(1)}% at maturity.`:'Whole-area canopy baseline is not fully assessed.'} Site feasibility, ownership, utilities and species are unverified.</p>`:`<p class="fine">${esc(noCapacityWhy(p))}</p>`}</div></div>
     </section>`;}).join('');
-  const sources=[['Surface temperature','Landsat 8/9 thermal, summer composite (USGS/NASA)'],['Tree cover',canopySourcesLabel()],['Population and age','US Census ACS 5-year'+(hdr.dataset.acs_year?' ('+hdr.dataset.acs_year+')':'')+(CE_CITY.popAllocation==='dasymetric'?', allocated into areas by mapped residential floor area (dasymetric)':', allocated into areas by overlap area')],['Home air conditioning','Census LACE'+(hdr.dataset.lace_year?' '+hdr.dataset.lace_year:'')+', tract estimates'],['Streets, buildings, cool places','OpenStreetMap; walking time routed on the pedestrian network'],...('dac' in CE_CITY.weights?[['Disadvantaged communities','CalEPA SB 535 designation, final September 2026 (CalEnviroScreen 5.0); share of each area inside a designated tract']]:[]),['Areas','H3 hexagons · '+(document.getElementById('foot-scale')?.textContent||'each hexagon covers about 0.04 sq mi')]];
+  const sources=[['Surface temperature','Landsat 8/9 thermal, summer composite (USGS/NASA)'],['Tree cover',canopySourcesLabel()],['Population and age','US Census ACS 5-year'+(hdr.dataset.acs_year?' ('+hdr.dataset.acs_year+')':'')+(CE_CITY.popAllocation==='dasymetric'?', allocated into areas by mapped residential floor area (dasymetric)':', allocated into areas by overlap area')],['Home air conditioning','Census LACE'+(hdr.dataset.lace_year?' '+hdr.dataset.lace_year:'')+', tract estimates'],[CE_CITY.buildingsSource?'Streets and cool places':'Streets, buildings, cool places','OpenStreetMap; walking time routed on the pedestrian network'],...(CE_CITY.buildingsSource?[['Building footprints',CE_CITY.buildingsSource]]:[]),...(HEX.features.some(f=>f.properties.pp>0)?[['Priority populations','CARB Priority Populations 5.0 (SB 535 and AB 1550 areas), in effect September 18, 2026; share of each area inside one; not scored']]:[]),...('dac' in CE_CITY.weights?[['Disadvantaged communities','CalEPA SB 535 designation, final September 2026 (CalEnviroScreen 5.0); share of each area inside a designated tract']]:[]),['Areas','H3 hexagons · '+(document.getElementById('foot-scale')?.textContent||'each hexagon covers about 0.04 sq mi')]];
   const font=u=>new URL('vendor/'+u,location.href).href;
   const html=`<!doctype html><html><head><meta charset="utf-8"><title>CoolEquity briefing · ${esc(CITY_NAME)} · ${new Date().toISOString().slice(0,10)}</title>
 <style>
@@ -2283,6 +2304,108 @@ ${sl.length?`<div class="page"><h2>Shortlist · ${sl.length} area${sl.length===1
   toast(`Briefing report opened in a new tab: map, top 25${sl.length?', '+sl.length+' shortlisted area'+(sl.length===1?'':'s'):''}, method and limits. Use Print, then Save as PDF.`);
 }
 
+/* ================================================================ ward sheets
+ * One Letter page per ward or district, for the council member whose ward it
+ * is: who lives there, how it compares with the city, a map of its areas, its
+ * ten highest-ranked areas and what the starred ones would take to plant.
+ * Everything is computed from the live model, under the mix in force. With a
+ * ward chosen in the list filter the sheet is that ward alone. */
+function wardSheetData(id){
+  const inWard=p=>(p.ward_id||'')===id;
+  const all=LIVE.order.map(f=>f.properties), mine=all.filter(inWard);
+  const sum=(a,fn)=>a.reduce((t,p)=>t+(fn(p)||0),0);
+  const pw=(a,fn,ok)=>{const b=ok?a.filter(ok):a,w=sum(b,p=>p.pop);return w>0?sum(b,p=>fn(p)*(p.pop||0))/w:null;};
+  const canopy=p=>p.green_src==='canopy';
+  const stat=a=>({areas:a.length,res:sum(a,p=>p.pop),seniors:sum(a,p=>p.pop*p.pct65/100),need:a.length?sum(a,p=>sc(p))/a.length:0,
+    top:a.filter(p=>rk(p)<=100).length,heat:pw(a,p=>p.lst),cover:pw(a,p=>p.green,canopy),
+    dacRes:sum(a,p=>(p.pop||0)*(p.dac||0)),ppRes:a.some(p=>typeof p.pp==='number')?sum(a,p=>(p.pop||0)*(p.pp||0)):null});
+  const starred=mine.filter(p=>SHORTLIST.has(p.id));
+  let trees=0,cost=0,dacTrees=0;
+  starred.forEach(p=>{const c=scenarioFor(p,effectiveShare(p.id));if(c){trees+=c.trees;cost+=c.cost_usd;dacTrees+=c.trees*(p.dac||0);}});
+  return {id,mine,ward:stat(mine),city:stat(all),starred,trees,cost,dacTrees};
+}
+/** The ward's hexagons as an inline SVG: ranked areas in the priority colors,
+ *  the rest gray. Plain equirectangular projection; a ward is a few miles across. */
+function wardSheetSvg(id){
+  const feats=HEX.features.filter(f=>(f.properties.ward_id||'')===id&&f.geometry&&f.geometry.type==='Polygon');
+  if(!feats.length)return '';
+  let x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+  feats.forEach(f=>f.geometry.coordinates[0].forEach(([x,y])=>{x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);}));
+  const k=Math.cos((y0+y1)/2*Math.PI/180),W=380,w=(x1-x0)*k,h=y1-y0,s=Math.min(W/w,215/h),H=Math.max(40,h*s);
+  const ox=(W-w*s)/2,px=([x,y])=>`${(ox+(x-x0)*k*s).toFixed(1)},${((y1-y)*s).toFixed(1)}`;
+  const top=new Set(LIVE.order.filter(f=>(f.properties.ward_id||'')===id).slice(0,10).map(f=>f.properties.id));
+  const polys=feats.map(f=>{const p=f.properties,r=rk(p);
+    return `<polygon points="${f.geometry.coordinates[0].map(px).join(' ')}" fill="${r?colorFor('score',sc(p)):'#e3e7ec'}" stroke="${top.has(p.id)?'#14181e':'#fff'}" stroke-width="${top.has(p.id)?1.4:0.4}"/>`;}).join('');
+  return `<svg viewBox="0 0 ${W} ${H.toFixed(0)}" class="wmap" role="img" aria-label="Map of the areas in this ward">${polys}</svg>`;
+}
+function openWardSheets(){
+  if(!WARDS){toast('This study area has no ward or district boundaries.',true);return;}
+  const esc=escapeHtml,whole=CE_CITY.scope||'city',unit=CE_CITY.districtUnit||'ward',pre=matchPreset(),q=pre?pre.name:'Custom mix',hdr=exportHeader();
+  const money=v=>v.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
+  const pct=(a,b)=>b>0?Math.round(100*a/b)+'%':'—';
+  const ids=(RANK_WARD&&RANK_WARD!=='__outside'?[RANK_WARD]:WARDS.features.map(f=>f.properties.ward_id))
+    .filter(id=>LIVE.order.some(f=>(f.properties.ward_id||'')===id));
+  if(!ids.length){toast('No ranked areas fall inside a '+unit+'.',true);return;}
+  const hasDac=HEX.features.some(f=>f.properties.dac>0),hasNear=HEX.features.some(f=>f.properties.near),ramp=LAYERS.score.ramp;
+  const treesLbl=p=>p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':p.green.toFixed(0)+'%';
+  const vs=(a,b,fmt,word)=>a==null||b==null?'':`${fmt(Math.abs(a-b))} ${a>b?word[0]:a<b?word[1]:'the same as'}${a===b?'':' than'} the ${whole}`;
+  const pages=ids.map(id=>{
+    const d=wardSheetData(id),w=d.ward,c=d.city,feat=WARDS.features.find(f=>f.properties.ward_id===id),member=feat&&feat.properties.member;
+    const rows=d.mine.slice(0,10).map(p=>{const s=sc(p),col=colorFor('score',s);
+      return `<tr><td><span class="rk" style="background:${col};color:${inkOn(col)}">${rk(p)}</span></td><td class="nm">${esc(nameOf(p))}${SHORTLIST.has(p.id)?' ★':''}</td>${hasNear?`<td class="nr">${esc(p.near||'')}</td>`:''}<td class="n">${s.toFixed(0)}</td><td class="n">${fTemp(p.lst)}</td><td class="n">${treesLbl(p)}</td><td class="n">${fInt(p.pop)}</td><td class="n">${LAYERS.pct65.fmt(p.pct65)}</td>${hasDac?`<td class="n">${p.dac>=0.5?'yes':p.dac>0?Math.round(p.dac*100)+'%':'no'}</td>`:''}${hasNear?'':`<td>${esc(roomBand(p))}</td>`}</tr>`;}).join('');
+    const facts=[
+      w.heat!=null?`Surface heat where residents live averages <b>${fTemp(w.heat)}</b>${c.heat!=null&&Math.abs(w.heat-c.heat)>=0.05?', '+vs(w.heat,c.heat,fTempD,['hotter','cooler']):''}.`:'',
+      w.cover!=null?`Trees cover <b>${w.cover.toFixed(1)}%</b> of the ground where residents live${c.cover!=null?' ('+whole+': '+c.cover.toFixed(1)+'%)':''}.`:'',
+      `About <b>${fInt(w.seniors)}</b> residents are 65 or older (${pct(w.seniors,w.res)}; ${whole} ${pct(c.seniors,c.res)}).`,
+      hasDac?`About <b>${pct(w.dacRes,w.res)}</b> of residents live in an SB 535 disadvantaged community (${whole} ${pct(c.dacRes,c.res)})${w.ppRes!=null?`; <b>${pct(w.ppRes,w.res)}</b> in a state priority population area, which adds low-income communities (${whole} ${pct(c.ppRes,c.res)})`:''}.`:''
+    ].filter(Boolean);
+    return `<div class="page">
+  <div class="eyebrow">CoolEquity · ${esc(CITY_NAME)} · ${esc(unit)} summary · ${new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}</div>
+  <h1>${esc(wardLabel(id))}</h1>
+  <p class="lede">${member?`Council member ${esc(member)}. `:''}Where new street trees would help residents most, ranked under the question <b>“${esc(q)}”</b>. Ranks cover the whole ${whole}: 1 is the highest need of ${LIVE.order.length.toLocaleString()} ranked areas.</p>
+  <div class="kpis"><div><b>${fInt(w.res)}</b><span>residents in ranked areas</span></div><div><b>${w.top}</b><span>of the ${whole}’s top 100 areas</span></div><div><b>${w.need.toFixed(0)}</b><span>mean need index · ${whole} ${c.need.toFixed(0)}</span></div><div><b>${w.cover!=null?w.cover.toFixed(1)+'%':'—'}</b><span>tree cover where people live</span></div></div>
+  <div class="mf"><div>${wardSheetSvg(id)}<div class="legend"><span>Need</span><i></i><span>deeper = more need, ${whole}-wide · gray = no residents · outlined = the ten below</span></div></div>
+  <ul class="facts">${facts.map(f=>`<li>${f}</li>`).join('')}</ul></div>
+  <h2>Highest-ranked areas in ${esc(wardLabel(id))}</h2>
+  <table><thead><tr><th>Rank</th><th>Area</th>${hasNear?'<th>Nearest major intersection</th>':''}<th class="n">Need</th><th class="n">Heat</th><th class="n">Trees</th><th class="n">Residents</th><th class="n">65+</th>${hasDac?'<th class="n">SB 535</th>':''}${hasNear?'':'<th>Street room</th>'}</tr></thead><tbody>${rows}</tbody></table>
+  <p class="fine">${d.starred.length?`<b>Starred areas here: ${d.starred.length}.</b> At their planting shares they come to <b>${fInt(d.trees)}</b> trees, about <b>${money(d.cost)}</b>${hasDac&&d.trees>0?`; <b>${pct(d.dacTrees,d.trees)}</b> of those trees fall inside SB 535 communities`:''}. Tree counts are an upper bound from mapped street length, not a site survey.`:`No area in this ${esc(unit)} is starred, so there is no planting total. Star areas on the map to add one.`}</p>
+  <div class="foot"><span>CoolEquity · data ${esc(hdr.dataset.version_tag||'')} · weights ${W_INPUTS.filter(x=>normW()[x.k]>0.005).map(x=>esc(x.label.replace(' (65+)',''))+' '+Math.round(normW()[x.k]*100)+'%').join(', ')}</span><span>Independent student project · not a city or county product · a planning screen from public data · confirm on the ground</span></div>
+</div>`;}).join('');
+  const font=u=>new URL('vendor/'+u,location.href).href;
+  const html=`<!doctype html><html><head><meta charset="utf-8"><title>CoolEquity ${esc(unit)} summaries · ${esc(CITY_NAME)} · ${new Date().toISOString().slice(0,10)}</title>
+<style>
+@font-face{font-family:Inter;src:url(${font('inter-latin.woff2')}) format('woff2');font-weight:100 900}
+@font-face{font-family:"Instrument Serif";src:url(${font('instrumentserif-latin.woff2')}) format('woff2')}
+@page{size:letter;margin:14mm 14mm}
+*{box-sizing:border-box}html{background:#e9ebee}body{margin:0;font:10.5pt/1.45 Inter,-apple-system,"Segoe UI",Arial,sans-serif;color:#14181e;font-variant-numeric:tabular-nums}
+.tool{position:sticky;top:0;z-index:9;background:#111720;color:#eef3f8;padding:10px 18px;display:flex;gap:12px;align-items:center;font-size:10.5pt}
+.tool button{font:600 10.5pt Inter,sans-serif;background:#ff7a45;border:0;color:#1a0d06;border-radius:7px;padding:8px 14px;cursor:pointer}.tool span{color:#93a1b0}
+.page{background:#fff;width:816px;min-height:1056px;margin:18px auto;padding:36px 52px 62px;box-shadow:0 8px 30px rgba(0,0,0,.12);page-break-after:always;position:relative}
+.page:last-child{page-break-after:auto}
+h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26pt;line-height:1.1;margin:0 0 4px}
+h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:15pt;margin:10px 0 4px}
+.eyebrow{font-size:8.5pt;letter-spacing:.12em;text-transform:uppercase;color:#6b7785;font-weight:600;margin-bottom:10px}
+.lede{color:#3a4450;margin:0;max-width:70ch}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0}
+.kpis div{border:1px solid #d9dee5;border-radius:8px;padding:6px 10px}.kpis b{display:block;font-size:15pt;font-weight:600;letter-spacing:-.02em}.kpis span{font-size:7.5pt;color:#6b7785;text-transform:uppercase;letter-spacing:.04em}
+.wmap{display:block;width:100%;max-height:215px;border:1px solid #d9dee5;border-radius:8px;background:#f7f8fa;padding:6px}
+.legend{display:flex;align-items:center;gap:8px;font-size:7.5pt;color:#4a5560;margin-top:5px}.legend i{display:block;flex:none;width:60px;height:9px;border-radius:5px;background:linear-gradient(90deg,${ramp.join(',')})}
+.facts{padding-left:16px;margin:0;font-size:9.5pt}.facts li{margin-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:9pt}th{text-align:left;font-size:7.5pt;letter-spacing:.06em;text-transform:uppercase;color:#6b7785;padding:4px 5px;border-bottom:1px solid #c9d0d8}th.n,td.n{text-align:right;white-space:nowrap}td{padding:3px 5px;border-bottom:1px solid #eceff3;vertical-align:middle}td.nm{font-weight:500}td.nm,td.nr{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:215px}td.nr{font-size:8pt;color:#4a5560;max-width:250px}.mf{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;align-items:start}
+.rk{display:inline-flex;min-width:22px;height:20px;padding:0 4px;border-radius:6px;align-items:center;justify-content:center;font-size:8.5pt;font-weight:700}
+.fine{font-size:8.5pt;color:#5a6672;margin:10px 0 0;line-height:1.45}
+.foot{position:absolute;left:52px;right:52px;bottom:24px;display:flex;justify-content:space-between;gap:16px;font-size:7.5pt;color:#8b95a1;border-top:1px solid #eceff3;padding-top:6px}
+@media print{html{background:#fff}.tool{display:none}.page{margin:0;box-shadow:none;width:auto;min-height:0;padding:0}.foot{position:static;margin-top:14px}.wmap{max-height:56mm}}
+</style></head><body>
+<div class="tool"><button onclick="window.print()">Print / Save as PDF</button><span>One Letter page per ${esc(unit)}${ids.length===1?' (the one chosen in the list filter)':''}. Choose “Save as PDF” in the print dialog.</span></div>
+${pages}
+</body></html>`;
+  const win=window.open('','ce-wards');
+  if(!win){toast('Your browser blocked the new tab. Allow pop-ups for this site and try again.',true);return;}
+  win.document.open();win.document.write(html);win.document.close();
+  toast(`${ids.length} ${unit} summar${ids.length===1?'y':'ies'} opened in a new tab, one page each. Use Print, then Save as PDF.`);
+}
+
 /** Apply the view carried in the URL hash (from the Share button). */
 function applyHash(){
   try{const h=new URLSearchParams(location.hash.slice(1));
@@ -2294,7 +2417,7 @@ function applyHash(){
     if(h.has('layer')&&LAYERS[h.get('layer')]){const L=h.get('layer');   // overlays are layers too: honor the one the link promises
       if(L==='access'){accessOn=true;holcOn=false;syncToggles();setLayer(L);}
       else if(L==='holc'){holcOn=HEX.features.some(f=>f.properties.holc);accessOn=false;syncToggles();if(holcOn)setLayer(L);}
-      else if(L==='dac'&&!syncDacAvailable()){holcOn=false;accessOn=false;syncToggles();}   // a link from a build with the layer, opened where there is none
+      else if((L==='dac'&&!syncDacAvailable())||(L==='pp'&&!syncPpAvailable())){holcOn=false;accessOn=false;syncToggles();}   // a link from a build with the layer, opened where there is none
       else{holcOn=false;accessOn=false;syncToggles();setLayer(L);}}
     if(h.get('d')&&DATA_SHA!=='unavailable'&&!DATA_SHA.startsWith(h.get('d')))toast('This link was made with an earlier data release; ranks and figures may differ from what the sender saw.',true);
     if(h.get('sel'))setTimeout(()=>{const id=+h.get('sel');if(HEX.features.some(f=>f.properties.id===id))selectHex(id,true);},600);
@@ -2330,6 +2453,7 @@ async function boot(){
   document.getElementById('chip-n').textContent=`${HEX.features.filter(f=>f.properties.place==='res').length.toLocaleString()} areas`;
   syncHolcAvailable();
   syncDacAvailable();
+  syncPpAvailable();
 
   // Panel UI is data-only. Render it BEFORE the map so a slow or blocked basemap
   // CDN can never leave the user staring at an empty screen.
@@ -2691,7 +2815,7 @@ function buildIntro(){
   buildSwitch();
   if(CE_CITY.introNote){for(const id of ['inote','pnote']){const n=document.getElementById(id);n.textContent=CE_CITY.introNote;n.hidden=false;}}
 
-  document.getElementById('ifine').innerHTML='Independent student project. Not a city or county product. A planning screen, not a field survey. Tree-cover share counts residents of areas with a tree-cover source (2022 aerial, height model or lidar); ground temperature is a satellite surface reading, not air temperature; walks are to mapped facilities whose cooling status is not verified. Census ACS 2024. <a href="guide.html#overview" target="ce-guide">Data &amp; methods ↗</a> · Questions or corrections: <a href="mailto:coolequity.contact@gmail.com">coolequity.contact@gmail.com</a>';
+  document.getElementById('ifine').innerHTML='Independent student project. Not a city or county product. A planning screen, not a field survey. Tree-cover share counts residents of areas with a tree-cover source (2022 aerial map or a model of it, height model or lidar); ground temperature is a satellite surface reading, not air temperature; walks are to mapped facilities whose cooling status is not verified. Census ACS 2024. <a href="guide.html#overview" target="ce-guide">Data &amp; methods ↗</a> · Questions or corrections: <a href="mailto:coolequity.contact@gmail.com">coolequity.contact@gmail.com</a>';
 
   document.getElementById('intro-go').onclick=()=>dismissIntro();
   document.addEventListener('keydown',e=>{
@@ -3235,7 +3359,7 @@ function buildRank(){
   const query=document.getElementById('rank-search').value.trim().toLowerCase();
   const F=RANK_FILTERS, sortK=RANK_SORT;
   let matches=LIVE.order.filter(f=>{const p=f.properties;
-    if(query&&!(/^\d+$/.test(query)?String(p.id)===query:nameOf(p).toLowerCase().includes(query)))return false;
+    if(query&&!(/^\d+$/.test(query)?String(p.id)===query:(nameOf(p)+' '+(p.near||'')).toLowerCase().includes(query)))return false;
     if(F.has('walk')&&!(p.access_min>15))return false;
     if(F.has('pop')&&!(p.pop>=500))return false;
     if(F.has('green')&&!(p.green_src!=='ndvi'&&p.green<10))return false;   // greenness stand-ins are not low tree cover
@@ -3272,6 +3396,8 @@ function buildRank(){
 function rowSrcLabel(p){
   if(p.green_src==='ndvi')return 'greenness';
   if(p.canopy_source==='lidar-2020')return 'trees · lidar';
+  if(p.canopy_source==='naip-model')return 'trees · modelled';
+  if(p.canopy_source==='usfs+naip-model')return 'trees · part modelled';
   if(p.canopy_source==='chm-legacy')return 'trees · model';
   if(p.canopy_quality==='partial')return 'trees · partial';
   return 'trees';
@@ -3411,7 +3537,8 @@ function selectHex(id,fly,keepScroll){
       b.title='Census inputs re-drawn within their published margins of error and the recommended weights jittered by ±10 points; 5th–95th percentile of the resulting ranks.';}}}
   {const fn=document.getElementById('d-fire');if(fn){const h=fireNote(p);fn.hidden=!h;fn.innerHTML=h;}}
   renderFieldCheck(p,!unranked);
-  document.getElementById('d-name').title=p.name?'Name generated from nearby mapped places; not an official boundary. Area #'+p.id:'Area #'+p.id;
+  document.getElementById('d-name').title=p.name?(CE_CITY.nameKind==='streets'?'Named by the cross streets inside or nearest this area (city street layer); not an official boundary. Area #':'Name generated from nearby mapped places; not an official boundary. Area #')+p.id:'Area #'+p.id;
+  {const dn=document.getElementById('d-near');if(dn){dn.hidden=!p.near;dn.textContent=p.near?(/ of /.test(p.near)?p.near:'at '+p.near):'';dn.title='Nearest intersection of two through streets';}}
   explainHex(p);
   const dv=document.getElementById('d-drivers');
   if(dv){ if(unranked) dv.hidden=true; else { dv.hidden=false; const W=normW();
@@ -3435,6 +3562,7 @@ function selectHex(id,fly,keepScroll){
     ['Walk to cooling','access',p.access_min,`${fMin(p.access_min)} · ${fDist(p.access_km)}`+(p.access_src==='straightline'?' · straight-line':''),true],
     ['Street room','room',roomOf(p),`${fInt(roomOf(p))} tree spots · ${roomBand(p)}`,true],
     ...('dac' in CE_CITY.weights?[['SB 535 community','dac',p.dac||0,(p.dac>0?Math.round(p.dac*100)+'% designated':'not designated')+(p.dac_type?' · '+escapeHtml(p.dac_type):''),false]]:[]),
+    ...(typeof p.pp==='number'?[['Priority population','pp',p.pp,(p.pp>0?Math.round(p.pp*100)+'% inside':'not in an area')+(p.pp>0&&p.pp_type?' · '+escapeHtml(p.pp_type):''),false]]:[]),
   ];
   document.getElementById('d-metrics').innerHTML=m.map(([lab,k,v,disp,est,tag])=>{
     const t=norm(k,v);
@@ -3487,7 +3615,7 @@ function renderBreakdown(p,score){
   const mult=(1-POPW)+POPW*nv('pop');
   const tot=Math.max(1e-9,base);
   document.getElementById('d-breakdown').innerHTML=`
-    <p class="hint">${p.green_src==='ndvi'?'This score uses a vegetation proxy for the canopy input.':'Canopy source: '+(p.canopy_source==='usfs-2022'?'2022 aerial assessment · '+(p.coverage_frac>0&&p.coverage_frac<.01?'<1':Math.round((p.coverage_frac||0)*100))+'% cell coverage.':p.canopy_source==='lidar-2020'?'county lidar map 2017–22 · '+Math.round((p.coverage_frac||0)*100)+'% cell coverage, on the aerial scale.':'legacy height model'+(p.canopy_quality==='calibrated'?' · rescaled to the aerial line via lidar.':' · coverage unverified.'))}</p><div class="stack">${parts.map(x=>
+    <p class="hint">${p.green_src==='ndvi'?'This score uses a vegetation proxy for the canopy input.':'Canopy source: '+(p.canopy_source==='usfs-2022'?'2022 aerial assessment · '+(p.coverage_frac>0&&p.coverage_frac<.01?'<1':Math.round((p.coverage_frac||0)*100))+'% cell coverage.':p.canopy_source==='lidar-2020'?'county lidar map 2017–22 · '+Math.round((p.coverage_frac||0)*100)+'% cell coverage, on the aerial scale.':p.canopy_source==='naip-model'?'modelled from the 2022 aerial survey, outside the USFS map.':p.canopy_source==='usfs+naip-model'?'2022 aerial assessment for '+Math.round((p.coverage_frac||0)*100)+'% of the cell, modelled from the same survey for the rest.':'legacy height model'+(p.canopy_quality==='calibrated'?' · rescaled to the aerial line via lidar.':' · coverage unverified.'))}</p><div class="stack">${parts.map(x=>
       `<i style="width:${(x.pts/tot*100).toFixed(2)}%;background:${x.swatch}" title="${x.label}"></i>`).join('')}</div>
     <table><tbody>
       ${parts.map(x=>`<tr>

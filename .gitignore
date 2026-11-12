@@ -41,3 +41,10 @@ cities/pittsburg/data/buildings_pittsburg.geojson
 cities/losangeles/data/buildings_losangeles.geojson
 cities/losangeles/data/lst_losangeles.tif
 cities/losangeles/data/ndvi_losangeles.tif
+
+# Bakersfield: 34 MB of city-footprint centroids (input to 03 and 05 only); rebuild with 02b.
+cities/bakersfield/data/buildings_bakersfield.geojson
+
+# Bakersfield: 14 MB cache of the city street layer (input to 04i only; names_bakersfield.csv is the result).
+# Rebuild with: COOLEQUITY_CITY=bakersfield python pipeline/04i_street_names.py --refresh
+cities/bakersfield/data/street_names_bakersfield.geojson

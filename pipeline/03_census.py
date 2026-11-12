@@ -166,7 +166,14 @@ def load_buildings():
     if not C.BUILDINGS_FILE.exists():
         return None, None
     import geopandas as gpd
-    b = gpd.read_file(C.BUILDINGS_FILE).to_crs(C.RASTER_CRS)[["area_m2", "geometry"]]
+    b = gpd.read_file(C.BUILDINGS_FILE).to_crs(C.RASTER_CRS)
+    if "w" in b.columns:
+        # 02b weighted each footprint by its 2020 Census block's residents (see
+        # block_weights there). Everything below splits by "area_m2"; carrying
+        # the weight in that column changes what is split by, and nothing else.
+        log(f"  buildings carry 2020 block weights: splitting by those, not by bare footprint area")
+        b["area_m2"] = b["w"]
+    b = b[["area_m2", "geometry"]]
     if not C.BOUNDARY_FILE.exists():
         return b, b
     city = gpd.read_file(C.BOUNDARY_FILE).to_crs(C.RASTER_CRS)

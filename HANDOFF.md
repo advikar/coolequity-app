@@ -1,5 +1,114 @@
 # HANDOFF
 
+## Checkpoint — November 11, 2026 (Claude), evening: Bakersfield residents by building, modelled tree cover past the USFS map, priority populations, ward one-pagers
+
+Task (owner: advikar): the five Bakersfield recommendations from the afternoon. Committed and pushed to `main` on the owner's instruction. Bakersfield's ranking
+changes substantially; anything handed to city staff from the earlier build quotes old ranks.
+
+1. **Residents placed by building (done, tested).** `02b_buildings.py` reads an agency footprint
+   layer where a city sets `BUILDINGS_SOURCE` (Bakersfield: the city's own layer, 228,012
+   footprints, last edited July 2026; typed RESIDENTIAL, plus untyped footprints in a residential
+   general-plan designation). Where a city sets `BLOCK_WEIGHTS`, each footprint is weighted by
+   its 2020 Census block's residents (shared within the block by footprint area), with homes
+   built since 2020 credited at their block group's residents per unit; 03 splits by that weight.
+   OpenStreetMap is no longer used for Bakersfield's buildings.
+   - Guard (03, every run): 0.95 footprints per ACS housing unit; income quartiles 0.84 / 0.93 /
+     0.97 / 1.17 (1.4x, limit 2.0x). City total 410,680 vs ACS place 411,986.
+   - Ranked areas 3,767 -> 1,987: 1,789 cells that held residents only by even spreading have no
+     housing. Against the previous build: Spearman 0.70 on cells ranked in both, top-25 overlap
+     7, top-100 overlap 50. None of the old top 25 lost its ranking; 3 of the old top 100 did.
+   - Check against 2020 block counts interpolated to cells: even spread r 0.86 (MAE 45 per
+     cell); footprint area alone r 0.93 (30), the independent test; block-weighted r 0.94 (26),
+     expected since it uses those counts. Largest mobile-home park cell: 583 by footprint area,
+     305 counted in 2020, 312 block-weighted. Mobile-home parks are in the layer (2,999
+     footprints in MH zoning).
+   - `buildings_bakersfield.geojson` (36 MB) is gitignored like the other large masks; rebuild
+     with `02b_buildings.py --refresh`.
+2. **Tree cover past the USFS map (done, tested).** The USFS raster has no data outside the 2020
+   urban-area line (checked on the downloaded package: only nodata there), so "neighbouring
+   packages" was a dead end. New optional stage `02g_canopy_naip.py` (`CANOPY_NAIP` in config;
+   needs `pip install scikit-learn`, installed outside the venv for this run) trains a per-pixel
+   classifier on NAIP 2022 with the USFS map as label and fills cells the USFS map does not
+   assess, only if it beats the height model on held-out cells.
+   - Held-out, against the USFS figure (bias / MAE / rank r): urban -0.12 / 0.92 / 0.963
+     (height model MAE 1.75, 1.51 rescaled, rank r 0.924); open land -0.01 / 0.62 / 0.974
+     (height model 3.24, 0.861); edge +0.08 / 1.18 / 0.963.
+   - **A first version was wrong and was caught by looking at the photos:** trained on urban
+     cells only (urban MAE 1.03), it read irrigated alfalfa and pasture as canopy (65% on a crop
+     field). A WorldCover cropland mask did not fix it (pasture is "grassland" there). The stage
+     now trains and tests on open-land and edge cells the USFS map covers. Residual: thin false
+     strips along some field edges, up to ~15 points in all-farmland cells (few or no residents).
+     Orchards count as canopy, as in the USFS map.
+   - 1,758 cells filled (213 ranked); threaded fill reproduced exactly by a single-threaded
+     re-run on 14 cells. For the 87 modelled ranked cells with 50+ residents: mean 3.7% vs 3.6%
+     under the height model, 5 differ by more than 5 points. No ranked cell uses the greenness
+     stand-in or the height model any longer.
+   - The fill hung once on a dead connection at 1,500 cells; the stage now sets GDAL HTTP
+     timeouts, re-signs URLs on retry and checkpoints to `_cache/canopy_naip_fill_<slug>.jsonl`.
+   - **Partly assessed cells (decided by the owner after a comparison).** 217 ranked cells are
+     cut by the USFS boundary and report the assessed part only. Completing all of them with
+     the model was run as a comparison (data restored afterwards): top 25 unchanged, 97 of the
+     top 100 kept, but the 217 moved a median of 74 ranks and 97 of them 100 or more, mostly
+     cells whose homes are all in the assessed part and whose remainder is empty land. Adopted
+     instead: complete a cell only where under half of its in-city homes, weighted by
+     residents, are in the assessed part (`complete_partial_below=0.5`; `--complete-partials`
+     runs the step alone). 23 ranked cells, all inside the city limits (newer housing past the
+     2020 urban line): `canopy_source` `usfs+naip-model`, `canopy_quality` `completed`,
+     `coverage_frac` still the USFS share, never a planting baseline. A first count over all
+     footprints gave 20; the pipeline rule counts in-city homes by resident weight, which adds
+     three edge cells. Effect: the 23 moved a median of 190 ranks (15 up, 7 down; Moores Creed
+     Dr & Wind Wolfs Ln 1,146 to 217); every other cell moved 7 ranks at most; top 25
+     unchanged, 99 of the top 100 kept; none of the 23 entered the top 199.
+3. **Priority populations (done, tested).** `04h_priority_pop.py` (`PRIORITY_POP_URL`): CARB
+   Priority Populations 5.0, in effect September 18, 2026. Per cell `pp` (share) and `pp_type`;
+   written by 05 only where the CSV exists (other builds' data files are untouched). Layer,
+   detail row, export columns, briefing source line, guide topic `#pp` (short "not built" topic
+   in the other five guides, as for `#fire`). Never scored. 1,759 of 4,054 cells at least half
+   inside; every cell's share >= its SB 535 share (asserted in the page test). 38% of residents
+   in SB 535 communities, 51% in priority population areas.
+4. **Street-tree inventory (not possible; nothing built).** The city's GIS services list no tree
+   or planting-site layer, and public reporting says the city has no inventory: the Council
+   declined an inventory contract and staff are reconsidering how to do one. Nothing to load.
+   The request has to go to the urban forestry contact.
+5. **Ward one-page summaries (done, tested).** `openWardSheets()` in `app/index.html`, button
+   under the ward table in every build with wards or districts: one Letter page each (residents,
+   top-100 count, need and tree cover vs the study area, heat, 65+, SB 535 and priority
+   population shares, an SVG map of the ward's cells, top ten areas, starred-area trees, cost and
+   SB 535 share). With a ward chosen in the list filter, that ward only.
+
+Other changes: heat evidence re-measured on the new ranked set (position 16%, LST vs tree cover
+r = -0.66; config.py note); stability re-run (199 top-tier of 1,987, median band 279, 51% of the
+top tier stay in at least 80% of draws); wards summary re-run; `tests/ui-contract.cjs` EXPECT
+bakersfield res 1987 / ndvi 0; new tests for priority populations and modelled canopy; README
+stage list; all six guides' column keys regenerated.
+
+- **Tests run:** `scripts/test.sh`, all six cities, passed (after the last edit to `app/index.html`).
+  In the local build: Bakersfield map, priority populations layer, detail row and export
+  column, modelled-canopy label, briefing source lines, ward pages (7), single-ward page; Los
+  Angeles district pages (15); no console errors. **Not verified:** the ward pages as printed
+  on paper or PDF, phone layout, Firefox/Safari.
+6. **Area names by cross streets (done, tested; owner asked for it the same evening).**
+   `04i_street_names.py` (`NAME_STREETS`): the city's street centreline layer (26,680 segments,
+   names and road class). Each cell is named by the intersection inside it, arterials and
+   collectors preferred, then nearest the centre ("Ming Ave & Stine Rd"); a cell with none is
+   named by direction from the nearest ("N of Akers Rd & Planz Rd", with miles past a quarter
+   mile). New optional property `near`: the nearest intersection of two through streets as a
+   phrase ("0.4 mi N of Ming Ave & Stine Rd"), shown under the name in the detail panel, in the
+   ward pages and the briefing's shortlist blocks, matched by search, exported as
+   `nearest_major_intersection`. 05 replaces 04's names where `names_<slug>.csv` exists;
+   `city.js` sets `nameKind:'streets'`. An intersection needs three segment ends of two
+   differently named streets, so a name change (Coffee Rd / Gosford Rd) is not one.
+   - 2,164 of 4,054 cells (1,804 of 1,987 ranked) hold an intersection; all names unique (26
+     far-out empty cells carry a "(2)"). Against the city's separate intersection layer: 1,782 of
+     the 1,804 ranked inside-named cells have that same intersection inside them.
+   - Bakersfield only. The other five builds keep nearest-place names (Los Angeles: published
+     neighbourhood polygons); doing the same for them needs a street layer with names per city.
+   - The ward page was re-laid out to stay on one sheet with the extra column (map beside the
+     facts; the street-room column gives way to the intersection where a build has one).
+     Measured on screen for all seven wards; not printed.
+   - Ranks, scores and every other field are unchanged by the renaming; shortlists and field
+     notes are keyed by cell number, so they carry over.
+
 ## Checkpoint — November 11, 2026 (Claude), later: all builds on summers 2024–2026; SB 535 in three more; app audit fixes
 
 Owner: advikar. Committed and pushed to `main` on the owner's instruction after a final pass
