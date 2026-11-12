@@ -465,6 +465,7 @@
   #rank-search{width:100%;padding:9px 10px;margin-top:6px;border:1px solid #566579;border-radius:7px;background:#101923;color:var(--txt);font:12px var(--sans)}
   #rank-count{font-size:11px;color:var(--muted);margin:9px 0 2px;line-height:1.5}
   .rank-pages{display:flex;justify-content:space-between;padding:12px 20px}
+  #check-out table{width:100%;border-collapse:collapse;font-size:11px}#check-out th{text-align:left;color:var(--muted);font-weight:600;padding:3px 5px;border-bottom:1px solid var(--edge);white-space:nowrap}#check-out td{padding:3px 5px;border-bottom:1px solid var(--edge);white-space:nowrap}#check-out .yes{color:#2f9e5b;font-weight:700}#check-out .no{color:var(--muted)}#check-out .warn{color:#c98a2b}
   .prow{display:grid;grid-template-columns:25px minmax(0,1fr) 34px;column-gap:10px;row-gap:2px;align-items:center;padding:7px 2px;border-bottom:1px solid var(--edge);cursor:pointer}
   .prow:hover,.prow.hi{background:rgba(127,140,160,.14)}
   .pmark{width:22px;height:22px;display:flex;align-items:center;justify-content:center;font:700 10px/1 var(--sans);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45);cursor:pointer;transition:transform .12s}
@@ -989,6 +990,19 @@
         <div class="wtable" id="ward-table" role="table" aria-label="Ranking by ward"></div>
         <div class="export" style="margin-top:10px"><button type="button" id="ward-sheets" title="Opens one Letter page per ward or district: residents, comparison with the city, a map, the ten highest-ranked areas and the starred areas' planting total. With one chosen in the list filter, that one only." data-unit="Ward one-page summaries">Ward one-page summaries</button></div>
         <p class="hint" id="ward-note" style="margin-top:8px"></p>
+        </div>
+      </section>
+      <section class="section fold" id="sec-check" data-fold="sec-check" hidden>
+        <div class="fhead">
+          <button type="button" class="fbtn" aria-expanded="true" aria-controls="sec-check-body"><svg class="dchev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg><span>Check planting locations</span></button>
+          <a class="info-link" href="guide.html#check" target="ce-guide" aria-label="About checking planting locations">i</a>
+        </div>
+        <div class="fbody" id="sec-check-body">
+        <p class="hint lead">Paste the coordinates of trees planted or planned, one per line, and see for each whether it is inside an SB 535 disadvantaged community<span data-check-ward> and which ward it is in</span>, with the share of the whole list that is. Nothing you paste leaves this browser.</p>
+        <textarea id="check-in" rows="5" spellcheck="false" aria-label="Coordinates, one location per line" placeholder="35.3733, -119.0187, Tree 1&#10;35.3391, -119.0352, Tree 2&#10;or paste a spreadsheet with latitude and longitude columns" style="width:100%;font:12px/1.4 ui-monospace,Menlo,monospace;padding:8px;border:1px solid #566579;border-radius:7px;background:transparent;color:inherit;resize:vertical"></textarea>
+        <div class="export" style="margin-top:8px"><button type="button" class="primary" id="check-run">Check these</button><button type="button" id="check-file-btn" title="Open a CSV file with latitude and longitude columns">Open a CSV…</button><input type="file" id="check-file" accept=".csv,text/csv,text/plain" hidden><button type="button" id="check-csv" disabled title="Save the results as a spreadsheet">Results (CSV)</button><button type="button" id="check-clear" disabled>Clear</button></div>
+        <p class="hint" id="check-sum" role="status" style="margin:10px 0 4px"></p>
+        <div id="check-out" style="overflow:auto;max-height:260px"></div>
         </div>
       </section>
       <section class="section fold" id="sec-places" data-fold="sec-places" hidden>
@@ -2196,6 +2210,7 @@ const TIPS={
   ac:{t:'Homes with A/C',d:'The Census estimate of homes with air conditioning. Fewer homes with A/C means more reliance on shade and public cooling.'},
   holc:{t:'Redlining (1930s)',d:'Historical federal lending grades, shown where a map exists. Areas graded “hazardous” then are often the hottest and least shaded now.'},
   dac:{t:'SB 535 disadvantaged community',d:'Census tracts designated by CalEPA under SB 535 (final designation, September 2026, from CalEnviroScreen 5.0). The map shows how much of each area falls inside a designated tract. A funding-eligibility designation, not a measurement of heat or shade; use it to see which priority areas also meet a program’s disadvantaged-community commitment.'},
+  check:{t:'Check planting locations',d:'Paste coordinates of trees planted or planned and each is tested against the official SB 535 tract outlines and the ward boundaries: inside a disadvantaged community or not, which tract and why it qualifies, which ward. The summary gives the share of your list inside one. It runs in your browser; nothing is uploaded. Locations within 15 m of a tract edge are flagged to confirm on the CalEPA map.'},
   places:{t:'Places people go',d:'Schools, bus stops and public parks, each measured on its own ground: tree cover on the school property, within 30 m of the stop, or inside the park, and how hot that ground gets. Listed hottest and barest first. Who lives nearby plays no part, so a bus stop on a commercial strip can top this list while the main ranking leaves that area out. A screen for where to look; whether a tree can go there is for a site visit.'},
   pp:{t:'Priority populations',d:'Areas the state counts toward its climate-investment targets: SB 535 disadvantaged communities and AB 1550 low-income communities (CARB Priority Populations 5.0, in effect September 18, 2026). The map shows how much of each area falls inside one. A funding designation, not a measurement, and never part of the score. Low-income households qualify wherever they live; no map can show that.'},
   sort:{t:'Sort options',d:'Need: the priority score under the current mix (the rank badges). Residents: estimated people living in the area. Surface heat: summer late-morning ground temperature from satellite. Tree cover: share of assessed land under tree crowns. Walk to cooling: estimated minutes on foot to the nearest cool place. Age 65+: share of residents aged 65 or older. Sorting re-orders the list only; rank badges and the map never change.'},
@@ -2364,6 +2379,96 @@ ${sl.length?`<div class="page"><h2>Shortlist · ${sl.length} area${sl.length===1
   if(!w){toast('Your browser blocked the report tab. Allow pop-ups for this site and try again.',true);return;}
   w.document.open();w.document.write(html);w.document.close();
   toast(`Briefing report opened in a new tab: map, top 25${sl.length?', '+sl.length+' shortlisted area'+(sl.length===1?'':'s'):''}, method and limits. Use Print, then Save as PDF.`);
+}
+
+/* ================================================================ check planting locations
+ * A program that commits a share of its trees to SB 535 communities has to show, tree by tree,
+ * that it did. The map's hexagons cannot: a hexagon on a tract edge is only partly designated and
+ * belongs to the ward its centre is in. This tests each coordinate against the tract outlines
+ * themselves (the CalEPA file the pipeline cached) and the ward polygons the city publishes.
+ * Everything runs in the browser; the coordinates go nowhere. */
+const CHECK_SB535_URL=`../data/sb535_${CITY_SLUG}.geojson?v=${CE_CITY.dataVersion}`, CHECK_PP_URL=`../data/priority_pop_${CITY_SLUG}.geojson?v=${CE_CITY.dataVersion}`;
+const CHECK_EDGE_M=15;   // closer than this to a tract edge, the answer deserves a look at the official map
+let checkData=null, checkRows=[];
+function ringHas(ring,x,y){let inside=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const xi=ring[i][0],yi=ring[i][1],xj=ring[j][0],yj=ring[j][1];
+  if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi))inside=!inside;}return inside;}
+function geomHas(g,x,y){
+  if(!g)return false;
+  if(g.type==='Polygon')return ringHas(g.coordinates[0],x,y)&&!g.coordinates.slice(1).some(h=>ringHas(h,x,y));
+  if(g.type==='MultiPolygon')return g.coordinates.some(p=>ringHas(p[0],x,y)&&!p.slice(1).some(h=>ringHas(h,x,y)));
+  if(g.type==='GeometryCollection')return g.geometries.some(q=>geomHas(q,x,y));
+  return false;}
+function geomRings(g){return !g?[]:g.type==='Polygon'?g.coordinates:g.type==='MultiPolygon'?g.coordinates.flat():g.type==='GeometryCollection'?g.geometries.flatMap(geomRings):[];}
+function geomBox(g){let w=180,s=90,e=-180,n=-90;geomRings(g).forEach(r=>r.forEach(([x,y])=>{if(x<w)w=x;if(x>e)e=x;if(y<s)s=y;if(y>n)n=y;}));return [w,s,e,n];}
+/** Meters from a point to the nearest edge of a geometry (flat-earth, fine at this scale). */
+function edgeMeters(g,x,y){const kx=111320*Math.cos(y*Math.PI/180),ky=110540;let best=Infinity;
+  geomRings(g).forEach(r=>{for(let i=0;i<r.length-1;i++){const ax=(r[i][0]-x)*kx,ay=(r[i][1]-y)*ky,bx=(r[i+1][0]-x)*kx,by=(r[i+1][1]-y)*ky,dx=bx-ax,dy=by-ay,L=dx*dx+dy*dy;
+    const t=L?Math.max(0,Math.min(1,-(ax*dx+ay*dy)/L)):0,px=ax+t*dx,py=ay+t*dy,d=Math.hypot(px,py);if(d<best)best=d;}});return best;}
+function checkPrep(fc){return (!fc||fc.loadFailed||!fc.features)?[]:fc.features.filter(f=>f.geometry).map(f=>({p:f.properties,g:f.geometry,b:geomBox(f.geometry)}));}
+function loadCheckData(){
+  if(!checkData)checkData=Promise.all([optional(CHECK_SB535_URL),HEX.features.some(f=>typeof f.properties.pp==='number')?optional(CHECK_PP_URL):Promise.resolve(null)])
+    .then(([d,pp])=>({dac:checkPrep(d),pp:checkPrep(pp),ok:!!(d&&!d.loadFailed)}));
+  return checkData;}
+/** One coordinate against the tract outlines, the wards and the study boundary. */
+function lookupPoint(lon,lat,D){
+  const pad=0.0003,near=t=>lon>=t.b[0]-pad&&lon<=t.b[2]+pad&&lat>=t.b[1]-pad&&lat<=t.b[3]+pad;
+  const cand=D.dac.filter(near),hits=cand.filter(t=>geomHas(t.g,lon,lat)),hit=hits.find(t=>t.p.dac_tract)||hits[0]||null;
+  const edge=cand.length?Math.min(...cand.map(t=>edgeMeters(t.g,lon,lat))):Infinity;
+  const ward=WARDS?WARDS.features.find(f=>geomHas(f.geometry,lon,lat)):null;
+  const pp=D.pp.find(t=>near(t)&&geomHas(t.g,lon,lat));
+  const inside=BOUNDARY&&BOUNDARY.features&&BOUNDARY.features.length?BOUNDARY.features.some(f=>geomHas(f.geometry,lon,lat)):null;
+  return {in_dac:!!hit,dac_tract:hit?hit.p.dac_tract||'':'',dac_type:hit?hit.p.dac_type||'':'',edge_m:isFinite(edge)?Math.round(edge):null,near_edge:edge<CHECK_EDGE_M,
+    ward_id:ward?ward.properties.ward_id:'',ward_name:ward?ward.properties.ward_name:'',member:ward?ward.properties.member||'':'',pp_type:pp?pp.p.pp_type:'',in_study_area:inside};}
+/** Lines of text -> locations. Takes "lat, lon[, label]", "label, lat, lon", tabs or semicolons, or a table whose
+ *  header names latitude and longitude columns. Latitude and longitude are told apart by their size, so either order works. */
+function parseLocations(text){
+  const lines=text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean),out=[],bad=[];if(!lines.length)return {out,bad};
+  const split=l=>l.split(/[,;\t]/).map(c=>c.trim().replace(/^"|"$/g,''));
+  const head=split(lines[0]).map(h=>h.toLowerCase()),li=head.findIndex(h=>/^(lat|latitude|y)$/.test(h)),lo=head.findIndex(h=>/^(lon|lng|long|longitude|x)$/.test(h));
+  const hasHead=li>=0&&lo>=0,ni=hasHead?head.findIndex(h=>/^(name|label|id|tree|tree_id|site|address|note)$/.test(h)):-1;
+  lines.slice(hasHead?1:0).forEach((l,k)=>{const c=split(l);let lat,lon,label='';
+    if(hasHead){lat=+c[li];lon=+c[lo];label=ni>=0?(c[ni]||''):c.filter((_,i)=>i!==li&&i!==lo).join(' ').trim();}
+    else{const nums=c.map((v,i)=>({v:+v,i})).filter(o=>c[o.i]!==''&&isFinite(o.v));const a=nums.find(o=>Math.abs(o.v)<=90&&Math.abs(o.v)>=1),b=nums.find(o=>o!==a&&Math.abs(o.v)>90&&Math.abs(o.v)<=180);
+      if(a&&b){lat=a.v;lon=b.v;label=c.filter((_,i)=>i!==a.i&&i!==b.i).join(' ').trim();}
+      else{   // no commas: "35.29 -118.98 Crescent Elementary". Take the decimal numbers wherever they sit.
+        const m=[...l.matchAll(/-?\d{1,3}\.\d+/g)].map(x=>({v:+x[0],s:x[0]})),a2=m.find(o=>Math.abs(o.v)<=90&&Math.abs(o.v)>=1),b2=m.find(o=>o!==a2&&Math.abs(o.v)>90&&Math.abs(o.v)<=180);
+        if(a2&&b2){lat=a2.v;lon=b2.v;label=l.replace(a2.s,'').replace(b2.s,'').replace(/[,;\t]+/g,' ').replace(/\s+/g,' ').trim();}}}
+    if(isFinite(lat)&&isFinite(lon)&&Math.abs(lat)<=90&&Math.abs(lon)<=180){if(lon>0&&lat>0&&lon<180&&lon>90)lon=-lon;   // a western longitude typed without its minus sign
+      out.push({n:out.length+1,label:label||('Location '+(out.length+1)),lat,lon});}
+    else bad.push((hasHead?k+2:k+1)+': '+l.slice(0,60));});
+  return {out,bad};}
+function checkCsv(){
+  const cols=['n','label','latitude','longitude','in_sb535_dac','sb535_tract','sb535_criterion','meters_to_nearest_tract_edge','near_tract_edge','ward_or_district','council_member','priority_population_designation','inside_study_area'];
+  return [cols.join(','),...checkRows.map(r=>[r.n,r.label,r.lat,r.lon,r.in_dac,r.dac_tract,r.dac_type,r.edge_m??'',r.near_edge,r.ward_name,r.member,r.pp_type,r.in_study_area??''].map(csvCell).join(','))].join('\n')+'\n';}
+async function runCheck(){
+  const sum=document.getElementById('check-sum'),outEl=document.getElementById('check-out'),{out,bad}=parseLocations(document.getElementById('check-in').value);
+  if(!out.length){sum.textContent=bad.length?'No line could be read as a latitude and a longitude. Example: 35.3733, -119.0187':'Paste at least one location.';outEl.innerHTML='';return;}
+  sum.textContent='Checking…';const D=await loadCheckData();
+  if(!D.ok){sum.textContent='The SB 535 tract outlines could not be loaded, so nothing was checked.';return;}
+  checkRows=out.map(o=>({...o,...lookupPoint(o.lon,o.lat,D)}));
+  const n=checkRows.length,inD=checkRows.filter(r=>r.in_dac).length,edge=checkRows.filter(r=>r.near_edge).length,outside=checkRows.filter(r=>r.in_study_area===false).length,esc=escapeHtml;
+  sum.innerHTML=`<b>${inD} of ${n}</b> location${n===1?'':'s'} (${Math.round(100*inD/n)}%) ${inD===1?'is':'are'} inside an SB 535 disadvantaged community.`
+    +(edge?` <span class="warn">${edge} within ${CHECK_EDGE_M} m of a tract edge: confirm ${edge===1?'it':'those'} on the CalEPA map.</span>`:'')
+    +(outside?` ${outside} outside the ${esc(CE_CITY.scope==='city'?'city limits':'study area')}.`:'')+(bad.length?` ${bad.length} line${bad.length===1?'':'s'} could not be read (line ${esc(bad.slice(0,3).map(b=>b.split(':')[0]).join(', '))}${bad.length>3?'…':''}).`:'');
+  const hasW=!!WARDS,hasPP=D.pp.length>0;
+  outEl.innerHTML=`<table><thead><tr><th>#</th><th>Location</th><th>SB 535</th><th>Tract</th>${hasW?'<th>'+esc((CE_CITY.districtUnit||'ward').replace(/^./,c=>c.toUpperCase()))+'</th>':''}${hasPP?'<th>Priority population</th>':''}<th>Why it qualifies</th></tr></thead><tbody>`+
+    checkRows.slice(0,300).map(r=>`<tr><td>${r.n}</td><td title="${r.lat.toFixed(6)}, ${r.lon.toFixed(6)}">${esc(r.label)}</td><td class="${r.in_dac?'yes':'no'}">${r.in_dac?'Yes':'No'}${r.near_edge?' <span class="warn" title="'+r.edge_m+' m from a tract edge">⚠</span>':''}</td><td>${esc(r.dac_tract)}</td>${hasW?'<td title="'+esc(r.member)+'">'+esc(r.ward_name||(r.in_study_area===false?'outside':'—'))+'</td>':''}${hasPP?'<td>'+esc(r.pp_type||'—')+'</td>':''}<td>${esc(r.dac_type)}</td></tr>`).join('')+'</tbody></table>'+(n>300?`<p class="hint">Showing the first 300 of ${n}; the spreadsheet has all of them.</p>`:'');
+  document.getElementById('check-csv').disabled=false;document.getElementById('check-clear').disabled=false;
+  if(map)styleOp(()=>{const data={type:'FeatureCollection',features:checkRows.map(r=>({type:'Feature',geometry:{type:'Point',coordinates:[r.lon,r.lat]},properties:{d:r.in_dac?1:0,n:r.n}}))};
+    if(map.getSource('checkpts'))map.getSource('checkpts').setData(data);
+    else{map.addSource('checkpts',{type:'geojson',data});map.addLayer({id:'checkpts',type:'circle',source:'checkpts',paint:{'circle-radius':['interpolate',['linear'],['zoom'],9,4,14,7],'circle-color':['case',['==',['get','d'],1],'#2f9e5b','#8b95a1'],'circle-stroke-width':2,'circle-stroke-color':'#0b0f14'}});}
+    if(n===1)map.flyTo({center:[checkRows[0].lon,checkRows[0].lat],zoom:Math.max(map.getZoom(),14)});
+    else{const xs=checkRows.map(r=>r.lon),ys=checkRows.map(r=>r.lat);map.fitBounds([[Math.min(...xs),Math.min(...ys)],[Math.max(...xs),Math.max(...ys)]],{padding:80,maxZoom:15});}});
+}
+function initCheck(){
+  const sec=document.getElementById('sec-check');if(!sec||!('dac' in CE_CITY.weights)||!HEX.features.some(f=>f.properties.dac>0))return;
+  sec.hidden=false;const w=sec.querySelector('[data-check-ward]');if(w){if(WARDS)w.textContent=' and which '+(CE_CITY.districtUnit||'ward')+' it is in';else w.remove();}
+  document.getElementById('check-run').onclick=runCheck;
+  document.getElementById('check-file-btn').onclick=()=>document.getElementById('check-file').click();
+  document.getElementById('check-file').onchange=e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{document.getElementById('check-in').value=String(rd.result);runCheck();};rd.readAsText(f);e.target.value='';};
+  document.getElementById('check-csv').onclick=()=>{download(`coolequity-${exportHeader().city_slug}-location-check-${new Date().toISOString().slice(0,10)}.csv`,checkCsv(),'text/csv');};
+  document.getElementById('check-clear').onclick=()=>{checkRows=[];document.getElementById('check-in').value='';document.getElementById('check-sum').textContent='';document.getElementById('check-out').innerHTML='';
+    document.getElementById('check-csv').disabled=true;document.getElementById('check-clear').disabled=true;if(map&&map.getSource('checkpts'))map.getSource('checkpts').setData({type:'FeatureCollection',features:[]});};
 }
 
 /* ================================================================ places people go
@@ -2661,6 +2766,7 @@ async function boot(){
   {const lk=document.getElementById('legend-limit');if(lk&&b&&!b.loadFailed&&b.features&&b.features.length){lk.hidden=false;lk.querySelector('span').textContent=CE_CITY.scope==='city'?'city limit':CE_CITY.scope==='county'?'county line':'study area';}}WARDS=(w&&!w.loadFailed&&w.features&&w.features.length&&h.features.some(f=>f.properties.ward_id))?w:null;
   JURIS=(j&&!j.loadFailed&&j.features&&j.features.length)?j:null;
   initWards();
+  initCheck();
   {const n=DESIGNATED.features.length,o=((DESIGNATED.properties||{}).outside_study_area||[]).length,
    ts=document.getElementById('tg-designated-sub');
    // Only sites in (or within ~1.5 km of) this study area are drawn; the county's

@@ -19,6 +19,11 @@ Nothing in this county's data changed. What is new for every build:
   block residents (`BLOCK_WEIGHTS`). Bakersfield only. Limit: this county's own building mask
   is still OpenStreetMap, which the income-bias guard refuses, so the county stays on area
   weighting; a county parcel or footprint layer would be the way to change that.
+- **Check planting locations.** Paste coordinates of trees planted or planned (or open a CSV)
+  and each is tested against the SB 535 tract outlines and the district boundaries: inside a
+  disadvantaged community or not, tract and criterion, district, and the share of the list
+  inside one. Runs in the browser; nothing is uploaded. Limits: published outlines are
+  simplified, so points within 15 m of a tract edge are flagged; CalEPA's map is the authority.
 - **Tree spacing is adjustable.** The planting scenario assumed one tree every 10 m on both
   sides of a street; the spacing is now a box beside the cost (4–30 m). Tree counts, costs,
   "street room" and the district table follow it; ranks do not. Saved in every export and

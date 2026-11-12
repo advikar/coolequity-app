@@ -78,6 +78,31 @@ if(hasPlaces){assert.equal(CITY.places,true,`${slug}: city.js must set places:tr
   const ol=JSON.parse(fs.readFileSync(`cities/${slug}/data/people_places_outlines_${slug}.geojson`,'utf8')).features;assert.equal(ol.length,pl.length,`${slug}: outlines and places differ in number`);ol.forEach((f,i)=>assert(f.properties.i===i&&f.geometry,'outline '+i));
   assert(pl.filter(f=>f.properties.tree_src==='aerial').length>=0.9*pl.length,`${slug}: most places should be measured on the aerial map itself`);}
 else{assert(!fs.existsSync(placesFile),`${slug}: unexpected places file`);for(const f of data.features)assert(!('schools' in f.properties),`${slug}: unexpected place counts`);}
+// Location check: a coordinate tested against the tract outlines and ward polygons must agree with the map itself.
+// Every hexagon wholly inside (or wholly outside) a designated tract is tested at its centre, and every centre must
+// fall in the ward the pipeline gave its hexagon. The parser must read the forms people paste.
+if(hasDac){
+  const fn=(name)=>{const i=html.indexOf('function '+name+'(');assert(i>=0,name);let d=0,j=html.indexOf('{',i);for(;;j++){const c=html[j];if(c==='{')d++;else if(c==='}'&&--d===0)break;}return html.slice(i,j+1);};
+  const rd=f=>fs.existsSync(f)?JSON.parse(fs.readFileSync(f,'utf8')):null;
+  const cx={Math,Infinity,isFinite,CHECK_EDGE_M:15,WARDS:rd(`cities/${slug}/data/wards_${slug}.geojson`),BOUNDARY:rd(`cities/${slug}/data/boundary_${slug}.geojson`)};vm.createContext(cx);
+  for(const n of ['ringHas','geomHas','geomRings','geomBox','edgeMeters','checkPrep','lookupPoint','parseLocations'])vm.runInContext(fn(n),cx);
+  cx.SB=rd(`cities/${slug}/data/sb535_${slug}.geojson`);assert(cx.SB&&cx.SB.features.length,`${slug}: no SB 535 tract file for the location check`);
+  vm.runInContext('var D={dac:checkPrep(SB),pp:[]}',cx);
+  const grid=new Map(rd(`cities/${slug}/data/grid_${slug}.geojson`).features.map(f=>[f.properties.id,f.properties]));
+  let tested=0,tractOk=0,full=0;
+  for(const f of data.features){const p=f.properties,g=grid.get(p.id);if(!g)continue;cx.x=g.lon;cx.y=g.lat;const r=vm.runInContext('lookupPoint(x,y,D)',cx);
+    if(p.dac>=0.999){assert(r.in_dac,`${slug}: centre of wholly designated area ${p.id} reads as outside`);full++;if(r.dac_tract===(p.dac_tract||''))tractOk++;tested++;}
+    else if(!(p.dac>0)){assert(!r.in_dac,`${slug}: centre of undesignated area ${p.id} reads as inside`);tested++;}
+    if(cx.WARDS)assert.equal(r.ward_id,p.ward_id||'',`${slug}: ward of area ${p.id}`);}
+  assert(tested>100&&(!full||tractOk>=0.95*full),`${slug}: location check disagrees with the map (${tractOk}/${full} tracts)`);
+  const P=t=>{cx.t=t;return vm.runInContext('parseLocations(t)',cx);};
+  let r=P('35.3733, -119.0187, Tree 1\n-119.0352\t35.3391\nnot a place\nOak 7; 35.40; -118.95');assert.equal(r.out.length,3);assert.equal(r.bad.length,1);
+  assert.deepEqual([r.out[0].lat,r.out[0].lon,r.out[0].label],[35.3733,-119.0187,'Tree 1']);assert.deepEqual([r.out[1].lat,r.out[1].lon],[35.3391,-119.0352]);assert.equal(r.out[2].label,'Oak 7');
+  r=P('id,Longitude,Latitude,species\nA1,-119.02,35.37,oak\nA2,-119.03,35.38,ash');assert.equal(r.out.length,2);assert.deepEqual([r.out[1].lat,r.out[1].lon,r.out[1].label],[35.38,-119.03,'A2']);
+  r=P('-118.989497 35.294921 Crescent Elementary');assert.deepEqual([r.out[0].lat,r.out[0].lon,r.out[0].label],[35.294921,-118.989497,'Crescent Elementary'],'space-separated line');
+  r=P('35.37, 119.02');assert.equal(r.out[0].lon,-119.02,'a western longitude typed without its minus sign');
+  console.log(`PASS: location check agrees with the map at ${tested} area centres; parser reads pasted forms.`);
+}
 // Priority populations (CARB): only where the city set PRIORITY_POP_URL. A share in 0–1 with a designation
 // exactly where it is positive, and never smaller than the SB 535 share, since every disadvantaged
 // community is a priority population area (tolerance for the two services' differing tract edges).

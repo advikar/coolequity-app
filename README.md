@@ -10,7 +10,7 @@ survey; every number carries its source and limits in each city's in-app guide.
 | City | Map | Areas ranked | Residents | Tree cover | A/C | Heat weight |
 |---|---|---|---|---|---|---|
 | Contra Costa County | [contracosta/app/](https://coolequity.org/contracosta/app/) | 2,697 | 1.16M | USFS/CAL FIRE 2022 aerial; 2009–2020 height model on 1,330 areas, rescaled onto the aerial line using the county lidar map; county lidar (CDFW 2025) on 126; greenness stand-in on 5 | Census LACE 2023, scored | 0 |
-| Bakersfield | [bakersfield/app/](https://coolequity.org/bakersfield/app/) | 3,767 | 410k | USFS/CAL FIRE 2022 aerial | LACE 2023, not scored (96.5–100% everywhere) | 0.45 |
+| Bakersfield | [bakersfield/app/](https://coolequity.org/bakersfield/app/) | 1,987 | 411k | USFS/CAL FIRE 2022 aerial, modelled past its edge | LACE 2023, not scored (96.5–100% everywhere) | 0.45 |
 | San Ramon | [sanramon/app/](https://coolequity.org/sanramon/app/) | 419 | 85k | USFS/CAL FIRE 2022 aerial | LACE 2023, not scored | 0.45 |
 | West Contra Costa | [westcc/app/](https://coolequity.org/westcc/app/) | 982 | 272k | USFS/CAL FIRE 2022 aerial | LACE 2023, scored | 0.35 |
 | Pittsburg & Bay Point | [pittsburg/app/](https://coolequity.org/pittsburg/app/) | 570 | 90k | USFS/CAL FIRE 2022 aerial; county lidar (CDFW 2025) on 16 areas; 2009–2020 height model on 52 (marsh edge); no stand-in | LACE 2023, scored | 0 (shown, not scored: tracks distance from the shore) |

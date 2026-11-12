@@ -129,6 +129,21 @@ changes substantially; anything handed to city staff from the earlier build quot
    spacing. Not changed: `wards_summary_<slug>.csv` (pipeline) still states capacity at 10 m.
    Bakersfield's code ratio (1 tree per 30 ft or per 20 ft of frontage depending on the
    edition found) is quoted in its guide as unconfirmed.
+10. **Check planting locations (done, tested; all builds with SB 535).** The owner shared a
+   briefing for a city presentation: the map could not show, tree by tree, that 80% of a
+   planting is in SB 535 tracts (cells on a tract edge are partly designated; a cell's ward is
+   its centre's). New section in the app: paste coordinates or open a CSV; each point is tested
+   against the cached CalEPA tract outlines (`sb535_<slug>.geojson`, now shipped with the
+   site) and the ward polygons, in the browser, nothing uploaded. Returns DAC yes/no, tract,
+   criterion, ward and member, priority-population designation where built, a flag within 15 m
+   of a tract edge, the share of the list inside a DAC, dots on the map and a CSV. Tested in
+   `tests/ui-contract.cjs` at every cell centre wholly inside or outside a tract (about 20,000
+   across five builds) and for ward agreement; all agree. The briefing's Bakersfield figures
+   were re-derived from the data and hold (38% of residents and 34% of city land in a DAC;
+   Wards 1 and 2 99%, Ward 7 27%, Ward 5 0%; 70 of the top 100 mostly in a DAC). Landing page
+   and README counts corrected (Bakersfield 1,987; 15,676 areas in all; 79 stand-in areas).
+   Top-ranked area (Commonwealth Ave & Withernsea Ln) checked on the June 2022 photo: a
+   finished recent subdivision with saplings only, so its 0% is right for that date.
 8. **Guide.** Bakersfield's guide opens with "How this map works, in plain words" (including
    "Why are so many areas gray?"), has "In plain words" paragraphs on Population and Tree
    canopy, and a "Places people go" topic; the other five guides have a short one. The priority
