@@ -76,6 +76,58 @@ changes substantially; anything handed to city staff from the earlier build quot
    population shares, an SVG map of the ward's cells, top ten areas, starred-area trees, cost and
    SB 535 share). With a ward chosen in the list filter, that ward only.
 
+7. **Places people go (done, tested).** Research first: the city's
+   tree program is run by Recreation and Parks ($500,000 for fiscal 2026-27, 80% of planting in
+   underserved areas, wards with least canopy first, Wards 1 and 7 named), plants in city parks,
+   city streetscapes and the Kern River Parkway, and the Central City corridor project is about
+   downtown walkability (news coverage; council packets were not readable from here). Those are
+   places, not homes, and the ranking cannot see an area with no residents.
+   - `04j_places.py` (`PLACES`): open schools, GET bus stops and public parks from the city's
+     layers. Each place is measured on its own ground: tree cover inside the park, on the school
+     property polygon (120 m around the point where there is none), within 30 m of a stop, on the
+     USFS 60 cm raster; heat from the Landsat composite over the same ground. 1,007 places inside
+     the city limits (772 stops, 148 schools, 87 parks); 970 measured on the aerial map itself,
+     37 past its edge take the surrounding cell's figure and say so. Median tree cover: stops
+     5.5%, schools 6.2%, parks 16.6%. Writes `people_places_<slug>.geojson` (served to the app)
+     and per-cell counts (`schools`, `bus_stops`, `park`...), optional fields in 05.
+   - A first version ranked whole cells that held a place; its top entries were bare desert
+     beside a soccer park, so it was replaced by per-place measurement before anything shipped.
+   - App: "Places people go" section (list, kind / city-park / SB 535 / ward filters, dots on
+     the map, CSV), a "Here:" note in the detail panel, a line on each ward page. Index = half
+     heat, half missing tree cover on the ranking's scales; no residents, no weights.
+   - Not verified: the dots drawn on the map (the preview pane was hidden; the layer and its
+     data were checked through the map's API only).
+   - **Audit of the places method, November 12 (after the owner asked for one).** Changed: the
+     two kerbs of a bus stop (same name within 80 m) are one place, 772 stops -> 645 locations,
+     so the list no longer repeats a stop; places past the USFS map are read on their own
+     ground by the 02g model (32 of 35; 3 parks keep the cell figure) instead of taking the
+     cell's value; bus stops carry a second reading at 15 m. Checked: all 77 directly measured
+     parks and all 507 single stops recomputed by canopy area / place area agree within 0.2
+     points; heat for 15 parks within 0.6 C. Radius sensitivity (15 / 30 / 50 m medians 5.0 /
+     5.9 / 6.3%; rank r 0.86 between 15 and 30 m; 56 of the barest 100 shared) is stated in the
+     guide; the list ranks on 30 m and shows 15 m beside it. Total now 880 places.
+   - Map view reworked after the owner found the dots frustrating: the 50 hottest and barest of
+     the current list are numbered markers (number = list position; circle stop, square
+     school, green ring park), linked to the rows both ways with a hover card; "Show all" adds
+     the rest as small dots; hexagons fade while it is on.
+   - Clicking a place only opened the surrounding cell and showed nothing of the place (owner's
+     report, reproduced). Now any clicked place gets a labelled pin and a dashed outline of the
+     ground that was measured (`people_places_outlines_<slug>.geojson`, fetched on first use),
+     the camera goes to it clear of the detail panel, and the markers turn on. Seen working for
+     a park and a bus stop at 1300 px wide; not checked on a phone-width screen, where the
+     detail panel covers the map.
+9. **Tree spacing is editable (done, tested; all builds).** `TREE_SPACING_M` was a constant
+   10; it is now an input beside the cost (4-30 m, default 10, feet shown). `setSpacing()`
+   recomputes street room, its thirds, scenarios, costs and the ward table; exports already
+   carried `tree_spacing_m` and loading a scenario now restores it. The ranking does not use
+   spacing. Not changed: `wards_summary_<slug>.csv` (pipeline) still states capacity at 10 m.
+   Bakersfield's code ratio (1 tree per 30 ft or per 20 ft of frontage depending on the
+   edition found) is quoted in its guide as unconfirmed.
+8. **Guide.** Bakersfield's guide opens with "How this map works, in plain words" (including
+   "Why are so many areas gray?"), has "In plain words" paragraphs on Population and Tree
+   canopy, and a "Places people go" topic; the other five guides have a short one. The priority
+   legend now says gray means no residents.
+
 Other changes: heat evidence re-measured on the new ranked set (position 16%, LST vs tree cover
 r = -0.66; config.py note); stability re-run (199 top-tier of 1,987, median band 279, 51% of the
 top tier stay in at least 80% of draws); wards summary re-run; `tests/ui-contract.cjs` EXPECT

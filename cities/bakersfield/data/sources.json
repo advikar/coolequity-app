@@ -66,6 +66,39 @@
    "note": "Names and road class only; used to name each area by its cross streets, not for routing or street length.",
    "file": "street_names_bakersfield.geojson",
    "sha256_12": "18e17ee19baa"
+  },
+  {
+   "stage": "04j_places",
+   "what": "Bus stops (places people go)",
+   "url": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/Transportation/MapServer/1",
+   "publisher": "Golden Empire Transit, via City of Bakersfield GIS Office",
+   "retrieved": "2026-11-11",
+   "count": 1055,
+   "note": "GET Bus Stops layer, last edited June 2026.",
+   "file": "places_people_go_bakersfield.geojson",
+   "sha256_12": "a19154317011"
+  },
+  {
+   "stage": "04j_places",
+   "what": "Parks (places people go)",
+   "url": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/ParksAndRecreation/MapServer/1",
+   "publisher": "City of Bakersfield GIS Office",
+   "retrieved": "2026-11-11",
+   "count": 113,
+   "note": "Park and Recreation layer: active public parks (city, county, North of the River district, state). Golf courses, the fairgrounds and private parks are left out.",
+   "file": "places_people_go_bakersfield.geojson",
+   "sha256_12": "a19154317011"
+  },
+  {
+   "stage": "04j_places",
+   "what": "Schools (places people go)",
+   "url": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/Education/MapServer/0",
+   "publisher": "City of Bakersfield GIS Office",
+   "retrieved": "2026-11-11",
+   "count": 218,
+   "note": "School Facilities layer; open schools only. The layer's own verification dates are from 2018, so a school opened since may be missing.",
+   "file": "places_people_go_bakersfield.geojson",
+   "sha256_12": "a19154317011"
   }
  ]
 }

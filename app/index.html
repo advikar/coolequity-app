@@ -465,6 +465,15 @@
   #rank-search{width:100%;padding:9px 10px;margin-top:6px;border:1px solid #566579;border-radius:7px;background:#101923;color:var(--txt);font:12px var(--sans)}
   #rank-count{font-size:11px;color:var(--muted);margin:9px 0 2px;line-height:1.5}
   .rank-pages{display:flex;justify-content:space-between;padding:12px 20px}
+  .prow{display:grid;grid-template-columns:25px minmax(0,1fr) 34px;column-gap:10px;row-gap:2px;align-items:center;padding:7px 2px;border-bottom:1px solid var(--edge);cursor:pointer}
+  .prow:hover,.prow.hi{background:rgba(127,140,160,.14)}
+  .pmark{width:22px;height:22px;display:flex;align-items:center;justify-content:center;font:700 10px/1 var(--sans);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45);cursor:pointer;transition:transform .12s}
+  .pmark.k-bus_stop{border-radius:50%}.pmark.k-school{border-radius:3px;border-color:#0b0f14}.pmark.k-park{border-radius:50%;border-color:#1f7a3d;border-width:3px}
+  .pmark.hi{transform:scale(1.55)}.maplibregl-marker.pm-hi{z-index:5}
+  .pkey{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;margin:6px 0 2px}.pkey span{display:inline-flex;align-items:center;gap:5px}.pkey .pmark{width:13px;height:13px;border-width:2px;box-shadow:none;background:#c98a5a;cursor:default}
+  .ppin{display:flex;flex-direction:column;align-items:center;pointer-events:none}.ppin b{font:700 11.5px/1.25 var(--sans);background:#0b0f14;color:#fff;padding:4px 8px;border-radius:7px;white-space:nowrap;max-width:240px;overflow:hidden;text-overflow:ellipsis;box-shadow:0 2px 8px rgba(0,0,0,.45)}.ppin b small{display:block;font-weight:500;font-size:10.5px;color:#cfd6de}.ppin i{width:0;height:0;border:7px solid transparent;border-top-color:#0b0f14;margin-top:-1px}.ppin u{width:12px;height:12px;border-radius:50%;background:#ffb000;border:2.5px solid #0b0f14;margin-top:-2px}
+  .place-card{font:12px/1.45 var(--sans);color:#14181e}.place-card b{font-size:12.5px}.place-card span{color:#55606c}.prow .badge{grid-row:1/4}.prow .pn{font-weight:600;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .prow .pw{grid-column:2/4;font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.prow .pm{grid-column:2/4;font-size:11px;color:var(--muted)}.prow .pm b{color:var(--txt);font-weight:600}.prow .ps{font-weight:700;font-size:13px;text-align:right}
   .rank-pages button{background:#1b2733;color:var(--txt);border:1px solid #566579;border-radius:6px;padding:8px 12px;cursor:pointer;font:12px var(--sans)}
   .rank-pages button:disabled{opacity:.45;cursor:default}
   .load-error{padding:28px;background:#111b27;color:#edf1f5;max-width:520px;font:15px/1.6 var(--sans)}
@@ -982,6 +991,28 @@
         <p class="hint" id="ward-note" style="margin-top:8px"></p>
         </div>
       </section>
+      <section class="section fold" id="sec-places" data-fold="sec-places" hidden>
+        <div class="fhead">
+          <button type="button" class="fbtn" aria-expanded="true" aria-controls="sec-places-body"><svg class="dchev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg><span>Places people go</span></button>
+          <a class="info-link" href="guide.html#places" target="ce-guide" aria-label="About the places people go list">i</a>
+          <span class="cnt" id="places-n">—</span>
+        </div>
+        <div class="fbody" id="sec-places-body">
+        <p class="hint lead">Schools, bus stops and public parks, each measured on its own ground and listed with the hottest and barest first. Who lives nearby plays no part, so places on commercial and civic land appear here even though the ranking above leaves those areas out. <b>Click a place to see it on the map</b>: a pin where it is and a dashed outline of the ground that was measured.</p>
+        <div class="filters" id="places-filters" role="group" aria-label="Kinds of place">
+          <button type="button" class="pst" data-pf="school" title="Schools: tree cover on the school property">Schools</button>
+          <button type="button" class="pst" data-pf="bus_stop" title="Bus stops: tree cover within 30 m of the stop">Bus stops</button>
+          <button type="button" class="pst" data-pf="park" title="Public parks: tree cover inside the park">Parks</button>
+          <button type="button" class="pst" data-pf="city" title="Only parks the city itself owns">City parks only</button>
+          <button type="button" class="pst" data-pf="dac" title="Only places in an SB 535 disadvantaged community" id="places-dac">In SB 535</button>
+        </div>
+        <p class="hint pkey" id="places-key" hidden><span><i class="pmark k-bus_stop"></i>bus stop</span><span><i class="pmark k-school"></i>school</span><span><i class="pmark k-park"></i>park</span><span>number = position in this list · darker = hotter and barer</span></p>
+        <p class="hint" id="places-count" role="status" style="margin:8px 0 4px"></p>
+        <div id="places-list"></div>
+        <div class="rank-pages" style="padding:8px 0 4px"><button id="places-prev" type="button">Previous</button><button id="places-next" type="button">Next 15</button></div>
+        <div class="export"><button type="button" id="places-show" aria-pressed="false" title="Mark the 50 hottest and barest places of this list on the map, numbered as in the list">Show on the map</button><button type="button" id="places-all" aria-pressed="false" hidden title="Also draw the rest of this list as small dots">Show all</button><button type="button" id="places-csv" title="The places listed above, with tree cover, surface heat, ward and designation">Places list (CSV)</button></div>
+        </div>
+      </section>
       <section class="section fold" id="sec-sites" data-fold="sec-sites">
         <div class="fhead">
           <button type="button" class="fbtn" aria-expanded="true" aria-controls="sec-sites-body"><svg class="dchev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>Places to cool off</button>
@@ -1137,7 +1168,7 @@
              subdivisions, so "plant here" is only actionable where the city
              owns the ground. Street frontage is that, measured from OSM. -->
         <div class="roi-feas" id="roi-feas"></div>
-        <div class="assume"><span>Assumptions:</span> $<input type="number" id="cost-tree" min="50" max="5000" step="50" value="500" aria-label="Cost per planted tree, US dollars"> per tree <span class="costpre" role="group" aria-label="Cost per tree presets"><button type="button" data-cost="500" title="Planting only, city crews, no establishment budget. Bakersfield’s own 2026 estimate.">Low $500</button><button type="button" data-cost="2000" title="Planting plus about a year of establishment care, or a grant program’s all-in average (Concord: $1M for 500 trees).">Base $2,000</button><button type="button" data-cost="3500" title="Planting plus three years of watering and program overhead (San Francisco 3500 Trees: $12M for 3,500). Los Angeles reported $4,351 with five years of watering.">High $3,500</button></span> · <input type="number" id="survival" min="5" max="100" step="5" value="70" aria-label="Share of planted trees assumed to reach maturity, percent">% reach maturity · 10 m spacing · <a class="method-link" href="guide.html#cost" target="ce-guide" style="margin:0">limits ↗</a></div>
+        <div class="assume"><span>Assumptions:</span> $<input type="number" id="cost-tree" min="50" max="5000" step="50" value="500" aria-label="Cost per planted tree, US dollars"> per tree <span class="costpre" role="group" aria-label="Cost per tree presets"><button type="button" data-cost="500" title="Planting only, city crews, no establishment budget. Bakersfield’s own 2026 estimate.">Low $500</button><button type="button" data-cost="2000" title="Planting plus about a year of establishment care, or a grant program’s all-in average (Concord: $1M for 500 trees).">Base $2,000</button><button type="button" data-cost="3500" title="Planting plus three years of watering and program overhead (San Francisco 3500 Trees: $12M for 3,500). Los Angeles reported $4,351 with five years of watering.">High $3,500</button></span> · <input type="number" id="survival" min="5" max="100" step="5" value="70" aria-label="Share of planted trees assumed to reach maturity, percent">% reach maturity · one tree every <input type="number" id="spacing" min="4" max="30" step="1" value="10" aria-label="Spacing between street trees along each side of the street, meters" title="Distance between trees along each side of a street. Closer spacing means more tree spots on the same street."> m <span id="spacing-ft" class="muted">(33 ft)</span> · <a class="method-link" href="guide.html#cost" target="ce-guide" style="margin:0">limits ↗</a></div>
         <details class="fieldcheck" id="d-field" hidden>
           <summary><svg class="dchev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg><span>Field check</span><span class="fc-pill" id="fc-pill">Not checked yet</span><a class="info-link" href="guide.html#fieldcheck" target="ce-guide" aria-label="About field checks">i</a></summary>
           <div class="fc-body">
@@ -1186,6 +1217,8 @@ const CENTERS_URL  = `../data/centers_${CITY_SLUG}.geojson?v=${CE_CITY.centersVe
 const BOUNDARY_URL = `../data/boundary_${CITY_SLUG}.geojson`;  // flat fallback only
 const DESIGNATED_URL = `../data/designated_${CITY_SLUG}.geojson?v=${CE_CITY.centersVersion}`;  // county-listed cooling locations
 const WARDS_URL    = `../data/wards_${CITY_SLUG}.geojson?v=${CE_CITY.dataVersion}`;      // optional: council wards / districts from 04e
+const PLACES_URL   = `../data/people_places_${CITY_SLUG}.geojson?v=${CE_CITY.dataVersion}`;
+const PLACE_OUTLINES_URL = `../data/people_places_outlines_${CITY_SLUG}.geojson?v=${CE_CITY.dataVersion}`;   // optional: the ground each place was measured on, fetched when first needed   // optional: schools, bus stops and parks measured by 04j
 const JURIS_URL    = `../data/jurisdictions_${CITY_SLUG}.geojson?v=${CE_CITY.dataVersion}`;  // optional: city outlines from 04d, drawn when one city is chosen
 // The page's city-specific wording.
 for(const el of document.querySelectorAll('.city-name'))el.textContent=CE_CITY.name;
@@ -1301,7 +1334,7 @@ const LAYERS={
   access:{title:'Walk to cooling',ramp:WALK,worse:'hi',fmt:v=>fMin(v),key:'access_min',est:true,
     cap:'Estimated walk to mapped sites at 4.8 km/h on the OSM network. Hours and cooling availability are unverified.'},
   room:{title:'Street room',ramp:ROOM,worse:'lo',fmt:v=>fInt(v)+' spots',est:true,
-    cap:'Tree spots that mapped street centerlines inside the boundary could hold at 10 m spacing on both sides. An upper bound from OpenStreetMap, not a site survey: utilities, driveways and sidewalk width are not known. Deeper = less room, so shade here would have to come from parks, schools or private land.'},
+    get cap(){return 'Tree spots that mapped street centerlines inside the boundary could hold at '+TREE_SPACING_M+' m spacing on both sides (the spacing is set beside the cost).'+this.capRest;},capRest:' An upper bound from OpenStreetMap, not a site survey: utilities, driveways and sidewalk width are not known. Deeper = less room, so shade here would have to come from parks, schools or private land.'},
   // Categorical layer — no ramp. Present in LAYERS so setLayer() can read .title/.cap
   // uniformly; the legend swaps to the A–D swatch key instead of a gradient bar.
   dac:{title:'Disadvantaged community (SB 535)',ramp:DAC,worse:'hi',fmt:v=>Math.round(v*100)+'%',
@@ -1336,7 +1369,7 @@ function markCostPreset(){document.querySelectorAll('.costpre button').forEach(b
  * is a planning convention, not a measurement — it is stated on screen next to
  * the figure it produces, because the whole point of the frontage panel is to
  * be checkable against the city's own standard. */
-const TREE_SPACING_M=10;
+const DEFAULT_SPACING_M=10, SPACING_MIN_M=4, SPACING_MAX_M=30; let TREE_SPACING_M=DEFAULT_SPACING_M;   // editable beside the cost; see setSpacing()
 let current='score', selId=null, holcOn=false, accessOn=false, centersOn=true, designatedOn=true;
 let DESIGNATED={type:'FeatureCollection',features:[]};
 
@@ -1515,6 +1548,7 @@ function computeRanges(){
   ['score','lst','green','veg','pop','pct65','ac','access_min','room','dac','pp'].forEach(k=>{svals[k]=vals[k];});
   const nm=HEX&&HEX.norm;
   if(nm) for(const k in nm){ if(Array.isArray(nm[k])&&nm[k][1]>nm[k][0]) svals[k]=nm[k]; }
+  scorePlaces();   // places people go: needs the scoring scales set just above
 }
 function rng(k){return k==='access'?vals['access_min']:vals[k];}
 function propKey(k){return k==='access'?'access_min':k;}
@@ -1639,6 +1673,22 @@ const NDVI_SCALE=45;const ndviIndex=v=>v/NDVI_SCALE*100;
  *  detail text, both exports and the briefing instead of every reader assuming
  *  "planting only". A typed figure is labelled as the user's own. */
 const COST_SCOPES={500:'planting only; no establishment watering or maintenance (Bakersfield 2026 estimate)',2000:'planting plus about a year of establishment care (grant-program average, Concord)',3500:'planting plus three years of watering and program overhead (San Francisco)'};
+/** Change the spacing between street trees. Everything derived from it follows: tree spots per
+ *  area ("street room" and its little/some/plenty thirds), planting scenarios, costs, the ward
+ *  table and exports. The ranking does not use spacing, so no rank moves. */
+function setSpacing(v,fromFile){
+  const el=document.getElementById('spacing'),ft=document.getElementById('spacing-ft');
+  if(!(v>=SPACING_MIN_M&&v<=SPACING_MAX_M)){if(fromFile)v=DEFAULT_SPACING_M;else return;}   // a half-typed number changes nothing
+  const changed=v!==TREE_SPACING_M;TREE_SPACING_M=v;
+  if(el&&(fromFile||+el.value!==v))el.value=v;
+  if(ft)ft.textContent='('+Math.round(v*3.28084)+' ft)';
+  if(!changed||typeof HEX==='undefined'||!HEX)return;
+  computeRanges();                                              // room per area and the thirds
+  if(map&&map.getSource('hex'))map.getSource('hex').setData(HEX);
+  if(typeof current!=='undefined'&&current==='room')setLayer('room');
+  const f=selId!=null&&HEX.features.find(x=>x.properties.id===selId);if(f)updateROI(f.properties);
+  buildRank();
+}
 function costScope(){return COST_SCOPES[COST_TREE]||'custom figure entered by the user; what it covers is not recorded';}
 let DATA_SHA='unavailable';
 async function sha256Hex(text){
@@ -1653,7 +1703,7 @@ function exportNotes(){return [
   'rank/score are computed live from the exported weights; rank_default/score_default are the pipeline defaults shipped with the data. rank_recommended_mix_p05/p95 and top_tier_share come from re-drawing ACS and LACE inputs within their margins of error and jittering the recommended weights; ranks are estimates with a band, not exact positions.',
   'Population, age and A/C are allocated estimates from ACS block groups and Census LACE tracts, not household counts.',
   'Canopy percentages are assessed cover per canopy_source; chm-legacy cells have unknown assessed extent (coverage_frac empty). In Contra Costa builds, height-model cells are rescaled onto the aerial line and lidar-2020 cells come from the county lidar map, both fitted against that map (reports/canopy_validation_<slug>.json). naip-model cells lie outside the USFS map and carry tree cover modelled from the 2022 aerial survey, with held-out accuracy in reports/canopy_naip_<slug>.json.',
-  'Planting scenarios are theoretical: mapped street length at 10 m spacing, capped by cell area minus known canopy. Site feasibility, ownership, utilities and species are unverified.',
+  `Planting scenarios are theoretical: mapped street length at ${TREE_SPACING_M} m spacing`+', capped by cell area minus known canopy. Site feasibility, ownership, utilities and species are unverified.',
   `Cost is planted trees × $${COST_TREE.toLocaleString('en-US')} per tree, taken as ${costScope()}; a program-average assumption, not a local quote. Added tree cover and cooling count only the share of planted trees assumed to reach maturity (survival_share_pct, default 70%; Sacramento\'s long-term monitoring found 42.4% alive after 22 years). Cooling is an illustrative clear-sky summer air-temperature figure, 0.3 °C per 10 canopy points, not a local forecast.`,
   'Where fire_perimeter_share_pct is above zero, the area lies partly or wholly inside the perimeter of a wildfire newer than the tree-cover and census inputs: its tree cover, residents, A/C and street capacity describe the ground before the fire, and its rank should not be used without a field check.',
   'Walking access is routed on the OpenStreetMap pedestrian network to mapped discovery sites, whose hours and cooling designation are unverified; approach-review flags a >100 m straight connection from the cell center to the network. Minutes are estimates, not verified door-to-door accessible routes.',
@@ -1679,7 +1729,7 @@ function exportHeader(){
 }
 const EXPORT_FIELDS=['id','name','near','city','place','rank','score','rank_default','score_default','rank_lo','rank_hi','rank_top_share','lst_c','canopy_pct','greenness_index','green_src','canopy_source','canopy_year',
   'coverage_frac','canopy_quality','canopy_m2','assessed_m2','pop','pct65','ac_pct','ac_src','ac_coverage','acs_year','access_min','access_km','access_src','inside_frac',
-  'access_quality','access_snap_m','area_m2','street_m','street_room_positions','street_room_band','scenario_ok','canopy_baseline_ok','land','holc','dac','dac_type','dac_tract','pp','pp_type','fire','fire_name','fire_year',
+  'access_quality','access_snap_m','area_m2','street_m','street_room_positions','street_room_band','scenario_ok','canopy_baseline_ok','land','holc','dac','dac_type','dac_tract','pp','pp_type','schools','school_names','bus_stops','park','park_name','park_city','fire','fire_name','fire_year',
   'ward_id','ward_name',
   'planting_share','trees','trees_surviving','canopy_gain_points','cost_usd','cooling_c','future_canopy_pct','field_status','field_note','field_note_updated'];
 function cellRecord(p){
@@ -1695,6 +1745,7 @@ function cellRecord(p){
     scenario_ok:p.scenario_ok===true, ward_id:p.ward_id??null, ward_name:p.ward_name??null, canopy_baseline_ok:p.canopy_baseline_ok===true, land:p.land??null, holc:p.holc??null,
     dac:p.dac==null?null:+(+p.dac*100).toFixed(1), dac_type:p.dac_type??null, dac_tract:p.dac_tract??null,
     pp:p.pp==null?null:+(+p.pp*100).toFixed(1), pp_type:p.pp>0?(p.pp_type??null):null,
+    schools:p.schools??null, school_names:p.school_names??null, bus_stops:p.bus_stops??null, park:p.park==null?null:+(+p.park*100).toFixed(1), park_name:p.park_name??null, park_city:p.park>0?!!p.park_city:null,
     fire:p.fire==null?null:+(+p.fire*100).toFixed(1), fire_name:p.fire>0?(p.fire_name??null):null, fire_year:p.fire>0?(p.fire_year??null):null,
     planting_share:scn?scn.share:null, trees:scn?scn.trees:null, trees_surviving:scn?scn.trees_surviving:null, canopy_gain_points:scn?scn.canopy_gain_points:null,
     cost_usd:scn?scn.cost_usd:null, cooling_c:scn?scn.cooling_c:null, future_canopy_pct:scn?scn.future_canopy_pct:null,
@@ -1739,7 +1790,7 @@ const FIELD_KEY={
   access_snap_m:['walk_network_connection_m','Straight-line meters from the area center to the walking network'],
   area_m2:['area_m2','Area of the hexagon, m²'],
   street_m:['mapped_street_m','Mapped street centerline in the area, m: theoretical capacity from OpenStreetMap, not surveyed plantable space'],
-  street_room_positions:['street_room_tree_spots','Tree spots the mapped street could hold at 10 m spacing on both sides: an upper bound, not a site survey'],
+  street_room_positions:['street_room_tree_spots','Tree spots the mapped street could hold on both sides at the spacing in tree_spacing_m (10 m unless changed in the app): an upper bound, not a site survey'],
   street_room_band:['street_room_band','no mapped street, little room, some room or plenty of room: city-relative thirds of the areas with any mapped street'],
   scenario_ok:['planting_scenario_available','true when mapped street capacity exists'],
   canopy_baseline_ok:['tree_cover_baseline_complete','true when the aerial assessment covers ≥99% of the area'],
@@ -1752,6 +1803,12 @@ const FIELD_KEY={
   dac_tract:['sb535_dac_tract','Census tract GEOID of that designated tract'],
   pp:['priority_population_share_pct','Share of the area inside a California Climate Investments priority population area (CARB Priority Populations 5.0: SB 535 disadvantaged or AB 1550 low-income community), %; empty where the build does not carry the layer'],
   pp_type:['priority_population_designation','Designation covering most of the area: disadvantaged, disadvantaged and low-income, low-income, or low-income within half a mile of a disadvantaged community'],
+  schools:['schools_in_area','Open schools in the area (city school layer); empty where the build does not count places'],
+  school_names:['school_names','Names of up to three of those schools'],
+  bus_stops:['bus_stops_in_area','Transit stops in the area'],
+  park:['park_share_pct','Share of the area inside a public park, %'],
+  park_name:['park_name','Name of the park covering most of that share'],
+  park_city:['park_city_owned','true where that park belongs to the city itself'],
   fire:['fire_perimeter_share_pct','Share of the area inside the perimeter of a wildfire newer than the tree-cover and census inputs, %; empty or 0 where none'],
   fire_name:['fire_name','Name of that fire (CAL FIRE perimeter)'],
   fire_year:['fire_year','Year of that fire'],
@@ -1847,6 +1904,7 @@ function loadScenario(doc){
   if(typeof pa.cost_per_tree_usd==='number'&&pa.cost_per_tree_usd>0){COST_TREE=pa.cost_per_tree_usd;const ce=document.getElementById('cost-tree');if(ce)ce.value=COST_TREE;}markCostPreset();
   if(typeof pa.survival_share_pct==='number'&&pa.survival_share_pct>0&&pa.survival_share_pct<=100){SURVIVAL=pa.survival_share_pct;const se=document.getElementById('survival');if(se)se.value=SURVIVAL;}
   else if(pa.survival_share_pct===undefined){SURVIVAL=100;const se=document.getElementById('survival');if(se)se.value=100;}   // files written before survival existed assumed every tree matured; reproduce them exactly
+  setSpacing(typeof pa.tree_spacing_m==='number'?pa.tree_spacing_m:DEFAULT_SPACING_M,true);   // files written before spacing was editable used 10 m
   plantingShares.clear();userShares.clear();
   const cells=doc.kind==='area'?(doc.selected?[doc.selected]:[]):(Array.isArray(doc.cells)?doc.cells:[]);
   let shares=0;for(const c of cells){if(c&&typeof c.planting_share==='number'&&c.id!=null){plantingShares.set(+c.id,Math.max(0,Math.min(100,c.planting_share)));userShares.add(+c.id);shares++;}}
@@ -1955,6 +2013,7 @@ function resetMap(){
   RANK_SORT='need';RANK_DIR=defaultDir('need');const rsl=document.getElementById('rank-sort');if(rsl)rsl.value='need';syncSortUI();
   COST_TREE=DEFAULT_COST_TREE;const ce=document.getElementById('cost-tree');if(ce)ce.value=DEFAULT_COST_TREE;markCostPreset();
   SURVIVAL=DEFAULT_SURVIVAL;const se=document.getElementById('survival');if(se)se.value=DEFAULT_SURVIVAL;
+  setSpacing(DEFAULT_SPACING_M,true);
   const rs=document.getElementById('rank-search');if(rs)rs.value='';rankPage=0;buildRank();buildShortlist();
   markSaved();
   if(map)fitData(map);
@@ -2013,6 +2072,7 @@ function wireDrawers(){
     const f=selId!=null&&HEX.features.find(x=>x.properties.id===selId);if(f)updateROI(f.properties);buildShortlist();});
   document.getElementById('survival').addEventListener('input',e=>{const v=+e.target.value;if(!(v>0&&v<=100))return;SURVIVAL=v;
     const f=selId!=null&&HEX.features.find(x=>x.properties.id===selId);if(f)updateROI(f.properties);buildShortlist();});
+  document.getElementById('spacing').addEventListener('input',e=>setSpacing(+e.target.value,false));
   document.getElementById('sl-export').onclick=exportShortlist;
   {const cb=document.getElementById('sl-compare');if(cb){cb.setAttribute('aria-pressed',SL_COMPARE);cb.onclick=()=>{SL_COMPARE=!SL_COMPARE;cb.setAttribute('aria-pressed',SL_COMPARE);try{localStorage.setItem('ce-slview',SL_COMPARE?'compare':'rows');}catch(_){}buildShortlist();};}}
   const clearSL=()=>{SHORTLIST.clear();saveShortlist();buildRank();syncDetailPin();toast('Shortlist cleared');};
@@ -2057,7 +2117,7 @@ function wireFolds(){
  * every planting share (set here or loaded from a file), cost and survival.
  * SAVED_SIG is the state last written to or read from a file (or the defaults),
  * so unchanged saved work does not warn and a cost-only edit does. */
-function scenarioSig(){const W=normW();return JSON.stringify([W_INPUTS.map(({k})=>+W[k].toFixed(4)),+POPW.toFixed(4),[...plantingShares].filter(([id])=>userShares.has(id)).sort((a,b)=>a[0]-b[0]),COST_TREE,SURVIVAL]);}
+function scenarioSig(){const W=normW();return JSON.stringify([W_INPUTS.map(({k})=>+W[k].toFixed(4)),+POPW.toFixed(4),[...plantingShares].filter(([id])=>userShares.has(id)).sort((a,b)=>a[0]-b[0]),COST_TREE,SURVIVAL,TREE_SPACING_M]);}
 let SAVED_SIG=null;
 function markSaved(){SAVED_SIG=scenarioSig();}
 /** A one-area file holds the priorities, cost and survival plus that area's share only.
@@ -2112,7 +2172,7 @@ function wireLeave(){
  * guide anchor the button already points at, so a button with no card falls
  * back to opening the guide, and the contract test checks every key exists. */
 const TIPS={
-  room:{t:'Street room',d:'How many trees the mapped streets inside this area could hold at 10 m spacing on both sides. It is the ceiling the planting scenario starts from, not a surveyed count: utilities, driveways, sidewalk width and existing trees are unknown. “Little”, “some” and “plenty” are thirds of this city’s areas that have any mapped street. Where need is high and room is little, shade has to come from parks, schools or private land.'},
+  room:{t:'Street room',get d(){return 'How many trees the mapped streets inside this area could hold at '+TREE_SPACING_M+' m spacing on both sides (change the spacing beside the cost).'+this.dRest;},dRest:' It is the ceiling the planting scenario starts from, not a surveyed count: utilities, driveways, sidewalk width and existing trees are unknown. “Little”, “some” and “plenty” are thirds of this city’s areas that have any mapped street. Where need is high and room is little, shade has to come from parks, schools or private land.'},
   wards:{t:'By ward',d:'The ranking rolled up by council ward: residents, the mean need index under the current mix, how many of the top 100 areas fall in each ward, and the trees and cost of the starred areas there. Boundaries come from the city’s own GIS service; member names are as of the date shown and change at elections. Click a ward to limit the list to it.'},
   popweight:{t:'Count people more',d:'Decides how much the number of residents matters. At 0%, an area is judged only on its conditions, so a hot, bare area with 12 residents can rank above a slightly better one with 3,000. As you raise it, areas with more people move up the list. At 100%, an area with almost no residents scores near zero however bad its conditions. The recommended 45% makes the most-populated area count about 1.8 times the least. The line under the sliders always states the multiplier in force.'},
   weights:{t:'What matters most',d:'Choose what the ranking should reward. Presets are ready-made mixes; “Fine-tune” lets you set each share yourself. The map and the list re-rank immediately.'},
@@ -2125,7 +2185,7 @@ const TIPS={
   stability:{t:'Likely rank',d:'A rank is an estimate. Census population, age and A/C figures were re-drawn within their published margins of error and the recommended weights nudged by ±10 points, 300 times; this is the 5th–95th percentile of the ranks that came out. It is a sensitivity range under stated assumptions (heat, tree cover and walking time held fixed), not a confidence interval; treat rank differences smaller than the band as not established. The top-tier share says how often the area stayed in the best 10%.'},
   'export-area':{t:'Export this area',d:'Save this area’s numbers, sources, rank and planting scenario as one file for a meeting or a colleague. A JSON file reloads this view.'},
   planting:{t:'Planting scenario',d:'Explore how many street trees could fit along this area’s mapped streets, what they would cost, and the shade they would add at maturity. An estimate for scoping, not a plan.'},
-  cost:{t:'Trees & cost',d:'Tree count comes from mapped street length at 10 m spacing; cost is trees × the $ per tree you set. Low $500 is planting only (Bakersfield’s estimate); Base $2,000 adds establishment care; High $3,500 is a full three-year program (San Francisco). Not a quote.'},
+  cost:{t:'Trees & cost',get d(){return 'Tree count comes from mapped street length at '+TREE_SPACING_M+' m spacing, which you can change; cost is'+this.dRest;},dRest:' trees × the $ per tree you set. Low $500 is planting only (Bakersfield’s estimate); Base $2,000 adds establishment care; High $3,500 is a full three-year program (San Francisco). Not a quote.'},
   cooling:{t:'Illustrative cooling',d:'A rough, literature-based figure for how much new shade could cool summer air once the trees are mature. Not a forecast for this place.'},
   lst:{t:'Surface heat',d:'How hot the ground gets in summer, measured by satellite in late morning (the Landsat overpass, about 10:30 am). It is not the air temperature people feel, but hot ground is where shade helps most.'},
   green:{t:'Tree cover',d:'The share of assessed land covered by tree crowns, from an aerial assessment. Low tree cover is the strongest sign an area would benefit from planting.'},
@@ -2135,6 +2195,7 @@ const TIPS={
   ac:{t:'Homes with A/C',d:'The Census estimate of homes with air conditioning. Fewer homes with A/C means more reliance on shade and public cooling.'},
   holc:{t:'Redlining (1930s)',d:'Historical federal lending grades, shown where a map exists. Areas graded “hazardous” then are often the hottest and least shaded now.'},
   dac:{t:'SB 535 disadvantaged community',d:'Census tracts designated by CalEPA under SB 535 (final designation, September 2026, from CalEnviroScreen 5.0). The map shows how much of each area falls inside a designated tract. A funding-eligibility designation, not a measurement of heat or shade; use it to see which priority areas also meet a program’s disadvantaged-community commitment.'},
+  places:{t:'Places people go',d:'Schools, bus stops and public parks, each measured on its own ground: tree cover on the school property, within 30 m of the stop, or inside the park, and how hot that ground gets. Listed hottest and barest first. Who lives nearby plays no part, so a bus stop on a commercial strip can top this list while the main ranking leaves that area out. A screen for where to look; whether a tree can go there is for a site visit.'},
   pp:{t:'Priority populations',d:'Areas the state counts toward its climate-investment targets: SB 535 disadvantaged communities and AB 1550 low-income communities (CARB Priority Populations 5.0, in effect September 18, 2026). The map shows how much of each area falls inside one. A funding designation, not a measurement, and never part of the score. Low-income households qualify wherever they live; no map can show that.'},
   sort:{t:'Sort options',d:'Need: the priority score under the current mix (the rank badges). Residents: estimated people living in the area. Surface heat: summer late-morning ground temperature from satellite. Tree cover: share of assessed land under tree crowns. Walk to cooling: estimated minutes on foot to the nearest cool place. Age 65+: share of residents aged 65 or older. Sorting re-orders the list only; rank badges and the map never change.'},
   geography:{t:'About these areas',d:'Each hexagon is a fixed analysis area, not a neighborhood boundary. '+(CE_CITY.nameKind==='streets'?'Each is named by the cross streets inside it, or by direction from the nearest ones, with the nearest major intersection underneath':'Names are the nearest mapped place')+'; gray areas have no residents to rank.'},
@@ -2304,6 +2365,159 @@ ${sl.length?`<div class="page"><h2>Shortlist · ${sl.length} area${sl.length===1
   toast(`Briefing report opened in a new tab: map, top 25${sl.length?', '+sl.length+' shortlisted area'+(sl.length===1?'':'s'):''}, method and limits. Use Print, then Save as PDF.`);
 }
 
+/* ================================================================ places people go
+ * The ranking is about where people live. This list is about where they wait,
+ * walk and play: every school, bus stop and public park the pipeline measured
+ * (04j: tree cover on the school property, within 30 m of the stop, inside the
+ * park; surface heat over the same ground). The index is half hot ground and
+ * half missing tree cover, on the ranking's own scales. Population, age and the
+ * weights in force play no part, so it never moves when a slider does. */
+let PLACES=null, PLACE_F=new Set(), placesPage=0, PLACE_LIST=[], placesOn=false, placesInit=false, placesAllOn=false, placeMarkers=new Map(), placePop=null, placePin=null, placeSel=null, placeOutlines=null;
+const PLACES_TOP=50;
+const PLACES_PAGE=15, PLACE_KIND={school:'School',bus_stop:'Bus stop',park:'Park'};
+function hasPlace(p){return p.schools>0||p.bus_stops>0||p.park>0;}
+function placeWhat(p,long){const a=[];
+  if(p.schools>0)a.push(long&&p.school_names?p.school_names:p.schools+' school'+(p.schools>1?'s':''));
+  if(p.bus_stops>0)a.push(p.bus_stops+' bus stop'+(p.bus_stops>1?'s':''));
+  if(p.park>0)a.push((p.park_name||'Public park')+(long&&p.park_city?' (city park)':''));
+  return a.join(' · ');}
+/** Index every measured place once the scoring scales exist; called from computeRanges(). */
+function scorePlaces(){
+  PLACE_LIST=[];if(!PLACES)return;
+  const [hLo,hHi]=svals.lst,[gLo,gHi]=svals.green,cl=v=>Math.max(0,Math.min(1,v));
+  const cell=new Map(HEX.features.map(f=>[f.properties.id,f.properties]));
+  PLACES.features.forEach((f,i)=>{const q=f.properties,c=cell.get(q.cell);if(!c||!isFinite(q.tree)||!isFinite(q.heat))return;
+    q.need=+(100*(0.5*cl((q.heat-hLo)/(hHi-hLo))+0.5*(1-cl((q.tree-gLo)/(gHi-gLo))))).toFixed(1);
+    PLACE_LIST.push({...q,i,lon:f.geometry.coordinates[0],lat:f.geometry.coordinates[1],ward_id:c.ward_id||'',ward_name:c.ward_name||'',dac:c.dac||0,pp:c.pp,near:c.near,area:nameOf(c)});});
+  PLACE_LIST.sort((a,b)=>b.need-a.need||a.i-b.i);PLACE_LIST.forEach((q,k)=>{q.rank=k+1;PLACES.features[q.i].properties.rank=k+1;});
+}
+function placesFiltered(){const F=PLACE_F,kinds=['school','bus_stop','park'].filter(k=>F.has(k));
+  return PLACE_LIST.filter(q=>(!kinds.length||kinds.includes(q.kind))&&(!F.has('city')||(q.kind==='park'&&q.city_owned))&&(!F.has('dac')||q.dac>=0.5)
+    &&(!RANK_WARD||(RANK_WARD==='__outside'?!q.ward_id:q.ward_id===RANK_WARD)));}
+function placeTree(q){return q.tree.toFixed(0)+'% trees'+(q.tree_src==='area'?' (area figure)':q.tree_src==='modelled'?' (modelled)':'')+(q.kind==='bus_stop'&&typeof q.tree_near==='number'?', '+q.tree_near.toFixed(0)+'% within 15 m':'');}
+function placeSrc(q){return q.tree_src==='aerial'?'from the 2022 aerial tree map':q.tree_src==='modelled'?'past the edge of the aerial tree map, so read from the same 2022 aerial photos by the tested model':'the aerial tree map does not cover this place, so this is the figure for the surrounding map area';}
+function placeKind(q){return PLACE_KIND[q.kind]+(q.kind==='bus_stop'&&q.stops>1?' (both sides)':'')+(q.kind==='park'&&q.city_owned?' · city-owned':'');}
+function buildPlaces(redraw){
+  if(!PLACE_LIST.length)return;if(!placesInit)initPlaces();
+  const el=document.getElementById('places-list'),rows=placesFiltered();
+  placesPage=Math.max(0,Math.min(placesPage,Math.ceil(rows.length/PLACES_PAGE)-1));
+  const start=placesPage*PLACES_PAGE,top=rows.slice(start,start+PLACES_PAGE);
+  document.getElementById('places-n').textContent=PLACE_LIST.length.toLocaleString()+' places';
+  document.getElementById('places-count').textContent=rows.length?`${start+1}–${start+top.length} of ${rows.length.toLocaleString()} places`+(RANK_WARD?` in ${wardLabel(RANK_WARD==='__outside'?'':RANK_WARD)}`:'')+' · hottest and barest first':'No place matches. Clear a filter.';
+  document.getElementById('places-prev').disabled=placesPage===0;
+  document.getElementById('places-next').disabled=start+PLACES_PAGE>=rows.length;
+  el.innerHTML='';
+  top.forEach((q,k)=>{const c=colorFor('score',q.need),row=document.createElement('div');row.className='prow';row.dataset.i=q.i;row.setAttribute('role','button');row.tabIndex=0;const pos=start+k+1;
+    row.title=`Tree cover ${q.how}, ${placeSrc(q)}. Number on the left: position in this list (${q.rank} of all ${PLACE_LIST.length.toLocaleString()} places).`;
+    row.innerHTML=`<div class="badge" style="background:${c};color:${inkOn(c)}">${pos}</div><div class="pn">${escapeHtml(q.name||PLACE_KIND[q.kind])}</div><div class="ps" style="color:${lift(c)}">${q.need.toFixed(0)}</div>
+      <div class="pw">${placeKind(q)} · ${escapeHtml(q.area)}${q.ward_id?' · '+escapeHtml(wardLabel(q.ward_id)):''}</div>
+      <div class="pm"><b>${placeTree(q)}</b> · <b>${fTemp(q.heat)}</b> ground${q.dac>=0.5?' · SB 535':''}</div>`;
+    const open=()=>showPlace(q);
+    row.onclick=open;row.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};
+    row.onmouseenter=()=>hiPlace(q.i,true,true);row.onmouseleave=()=>hiPlace(q.i,false,true);
+    el.appendChild(row);});
+  if(redraw!==false)drawPlaces();
+}
+/** Link a list row and its map marker: highlight both, and show the place's card on the map. */
+function hiPlace(i,on,fromRow){
+  const m=placeMarkers.get(i);if(m){m.getElement().classList.toggle('pm-hi',on);m.getElement().firstChild.classList.toggle('hi',on);}
+  const row=document.querySelector(`#places-list .prow[data-i="${i}"]`);if(row&&!fromRow)row.classList.toggle('hi',on);
+  if(placePop){placePop.remove();placePop=null;}
+  if(on&&map&&placesOn){const q=PLACE_LIST.find(x=>x.i===i);if(!q||(fromRow&&!m))return;
+    placePop=new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:18}).setLngLat([q.lon,q.lat])
+      .setHTML(`<div class="place-card"><b>${escapeHtml(q.name||PLACE_KIND[q.kind])}</b><br><span>${placeKind(q)}${q.ward_id?' · '+escapeHtml(wardLabel(q.ward_id)):''}</span><br>${placeTree(q)} · ${fTemp(q.heat)} ground${q.dac>=0.5?' · SB 535':''}</div>`).addTo(map);}
+}
+/** A marker was clicked: open its area and bring its row into view in the list. */
+function openPlace(q){
+  const rows=placesFiltered(),k=rows.findIndex(x=>x.i===q.i);
+  if(k>=0){placesPage=Math.floor(k/PLACES_PAGE);buildPlaces(false);
+    const row=document.querySelector(`#places-list .prow[data-i="${q.i}"]`);if(row){row.classList.add('hi');row.scrollIntoView({block:'center',behavior:'smooth'});setTimeout(()=>row.classList.remove('hi'),2200);}}
+  showPlace(q);
+}
+/** Fetch the measured outlines once (park, school property, the circles round a stop). */
+function loadPlaceOutlines(){
+  if(!placeOutlines)placeOutlines=fetch(PLACE_OUTLINES_URL,{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(d=>d&&Array.isArray(d.features)?new Map(d.features.map(f=>[f.properties.i,f])):new Map()).catch(()=>new Map());
+  return placeOutlines;
+}
+/** Put one place on the map: a labelled pin where it is, the outline of the ground its figures
+ *  describe, and the camera on it. Works for any row, in the top 50 or not, and turns the
+ *  markers on so the place is seen among its neighbors. */
+function showPlace(q){
+  placeSel=q.i;
+  if(!placesOn){placesOn=true;const sb=document.getElementById('places-show');if(sb){sb.setAttribute('aria-pressed','true');sb.classList.add('primary');sb.textContent='Hide from the map';}drawPlaces();}
+  selectHex(q.cell,false);
+  if(!map)return;
+  if(placePin)placePin.remove();
+  const el=document.createElement('div');el.className='ppin';
+  el.innerHTML=`<b>${escapeHtml(q.name||PLACE_KIND[q.kind])}<small>${escapeHtml(placeKind(q))} · ${escapeHtml(placeTree(q))}</small></b><i></i><u></u>`;
+  placePin=new maplibregl.Marker({element:el,anchor:'bottom'}).setLngLat([q.lon,q.lat]).addTo(map);
+  // Keep the place clear of the detail panel, which slides over the map (right above 1100px wide, left below).
+  const vw=window.innerWidth||1200,pad={top:110,bottom:70,left:vw<=1100&&vw>760?400:60,right:vw>1100?400:60};
+  map.flyTo({center:[q.lon,q.lat],zoom:Math.max(map.getZoom(),q.kind==='park'?15:16),padding:pad,duration:900,essential:true});
+  loadPlaceOutlines().then(m=>{if(placeSel!==q.i)return;const f=m.get(q.i);
+    styleOp(()=>{const data={type:'FeatureCollection',features:f?[f]:[]};
+      if(map.getSource('pplace-sel'))map.getSource('pplace-sel').setData(data);
+      else{map.addSource('pplace-sel',{type:'geojson',data});
+        map.addLayer({id:'pplace-sel-fill',type:'fill',source:'pplace-sel',paint:{'fill-color':'#ffb000','fill-opacity':0.16}});
+        map.addLayer({id:'pplace-sel-line',type:'line',source:'pplace-sel',paint:{'line-color':'#0b0f14','line-width':2.5,'line-dasharray':[2,1.2]}});}
+    });
+    if(f&&q.kind!=='bus_stop'){let w=180,s2=90,e=-180,n=-90;const walk=c=>{if(typeof c[0]==='number'){w=Math.min(w,c[0]);e=Math.max(e,c[0]);s2=Math.min(s2,c[1]);n=Math.max(n,c[1]);}else c.forEach(walk);};
+      (f.geometry.type==='GeometryCollection'?f.geometry.geometries:[f.geometry]).forEach(g=>walk(g.coordinates));
+      if(w<e)map.fitBounds([[w,s2],[e,n]],{padding:pad,maxZoom:17,duration:900,essential:true});}
+  });
+}
+function clearPlaceSel(){placeSel=null;if(placePin){placePin.remove();placePin=null;}if(map&&map.getSource('pplace-sel'))map.getSource('pplace-sel').setData({type:'FeatureCollection',features:[]});}
+/** The list on the map. The PLACES_TOP hottest and barest of the current list are numbered markers
+ *  (the number is the list position; shape says school, bus stop or park). "Show all" adds the rest
+ *  as small plain dots. The hexagons fade while this is on so the places read first. */
+function drawPlaces(){
+  if(!map||!PLACES)return;
+  placeMarkers.forEach(m=>m.remove());placeMarkers=new Map();if(placePop){placePop.remove();placePop=null;}
+  const rows=placesOn?placesFiltered():[],top=rows.slice(0,PLACES_TOP),inTop=new Set(top.map(q=>q.i));
+  for(let k=top.length-1;k>=0;k--){const q=top[k],root=document.createElement('div'),el=document.createElement('div'),c=colorFor('score',q.need);   // worst added last, so it sits on top
+    el.className='pmark k-'+q.kind;el.style.background=c;el.style.color=inkOn(c);el.textContent=k+1;root.appendChild(el);
+    root.setAttribute('role','button');root.tabIndex=0;root.setAttribute('aria-label',`${k+1}: ${q.name||PLACE_KIND[q.kind]}, ${PLACE_KIND[q.kind].toLowerCase()}, ${q.tree.toFixed(0)}% tree cover`);
+    root.onmouseenter=()=>hiPlace(q.i,true,false);root.onmouseleave=()=>hiPlace(q.i,false,false);
+    root.onclick=e=>{e.stopPropagation();openPlace(q);};root.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openPlace(q);}};
+    placeMarkers.set(q.i,new maplibregl.Marker({element:root}).setLngLat([q.lon,q.lat]).addTo(map));}
+  const key=document.getElementById('places-key'),all=document.getElementById('places-all'),cnt=document.getElementById('places-count');
+  if(key)key.hidden=!placesOn;
+  if(all){all.hidden=!placesOn||rows.length<=PLACES_TOP;all.textContent=placesAllOn?`Top ${PLACES_TOP} only`:`Show all ${rows.length.toLocaleString()}`;all.setAttribute('aria-pressed',placesAllOn);}
+  if(cnt&&placesOn&&rows.length)cnt.textContent+=rows.length>PLACES_TOP?(placesAllOn?' · map: all of them, the first '+PLACES_TOP+' numbered':' · map: the first '+PLACES_TOP):' · all on the map';
+  styleOp(()=>{
+    const data={type:'FeatureCollection',features:placesOn&&placesAllOn?rows.filter(q=>!inTop.has(q.i)).map(q=>PLACES.features[q.i]):[]};
+    if(map.getSource('pplaces'))map.getSource('pplaces').setData(data);
+    else{map.addSource('pplaces',{type:'geojson',data});
+      map.addLayer({id:'pplaces',type:'circle',source:'pplaces',paint:{
+        'circle-radius':['interpolate',['linear'],['zoom'],9,1.6,12,3,15,6],
+        'circle-color':['interpolate',['linear'],['get','need'],...rampStops('score',0,100)],
+        'circle-stroke-width':0.8,'circle-stroke-color':'#ffffff','circle-opacity':0.9}});
+      const find=e=>PLACE_LIST.find(x=>x.rank===e.features[0].properties.rank);
+      map.on('click','pplaces',e=>{const q=find(e);if(q)openPlace(q);});
+      map.on('mousemove','pplaces',e=>{map.getCanvas().style.cursor='pointer';const q=find(e);if(q&&(!placePop||placePop._ceI!==q.i)){hiPlace(q.i,true,false);if(placePop)placePop._ceI=q.i;}});
+      map.on('mouseleave','pplaces',()=>{map.getCanvas().style.cursor='';if(placePop){placePop.remove();placePop=null;}});}
+  });
+  applyCityMask();
+}
+function placesCsv(){
+  const cols=[['place_rank',q=>q.rank],['kind',q=>q.kind],['name',q=>q.name],['place_need_0_100',q=>q.need],['tree_cover_pct',q=>q.tree],['tree_cover_measured',q=>q.how],['tree_cover_source',q=>q.tree_src],['tree_cover_within_15m_pct',q=>q.tree_near??''],['stops_grouped',q=>q.kind==='bus_stop'?q.stops:''],
+    ['surface_heat_c',q=>q.heat],['city_owned_park',q=>q.kind==='park'?!!q.city_owned:''],['ward_or_district',q=>q.ward_name],['sb535_dac_share_pct',q=>+(q.dac*100).toFixed(1)],
+    ['priority_population_share_pct',q=>q.pp==null?'':+(q.pp*100).toFixed(1)],['cell_id',q=>q.cell],['area_name',q=>q.area],['nearest_major_intersection',q=>q.near??''],['longitude',q=>q.lon],['latitude',q=>q.lat]];
+  return [cols.map(c=>c[0]).join(','),...placesFiltered().map(q=>cols.map(c=>csvCell(c[1](q))).join(','))].join('\n')+'\n';
+}
+function initPlaces(){
+  placesInit=true;
+  document.getElementById('sec-places').hidden=false;
+  const dc=document.getElementById('places-dac');if(dc)dc.hidden=!PLACE_LIST.some(q=>q.dac>=0.5);
+  document.querySelectorAll('#places-filters .pst').forEach(b=>b.onclick=()=>{const k=b.dataset.pf;PLACE_F.has(k)?PLACE_F.delete(k):PLACE_F.add(k);b.classList.toggle('on',PLACE_F.has(k));b.setAttribute('aria-pressed',PLACE_F.has(k));placesPage=0;if(!placesOn){placesOn=true;const sb=document.getElementById('places-show');sb.setAttribute('aria-pressed','true');sb.classList.add('primary');sb.textContent='Hide from the map';}buildPlaces();});
+  document.getElementById('places-prev').onclick=()=>{placesPage--;buildPlaces();};
+  document.getElementById('places-next').onclick=()=>{placesPage++;buildPlaces();};
+  const sb=document.getElementById('places-show');
+  sb.onclick=()=>{placesOn=!placesOn;sb.setAttribute('aria-pressed',placesOn);sb.classList.toggle('primary',placesOn);sb.textContent=placesOn?'Hide from the map':'Show on the map';if(!placesOn){placesAllOn=false;clearPlaceSel();}buildPlaces();};
+  document.getElementById('places-all').onclick=()=>{placesAllOn=!placesAllOn;buildPlaces();};
+  document.getElementById('places-csv').onclick=()=>{download(`coolequity-${exportHeader().city_slug}-places-${new Date().toISOString().slice(0,10)}.csv`,placesCsv(),'text/csv');toast('Places list saved: '+placesFiltered().length.toLocaleString()+' places.');};
+}
+
 /* ================================================================ ward sheets
  * One Letter page per ward or district, for the council member whose ward it
  * is: who lives there, how it compares with the city, a map of its areas, its
@@ -2369,6 +2583,7 @@ function openWardSheets(){
   <h2>Highest-ranked areas in ${esc(wardLabel(id))}</h2>
   <table><thead><tr><th>Rank</th><th>Area</th>${hasNear?'<th>Nearest major intersection</th>':''}<th class="n">Need</th><th class="n">Heat</th><th class="n">Trees</th><th class="n">Residents</th><th class="n">65+</th>${hasDac?'<th class="n">SB 535</th>':''}${hasNear?'':'<th>Street room</th>'}</tr></thead><tbody>${rows}</tbody></table>
   <p class="fine">${d.starred.length?`<b>Starred areas here: ${d.starred.length}.</b> At their planting shares they come to <b>${fInt(d.trees)}</b> trees, about <b>${money(d.cost)}</b>${hasDac&&d.trees>0?`; <b>${pct(d.dacTrees,d.trees)}</b> of those trees fall inside SB 535 communities`:''}. Tree counts are an upper bound from mapped street length, not a site survey.`:`No area in this ${esc(unit)} is starred, so there is no planting total. Star areas on the map to add one.`}</p>
+  ${(()=>{const pl=PLACE_LIST.filter(q=>q.ward_id===id);if(!pl.length)return '';const n=k=>pl.filter(q=>q.kind===k).length;return `<p class="fine"><b>Places people go:</b> ${n('school')} schools, ${n('bus_stop')} bus stops and ${n('park')} public parks measured. Hottest and barest: ${pl.slice(0,3).map(q=>esc(q.name||PLACE_KIND[q.kind])+' ('+esc(PLACE_KIND[q.kind].toLowerCase())+', '+q.tree.toFixed(0)+'% trees)').join('; ')}.</p>`;})()}
   <div class="foot"><span>CoolEquity · data ${esc(hdr.dataset.version_tag||'')} · weights ${W_INPUTS.filter(x=>normW()[x.k]>0.005).map(x=>esc(x.label.replace(' (65+)',''))+' '+Math.round(normW()[x.k]*100)+'%').join(', ')}</span><span>Independent student project · not a city or county product · a planning screen from public data · confirm on the ground</span></div>
 </div>`;}).join('');
   const font=u=>new URL('vendor/'+u,location.href).href;
@@ -2425,14 +2640,16 @@ function applyHash(){
 }
 async function boot(){
   // Only the hex file is load-bearing; the other two degrade to nothing.
-  const [h,c,b,dg,w,j]=await Promise.all([
+  const [h,c,b,dg,w,j,pl]=await Promise.all([
     fetch(DATA_URL,{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(`${DATA_URL} → ${r.status}`);return r.text();}).then(async t=>{DATA_SHA=await sha256Hex(t);return JSON.parse(t);}),
     optional(CENTERS_URL),
     optional(BOUNDARY_URL),
     optional(DESIGNATED_URL),
     CE_CITY.districtUnit?optional(WARDS_URL):Promise.resolve({loadFailed:true}),   // only cities with a district source have the file; no 404 noise elsewhere
-    optional(JURIS_URL)
+    optional(JURIS_URL),
+    CE_CITY.places?optional(PLACES_URL):Promise.resolve({loadFailed:true})   // only builds that measured places have the file
   ]);
+  PLACES=(pl&&!pl.loadFailed&&pl.features&&pl.features.length)?pl:null;
   HEX=h;CENTERS=c;BOUNDARY=b;DESIGNATED=dg;
   {const lk=document.getElementById('legend-limit');if(lk&&b&&!b.loadFailed&&b.features&&b.features.length){lk.hidden=false;lk.querySelector('span').textContent=CE_CITY.scope==='city'?'city limit':CE_CITY.scope==='county'?'county line':'study area';}}WARDS=(w&&!w.loadFailed&&w.features&&w.features.length&&h.features.some(f=>f.properties.ward_id))?w:null;
   JURIS=(j&&!j.loadFailed&&j.features&&j.features.length)?j:null;
@@ -3081,7 +3298,7 @@ function applyWeights(){
   if(W.age65>0.005) parts.push(`older residents (${Math.round(W.age65*100)}%)`);
   if(W.access>0.005)parts.push(`walk to cooling (${Math.round(W.access*100)}%)`);
   if(W.dac>0.005)   parts.push(`SB 535 disadvantaged community (${Math.round(W.dac*100)}%)`);
-  LAYERS.score.cap=`${parts.join(' · ')}. Adjusted for population; relative within this ${CE_CITY.scope}. `+(HEX&&HEX.features.some(f=>f.properties.green_src==='ndvi')?' Some areas use a satellite greenness stand-in for tree cover.':'')+(W.heat<=0.005?' Ground heat is not counted.':'');
+  LAYERS.score.cap=`${parts.join(' · ')}. Adjusted for population; relative within this ${CE_CITY.scope}. Gray = no residents here, so nothing to rank. `+(HEX&&HEX.features.some(f=>f.properties.green_src==='ndvi')?' Some areas use a satellite greenness stand-in for tree cover.':'')+(W.heat<=0.005?' Ground heat is not counted.':'');
   if(current==='score')setLayer('score');     // repaints AND refreshes the caption
   buildRank();
   if(selId!=null)selectHex(selId,false,true);
@@ -3329,7 +3546,7 @@ function buildCityPick(){
  * and the line reads as one edge. Only the hexagons fade: the street map and
  * the imagery underneath keep their full contrast everywhere. */
 function fillOpacity(base){return ['case',['<',['coalesce',['get','inside_frac'],1],0.5],+(base*0.45).toFixed(3),base];}
-function applyCityMask(){if(!map||!map.getLayer('fill'))return;const base=document.querySelector('#basemap button.on')?.dataset.b==='sat'?0.88:0.82;
+function applyCityMask(){if(!map||!map.getLayer('fill'))return;const base=(document.querySelector('#basemap button.on')?.dataset.b==='sat'?0.88:0.82)*(typeof placesOn!=='undefined'&&placesOn?0.38:1);
   if(map.getLayer('city-line'))map.setFilter('city-line',['==',['get','name'],RANK_CITY||'\u0000']);
   map.setPaintProperty('fill','fill-opacity',RANK_CITY?['case',['==',['get','city'],RANK_CITY],fillOpacity(base),0.12]:fillOpacity(base));}
 /* Direction per sort key: 'most' puts the largest value first. Every key's
@@ -3390,6 +3607,7 @@ function buildRank(){
   top.forEach(f=>el.appendChild(makeRow(f.properties,def)));
   buildShortlist();
   buildWardTable();
+  buildPlaces();
 }
 // The list must not make a height-model or partly assessed figure look like a
 // full aerial one: the tree label says which it is, and the hover says why.
@@ -3413,7 +3631,7 @@ function makeRow(p,def){
     <button type="button" class="pin${on?' on':''}" aria-pressed="${on}" title="${on?'Remove from':'Add to'} shortlist">${on?'★':'☆'}</button>
     <div class="sc" style="color:${lift(c)}">${s.toFixed(0)}</div>
     <div class="cbar" aria-hidden="true">${contribBar(p)}</div>
-    <div class="mxs"><span class="mx"><b>${fTemp(p.lst)}</b><i>heat</i></span><span class="mx" title="${escapeHtml(rowSrcTitle(p))}"><b>${p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':p.green.toFixed(0)+'%'}</b><i>${rowSrcLabel(p)}</i></span><span class="mx"><b>${fMin(p.access_min)}</b><i>walk</i></span><span class="mx" title="Street room: ${fInt(roomOf(p))} tree spots along mapped streets at 10 m spacing, an upper bound, not a site survey"><b>${roomWord(p)}</b><i>room</i></span></div>`;
+    <div class="mxs"><span class="mx"><b>${fTemp(p.lst)}</b><i>heat</i></span><span class="mx" title="${escapeHtml(rowSrcTitle(p))}"><b>${p.green_src==='ndvi'?LAYERS.veg.fmt(p.green)+'/100':p.green.toFixed(0)+'%'}</b><i>${rowSrcLabel(p)}</i></span><span class="mx"><b>${fMin(p.access_min)}</b><i>walk</i></span><span class="mx" title="Street room: ${fInt(roomOf(p))} tree spots along mapped streets at ${TREE_SPACING_M} m spacing, an upper bound, not a site survey"><b>${roomWord(p)}</b><i>room</i></span></div>`;
   const open=()=>{selectHex(p.id,true);document.getElementById('d-close').focus({preventScroll:true});};
   row.onclick=e=>{if(e.target.closest('.pin')){togglePin(p.id);return;}open();};
   row.querySelector('.nm').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};
@@ -3569,6 +3787,12 @@ function selectHex(id,fly,keepScroll){
     return `<div class="metric"><div class="top"><span>${lab} <a class="info-link" href="guide.html#${k==='access'?'access':k}" target="ce-guide" aria-label="About ${lab}">i</a>${est?'<span class="est">est</span>':''}${tag?`<span class="est src" title="${tag[1]}">${tag[0]}</span>`:''}</span><span>${disp}</span></div>
       <div class="track"><div class="fill" style="width:${Math.max(2,t*100).toFixed(0)}%;background:${lift(colorFor(k,v),130)}"></div></div></div>`;
   }).join('');
+  if(hasPlace(p)){
+    const here=document.createElement('p');here.className='hint';
+    const mine=PLACE_LIST.filter(q=>q.cell===p.id).slice(0,4);
+    here.innerHTML='<b>Here:</b> '+escapeHtml(placeWhat(p,true))+'.'+(mine.length?' On the <a href="guide.html#places" target="ce-guide">places people go</a> list: '+mine.map(q=>escapeHtml(q.name||PLACE_KIND[q.kind])+' ('+q.tree.toFixed(0)+'% trees, '+q.rank+' of '+PLACE_LIST.length.toLocaleString()+')').join('; ')+'.':'');
+    document.getElementById('d-metrics').appendChild(here);
+  }
   if(p.access_quality==='detour-review'){
     const note=document.createElement('p');note.className='hint';
     note.textContent=p.access_src==='straightline'
@@ -3750,7 +3974,7 @@ function updateROI(p){
     ? baseline+`Of ${fInt(trees)} planted, ${fInt(sc_.trees_surviving)} are assumed to reach maturity (${SURVIVAL}% survival) and add ${fInt(sc_.new_crown_m2)} m² of new, non-overlapping crown. Cost is $${COST_TREE.toLocaleString()} per tree, taken as ${costScope()}; not a local quote. Site feasibility is unverified.`
     : 'No planting in this scenario; no added canopy or cost.';
   document.getElementById('roi-feas').textContent=capacity
-    ? `Mapped streets imply an upper bound of ${fInt(capacity)} tree positions at 10 m spacing on both sides. Actual capacity depends on ownership, existing trees, utilities and space.`
+    ? `Mapped streets imply an upper bound of ${fInt(capacity)} tree positions at ${TREE_SPACING_M} m spacing on both sides. Actual capacity depends on ownership, existing trees, utilities and space.`
     : 'No eligible street length is mapped here. Capacity is unknown; this does not establish that public planting land is absent.';
 }
 

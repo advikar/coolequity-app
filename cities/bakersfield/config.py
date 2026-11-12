@@ -152,6 +152,30 @@ NAME_STREETS = dict(
     skip=("RAMP", "FREEWAY", "FUTURE", "DIRT"),
 )
 
+# ---------------------------------------------------------------- places people go
+# The city's program (Recreation and Parks; $500,000 for fiscal 2026-27, 80% of
+# planting in underserved areas, wards with the least canopy first) plants in
+# city parks, along city streetscapes and the Kern River Parkway, and its
+# Central City corridor project is about downtown walkability. Those are places,
+# not homes, and the resident ranking cannot see a hex without homes. 04j counts
+# schools, bus stops and public parks per hex from the city's own layers so the
+# app can list them by hot ground and missing shade. Never scored.
+_GIS = "https://gis.bakersfieldcity.us/webmaps/rest/services/General"
+PLACES = dict(
+    schools=dict(service=f"{_GIS}/Education/MapServer/0", properties=f"{_GIS}/Education/MapServer/2", name="NAME", type="TYPE", status="STATUS",
+                 closed=("CLOSED",), skip_types=("JUVENILE HALL", "ADULT"),
+                 publisher="City of Bakersfield GIS Office",
+                 note="School Facilities layer; open schools only. The layer's own verification dates are from 2018, so a school opened since may be missing."),
+    bus_stops=dict(service=f"{_GIS}/Transportation/MapServer/1", name="Name",
+                   publisher="Golden Empire Transit, via City of Bakersfield GIS Office",
+                   note="GET Bus Stops layer, last edited June 2026."),
+    parks=dict(service=f"{_GIS}/ParksAndRecreation/MapServer/1", name="NAME", type="TYPE", owner="AGENCY_ID",
+               status="PARK_STATUS", types=("Park", "Dog Park", "Rec Facility", "Community Center", "Preserve"),
+               private=("PRIVATE", "PARK STOCKDALE CIVIC ASSOCIATION"), city_owner="CITY OF BAKERSFIELD",
+               publisher="City of Bakersfield GIS Office",
+               note="Park and Recreation layer: active public parks (city, county, North of the River district, state). Golf courses, the fairgrounds and private parks are left out."),
+)
+
 # ---------------------------------------------------------------- tree cover past the USFS map
 # The USFS / CAL FIRE 2022 map stops at the 2020 Census urban-area line; the
 # city's newest subdivisions lie past it. 02g models tree cover there from the

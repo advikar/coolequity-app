@@ -19,6 +19,17 @@ Nothing in this county's data changed. What is new for every build:
   block residents (`BLOCK_WEIGHTS`). Bakersfield only. Limit: this county's own building mask
   is still OpenStreetMap, which the income-bias guard refuses, so the county stays on area
   weighting; a county parcel or footprint layer would be the way to change that.
+- **Tree spacing is adjustable.** The planting scenario assumed one tree every 10 m on both
+  sides of a street; the spacing is now a box beside the cost (4–30 m). Tree counts, costs,
+  "street room" and the district table follow it; ranks do not. Saved in every export and
+  restored from a scenario file. Limit: still an upper bound from street length, not a survey.
+- **Places people go (optional, `pipeline/04j_places.py`).** Where a city publishes school,
+  bus-stop and park layers, each place is measured on its own ground (tree cover inside the
+  park, on the school property, within 30 m of the stop; surface heat over the same ground) and
+  the app lists them hottest and barest first, with map dots and a CSV. Residents and weights
+  play no part. Bakersfield only; this county would need the layers from each city or the
+  county. Limits: tree cover is June 2022; a satellite heat pixel is 30 m; planting feasibility
+  and ownership are not known.
 - **Area names by cross streets (optional, `pipeline/04i_street_names.py`).** Where a city
   publishes street centrelines with names and road class, areas are named by the intersection
   inside them, with the nearest major intersection as a second line (`near`, exported as

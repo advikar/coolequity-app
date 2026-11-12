@@ -42,7 +42,7 @@ for(const id of ['lst','green','pop','pct65','ac','access','score','holc','plant
 const DATA_PATH=`cities/${slug}/data/${slug}.geojson`;
 const data=JSON.parse(fs.readFileSync(DATA_PATH,'utf8'));
 const nodes=new Map();const node=id=>{if(!nodes.has(id))nodes.set(id,{textContent:'',value:25,disabled:false,setAttribute(){}});return nodes.get(id);};
-const ctx={document:{getElementById:node},CE_CITY:CITY,TREE_SPACING_M:10,TREE_M2:40,COST_TREE:500,SURVIVAL:70,costScope:()=>'planting only',areaOf:p=>p.area_m2,fInt:n=>Math.round(n).toLocaleString('en-US'),fTempD:v=>v.toFixed(2)+' C'};
+const ctx={document:{getElementById:node},CE_CITY:CITY,TREE_SPACING_M:10,DEFAULT_SPACING_M:10,SPACING_MIN_M:4,SPACING_MAX_M:30,setSpacing:()=>{},TREE_M2:40,COST_TREE:500,SURVIVAL:70,costScope:()=>'planting only',areaOf:p=>p.area_m2,fInt:n=>Math.round(n).toLocaleString('en-US'),fTempD:v=>v.toFixed(2)+' C'};
 vm.createContext(ctx);
 const start=html.indexOf('const plantingShares=new Map();'),end=html.indexOf('function wireHover()',start);
 vm.runInContext(html.slice(start,end),ctx);
@@ -64,6 +64,20 @@ if(hasStreetNames){const seen=new Set();assert.equal(CITY.nameKind,'streets',`${
   for(const f of data.features){const p=f.properties;assert(typeof p.name==='string'&&p.name.includes(' & '),'street name '+p.id+': '+p.name);
     assert(!seen.has(p.name),'duplicate area name '+p.name);seen.add(p.name);assert(p.near==null||(p.near.includes(' & ')&&p.near!==p.name),'near '+p.id);}}
 else for(const f of data.features)assert(!('near' in f.properties),`${slug}: unexpected near field`);
+// Places people go (04j): only where the city set PLACES. Area counts are sane, and the measured places file
+// holds schools, bus stops and parks with a tree-cover and heat figure each, inside a known area.
+const hasPlaces=/^PLACES\s*=\s*dict\(/m.test(py),placesFile=`cities/${slug}/data/people_places_${slug}.geojson`;
+if(hasPlaces){assert.equal(CITY.places,true,`${slug}: city.js must set places:true`);
+  const ids=new Set(data.features.map(f=>f.properties.id));
+  for(const f of data.features){const p=f.properties;assert(Number.isInteger(p.schools)&&p.schools>=0&&Number.isInteger(p.bus_stops)&&p.bus_stops>=0&&p.park>=0&&p.park<=1,'place counts '+p.id);
+    assert.equal(!!p.school_names,p.schools>0,'school_names '+p.id);assert.equal(!!p.park_name,p.park>0,'park_name '+p.id);}
+  const pl=JSON.parse(fs.readFileSync(placesFile,'utf8')).features;assert(pl.length>50,`${slug}: too few measured places`);
+  for(const k of ['school','bus_stop','park'])assert(pl.some(f=>f.properties.kind===k),`${slug}: no ${k} among the places`);
+  for(const f of pl){const q=f.properties;assert(['school','bus_stop','park'].includes(q.kind)&&q.tree>=0&&q.tree<=100&&q.heat>20&&q.heat<75&&['aerial','modelled','area'].includes(q.tree_src)&&(q.kind!=='bus_stop'||q.stops>=1)&&ids.has(q.cell)&&q.how,'place '+JSON.stringify(q));}
+  // one outline per place, in the same order: what the app draws when a place is clicked
+  const ol=JSON.parse(fs.readFileSync(`cities/${slug}/data/people_places_outlines_${slug}.geojson`,'utf8')).features;assert.equal(ol.length,pl.length,`${slug}: outlines and places differ in number`);ol.forEach((f,i)=>assert(f.properties.i===i&&f.geometry,'outline '+i));
+  assert(pl.filter(f=>f.properties.tree_src==='aerial').length>=0.9*pl.length,`${slug}: most places should be measured on the aerial map itself`);}
+else{assert(!fs.existsSync(placesFile),`${slug}: unexpected places file`);for(const f of data.features)assert(!('schools' in f.properties),`${slug}: unexpected place counts`);}
 // Priority populations (CARB): only where the city set PRIORITY_POP_URL. A share in 0–1 with a designation
 // exactly where it is positive, and never smaller than the SB 535 share, since every disadvantaged
 // community is a priority population area (tolerance for the two services' differing tract edges).
@@ -112,6 +126,8 @@ if(hasDac){
   console.log('PASS: SB 535 term scored with a non-zero weight matches an independent recompute.');
 }
 
+// Tree spacing is an editable assumption: a control exists, every scenario file records it, and loading one restores it.
+assert(html.includes('id="spacing"')&&html.includes('tree_spacing_m:TREE_SPACING_M')&&/setSpacing\(typeof pa\.tree_spacing_m==='number'/.test(html)&&!/at 10 m spacing/.test(html.replace(/street_room_positions:\[[^\]]*\]/,'')),'tree spacing must be editable and never hard-coded in the text');
 assert(!html.includes("+' pts'"));assert(html.includes('percentage-point canopy gain'));
 const directory=fs.readFileSync(`cities/${slug}/cooling.html`,'utf8');for(const m of directory.matchAll(/<script>([\s\S]*?)<\/script>/g))new vm.Script(m[1]);
 
@@ -120,7 +136,7 @@ const directory=fs.readFileSync(`cities/${slug}/cooling.html`,'utf8');for(const 
 // city or schema is refused.
 {
   const ex={HEX:data,CE_CITY:CITY,LIVE:{score:new Map(),rank:new Map(),order:[]},POPW:.45,W_RAW:{heat:.2,green:.5,ac:.2,age65:.1,access:0},W_INPUTS:[{k:'heat'},{k:'green'},{k:'ac'},{k:'age65'},{k:'access'}],
-    CITY_NAV:[{slug:'x',name:'X'}],THIS_CITY:'x',CITY_SLUG:'x',DATA_URL:'../data/x.geojson?v=t',TREE_SPACING_M:10,TREE_M2:40,COST_TREE:500,SURVIVAL:70,
+    CITY_NAV:[{slug:'x',name:'X'}],THIS_CITY:'x',CITY_SLUG:'x',DATA_URL:'../data/x.geojson?v=t',TREE_SPACING_M:10,DEFAULT_SPACING_M:10,SPACING_MIN_M:4,SPACING_MAX_M:30,setSpacing:()=>{},TREE_M2:40,COST_TREE:500,SURVIVAL:70,
     nameOf:p=>p.name,areaOf:p=>p.area_m2,isDefaultW:()=>true,matchPreset:()=>({id:'default'}),selId:null,
     NOTES:new Map(),saveNotes(){},SHORTLIST:new Set(),saveShortlist(){},buildShortlist(){},FC_LABEL:{visit:'To visit',feasible:'Checked · feasible'},toast(){},markCostPreset:()=>{},
     document:{getElementById:()=>null,createElement:()=>({click(){},remove(){},style:{}}),body:{appendChild(){}}},
@@ -215,7 +231,7 @@ const directory=fs.readFileSync(`cities/${slug}/cooling.html`,'utf8');for(const 
 {
   const slug=slugs[slugs.length-1],CITY=load(`cities/${slug}/city.js`,'CE_CITY'),data=JSON.parse(fs.readFileSync(`cities/${slug}/data/${slug}.geojson`,'utf8'));
   const src=(name)=>{const i=html.indexOf('function '+name+'(');assert(i>=0,name);let d=0,j=html.indexOf('{',i);for(;;j++){const c=html[j];if(c==='{')d++;else if(c==='}'&&--d===0)break;}return html.slice(i,j+1);};
-  const ex={document:{getElementById:()=>null},console,JSON,Math,Set,Map,TREE_SPACING_M:10,TREE_M2:40,COST_TREE:500,SURVIVAL:70,
+  const ex={document:{getElementById:()=>null},console,JSON,Math,Set,Map,TREE_SPACING_M:10,DEFAULT_SPACING_M:10,SPACING_MIN_M:4,SPACING_MAX_M:30,setSpacing:()=>{},TREE_M2:40,COST_TREE:500,SURVIVAL:70,
     areaOf:p=>p.area_m2,sc:p=>p.score,rk:p=>p.rank,nameOf:p=>p.name||'area',ndviIndex:v=>v,noteOf:()=>({}),FC_LABEL:{},
     W_INPUTS:[{k:'heat'},{k:'green'},{k:'ac'},{k:'age65'},{k:'access'}],normW:()=>({heat:.25,green:.25,ac:.25,age65:.25,access:0}),POPW:.5,
     HEX:data,CITY_SLUG:CITY.slug,selId:null,exportHeader:()=>({dataset:{}}),FIELD_KEY:{},download:()=>{},toCsv:()=>'',stamp:()=>'t',exportStatus:()=>{}};

@@ -12,6 +12,9 @@ stage instead. Hashes are the first 12 hex digits of the file's SHA-256.
 | `04e_wards` | [Council wards](https://gis.bakersfieldcity.us/webmaps/rest/services/General/Boundary/MapServer/5) | City of Bakersfield GIS Office | 2026-10-12 | 7 | `wards_bakersfield.geojson` | `cfa05a18572a` |
 | `04h_priority_pop` | [Priority populations (California Climate Investments)](https://gis.carb.arb.ca.gov/hosting/rest/services/Hosted/PriorityPopulations5/FeatureServer/0) | California Air Resources Board | 2026-11-11 | 119 | `priority_pop_bakersfield.geojson` | `783e9e2eff9f` |
 | `04i_street_names` | [Street centrelines (area names by cross streets)](https://gis.bakersfieldcity.us/webmaps/rest/services/General/Transportation/MapServer/4) | City of Bakersfield GIS Office | 2026-11-11 | 26680 | `street_names_bakersfield.geojson` | `18e17ee19baa` |
+| `04j_places` | [Bus stops (places people go)](https://gis.bakersfieldcity.us/webmaps/rest/services/General/Transportation/MapServer/1) | Golden Empire Transit, via City of Bakersfield GIS Office | 2026-11-11 | 1055 | `places_people_go_bakersfield.geojson` | `a19154317011` |
+| `04j_places` | [Parks (places people go)](https://gis.bakersfieldcity.us/webmaps/rest/services/General/ParksAndRecreation/MapServer/1) | City of Bakersfield GIS Office | 2026-11-11 | 113 | `places_people_go_bakersfield.geojson` | `a19154317011` |
+| `04j_places` | [Schools (places people go)](https://gis.bakersfieldcity.us/webmaps/rest/services/General/Education/MapServer/0) | City of Bakersfield GIS Office | 2026-11-11 | 218 | `places_people_go_bakersfield.geojson` | `a19154317011` |
 
 ## Notes
 
@@ -21,3 +24,6 @@ stage instead. Hashes are the first 12 hex digits of the file's SHA-256.
 - **Council wards**: 2022 redistricting, council map 5B (Unity Map). Member names as fetched; the ward number is the stable label.
 - **Priority populations (California Climate Investments)**: Priority Populations 5.0, in effect for projects selected on or after September 18, 2026. Areas only; low-income households qualify anywhere and are not mapped.
 - **Street centrelines (area names by cross streets)**: Names and road class only; used to name each area by its cross streets, not for routing or street length.
+- **Bus stops (places people go)**: GET Bus Stops layer, last edited June 2026.
+- **Parks (places people go)**: Park and Recreation layer: active public parks (city, county, North of the River district, state). Golf courses, the fairgrounds and private parks are left out.
+- **Schools (places people go)**: School Facilities layer; open schools only. The layer's own verification dates are from 2018, so a school opened since may be missing.

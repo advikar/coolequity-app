@@ -258,6 +258,13 @@ def load():
         df = df.drop(columns=["name"], errors="ignore").merge(nm, on="h3", how="left")
         log(f"  names: {int(df['name'].fillna('').ne('').sum())}/{len(df)} cells named by cross streets")
 
+    # Schools, bus stops and parks per cell (04j), where the city set PLACES. For
+    # the app's "places people go" list; never a score input.
+    if C.PLACES_CSV.exists():
+        pl = pd.read_csv(C.PLACES_CSV).fillna({"school_names": "", "park_name": ""})
+        df = df.merge(pl, on="h3", how="left")
+        log(f"  places: {int(((df['schools'] > 0) | (df['bus_stops'] > 0) | (df['park'] > 0)).sum())}/{len(df)} cells hold a school, bus stop or park")
+
     # Priority populations (04h), where the city set PRIORITY_POP_URL. A reporting
     # field for grant terms, never a score input; absent, the columns are not written.
     if C.PRIORITY_POP_CSV.exists():
@@ -430,6 +437,13 @@ def main():
         "fire_name":  df["fire_name"].where(df["fire"] > 0, None),
         "fire_year":  df["fire_year"].where(df["fire"] > 0, None),
     })[CONTRACT]
+    if "schools" in df.columns:
+        out["schools"] = df["schools"].fillna(0).astype(int).values
+        out["school_names"] = df["school_names"].where(df["schools"].fillna(0) > 0, None).values
+        out["bus_stops"] = df["bus_stops"].fillna(0).astype(int).values
+        out["park"] = df["park"].fillna(0.0).round(3).values
+        out["park_name"] = df["park_name"].where(df["park"].fillna(0) > 0, None).values
+        out["park_city"] = (df["park_city"].fillna(False).astype(bool) & (df["park"].fillna(0) > 0)).values
     if "near" in df.columns:
         # Nearest intersection of two through streets, as a phrase; empty where the name is it.
         out["near"] = df["near"].where(df["near"].fillna("").ne(""), None).values

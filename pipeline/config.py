@@ -231,6 +231,7 @@ NO_AC_LIBRARIES = frozenset()
 # Optional per-city source of wildfire perimeters newer than the tree-cover and
 # census inputs, read by 04g_fire.py. None means no flag (05 writes a zero
 # share). See cities/losangeles/config.py for the shape of an entry.
+PLACES = None                 # school, bus-stop and park layers for the "places people go" list (04j)
 NAME_STREETS = None           # a street layer with names and road class to name hexes by cross streets (04i)
 PRIORITY_POP_URL = None       # CARB priority populations layer (04h); None = no layer
 FIRE_PERIMETERS = None
@@ -297,6 +298,7 @@ SB535_CSV = DATA / f"sb535_{SLUG}.csv"           # 04f -> 05, only where SB535_U
 FIRE_CSV = DATA / f"fire_{SLUG}.csv"             # 04g -> 05, only where FIRE_PERIMETERS is set
 PRIORITY_POP_CSV = DATA / f"priority_pop_{SLUG}.csv"
 NAMES_CSV = DATA / f"names_{SLUG}.csv"            # 04i -> 05, only where NAME_STREETS is set
+PLACES_CSV = DATA / f"people_places_{SLUG}.csv"          # 04j -> 05, only where PLACES is set
 
 DATA.mkdir(parents=True, exist_ok=True)
 CACHE.mkdir(exist_ok=True)

@@ -143,6 +143,7 @@ export COOLEQUITY_CITY=bakersfield
 .venv/bin/python pipeline/04g_fire.py                  # wildfire perimeters newer than the canopy and census inputs (cities with FIRE_PERIMETERS)
 .venv/bin/python pipeline/04h_priority_pop.py          # CARB priority populations (SB 535 + AB 1550 low-income) share per cell (cities with PRIORITY_POP_URL)
 .venv/bin/python pipeline/04i_street_names.py          # area names by cross streets from a city street layer (cities with NAME_STREETS); replaces 04's nearest-place names
+.venv/bin/python pipeline/04j_places.py                # schools, bus stops and parks measured on their own ground, for the "places people go" list (cities with PLACES; needs the USFS raster from 02d)
 .venv/bin/python pipeline/05_score.py
 .venv/bin/python pipeline/05b_stability.py            # rank bands: census margins + weight jitter, 300 draws
 .venv/bin/python pipeline/06_audit_rebuild.py --baseline <dir with the previous outputs>

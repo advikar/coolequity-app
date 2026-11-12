@@ -34,8 +34,9 @@ window.CE_CITY={
   districtUnit:'ward',               // what this city calls its council areas (By ward / By district)
   wardsOutsideLabel:"Unincorporated (Kern County)",
   scope:'city',                         // "relative within this city"
-  dataVersion:'20261111-streets',
+  dataVersion:'20261111-places',
   // How 03_census.py placed residents in this build (guide.html says why); the briefing's source table reads it.
+  places:true,                          // schools, bus stops and parks measured by pipeline 04j (data/people_places_bakersfield.geojson)
   nameKind:'streets',                   // areas are named by cross streets (pipeline 04i), not nearest place
   popAllocation:'dasymetric',
   buildingsSource:'City of Bakersfield GIS building footprints (last edited July 2026), residential use type, each weighted by its 2020 Census block’s residents (homes built since are added)',
